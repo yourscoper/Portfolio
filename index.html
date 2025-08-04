@@ -18,6 +18,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6, auto;
   }
   body::before {
     content: '';
@@ -40,7 +41,7 @@
     z-index: 1;
     border: 4px solid transparent;
     background-clip: padding-box;
-    animation: spinGradient 6s linear infinite reverse;
+    animation: spinGradient 3s linear infinite reverse;
   }
   @keyframes spinGradient {
     0% {
@@ -75,6 +76,7 @@
   .bio {
     font-size: 1.2em;
     margin-bottom: 20px;
+    font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif;
   }
   .social-links {
     margin-top: 20px;
@@ -282,7 +284,7 @@
         pause = false;
         deleting = true;
         typeWriter();
-      }, 2500);
+      }, 1500);
       return;
     }
 
@@ -293,7 +295,7 @@
       if (index === fullText.length) {
         pause = true;
       }
-      setTimeout(typeWriter, 500);
+      setTimeout(typeWriter, 300);
     } else {
       title.textContent = fullText.slice(0, index - 1);
       titleTag.textContent = fullText.slice(0, index - 1);
@@ -301,7 +303,7 @@
       if (index === 0) {
         deleting = false;
       }
-      setTimeout(typeWriter, 300);
+      setTimeout(typeWriter, 200);
     }
   }
   typeWriter();
