@@ -81,11 +81,18 @@
 <body>
     <canvas id="trail-canvas"></canvas>
     <div class="container">
-        <a href="https://discord.com/users/765706304656113664" target="_blank">
-            <img src="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.png?size=128" alt="Discord Profile Picture" class="profile-pic">
+        <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 128px; height: 128px;">
+          <img src="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.png?size=128" alt="Discord Profile Picture" class="profile-pic" style="display: block; width: 128px; height: 128px; border-radius: 50%;">
+          <svg width="128" height="128" viewBox="0 0 162 144" class="avatarDecoration__44b0c" aria-hidden="true" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+            <foreignObject x="0" y="0" width="144" height="144" mask="url(#svg-mask-avatar-decoration-status-mobile-120)">
+              <div class="avatarStack__44b0c">
+                <img class="avatar__44b0c" alt=" " aria-hidden="true" src="https://cdn.discordapp.com/avatar-decoration-presets/a_7e494f3ca5859c59b7f07eee4facffd9.png?size=160&amp;passthrough=false" style="width: 128px; height: 128px;"/>
+              </div>
+            </foreignObject>
+          </svg>
         </a>
         <h1>yourscoper</h1>
-        <div class="bio">induge scriping.</div>
+        <div class="bio">I induge scriping.</div>
         <div class="social-links" id="social-links">
             <a href="https://www.roblox.com/users/your_user_id/profile" target="_blank"><img src="https://www.roblox.com/favicon.ico" alt="Roblox">Roblox</a>
             <a href="https://github.com/yourscoper" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub">GitHub</a>
@@ -101,46 +108,46 @@
     </div>
 
     <script>
-        // Canvas trail effect
+        // Canvas trail effect (continuous line with gradient fade)
         const canvas = document.getElementById('trail-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let particles = [];
+        let points = [];
 
-        class Particle {
+        class Point {
             constructor(x, y) {
                 this.x = x;
                 this.y = y;
-                this.radius = 3;
-                this.alpha = 1;
                 this.createdAt = Date.now();
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
-                ctx.fill();
-            }
-
-            update() {
-                const age = (Date.now() - this.createdAt) / 1000; // Age in seconds
-                this.alpha = 1 - age; // Fade out over 1 second
-                if (this.alpha <= 0) return false;
-                return true;
             }
         }
 
         document.addEventListener('mousemove', (e) => {
-            particles.push(new Particle(e.clientX, e.clientY));
+            points.push(new Point(e.clientX, e.clientY));
         });
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles = particles.filter(particle => particle.update());
-            particles.forEach(particle => particle.draw());
+            const now = Date.now();
+            points = points.filter(point => (now - point.createdAt) / 1000 < 1); // Keep points for 1 second
+
+            if (points.length > 1) {
+                ctx.beginPath();
+                ctx.moveTo(points[0].x, points[0].y);
+                for (let i = 1; i < points.length; i++) {
+                    const age = (now - points[i].createdAt) / 1000;
+                    const alpha = 1 - age; // Fade from 1 (newest) to 0 (oldest)
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+                    ctx.lineWidth = 2;
+                    ctx.lineTo(points[i].x, points[i].y);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(points[i].x, points[i].y); // Start new segment
+                }
+            }
+
             requestAnimationFrame(animate);
         }
 
