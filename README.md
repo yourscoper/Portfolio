@@ -4,16 +4,16 @@ Hi, I'm **yourscoper** — a passionate programmer who loves building clean, eff
 
 ## 🔧 Skills
 - **Languages:** Lua/LuaU, Learning C# / C++
-- **Frameworks:** Node.js, Express
-- **Tools:** Git, GitHub, VS Code
-- **Databases:** Roblox
+- **Frameworks:** LuaU, Node.js, Express
+- **Tools:** GitHub, VS Code
+- **Databases:** DataStoreService, MemoryStoreService, SQLite
 
 ## 🚀 Projects
 - **Currently in progress...**
 
 ## 📫 Contact
 - GitHub: [yourscoper](https://github.com/yourscoper)
-- Email: nothing rn
+- Email: ...
 
 ---
 
