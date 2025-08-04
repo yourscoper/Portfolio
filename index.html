@@ -59,10 +59,12 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
+            display: flex;
+            align-items: center;
         }
         .profile-pic {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             margin-bottom: 10px;
             filter: drop-shadow(0 0 5px #ffffff);
@@ -76,35 +78,38 @@
             pointer-events: none;
             z-index: 0;
         }
+        #volume-slider {
+            width: 100px;
+            margin-left: 10px;
+        }
+        #mute-icon {
+            font-size: 20px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
     <canvas id="trail-canvas"></canvas>
     <div class="container">
-        <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 128px; height: 128px;">
-          <img src="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.png?size=128" alt="Discord Profile Picture" class="profile-pic" style="display: block; width: 128px; height: 128px; border-radius: 50%;">
-          <svg width="128" height="128" viewBox="0 0 162 144" class="avatarDecoration__44b0c" aria-hidden="true" style="position: absolute; top: 0; left: 0; pointer-events: none;">
-            <foreignObject x="0" y="0" width="144" height="144" mask="url(#svg-mask-avatar-decoration-status-mobile-120)">
-              <div class="avatarStack__44b0c">
-                <img class="avatar__44b0c" alt=" " aria-hidden="true" src="https://cdn.discordapp.com/avatar-decoration-presets/a_7e494f3ca5859c59b7f07eee4facffd9.png?size=160&amp;passthrough=false" style="width: 128px; height: 128px;"/>
-              </div>
-            </foreignObject>
-          </svg>
+        <a href="https://discord.com/users/765706304656113664" target="_blank">
+            <img src="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.png?size=150" alt="Discord Profile Picture" class="profile-pic">
         </a>
         <h1>yourscoper</h1>
         <div class="bio">I induge scriping.</div>
         <div class="social-links" id="social-links">
             <a href="https://www.roblox.com/users/your_user_id/profile" target="_blank"><img src="https://www.roblox.com/favicon.ico" alt="Roblox">Roblox</a>
             <a href="https://github.com/yourscoper" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub">GitHub</a>
-            <a href="https://discord.com/users/{your_discord_user_id}" target="_blank"><img src="https://discord.com/favicon.ico" alt="Discord">Discord</a>
+            <a href="https://discord.com/users/765706304656113664" target="_blank"><img src="https://discord.com/assets/favicons/favicon-32x32.png" alt="Discord">Discord</a>
         </div>
     </div>
     <div id="audio-controls">
         <audio id="background-music" loop>
-            <source src="your-music.mp3" type="audio/mpeg">
+            <source src="https://github.com/yourscoper/Portfolio/raw/refs/heads/main/Baptized%20In%20Fear%20(Lyrics).mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
-        <button onclick="toggleAudio()">Play/Pause Music</button>
+        <span id="mute-icon">▶</span>
+        <input type="range" id="volume-slider" min="0" max="100" value="50">
     </div>
 
     <script>
@@ -155,17 +160,32 @@
 
         // Audio controls
         const audio = document.getElementById('background-music');
-        let isPlaying = false;
+        const muteIcon = document.getElementById('mute-icon');
+        const volumeSlider = document.getElementById('volume-slider');
+        let isMuted = false;
 
-        function toggleAudio() {
-            if (isPlaying) {
-                audio.pause();
-                isPlaying = false;
-            } else {
-                audio.play().catch(e => console.log('Audio play failed:', e));
-                isPlaying = true;
+        audio.volume = volumeSlider.value / 100; // Initialize volume
+        audio.play().catch(e => console.log('Audio play failed:', e));
+
+        volumeSlider.addEventListener('input', () => {
+            audio.volume = volumeSlider.value / 100;
+            if (isMuted && audio.volume > 0) {
+                isMuted = false;
+                muteIcon.textContent = '▶';
             }
-        }
+        });
+
+        muteIcon.addEventListener('click', () => {
+            if (isMuted) {
+                audio.volume = volumeSlider.value / 100;
+                isMuted = false;
+                muteIcon.textContent = '▶';
+            } else {
+                audio.volume = 0;
+                isMuted = true;
+                muteIcon.textContent = '■';
+            }
+        });
     </script>
 </body>
 </html>
