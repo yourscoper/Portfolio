@@ -1,11 +1,11 @@
-# 💻 YourScoper's Portfolio
+# 💻 yourscoper's Portfolio
 
-Hi, I'm **YourScoper** — a passionate programmer who loves building clean, efficient, and scalable software. I specialize in solving problems with code and turning ideas into reality through development.
+Hi, I'm **yourscoper** — a passionate programmer who loves building clean, efficient, and scalable software. I specialize in solving problems with code and turning ideas into reality through development.
 
 ## 🔧 Skills
-- **Languages:** JavaScript, Python, C++, TypeScript, HTML/CSS
-- **Frameworks:** React, Node.js, Express, Django, Next.js
-- **Tools:** Git, GitHub, VS Code, Webpack, Docker
+- **Languages:** Lua/LuaU, Learning C# / C++
+- **Frameworks:** Node.js, Express
+- **Tools:** Git, GitHub, VS Code
 - **Databases:** MongoDB, PostgreSQL, MySQL
 
 ## 🚀 Projects
