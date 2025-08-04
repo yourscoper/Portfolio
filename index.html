@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #1e90ff;
+        }
+        #cursor-light {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            pointer-events: none;
+            filter: blur(20px);
+            transition: transform 0.1s ease-out;
+        }
+        #audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor-light"></div>
+    <div class="container">
+        <h1>My Portfolio</h1>
+        <div class="social-links">
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://x.com/yourusername" target="_blank">X</a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+            <a href="https://instagram.com/yourusername" target="_blank">Instagram</a>
+        </div>
+    </div>
+    <div id="audio-controls">
+        <audio id="background-music" loop>
+            <source src="your-music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <button onclick="toggleAudio()">Play/Pause Music</button>
+    </div>
+
+    <script>
+        // Mouse light effect
+        const cursorLight = document.getElementById('cursor-light');
+        document.addEventListener('mousemove', (e) => {
+            cursorLight.style.transform = `translate(${e.clientX - 50}px, ${e.clientY - 50}px)`;
+        });
+
+        // Audio controls
+        const audio = document.getElementById('background-music');
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+            } else {
+                audio.play().catch(e => console.log('Audio play failed:', e));
+                isPlaying = true;
+            }
+        }
+    </script>
+</body>
+</html>
