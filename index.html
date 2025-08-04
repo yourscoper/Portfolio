@@ -169,7 +169,7 @@
     text-shadow: 0 0 10px #fff;
     font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif;
     opacity: 1;
-    transition: opacity 2s ease-out;
+    transition: opacity 1s ease-out;
   }
   #blur-overlay.hidden {
     opacity: 0;
@@ -275,6 +275,7 @@
   }
   typeWriter();
 
+  // Canvas trail effect (continuous line with gradient fade)
   const trailCanvas = document.getElementById('trail-canvas');
   const trailCtx = trailCanvas.getContext('2d');
   trailCanvas.width = window.innerWidth;
