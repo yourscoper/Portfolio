@@ -14,8 +14,8 @@ Hi, I'm **yourscoper** — a passionate programmer who loves building clean, eff
 - **[Project Name](#)** – Short description of what it does.
 
 ## 📫 Contact
-- GitHub: [YourScoper](https://github.com/yourscoper)
-- Email: yourscoper@example.com
+- GitHub: [yourscoper](https://github.com/yourscoper)
+- Email: nothing rn
 
 ---
 
