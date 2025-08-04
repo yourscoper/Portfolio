@@ -35,32 +35,7 @@
     position: relative;
     color: #fff;
   }
-  /* Sparkles around glowing title */
-  h1.glowing {
-    text-shadow:
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 15px #fff,
-      0 0 20px #fff,
-      0 0 30px #fff;
-    animation: sparkle 3s linear infinite;
-  }
-  @keyframes sparkle {
-    0%, 100% { text-shadow:
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 15px #fff,
-      0 0 20px #fff,
-      0 0 30px #fff;
-    }
-    50% { text-shadow:
-      0 0 2px #fff,
-      0 0 7px #fff,
-      0 0 12px #fff,
-      0 0 17px #fff,
-      0 0 25px #fff;
-    }
-  }
+  /* Sparkles around glowing title (handled by canvas) */
   .bio {
     font-size: 1.2em;
     margin-bottom: 20px;
@@ -157,11 +132,19 @@
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1; /* Above content, below sparkles */
+  }
+  #sparkle-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 2; /* Above trail and content */
   }
 </style>
 </head>
 <body>
+<canvas id="sparkle-canvas"></canvas>
 <canvas id="trail-canvas"></canvas>
 <div class="container">
   <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 128px; height: 128px;">
@@ -238,10 +221,10 @@
   typeWriter();
 
   // Canvas trail effect (continuous line with gradient fade)
-  const canvas = document.getElementById('trail-canvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  const trailCanvas = document.getElementById('trail-canvas');
+  const trailCtx = trailCanvas.getContext('2d');
+  trailCanvas.width = window.innerWidth;
+  trailCanvas.height = window.innerHeight;
   let points = [];
 
   class Point {
@@ -256,28 +239,75 @@
     points.push(new Point(e.clientX, e.clientY));
   });
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  function animateTrail() {
+    trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
     const now = Date.now();
     points = points.filter(p => (now - p.createdAt) / 1000 < 1);
 
     if (points.length > 1) {
-      ctx.beginPath();
-      ctx.moveTo(points[0].x, points[0].y);
+      trailCtx.beginPath();
+      trailCtx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
         const age = (now - points[i].createdAt) / 1000;
         const alpha = 1 - age;
-        ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
-        ctx.lineWidth = 2;
-        ctx.lineTo(points[i].x, points[i].y);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(points[i].x, points[i].y);
+        trailCtx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+        trailCtx.lineWidth = 2;
+        trailCtx.lineTo(points[i].x, points[i].y);
+        trailCtx.stroke();
+        trailCtx.beginPath();
+        trailCtx.moveTo(points[i].x, points[i].y);
       }
     }
-    requestAnimationFrame(animate);
+    requestAnimationFrame(animateTrail);
   }
-  animate();
+  animateTrail();
+
+  // Sparkle effect around title
+  const sparkleCanvas = document.getElementById('sparkle-canvas');
+  const sparkleCtx = sparkleCanvas.getContext('2d');
+  sparkleCanvas.width = window.innerWidth;
+  sparkleCanvas.height = window.innerHeight;
+  let sparkles = [];
+
+  class Sparkle {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+      this.radius = Math.random() * 3 + 1;
+      this.alpha = 1;
+      this.createdAt = Date.now();
+    }
+
+    draw() {
+      sparkleCtx.beginPath();
+      sparkleCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      sparkleCtx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+      sparkleCtx.fill();
+    }
+
+    update() {
+      const age = (Date.now() - this.createdAt) / 1000;
+      this.alpha = 1 - (age / 2); // Fade out over 2 seconds
+      return this.alpha > 0;
+    }
+  }
+
+  function createSparkle() {
+    const titleRect = title.getBoundingClientRect();
+    const x = titleRect.left + Math.random() * titleRect.width;
+    const y = titleRect.top + Math.random() * titleRect.height - window.scrollY;
+    sparkles.push(new Sparkle(x, y));
+  }
+
+  function animateSparkles() {
+    sparkleCtx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
+    sparkles = sparkles.filter(sparkle => sparkle.update());
+    sparkles.forEach(sparkle => sparkle.draw());
+    requestAnimationFrame(animateSparkles);
+    if (Math.random() < 0.5) createSparkle(); // 50% chance every frame
+  }
+  setInterval(() => createSparkle(), 500); // Guaranteed sparkle every 500ms
+  animateSparkles();
 
   // Audio setup: autoplay, loop, volume slider, mute/unmute button
   const audio = new Audio('https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3');
