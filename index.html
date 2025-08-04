@@ -95,7 +95,7 @@
         <a href="https://discord.com/users/765706304656113664" target="_blank">
             <img src="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.png?size=150" alt="Discord Profile Picture" class="profile-pic">
         </a>
-        <h1>yourscoper</h1>
+        <h1 id="title">yourscoper</h1>
         <div class="bio">I induge scriping.</div>
         <div class="social-links" id="social-links">
             <a href="https://www.roblox.com/users/your_user_id/profile" target="_blank"><img src="https://www.roblox.com/favicon.ico" alt="Roblox">Roblox</a>
@@ -165,7 +165,7 @@
         let isMuted = false;
 
         audio.volume = volumeSlider.value / 100; // Initialize volume
-        audio.play().catch(e => console.log('Audio play failed:', e));
+        audio.play().catch(e => console.log('Audio play failed:', e, 'Check CORS or file accessibility'));
 
         volumeSlider.addEventListener('input', () => {
             audio.volume = volumeSlider.value / 100;
@@ -186,6 +186,36 @@
                 muteIcon.textContent = '■';
             }
         });
+
+        // Typing animation for title
+        const title = document.getElementById('title');
+        const fullText = 'yourscoper';
+        let index = 0;
+        let isTyping = false;
+
+        function typeText() {
+            if (isTyping) return;
+            isTyping = true;
+            title.textContent = '';
+            index = 0;
+
+            function type() {
+                if (index < fullText.length) {
+                    title.textContent += fullText[index];
+                    index++;
+                    setTimeout(type, 100); // Typing speed: 100ms per character
+                } else {
+                    isTyping = false;
+                    setTimeout(() => {
+                        typeText(); // Restart after 5 seconds
+                    }, 5000); // Reset interval: 5 seconds
+                }
+            }
+            type();
+        }
+
+        // Start the typing animation
+        typeText();
     </script>
 </body>
 </html>
