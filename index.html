@@ -72,12 +72,46 @@
   #volume-slider {
     width: 100px;
     cursor: pointer;
+    -webkit-appearance: none;
+    background: transparent;
+  }
+  /* Slider track */
+  #volume-slider::-webkit-slider-runnable-track {
+    height: 6px;
+    background: #fff;
+    border-radius: 3px;
+  }
+  #volume-slider::-moz-range-track {
+    height: 6px;
+    background: #fff;
+    border-radius: 3px;
+  }
+  /* Slider thumb */
+  #volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    margin-top: -4px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #fff;
+  }
+  #volume-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px #fff;
   }
   #mute-icon {
     width: 32px;
     height: 32px;
     cursor: pointer;
     user-select: none;
+    filter: drop-shadow(0 0 8px #fff);
+    border-radius: 6px;
   }
   .profile-pic {
     width: 150px;
@@ -220,10 +254,9 @@
   audio.autoplay = true;
   audio.muted = false;
 
-  // Attempt autoplay on load (may be blocked without user interaction)
+  // Play audio on load, with fallback for autoplay restrictions
   window.addEventListener('load', () => {
     audio.play().catch(() => {
-      // Autoplay blocked: mute and play silently, unmute on interaction
       audio.muted = true;
       audio.play();
     });
