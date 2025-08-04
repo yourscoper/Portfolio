@@ -35,7 +35,6 @@
     position: relative;
     color: #fff;
   }
-  /* Sparkles around glowing title (handled by canvas) */
   .bio {
     font-size: 1.2em;
     margin-bottom: 20px;
@@ -141,9 +140,28 @@
     pointer-events: none;
     z-index: 2; /* Above trail and content */
   }
+  #blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px); /* Apply actual blur effect */
+    -webkit-backdrop-filter: blur(8px); /* For Safari */
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: #fff;
+    font-size: 2em;
+    text-shadow: 0 0 10px #fff;
+    font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif; /* Gothic Bold for Click to Enter */
+  }
 </style>
 </head>
 <body>
+<div id="blur-overlay">Click To Enter...</div>
 <canvas id="sparkle-canvas"></canvas>
 <canvas id="trail-canvas"></canvas>
 <div class="container">
@@ -171,7 +189,7 @@
       <img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub" />GitHub
     </a>
     <a href="https://discord.com/users/765706304656113664" target="_blank" rel="noopener">
-      <img src="https://cdn.discordapp.com/attachments/844438187124086056/963686303642089670/discord-logo-32.png" alt="Discord" width="32" height="32" style="margin-right:5px;filter: drop-shadow(0 0 5px #ffffff);" /> Discord
+      <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg" alt="Discord" width="32" height="32" style="margin-right:5px;filter: brightness(0) drop-shadow(0 0 5px #ffffff);" /> Discord
     </a>
   </div>
 </div>
@@ -182,9 +200,6 @@
 </div>
 
 <script>
-  // Fix tab title to show only 'yourscoper'
-  document.title = "yourscoper";
-
   // Typing animation for title (slower, smoother)
   const title = document.getElementById('title');
   const fullText = 'yourscoper';
@@ -309,27 +324,30 @@
   setInterval(() => createSparkle(), 500); // Guaranteed sparkle every 500ms
   animateSparkles();
 
-  // Audio setup: autoplay, loop, volume slider, mute/unmute button
+  // Audio setup: autoplay after click, loop, volume slider, mute/unmute button
   const audio = new Audio('https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3');
   audio.loop = true;
   audio.volume = 0.5;
-  audio.muted = false;
+  audio.muted = true; // Muted initially until click
 
   const muteIcon = document.getElementById('mute-icon');
   const volumeSlider = document.getElementById('volume-slider');
-  let isMuted = false;
+  let isMuted = true;
 
   volumeSlider.value = audio.volume * 100;
 
-  // Play audio on load unmuted
-  window.addEventListener('load', () => {
+  const blurOverlay = document.getElementById('blur-overlay');
+  blurOverlay.addEventListener('click', () => {
+    blurOverlay.style.display = 'none';
     audio.muted = false;
     isMuted = false;
     muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
-    audio.volume = volumeSlider.value / 100 || 0.5;
-    audio.play().catch(() => {
-      console.log('Autoplay failed; user interaction needed to start audio.');
-    });
+    audio.play().catch(e => console.log('Audio play failed after click:', e));
+  });
+
+  window.addEventListener('load', () => {
+    volumeSlider.value = 50; // Default volume
+    audio.volume = volumeSlider.value / 100;
   });
 
   volumeSlider.addEventListener('input', () => {
