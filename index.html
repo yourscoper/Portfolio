@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yourscoper</title>
+    <title id="page-title">yourscoper</title>
     <style>
         body {
             margin: 0;
@@ -189,6 +189,7 @@
 
         // Typing animation for title
         const title = document.getElementById('title');
+        const pageTitle = document.getElementById('page-title');
         const fullText = 'yourscoper';
         let index = 0;
         let isTyping = false;
@@ -214,8 +215,34 @@
             type();
         }
 
-        // Start the typing animation
+        // Typing animation for page title
+        let titleIndex = 0;
+        let isTitleTyping = false;
+
+        function typeTitle() {
+            if (isTitleTyping) return;
+            isTitleTyping = true;
+            pageTitle.textContent = '';
+            titleIndex = 0;
+
+            function type() {
+                if (titleIndex < fullText.length) {
+                    pageTitle.textContent += fullText[titleIndex];
+                    titleIndex++;
+                    setTimeout(type, 100); // Typing speed: 100ms per character
+                } else {
+                    isTitleTyping = false;
+                    setTimeout(() => {
+                        typeTitle(); // Restart after 5 seconds
+                    }, 5000); // Reset interval: 5 seconds
+                }
+            }
+            type();
+        }
+
+        // Start the typing animations
         typeText();
+        typeTitle();
     </script>
 </body>
 </html>
