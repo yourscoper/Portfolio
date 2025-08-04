@@ -8,7 +8,7 @@
 <style>
   body {
     margin: 0; padding: 0;
-    background: #000 url('placeholder-black.jpg') no-repeat center center fixed;
+    background: #000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     font-family: Arial, sans-serif;
@@ -17,6 +17,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVR4nGP6//8/AwgwMjIy/jO6du3aLAAqOAbU4eO1SAAAAABJRU5ErkJggg==') repeat;
+    opacity: 0.15; /* Subtle film grain effect */
+    pointer-events: none;
+    z-index: 3; /* Below trail canvas */
   }
   .container {
     text-align: center;
@@ -71,7 +84,7 @@
     background: rgba(0,0,0,0.6);
     padding: 5px 10px;
     border-radius: 8px;
-    z-index: 10;
+    z-index: 1;
     box-shadow: 0 0 12px 4px #fff; /* white glow around controls */
   }
   #volume-slider {
@@ -80,7 +93,6 @@
     -webkit-appearance: none;
     background: transparent;
   }
-  /* Slider track */
   #volume-slider::-webkit-slider-runnable-track {
     height: 6px;
     background: #fff;
@@ -91,7 +103,6 @@
     background: #fff;
     border-radius: 3px;
   }
-  /* Slider thumb */
   #volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 14px;
@@ -131,14 +142,14 @@
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
-    z-index: 1; /* Above content, below sparkles */
+    z-index: 4; /* Above everything */
   }
   #sparkle-canvas {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
-    z-index: 2; /* Above trail and content */
+    z-index: 2; /* Below trail */
   }
   #blur-overlay {
     position: fixed;
@@ -146,8 +157,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(8px); /* Apply actual blur effect */
-    -webkit-backdrop-filter: blur(8px); /* For Safari */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
@@ -156,7 +167,28 @@
     color: #fff;
     font-size: 2em;
     text-shadow: 0 0 10px #fff;
-    font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif; /* Gothic Bold for Click to Enter */
+    font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif;
+  }
+  #version {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+    font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif;
+    font-size: 1em;
+    text-shadow: 0 0 5px #fff;
+    z-index: 1;
+  }
+  #copyright {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    text-shadow: 0 0 5px #fff;
+    z-index: 1;
   }
 </style>
 </head>
@@ -193,12 +225,12 @@
     </a>
   </div>
 </div>
-
+<div id="version">v1.0.0</div>
+<div id="copyright">© yourscoper 2025</div>
 <div id="audio-controls">
   <img id="mute-icon" src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png" alt="Volume Icon" />
   <input type="range" id="volume-slider" min="0" max="100" value="50" />
 </div>
-
 <script>
   // Typing animation for title (slower, smoother)
   const title = document.getElementById('title');
@@ -302,7 +334,7 @@
 
     update() {
       const age = (Date.now() - this.createdAt) / 1000;
-      this.alpha = 1 - (age / 2); // Fade out over 2 seconds
+      this.alpha = 1 - (age / 2);
       return this.alpha > 0;
     }
   }
@@ -319,16 +351,16 @@
     sparkles = sparkles.filter(sparkle => sparkle.update());
     sparkles.forEach(sparkle => sparkle.draw());
     requestAnimationFrame(animateSparkles);
-    if (Math.random() < 0.5) createSparkle(); // 50% chance every frame
+    if (Math.random() < 0.5) createSparkle();
   }
-  setInterval(() => createSparkle(), 500); // Guaranteed sparkle every 500ms
+  setInterval(() => createSparkle(), 500);
   animateSparkles();
 
-  // Audio setup: autoplay after click, loop, volume slider, mute/unmute button
+  // Audio setup
   const audio = new Audio('https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3');
   audio.loop = true;
   audio.volume = 0.5;
-  audio.muted = true; // Muted initially until click
+  audio.muted = true;
 
   const muteIcon = document.getElementById('mute-icon');
   const volumeSlider = document.getElementById('volume-slider');
@@ -346,7 +378,7 @@
   });
 
   window.addEventListener('load', () => {
-    volumeSlider.value = 50; // Default volume
+    volumeSlider.value = 50;
     audio.volume = volumeSlider.value / 100;
   });
 
