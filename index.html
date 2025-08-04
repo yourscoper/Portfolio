@@ -29,7 +29,7 @@
     font-size: 3em;
     margin-bottom: 10px;
     text-shadow: 0 0 10px #fff;
-    min-height: 1.2em; /* prevent layout shift */
+    min-height: 1.2em;
   }
   .bio {
     font-size: 1.2em;
@@ -63,6 +63,21 @@
     right: 20px;
     display: flex;
     align-items: center;
+    gap: 10px;
+    background: rgba(0,0,0,0.6);
+    padding: 5px 10px;
+    border-radius: 8px;
+    z-index: 10;
+  }
+  #volume-slider {
+    width: 100px;
+    cursor: pointer;
+  }
+  #mute-icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    user-select: none;
   }
   .profile-pic {
     width: 150px;
@@ -77,15 +92,6 @@
     width: 100%; height: 100%;
     pointer-events: none;
     z-index: 0;
-  }
-  #volume-slider {
-    width: 100px;
-    margin-left: 10px;
-  }
-  #mute-icon {
-    font-size: 20px;
-    cursor: pointer;
-    margin-right: 10px;
   }
 </style>
 </head>
@@ -119,6 +125,11 @@
       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" style="width:30px;height:30px;margin-right:5px;filter: drop-shadow(0 0 5px #ffffff);" /> Discord
     </a>
   </div>
+</div>
+
+<div id="audio-controls">
+  <img id="mute-icon" src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png" alt="Volume Icon" />
+  <input type="range" id="volume-slider" min="0" max="100" value="50" />
 </div>
 
 <script>
@@ -158,7 +169,6 @@
       setTimeout(typeWriter, 100);
     }
   }
-
   typeWriter();
 
   // Canvas trail effect (continuous line with gradient fade)
@@ -201,67 +211,42 @@
     }
     requestAnimationFrame(animate);
   }
-
   animate();
 
-  // Audio controls with play button for autoplay restrictions
-  const audio = document.createElement('audio');
-  audio.id = 'background-music';
+  // Audio setup: autoplay, loop, volume slider, mute/unmute button
+  const audio = new Audio('https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3');
   audio.loop = true;
-  audio.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3';
   audio.volume = 0.5;
-  document.body.appendChild(audio);
+  audio.autoplay = true;
+  audio.muted = false;
 
-  // Controls UI
-  const controls = document.createElement('div');
-  controls.id = 'audio-controls';
-  controls.style.position = 'fixed';
-  controls.style.bottom = '20px';
-  controls.style.right = '20px';
-  controls.style.display = 'flex';
-  controls.style.alignItems = 'center';
+  // Attempt autoplay on load (may be blocked without user interaction)
+  window.addEventListener('load', () => {
+    audio.play().catch(() => {
+      // Autoplay blocked: mute and play silently, unmute on interaction
+      audio.muted = true;
+      audio.play();
+    });
+  });
 
-  const playBtn = document.createElement('button');
-  playBtn.textContent = 'Play ▶';
-  playBtn.style.cursor = 'pointer';
-
-  const muteIcon = document.createElement('span');
-  muteIcon.id = 'mute-icon';
-  muteIcon.textContent = '🔈';
-  muteIcon.style.cursor = 'pointer';
-  muteIcon.style.marginLeft = '10px';
-
-  const volumeSlider = document.createElement('input');
-  volumeSlider.type = 'range';
-  volumeSlider.id = 'volume-slider';
-  volumeSlider.min = 0;
-  volumeSlider.max = 100;
-  volumeSlider.value = 50;
-  volumeSlider.style.marginLeft = '10px';
-  volumeSlider.style.width = '100px';
-
-  controls.appendChild(playBtn);
-  controls.appendChild(muteIcon);
-  controls.appendChild(volumeSlider);
-  document.body.appendChild(controls);
-
+  const muteIcon = document.getElementById('mute-icon');
+  const volumeSlider = document.getElementById('volume-slider');
   let isMuted = false;
 
-  playBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      playBtn.textContent = 'Pause ■';
-    } else {
-      audio.pause();
-      playBtn.textContent = 'Play ▶';
-    }
-  });
+  volumeSlider.value = audio.volume * 100;
 
   volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value / 100;
-    if (isMuted && audio.volume > 0) {
-      isMuted = false;
-      muteIcon.textContent = '🔈';
+    if (audio.volume === 0) {
+      isMuted = true;
+      audio.muted = true;
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png';
+    } else {
+      if (isMuted) {
+        isMuted = false;
+        audio.muted = false;
+        muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+      }
     }
   });
 
@@ -269,11 +254,15 @@
     if (isMuted) {
       audio.muted = false;
       isMuted = false;
-      muteIcon.textContent = '🔈';
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+      if (audio.volume === 0) {
+        audio.volume = 0.5;
+        volumeSlider.value = 50;
+      }
     } else {
       audio.muted = true;
       isMuted = true;
-      muteIcon.textContent = '🔇';
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png';
     }
   });
 </script>
