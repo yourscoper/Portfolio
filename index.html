@@ -139,9 +139,9 @@
     height: 32px;
     cursor: pointer;
     user-select: none;
-    filter: drop-shadow(0 0 18px #fff);
+    filter: drop-shadow(0 0 20px #fff);
     border-radius: 6px;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.25);
   }
   .profile-pic {
     width: 150px;
@@ -289,17 +289,18 @@
 
   volumeSlider.value = audio.volume * 100;
 
-  // Try to play audio on load, fallback mute if autoplay blocked
+  // Try to play audio on load unmuted
   window.addEventListener('load', () => {
     audio.play().catch(() => {
+      // If autoplay blocked, keep muted but show unmuted icon
       audio.muted = true;
-      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png';
       isMuted = true;
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png';
       audio.play();
     });
   });
 
-  // Unmute on first user interaction if muted by browser
+  // Unmute on first user interaction only if muted by browser (optional, can remove if always unmuted)
   function unmuteOnInteraction() {
     if (isMuted) {
       audio.muted = false;
