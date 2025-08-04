@@ -6,7 +6,7 @@ Hi, I'm **yourscoper** — a passionate programmer who loves building clean, eff
 - **Languages:** Lua/LuaU, Learning C# / C++
 - **Frameworks:** Node.js, Express
 - **Tools:** Git, GitHub, VS Code
-- **Databases:** MongoDB, PostgreSQL, MySQL
+- **Databases:** Roblox
 
 ## 🚀 Projects
 - **Currently in progress...**
