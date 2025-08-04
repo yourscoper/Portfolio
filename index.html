@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>yourscoper</title>
+<title></title>
 <link rel="icon" type="image/webp" href="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.webp?size=64" />
 <style>
   body {
@@ -168,6 +168,12 @@
     font-size: 2em;
     text-shadow: 0 0 10px #fff;
     font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif;
+    opacity: 1;
+    transition: opacity 2s ease-out;
+  }
+  #blur-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
   }
   #version {
     position: fixed;
@@ -233,6 +239,7 @@
 </div>
 <script>
   const title = document.getElementById('title');
+  const titleTag = document.querySelector('title');
   const fullText = 'yourscoper';
   let index = 0;
   let deleting = false;
@@ -250,23 +257,24 @@
 
     if (!deleting) {
       title.textContent = fullText.slice(0, index + 1);
+      titleTag.textContent = fullText.slice(0, index + 1);
       index++;
       if (index === fullText.length) {
         pause = true;
       }
-      setTimeout(typeWriter, 250);
+      setTimeout(typeWriter, 500);
     } else {
       title.textContent = fullText.slice(0, index - 1);
+      titleTag.textContent = fullText.slice(0, index - 1);
       index--;
       if (index === 0) {
         deleting = false;
       }
-      setTimeout(typeWriter, 150);
+      setTimeout(typeWriter, 300);
     }
   }
   typeWriter();
 
-  // Canvas trail effect (continuous line with gradient fade)
   const trailCanvas = document.getElementById('trail-canvas');
   const trailCtx = trailCanvas.getContext('2d');
   trailCanvas.width = window.innerWidth;
@@ -367,7 +375,10 @@
 
   const blurOverlay = document.getElementById('blur-overlay');
   blurOverlay.addEventListener('click', () => {
-    blurOverlay.style.display = 'none';
+    blurOverlay.classList.add('hidden');
+    setTimeout(() => {
+      blurOverlay.style.display = 'none';
+    }, 1000);
     audio.muted = false;
     isMuted = false;
     muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
