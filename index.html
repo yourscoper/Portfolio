@@ -38,7 +38,21 @@
     border-radius: 10px;
     position: relative;
     z-index: 1;
-    box-shadow: 0 0 20px 4px #fff;
+    animation: gradientBorder 3s linear infinite reverse;
+  }
+  @keyframes gradientBorder {
+    0% {
+      box-shadow: 0 0 20px 4px #fff, 0 0 20px 4px #000, 0 0 20px 4px #808080;
+    }
+    33% {
+      box-shadow: 0 0 20px 4px #808080, 0 0 20px 4px #fff, 0 0 20px 4px #000;
+    }
+    66% {
+      box-shadow: 0 0 20px 4px #000, 0 0 20px 4px #808080, 0 0 20px 4px #fff;
+    }
+    100% {
+      box-shadow: 0 0 20px 4px #fff, 0 0 20px 4px #000, 0 0 20px 4px #808080;
+    }
   }
   h1 {
     font-size: 3em;
