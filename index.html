@@ -27,9 +27,9 @@
     width: 100%;
     height: 100%;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVR4nGP6//8/AwgwMjIy/jO6du3aLAAqOAbU4eO1SAAAAABJRU5ErkJggg==') repeat;
-    opacity: 0.15; /* Subtle film grain effect */
+    opacity: 0.15;
     pointer-events: none;
-    z-index: 3; /* Below trail canvas */
+    z-index: 3;
   }
   .container {
     text-align: center;
@@ -38,7 +38,7 @@
     border-radius: 10px;
     position: relative;
     z-index: 1;
-    box-shadow: 0 0 20px 4px #fff; /* white glow outline */
+    box-shadow: 0 0 20px 4px #fff;
   }
   h1 {
     font-size: 3em;
@@ -85,7 +85,7 @@
     padding: 5px 10px;
     border-radius: 8px;
     z-index: 1;
-    box-shadow: 0 0 12px 4px #fff; /* white glow around controls */
+    box-shadow: 0 0 12px 4px #fff;
   }
   #volume-slider {
     width: 100px;
@@ -142,14 +142,14 @@
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
-    z-index: 4; /* Above everything */
+    z-index: 4;
   }
   #sparkle-canvas {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
-    z-index: 2; /* Below trail */
+    z-index: 2;
   }
   #blur-overlay {
     position: fixed;
@@ -232,7 +232,6 @@
   <input type="range" id="volume-slider" min="0" max="100" value="50" />
 </div>
 <script>
-  // Typing animation for title (slower, smoother)
   const title = document.getElementById('title');
   const fullText = 'yourscoper';
   let index = 0;
@@ -309,7 +308,6 @@
   }
   animateTrail();
 
-  // Sparkle effect around title
   const sparkleCanvas = document.getElementById('sparkle-canvas');
   const sparkleCtx = sparkleCanvas.getContext('2d');
   sparkleCanvas.width = window.innerWidth;
@@ -356,7 +354,6 @@
   setInterval(() => createSparkle(), 500);
   animateSparkles();
 
-  // Audio setup
   const audio = new Audio('https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3');
   audio.loop = true;
   audio.volume = 0.5;
