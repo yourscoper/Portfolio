@@ -31,6 +31,34 @@
     margin-bottom: 10px;
     text-shadow: 0 0 10px #fff;
     min-height: 1.2em;
+    position: relative;
+    color: #fff;
+  }
+  /* Sparkles around glowing title */
+  h1.glowing {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff;
+    animation: sparkle 3s linear infinite;
+  }
+  @keyframes sparkle {
+    0%, 100% { text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff;
+    }
+    50% { text-shadow:
+      0 0 2px #fff,
+      0 0 7px #fff,
+      0 0 12px #fff,
+      0 0 17px #fff,
+      0 0 25px #fff;
+    }
   }
   .bio {
     font-size: 1.2em;
@@ -111,9 +139,9 @@
     height: 32px;
     cursor: pointer;
     user-select: none;
-    filter: drop-shadow(0 0 14px #fff);
+    filter: drop-shadow(0 0 18px #fff);
     border-radius: 6px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.15);
   }
   .profile-pic {
     width: 150px;
@@ -148,7 +176,7 @@
       style="position: absolute; top: 0; left: 0; width: 128px; height: 128px; pointer-events: none;"
     >
   </a>
-  <h1 id="title"></h1>
+  <h1 id="title" class="glowing"></h1>
   <div class="bio">I induge scriping.</div>
   <div class="social-links" id="social-links">
     <a href="https://www.roblox.com/users/8904921777/profile" target="_blank">
@@ -169,7 +197,7 @@
 </div>
 
 <script>
-  // Typing animation for title (smooth)
+  // Typing animation for title (slower, smoother)
   const title = document.getElementById('title');
   const pageTitle = document.getElementById('page-title');
   const fullText = 'yourscoper';
@@ -183,7 +211,7 @@
         pause = false;
         deleting = true;
         typeWriter();
-      }, 1500);
+      }, 2500);
       return;
     }
 
@@ -194,7 +222,7 @@
       if (index === fullText.length) {
         pause = true;
       }
-      setTimeout(typeWriter, 150);
+      setTimeout(typeWriter, 250);
     } else {
       title.textContent = fullText.slice(0, index - 1);
       pageTitle.textContent = fullText.slice(0, index - 1);
@@ -202,7 +230,7 @@
       if (index === 0) {
         deleting = false;
       }
-      setTimeout(typeWriter, 100);
+      setTimeout(typeWriter, 150);
     }
   }
   typeWriter();
@@ -253,30 +281,38 @@
   const audio = new Audio('https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3');
   audio.loop = true;
   audio.volume = 0.5;
-  audio.autoplay = true;
   audio.muted = false;
-
-  // Force play after user interaction fallback to bypass autoplay restrictions
-  function tryPlayAudio() {
-    audio.play().catch(() => {
-      audio.muted = true;
-      audio.play();
-    });
-  }
-  window.addEventListener('load', tryPlayAudio);
-  window.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.muted = false;
-      audio.volume = volumeSlider.value / 100;
-      audio.play();
-    }
-  }, { once: true });
 
   const muteIcon = document.getElementById('mute-icon');
   const volumeSlider = document.getElementById('volume-slider');
   let isMuted = false;
 
   volumeSlider.value = audio.volume * 100;
+
+  // Try to play audio on load, fallback mute if autoplay blocked
+  window.addEventListener('load', () => {
+    audio.play().catch(() => {
+      audio.muted = true;
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png';
+      isMuted = true;
+      audio.play();
+    });
+  });
+
+  // Unmute on first user interaction if muted by browser
+  function unmuteOnInteraction() {
+    if (isMuted) {
+      audio.muted = false;
+      isMuted = false;
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+      audio.volume = volumeSlider.value / 100 || 0.5;
+      audio.play();
+    }
+    window.removeEventListener('click', unmuteOnInteraction);
+    window.removeEventListener('keydown', unmuteOnInteraction);
+  }
+  window.addEventListener('click', unmuteOnInteraction);
+  window.addEventListener('keydown', unmuteOnInteraction);
 
   volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value / 100;
