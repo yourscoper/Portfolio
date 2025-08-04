@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title id="page-title">yourscoper</title>
+<link rel="icon" type="image/webp" href="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.webp?size=64" />
 <style>
   body {
     margin: 0; padding: 0;
@@ -110,8 +111,9 @@
     height: 32px;
     cursor: pointer;
     user-select: none;
-    filter: drop-shadow(0 0 8px #fff);
+    filter: drop-shadow(0 0 14px #fff);
     border-radius: 6px;
+    background: rgba(255,255,255,0.1);
   }
   .profile-pic {
     width: 150px;
@@ -254,13 +256,21 @@
   audio.autoplay = true;
   audio.muted = false;
 
-  // Play audio on load, with fallback for autoplay restrictions
-  window.addEventListener('load', () => {
+  // Force play after user interaction fallback to bypass autoplay restrictions
+  function tryPlayAudio() {
     audio.play().catch(() => {
       audio.muted = true;
       audio.play();
     });
-  });
+  }
+  window.addEventListener('load', tryPlayAudio);
+  window.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.muted = false;
+      audio.volume = volumeSlider.value / 100;
+      audio.play();
+    }
+  }, { once: true });
 
   const muteIcon = document.getElementById('mute-icon');
   const volumeSlider = document.getElementById('volume-slider');
