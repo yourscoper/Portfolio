@@ -9,9 +9,7 @@ Hi, I'm **yourscoper** — a passionate programmer who loves building clean, eff
 - **Databases:** MongoDB, PostgreSQL, MySQL
 
 ## 🚀 Projects
-- **[Project Name](#)** – Short description of what it does.
-- **[Project Name](#)** – Short description of what it does.
-- **[Project Name](#)** – Short description of what it does.
+- **Currently in progress...**
 
 ## 📫 Contact
 - GitHub: [yourscoper](https://github.com/yourscoper)
