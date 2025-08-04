@@ -38,20 +38,30 @@
     border-radius: 10px;
     position: relative;
     z-index: 1;
-    animation: gradientBorder 3s linear infinite reverse;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    animation: spinGradient 6s linear infinite reverse;
   }
-  @keyframes gradientBorder {
+  @keyframes spinGradient {
     0% {
-      box-shadow: 0 0 20px 4px #fff, 0 0 20px 4px #000, 0 0 20px 4px #808080;
+      box-shadow: 0 0 20px 4px #fff;
+      border-image: linear-gradient(to right, #fff, #808080, #000, #808080, #fff) 1;
     }
-    33% {
-      box-shadow: 0 0 20px 4px #808080, 0 0 20px 4px #fff, 0 0 20px 4px #000;
+    25% {
+      box-shadow: 0 0 20px 4px #808080;
+      border-image: linear-gradient(to bottom, #fff, #808080, #000, #808080, #fff) 1;
     }
-    66% {
-      box-shadow: 0 0 20px 4px #000, 0 0 20px 4px #808080, 0 0 20px 4px #fff;
+    50% {
+      box-shadow: 0 0 20px 4px #000;
+      border-image: linear-gradient(to left, #fff, #808080, #000, #808080, #fff) 1;
+    }
+    75% {
+      box-shadow: 0 0 20px 4px #808080;
+      border-image: linear-gradient(to top, #fff, #808080, #000, #808080, #fff) 1;
     }
     100% {
-      box-shadow: 0 0 20px 4px #fff, 0 0 20px 4px #000, 0 0 20px 4px #808080;
+      box-shadow: 0 0 20px 4px #fff;
+      border-image: linear-gradient(to right, #fff, #808080, #000, #808080, #fff) 1;
     }
   }
   h1 {
@@ -73,10 +83,11 @@
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
-    font-size: 1.5em;
+    font-size: 1.2em;
     transition: color 0.3s;
     display: inline-flex;
     align-items: center;
+    font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif;
   }
   .social-links a:hover {
     color: #ffffff;
@@ -242,6 +253,12 @@
     </a>
     <a href="https://discord.com/users/765706304656113664" target="_blank" rel="noopener">
       <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg" alt="Discord" width="32" height="32" style="margin-right:5px;filter: brightness(0) drop-shadow(0 0 5px #ffffff);" /> Discord
+    </a>
+    <a href="https://open.spotify.com/user/chriscrafter102" target="_blank">
+      <img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/spotify.png" alt="Spotify" />Spotify
+    </a>
+    <a href="https://www.tiktok.com/@yourscoper" target="_blank">
+      <img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/tiktok.png" alt="TikTok" />TikTok
     </a>
   </div>
 </div>
