@@ -8,40 +8,62 @@
         body {
             margin: 0;
             padding: 0;
-            background: #000;
+            background: #000 url('placeholder-black.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: #fff;
             font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
         }
         .container {
             text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
         }
         h1 {
             font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #fff;
+        }
+        .bio {
+            font-size: 1.2em;
             margin-bottom: 20px;
+        }
+        .social-links {
+            margin-top: 20px;
         }
         .social-links a {
             color: #fff;
             text-decoration: none;
+            margin: 0 10px;
             font-size: 1.5em;
-            margin: 0 15px;
             transition: color 0.3s;
         }
         .social-links a:hover {
-            color: #1e90ff;
+            color: #ff00ff;
+        }
+        .social-links img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            margin-right: 5px;
+            filter: drop-shadow(0 0 5px #ff00ff);
         }
         #cursor-light {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
             pointer-events: none;
             filter: blur(20px);
             transition: transform 0.1s ease-out;
+            z-index: 0;
         }
         #audio-controls {
             position: fixed;
@@ -53,12 +75,13 @@
 <body>
     <div id="cursor-light"></div>
     <div class="container">
-        <h1>My Portfolio</h1>
-        <div class="social-links">
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-            <a href="https://x.com/yourusername" target="_blank">X</a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-            <a href="https://instagram.com/yourusername" target="_blank">Instagram</a>
+        <h1>yourscoper</h1>
+        <div class="bio">induge scriping.</div>
+        <div class="social-links" id="social-links">
+            <a href="https://github.com/yourusername" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub">GitHub</a>
+            <a href="https://x.com/yourusername" target="_blank"><img src="https://abs.twimg.com/favicons/twitter.ico" alt="X">X</a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank"><img src="https://static.linkedin.com/sc/h/al2o9zrqes7vhjapjd8gqcpmr" alt="LinkedIn">LinkedIn</a>
+            <a href="https://instagram.com/yourusername" target="_blank"><img src="https://www.instagram.com/static/images/ico/favicon.ico/36b3ee2d91ed.ico" alt="Instagram">Instagram</a>
         </div>
     </div>
     <div id="audio-controls">
@@ -70,10 +93,10 @@
     </div>
 
     <script>
-        // Mouse light effect
+        // Mouse light effect (fixed to follow cursor directly)
         const cursorLight = document.getElementById('cursor-light');
         document.addEventListener('mousemove', (e) => {
-            cursorLight.style.transform = `translate(${e.clientX - 50}px, ${e.clientY - 50}px)`;
+            cursorLight.style.transform = `translate(${e.clientX - 75}px, ${e.clientY - 75}px)`;
         });
 
         // Audio controls
