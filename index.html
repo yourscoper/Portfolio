@@ -1,136 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">yourscoper</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000 url('placeholder-black.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            position: relative;
-            z-index: 1;
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px #fff;
-        }
-        .bio {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        .social-links {
-            margin-top: 20px;
-        }
-        .social-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.5em;
-            transition: color 0.3s;
-        }
-        .social-links a:hover {
-            color: #ffffff;
-        }
-        .social-links img {
-            width: 30px;
-            height: 30px;
-            vertical-align: middle;
-            margin-right: 5px;
-            filter: drop-shadow(0 0 5px #ffffff);
-        }
-        #audio-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-        }
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 5px #ffffff);
-        }
-        #trail-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        #volume-slider {
-            width: 100px;
-            margin-left: 10px;
-        }
-        #mute-icon {
-            font-size: 20px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title id="page-title">yourscoper</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    background: #000 url('placeholder-black.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #fff;
+    min-height: 1.2em; /* prevent layout shift */
+  }
+  .bio {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  .social-links {
+    margin-top: 20px;
+  }
+  .social-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.5em;
+    transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+  }
+  .social-links a:hover {
+    color: #ffffff;
+  }
+  .social-links img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+    filter: drop-shadow(0 0 5px #ffffff);
+  }
+  #audio-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 5px #ffffff);
+  }
+  #trail-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  #volume-slider {
+    width: 100px;
+    margin-left: 10px;
+  }
+  #mute-icon {
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+</style>
 </head>
 <body>
-    <canvas id="trail-canvas"></canvas>
-    <div class="container">
-        <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 128px; height: 128px;">
-          <img 
-            src="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.webp?size=128" 
-            alt="Discord Profile Picture" 
-            style="width: 128px; height: 128px; border-radius: 50%; display: block;"
-          >
-          <img 
-            src="https://cdn.discordapp.com/avatar-decoration-presets/a_7e494f3ca5859c59b7f07eee4facffd9.png?size=128&passthrough=false" 
-            alt="" 
-            aria-hidden="true"
-            style="position: absolute; top: 0; left: 0; width: 128px; height: 128px; pointer-events: none;"
-          >
-        </a>
-        <h1 id="title">yourscoper</h1>
-        <div class="bio">I induge scriping.</div>
-        <div class="social-links" id="social-links">
-            <a href="https://www.roblox.com/users/8904921777/profile" target="_blank"><img src="https://www.roblox.com/favicon.ico" alt="Roblox">Roblox</a>
-            <a href="https://github.com/yourscoper" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub">GitHub</a>
-            <a href="https://discord.com/users/765706304656113664" target="_blank">
-              <img src="https://cdn.discordapp.com/attachments/844438187124086056/963686303642089670/discord-logo-32.png" alt="Discord" width="32" height="32"> Discord
-            </a>
-        </div>
-    </div>
-<div id="audio-controls">
-  <audio id="background-music" loop>
-    <source src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-  <span id="mute-icon">▶</span>
-  <input type="range" id="volume-slider" min="0" max="100" value="50">
+<canvas id="trail-canvas"></canvas>
+<div class="container">
+  <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 128px; height: 128px;">
+    <img 
+      src="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.webp?size=128" 
+      alt="Discord Profile Picture" 
+      style="width: 128px; height: 128px; border-radius: 50%; display: block;"
+      onerror="this.onerror=null;this.src='https://cdn.discordapp.com/embed/avatars/0.png';"
+    >
+    <img 
+      src="https://cdn.discordapp.com/avatar-decoration-presets/a_7e494f3ca5859c59b7f07eee4facffd9.png?size=128&passthrough=false" 
+      alt="" 
+      aria-hidden="true"
+      style="position: absolute; top: 0; left: 0; width: 128px; height: 128px; pointer-events: none;"
+    >
+  </a>
+  <h1 id="title"></h1>
+  <div class="bio">I induge scriping.</div>
+  <div class="social-links" id="social-links">
+    <a href="https://www.roblox.com/users/8904921777/profile" target="_blank">
+      <img src="https://www.roblox.com/favicon.ico" alt="Roblox" />Roblox
+    </a>
+    <a href="https://github.com/yourscoper" target="_blank">
+      <img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub" />GitHub
+    </a>
+    <a href="https://discord.com/users/765706304656113664" target="_blank" rel="noopener">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" style="width:30px;height:30px;margin-right:5px;filter: drop-shadow(0 0 5px #ffffff);" /> Discord
+    </a>
+  </div>
 </div>
 
 <script>
+  // Typing animation for title (smooth)
+  const title = document.getElementById('title');
+  const pageTitle = document.getElementById('page-title');
+  const fullText = 'yourscoper';
+  let index = 0;
+  let deleting = false;
+  let pause = false;
+
+  function typeWriter() {
+    if (pause) {
+      setTimeout(() => {
+        pause = false;
+        deleting = true;
+        typeWriter();
+      }, 1500);
+      return;
+    }
+
+    if (!deleting) {
+      title.textContent = fullText.slice(0, index + 1);
+      pageTitle.textContent = fullText.slice(0, index + 1);
+      index++;
+      if (index === fullText.length) {
+        pause = true;
+      }
+      setTimeout(typeWriter, 150);
+    } else {
+      title.textContent = fullText.slice(0, index - 1);
+      pageTitle.textContent = fullText.slice(0, index - 1);
+      index--;
+      if (index === 0) {
+        deleting = false;
+      }
+      setTimeout(typeWriter, 100);
+    }
+  }
+
+  typeWriter();
+
   // Canvas trail effect (continuous line with gradient fade)
   const canvas = document.getElementById('trail-canvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
   let points = [];
 
   class Point {
@@ -141,14 +176,14 @@
     }
   }
 
-  document.addEventListener('mousemove', (e) => {
+  document.addEventListener('mousemove', e => {
     points.push(new Point(e.clientX, e.clientY));
   });
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const now = Date.now();
-    points = points.filter(point => (now - point.createdAt) / 1000 < 1);
+    points = points.filter(p => (now - p.createdAt) / 1000 < 1);
 
     if (points.length > 1) {
       ctx.beginPath();
@@ -164,98 +199,83 @@
         ctx.moveTo(points[i].x, points[i].y);
       }
     }
-
     requestAnimationFrame(animate);
   }
 
   animate();
 
-  // Audio controls
-  const audio = document.getElementById('background-music');
-  const muteIcon = document.getElementById('mute-icon');
-  const volumeSlider = document.getElementById('volume-slider');
+  // Audio controls with play button for autoplay restrictions
+  const audio = document.createElement('audio');
+  audio.id = 'background-music';
+  audio.loop = true;
+  audio.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3';
+  audio.volume = 0.5;
+  document.body.appendChild(audio);
+
+  // Controls UI
+  const controls = document.createElement('div');
+  controls.id = 'audio-controls';
+  controls.style.position = 'fixed';
+  controls.style.bottom = '20px';
+  controls.style.right = '20px';
+  controls.style.display = 'flex';
+  controls.style.alignItems = 'center';
+
+  const playBtn = document.createElement('button');
+  playBtn.textContent = 'Play ▶';
+  playBtn.style.cursor = 'pointer';
+
+  const muteIcon = document.createElement('span');
+  muteIcon.id = 'mute-icon';
+  muteIcon.textContent = '🔈';
+  muteIcon.style.cursor = 'pointer';
+  muteIcon.style.marginLeft = '10px';
+
+  const volumeSlider = document.createElement('input');
+  volumeSlider.type = 'range';
+  volumeSlider.id = 'volume-slider';
+  volumeSlider.min = 0;
+  volumeSlider.max = 100;
+  volumeSlider.value = 50;
+  volumeSlider.style.marginLeft = '10px';
+  volumeSlider.style.width = '100px';
+
+  controls.appendChild(playBtn);
+  controls.appendChild(muteIcon);
+  controls.appendChild(volumeSlider);
+  document.body.appendChild(controls);
+
   let isMuted = false;
 
-  audio.volume = volumeSlider.value / 100;
-
-  // Play audio on page load and handle autoplay restrictions
-  window.addEventListener('load', () => {
-    audio.play().catch(e => {
-      console.log('Audio play failed:', e);
-      // optionally show a play button if autoplay blocked
-    });
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = 'Pause ■';
+    } else {
+      audio.pause();
+      playBtn.textContent = 'Play ▶';
+    }
   });
 
   volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value / 100;
     if (isMuted && audio.volume > 0) {
       isMuted = false;
-      muteIcon.textContent = '▶';
+      muteIcon.textContent = '🔈';
     }
   });
 
   muteIcon.addEventListener('click', () => {
     if (isMuted) {
-      audio.volume = volumeSlider.value / 100;
+      audio.muted = false;
       isMuted = false;
-      muteIcon.textContent = '▶';
+      muteIcon.textContent = '🔈';
     } else {
-      audio.volume = 0;
+      audio.muted = true;
       isMuted = true;
-      muteIcon.textContent = '■';
+      muteIcon.textContent = '🔇';
     }
   });
-
-  // Typing animation for title
-  const title = document.getElementById('title');
-  const pageTitle = document.getElementById('page-title');
-  const fullText = 'yourscoper';
-  let index = 0;
-  let isTyping = false;
-
-  function typeText() {
-    if (isTyping) return;
-    isTyping = true;
-    title.textContent = '';
-    index = 0;
-
-    function type() {
-      if (index < fullText.length) {
-        title.textContent += fullText[index];
-        index++;
-        setTimeout(type, 100);
-      } else {
-        isTyping = false;
-        setTimeout(typeText, 5000);
-      }
-    }
-    type();
-  }
-
-  let titleIndex = 0;
-  let isTitleTyping = false;
-
-  function typeTitle() {
-    if (isTitleTyping) return;
-    isTitleTyping = true;
-    pageTitle.textContent = '';
-    titleIndex = 0;
-
-    function type() {
-      if (titleIndex < fullText.length) {
-        pageTitle.textContent += fullText[titleIndex];
-        titleIndex++;
-        setTimeout(type, 100);
-      } else {
-        isTitleTyping = false;
-        setTimeout(typeTitle, 5000);
-      }
-    }
-    type();
-  }
-
-  typeText();
-  typeTitle();
 </script>
 </body>
 </html>
