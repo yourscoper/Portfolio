@@ -46,24 +46,14 @@
             transition: color 0.3s;
         }
         .social-links a:hover {
-            color: #ff00ff;
+            color: #ffffff;
         }
         .social-links img {
             width: 30px;
             height: 30px;
             vertical-align: middle;
             margin-right: 5px;
-            filter: drop-shadow(0 0 5px #ff00ff);
-        }
-        #cursor-light {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
-            pointer-events: none;
-            filter: blur(20px);
-            transition: transform 0.1s ease-out;
-            z-index: 0;
+            filter: drop-shadow(0 0 5px #ffffff);
         }
         #audio-controls {
             position: fixed;
@@ -75,15 +65,24 @@
             height: 100px;
             border-radius: 50%;
             margin-bottom: 10px;
-            filter: drop-shadow(0 0 5px #ff00ff);
+            filter: drop-shadow(0 0 5px #ffffff);
+        }
+        #trail-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
         }
     </style>
 </head>
 <body>
-    <div id="cursor-light"></div>
+    <canvas id="trail-canvas"></canvas>
     <div class="container">
-        <a href="https://discord.com/users/{your_discord_user_id}" target="_blank">
-            <img src="https://cdn.discordapp.com/avatars/{your_discord_user_id}/{avatar_hash}.png?size=128" alt="Discord Profile Picture" class="profile-pic">
+        <a href="https://discord.com/users/765706304656113664" target="_blank">
+            <img src="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.png?size=128" alt="Discord Profile Picture" class="profile-pic">
         </a>
         <h1>yourscoper</h1>
         <div class="bio">induge scriping.</div>
@@ -102,11 +101,50 @@
     </div>
 
     <script>
-        // Mouse light effect (centered directly on cursor)
-        const cursorLight = document.getElementById('cursor-light');
+        // Canvas trail effect
+        const canvas = document.getElementById('trail-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.radius = 3;
+                this.alpha = 1;
+                this.createdAt = Date.now();
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                ctx.fill();
+            }
+
+            update() {
+                const age = (Date.now() - this.createdAt) / 1000; // Age in seconds
+                this.alpha = 1 - age; // Fade out over 1 second
+                if (this.alpha <= 0) return false;
+                return true;
+            }
+        }
+
         document.addEventListener('mousemove', (e) => {
-            cursorLight.style.transform = `translate(${e.clientX - 75}px, ${e.clientY - 75}px)`;
+            particles.push(new Particle(e.clientX, e.clientY));
         });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles = particles.filter(particle => particle.update());
+            particles.forEach(particle => particle.draw());
+            requestAnimationFrame(animate);
+        }
+
+        animate();
 
         // Audio controls
         const audio = document.getElementById('background-music');
