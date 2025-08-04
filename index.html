@@ -20,6 +20,14 @@
     position: relative;
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6, auto;
   }
+  ::selection {
+    background: #fff;
+    color: #000;
+  }
+  ::-moz-selection {
+    background: #fff;
+    color: #000;
+  }
   body::before {
     content: '';
     position: fixed;
