@@ -25,6 +25,7 @@
     border-radius: 10px;
     position: relative;
     z-index: 1;
+    box-shadow: 0 0 20px 4px #fff; /* white glow outline */
   }
   h1 {
     font-size: 3em;
@@ -97,6 +98,7 @@
     padding: 5px 10px;
     border-radius: 8px;
     z-index: 10;
+    box-shadow: 0 0 12px 4px #fff; /* white glow around controls */
   }
   #volume-slider {
     width: 100px;
@@ -141,7 +143,7 @@
     user-select: none;
     filter: drop-shadow(0 0 20px #fff);
     border-radius: 6px;
-    background: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.6);
   }
   .profile-pic {
     width: 150px;
@@ -192,7 +194,7 @@
 </div>
 
 <div id="audio-controls">
-  <img id="mute-icon" src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png" alt="Volume Icon" />
+  <img id="mute-icon" src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume-white.png" alt="Volume Icon" />
   <input type="range" id="volume-slider" min="0" max="100" value="50" />
 </div>
 
@@ -289,43 +291,29 @@
 
   volumeSlider.value = audio.volume * 100;
 
-  // Try to play audio on load unmuted
+  // Play audio on load unmuted
   window.addEventListener('load', () => {
+    audio.muted = false;
+    isMuted = false;
+    muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume-white.png';
+    audio.volume = volumeSlider.value / 100 || 0.5;
     audio.play().catch(() => {
-      // If autoplay blocked, keep muted but show unmuted icon
-      audio.muted = true;
-      isMuted = true;
-      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png';
-      audio.play();
+      // Autoplay might be blocked, keep unmuted but paused
+      console.log('Autoplay failed; user interaction needed to start audio.');
     });
   });
-
-  // Unmute on first user interaction only if muted by browser (optional, can remove if always unmuted)
-  function unmuteOnInteraction() {
-    if (isMuted) {
-      audio.muted = false;
-      isMuted = false;
-      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
-      audio.volume = volumeSlider.value / 100 || 0.5;
-      audio.play();
-    }
-    window.removeEventListener('click', unmuteOnInteraction);
-    window.removeEventListener('keydown', unmuteOnInteraction);
-  }
-  window.addEventListener('click', unmuteOnInteraction);
-  window.addEventListener('keydown', unmuteOnInteraction);
 
   volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value / 100;
     if (audio.volume === 0) {
       isMuted = true;
       audio.muted = true;
-      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png';
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute-white.png';
     } else {
       if (isMuted) {
         isMuted = false;
         audio.muted = false;
-        muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+        muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume-white.png';
       }
     }
   });
@@ -334,15 +322,16 @@
     if (isMuted) {
       audio.muted = false;
       isMuted = false;
-      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume-white.png';
       if (audio.volume === 0) {
         audio.volume = 0.5;
         volumeSlider.value = 50;
       }
+      audio.play();
     } else {
       audio.muted = true;
       isMuted = true;
-      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png';
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute-white.png';
     }
   });
 </script>
