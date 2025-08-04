@@ -70,18 +70,27 @@
             bottom: 20px;
             right: 20px;
         }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 5px #ff00ff);
+        }
     </style>
 </head>
 <body>
     <div id="cursor-light"></div>
     <div class="container">
+        <a href="https://discord.com/users/{your_discord_user_id}" target="_blank">
+            <img src="https://cdn.discordapp.com/avatars/{your_discord_user_id}/{avatar_hash}.png?size=128" alt="Discord Profile Picture" class="profile-pic">
+        </a>
         <h1>yourscoper</h1>
         <div class="bio">induge scriping.</div>
         <div class="social-links" id="social-links">
-            <a href="https://github.com/yourusername" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub">GitHub</a>
-            <a href="https://x.com/yourusername" target="_blank"><img src="https://abs.twimg.com/favicons/twitter.ico" alt="X">X</a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank"><img src="https://static.linkedin.com/sc/h/al2o9zrqes7vhjapjd8gqcpmr" alt="LinkedIn">LinkedIn</a>
-            <a href="https://instagram.com/yourusername" target="_blank"><img src="https://www.instagram.com/static/images/ico/favicon.ico/36b3ee2d91ed.ico" alt="Instagram">Instagram</a>
+            <a href="https://www.roblox.com/users/your_user_id/profile" target="_blank"><img src="https://www.roblox.com/favicon.ico" alt="Roblox">Roblox</a>
+            <a href="https://github.com/yourscoper" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub">GitHub</a>
+            <a href="https://discord.com/users/{your_discord_user_id}" target="_blank"><img src="https://discord.com/favicon.ico" alt="Discord">Discord</a>
         </div>
     </div>
     <div id="audio-controls">
@@ -93,7 +102,7 @@
     </div>
 
     <script>
-        // Mouse light effect (fixed to follow cursor directly)
+        // Mouse light effect (centered directly on cursor)
         const cursorLight = document.getElementById('cursor-light');
         document.addEventListener('mousemove', (e) => {
             cursorLight.style.transform = `translate(${e.clientX - 75}px, ${e.clientY - 75}px)`;
