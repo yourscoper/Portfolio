@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
-<link rel="icon" type="image/webp" href="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.webp?size=64" />
+<link rel="icon" type="image/webp" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=64" />
 <style>
   body {
     margin: 0; padding: 0;
@@ -239,15 +239,15 @@
 <canvas id="trail-canvas"></canvas>
 <div class="container">
   <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 128px; height: 128px;">
-    <img 
-      src="https://cdn.discordapp.com/avatars/765706304656113664/fe833792306a8c4d62f5b5f248e6a27e.webp?size=128" 
-      alt="Discord Profile Picture" 
+    <img
+      src="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=128"
+      alt="Discord Profile Picture"
       style="width: 128px; height: 128px; border-radius: 50%; display: block;"
       onerror="this.onerror=null;this.src='https://cdn.discordapp.com/embed/avatars/0.png';"
     >
-    <img 
-      src="https://cdn.discordapp.com/avatar-decoration-presets/a_7e494f3ca5859c59b7f07eee4facffd9.png?size=128&passthrough=false" 
-      alt="" 
+    <img
+      src="https://cdn.discordapp.com/avatar-decoration-presets/a_7e494f3ca5859c59b7f07eee4facffd9.png?size=128&passthrough=false"
+      alt=""
       aria-hidden="true"
       style="position: absolute; top: 0; left: 0; width: 128px; height: 128px; pointer-events: none;"
     >
@@ -285,7 +285,6 @@
   let index = 0;
   let deleting = false;
   let pause = false;
-
   function typeWriter() {
     if (pause) {
       setTimeout(() => {
@@ -295,7 +294,6 @@
       }, 1500);
       return;
     }
-
     if (!deleting) {
       title.textContent = fullText.slice(0, index + 1);
       titleTag.textContent = fullText.slice(0, index + 1);
@@ -315,14 +313,11 @@
     }
   }
   typeWriter();
-
-  // Canvas trail effect (continuous line with gradient fade)
   const trailCanvas = document.getElementById('trail-canvas');
   const trailCtx = trailCanvas.getContext('2d');
   trailCanvas.width = window.innerWidth;
   trailCanvas.height = window.innerHeight;
   let points = [];
-
   class Point {
     constructor(x, y) {
       this.x = x;
@@ -330,16 +325,13 @@
       this.createdAt = Date.now();
     }
   }
-
   document.addEventListener('mousemove', e => {
     points.push(new Point(e.clientX, e.clientY));
   });
-
   function animateTrail() {
     trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
     const now = Date.now();
     points = points.filter(p => (now - p.createdAt) / 1000 < 1);
-
     if (points.length > 1) {
       trailCtx.beginPath();
       trailCtx.moveTo(points[0].x, points[0].y);
@@ -357,13 +349,11 @@
     requestAnimationFrame(animateTrail);
   }
   animateTrail();
-
   const sparkleCanvas = document.getElementById('sparkle-canvas');
   const sparkleCtx = sparkleCanvas.getContext('2d');
   sparkleCanvas.width = window.innerWidth;
   sparkleCanvas.height = window.innerHeight;
   let sparkles = [];
-
   class Sparkle {
     constructor(x, y) {
       this.x = x;
@@ -372,28 +362,24 @@
       this.alpha = 1;
       this.createdAt = Date.now();
     }
-
     draw() {
       sparkleCtx.beginPath();
       sparkleCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       sparkleCtx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
       sparkleCtx.fill();
     }
-
     update() {
       const age = (Date.now() - this.createdAt) / 1000;
       this.alpha = 1 - (age / 2);
       return this.alpha > 0;
     }
   }
-
   function createSparkle() {
     const titleRect = title.getBoundingClientRect();
     const x = titleRect.left + Math.random() * titleRect.width;
     const y = titleRect.top + Math.random() * titleRect.height - window.scrollY;
     sparkles.push(new Sparkle(x, y));
   }
-
   function animateSparkles() {
     sparkleCtx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
     sparkles = sparkles.filter(sparkle => sparkle.update());
@@ -403,18 +389,14 @@
   }
   setInterval(() => createSparkle(), 500);
   animateSparkles();
-
   const audio = new Audio('https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3');
   audio.loop = true;
   audio.volume = 0.5;
   audio.muted = true;
-
   const muteIcon = document.getElementById('mute-icon');
   const volumeSlider = document.getElementById('volume-slider');
   let isMuted = true;
-
   volumeSlider.value = audio.volume * 100;
-
   const blurOverlay = document.getElementById('blur-overlay');
   blurOverlay.addEventListener('click', () => {
     blurOverlay.classList.add('hidden');
@@ -426,12 +408,10 @@
     muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
     audio.play().catch(e => console.log('Audio play failed after click:', e));
   });
-
   window.addEventListener('load', () => {
     volumeSlider.value = 50;
     audio.volume = volumeSlider.value / 100;
   });
-
   volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value / 100;
     if (audio.volume === 0) {
@@ -446,7 +426,6 @@
       }
     }
   });
-
   muteIcon.addEventListener('click', () => {
     if (isMuted) {
       audio.muted = false;
