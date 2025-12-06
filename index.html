@@ -85,34 +85,24 @@
 <canvas id="sparkle-canvas"></canvas>
 <canvas id="trail-canvas"></canvas>
 <div class="container">
-<!-- Discord Profile Image + Decoration Start -->
-<a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 140px; height: 140px;">
-
-  <!-- Your animated PFP (keep at 140px) -->
-  <img
-    src="https://cdn.discordapp.com/avatars/765706304656113664/a_3e123c3183174f5624985fb3f057a7a4.gif?size=1024"
-    alt="yourscoper"
-    style="width: 140px; height: 140px; border-radius: 50%; position: relative; z-index: 2;"
-    onerror="this.onerror=null;this.src='https://cdn.discordapp.com/embed/avatars/0.png';"
-  >
-
-  <!-- FIRE RING DECORATION – make it BIGGER and perfectly centered -->
-  <img
-    src="https://cdn.discordapp.com/avatar-decoration-presets/a_8d31b6b853913a2811916a2d8678b747.png?size=280"
-    alt=""
-    style="
-      position: absolute;
-      top: 50%;          /* vertical center */
-      left: 50%;         /* horizontal center */
-      width: 280px;      /* bigger size (adjust this number) */
-      height: 280px;
-      transform: translate(-50%, -50%) translateY(-4px); /* fine-tune Y position if needed */
-      pointer-events: none;
-      z-index: 1;
-    "
-  >
-</a>
-<!-- End -->
+  <!-- Discord Profile Image + Decoration Start -->
+  <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 128px; height: 128px;">
+    <!-- Discord Profile Picture -->
+    <img
+      src="https://cdn.discordapp.com/avatars/765706304656113664/a_3e123c3183174f5624985fb3f057a7a4.gif?size=1024&animated=true"
+      alt="Discord Profile Picture"
+      style="width: 128px; height: 128px; border-radius: 50%; display: block;"
+      onerror="this.onerror=null;this.src='https://cdn.discordapp.com/embed/avatars/0.png';"
+    >
+    <!-- Discord Profile Decoration -->
+    <img
+      src="https://cdn.discordapp.com/avatar-decoration-presets/a_8d31b6b853913a2811916a2d8678b747.png?size=96&amp;passthrough=false"
+      alt="Discord Profile Decoration"
+      aria-hidden="true"
+      style="position: absolute; top: 0; left: 0; width: 128px; height: 128px; pointer-events: none;"
+    >
+  </a>
+  <!-- Discord Profile Image + Decoration End -->
 
   <h1 id="title" class="glowing"></h1>
   <div class="bio">I induge scriping.</div>
