@@ -91,15 +91,15 @@
     <img
       src="https://cdn.discordapp.com/avatars/765706304656113664/a_3e123c3183174f5624985fb3f057a7a4.gif?size=1024&animated=true"
       alt="Discord Profile Picture"
-      style="width: 128px; height: 128px; border-radius: 50%; display: block;"
+      style="width: 128px; height: 128px; border-radius: 50%; display: block; position: relative; z-index: 2;"
       onerror="this.onerror=null;this.src='https://cdn.discordapp.com/embed/avatars/0.png';"
     >
-    <!-- Discord Profile Decoration -->
+    <!-- Discord Profile Decoration (50% bigger = 192px) -->
     <img
-      src="https://cdn.discordapp.com/avatar-decoration-presets/a_8d31b6b853913a2811916a2d8678b747.png?size=96&amp;passthrough=false"
+      src="https://cdn.discordapp.com/avatar-decoration-presets/a_8d31b6b853913a2811916a2d8678b747.png?size=192&amp;passthrough=false"
       alt="Discord Profile Decoration"
       aria-hidden="true"
-      style="position: absolute; top: 0; left: 0; width: 128px; height: 128px; pointer-events: none;"
+      style="position: absolute; top: 50%; left: 50%; width: 192px; height: 192px; transform: translate(-50%, -50%); pointer-events: none; z-index: 1;"
     >
   </a>
   <!-- Discord Profile Image + Decoration End -->
