@@ -3,14 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>yourscoper</title>
-
-<!-- Proper favicons (no more globe icon) -->
-<link rel="icon" type="image/webp" sizes="64x64"   href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=64" />
-<link rel="icon" type="image/webp" sizes="192x192" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=192" />
-<link rel="icon" type="image/webp" sizes="512x512" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=512" />
-<link rel="apple-touch-icon" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=180" />
-
+<title></title>
+<link rel="icon" type="image/webp" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=64" />
 <style>
   body {
     margin: 0; padding: 0;
@@ -26,13 +20,21 @@
     position: relative;
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6, auto;
   }
-  ::selection { background: #fff; color: #000; }
-  ::-moz-selection { background: #fff; color: #000; }
+  ::selection {
+    background: #fff;
+    color: #000;
+  }
+  ::-moz-selection {
+    background: #fff;
+    color: #000;
+  }
   body::before {
     content: '';
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVR4nGP6//8/AwgwMjIy/jO6du3aLAAqOAbU4eO1SAAAAABJRU5ErkJggg==') repeat;
     opacity: 0.15;
     pointer-events: none;
@@ -50,10 +52,10 @@
     animation: spinGradient 3s linear infinite reverse;
   }
   @keyframes spinGradient {
-    0%   { box-shadow: 0 0 20px 4px #fff; border-image: linear-gradient(to right, #fff, #808080, #000, #808080, #fff) 1; }
-    25%  { box-shadow: 0 0 20px 4px #808080; border-image: linear-gradient(to bottom, #fff, #808080, #000, #808080, #fff) 1; }
-    50%  { box-shadow: 0 0 20px 4px #000; border-image: linear-gradient(to left, #fff, #808080, #000, #808080, #fff) 1; }
-    75%  { box-shadow: 0 0 20px 4px #808080; border-image: linear-gradient(to top, #fff, #808080, #000, #808080, #fff) 1; }
+    0% { box-shadow: 0 0 20px 4px #fff; border-image: linear-gradient(to right, #fff, #808080, #000, #808080, #fff) 1; }
+    25% { box-shadow: 0 0 20px 4px #808080; border-image: linear-gradient(to bottom, #fff, #808080, #000, #808080, #fff) 1; }
+    50% { box-shadow: 0 0 20px 4px #000; border-image: linear-gradient(to left, #fff, #808080, #000, #808080, #fff) 1; }
+    75% { box-shadow: 0 0 20px 4px #808080; border-image: linear-gradient(to top, #fff, #808080, #000, #808080, #fff) 1; }
     100% { box-shadow: 0 0 20px 4px #fff; border-image: linear-gradient(to right, #fff, #808080, #000, #808080, #fff) 1; }
   }
   h1 { font-size: 3em; margin-bottom: 10px; text-shadow: 0 0 10px #fff; min-height: 1.2em; position: relative; color: #fff; }
@@ -69,9 +71,10 @@
   #volume-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; background: #fff; border-radius: 50%; margin-top: -4px; cursor: pointer; box-shadow: 0 0 5px #fff; }
   #volume-slider::-moz-range-thumb { width: 14px; height: 14px; background: #fff; border-radius: 50%; cursor: pointer; box-shadow: 0 0 5px #fff; }
   #mute-icon { width: 32px; height: 32px; cursor: pointer; user-select: none; filter: drop-shadow(0 0 20px #fff); border-radius: 6px; background: rgba(255,255,255,0.6); }
+  .profile-pic { width: 150px; height: 150px; border-radius: 50%; margin-bottom: 10px; filter: drop-shadow(0 0 5px #ffffff); }
   #trail-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; }
   #sparkle-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
-  #blur-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; color: #fff; font-size: 2em; text-shadow: 0 0 10px #fff; font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif; opacity: 1; transition: opacity 1s ease-out; }
+  #blur-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); background: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; color: #fff; font-size: 2em; text-shadow: 0 0 10px #fff; font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif; opacity: 1; transition: opacity 1s ease-out; }
   #blur-overlay.hidden { opacity: 0; pointer-events: none; }
   #version { position: fixed; bottom: 20px; left: 20px; color: #fff; font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif; font-size: 1em; text-shadow: 0 0 5px #fff; z-index: 1; }
   #copyright { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-family: Arial, sans-serif; font-size: 1em; text-shadow: 0 0 5px #fff; z-index: 1; }
@@ -81,24 +84,25 @@
 <div id="blur-overlay">Click To Enter...</div>
 <canvas id="sparkle-canvas"></canvas>
 <canvas id="trail-canvas"></canvas>
-
 <div class="container">
-  <!-- Fixed clickable avatar + bigger decoration -->
-  <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block;">
-    <!-- Main avatar (clickable) -->
+  <!-- Discord Profile Image + Decoration Start -->
+  <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 128px; height: 128px;">
+    <!-- Discord Profile Picture -->
     <img
-      src="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=128"
+      src="https://cdn.discordapp.com/avatars/765706304656113664/a_3e123c3183174f5624985fb3f057a7a4.gif?size=1024&animated=true"
       alt="Discord Profile Picture"
-      style="width: 128px; height: 128px; border-radius: 50%; display: block; position: relative; z-index: 2;"
+      style="width: 128px; height: 128px; border-radius: 50%; display: block;"
       onerror="this.onerror=null;this.src='https://cdn.discordapp.com/embed/avatars/0.png';"
     >
-    <!-- Bigger decoration (behind avatar, doesn't block clicks) -->
+    <!-- Discord Profile Decoration -->
     <img
-      src="https://cdn.discordapp.com/avatar-decoration-presets/a_7e494f3ca5859c59b7f07eee4facffd9.png?size=256&passthrough=false"
+      src="https://cdn.discordapp.com/avatar-decoration-presets/a_8d31b6b853913a2811916a2d8678b747.png?size=96&amp;passthrough=false"
       alt="Discord Profile Decoration"
-      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 148px; height: 148px; pointer-events: none; z-index: 1;"
+      aria-hidden="true"
+      style="position: absolute; top: 0; left: 0; width: 128px; height: 128px; pointer-events: none;"
     >
   </a>
+  <!-- Discord Profile Image + Decoration End -->
 
   <h1 id="title" class="glowing"></h1>
   <div class="bio">I induge scriping.</div>
@@ -112,22 +116,24 @@
     <a href="https://www.tiktok.com/@yourscoper" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/tiktok.png" alt="TikTok" /></a>
   </div>
 </div>
-
-<div id="version">v1.0.2</div>
+<div id="version">v1.0.3</div>
 <div id="copyright">© 2025 yourscoper. All rights reserved.</div>
 <div id="audio-controls">
   <img id="mute-icon" src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png" alt="Volume Icon" />
   <input type="range" id="volume-slider" min="0" max="100" value="50" />
 </div>
-
 <script>
   const title = document.getElementById('title');
   const titleTag = document.querySelector('title');
   const fullText = 'yourscoper';
-  let index = 0, deleting = false, pause = false;
-
+  let index = 0;
+  let deleting = false;
+  let pause = false;
   function typeWriter() {
-    if (pause) { setTimeout(() => { pause = false; deleting = true; typeWriter(); }, 1500); return; }
+    if (pause) {
+      setTimeout(() => { pause = false; deleting = true; typeWriter(); }, 1500);
+      return;
+    }
     if (!deleting) {
       title.textContent = fullText.slice(0, index + 1);
       titleTag.textContent = fullText.slice(0, index + 1);
@@ -146,7 +152,8 @@
 
   const trailCanvas = document.getElementById('trail-canvas');
   const trailCtx = trailCanvas.getContext('2d');
-  trailCanvas.width = window.innerWidth; trailCanvas.height = window.innerHeight;
+  trailCanvas.width = window.innerWidth;
+  trailCanvas.height = window.innerHeight;
   let points = [];
   class Point { constructor(x, y) { this.x = x; this.y = y; this.createdAt = Date.now(); } }
   document.addEventListener('mousemove', e => points.push(new Point(e.clientX, e.clientY)));
@@ -155,14 +162,16 @@
     const now = Date.now();
     points = points.filter(p => (now - p.createdAt) / 1000 < 1);
     if (points.length > 1) {
-      trailCtx.beginPath(); trailCtx.moveTo(points[0].x, points[0].y);
+      trailCtx.beginPath();
+      trailCtx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
         const age = (now - points[i].createdAt) / 1000;
-        trailCtx.strokeStyle = `rgba(255,255,255,${1-age})`;
+        trailCtx.strokeStyle = `rgba(255, 255, 255, ${1 - age})`;
         trailCtx.lineWidth = 2;
         trailCtx.lineTo(points[i].x, points[i].y);
         trailCtx.stroke();
-        trailCtx.beginPath(); trailCtx.moveTo(points[i].x, points[i].y);
+        trailCtx.beginPath();
+        trailCtx.moveTo(points[i].x, points[i].y);
       }
     }
     requestAnimationFrame(animateTrail);
@@ -171,19 +180,22 @@
 
   const sparkleCanvas = document.getElementById('sparkle-canvas');
   const sparkleCtx = sparkleCanvas.getContext('2d');
-  sparkleCanvas.width = window.innerWidth; sparkleCanvas.height = window.innerHeight;
+  sparkleCanvas.width = window.innerWidth;
+  sparkleCanvas.height = window.innerHeight;
   let sparkles = [];
   class Sparkle {
-    constructor(x, y) { this.x = x; this.y = y; this.radius = Math.random()*3+1; this.alpha = 1; this.createdAt = Date.now(); }
-    draw() { sparkleCtx.beginPath(); sparkleCtx.arc(this.x, this.y, this.radius, 0, Math.PI*2); sparkleCtx.fillStyle = `rgba(255,255,255,${this.alpha})`; sparkleCtx.fill(); }
-    update() { const age = (Date.now() - this.createdAt)/1000; this.alpha = 1 - (age/2); return this.alpha > 0; }
+    constructor(x, y) { this.x = x; this.y = y; this.radius = Math.random() * 3 + 1; this.alpha = 1; this.createdAt = Date.now(); }
+    draw() { sparkleCtx.beginPath(); sparkleCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); sparkleCtx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`; sparkleCtx.fill(); }
+    update() { const age = (Date.now() - this.createdAt) / 1000; this.alpha = 1 - (age / 2); return this.alpha > 0; }
   }
   function createSparkle() {
-    const r = title.getBoundingClientRect();
-    sparkles.push(new Sparkle(r.left + Math.random()*r.width, r.top + Math.random()*r.height));
+    const titleRect = title.getBoundingClientRect();
+    const x = titleRect.left + Math.random() * titleRect.width;
+    const y = titleRect.top + Math.random() * titleRect.height - window.scrollY;
+    sparkles.push(new Sparkle(x, y));
   }
   function animateSparkles() {
-    sparkleCtx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
+    sparkleCtx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
     sparkles = sparkles.filter(s => s.update());
     sparkles.forEach(s => s.draw());
     requestAnimationFrame(animateSparkles);
@@ -197,22 +209,21 @@
   const muteIcon = document.getElementById('mute-icon');
   const volumeSlider = document.getElementById('volume-slider');
   let isMuted = true;
+  volumeSlider.value = audio.volume * 100;
   const blurOverlay = document.getElementById('blur-overlay');
-
   blurOverlay.addEventListener('click', () => {
     blurOverlay.classList.add('hidden');
     setTimeout(() => blurOverlay.style.display = 'none', 1000);
     audio.muted = false; isMuted = false;
     muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
-    audio.play().catch(() => {});
+    audio.play().catch(e => console.log('Audio play failed:', e));
   });
-
+  window.addEventListener('load', () => { volumeSlider.value = 50; audio.volume = volumeSlider.value / 100; });
   volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value / 100;
     if (audio.volume === 0) { isMuted = true; audio.muted = true; muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png'; }
     else if (isMuted) { isMuted = false; audio.muted = false; muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png'; }
   });
-
   muteIcon.addEventListener('click', () => {
     if (isMuted) {
       audio.muted = false; isMuted = false;
