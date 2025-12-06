@@ -5,12 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>yourscoper</title>
 
-<!-- Favicon (shows in tabs, bookmarks, etc.) -->
-<link rel="icon" type="image/webp" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=64" />
-<link rel="icon" type="image/png" sizes="192x192" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=192" />
-<link rel="icon" type="image/png" sizes="512x512" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=512" />
-
-<!-- Apple devices / home screen icon -->
+<!-- Proper favicons (no more globe icon) -->
+<link rel="icon" type="image/webp" sizes="64x64"   href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=64" />
+<link rel="icon" type="image/webp" sizes="192x192" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=192" />
+<link rel="icon" type="image/webp" sizes="512x512" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=512" />
 <link rel="apple-touch-icon" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=180" />
 
 <style>
@@ -85,20 +83,20 @@
 <canvas id="trail-canvas"></canvas>
 
 <div class="container">
-  <!-- Discord Profile + Bigger Decoration -->
-  <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 140px; height: 140px;">
-    <!-- Main Avatar -->
+  <!-- Fixed clickable avatar + bigger decoration -->
+  <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block;">
+    <!-- Main avatar (clickable) -->
     <img
       src="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=128"
       alt="Discord Profile Picture"
       style="width: 128px; height: 128px; border-radius: 50%; display: block; position: relative; z-index: 2;"
       onerror="this.onerror=null;this.src='https://cdn.discordapp.com/embed/avatars/0.png';"
     >
-    <!-- Bigger Decoration (140px instead of 128px) -->
+    <!-- Bigger decoration (behind avatar, doesn't block clicks) -->
     <img
       src="https://cdn.discordapp.com/avatar-decoration-presets/a_7e494f3ca5859c59b7f07eee4facffd9.png?size=256&passthrough=false"
       alt="Discord Profile Decoration"
-      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 140px; height: 140px; pointer-events: none; z-index: 1;"
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 148px; height: 148px; pointer-events: none; z-index: 1;"
     >
   </a>
 
@@ -146,7 +144,6 @@
   }
   typeWriter();
 
-  // Trail effect
   const trailCanvas = document.getElementById('trail-canvas');
   const trailCtx = trailCanvas.getContext('2d');
   trailCanvas.width = window.innerWidth; trailCanvas.height = window.innerHeight;
@@ -172,7 +169,6 @@
   }
   animateTrail();
 
-  // Sparkles
   const sparkleCanvas = document.getElementById('sparkle-canvas');
   const sparkleCtx = sparkleCanvas.getContext('2d');
   sparkleCanvas.width = window.innerWidth; sparkleCanvas.height = window.innerHeight;
@@ -184,12 +180,10 @@
   }
   function createSparkle() {
     const r = title.getBoundingClientRect();
-    const x = r.left + Math.random()*r.width;
-    const y = r.top + Math.random()*r.height - window.scrollY;
-    sparkles.push(new Sparkle(x, y));
+    sparkles.push(new Sparkle(r.left + Math.random()*r.width, r.top + Math.random()*r.height));
   }
   function animateSparkles() {
-    sparkleCtx.clearRect(0,0,sparcleCanvas.width,sparkleCanvas.height);
+    sparkleCtx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
     sparkles = sparkles.filter(s => s.update());
     sparkles.forEach(s => s.draw());
     requestAnimationFrame(animateSparkles);
@@ -198,7 +192,6 @@
   setInterval(createSparkle, 500);
   animateSparkles();
 
-  // Audio
   const audio = new Audio('https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3');
   audio.loop = true; audio.volume = 0.5; audio.muted = true;
   const muteIcon = document.getElementById('mute-icon');
@@ -211,7 +204,7 @@
     setTimeout(() => blurOverlay.style.display = 'none', 1000);
     audio.muted = false; isMuted = false;
     muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
-    audio.play().catch(e => console.log(e));
+    audio.play().catch(() => {});
   });
 
   volumeSlider.addEventListener('input', () => {
