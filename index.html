@@ -4,31 +4,79 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>yourscoper</title>
+
+<!-- Favicon (shows in tabs, bookmarks, etc.) -->
 <link rel="icon" type="image/webp" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=64" />
+<link rel="icon" type="image/png" sizes="192x192" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=192" />
+<link rel="icon" type="image/png" sizes="512x512" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=512" />
+
+<!-- Apple devices / home screen icon -->
+<link rel="apple-touch-icon" href="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=180" />
+
 <style>
-  body{margin:0;padding:0;background:#000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') center center fixed;background-size:cover;color:#fff;font-family:Arial,sans-serif;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;position:relative;cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6,auto}
-  ::selection{background:#fff;color:#000}::-moz-selection{background:#fff;color:#000}
-  body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVR4nGP6//8/AwgwMjIy/jO6du3aLAAqOAbU4eO1SAAAAABJRU5ErkJggg==') repeat;opacity:.15;pointer-events:none;z-index:3}
-  .container{text-align:center;background:rgba(0,0,0,.7);padding:20px;border-radius:10px;position:relative;z-index:1;border:4px solid transparent;background-clip:padding-box;animation:spinGradient 3s linear infinite reverse}
-  @keyframes spinGradient{0%,100%{box-shadow:0 0 20px 4px #fff;border-image:linear-gradient(to right,#fff,#808080,#000,#808080,#fff)1}25%{box-shadow:0 0 20px 4px #808080;border-image:linear-gradient(to bottom,#fff,#808080,#000,#808080,#fff)1}50%{box-shadow:0 0 20px 4px #000;border-image:linear-gradient(to left,#fff,#808080,#000,#808080,#fff)1}75%{box-shadow:0 0 20px 4px #808080;border-image:linear-gradient(to top,#fff,#808080,#000,#808080,#fff)1}}
-  h1{font-size:3em;margin-bottom:10px;text-shadow:0 0 10px #fff;min-height:1.2em;position:relative;color:#fff}
-  .bio{font-size:1.2em;margin-bottom:20px;font-family:'Gothic Bold','Arial Black',Arial,sans-serif}
-  .social-links{margin-top:20px}
-  .social-links a{color:#fff;text-decoration:none;margin:0 10px;font-size:1.2em;transition:color .3s;display:inline-flex;align-items:center;font-family:'Gothic Bold','Arial Black',Arial,sans-serif}
-  .social-links a:hover{color:#fff}
-  .social-links img{width:30px;height:30px;vertical-align:middle;margin-right:5px;filter:drop-shadow(0 0 5px #fff)}
-  #audio-controls{position:fixed;bottom:20px;right:20px;display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.6);padding:5px 10px;border-radius:8px;z-index:1;box-shadow:0 0 12px 4px #fff}
-  #volume-slider{width:100px;cursor:pointer;-webkit-appearance:none;background:transparent}
-  #volume-slider::-webkit-slider-runnable-track,#volume-slider::-moz-range-track{height:6px;background:#fff;border-radius:3px}
-  #volume-slider::-webkit-slider-thumb,#volume-slider::-moz-range-thumb{-webkit-appearance:none;width:14px;height:14px;background:#fff;border-radius:50%;cursor:pointer;box-shadow:0 0 5px #fff}
-  #mute-icon{width:32px;height:32px;cursor:pointer;user-select:none;filter:drop-shadow(0 0 20px #fff);border-radius:6px;background:rgba(255,255,255,.6)}
-  #trail-canvas,#sparkle-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
-  #trail-canvas{z-index:4}#sparkle-canvas{z-index:2}
-  #blur-overlay{position:fixed;top:0;left:0;width:100%;height:100%;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(0,0,0,.7);display:flex;justify-content:center;align-items:center;z-index:1000;color:#fff;font-size:2em;text-shadow:0 0 10px #fff;font-family:'Gothic Bold','Arial Black',Arial,sans-serif;opacity:1;transition:opacity 1s}
-  #blur-overlay.hidden{opacity:0;pointer-events:none}
-  #version,#copyright{position:fixed;bottom:20px;color:#fff;font-size:1em;text-shadow:0 0 5px #fff;z-index:1}
-  #version{left:20px;font-family:'Gothic Bold','Arial Black',Arial,sans-serif}
-  #copyright{left:50%;transform:translateX(-50%);font-family:Arial,sans-serif}
+  body {
+    margin: 0; padding: 0;
+    background: #000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6, auto;
+  }
+  ::selection { background: #fff; color: #000; }
+  ::-moz-selection { background: #fff; color: #000; }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVR4nGP6//8/AwgwMjIy/jO6du3aLAAqOAbU4eO1SAAAAABJRU5ErkJggg==') repeat;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .container {
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    animation: spinGradient 3s linear infinite reverse;
+  }
+  @keyframes spinGradient {
+    0%   { box-shadow: 0 0 20px 4px #fff; border-image: linear-gradient(to right, #fff, #808080, #000, #808080, #fff) 1; }
+    25%  { box-shadow: 0 0 20px 4px #808080; border-image: linear-gradient(to bottom, #fff, #808080, #000, #808080, #fff) 1; }
+    50%  { box-shadow: 0 0 20px 4px #000; border-image: linear-gradient(to left, #fff, #808080, #000, #808080, #fff) 1; }
+    75%  { box-shadow: 0 0 20px 4px #808080; border-image: linear-gradient(to top, #fff, #808080, #000, #808080, #fff) 1; }
+    100% { box-shadow: 0 0 20px 4px #fff; border-image: linear-gradient(to right, #fff, #808080, #000, #808080, #fff) 1; }
+  }
+  h1 { font-size: 3em; margin-bottom: 10px; text-shadow: 0 0 10px #fff; min-height: 1.2em; position: relative; color: #fff; }
+  .bio { font-size: 1.2em; margin-bottom: 20px; font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif; }
+  .social-links { margin-top: 20px; }
+  .social-links a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 1.2em; transition: color 0.3s; display: inline-flex; align-items: center; font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif; }
+  .social-links a:hover { color: #ffffff; }
+  .social-links img { width: 30px; height: 30px; vertical-align: middle; margin-right: 5px; filter: drop-shadow(0 0 5px #ffffff); }
+  #audio-controls { position: fixed; bottom: 20px; right: 20px; display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.6); padding: 5px 10px; border-radius: 8px; z-index: 1; box-shadow: 0 0 12px 4px #fff; }
+  #volume-slider { width: 100px; cursor: pointer; -webkit-appearance: none; background: transparent; }
+  #volume-slider::-webkit-slider-runnable-track { height: 6px; background: #fff; border-radius: 3px; }
+  #volume-slider::-moz-range-track { height: 6px; background: #fff; border-radius: 3px; }
+  #volume-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; background: #fff; border-radius: 50%; margin-top: -4px; cursor: pointer; box-shadow: 0 0 5px #fff; }
+  #volume-slider::-moz-range-thumb { width: 14px; height: 14px; background: #fff; border-radius: 50%; cursor: pointer; box-shadow: 0 0 5px #fff; }
+  #mute-icon { width: 32px; height: 32px; cursor: pointer; user-select: none; filter: drop-shadow(0 0 20px #fff); border-radius: 6px; background: rgba(255,255,255,0.6); }
+  #trail-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; }
+  #sparkle-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+  #blur-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; color: #fff; font-size: 2em; text-shadow: 0 0 10px #fff; font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif; opacity: 1; transition: opacity 1s ease-out; }
+  #blur-overlay.hidden { opacity: 0; pointer-events: none; }
+  #version { position: fixed; bottom: 20px; left: 20px; color: #fff; font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif; font-size: 1em; text-shadow: 0 0 5px #fff; z-index: 1; }
+  #copyright { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-family: Arial, sans-serif; font-size: 1em; text-shadow: 0 0 5px #fff; z-index: 1; }
 </style>
 </head>
 <body>
@@ -37,70 +85,152 @@
 <canvas id="trail-canvas"></canvas>
 
 <div class="container">
-  <!-- Discord Avatar + Decoration (decoration is now 0.5x bigger = 192px) -->
-  <a href="https://discord.com/users/765706304656113664" target="_blank" style="position:relative;display:inline-block;">
-    <!-- Main Avatar (128px) -->
-    <img src="https://cdn.discordapp.com/avatars/765706304656113664/a_3e123c3183174f5624985fb3f057a7a4.gif?size=1024&animated=true"
-         alt="Discord Profile Picture"
-         style="width:128px;height:128px;border-radius:50%;display:block;position:relative;z-index:2;"
-         onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
-    
-    <!-- Decoration — 192px (exactly 0.5× bigger than 128px) -->
-    <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_8d31b6b853913a2811916a2d8678b747.png?size=512&passthrough=false"
-         alt="Discord Profile Decoration"
-         style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:192px;height:192px;pointer-events:none;z-index:1;">
+  <!-- Discord Profile + Bigger Decoration -->
+  <a href="https://discord.com/users/765706304656113664" target="_blank" style="position: relative; display: inline-block; width: 140px; height: 140px;">
+    <!-- Main Avatar -->
+    <img
+      src="https://cdn.discordapp.com/avatars/765706304656113664/b3c41c7f6d325d0e287d1646b03d8523.webp?size=128"
+      alt="Discord Profile Picture"
+      style="width: 128px; height: 128px; border-radius: 50%; display: block; position: relative; z-index: 2;"
+      onerror="this.onerror=null;this.src='https://cdn.discordapp.com/embed/avatars/0.png';"
+    >
+    <!-- Bigger Decoration (140px instead of 128px) -->
+    <img
+      src="https://cdn.discordapp.com/avatar-decoration-presets/a_7e494f3ca5859c59b7f07eee4facffd9.png?size=256&passthrough=false"
+      alt="Discord Profile Decoration"
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 140px; height: 140px; pointer-events: none; z-index: 1;"
+    >
   </a>
 
-  <h1 id="title"></h1>
+  <h1 id="title" class="glowing"></h1>
   <div class="bio">I induge scriping.</div>
   <div class="social-links" id="social-links">
-    <a href="https://www.roblox.com/users/8904921777/profile" target="_blank"><img src="https://www.roblox.com/favicon.ico" alt="Roblox"></a>
-    <a href="https://github.com/yourscoper" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub"></a>
+    <a href="https://www.roblox.com/users/8904921777/profile" target="_blank"><img src="https://www.roblox.com/favicon.ico" alt="Roblox" /></a>
+    <a href="https://github.com/yourscoper" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub" /></a>
     <a href="https://discord.com/users/765706304656113664" target="_blank" rel="noopener">
-      <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg" alt="Discord" width="32" height="32" style="margin-right:5px;filter:brightness(0) drop-shadow(0 0 5px #fff)">
+      <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg" alt="Discord" width="32" height="32" style="margin-right:5px;filter: brightness(0) drop-shadow(0 0 5px #ffffff);" />
     </a>
-    <a href="https://open.spotify.com/user/chriscrafter102" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/spotify.png" alt="Spotify"></a>
-    <a href="https://www.tiktok.com/@yourscoper" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/tiktok.png" alt="TikTok"></a>
+    <a href="https://open.spotify.com/user/chriscrafter102" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/spotify.png" alt="Spotify" /></a>
+    <a href="https://www.tiktok.com/@yourscoper" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/tiktok.png" alt="TikTok" /></a>
   </div>
 </div>
 
-<div id="version">v1.0.3</div>
+<div id="version">v1.0.2</div>
 <div id="copyright">© 2025 yourscoper. All rights reserved.</div>
 <div id="audio-controls">
-  <img id="mute-icon" src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png" alt="Volume Icon">
-  <input type="range" id="volume-slider" min="0" max="100" value="50">
+  <img id="mute-icon" src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png" alt="Volume Icon" />
+  <input type="range" id="volume-slider" min="0" max="100" value="50" />
 </div>
 
 <script>
-  const title=document.getElementById('title'),titleTag=document.querySelector('title'),fullText='yourscoper';
-  let i=0,d=false,p=false;
-  function type(){if(p){setTimeout(()=>{p=false;d=true;type()},1500);return}
-    if(!d){title.textContent=titleTag.textContent=fullText.slice(0,++i);if(i===fullText.length)p=true;setTimeout(type,300)}
-    else{title.textContent=titleTag.textContent=fullText.slice(0,--i);if(i===0)d=false;setTimeout(type,200)}}
-  type();
+  const title = document.getElementById('title');
+  const titleTag = document.querySelector('title');
+  const fullText = 'yourscoper';
+  let index = 0, deleting = false, pause = false;
 
-  const t=document.getElementById('trail-canvas'),tc=t.getContext('2d');t.width=innerWidth;t.height=innerHeight;
-  let pts=[];document.onmousemove=e=>pts.push({x:e.clientX,y:e.clientY,t:Date.now()});
-  (function tr(){tc.clearRect(0,0,t.width,t.height);pts=pts.filter(p=>(Date.now()-p.t)<1000);
-    if(pts.length>1){tc.beginPath();tc.moveTo(pts[0].x,pts[0].y);
-      for(let i=1;i<pts.length;i++){tc.strokeStyle=`rgba(255,255,255,${1-(Date.now()-pts[i].t)/1000})`;tc.lineWidth=2;tc.lineTo(pts[i].x,pts[i].y);tc.stroke();tc.beginPath();tc.moveTo(pts[i].x,pts[i].y)}}
-    requestAnimationFrame(tr)})();
+  function typeWriter() {
+    if (pause) { setTimeout(() => { pause = false; deleting = true; typeWriter(); }, 1500); return; }
+    if (!deleting) {
+      title.textContent = fullText.slice(0, index + 1);
+      titleTag.textContent = fullText.slice(0, index + 1);
+      index++;
+      if (index === fullText.length) pause = true;
+      setTimeout(typeWriter, 300);
+    } else {
+      title.textContent = fullText.slice(0, index - 1);
+      titleTag.textContent = fullText.slice(0, index - 1);
+      index--;
+      if (index === 0) deleting = false;
+      setTimeout(typeWriter, 200);
+    }
+  }
+  typeWriter();
 
-  const s=document.getElementById('sparkle-canvas'),sc=s.getContext('2d');s.width=innerWidth;s.height=innerHeight;
-  let sp=[];function mk(){const r=title.getBoundingClientRect();sp.push({x:r.left+Math.random()*r.width,y:r.top+Math.random()*r.height,r:Math.random()*3+1,a:1,t:Date.now()})}
-  (function anim(){sc.clearRect(0,0,s.width,s.height);sp=sp.filter(p=>{p.a=1-((Date.now()-p.t)/2000);if(p.a>0){sc.beginPath();sc.arc(p.x,p.y,p.r,0,Math.PI*2);sc.fillStyle=`rgba(255,255,255,${p.a})`;sc.fill()}return p.a>0});
-    sp.forEach(p=>p.a>0&&(sc.beginPath(),sc.arc(p.x,p.y,p.r,0,Math.PI*2),sc.fillStyle=`rgba(255,255,255,${p.a})`,sc.fill()));requestAnimationFrame(anim);if(Math.random()<0.5)mk()})();
-  setInterval(mk,500);
+  // Trail effect
+  const trailCanvas = document.getElementById('trail-canvas');
+  const trailCtx = trailCanvas.getContext('2d');
+  trailCanvas.width = window.innerWidth; trailCanvas.height = window.innerHeight;
+  let points = [];
+  class Point { constructor(x, y) { this.x = x; this.y = y; this.createdAt = Date.now(); } }
+  document.addEventListener('mousemove', e => points.push(new Point(e.clientX, e.clientY)));
+  function animateTrail() {
+    trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+    const now = Date.now();
+    points = points.filter(p => (now - p.createdAt) / 1000 < 1);
+    if (points.length > 1) {
+      trailCtx.beginPath(); trailCtx.moveTo(points[0].x, points[0].y);
+      for (let i = 1; i < points.length; i++) {
+        const age = (now - points[i].createdAt) / 1000;
+        trailCtx.strokeStyle = `rgba(255,255,255,${1-age})`;
+        trailCtx.lineWidth = 2;
+        trailCtx.lineTo(points[i].x, points[i].y);
+        trailCtx.stroke();
+        trailCtx.beginPath(); trailCtx.moveTo(points[i].x, points[i].y);
+      }
+    }
+    requestAnimationFrame(animateTrail);
+  }
+  animateTrail();
 
-  const audio=new Audio('https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3');
-  audio.loop=true;audio.volume=.5;audio.muted=true;
-  const mute=document.getElementById('mute-icon'),vol=document.getElementById('volume-slider'),ov=document.getElementById('blur-overlay');
-  let muted=true;
-  ov.onclick=()=>{ov.classList.add('hidden');setTimeout(()=>ov.style.display='none',1000);audio.muted=muted=false;mute.src='https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';audio.play()}
-  vol.oninput=()=>{audio.volume=vol.value/100;muted=audio.volume===0;if(muted){audio.muted=true;mute.src='https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png'}
-    else if(!audio.muted){mute.src='https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png'}}
-  mute.onclick=()=>{if(muted){audio.muted=muted=false;mute.src='https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';if(!audio.volume)audio.volume=.5,vol.value=50;audio.play()}
-    else{audio.muted=muted=true;mute.src='https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png'}}
+  // Sparkles
+  const sparkleCanvas = document.getElementById('sparkle-canvas');
+  const sparkleCtx = sparkleCanvas.getContext('2d');
+  sparkleCanvas.width = window.innerWidth; sparkleCanvas.height = window.innerHeight;
+  let sparkles = [];
+  class Sparkle {
+    constructor(x, y) { this.x = x; this.y = y; this.radius = Math.random()*3+1; this.alpha = 1; this.createdAt = Date.now(); }
+    draw() { sparkleCtx.beginPath(); sparkleCtx.arc(this.x, this.y, this.radius, 0, Math.PI*2); sparkleCtx.fillStyle = `rgba(255,255,255,${this.alpha})`; sparkleCtx.fill(); }
+    update() { const age = (Date.now() - this.createdAt)/1000; this.alpha = 1 - (age/2); return this.alpha > 0; }
+  }
+  function createSparkle() {
+    const r = title.getBoundingClientRect();
+    const x = r.left + Math.random()*r.width;
+    const y = r.top + Math.random()*r.height - window.scrollY;
+    sparkles.push(new Sparkle(x, y));
+  }
+  function animateSparkles() {
+    sparkleCtx.clearRect(0,0,sparcleCanvas.width,sparkleCanvas.height);
+    sparkles = sparkles.filter(s => s.update());
+    sparkles.forEach(s => s.draw());
+    requestAnimationFrame(animateSparkles);
+    if (Math.random() < 0.5) createSparkle();
+  }
+  setInterval(createSparkle, 500);
+  animateSparkles();
+
+  // Audio
+  const audio = new Audio('https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3');
+  audio.loop = true; audio.volume = 0.5; audio.muted = true;
+  const muteIcon = document.getElementById('mute-icon');
+  const volumeSlider = document.getElementById('volume-slider');
+  let isMuted = true;
+  const blurOverlay = document.getElementById('blur-overlay');
+
+  blurOverlay.addEventListener('click', () => {
+    blurOverlay.classList.add('hidden');
+    setTimeout(() => blurOverlay.style.display = 'none', 1000);
+    audio.muted = false; isMuted = false;
+    muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+    audio.play().catch(e => console.log(e));
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    audio.volume = volumeSlider.value / 100;
+    if (audio.volume === 0) { isMuted = true; audio.muted = true; muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png'; }
+    else if (isMuted) { isMuted = false; audio.muted = false; muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png'; }
+  });
+
+  muteIcon.addEventListener('click', () => {
+    if (isMuted) {
+      audio.muted = false; isMuted = false;
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+      if (audio.volume === 0) { audio.volume = 0.5; volumeSlider.value = 50; }
+      audio.play();
+    } else {
+      audio.muted = true; isMuted = true;
+      muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png';
+    }
+  });
 </script>
 </body>
 </html>
