@@ -14,12 +14,6 @@
   <meta property="og:image" content="https://raw.githubusercontent.com/yourscoper/Portfolio/main/preview.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="yourscoper" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="yourscoper" />
-  <meta name="twitter:description" content="I indulge scripting." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/yourscoper/Portfolio/main/preview.jpg" />
 
   <meta name="theme-color" content="#FFFFFF" />
 
@@ -41,27 +35,26 @@
       cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6, auto;
     }
     ::selection { background: #fff; color: #000; }
-    ::-moz-selection { background: #fff; color: #000; }
 
     body::before {
       content: '';
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
+      inset: 0;
       background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVR4nGP6//8/AwgwMjIy/jO6du3aLAAqOAbU4eO1SAAAAABJRU5ErkJggg==') repeat;
       opacity: 0.15; pointer-events: none; z-index: 3;
     }
 
     #blur-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center;
+      position: fixed; inset: 0;
+      backdrop-filter: blur(8px);
+      background: rgba(0,0,0,0.8);
+      display: flex; justify-content: center; align-items: center;
       z-index: 1000; color: #fff; font-size: 2.2em; text-shadow: 0 0 12px #fff;
-      font-family: 'Gothic Bold', 'Arial Black', Arial, sans-serif;
-      opacity: 1; transition: opacity 1.2s ease-out;
+      transition: opacity 1.2s ease-out;
     }
     #blur-overlay.hidden { opacity: 0; pointer-events: none; }
 
-    #trail-canvas, #sparkle-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+    #trail-canvas, #sparkle-canvas { position: absolute; inset: 0; pointer-events: none; }
     #trail-canvas { z-index: 4; }
     #sparkle-canvas { z-index: 2; }
 
@@ -75,7 +68,6 @@
       z-index: 5;
       width: 90%;
       max-width: 420px;
-      padding: 20px;
     }
     #main-content.visible { display: block; opacity: 1; }
 
@@ -86,8 +78,6 @@
       border-radius: 20px;
       padding: 24px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 60px rgba(255,255,255,0.08);
-      position: relative;
-      overflow: hidden;
       animation: spinGradient 6s linear infinite;
       border-image: linear-gradient(90deg, #fff, #333, #000, #333, #fff) 1;
       border-image-slice: 1;
@@ -101,15 +91,16 @@
       100% { border-image-source: linear-gradient(90deg, #fff, #aaa, #000, #aaa, #fff); }
     }
 
-    .profile-top { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+    .profile-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
     .avatar-wrapper {
       position: relative;
       width: 80px;
       height: 80px;
       border-radius: 50%;
       overflow: hidden;
+      flex-shrink: 0;
     }
-    .avatar {
+    .avatar, .decoration {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -118,38 +109,53 @@
     .decoration {
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      border-radius: 50%;
-      object-fit: cover;
     }
     .status-dot {
       position: absolute;
-      bottom: 4px;
-      right: 4px;
-      width: 18px;
-      height: 18px;
+      top: -4px;
+      right: -4px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       border: 3px solid #000;
-      background: #23a55a; /* online green by default */
+      background: #23a55a; /* online green */
+      box-shadow: 0 0 8px #23a55a;
     }
 
     .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
-    .badges { display: flex; gap: 4px; flex-wrap: wrap; }
+    .badges { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
     .badges img { width: 20px; height: 20px; }
-    .quote { font-size: 14px; font-style: italic; color: rgba(255,255,255,0.7); margin-bottom: 16px; min-height: 1.4em; }
+
+    .quote-container {
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      padding: 12px;
+      margin: 16px 0;
+      text-align: center;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .quote {
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      min-height: 1.4em;
+    }
+
     #waveform { width: 100%; height: 60px; margin: 16px 0; border-radius: 8px; overflow: hidden; }
+
     .controls { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
     .btn { width: 40px; height: 40px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
     .btn:hover { background: rgba(255,255,255,0.15); transform: scale(1.08); }
     .btn.play-pause { width: 48px; height: 48px; }
+
     .track-info { flex: 1; min-width: 140px; }
     .track-name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .progress-bar { height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; margin-top: 6px; cursor: pointer; position: relative; }
-    .progress-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: linear-gradient(90deg, #fff, #ccc); border-radius: 2px; transition: width 0.1s linear; }
+    .progress-fill { position: absolute; inset: 0  auto 0 0; width: 0%; background: linear-gradient(90deg, #fff, #ccc); border-radius: 2px; transition: width 0.1s linear; }
 
-    /* Bright white volume slider thumb with glow */
     #volumeSlider {
       -webkit-appearance: none;
       width: 80px;
@@ -160,8 +166,7 @@
     }
     #volumeSlider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 18px;
-      height: 18px;
+      width: 18px; height: 18px;
       background: #ffffff;
       border-radius: 50%;
       cursor: pointer;
@@ -169,8 +174,7 @@
       margin-top: -6px;
     }
     #volumeSlider::-moz-range-thumb {
-      width: 18px;
-      height: 18px;
+      width: 18px; height: 18px;
       background: #ffffff;
       border-radius: 50%;
       cursor: pointer;
@@ -203,28 +207,29 @@
       <div class="profile-top">
         <div class="avatar-wrapper">
           <!-- 
-            REPLACE THESE TWO URLS WHEN YOUR DISCORD AVATAR / DECORATION CHANGES
-            Right-click your PFP in Discord → Copy Image Address → paste here
+            AVATAR & DECORATION – REPLACE THESE WHEN YOUR DISCORD AVATAR CHANGES
+            Right-click PFP in Discord → Copy Image Address → paste here
           -->
           <img id="avatar" class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
-          <img id="decoration" class="decoration" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="decoration" />
+          <img id="decoration" class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
           <div id="status-dot" class="status-dot"></div>
         </div>
         <div>
           <div class="username">yourscoper</div>
           <div class="badges">
-            <!-- Badges from your Discord profile - update manually when needed -->
-            <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Nitro" title="Subscriber" />
-            <img src="https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png" alt="HypeSquad Balance" />
-            <img src="https://cdn.discordapp.com/badge-icons/51040c70d4f20a921ad6674ff86fc95c.png" alt="Server Booster" />
-            <img src="https://cdn.discordapp.com/badge-icons/6de6d34650760ba5551a79732e98ed60.png" alt="Legacy Username" />
+            <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Nitro" />
+            <img src="https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png" alt="HypeSquad" />
+            <img src="https://cdn.discordapp.com/badge-icons/51040c70d4f20a921ad6674ff86fc95c.png" alt="Booster" />
+            <img src="https://cdn.discordapp.com/badge-icons/6de6d34650760ba5551a79732e98ed60.png" alt="Legacy" />
             <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest" />
             <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs" />
           </div>
         </div>
       </div>
 
-      <div class="quote">I indulge scripting.</div>
+      <div class="quote-container">
+        <div class="quote" id="quote"></div>
+      </div>
 
       <canvas id="waveform"></canvas>
 
@@ -260,7 +265,7 @@
   <audio id="playerAudio" loop></audio>
 
   <script>
-    // Mouse Trail
+    // Mouse Trail + Sparkles (unchanged from before)
     const trailCanvas = document.getElementById('trail-canvas');
     const tctx = trailCanvas.getContext('2d');
     trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -286,7 +291,6 @@
     }
     drawTrail();
 
-    // Sparkles
     const sparkleCanvas = document.getElementById('sparkle-canvas');
     const sctx = sparkleCanvas.getContext('2d');
     sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
@@ -313,13 +317,37 @@
     drawSparkles();
     setInterval(createSparkle, 400);
 
+    // Typewriter for quote (repeating smoothly)
+    const quoteEl = document.getElementById('quote');
+    const text = "I indulge scripting.";
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 80;
+    let pauseTime = 2000;
+
+    function typeQuote() {
+      if (!isDeleting) {
+        quoteEl.textContent = text.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === text.length) {
+          setTimeout(() => { isDeleting = true; }, pauseTime);
+        }
+      } else {
+        quoteEl.textContent = text.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+        }
+      }
+      setTimeout(typeQuote, isDeleting ? typingSpeed / 2 : typingSpeed);
+    }
+    typeQuote();
+
     // Music Player
     const audio = document.getElementById('playerAudio');
-    audio.volume = 0.5; // Always start at 50%
+    audio.volume = 0.5;
 
     const playPause = document.getElementById('playPause');
-    const prev = document.getElementById('prev');
-    const next = document.getElementById('next');
     const trackName = document.getElementById('trackName');
     const progressBar = document.getElementById('progressBar');
     const progressFill = document.getElementById('progressFill');
@@ -332,31 +360,22 @@
     let currentTrack = 0;
     let isPlaying = false;
 
-    function loadTrack(idx) {
-      audio.src = tracks[idx].src;
-      trackName.textContent = tracks[idx].name;
+    function loadTrack() {
+      audio.src = tracks[currentTrack].src;
+      trackName.textContent = tracks[currentTrack].name;
       audio.load();
     }
-    loadTrack(currentTrack);
+    loadTrack();
 
     playPause.onclick = () => {
       if (isPlaying) {
         audio.pause();
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
       } else {
-        audio.play().catch(() => {});
+        audio.play().catch(e => console.log('Play failed:', e));
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       }
       isPlaying = !isPlaying;
-    };
-
-    prev.onclick = () => {
-      currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-      loadTrack(currentTrack);
-    };
-    next.onclick = () => {
-      currentTrack = (currentTrack + 1) % tracks.length;
-      loadTrack(currentTrack);
     };
 
     audio.ontimeupdate = () => {
@@ -382,63 +401,22 @@
         : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
     };
 
-    audio.onended = () => next.click();
+    audio.onended = () => {
+      // Optional: loop single track or next
+      audio.currentTime = 0;
+      audio.play();
+    };
 
-    // Waveform (fallback if CORS blocks)
-    const canvas = document.getElementById('waveform');
-    const ctx = canvas.getContext('2d');
-    let audioCtx, analyser, source;
-
-    function initVis() {
-      try {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 128;
-        source = audioCtx.createMediaElementSource(audio);
-        source.connect(analyser);
-        analyser.connect(audioCtx.destination);
-        draw();
-      } catch (e) {
-        console.log('Waveform skipped (CORS?):', e);
-      }
-    }
-
-    function draw() {
-      requestAnimationFrame(draw);
-      if (!analyser) {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        return;
-      }
-      const buffer = analyser.frequencyBinCount;
-      const data = new Uint8Array(buffer);
-      analyser.getByteFrequencyData(data);
-
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      ctx.fillStyle = 'rgba(0,0,0,0.4)';
-      ctx.fillRect(0,0,canvas.width,canvas.height);
-
-      const barWidth = (canvas.width / buffer) * 2;
-      let x = 0;
-      for (let k = 0; k < buffer; k++) {
-        const barHeight = (data[k] / 255) * canvas.height * 0.8;
-        ctx.fillStyle = `rgba(255,255,255,${data[k]/255})`;
-        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-        x += barWidth + 1;
-      }
-    }
-
-    // Enter → reveal + autoplay + unmute + 50% volume
+    // Enter → show card, autoplay music at 50%, unmute
     document.getElementById('blur-overlay').addEventListener('click', () => {
       document.getElementById('blur-overlay').classList.add('hidden');
       document.getElementById('main-content').classList.add('visible');
-      audio.volume = 0.5;           // Force 50%
+      audio.volume = 0.5;
       volumeSlider.value = 50;
       audio.muted = false;
-      audio.play().catch(() => {});
+      audio.play().catch(e => console.log('Autoplay blocked:', e));
       isPlaying = true;
       playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
-      initVis();
     });
   </script>
 </body>
