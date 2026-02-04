@@ -12,8 +12,6 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yourscoper.github.io/Portfolio/" />
   <meta property="og:image" content="https://raw.githubusercontent.com/yourscoper/Portfolio/main/preview.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
 
   <meta name="theme-color" content="#FFFFFF" />
 
@@ -34,22 +32,14 @@
       position: relative;
       cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6, auto;
     }
-    ::selection { background: #fff; color: #000; }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVR4nGP6//8/AwgwMjIy/jO6du3aLAAqOAbU4eO1SAAAAABJRU5ErkJggg==') repeat;
-      opacity: 0.15; pointer-events: none; z-index: 3;
-    }
 
     #blur-overlay {
       position: fixed; inset: 0;
       backdrop-filter: blur(8px);
       background: rgba(0,0,0,0.8);
       display: flex; justify-content: center; align-items: center;
-      z-index: 1000; color: #fff; font-size: 2.2em; text-shadow: 0 0 12px #fff;
+      z-index: 1000;
+      color: #fff; font-size: 2.2em; text-shadow: 0 0 12px #fff;
       transition: opacity 1.2s ease-out;
     }
     #blur-overlay.hidden { opacity: 0; pointer-events: none; }
@@ -64,7 +54,7 @@
     #main-content {
       display: none;
       opacity: 0;
-      transition: opacity 1.2s ease;
+      transition: opacity 1.2s ease 0.3s; /* slight delay after overlay fade-out */
       z-index: 5;
       width: 90%;
       max-width: 420px;
@@ -91,7 +81,7 @@
       100% { border-image-source: linear-gradient(90deg, #fff, #aaa, #000, #aaa, #fff); }
     }
 
-    .profile-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+    .profile-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; position: relative; }
     .avatar-wrapper {
       position: relative;
       width: 80px;
@@ -105,21 +95,21 @@
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-    }
-    .decoration {
       position: absolute;
       inset: 0;
     }
+    .decoration { z-index: 1; } /* under status dot */
     .status-dot {
       position: absolute;
-      top: -4px;
-      right: -4px;
-      width: 20px;
-      height: 20px;
+      bottom: 4px;
+      right: 4px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       border: 3px solid #000;
-      background: #23a55a; /* online green */
-      box-shadow: 0 0 8px #23a55a;
+      background: #ffc04e; /* your idle color from HTML snippet */
+      box-shadow: 0 0 8px #ffc04e;
+      z-index: 2; /* on top of avatar + decoration */
     }
 
     .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
@@ -154,7 +144,7 @@
     .track-info { flex: 1; min-width: 140px; }
     .track-name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .progress-bar { height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; margin-top: 6px; cursor: pointer; position: relative; }
-    .progress-fill { position: absolute; inset: 0  auto 0 0; width: 0%; background: linear-gradient(90deg, #fff, #ccc); border-radius: 2px; transition: width 0.1s linear; }
+    .progress-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: linear-gradient(90deg, #fff, #ccc); border-radius: 2px; transition: width 0.1s linear; }
 
     #volumeSlider {
       -webkit-appearance: none;
@@ -206,13 +196,10 @@
     <div class="player-card">
       <div class="profile-top">
         <div class="avatar-wrapper">
-          <!-- 
-            AVATAR & DECORATION – REPLACE THESE WHEN YOUR DISCORD AVATAR CHANGES
-            Right-click PFP in Discord → Copy Image Address → paste here
-          -->
-          <img id="avatar" class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
-          <img id="decoration" class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
-          <div id="status-dot" class="status-dot"></div>
+          <!-- AVATAR & DECORATION – update these URLs when your Discord profile changes -->
+          <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
+          <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
+          <div class="status-dot"></div>
         </div>
         <div>
           <div class="username">yourscoper</div>
@@ -265,59 +252,7 @@
   <audio id="playerAudio" loop></audio>
 
   <script>
-    // Mouse Trail + Sparkles (unchanged from before)
-    const trailCanvas = document.getElementById('trail-canvas');
-    const tctx = trailCanvas.getContext('2d');
-    trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
-    window.addEventListener('resize', () => { trailCanvas.width = innerWidth; trailCanvas.height = innerHeight; });
-    const points = [];
-    document.addEventListener('mousemove', e => points.push({x: e.clientX, y: e.clientY, t: Date.now()}));
-    function drawTrail() {
-      tctx.clearRect(0,0,trailCanvas.width,trailCanvas.height);
-      const now = Date.now();
-      for (let j = points.length - 1; j >= 0; j--) {
-        if (now - points[j].t > 1000) { points.splice(j, 1); continue; }
-        const age = (now - points[j].t) / 1000;
-        if (j > 0) {
-          tctx.beginPath();
-          tctx.moveTo(points[j-1].x, points[j-1].y);
-          tctx.lineTo(points[j].x, points[j].y);
-          tctx.strokeStyle = `rgba(255,255,255,${1-age})`;
-          tctx.lineWidth = 2;
-          tctx.stroke();
-        }
-      }
-      requestAnimationFrame(drawTrail);
-    }
-    drawTrail();
-
-    const sparkleCanvas = document.getElementById('sparkle-canvas');
-    const sctx = sparkleCanvas.getContext('2d');
-    sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
-    window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
-    const sparkles = [];
-    function createSparkle() {
-      sparkles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight * 0.6, r: Math.random() * 2.5 + 1, a: 1, t: Date.now() });
-    }
-    function drawSparkles() {
-      sctx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
-      const now = Date.now();
-      for (let j = sparkles.length - 1; j >= 0; j--) {
-        const s = sparkles[j];
-        const age = (now - s.t) / 1000;
-        s.a = 1 - age / 1.5;
-        if (s.a <= 0) { sparkles.splice(j,1); continue; }
-        sctx.fillStyle = `rgba(255,255,255,${s.a})`;
-        sctx.beginPath();
-        sctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-        sctx.fill();
-      }
-      requestAnimationFrame(drawSparkles);
-    }
-    drawSparkles();
-    setInterval(createSparkle, 400);
-
-    // Typewriter for quote (repeating smoothly)
+    // Typewriter for quote (repeating)
     const quoteEl = document.getElementById('quote');
     const text = "I indulge scripting.";
     let charIndex = 0;
@@ -329,15 +264,11 @@
       if (!isDeleting) {
         quoteEl.textContent = text.substring(0, charIndex + 1);
         charIndex++;
-        if (charIndex === text.length) {
-          setTimeout(() => { isDeleting = true; }, pauseTime);
-        }
+        if (charIndex === text.length) setTimeout(() => isDeleting = true, pauseTime);
       } else {
-        quoteEl.textContent = text.substring(0, charIndex - 1);
+        quoteEl.textContent = text.substring(0, charIndex);
         charIndex--;
-        if (charIndex === 0) {
-          isDeleting = false;
-        }
+        if (charIndex === 0) isDeleting = false;
       }
       setTimeout(typeQuote, isDeleting ? typingSpeed / 2 : typingSpeed);
     }
@@ -372,51 +303,46 @@
         audio.pause();
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
       } else {
-        audio.play().catch(e => console.log('Play failed:', e));
+        audio.play().catch(() => {});
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       }
       isPlaying = !isPlaying;
     };
 
     audio.ontimeupdate = () => {
-      if (audio.duration) {
-        progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
-      }
+      if (audio.duration) progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
     };
 
     progressBar.onclick = e => {
       const rect = progressBar.getBoundingClientRect();
-      const pos = (e.clientX - rect.left) / rect.width;
-      audio.currentTime = pos * audio.duration;
+      audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
     };
 
-    volumeSlider.oninput = () => {
-      audio.volume = volumeSlider.value / 100;
-    };
+    volumeSlider.oninput = () => audio.volume = volumeSlider.value / 100;
 
     muteIcon.onclick = () => {
       audio.muted = !audio.muted;
-      muteIcon.src = audio.muted 
-        ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' 
-        : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+      muteIcon.src = audio.muted ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
     };
 
-    audio.onended = () => {
-      // Optional: loop single track or next
-      audio.currentTime = 0;
-      audio.play();
-    };
-
-    // Enter → show card, autoplay music at 50%, unmute
+    // Fade transitions + autoplay on enter
     document.getElementById('blur-overlay').addEventListener('click', () => {
-      document.getElementById('blur-overlay').classList.add('hidden');
-      document.getElementById('main-content').classList.add('visible');
-      audio.volume = 0.5;
-      volumeSlider.value = 50;
-      audio.muted = false;
-      audio.play().catch(e => console.log('Autoplay blocked:', e));
-      isPlaying = true;
-      playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+      const overlay = document.getElementById('blur-overlay');
+      const content = document.getElementById('main-content');
+
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+        content.style.display = 'block';
+        setTimeout(() => content.classList.add('visible'), 50);
+
+        audio.volume = 0.5;
+        volumeSlider.value = 50;
+        audio.muted = false;
+        audio.play().catch(e => console.log('Play error:', e));
+        isPlaying = true;
+        playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+      }, 1200); // match fade-out duration
     });
   </script>
 </body>
