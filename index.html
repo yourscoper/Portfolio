@@ -23,8 +23,8 @@
 
   <meta name="theme-color" content="#FFFFFF" />
 
+  <!-- Favicon uses your animated PFP -->
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
-  <link rel="apple-touch-icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
 
   <style>
     body {
@@ -106,10 +106,8 @@
     .avatar-wrapper { position: relative; width: 80px; height: 80px; }
     .avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.3); }
     .decoration { position: absolute; top: -10%; left: -10%; width: 120%; height: 120%; pointer-events: none; }
-    .status-dot { position: absolute; bottom: 4px; right: 4px; width: 18px; height: 18px; border-radius: 50%; border: 3px solid #000; background: #80848e; }
-    .online { background: #23a55a !important; }
-    .idle { background: #f0b232 !important; }
-    .dnd { background: #f23f43 !important; }
+    .status-dot { position: absolute; bottom: 4px; right: 4px; width: 18px; height: 18px; border-radius: 50%; border: 3px solid #000; background: #23a55a; } /* default online green */
+
     .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
     .badges { display: flex; gap: 4px; flex-wrap: wrap; }
     .badges img { width: 20px; height: 20px; }
@@ -123,6 +121,35 @@
     .track-name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .progress-bar { height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; margin-top: 6px; cursor: pointer; position: relative; }
     .progress-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: linear-gradient(90deg, #fff, #ccc); border-radius: 2px; transition: width 0.1s linear; }
+
+    /* Volume slider: bright white thumb with glow */
+    #volumeSlider {
+      -webkit-appearance: none;
+      width: 80px;
+      height: 6px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+      outline: none;
+    }
+    #volumeSlider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #ffffff;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+      margin-top: -5px;
+    }
+    #volumeSlider::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      background: #ffffff;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+    }
+
     .volume-area { display: flex; align-items: center; gap: 8px; }
     .socials { display: flex; justify-content: center; gap: 16px; margin-top: 20px; }
     .socials a { width: 44px; height: 44px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
@@ -147,13 +174,25 @@
     <div class="player-card">
       <div class="profile-top">
         <div class="avatar-wrapper">
-          <img id="avatar" class="avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="yourscoper" />
-          <img id="decoration" class="decoration" src="" alt="" style="display:none;" />
-          <div id="status-dot" class="status-dot"></div>
+          <!-- 
+            REPLACE THESE TWO URLS WHEN YOUR DISCORD AVATAR / DECORATION CHANGES
+            Just paste the new cdn.discordapp.com/... links from your profile
+          -->
+          <img id="avatar" class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
+          <img id="decoration" class="decoration" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="" />
+          <div id="status-dot" class="status-dot online"></div> <!-- green online by default; change class to idle/dnd/offline if needed -->
         </div>
         <div>
           <div class="username" id="username">yourscoper</div>
-          <div class="badges" id="badges"></div>
+          <div class="badges" id="badges">
+            <!-- Badges from your Discord HTML - update/add/remove imgs here manually -->
+            <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Subscriber/Nitro" title="Subscriber since 12/4/25" />
+            <img src="https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png" alt="HypeSquad Balance" />
+            <img src="https://cdn.discordapp.com/badge-icons/51040c70d4f20a921ad6674ff86fc95c.png" alt="Server Booster" title="Boosting since Dec 14, 2025" />
+            <img src="https://cdn.discordapp.com/badge-icons/6de6d34650760ba5551a79732e98ed60.png" alt="Legacy Username" title="Originally Tactic#2413" />
+            <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest Completed" />
+            <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs Apprentice" />
+          </div>
         </div>
       </div>
 
@@ -167,13 +206,13 @@
         <div class="btn" id="next"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></div>
 
         <div class="track-info">
-          <div class="track-name" id="trackName">Loading track...</div>
+          <div class="track-name" id="trackName">Baptized In Fear (Lyrics)</div>
           <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
         </div>
 
         <div class="volume-area">
           <img id="muteIcon" src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png" width="28" style="cursor:pointer;" />
-          <input type="range" id="volumeSlider" min="0" max="100" value="50" style="width:80px;" />
+          <input type="range" id="volumeSlider" min="0" max="100" value="50" />
         </div>
       </div>
 
@@ -190,10 +229,10 @@
   <div id="version">v1.0.3</div>
   <div id="copyright">© 2025 yourscoper. All rights reserved.</div>
 
-  <audio id="playerAudio" loop crossorigin="anonymous"></audio>
+  <audio id="playerAudio" loop></audio>
 
   <script>
-    // Mouse Trail
+    // Mouse Trail (unchanged)
     const trailCanvas = document.getElementById('trail-canvas');
     const tctx = trailCanvas.getContext('2d');
     trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -219,20 +258,14 @@
     }
     drawTrail();
 
-    // Sparkles
+    // Sparkles (unchanged)
     const sparkleCanvas = document.getElementById('sparkle-canvas');
     const sctx = sparkleCanvas.getContext('2d');
     sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
     window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
     const sparkles = [];
     function createSparkle() {
-      sparkles.push({
-        x: Math.random() * innerWidth,
-        y: Math.random() * innerHeight * 0.6,
-        r: Math.random() * 2.5 + 1,
-        a: 1,
-        t: Date.now()
-      });
+      sparkles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight * 0.6, r: Math.random() * 2.5 + 1, a: 1, t: Date.now() });
     }
     function drawSparkles() {
       sctx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
@@ -252,57 +285,8 @@
     drawSparkles();
     setInterval(createSparkle, 400);
 
-    // Discord Lanyard with fallback
-    const uid = '765706304656113664';
-    const avatarEl = document.getElementById('avatar');
-    const decorationEl = document.getElementById('decoration');
-    const statusDot = document.getElementById('status-dot');
-    const badgesEl = document.getElementById('badges');
-    const usernameEl = document.getElementById('username');
-
-    async function fetchDiscord() {
-      try {
-        const res = await fetch(`https://api.lanyard.rest/v1/users/${uid}`);
-        const json = await res.json();
-        if (!json.success) {
-          console.warn('Lanyard: User not monitored or error -', json);
-          return;
-        }
-
-        const user = json.data.discord_user;
-        if (user.avatar) {
-          const ext = user.avatar.startsWith('a_') ? '.gif' : '.png';
-          avatarEl.src = `https://cdn.discordapp.com/avatars/${uid}/${user.avatar}${ext}?size=256`;
-        }
-
-        if (user.avatar_decoration_data?.asset) {
-          decorationEl.src = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=240`;
-          decorationEl.style.display = 'block';
-        }
-
-        usernameEl.textContent = user.global_name || user.username || 'yourscoper';
-
-        const status = json.data.discord_status || 'offline';
-        statusDot.className = 'status-dot ' + status;
-
-        badgesEl.innerHTML = '';
-        if (user.avatar?.startsWith('a_')) {
-          const nitro = document.createElement('img');
-          nitro.src = 'https://cdn.discordapp.com/badge-icons/2ba85e8026a8614b640c2837bcdfe21b.png';
-          nitro.width = 20; nitro.height = 20;
-          badgesEl.appendChild(nitro);
-        }
-      } catch (e) {
-        console.error('Lanyard fetch failed:', e);
-      }
-    }
-    fetchDiscord();
-    setInterval(fetchDiscord, 60000); // Refresh every 60s
-
-    // Music Player with test track (CORS-safe)
+    // Music Player - using your GitHub raw link
     const audio = document.getElementById('playerAudio');
-    audio.crossOrigin = "anonymous"; // Helps if host allows
-
     const playPause = document.getElementById('playPause');
     const prev = document.getElementById('prev');
     const next = document.getElementById('next');
@@ -313,28 +297,26 @@
     const muteIcon = document.getElementById('muteIcon');
 
     const tracks = [
-      { name: 'Test Track (CORS-safe sample)', src: 'https://filesamples.com/samples/audio/mp3/sample3.mp3' },
-      // Replace with your own once hosted properly, e.g.:
-      // { name: 'Baptized In Fear', src: 'https://your-cors-enabled-host.com/Baptized%20In%20Fear%20(Lyrics).mp3' },
+      { name: 'Baptized In Fear (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3' },
+      // Add more tracks here if you want playlist
     ];
     let currentTrack = 0;
     let isPlaying = false;
 
     function loadTrack(idx) {
-      trackName.textContent = 'Loading...';
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
       audio.load();
-      if (isPlaying) audio.play().catch(e => console.warn('Play failed:', e));
+      if (isPlaying) audio.play().catch(e => console.log('Play error:', e));
     }
-    loadTrack(0);
+    loadTrack(currentTrack);
 
     playPause.onclick = () => {
       if (isPlaying) {
         audio.pause();
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
       } else {
-        audio.play().catch(e => console.warn('Play failed:', e));
+        audio.play().catch(e => console.log('Play error:', e));
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       }
       isPlaying = !isPlaying;
@@ -350,7 +332,9 @@
     };
 
     audio.ontimeupdate = () => {
-      if (audio.duration) progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      if (audio.duration) {
+        progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      }
     };
 
     progressBar.onclick = e => {
@@ -361,27 +345,21 @@
 
     volumeSlider.oninput = () => {
       audio.volume = volumeSlider.value / 100;
-      muteIcon.src = (audio.volume === 0 || audio.muted) 
-        ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' 
-        : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
     };
 
     muteIcon.onclick = () => {
       audio.muted = !audio.muted;
-      muteIcon.src = audio.muted 
-        ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' 
-        : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+      muteIcon.src = audio.muted ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
     };
 
     audio.onended = () => next.click();
 
-    // Waveform
+    // Waveform visualizer (may be silent/flat if CORS blocks analysis, but playback might still work)
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     let audioCtx, analyser, source;
 
     function initVis() {
-      if (audioCtx) return;
       try {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         analyser = audioCtx.createAnalyser();
@@ -391,17 +369,17 @@
         analyser.connect(audioCtx.destination);
         draw();
       } catch (e) {
-        console.warn('Web Audio init failed (likely CORS):', e);
+        console.log('Waveform init skipped (CORS likely):', e);
       }
     }
 
     function draw() {
       requestAnimationFrame(draw);
-      const buffer = analyser ? analyser.frequencyBinCount : 0;
-      if (!buffer) {
+      if (!analyser) {
         ctx.clearRect(0,0,canvas.width,canvas.height);
         return;
       }
+      const buffer = analyser.frequencyBinCount;
       const data = new Uint8Array(buffer);
       analyser.getByteFrequencyData(data);
 
@@ -420,12 +398,12 @@
       }
     }
 
-    // Enter
+    // Enter site
     document.getElementById('blur-overlay').addEventListener('click', () => {
       document.getElementById('blur-overlay').classList.add('hidden');
       document.getElementById('main-content').classList.add('visible');
       audio.muted = false;
-      audio.play().catch(e => console.warn('Auto-play blocked:', e));
+      audio.play().catch(e => console.log('Auto-play blocked:', e));
       isPlaying = true;
       playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       initVis();
