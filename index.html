@@ -23,7 +23,6 @@
 
   <meta name="theme-color" content="#FFFFFF" />
 
-  <!-- Favicon uses your animated PFP -->
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
 
   <style>
@@ -66,13 +65,13 @@
     #trail-canvas { z-index: 4; }
     #sparkle-canvas { z-index: 2; }
 
-    #version { position: fixed; bottom: 20px; left: 20px; color: #fff; font-family: 'Gothic Bold', Arial; font-size: 1em; text-shadow: 0 0 6px #fff; z-index: 10; }
+    #version { position: fixed; bottom: 20px; left: 20px; color: #fff; font-size: 1em; text-shadow: 0 0 6px #fff; z-index: 10; }
     #copyright { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.9em; text-shadow: 0 0 5px #fff; z-index: 10; }
 
     #main-content {
       display: none;
       opacity: 0;
-      transition: opacity 1s ease;
+      transition: opacity 1.2s ease;
       z-index: 5;
       width: 90%;
       max-width: 420px;
@@ -103,10 +102,38 @@
     }
 
     .profile-top { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-    .avatar-wrapper { position: relative; width: 80px; height: 80px; }
-    .avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.3); }
-    .decoration { position: absolute; top: -10%; left: -10%; width: 120%; height: 120%; pointer-events: none; }
-    .status-dot { position: absolute; bottom: 4px; right: 4px; width: 18px; height: 18px; border-radius: 50%; border: 3px solid #000; background: #23a55a; } /* default online green */
+    .avatar-wrapper {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .decoration {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .status-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 3px solid #000;
+      background: #23a55a; /* online green by default */
+    }
 
     .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
     .badges { display: flex; gap: 4px; flex-wrap: wrap; }
@@ -122,7 +149,7 @@
     .progress-bar { height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; margin-top: 6px; cursor: pointer; position: relative; }
     .progress-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: linear-gradient(90deg, #fff, #ccc); border-radius: 2px; transition: width 0.1s linear; }
 
-    /* Volume slider: bright white thumb with glow */
+    /* Bright white volume slider thumb with glow */
     #volumeSlider {
       -webkit-appearance: none;
       width: 80px;
@@ -133,24 +160,26 @@
     }
     #volumeSlider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       background: #ffffff;
       border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
-      margin-top: -5px;
+      box-shadow: 0 0 12px #ffffff, 0 0 24px #ffffff;
+      margin-top: -6px;
     }
     #volumeSlider::-moz-range-thumb {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       background: #ffffff;
       border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+      box-shadow: 0 0 12px #ffffff, 0 0 24px #ffffff;
     }
 
     .volume-area { display: flex; align-items: center; gap: 8px; }
+    .mute-icon { filter: brightness(0) invert(1) drop-shadow(0 0 8px #ffffff); width: 28px; cursor: pointer; }
+
     .socials { display: flex; justify-content: center; gap: 16px; margin-top: 20px; }
     .socials a { width: 44px; height: 44px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
     .socials a:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(255,255,255,0.15); }
@@ -159,7 +188,6 @@
     @media (max-width: 500px) {
       .player-card { padding: 16px; }
       .avatar-wrapper { width: 64px; height: 64px; }
-      .avatar, .decoration { width: 64px; height: 64px; }
       .username { font-size: 24px; }
     }
   </style>
@@ -176,22 +204,22 @@
         <div class="avatar-wrapper">
           <!-- 
             REPLACE THESE TWO URLS WHEN YOUR DISCORD AVATAR / DECORATION CHANGES
-            Just paste the new cdn.discordapp.com/... links from your profile
+            Right-click your PFP in Discord → Copy Image Address → paste here
           -->
           <img id="avatar" class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
-          <img id="decoration" class="decoration" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="" />
-          <div id="status-dot" class="status-dot online"></div> <!-- green online by default; change class to idle/dnd/offline if needed -->
+          <img id="decoration" class="decoration" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="decoration" />
+          <div id="status-dot" class="status-dot"></div>
         </div>
         <div>
-          <div class="username" id="username">yourscoper</div>
-          <div class="badges" id="badges">
-            <!-- Badges from your Discord HTML - update/add/remove imgs here manually -->
-            <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Subscriber/Nitro" title="Subscriber since 12/4/25" />
+          <div class="username">yourscoper</div>
+          <div class="badges">
+            <!-- Badges from your Discord profile - update manually when needed -->
+            <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Nitro" title="Subscriber" />
             <img src="https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png" alt="HypeSquad Balance" />
-            <img src="https://cdn.discordapp.com/badge-icons/51040c70d4f20a921ad6674ff86fc95c.png" alt="Server Booster" title="Boosting since Dec 14, 2025" />
-            <img src="https://cdn.discordapp.com/badge-icons/6de6d34650760ba5551a79732e98ed60.png" alt="Legacy Username" title="Originally Tactic#2413" />
-            <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest Completed" />
-            <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs Apprentice" />
+            <img src="https://cdn.discordapp.com/badge-icons/51040c70d4f20a921ad6674ff86fc95c.png" alt="Server Booster" />
+            <img src="https://cdn.discordapp.com/badge-icons/6de6d34650760ba5551a79732e98ed60.png" alt="Legacy Username" />
+            <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest" />
+            <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs" />
           </div>
         </div>
       </div>
@@ -211,7 +239,7 @@
         </div>
 
         <div class="volume-area">
-          <img id="muteIcon" src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png" width="28" style="cursor:pointer;" />
+          <img id="muteIcon" class="mute-icon" src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png" width="28" />
           <input type="range" id="volumeSlider" min="0" max="100" value="50" />
         </div>
       </div>
@@ -232,7 +260,7 @@
   <audio id="playerAudio" loop></audio>
 
   <script>
-    // Mouse Trail (unchanged)
+    // Mouse Trail
     const trailCanvas = document.getElementById('trail-canvas');
     const tctx = trailCanvas.getContext('2d');
     trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -258,7 +286,7 @@
     }
     drawTrail();
 
-    // Sparkles (unchanged)
+    // Sparkles
     const sparkleCanvas = document.getElementById('sparkle-canvas');
     const sctx = sparkleCanvas.getContext('2d');
     sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
@@ -285,8 +313,10 @@
     drawSparkles();
     setInterval(createSparkle, 400);
 
-    // Music Player - using your GitHub raw link
+    // Music Player
     const audio = document.getElementById('playerAudio');
+    audio.volume = 0.5; // Always start at 50%
+
     const playPause = document.getElementById('playPause');
     const prev = document.getElementById('prev');
     const next = document.getElementById('next');
@@ -298,7 +328,6 @@
 
     const tracks = [
       { name: 'Baptized In Fear (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3' },
-      // Add more tracks here if you want playlist
     ];
     let currentTrack = 0;
     let isPlaying = false;
@@ -307,7 +336,6 @@
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
       audio.load();
-      if (isPlaying) audio.play().catch(e => console.log('Play error:', e));
     }
     loadTrack(currentTrack);
 
@@ -316,7 +344,7 @@
         audio.pause();
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
       } else {
-        audio.play().catch(e => console.log('Play error:', e));
+        audio.play().catch(() => {});
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       }
       isPlaying = !isPlaying;
@@ -349,12 +377,14 @@
 
     muteIcon.onclick = () => {
       audio.muted = !audio.muted;
-      muteIcon.src = audio.muted ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+      muteIcon.src = audio.muted 
+        ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' 
+        : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
     };
 
     audio.onended = () => next.click();
 
-    // Waveform visualizer (may be silent/flat if CORS blocks analysis, but playback might still work)
+    // Waveform (fallback if CORS blocks)
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     let audioCtx, analyser, source;
@@ -369,7 +399,7 @@
         analyser.connect(audioCtx.destination);
         draw();
       } catch (e) {
-        console.log('Waveform init skipped (CORS likely):', e);
+        console.log('Waveform skipped (CORS?):', e);
       }
     }
 
@@ -398,12 +428,14 @@
       }
     }
 
-    // Enter site
+    // Enter → reveal + autoplay + unmute + 50% volume
     document.getElementById('blur-overlay').addEventListener('click', () => {
       document.getElementById('blur-overlay').classList.add('hidden');
       document.getElementById('main-content').classList.add('visible');
+      audio.volume = 0.5;           // Force 50%
+      volumeSlider.value = 50;
       audio.muted = false;
-      audio.play().catch(e => console.log('Auto-play blocked:', e));
+      audio.play().catch(() => {});
       isPlaying = true;
       playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       initVis();
