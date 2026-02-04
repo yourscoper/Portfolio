@@ -8,7 +8,7 @@
   <title>yourscoper</title>
   <meta name="description" content="I indulge scripting." />
 
-  <!-- Open Graph / etc. (kept yours) -->
+  <!-- Open Graph / Discord / Telegram / iMessage / WhatsApp -->
   <meta property="og:title" content="yourscoper" />
   <meta property="og:description" content="I indulge scripting." />
   <meta property="og:type" content="website" />
@@ -18,6 +18,7 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="yourscoper" />
 
+  <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="yourscoper" />
   <meta name="twitter:description" content="I indulge scripting." />
@@ -29,7 +30,6 @@
   <link rel="apple-touch-icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
 
   <style>
-    /* Your original styles kept intact */
     body {
       margin: 0; padding: 0;
       background: #000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
@@ -65,14 +65,16 @@
     }
     #blur-overlay.hidden { opacity: 0; pointer-events: none; }
 
-    #trail-canvas, #sparkle-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+    #trail-canvas, #sparkle-canvas { 
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; 
+    }
     #trail-canvas { z-index: 4; }
     #sparkle-canvas { z-index: 2; }
 
     #version { position: fixed; bottom: 20px; left: 20px; color: #fff; font-family: 'Gothic Bold', Arial; font-size: 1em; text-shadow: 0 0 6px #fff; z-index: 10; }
     #copyright { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.9em; text-shadow: 0 0 5px #fff; z-index: 10; }
 
-    /* New player card styles (replaces old .container) */
+    /* Player card */
     #main-content {
       display: none;
       opacity: 0;
@@ -102,10 +104,10 @@
     }
 
     @keyframes spinGradient {
-      0% { border-image-source: linear-gradient(90deg, #fff, #aaa, #000, #aaa, #fff); }
-      25% { border-image-source: linear-gradient(180deg, #fff, #aaa, #000, #aaa, #fff); }
-      50% { border-image-source: linear-gradient(270deg, #fff, #aaa, #000, #aaa, #fff); }
-      75% { border-image-source: linear-gradient(0deg, #fff, #aaa, #000, #aaa, #fff); }
+      0%   { border-image-source: linear-gradient(90deg, #fff, #aaa, #000, #aaa, #fff); }
+      25%  { border-image-source: linear-gradient(180deg, #fff, #aaa, #000, #aaa, #fff); }
+      50%  { border-image-source: linear-gradient(270deg, #fff, #aaa, #000, #aaa, #fff); }
+      75%  { border-image-source: linear-gradient(0deg, #fff, #aaa, #000, #aaa, #fff); }
       100% { border-image-source: linear-gradient(90deg, #fff, #aaa, #000, #aaa, #fff); }
     }
 
@@ -147,7 +149,7 @@
       height: 18px;
       border-radius: 50%;
       border: 3px solid #000;
-      background: #80848e; /* default offline */
+      background: #80848e;
     }
     .online { background: #23a55a; }
     .idle { background: #f0b232; }
@@ -190,6 +192,7 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 12px;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -215,6 +218,7 @@
 
     .track-info {
       flex: 1;
+      min-width: 140px;
     }
     .track-name {
       font-size: 14px;
@@ -278,6 +282,7 @@
       .avatar-wrapper { width: 64px; height: 64px; }
       .avatar, .decoration { width: 64px; height: 64px; }
       .username { font-size: 24px; }
+      .controls { justify-content: center; }
     }
   </style>
 </head>
@@ -306,9 +311,15 @@
       <canvas id="waveform"></canvas>
 
       <div class="controls">
-        <div class="btn" id="prev"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></div>
-        <div class="btn play-pause" id="playPause"><svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="btn" id="next"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></div>
+        <div class="btn" id="prev">
+          <svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+        </div>
+        <div class="btn play-pause" id="playPause">
+          <svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="btn" id="next">
+          <svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+        </div>
 
         <div class="track-info">
           <div class="track-name" id="trackName">No track</div>
@@ -339,38 +350,21 @@
   <audio id="playerAudio" loop></audio>
 
   <script>
-    // Your original scripts kept (typewriter, trail, sparkles, audio controls adapted)
-    const title = document.getElementById('title');
-    const titleTag = document.querySelector('title');
-    const fullText = 'yourscoper';
-    let i = 0, deleting = false, pause = false;
-
-    function typeWriter() {
-      if (pause) return setTimeout(() => { pause = false; deleting = true; typeWriter(); }, 1600);
-      if (!deleting) {
-        title.textContent = titleTag.textContent = fullText.slice(0, i + 1);
-        if (++i === fullText.length) pause = true;
-        setTimeout(typeWriter, 300);
-      } else {
-        title.textContent = titleTag.textContent = fullText.slice(0, i - 1);
-        if (--i === 0) deleting = false;
-        setTimeout(typeWriter, 180);
-      }
-    }
-    typeWriter();
-
-    // Mouse Trail (kept)
+    // Mouse Trail
     const trailCanvas = document.getElementById('trail-canvas');
     const tctx = trailCanvas.getContext('2d');
     trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
-    window.addEventListener('resize', () => { trailCanvas.width = innerWidth; trailCanvas.height = innerHeight; });
+    window.addEventListener('resize', () => { 
+      trailCanvas.width = innerWidth; 
+      trailCanvas.height = innerHeight; 
+    });
     const points = [];
     document.addEventListener('mousemove', e => points.push({x: e.clientX, y: e.clientY, t: Date.now()}));
     function drawTrail() {
       tctx.clearRect(0,0,trailCanvas.width,trailCanvas.height);
       const now = Date.now();
-      for (let j = 0; j < points.length; j++) {
-        if (now - points[j].t > 1000) { points.splice(j--, 1); continue; }
+      for (let j = points.length - 1; j >= 0; j--) {
+        if (now - points[j].t > 1000) { points.splice(j, 1); continue; }
         const age = (now - points[j].t) / 1000;
         if (j > 0) {
           tctx.beginPath();
@@ -385,16 +379,19 @@
     }
     drawTrail();
 
-    // Sparkles (kept, but now no title element - optional remove or keep for fun)
+    // Sparkles
     const sparkleCanvas = document.getElementById('sparkle-canvas');
     const sctx = sparkleCanvas.getContext('2d');
     sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
-    window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
+    window.addEventListener('resize', () => { 
+      sparkleCanvas.width = innerWidth; 
+      sparkleCanvas.height = innerHeight; 
+    });
     const sparkles = [];
     function createSparkle() {
       sparkles.push({
         x: Math.random() * innerWidth,
-        y: Math.random() * innerHeight,
+        y: Math.random() * innerHeight * 0.6,
         r: Math.random() * 2.5 + 1,
         a: 1,
         t: Date.now()
@@ -418,7 +415,7 @@
     drawSparkles();
     setInterval(createSparkle, 400);
 
-    // New: Discord Lanyard integration
+    // Discord Lanyard
     const uid = '765706304656113664';
     const avatarEl = document.getElementById('avatar');
     const decorationEl = document.getElementById('decoration');
@@ -430,7 +427,7 @@
       try {
         const res = await fetch(`https://api.lanyard.rest/v1/users/${uid}`);
         const { success, data } = await res.json();
-        if (!success) return;
+        if (!success || !data) return;
 
         const user = data.discord_user;
         if (user.avatar) {
@@ -445,7 +442,6 @@
 
         usernameEl.textContent = user.global_name || user.username;
 
-        // Status
         const status = data.discord_status;
         statusDot.className = 'status-dot';
         if (status === 'online') statusDot.classList.add('online');
@@ -453,30 +449,25 @@
         else if (status === 'dnd') statusDot.classList.add('dnd');
         else statusDot.classList.add('offline');
 
-        // Badges (simple - extend as needed)
         badgesEl.innerHTML = '';
-        if (user.public_flags) {
-          // You can add logic for specific badges using data.public_flags bits (like Absent's code)
-          // For now, add Nitro if animated avatar
-          if (user.avatar?.startsWith('a_')) {
-            const nitro = document.createElement('img');
-            nitro.src = 'https://cdn.discordapp.com/badge-icons/2ba85e8026a8614b640c2837bcdfe21b.png';
-            nitro.width = 20; nitro.height = 20;
-            badgesEl.appendChild(nitro);
-          }
+        if (user.avatar?.startsWith('a_')) {
+          const nitro = document.createElement('img');
+          nitro.src = 'https://cdn.discordapp.com/badge-icons/2ba85e8026a8614b640c2837bcdfe21b.png';
+          nitro.width = 20; nitro.height = 20;
+          badgesEl.appendChild(nitro);
         }
       } catch (e) {
-        console.error('Lanyard error', e);
+        console.error('Lanyard fetch error:', e);
       }
     }
     fetchDiscord();
-    setInterval(fetchDiscord, 30000); // Refresh every 30s
+    setInterval(fetchDiscord, 30000);
 
-    // New: Music player (like Absent's - add your tracks)
+    // Music Player
     const audio = document.getElementById('playerAudio');
     const playPause = document.getElementById('playPause');
-    const prev = document.getElementById('prev');
-    const next = document.getElementById('next');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
     const trackName = document.getElementById('trackName');
     const progressBar = document.getElementById('progressBar');
     const progressFill = document.getElementById('progressFill');
@@ -485,7 +476,7 @@
 
     const tracks = [
       { name: 'Baptized In Fear (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3' },
-      // Add more: { name: 'Track 2', src: 'url.mp3' },
+      // Add more tracks here if desired
     ];
     let currentTrack = 0;
     let isPlaying = false;
@@ -494,26 +485,27 @@
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
       audio.load();
-      if (isPlaying) audio.play();
+      if (isPlaying) audio.play().catch(() => {});
     }
-    loadTrack(0);
+    loadTrack(currentTrack);
 
     playPause.onclick = () => {
       if (isPlaying) {
         audio.pause();
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
       } else {
-        audio.play();
+        audio.play().catch(() => {});
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       }
       isPlaying = !isPlaying;
     };
 
-    prev.onclick = () => {
+    prevBtn.onclick = () => {
       currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
       loadTrack(currentTrack);
     };
-    next.onclick = () => {
+
+    nextBtn.onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
     };
@@ -532,26 +524,27 @@
 
     volumeSlider.oninput = () => {
       audio.volume = volumeSlider.value / 100;
-      if (audio.volume === 0) {
-        muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png';
-      } else {
-        muteIcon.src = 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
-      }
+      muteIcon.src = audio.volume === 0 
+        ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' 
+        : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
     };
 
     muteIcon.onclick = () => {
       audio.muted = !audio.muted;
-      muteIcon.src = audio.muted ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
+      muteIcon.src = audio.muted 
+        ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' 
+        : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
     };
 
-    audio.onended = () => next.click();
+    audio.onended = () => nextBtn.click();
 
-    // Waveform visualizer (simple bars like Absent)
+    // Waveform Visualizer
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     let audioCtx, analyser, source;
 
     function initVis() {
+      if (audioCtx) return;
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       analyser = audioCtx.createAnalyser();
       analyser.fftSize = 128;
@@ -582,18 +575,16 @@
       }
     }
 
-    // On enter: reveal content, start audio (muted first if you want), init vis
+    // Enter site
     document.getElementById('blur-overlay').addEventListener('click', () => {
       document.getElementById('blur-overlay').classList.add('hidden');
       document.getElementById('main-content').classList.add('visible');
-      audio.muted = false; // or keep muted and let volume control handle
+      audio.muted = false;
       audio.play().catch(() => {});
       isPlaying = true;
       playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       initVis();
     });
-
-    // Your original volume/mute logic adapted if needed
   </script>
 </body>
 </html>
