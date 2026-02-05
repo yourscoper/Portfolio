@@ -1,12 +1,8 @@
 // api/obfuscate.js
 export default function handler(req, res) {
-  // Set content type to HTML so the browser renders it as a webpage
   res.setHeader("Content-Type", "text/html; charset=utf-8");
-
-  // Optional: Add cache headers so Vercel/CDN can cache the static page
   res.setHeader("Cache-Control", "public, max-age=3600, s-maxage=86400");
 
-  // The full HTML page (obfuscator) is served as string
   res.status(200).send(`
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +76,7 @@ export default function handler(req, res) {
   <div class="container">
     <div>
       <h3>Input Lua Code</h3>
-      <textarea id="input" placeholder="local msg = 'hello'\nprint(msg + ' world')"></textarea>
+      <textarea id="input" placeholder="local msg = 'hello'\\nprint(msg .. ' world')"></textarea>
     </div>
 
     <div>
@@ -96,17 +92,22 @@ export default function handler(req, res) {
   </div>
 
   <script>
+    // ────────────────────────────────────────────────
+    // Lua/LuaU style syntax highlighting not possible in plain <pre>, 
+    // but output now uses more Lua-like formatting & conventions
+    // ────────────────────────────────────────────────
+
     function randomName() {
       const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_$";
       let name = "_0x";
-      for (let i = 0; i < 8 + Math.floor(Math.random()*8); i++) {
+      for (let i = 0; i < 8 + Math.floor(Math.random() * 8); i++) {
         name += chars[Math.floor(Math.random() * chars.length)];
       }
       return name;
     }
 
     function xorEncrypt(str) {
-      const key = Math.floor(Math.random()*180) + 70;
+      const key = Math.floor(Math.random() * 180) + 70;
       let result = "";
       for (let i = 0; i < str.length; i++) {
         result += String.fromCharCode(str.charCodeAt(i) ^ (key + i % 23));
@@ -116,12 +117,12 @@ export default function handler(req, res) {
 
     function fakeDeadCode() {
       const junk = [
-        \`if math.random() > 2 then end\`,
-        \`local _ = \${Math.random()*999|0} * \${Math.random()*999|0}\`,
-        \`for _=1,0 do end\`,
-        \`-- dead code \${randomName()}\`
+        "if math.random() > 2 then end\\n",
+        "local _ = " + (Math.random()*999|0) + " * " + (Math.random()*999|0) + "\\n",
+        "for _ = 1, 0 do end\\n",
+        "-- dead code " + randomName() + "\\n"
       ];
-      return junk[Math.floor(Math.random()*junk.length)] + "\\n";
+      return junk[Math.floor(Math.random() * junk.length)];
     }
 
     function obfuscate() {
@@ -131,63 +132,65 @@ export default function handler(req, res) {
         return;
       }
 
-      // Remove comments (basic)
-      code = code.replace(/--[^\n]*|\/\*[\s\S]*?\*\//g, '');
+      // Remove single-line comments and basic block comments
+      code = code.replace(/--[^\n]*|\\/\\*[\\s\\S]*?\\*\\//g, '');
 
-      // Variable & function renaming
+      // Variable & function renaming (naive but effective for most scripts)
       const varMap = new Map();
       const varRegex = /(?:local\\s+)?([a-zA-Z_][a-zA-Z0-9_]*)(?=\\s*[=,)\\]])|\\bfunction\\s+([a-zA-Z_][a-zA-Z0-9_]*)/g;
       let match;
       while ((match = varRegex.exec(code)) !== null) {
         const name = match[1] || match[2];
-        if (name && !["function","local","if","for","while","return","end","then","else","true","false","nil"].includes(name)) {
+        if (name && !["function","local","if","for","while","return","end","then","else","true","false","nil","and","or","not"].includes(name)) {
           if (!varMap.has(name)) varMap.set(name, randomName());
         }
       }
 
-      // Replace names
-      for (const [old, neu] of varMap) {
-        code = code.replace(new RegExp(\`\\\\b\${old}\\\\b\`, "g"), neu);
+      for (const [oldName, newName] of varMap) {
+        code = code.replace(new RegExp("\\\\b" + oldName + "\\\\b", "g"), newName);
       }
 
-      // String encryption (XOR + base64 + decoder function)
-      code = code.replace(/(["'])(?:(?=(\\\\?))\\2.)*?\\1/g, (match) => {
-        const content = match.slice(1, -1);
+      // String encryption with Lua decoder
+      code = code.replace(/"([^"\\\\]*(?:\\\\.[^"\\\\]*)*)"|'([^'\\\\]*(?:\\\\.[^'\\\\]*)*)'/g, (match, double, single) => {
+        const content = double !== undefined ? double : single;
         if (content.length < 4) return match;
         const { enc, key } = xorEncrypt(content);
-        return \`(function(x,k) local r="" for i=1,#x do r=r..string.char(x:byte(i) ~ (k + (i-1)%23)) end return r end)("\${enc}",\${key})\`;
+        return \`--(encrypted string)\\n(function(x,k)local r=""for i=1,#x do r=r..string.char(x:byte(i)~ (k + (i-1)%23))end return r end)("\${enc}",\${key})\`;
       });
 
-      // Numbers to hex (for larger ones)
+      // Convert larger numbers to hex (Lua style)
       code = code.replace(/\\b\\d+\\b/g, n => {
         const num = parseInt(n);
         return num > 20 ? "0x" + num.toString(16).toUpperCase() : n;
       });
 
-      // Minify whitespace a bit
+      // Light minification + add junk
       code = code.replace(/\\s+/g, " ").trim();
 
-      // Add random dead code
       let obf = "do\\n";
       const lines = code.split("\\n");
       for (let line of lines) {
         if (Math.random() > 0.65) obf += fakeDeadCode();
-        obf += line + "\\n";
+        obf += line.trim() + "\\n";
         if (Math.random() > 0.75) obf += fakeDeadCode();
       }
-      obf += "end\\n";
+      obf += "end";
 
       document.getElementById("output").textContent = obf;
     }
 
     function copyOutput() {
       const text = document.getElementById("output").textContent;
-      navigator.clipboard.writeText(text).then(() => alert("Copied to clipboard!"));
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copied to clipboard!");
+      }).catch(() => {
+        alert("Copy failed – try manually selecting the text.");
+      });
     }
 
     function clearAll() {
       document.getElementById("input").value = "";
-      document.getElementById("output").textContent = "";
+      document.getElementById("output").textContent = "-- Cleared";
     }
   </script>
 </body>
