@@ -54,7 +54,7 @@
     #main-content {
       display: none;
       opacity: 0;
-      transition: opacity 1.2s ease 0.3s; /* slight delay after overlay fade-out */
+      transition: opacity 1.2s ease 0.3s;
       z-index: 5;
       width: 90%;
       max-width: 420px;
@@ -64,10 +64,10 @@
     .player-card {
       background: rgba(255,255,255,0.03);
       backdrop-filter: blur(25px) saturate(180%);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.25); /* thicker outline */
       border-radius: 20px;
       padding: 24px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 60px rgba(255,255,255,0.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 80px rgba(255,255,255,0.12);
       animation: spinGradient 6s linear infinite;
       border-image: linear-gradient(90deg, #fff, #333, #000, #333, #fff) 1;
       border-image-slice: 1;
@@ -98,18 +98,19 @@
       position: absolute;
       inset: 0;
     }
-    .decoration { z-index: 1; } /* under status dot */
+    .avatar { z-index: 1; }
+    .decoration { z-index: 2; }
     .status-dot {
       position: absolute;
-      bottom: 4px;
-      right: 4px;
-      width: 18px;
-      height: 18px;
+      top: -4px;
+      right: -4px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       border: 3px solid #000;
-      background: #ffc04e; /* your idle color from HTML snippet */
-      box-shadow: 0 0 8px #ffc04e;
-      z-index: 2; /* on top of avatar + decoration */
+      background: #ffc04e; /* your idle color */
+      box-shadow: 0 0 10px #ffc04e;
+      z-index: 10; /* on top of everything */
     }
 
     .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
@@ -119,18 +120,18 @@
     .quote-container {
       background: rgba(0,0,0,0.6);
       border-radius: 12px;
-      padding: 12px;
+      padding: 14px;
       margin: 16px 0;
       text-align: center;
-      min-height: 60px;
+      min-height: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .quote {
-      font-size: 14px;
+      font-size: 18px; /* bigger text */
       font-style: italic;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255,255,255,0.95);
       min-height: 1.4em;
     }
 
@@ -183,6 +184,7 @@
       .player-card { padding: 16px; }
       .avatar-wrapper { width: 64px; height: 64px; }
       .username { font-size: 24px; }
+      .quote { font-size: 16px; }
     }
   </style>
 </head>
@@ -196,7 +198,7 @@
     <div class="player-card">
       <div class="profile-top">
         <div class="avatar-wrapper">
-          <!-- AVATAR & DECORATION – update these URLs when your Discord profile changes -->
+          <!-- AVATAR & DECORATION – update when changed -->
           <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
           <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
           <div class="status-dot"></div>
@@ -252,7 +254,7 @@
   <audio id="playerAudio" loop></audio>
 
   <script>
-    // Typewriter for quote (repeating)
+    // Typewriter (repeating)
     const quoteEl = document.getElementById('quote');
     const text = "I indulge scripting.";
     let charIndex = 0;
@@ -286,17 +288,22 @@
     const muteIcon = document.getElementById('muteIcon');
 
     const tracks = [
-      { name: 'Baptized In Fear (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/Baptized%20In%20Fear%20(Lyrics).mp3' },
+      { name: 'Baptized In Fear (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/Baptized%20In%20Fear%20(Lyrics).mp3' },
+      { name: 'High For This (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/High%20For%20This%20(Lyrics).mp3' },
+      { name: 'São Paulo (feat. Anitta) (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/S%C3%A3o%20Paulo%20(feat.%20Anitta)%20(Lyrics).mp3' },
+      { name: 'The Morning (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/The%20Morning%20(Lyrics).mp3' },
+      // add more songs here if needed
     ];
     let currentTrack = 0;
     let isPlaying = false;
 
-    function loadTrack() {
-      audio.src = tracks[currentTrack].src;
-      trackName.textContent = tracks[currentTrack].name;
+    function loadTrack(idx) {
+      audio.src = tracks[idx].src;
+      trackName.textContent = tracks[idx].name;
       audio.load();
+      if (isPlaying) audio.play().catch(() => {});
     }
-    loadTrack();
+    loadTrack(currentTrack);
 
     playPause.onclick = () => {
       if (isPlaying) {
@@ -309,13 +316,32 @@
       isPlaying = !isPlaying;
     };
 
+    prev.onclick = () => {
+      if (audio.currentTime <= 3) {
+        // go to previous song if at beginning
+        currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+      } else {
+        // restart current song
+        audio.currentTime = 0;
+      }
+      loadTrack(currentTrack);
+    };
+
+    next.onclick = () => {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      loadTrack(currentTrack);
+    };
+
     audio.ontimeupdate = () => {
-      if (audio.duration) progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      if (audio.duration) {
+        progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      }
     };
 
     progressBar.onclick = e => {
       const rect = progressBar.getBoundingClientRect();
-      audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+      const pos = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = pos * audio.duration;
     };
 
     volumeSlider.oninput = () => audio.volume = volumeSlider.value / 100;
@@ -325,7 +351,12 @@
       muteIcon.src = audio.muted ? 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volumemute.png' : 'https://raw.githubusercontent.com/yourscoper/Portfolio/main/volume.png';
     };
 
-    // Fade transitions + autoplay on enter
+    audio.onended = () => {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      loadTrack(currentTrack);
+    };
+
+    // Fade transition + autoplay
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
@@ -334,15 +365,16 @@
       setTimeout(() => {
         overlay.classList.add('hidden');
         content.style.display = 'block';
-        setTimeout(() => content.classList.add('visible'), 50);
-
-        audio.volume = 0.5;
-        volumeSlider.value = 50;
-        audio.muted = false;
-        audio.play().catch(e => console.log('Play error:', e));
-        isPlaying = true;
-        playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
-      }, 1200); // match fade-out duration
+        setTimeout(() => {
+          content.classList.add('visible');
+          audio.volume = 0.5;
+          volumeSlider.value = 50;
+          audio.muted = false;
+          audio.play().catch(e => console.log('Play failed:', e));
+          isPlaying = true;
+          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+        }, 100);
+      }, 1200); // overlay fade duration
     });
   </script>
 </body>
