@@ -39,8 +39,8 @@
     }
     #blur-overlay.hidden { opacity:0;pointer-events:none; }
     #blur-overlay span {
-      font-size:0.6em;
-      margin-top:10px;
+      font-size:0.5em;
+      margin-top:-12px;
       opacity:0.8;
       color:#a3a3a3;
     }
@@ -369,7 +369,7 @@
       </div>
     </div>
   </div>
-  <div id="version">v1.0.6</div>
+  <div id="version">v1.0.5</div>
   <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
   <audio id="playerAudio" preload="auto" crossorigin="anonymous"></audio>
 
@@ -543,11 +543,10 @@
       clearInterval(fadeInterval);
       let step = 0;
       const targetVol = audio.muted ? 0 : (volumeSlider.value / 100);
-      const startVol = audio.volume;
-      const stepSize = (targetVol - startVol) / FADE_STEPS;
+      const stepSize = targetVol / FADE_STEPS;
       fadeInterval = setInterval(() => {
         step++;
-        audio.volume = Math.max(0, Math.min(1, startVol + step * stepSize));
+        audio.volume = Math.min(targetVol, step * stepSize);
         if (step >= FADE_STEPS) {
           clearInterval(fadeInterval);
           audio.volume = targetVol;
@@ -575,7 +574,7 @@
       trackName.textContent = tracks[idx].name;
       trackArtist.textContent = tracks[idx].artist;
       audio.load();
-      audio.volume = volumeSlider.value / 100; // Keep current slider volume
+      audio.volume = volumeSlider.value / 100;
     }
     loadTrack(currentTrack);
     playPause.onclick = () => {
@@ -599,21 +598,25 @@
       } else {
         audio.currentTime = 0;
       }
-      loadTrack(currentTrack);
-      if (isPlaying) {
-        fadeOut(() => {
+      fadeOut(() => {
+        loadTrack(currentTrack);
+        if (isPlaying) {
+          audio.currentTime = 0;
           audio.play().catch(e => console.error('Play error:', e));
-        });
-      }
+          fadeIn();
+        }
+      });
     };
     document.getElementById('next').onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
-      loadTrack(currentTrack);
-      if (isPlaying) {
-        fadeOut(() => {
+      fadeOut(() => {
+        loadTrack(currentTrack);
+        if (isPlaying) {
+          audio.currentTime = 0;
           audio.play().catch(e => console.error('Play error:', e));
-        });
-      }
+          fadeIn();
+        }
+      });
     };
     function updateProgressUI() {
       if (isScrubbing) return;
@@ -728,64 +731,53 @@
     };
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
-      loadTrack(currentTrack);
-      if (isPlaying) {
-        audio.currentTime = 0;
-        fadeIn(() => {
+      fadeOut(() => {
+        loadTrack(currentTrack);
+        if (isPlaying) {
+          audio.currentTime = 0;
           audio.play().catch(e => console.error('Play error:', e));
-        });
-      }
+          fadeIn();
+        }
+      });
     };
     audio.onerror = e => console.error('Audio error:', e);
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     let audioCtx, analyser, source;
     function initVis() {
-      if (!audioCtx) {
+      try {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 256;           // same as example (good balance)
+        analyser.fftSize = 128;
         source = audioCtx.createMediaElementSource(audio);
         source.connect(analyser);
         analyser.connect(audioCtx.destination);
+        draw();
+      } catch (e) {
+        console.log('Visualizer skipped:', e);
       }
-      drawVis();
     }
-    function drawVis() {
-      requestAnimationFrame(drawVis);
-
-      const bufferLength = analyser.frequencyBinCount;
-      const dataArray = new Uint8Array(bufferLength);
-      analyser.getByteFrequencyData(dataArray);
-
-      const ctx = waveform.getContext('2d'); // your canvas is id="waveform"
-      const WIDTH = waveform.width;
-      const HEIGHT = waveform.height;
-
-      // Fade background slightly for smooth motion (like the example)
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
-      ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-      const barWidth = (WIDTH / bufferLength) * 2.4; // thicker bars like example
+    function draw() {
+      requestAnimationFrame(draw);
+      if (!analyser) return;
+      const buffer = analyser.frequencyBinCount;
+      const data = new Uint8Array(buffer);
+      analyser.getByteFrequencyData(data);
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';  // ← changed to 0.5 opacity
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      const barWidth = (canvas.width / buffer) * 2.8;
       let x = 0;
-
-      for (let i = 0; i < bufferLength; i++) {
-        const barHeight = (dataArray[i] / 255) * HEIGHT * 0.82;
-
-        // White → black vertical gradient (white on top, black at bottom)
-        const gradient = ctx.createLinearGradient(0, HEIGHT - barHeight, 0, HEIGHT);
-        gradient.addColorStop(0, '#ffffff');     // pure white top
-        gradient.addColorStop(0.4, '#e0e0e0');   // light gray
-        gradient.addColorStop(1, '#000000');     // black bottom
-
+      for (let k = 0; k < buffer; k++) {
+        const barHeight = (data[k] / 255) * canvas.height * 0.85;
+        const gradient = ctx.createLinearGradient(0, canvas.height - barHeight, 0, canvas.height);
+        gradient.addColorStop(0, 'rgba(255,255,255,0.8)');
+        gradient.addColorStop(0.5, 'rgba(180,180,180,0.5)');
+        gradient.addColorStop(1, 'rgba(0,0,0,0.3)');
         ctx.fillStyle = gradient;
-        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-
-        // Optional: thin white glow/outline on top of each bar (looks premium)
-        ctx.fillStyle = 'rgba(255,255,255,0.25)';
-        ctx.fillRect(x, HEIGHT - barHeight, barWidth, 2);
-
-        x += barWidth + 1.5; // small gap between bars
+        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+        x += barWidth + 1;
       }
     }
     document.getElementById('blur-overlay').addEventListener('click', () => {
