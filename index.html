@@ -180,7 +180,7 @@
     .progress-container { 
       position:relative;
       margin-top:8px;
-      height:20px;                /* taller for better touch target */
+      height:20px;
       cursor:grab;
     }
     .progress-container:active { cursor:grabbing; }
@@ -200,7 +200,7 @@
       border-radius:2px;
       position:absolute;
       left:0; right:0;
-      top:8px;                    /* perfectly center knob vertically */
+      top:8px;
     }
     .progress-fill { 
       position:absolute;
@@ -216,7 +216,7 @@
       height: 16px;
       background: #fff;
       border-radius: 50%;
-      top: 2px;                   /* centered vertically on the 4px bar */
+      top: 2px;
       transform: translateX(-50%);
       box-shadow: 0 0 10px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
       pointer-events: none;
@@ -225,13 +225,13 @@
     #volumeSlider {
       -webkit-appearance: none;
       width: 140px;
-      height: 20px;               /* taller touch target */
+      height: 20px;
       background: rgba(255,255,255,0.3);
       border-radius: 10px;
       outline: none;
       margin: 0 8px;
       cursor: pointer;
-      touch-action: pan-x;        /* better mobile scrolling behavior */
+      touch-action: pan-x;
     }
     #volumeSlider::-webkit-slider-thumb {
       -webkit-appearance: none;
@@ -257,7 +257,7 @@
       gap: 8px;
       justify-content: center;
       flex-wrap: nowrap;
-      touch-action: manipulation; /* prevent double-tap zoom on mobile */
+      touch-action: manipulation;
     }
     .mute-icon { cursor:pointer; min-width:28px; }
     .socials { display:flex;justify-content:center;gap:16px;margin-top:20px; }
@@ -345,7 +345,7 @@
         </div>
         <div class="volume-area">
           <div id="muteIcon" class="mute-icon"></div>
-          <input type="range" id="volumeSlider" min="0" max="100" value="50" step="any" />
+          <input type="range" id="volumeSlider" min="0" max="100" value="100" step="any" />
         </div>
       </div>
       <div class="socials">
@@ -518,7 +518,7 @@
 
     // ─── Music Player ───────────────────────────────────────────────────────
     const audio = document.getElementById('playerAudio');
-    audio.volume = 0.5;
+    audio.volume = 1.0; // changed to full volume
 
     const playPause = document.getElementById('playPause');
     const trackName = document.getElementById('trackName');
@@ -580,7 +580,7 @@
       if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
-    // ─── Progress bar (fixed centering + mobile volume) ─────────────────────
+    // ─── Progress bar ───────────────────────────────────────────────────────
     function updateProgress() {
       if (!audio.duration) return;
       const percent = (audio.currentTime / audio.duration) * 100;
@@ -597,12 +597,11 @@
 
     audio.ontimeupdate = updateProgress;
 
-    // ─── Volume Slider - improved mobile support ────────────────────────────
+    // ─── Volume Slider - mobile fixed ───────────────────────────────────────
     volumeSlider.addEventListener('input', () => {
       audio.volume = volumeSlider.value / 100;
     });
 
-    // Fix for iOS Safari / mobile touch issues
     volumeSlider.addEventListener('touchstart', e => e.stopPropagation());
     volumeSlider.addEventListener('touchmove', e => {
       e.stopPropagation();
@@ -681,8 +680,8 @@
         content.style.display = 'block';
         setTimeout(() => {
           content.classList.add('visible');
-          audio.volume = 0.5;
-          volumeSlider.value = 50;
+          audio.volume = 1.0;                    // changed to full volume
+          volumeSlider.value = 100;              // slider also set to 100
           audio.muted = false;
           muteIcon.innerHTML = unmuteSVG;
           audio.play().catch(e => console.error('Autoplay failed:', e));
