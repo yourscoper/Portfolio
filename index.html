@@ -154,7 +154,7 @@
     .badges { display:flex;gap:6px; }
     .badges img { width:20px;height:20px; }
     .quote-wrapper {
-      background:rgba(0,0,0,0.5);
+      background:rgba(0,0,0,0.5); /* ← this is your quote transparency */
       border-radius:10px;
       padding:8px 14px;
       width:180px;
@@ -178,7 +178,7 @@
       margin:16px 0; 
       border-radius:12px; 
       overflow:hidden; 
-      background: transparent;  /* ← made fully transparent */
+      background: rgba(0,0,0,0.5);  /* ← same exact transparency as quote-wrapper */
     }
     .controls { display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;justify-content:center; }
     .btn { width:40px;height:40px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s; }
@@ -755,7 +755,7 @@
       try {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 256; // dense bars
+        analyser.fftSize = 512;
         source = audioCtx.createMediaElementSource(audio);
         source.connect(analyser);
         analyser.connect(audioCtx.destination);
@@ -773,8 +773,8 @@
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
 
-      // NO background fill → fully transparent so your GIF shows through
-      // ctx.clearRect(0, 0, canvas.width, canvas.height); // optional if needed
+      // No fillRect here → lets the CSS background (rgba(0,0,0,0.5)) show through
+      // This matches your quote-wrapper's exact transparency
 
       const barWidth = (canvas.width / buffer) * 1.8;
       let x = 0;
