@@ -32,14 +32,16 @@ export default function handler(req, res) {
     .controls{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1.5rem 0 3rem}
     .btn{display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 1.8rem;font-size:1.2rem;font-family:'Coming Soon',cursive;color:white;background:rgba(40,40,60,.6);border:1px solid rgba(180,180,255,.25);border-radius:10px;cursor:pointer;transition:all .22s ease}
     .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(120,100,255,.35);background:rgba(60,50,90,.7)}
-    #trail-canvas,#sparkle-canvas{position:fixed;inset:0;pointer-events:none;z-index:-1}
+    #trail-canvas,#sparkle-canvas{position:fixed;inset:0;pointer-events:none}
+    #trail-canvas{z-index:4}
+    #sparkle-canvas{z-index:2}
     @media (max-width:900px){.editors{grid-template-columns:1fr}.editor-box{height:380px}h1{font-size:clamp(2.8rem,9vw,5rem)}}
   </style>
 </head>
 <body>
 
-<canvas id="trail-canvas"></canvas>
 <canvas id="sparkle-canvas"></canvas>
+<canvas id="trail-canvas"></canvas>
 
 <div class="container">
   <h1>Scoper's Obfuscator</h1>
@@ -95,38 +97,25 @@ function highlightOutput(txt) {
   hljs.highlightElement(output);
 }
 
-// Trail
+// ────────────────────────────────────────────────
+// Mouse trail — exact copy from your main page
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
-let trailPoints = [];
-
-function resizeCanvases() {
-  trailCanvas.width = window.innerWidth;
-  trailCanvas.height = window.innerHeight;
-  sparkleCanvas.width = window.innerWidth;
-  sparkleCanvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvases);
-resizeCanvases();
-
-document.addEventListener('mousemove', e => {
-  trailPoints.push({x: e.clientX, y: e.clientY, t: Date.now()});
-});
-
+trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
+window.addEventListener('resize', () => { trailCanvas.width = innerWidth; trailCanvas.height = innerHeight; });
+const points = [];
+document.addEventListener('mousemove', e => points.push({x: e.clientX, y: e.clientY, t: Date.now()}));
 function drawTrail() {
-  tctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+  tctx.clearRect(0,0,trailCanvas.width,trailCanvas.height);
   const now = Date.now();
-  for (let i = trailPoints.length - 1; i >= 0; i--) {
-    if (now - trailPoints[i].t > 1000) {
-      trailPoints.splice(i, 1);
-      continue;
-    }
-    const age = (now - trailPoints[i].t) / 1000;
-    if (i > 0) {
+  for (let j = points.length - 1; j >= 0; j--) {
+    if (now - points[j].t > 1000) { points.splice(j, 1); continue; }
+    const age = (now - points[j].t) / 1000;
+    if (j > 0) {
       tctx.beginPath();
-      tctx.moveTo(trailPoints[i-1].x, trailPoints[i-1].y);
-      tctx.lineTo(trailPoints[i].x, trailPoints[i].y);
-      tctx.strokeStyle = 'rgba(255,255,255,' + (1 - age) + ')';  // FIXED: no template literal here
+      tctx.moveTo(points[j-1].x, points[j-1].y);
+      tctx.lineTo(points[j].x, points[j].y);
+      tctx.strokeStyle = 'rgba(255,255,255,' + (1-age) + ')';  // FIXED HERE
       tctx.lineWidth = 2;
       tctx.stroke();
     }
@@ -135,57 +124,43 @@ function drawTrail() {
 }
 drawTrail();
 
-// Sparkles
+// Sparkles — exact copy from your main page
 const sparkleCanvas = document.getElementById('sparkle-canvas');
 const sctx = sparkleCanvas.getContext('2d');
-let sparkles = [];
-
+sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
+window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
+const sparkles = [];
 function createSparkle() {
-  sparkles.push({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight * 0.7,
-    r: Math.random() * 2.8 + 1,
-    a: 1,
-    t: Date.now()
-  });
+  sparkles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight * 0.6, r: Math.random() * 2.5 + 1, a: 1, t: Date.now() });
 }
-
 function drawSparkles() {
-  sctx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
+  sctx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
   const now = Date.now();
-  for (let i = sparkles.length - 1; i >= 0; i--) {
-    const s = sparkles[i];
-    const age = (now - s.t) / 1200;
-    s.a = 1 - age;
-    if (s.a <= 0) {
-      sparkles.splice(i, 1);
-      continue;
-    }
-    sctx.globalAlpha = s.a;
-    sctx.fillStyle = '#ffffff';
+  for (let j = sparkles.length - 1; j >= 0; j--) {
+    const s = sparkles[j];
+    const age = (now - s.t) / 1000;
+    s.a = 1 - age / 1.5;
+    if (s.a <= 0) { sparkles.splice(j,1); continue; }
+    sctx.fillStyle = 'rgba(255,255,255,' + s.a + ')';
     sctx.beginPath();
-    sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    sctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
     sctx.fill();
   }
   requestAnimationFrame(drawSparkles);
 }
 drawSparkles();
-setInterval(createSparkle, 180);
+setInterval(createSparkle, 400);
 
 // Buttons
 document.getElementById('obfuscate').addEventListener('click', () => {
   const code = input.value.trim();
-  if (!code) {
-    highlightOutput("-- Nothing to obfuscate");
-    return;
-  }
+  if (!code) return highlightOutput("-- Nothing to obfuscate");
   const escaped = code
     .replace(/\\/g, '\\\\')
     .replace(/'/g, "\\'")
     .replace(/\n/g, '\\n')
     .replace(/\r/g, '\\r');
-  const wrapped = "loadstring('" + escaped + "')()";
-  highlightOutput(wrapped);
+  highlightOutput("loadstring('" + escaped + "')()");
 });
 
 document.getElementById('clear').addEventListener('click', () => {
@@ -202,10 +177,8 @@ document.getElementById('copy').addEventListener('click', () => {
     const btn = document.getElementById('copy');
     const orig = btn.innerHTML;
     btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Copied!';
-    setTimeout(() => { btn.innerHTML = orig; }, 1800);
-  }).catch(() => {
-    alert('Copy failed');
-  });
+    setTimeout(() => btn.innerHTML = orig, 1800);
+  }).catch(() => {});
 });
 
 // Init
