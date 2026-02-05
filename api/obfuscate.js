@@ -55,21 +55,10 @@ export default function handler(req, res) {
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
-      text-decoration: none;
     }
-    .icon-button:hover {
-      background: #2ea043;
-      transform: translateY(-1px);
-    }
-    .icon-button:active {
-      background: #1f6e33;
-      transform: translateY(0);
-    }
-    .icon-button svg {
-      width: 20px;
-      height: 20px;
-      stroke: currentColor;
-    }
+    .icon-button:hover { background: #2ea043; transform: translateY(-1px); }
+    .icon-button:active { background: #1f6e33; transform: translateY(0); }
+    .icon-button svg { width: 20px; height: 20px; }
     @media (max-width: 768px) {
       .container { grid-template-columns: 1fr; }
       textarea, #output { height: 300px; }
@@ -80,12 +69,12 @@ export default function handler(req, res) {
 </head>
 <body>
   <h1>Lua / LuaU Obfuscator</h1>
-  <p class="subtitle">Paste your Lua/LuaU code → click Obfuscate → copy result.<br><strong>Note:</strong> Client-side • basic protection only.</p>
+  <p class="subtitle">Paste Lua/LuaU code → Obfuscate → copy result.<br><strong>Note:</strong> Basic client-side obfuscation</p>
 
   <div class="container">
     <div>
       <h3>Input Lua Code</h3>
-      <textarea id="input" placeholder="local msg = 'hello'\\nprint(msg .. ' world')"></textarea>
+      <textarea id="input" placeholder="local player = game.Players.LocalPlayer\nprint(player.Name)"></textarea>
     </div>
     <div>
       <h3>Obfuscated Output</h3>
@@ -119,28 +108,21 @@ export default function handler(req, res) {
   </div>
 
   <script>
-    // (The rest of your working JavaScript code remains exactly the same)
     function randomName() {
       const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_$";
-      let name = "_0x" + Array(10).fill().map(() => chars[Math.floor(Math.random()*chars.length)]).join("");
-      return name;
-    }
-
-    function xorEncrypt(str) {
-      const key = Math.floor(Math.random() * 180) + 70;
-      let result = "";
-      for (let i = 0; i < str.length; i++) {
-        result += String.fromCharCode(str.charCodeAt(i) ^ (key + i % 23));
+      let name = "_0x";
+      for (let i = 0; i < 10; i++) {
+        name += chars[Math.floor(Math.random() * chars.length)];
       }
-      return { enc: btoa(result), key };
+      return name;
     }
 
     function fakeDeadCode() {
       const junk = [
         "if math.random() > 2 then end\\n",
-        "local _ = " + (Math.random()*999|0) + " * " + (Math.random()*999|0) + "\\n",
-        "for _ = 1, 0 do end\\n",
-        "-- dead " + randomName() + "\\n"
+        "local _ = " + (Math.random()*999|0) + "\\n",
+        "for i=1,0 do end\\n",
+        "-- junk\\n"
       ];
       return junk[Math.floor(Math.random() * junk.length)];
     }
@@ -148,46 +130,38 @@ export default function handler(req, res) {
     function obfuscate() {
       let code = document.getElementById("input").value.trim();
       if (!code) {
-        document.getElementById("output").textContent = "-- Nothing to obfuscate";
+        document.getElementById("output").textContent = "-- Paste some code first";
         return;
       }
 
-      code = code.replace(/--[^\\n]*|\\/\\*[\\s\\S]*?\\*\\//g, '');
+      // Remove comments
+      code = code.replace(/--[^\\n]*/g, '').replace(/\\/\\*[\\s\\S]*?\\*\\//g, '');
 
+      // Simple variable renaming
       const varMap = new Map();
-      const wordRegex = /\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b/g;
-      let match;
-      while ((match = wordRegex.exec(code)) !== null) {
-        const name = match[1];
-        if (name && !["and","break","do","else","elseif","end","false","for","function","if","in","local","nil","not","or","repeat","return","then","true","until","while","goto"].includes(name)) {
-          if (!varMap.has(name)) varMap.set(name, randomName());
+      const words = code.match(/[a-zA-Z_][a-zA-Z0-9_]*/g) || [];
+      words.forEach(word => {
+        if (!["local","function","if","then","else","end","return","print","true","false","nil"].includes(word)) {
+          if (!varMap.has(word)) varMap.set(word, randomName());
         }
-      }
+      });
 
       varMap.forEach((newName, oldName) => {
-        const safeOld = oldName.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&");
-        code = code.replace(new RegExp("\\\\b" + safeOld + "\\\\b", "g"), newName);
+        code = code.replace(new RegExp("\\\\b" + oldName + "\\\\b", "g"), newName);
       });
 
-      code = code.replace(/(["'])(?:(?=(\\\\?))\\2.)*?\\1/g, function(m) {
-        const quote = m[0];
-        const content = m.slice(1, -1);
-        if (content.length < 4) return m;
-        const { enc, key } = xorEncrypt(content);
-        return "(function(x,k)local r=\\\\"\\\\";for i=1,#x do r=r..string.char(x:byte(i)~(k+(i-1)%23))end;return r end)(" + quote + enc + quote + "," + key + ")";
-      });
-
-      code = code.replace(/\\b\\d+\\b/g, function(n) {
+      // Numbers to hex
+      code = code.replace(/\\b\\d+\\b/g, n => {
         const num = parseInt(n);
-        return num > 20 ? "0x" + num.toString(16).toUpperCase() : n;
+        return num > 30 ? "0x" + num.toString(16).toUpperCase() : n;
       });
 
+      // Add junk + wrap
       let obf = "do\\n";
       const lines = code.split("\\n");
       lines.forEach(line => {
-        if (Math.random() > 0.65) obf += fakeDeadCode();
+        if (Math.random() > 0.7) obf += fakeDeadCode();
         obf += line.trim() + "\\n";
-        if (Math.random() > 0.75) obf += fakeDeadCode();
       });
       obf += "end";
 
@@ -196,7 +170,11 @@ export default function handler(req, res) {
 
     function copyOutput() {
       const text = document.getElementById("output").textContent;
-      navigator.clipboard.writeText(text).then(() => alert("Copied!")).catch(() => alert("Copy failed"));
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copied!");
+      }).catch(() => {
+        alert("Copy failed – select manually");
+      });
     }
 
     function clearAll() {
