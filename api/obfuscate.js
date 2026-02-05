@@ -1,208 +1,203 @@
-// obfuscate.js — single file — open directly in browser
+// api/obfuscate.js
+export default function handler(req, res) {
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
 
-document.open();
-document.write(`
-<!DOCTYPE html>
+  res.status(200).send(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obfuscate Lua</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/lua.min.js"></script>
+  <title>Scopefuscator</title>
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Coming Soon',cursive;cursor:none !important;}
+    * { margin:0; padding:0; box-sizing:border-box; user-select:none; }
     body {
-      background:#0d0d0d;
-      color:#fff;
+      background:#000;
+      color:#e0e0e0;
+      font-family:sans-serif;
       min-height:100vh;
-      overflow-x:hidden;
       position:relative;
+      overflow-x:hidden;
+    }
+    canvas { position:fixed; inset:0; pointer-events:none; z-index:9999; }
+    h1 {
+      color:#00ffcc;
+      text-align:center;
+      margin:60px 20px 10px;
+      font-size:2.8rem;
+      text-shadow:0 0 15px #00ffcc66;
+    }
+    .subtitle {
+      text-align:center;
+      color:#888;
       font-size:1.1rem;
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="%23ffffff" stroke-width="3" opacity="0.9"/><circle cx="16" cy="16" r="4" fill="%23ffffff"/></svg>') 16 16, auto;
+      margin-bottom:40px;
     }
-    .sparkle {
-      position:absolute;
-      width:5px;
-      height:5px;
-      background:#fff;
-      border-radius:50%;
-      pointer-events:none;
-      opacity:0;
-      animation: sparkle 5s infinite;
-      box-shadow: 0 0 10px #fff, 0 0 20px #fff;
-    }
-    @keyframes sparkle {
-      0%,100% {opacity:0; transform: scale(0.3) translateY(0);}
-      50% {opacity:0.9; transform: scale(1.4) translateY(-90vh);}
-    }
-    header {text-align:center; padding:50px 20px 30px; position:relative; z-index:10;}
-    h1 {font-size:4.8rem; color:#fff; text-shadow:0 0 40px rgba(255,255,255,0.8); margin-bottom:10px;}
-    .version {font-size:2rem; color:#fff; opacity:0.92;}
     .container {
-      max-width:1480px;
+      max-width:1200px;
       margin:0 auto;
-      padding:0 30px;
+      padding:0 20px;
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:40px;
+      gap:24px;
     }
-    .editor {display:flex; flex-direction:column; gap:16px;}
-    label {font-size:1.7rem; color:#eee;}
-    textarea {
+    textarea, pre#output {
       width:100%;
-      height:580px;
-      background:#0f0f0f;
-      color:#e8e8e8;
-      border:2px solid #444;
-      border-radius:14px;
-      padding:20px;
-      font-size:1.1rem;
+      height:460px;
+      background:rgba(30,30,30,0.65);
+      color:#eee;
+      border:1px solid #444;
+      border-radius:10px;
+      padding:16px;
       font-family:Consolas,monospace;
+      font-size:14px;
       resize:vertical;
-      outline:none;
+      backdrop-filter:blur(10px);
     }
-    textarea:focus {border-color:#888; box-shadow:0 0 25px rgba(255,255,255,0.2);}
+    pre#output { white-space:pre-wrap; overflow-y:auto; }
     .controls {
-      grid-column:1 / -1;
       display:flex;
       justify-content:center;
-      gap:40px;
+      gap:20px;
       flex-wrap:wrap;
       margin:40px 0;
     }
-    button {
+    button.icon-button {
       display:flex;
       align-items:center;
-      gap:14px;
-      background:#1e1e1e;
-      color:#ffffff;
-      border:none;
-      padding:18px 40px;
-      font-size:1.5rem;
-      border-radius:14px;
+      gap:10px;
+      background:rgba(255,255,255,0.07);
+      border:1px solid rgba(255,255,255,0.18);
+      color:#00ffcc;
+      padding:12px 20px;
+      border-radius:10px;
+      font-size:1rem;
       cursor:pointer;
-      transition:all 0.3s;
-      text-shadow:0 0 12px rgba(255,255,255,0.7);
-      box-shadow:0 0 25px rgba(0,0,0,0.7);
+      transition:0.25s;
+      backdrop-filter:blur(12px);
     }
-    button:hover {
-      background:#2a2a2a;
-      transform:translateY(-4px);
-      box-shadow:0 15px 40px rgba(255,255,255,0.22);
+    button.icon-button:hover {
+      background:rgba(0,255,204,0.18);
+      box-shadow:0 0 20px rgba(0,255,204,0.35);
+      transform:translateY(-2px);
     }
-    button svg {width:30px; height:30px; stroke:#fff; stroke-width:2.3;}
-    footer {text-align:center; padding:80px 20px 50px; color:#999; font-size:1.4rem; opacity:0.9;}
-    footer span {color:#fff;}
+    button.icon-button svg { width:22px; height:22px; stroke:#00ffcc; }
+    .version {
+      position:fixed;
+      bottom:20px;
+      left:24px;
+      color:#555;
+      font-size:0.9em;
+    }
+    .copyright {
+      position:fixed;
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      color:#555;
+      font-size:0.9em;
+    }
+    @media (max-width:800px) {
+      .container { grid-template-columns:1fr; }
+    }
   </style>
 </head>
 <body>
+  <canvas id="trail"></canvas>
+  <canvas id="sparkle"></canvas>
 
-<div class="sparkles"></div>
+  <h1>Scoper's Obfuscator</h1>
+  <p class="subtitle">Paste Lua or LuaU code → Obfuscate → Copy<br><strong>Note:</strong> Professional Obfuscation</p>
 
-<header>
-  <h1>Obfuscate Lua</h1>
-  <div class="version">v1.0.8</div>
-</header>
-
-<div class="container">
-  <div class="editor">
-    <label>Input Lua Code</label>
-    <textarea id="input" placeholder="-- paste your lua code here..."></textarea>
-  </div>
-
-  <div class="editor">
-    <label>Obfuscated Output</label>
-    <textarea id="output" readonly placeholder="obfuscated code will appear here..."></textarea>
+  <div class="container">
+    <div>
+      <h3>Input Code</h3>
+      <textarea id="input" placeholder="print('test')"></textarea>
+    </div>
+    <div>
+      <h3>Obfuscated Output</h3>
+      <pre id="output">-- output will appear here</pre>
+    </div>
   </div>
 
   <div class="controls">
-    <button id="obf">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg>
-      Obfuscate
-    </button>
-    <button id="clr">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg>
-      Clear
-    </button>
-    <button id="cpy">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-      Copy
-    </button>
+    <button class="icon-button" onclick="obfuscate()">Obfuscate</button>
+    <button class="icon-button" onclick="copyOutput()">Copy Output</button>
+    <button class="icon-button" onclick="clearAll()">Clear</button>
   </div>
-</div>
 
-<footer>© <span id="yr"></span> • All Rights Reserved</footer>
+  <div class="version">v1.0.8</div>
+  <div class="copyright">© 2026 yourscoper. All rights reserved.</div>
 
-<script>
-const spark = document.querySelector('.sparkles');
-for(let i=0;i<180;i++){
-  let s = document.createElement('div');
-  s.className = 'sparkle';
-  s.style.left = Math.random()*100 + 'vw';
-  s.style.top  = Math.random()*180 + 'vh';
-  s.style.animationDelay = Math.random()*12 + 's';
-  s.style.animationDuration = (6 + Math.random()*8) + 's';
-  spark.appendChild(s);
-}
+  <script>
+    // Trail
+    const trail = document.getElementById('trail');
+    const tctx = trail.getContext('2d');
+    trail.width = innerWidth; trail.height = innerHeight;
+    window.addEventListener('resize', ()=>{trail.width=innerWidth;trail.height=innerHeight});
+    let tpoints = [];
+    document.addEventListener('mousemove', e=>tpoints.push({x:e.clientX,y:e.clientY,t:Date.now()}));
+    function drawTrail(){
+      tctx.clearRect(0,0,trail.width,trail.height);
+      const now=Date.now();
+      tpoints=tpoints.filter(p=>now-p.t<700);
+      for(let i=1;i<tpoints.length;i++){
+        const p1=tpoints[i-1], p2=tpoints[i];
+        const age=(now-p2.t)/700;
+        tctx.beginPath();
+        tctx.moveTo(p1.x,p1.y);
+        tctx.lineTo(p2.x,p2.y);
+        tctx.strokeStyle=\`rgba(255,255,255,\${1-age})\`;
+        tctx.lineWidth=2.5-age*2;
+        tctx.stroke();
+      }
+      requestAnimationFrame(drawTrail);
+    }
+    drawTrail();
 
-document.getElementById('yr').textContent = new Date().getFullYear();
+    // Sparkles
+    const sparkle = document.getElementById('sparkle');
+    const sctx = sparkle.getContext('2d');
+    sparkle.width = innerWidth; sparkle.height = innerHeight;
+    window.addEventListener('resize', ()=>{sparkle.width=innerWidth;sparkle.height=innerHeight});
+    let sparks = [];
+    function addSpark(){sparks.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2.5+1,a:1,t:Date.now()});}
+    function drawSparkles(){
+      sctx.clearRect(0,0,sparkle.width,sparkle.height);
+      const now=Date.now();
+      sparks=sparks.filter(s=>now-s.t<1800);
+      sparks.forEach(s=>{
+        const age=(now-s.t)/1800;
+        sctx.fillStyle=\`rgba(0,255,204,\${1-age})\`;
+        sctx.beginPath();
+        sctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        sctx.fill();
+      });
+      requestAnimationFrame(drawSparkles);
+    }
+    drawSparkles();
+    setInterval(addSpark,350);
 
-hljs.highlightAll();
+    // Basic obfuscate (safe version)
+    function obfuscate(){
+      const input = document.getElementById('input').value.trim();
+      if(!input){
+        document.getElementById('output').textContent = '-- Paste some code first';
+        return;
+      }
+      let out = '-- Obfuscated\\n' + input.split('').reverse().join('') + '\\n-- (test reverse for now)';
+      document.getElementById('output').textContent = out;
+    }
 
-const input  = document.getElementById('input');
-const output = document.getElementById('output');
+    function copyOutput(){
+      const t = document.getElementById('output').textContent;
+      navigator.clipboard.writeText(t).then(()=>alert('Copied!'));
+    }
 
-document.getElementById('clr').onclick = () => {
-  input.value = output.value = '';
-  input.focus();
-};
-
-document.getElementById('cpy').onclick = () => {
-  if (!output.value) return alert('Nothing to copy');
-  navigator.clipboard.writeText(output.value);
-  const btn = document.getElementById('cpy');
-  const old = btn.innerHTML;
-  btn.innerHTML = 'Copied!';
-  setTimeout(() => btn.innerHTML = old, 1400);
-};
-
-document.getElementById('obf').onclick = () => {
-  const code = input.value.trim();
-  if (!code) {
-    output.value = '-- no code to obfuscate';
-    hljs.highlightElement(output);
-    return;
-  }
-
-  // ← Replace everything below this line with your real obfuscation code
-  //    ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-
-  let escaped = code
-    .replace(/\\/g, '\\\\')
-    .replace(/"/g, '\\"')
-    .replace(/\\n/g, '\\\\n');
-
-  output.value =
-\`-- Obfuscated v1.0.8
--- Original length: \${code.length}
-
-return (function()
-  local c = "\${escaped}"
-  return loadstring(c)()
-end)()\`;
-
-  // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-  // ↑ Paste your actual big obfuscation function / string here ↑
-
-  hljs.highlightElement(output);
-};
-
-input.addEventListener('input', () => hljs.highlightElement(input));
-</script>
+    function clearAll(){
+      document.getElementById('input').value = '';
+      document.getElementById('output').textContent = '';
+    }
+  </script>
 </body>
-</html>
-`);
-document.close();
+</html>`);
+}
