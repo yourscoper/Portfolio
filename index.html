@@ -215,7 +215,7 @@
       height: 18px;
       background: #fff;
       border-radius: 50%;
-      top: -6px;
+      top: 3px;
       transform: translateX(-50%);
       box-shadow: 0 0 10px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
       pointer-events: auto;
@@ -358,7 +358,7 @@
   </div>
   <div id="version">v1.0.5</div>
   <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
-  <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
+  <audio id="playerAudio" preload="auto" crossorigin="anonymous"></audio>
 
   <script>
     const userId = '765706304656113664';
@@ -397,12 +397,10 @@
           platformIndicator.style.color = color;
           platformIndicator.style.display = 'block';
           platformIndicator.title = `${displayStatus} • ${platform.charAt(0).toUpperCase() + platform.slice(1)}`;
-
           const avatarHash = data.discord_user.avatar;
           const isAnimated = avatarHash?.startsWith('a_');
           const avatarExt = isAnimated ? 'gif' : 'png';
           document.getElementById('userAvatar').src = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.${avatarExt}?size=1024`;
-
           const decoration = data.discord_user.avatar_decoration;
           if (decoration) {
             document.getElementById('userDecoration').src = `https://cdn.discordapp.com/avatar-decorations/${decoration}?size=240`;
@@ -532,6 +530,40 @@
     let currentTrack = 0;
     let isPlaying = false;
     let isScrubbing = false;
+    let fadeInterval = null;
+    const FADE_DURATION = 1000;
+    const FADE_STEPS = 40;
+    function fadeIn(callback = () => {}) {
+      clearInterval(fadeInterval);
+      let step = 0;
+      const targetVol = audio.muted ? 0 : (volumeSlider.value / 100);
+      const startVol = audio.volume;
+      const stepSize = (targetVol - startVol) / FADE_STEPS;
+      fadeInterval = setInterval(() => {
+        step++;
+        audio.volume = Math.max(0, Math.min(1, startVol + step * stepSize));
+        if (step >= FADE_STEPS) {
+          clearInterval(fadeInterval);
+          audio.volume = targetVol;
+          callback();
+        }
+      }, FADE_DURATION / FADE_STEPS);
+    }
+    function fadeOut(callback = () => {}) {
+      clearInterval(fadeInterval);
+      let step = 0;
+      const startVol = audio.volume;
+      const stepSize = startVol / FADE_STEPS;
+      fadeInterval = setInterval(() => {
+        step++;
+        audio.volume = Math.max(0, startVol - step * stepSize);
+        if (step >= FADE_STEPS) {
+          clearInterval(fadeInterval);
+          audio.volume = 0;
+          callback();
+        }
+      }, FADE_DURATION / FADE_STEPS);
+    }
     function loadTrack(idx) {
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
@@ -541,13 +573,18 @@
     loadTrack(currentTrack);
     playPause.onclick = () => {
       if (isPlaying) {
-        audio.pause();
-        playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
+        fadeOut(() => {
+          audio.pause();
+          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
+          isPlaying = false;
+        });
       } else {
         audio.play().catch(e => console.error('Play failed:', e));
-        playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+        fadeIn(() => {
+          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+          isPlaying = true;
+        });
       }
-      isPlaying = !isPlaying;
     };
     document.getElementById('prev').onclick = () => {
       if (audio.currentTime <= 3) {
@@ -556,12 +593,20 @@
         audio.currentTime = 0;
       }
       loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
+      if (isPlaying) {
+        fadeOut(() => {
+          audio.play().catch(e => console.error('Play error:', e));
+        });
+      }
     };
     document.getElementById('next').onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
+      if (isPlaying) {
+        fadeOut(() => {
+          audio.play().catch(e => console.error('Play error:', e));
+        });
+      }
     };
     function updateProgressUI() {
       if (isScrubbing) return;
@@ -660,7 +705,12 @@
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
+      if (isPlaying) {
+        audio.currentTime = 0;
+        fadeIn(() => {
+          audio.play().catch(e => console.error('Play error:', e));
+        });
+      }
     };
     audio.onerror = e => console.error('Audio error:', e);
     const canvas = document.getElementById('waveform');
