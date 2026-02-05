@@ -126,20 +126,24 @@
     }
     .guild-tag img { width:16px;height:16px;margin-right:4px; }
 
-    .badges { display:flex;gap:4px;flex-wrap:wrap;margin-top:4px; }
+    .badges-and-quote { display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px; }
+    .badges { display:flex;gap:6px; }
     .badges img { width:20px;height:20px; }
 
-    .quote {
-      font-size:18px;
-      font-style:italic;
-      color:rgba(255,255,255,0.95);
-      text-shadow:0 0 8px rgba(255,255,255,0.4);
-      margin-top:8px;
-      text-align:center;
+    .quote-wrapper {
       background:rgba(0,0,0,0.4);
       border-radius:10px;
-      padding:10px 16px;
-      display:inline-block;
+      padding:8px 14px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:180px;
+    }
+    .quote {
+      font-size:15px;
+      font-style:italic;
+      color:rgba(255,255,255,0.9);
+      text-shadow:0 0 6px rgba(255,255,255,0.3);
     }
 
     #waveform { width:100%;height:80px;margin:16px 0;border-radius:12px;overflow:hidden;background:rgba(0,0,0,0.7); }
@@ -190,7 +194,8 @@
       .player-card { padding:16px; }
       .avatar-wrapper { width:64px;height:64px; }
       .username { font-size:24px; }
-      .quote { font-size:16px; }
+      .quote { font-size:14px; }
+      .quote-wrapper { max-width:140px;padding:6px 10px; }
     }
   </style>
 </head>
@@ -219,16 +224,19 @@
               <span>CODE</span>
             </div>
           </div>
-          <div class="badges">
-            <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Nitro" />
-            <img src="https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png" alt="HypeSquad" />
-            <img src="https://cdn.discordapp.com/badge-icons/51040c70d4f20a921ad6674ff86fc95c.png" alt="Booster" />
-            <img src="https://cdn.discordapp.com/badge-icons/6de6d34650760ba5551a79732e98ed60.png" alt="Legacy" />
-            <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest" />
-            <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs" />
+          <div class="badges-and-quote">
+            <div class="badges">
+              <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Nitro" />
+              <img src="https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png" alt="HypeSquad" />
+              <img src="https://cdn.discordapp.com/badge-icons/51040c70d4f20a921ad6674ff86fc95c.png" alt="Booster" />
+              <img src="https://cdn.discordapp.com/badge-icons/6de6d34650760ba5551a79732e98ed60.png" alt="Legacy" />
+              <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest" />
+              <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs" />
+            </div>
+            <div class="quote-wrapper">
+              <div class="quote" id="quote"></div>
+            </div>
           </div>
-          <!-- Quote directly under badges, no extra box offset -->
-          <div class="quote" id="quote"></div>
         </div>
       </div>
 
@@ -285,7 +293,7 @@
     }
     typeTitle();
 
-    // Quote autotype
+    // Quote autotype (fixed size box)
     const quoteEl = document.getElementById('quote');
     const quoteText = "I indulge scripting.";
     let quoteIndex = 0;
@@ -329,7 +337,7 @@
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
       audio.load();
-      console.log('Loading track:', tracks[idx].src);
+      console.log('Loading:', tracks[idx].src);
     }
     loadTrack(currentTrack);
 
@@ -383,14 +391,9 @@
       if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
-    audio.onerror = e => {
-      console.error('Audio error:', e);
-      trackName.textContent = 'Track failed - try next';
-      currentTrack = (currentTrack + 1) % tracks.length;
-      loadTrack(currentTrack);
-    };
+    audio.onerror = e => console.error('Audio error:', e);
 
-    // Visualizer (white/grey/black gradient bars)
+    // Visualizer (semi-transparent gradient bars)
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     let audioCtx, analyser, source;
@@ -421,21 +424,21 @@
       canvas.height = canvas.offsetHeight;
       ctx.clearRect(0,0,canvas.width,canvas.height);
 
-      const barWidth = (canvas.width / buffer) * 2.5;
+      const barWidth = (canvas.width / buffer) * 2.8;
       let x = 0;
       for (let k = 0; k < buffer; k++) {
-        const barHeight = (data[k] / 255) * canvas.height * 0.8;
+        const barHeight = (data[k] / 255) * canvas.height * 0.85;
         const gradient = ctx.createLinearGradient(0, canvas.height - barHeight, 0, canvas.height);
-        gradient.addColorStop(0, 'rgba(255,255,255,0.95)');
-        gradient.addColorStop(0.5, 'rgba(180,180,180,0.75)');
-        gradient.addColorStop(1, 'rgba(0,0,0,0.5)');
+        gradient.addColorStop(0, 'rgba(255,255,255,0.8)');
+        gradient.addColorStop(0.5, 'rgba(180,180,180,0.5)');
+        gradient.addColorStop(1, 'rgba(0,0,0,0.3)');
         ctx.fillStyle = gradient;
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
         x += barWidth + 1;
       }
     }
 
-    // Fade + autoplay on click
+    // Fade + autoplay
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
