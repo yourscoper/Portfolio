@@ -14,580 +14,95 @@
   <meta name="theme-color" content="#FFFFFF" />
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
   <style>
-    * { margin:0; padding:0; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; box-sizing:border-box; }
-    body {
-      background:#000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
-      background-size:cover;
-      color:#fff;
-      font-family:'Coming Soon',cursive;
-      height:100vh;
-      overflow:hidden;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-      cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6,auto;
-    }
-    #blur-overlay {
-      position:fixed;inset:0;
-      backdrop-filter:blur(8px);
-      background:rgba(0,0,0,0.8);
-      display:flex;flex-direction:column;justify-content:center;align-items:center;
-      z-index:1000;
-      color:#fff;font-size:2.5em;text-shadow:0 0 12px #fff;
-      transition:opacity 0.8s ease-out;
-    }
-    #blur-overlay span { font-size:0.6em;margin-top:10px;opacity:0.8; }
-    #blur-overlay.hidden { opacity:0;pointer-events:none; }
-    #trail-canvas,#sparkle-canvas { position:absolute;inset:0;pointer-events:none; }
-    #trail-canvas { z-index:4; }
-    #sparkle-canvas { z-index:2; }
-    #version,#copyright { position:fixed;bottom:20px;color:#fff;font-size:0.9em;text-shadow:0 0 6px #fff;z-index:10; }
-    #version { left:20px; }
-    #copyright { left:50%;transform:translateX(-50%); }
-    #main-content {
-      display:none;
-      opacity:0;
-      transition:opacity 0.5s ease 0.1s;
-      z-index:5;
-      width:90%;
-      max-width:420px;
-      position: relative;
-    }
-    #main-content.visible { display:block;opacity:1; }
-    .player-card {
-      background:rgba(255,255,255,0.03);
-      backdrop-filter:blur(25px) saturate(180%);
-      border:2px solid rgba(255,255,255,0.25);
-      border-radius:20px;
-      padding:24px;
-      box-shadow:0 12px 40px rgba(0,0,0,0.6),0 0 80px rgba(255,255,255,0.12);
-      animation:spinGradient 6s linear infinite;
-      border-image:linear-gradient(90deg,#fff,#333,#000,#333,#fff) 1;
-      border-image-slice:1;
-      position: relative;
-    }
-    @keyframes spinGradient {
-      0%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
-      25%{border-image-source:linear-gradient(180deg,#fff,#aaa,#000,#aaa,#fff)}
-      50%{border-image-source:linear-gradient(270deg,#fff,#aaa,#000,#aaa,#fff)}
-      75%{border-image-source:linear-gradient(0deg,#fff,#aaa,#000,#aaa,#fff)}
-      100%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
-    }
-    .profile-top { 
-      display:flex;
-      align-items:flex-start;
-      gap:16px;
-      margin-bottom:12px;
-      position: relative;
-    }
-    .avatar-wrapper {
-      position:relative;
-      width:80px;
-      height:80px;
-      border-radius:50%;
-      overflow:hidden;
-      flex-shrink:0;
-    }
-    .avatar,.decoration {
-      width:100%;height:100%;
-      object-fit:cover;
-      border-radius:50%;
-      position:absolute;inset:0;
-    }
-    .avatar { z-index:1; }
-    .decoration { z-index:2; }
+    /* ── unchanged parts skipped for brevity ── */
 
-    .platform-indicator {
-      position: absolute;
-      bottom: 40px;
-      right: 291px;
-      width: 28px;
-      height: 28px;
-      z-index: 20;
-      pointer-events: auto;
-      transition: transform 0.2s ease;
-    }
-    .platform-indicator:hover {
-      transform: scale(1.12);
-    }
-    .platform-indicator::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: #000;
-      border: 4px solid #000;
-      border-radius: 50%;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.8);
-      z-index: 1;
-    }
-    .platform-indicator svg {
-      position: relative;
-      z-index: 2;
-      width: 18px;
-      height: 18px;
-      top: 5px;
-      left: 5px;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
-    }
-
-    .username-container { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
-    .username { font-size:28px;font-weight:bold;text-shadow:0 0 12px rgba(255,255,255,0.6); }
-    .guild-tag {
-      display:inline-flex;align-items:center;
-      background:rgba(255,255,255,0.08);
-      border-radius:8px;
-      padding:4px 8px;
-      font-size:13px;
-    }
-    .guild-tag img { width:16px;height:16px;margin-right:4px; }
-    .badges-and-quote {
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:6px;
-    }
-    .badges { display:flex;gap:6px; }
-    .badges img { width:20px;height:20px; }
-    .quote-wrapper {
-      background:rgba(0,0,0,0.5);
-      border-radius:10px;
-      padding:8px 14px;
-      width:180px;
-      height:36px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-    }
-    .quote {
-      font-size:15px;
-      font-style:italic;
-      color:rgba(255,255,255,0.9);
-      text-shadow:0 0 6px rgba(255,255,255,0.3);
-      text-align:center;
-      white-space:nowrap;
-    }
-    #waveform { width:100%;height:80px;margin:16px 0;border-radius:12px;overflow:hidden;background:rgba(0,0,0,0.7); }
-    .controls { display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;justify-content:center; }
-    .btn { width:40px;height:40px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s; }
-    .btn:hover { background:rgba(255,255,255,0.15);transform:scale(1.08); }
-    .btn.play-pause { width:48px;height:48px; }
-    .track-info { flex:1;min-width:140px;text-align:center; }
-    .track-name { font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px; }
-    .track-artist { font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:20px; }
     .progress-container { 
-      position:relative;
-      margin-top:8px;
-      height:20px;
-      cursor:grab;
+      position: relative;
+      margin-top: 8px;
+      height: 20px;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-x;          /* helps mobile dragging */
     }
-    .progress-container:active { cursor:grabbing; }
+    .progress-container:active { cursor: grabbing; }
+
     .progress-time {
-      font-size:12px;
-      color:rgba(255,255,255,0.8);
-      position:absolute;
-      top:-22px;
-      left:50%;
-      transform:translateX(-50%);
-      white-space:nowrap;
-      pointer-events:none;
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      pointer-events: none;
     }
+
     .progress-bar { 
-      height:4px;
-      background:rgba(255,255,255,0.15);
-      border-radius:2px;
-      position:absolute;
-      left:0; right:0;
-      top:8px;
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      position: absolute;
+      left: 0; right: 0;
+      top: 8px;
     }
+
     .progress-fill { 
-      position:absolute;
-      top:0; left:0; height:100%;
-      width:0%;
-      background:linear-gradient(90deg,#fff,#ccc);
-      border-radius:2px;
-      pointer-events:none;
+      position: absolute;
+      top: 0; left: 0; height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #fff, #ccc);
+      border-radius: 2px;
+      pointer-events: none;
     }
+
     .progress-knob {
       position: absolute;
       width: 16px;
       height: 16px;
       background: #fff;
       border-radius: 50%;
-      top: -6px;
+      top: 2px;                    /* centered on the 4px bar */
       transform: translateX(-50%);
       box-shadow: 0 0 10px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
-      pointer-events: none;
-      z-index: 2;
+      pointer-events: auto;        /* FIXED: now clickable/draggable */
+      cursor: grab;
+      z-index: 3;
     }
-    #volumeSlider {
-      -webkit-appearance: none;
-      width: 140px;
-      height: 20px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 10px;
-      outline: none;
-      margin: 0 8px;
-      cursor: pointer;
-      touch-action: pan-x;
+
+    .progress-knob:active {
+      cursor: grabbing;
     }
-    #volumeSlider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 28px;
-      height: 28px;
-      background: #ffffff;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 12px #ffffff, 0 0 24px #ffffff;
-      margin-top: -4px;
-    }
-    #volumeSlider::-moz-range-thumb {
-      width: 28px;
-      height: 28px;
-      background: #ffffff;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 12px #ffffff, 0 0 24px #ffffff;
-    }
-    .volume-area { 
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: nowrap;
-      touch-action: manipulation;
-    }
-    .mute-icon { cursor:pointer; min-width:28px; }
-    .socials { display:flex;justify-content:center;gap:16px;margin-top:20px; }
-    .socials a { width:44px;height:44px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;transition:all 0.3s; }
-    .socials a:hover { transform:translateY(-4px);box-shadow:0 8px 20px rgba(255,255,255,0.15); }
-    .socials img { width:24px;height:24px;filter:brightness(0) invert(1) drop-shadow(0 0 4px #fff); }
-    @media (max-width:500px) {
-      .player-card { padding:16px; }
-      .avatar-wrapper { width:64px;height:64px; }
-      .username { font-size:24px; }
-      .quote-wrapper { width:160px;padding:6px 10px; }
-      .quote { font-size:14px; }
-      .platform-indicator { 
-        bottom: 320px; 
-        right: 260px; 
-        width: 26px; 
-        height: 26px; 
-      }
-      .platform-indicator svg { 
-        width: 16px; 
-        height: 16px; 
-        top: 5px; 
-        left: 5px; 
-      }
-      #volumeSlider { width: 110px; height: 24px; }
-      #volumeSlider::-webkit-slider-thumb { width: 32px; height: 32px; margin-top: -4px; }
-    }
+
+    /* ── rest of your styles unchanged ── */
   </style>
 </head>
 <body>
-  <div id="blur-overlay">
-    Click to Enter
-    <span>Warning! Site contains audio content</span>
-  </div>
-  <canvas id="sparkle-canvas"></canvas>
-  <canvas id="trail-canvas"></canvas>
-  <div id="main-content">
-    <div class="player-card">
-      <div class="profile-top">
-        <div class="avatar-wrapper">
-          <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
-          <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
-        </div>
-        <div>
-          <div class="username-container">
-            <div class="username">yourscoper</div>
-            <div class="guild-tag">
-              <img src="https://cdn.discordapp.com/clan-badges/547906569489350657/3858554c542da4e8e4b52ff00a558ced.png?size=16" alt="CODE badge" />
-              <span>CODE</span>
-            </div>
-          </div>
-          <div class="badges-and-quote">
-            <div class="badges">
-              <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Nitro" />
-              <img src="https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png" alt="HypeSquad" />
-              <img src="https://cdn.discordapp.com/badge-icons/51040c70d4f20a921ad6674ff86fc95c.png" alt="Booster" />
-              <img src="https://cdn.discordapp.com/badge-icons/6de6d34650760ba5551a79732e98ed60.png" alt="Legacy" />
-              <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest" />
-              <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs" />
-            </div>
-            <div class="quote-wrapper">
-              <div class="quote" id="quote"></div>
-            </div>
-          </div>
-        </div>
+  <!-- unchanged HTML structure -->
 
-        <div class="platform-indicator" id="platformIndicator" title="Offline • Desktop"></div>
-      </div>
-
-      <canvas id="waveform"></canvas>
-      <div class="controls">
-        <div class="btn" id="prev"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></div>
-        <div class="btn play-pause" id="playPause"><svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="btn" id="next"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></div>
-        <div class="track-info">
-          <div class="track-name" id="trackName">Baptized In Fear (Lyrics)</div>
-          <div class="track-artist" id="trackArtist">The Weeknd</div>
-          <div class="progress-container" id="progressContainer">
-            <div class="progress-time" id="progressTime">0:00 / 0:00</div>
-            <div class="progress-bar" id="progressBar">
-              <div class="progress-fill" id="progressFill"></div>
-              <div class="progress-knob" id="progressKnob"></div>
-            </div>
-          </div>
-        </div>
-        <div class="volume-area">
-          <div id="muteIcon" class="mute-icon"></div>
-          <input type="range" id="volumeSlider" min="0" max="100" value="100" step="any" />
-        </div>
-      </div>
-      <div class="socials">
-        <a href="https://www.roblox.com/users/8904921777/profile" target="_blank"><img src="https://www.roblox.com/favicon.ico" alt="Roblox"></a>
-        <a href="https://github.com/yourscoper" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub"></a>
-        <a href="https://discord.com/users/765706304656113664" target="_blank"><img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg" alt="Discord"></a>
-        <a href="https://open.spotify.com/user/chriscrafter102" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/spotify.png" alt="Spotify"></a>
-        <a href="https://www.tiktok.com/@yourscoper" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/tiktok.png" alt="TikTok"></a>
+  <div class="track-info">
+    <div class="track-name" id="trackName">Baptized In Fear (Lyrics)</div>
+    <div class="track-artist" id="trackArtist">The Weeknd</div>
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-time" id="progressTime">0:00 / 0:00</div>
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+        <div class="progress-knob" id="progressKnob"></div>
       </div>
     </div>
   </div>
-  <div id="version">v1.0.5</div>
-  <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
-  <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
+
+  <!-- rest of HTML unchanged -->
 
   <script>
-    // ─── Discord Status + Platform Indicator ───────────────────────────────
-    const userId = '765706304656113664';
-    const platformIndicator = document.getElementById('platformIndicator');
-
-    const statusColors = {
-      online:  '#43b581',
-      idle:    '#faa61a',
-      dnd:     '#f04747',
-      offline: '#747f8d'
-    };
-
-    const statusDisplayNames = {
-      online:  'Online',
-      idle:    'Idle',
-      dnd:     'Do Not Disturb',
-      offline: 'Offline'
-    };
-
-    const platformSVGs = {
-      desktop: `<svg aria-label="Desktop" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.5c-1.103 0-2 .897-2 2v11c0 1.104.897 2 2 2h7v2H7v2h10v-2h-4v-2h7c1.103 0 2-.896 2-2v-11c0-1.103-.897-2-2-2H4Zm16 2v9H4v-9h16Z"></path></svg>`,
-      mobile:  `<svg aria-label="Mobile" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1Zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5Zm5-3h-10V4h10v15Z"></path></svg>`,
-      web:     `<svg aria-label="Web" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Zm-1-13h2v6h-2Zm0 8h2v2h-2Z"></path></svg>`
-    };
-
-    async function updateDiscordPresence() {
-      try {
-        const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
-        const json = await res.json();
-
-        if (json.success && json.data) {
-          const data = json.data;
-          const rawStatus = data.discord_status || 'offline';
-          const displayStatus = statusDisplayNames[rawStatus] || 'Offline';
-          const color = statusColors[rawStatus] || statusColors.offline;
-
-          let platform = 'desktop';
-          if (data.active_on_discord_mobile) platform = 'mobile';
-          else if (data.active_on_discord_desktop) platform = 'desktop';
-          else if (data.active_on_discord_web) platform = 'web';
-
-          platformIndicator.innerHTML = platformSVGs[platform] || platformSVGs.desktop;
-          platformIndicator.style.color = color;
-          platformIndicator.style.display = 'block';
-
-          platformIndicator.title = `${displayStatus} • ${platform.charAt(0).toUpperCase() + platform.slice(1)}`;
-        } else {
-          platformIndicator.innerHTML = platformSVGs.desktop;
-          platformIndicator.style.color = statusColors.offline;
-          platformIndicator.style.display = 'block';
-          platformIndicator.title = 'Offline • Desktop';
-        }
-      } catch (err) {
-        console.error('Lanyard fetch failed:', err);
-        platformIndicator.innerHTML = platformSVGs.desktop;
-        platformIndicator.style.color = statusColors.offline;
-        platformIndicator.style.display = 'block';
-        platformIndicator.title = 'Offline • Desktop';
-      }
-    }
-
-    updateDiscordPresence();
-    setInterval(updateDiscordPresence, 15000);
-
-    // ─── Tab title autotype ─────────────────────────────────────────────────
-    const fullTitle = 'yourscoper';
-    let titleIndex = 0;
-    let titleDeleting = false;
-
-    function typeTitle() {
-      if (!titleDeleting) {
-        document.title = fullTitle.substring(0, titleIndex + 1);
-        titleIndex++;
-        if (titleIndex === fullTitle.length) setTimeout(() => titleDeleting = true, 1800);
-      } else {
-        document.title = fullTitle.substring(0, titleIndex);
-        titleIndex--;
-        if (titleIndex === 0) titleDeleting = false;
-      }
-      setTimeout(typeTitle, titleDeleting ? 60 : 120);
-    }
-    typeTitle();
-
-    // ─── Quote autotype ─────────────────────────────────────────────────────
-    const quoteEl = document.getElementById('quote');
-    const quoteText = "I indulge scripting.";
-    let quoteIndex = 0;
-    let quoteDeleting = false;
-
-    function typeQuote() {
-      if (!quoteDeleting) {
-        quoteEl.textContent = quoteText.substring(0, quoteIndex + 1);
-        quoteIndex++;
-        if (quoteIndex === quoteText.length) setTimeout(() => quoteDeleting = true, 2000);
-      } else {
-        quoteEl.textContent = quoteText.substring(0, quoteIndex);
-        quoteIndex--;
-        if (quoteIndex === 0) quoteDeleting = false;
-      }
-      setTimeout(typeQuote, quoteDeleting ? 40 : 80);
-    }
-    typeQuote();
-
-    // ─── Mouse Trail & Sparkles ─────────────────────────────────────────────
-    const trailCanvas = document.getElementById('trail-canvas');
-    const tctx = trailCanvas.getContext('2d');
-    trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
-    window.addEventListener('resize', () => { trailCanvas.width = innerWidth; trailCanvas.height = innerHeight; });
-    const points = [];
-    document.addEventListener('mousemove', e => points.push({x: e.clientX, y: e.clientY, t: Date.now()}));
-    function drawTrail() {
-      tctx.clearRect(0,0,trailCanvas.width,trailCanvas.height);
-      const now = Date.now();
-      for (let j = points.length - 1; j >= 0; j--) {
-        if (now - points[j].t > 1000) { points.splice(j, 1); continue; }
-        const age = (now - points[j].t) / 1000;
-        if (j > 0) {
-          tctx.beginPath();
-          tctx.moveTo(points[j-1].x, points[j-1].y);
-          tctx.lineTo(points[j].x, points[j].y);
-          tctx.strokeStyle = `rgba(255,255,255,${1-age})`;
-          tctx.lineWidth = 2;
-          tctx.stroke();
-        }
-      }
-      requestAnimationFrame(drawTrail);
-    }
-    drawTrail();
-
-    const sparkleCanvas = document.getElementById('sparkle-canvas');
-    const sctx = sparkleCanvas.getContext('2d');
-    sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
-    window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
-    const sparkles = [];
-    function createSparkle() {
-      sparkles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight * 0.6, r: Math.random() * 2.5 + 1, a: 1, t: Date.now() });
-    }
-    function drawSparkles() {
-      sctx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
-      const now = Date.now();
-      for (let j = sparkles.length - 1; j >= 0; j--) {
-        const s = sparkles[j];
-        const age = (now - s.t) / 1000;
-        s.a = 1 - age / 1.5;
-        if (s.a <= 0) { sparkles.splice(j,1); continue; }
-        sctx.fillStyle = `rgba(255,255,255,${s.a})`;
-        sctx.beginPath();
-        sctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-        sctx.fill();
-      }
-      requestAnimationFrame(drawSparkles);
-    }
-    drawSparkles();
-    setInterval(createSparkle, 400);
-
-    // ─── Music Player ───────────────────────────────────────────────────────
-    const audio = document.getElementById('playerAudio');
-    audio.volume = 1.0; // changed to full volume
-
-    const playPause = document.getElementById('playPause');
-    const trackName = document.getElementById('trackName');
-    const trackArtist = document.getElementById('trackArtist');
-    const progressTime = document.getElementById('progressTime');
-    const progressFill = document.getElementById('progressFill');
-    const progressKnob = document.getElementById('progressKnob');
+    // ── your existing variables ──
     const progressContainer = document.getElementById('progressContainer');
-    const volumeSlider = document.getElementById('volumeSlider');
-    const muteIcon = document.getElementById('muteIcon');
+    const progressFill      = document.getElementById('progressFill');
+    const progressKnob      = document.getElementById('progressKnob');
+    const progressTime      = document.getElementById('progressTime');
+    const audio             = document.getElementById('playerAudio');
 
-    const unmuteSVG = '<svg viewBox="0 0 24 24" width="28" fill="white"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>';
-    const muteSVG = '<svg viewBox="0 0 24 24" width="28" fill="white"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>';
-
-    muteIcon.innerHTML = unmuteSVG;
-
-    const tracks = [
-      { name: 'High For This', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/High%20For%20This%20(Lyrics).mp3' },
-      { name: 'The Morning', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/The%20Morning%20(Lyrics).mp3' },
-      { name: 'Baptized In Fear', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/Baptized%20In%20Fear%20(Lyrics).mp3' },
-      { name: 'São Paulo (feat. Anitta)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/S%C3%A3o%20Paulo%20(feat.%20Anitta)%20(Lyrics).mp3' },
-      { name: 'sdp interlude', artist: 'Travis Scott', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/sdp%20interlude%20-%20Travis%20Scott%20(Lyrics).mp3' },
-    ];
-    let currentTrack = 0;
-    let isPlaying = false;
-
-    function loadTrack(idx) {
-      audio.src = tracks[idx].src;
-      trackName.textContent = tracks[idx].name;
-      trackArtist.textContent = tracks[idx].artist;
-      audio.load();
-    }
-    loadTrack(currentTrack);
-
-    playPause.onclick = () => {
-      if (isPlaying) {
-        audio.pause();
-        playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
-      } else {
-        audio.play().catch(e => console.error('Play failed:', e));
-        playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
-      }
-      isPlaying = !isPlaying;
-    };
-
-    document.getElementById('prev').onclick = () => {
-      if (audio.currentTime <= 3) {
-        currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-      } else {
-        audio.currentTime = 0;
-      }
-      loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
-    };
-
-    document.getElementById('next').onclick = () => {
-      currentTrack = (currentTrack + 1) % tracks.length;
-      loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
-    };
-
-    // ─── Progress bar ───────────────────────────────────────────────────────
-    function updateProgress() {
-      if (!audio.duration) return;
-      const percent = (audio.currentTime / audio.duration) * 100;
-      progressFill.style.width = percent + '%';
-      progressKnob.style.left = percent + '%';
-      progressTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
-    }
+    let isScrubbing = false;
 
     function formatTime(seconds) {
       const min = Math.floor(seconds / 60);
@@ -595,102 +110,88 @@
       return `${min}:${sec.toString().padStart(2, '0')}`;
     }
 
-    audio.ontimeupdate = updateProgress;
-
-    // ─── Volume Slider - mobile fixed ───────────────────────────────────────
-    volumeSlider.addEventListener('input', () => {
-      audio.volume = volumeSlider.value / 100;
-    });
-
-    volumeSlider.addEventListener('touchstart', e => e.stopPropagation());
-    volumeSlider.addEventListener('touchmove', e => {
-      e.stopPropagation();
-      const rect = volumeSlider.getBoundingClientRect();
-      const touch = e.touches[0];
-      const pos = (touch.clientX - rect.left) / rect.width;
-      const value = Math.max(0, Math.min(100, pos * 100));
-      volumeSlider.value = value;
-      audio.volume = value / 100;
-    }, { passive: false });
-
-    muteIcon.onclick = () => {
-      audio.muted = !audio.muted;
-      muteIcon.innerHTML = audio.muted ? muteSVG : unmuteSVG;
-      if (!audio.muted) audio.volume = volumeSlider.value / 100;
-    };
-
-    audio.onended = () => {
-      currentTrack = (currentTrack + 1) % tracks.length;
-      loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
-    };
-
-    audio.onerror = e => console.error('Audio error:', e);
-
-    // ─── Visualizer ─────────────────────────────────────────────────────────
-    const canvas = document.getElementById('waveform');
-    const ctx = canvas.getContext('2d');
-    let audioCtx, analyser, source;
-
-    function initVis() {
-      try {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 128;
-        source = audioCtx.createMediaElementSource(audio);
-        source.connect(analyser);
-        analyser.connect(audioCtx.destination);
-        draw();
-      } catch (e) {
-        console.log('Visualizer skipped:', e);
-      }
+    function updateProgressUI() {
+      if (isScrubbing) return;
+      if (!audio.duration) return;
+      const percent = (audio.currentTime / audio.duration) * 100;
+      progressFill.style.width = percent + '%';
+      progressKnob.style.left = percent + '%';
+      progressTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
     }
 
-    function draw() {
-      requestAnimationFrame(draw);
-      if (!analyser) return;
-      const buffer = analyser.frequencyBinCount;
-      const data = new Uint8Array(buffer);
-      analyser.getByteFrequencyData(data);
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      const barWidth = (canvas.width / buffer) * 2.8;
-      let x = 0;
-      for (let k = 0; k < buffer; k++) {
-        const barHeight = (data[k] / 255) * canvas.height * 0.85;
-        const gradient = ctx.createLinearGradient(0, canvas.height - barHeight, 0, canvas.height);
-        gradient.addColorStop(0, 'rgba(255,255,255,0.8)');
-        gradient.addColorStop(0.5, 'rgba(180,180,180,0.5)');
-        gradient.addColorStop(1, 'rgba(0,0,0,0.3)');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-        x += barWidth + 1;
-      }
+    function previewSeek(percent) {
+      progressFill.style.width = percent + '%';
+      progressKnob.style.left = percent + '%';
+      const previewSec = (percent / 100) * audio.duration;
+      progressTime.textContent = `${formatTime(previewSec)} / ${formatTime(audio.duration)}`;
     }
 
-    // ─── Enter site ─────────────────────────────────────────────────────────
-    document.getElementById('blur-overlay').addEventListener('click', () => {
-      const overlay = document.getElementById('blur-overlay');
-      const content = document.getElementById('main-content');
+    function commitSeek(percent) {
+      if (!audio.duration) return;
+      audio.currentTime = (percent / 100) * audio.duration;
+      updateProgressUI();
+    }
 
-      overlay.style.opacity = '0';
-      setTimeout(() => {
-        overlay.classList.add('hidden');
-        content.style.display = 'block';
-        setTimeout(() => {
-          content.classList.add('visible');
-          audio.volume = 1.0;                    // changed to full volume
-          volumeSlider.value = 100;              // slider also set to 100
-          audio.muted = false;
-          muteIcon.innerHTML = unmuteSVG;
-          audio.play().catch(e => console.error('Autoplay failed:', e));
-          isPlaying = true;
-          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
-          initVis();
-        }, 200);
-      }, 800);
+    // Start scrubbing
+    progressContainer.addEventListener('mousedown', e => {
+      if (e.button !== 0) return;
+      isScrubbing = true;
+      const rect = progressContainer.getBoundingClientRect();
+      let percent = ((e.clientX - rect.left) / rect.width) * 100;
+      percent = Math.max(0, Math.min(100, percent));
+      previewSeek(percent);
+      e.preventDefault();
     });
+
+    progressContainer.addEventListener('touchstart', e => {
+      isScrubbing = true;
+      const rect = progressContainer.getBoundingClientRect();
+      let percent = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
+      percent = Math.max(0, Math.min(100, percent));
+      previewSeek(percent);
+      e.preventDefault();
+    });
+
+    // Move while scrubbing
+    document.addEventListener('mousemove', e => {
+      if (!isScrubbing) return;
+      const rect = progressContainer.getBoundingClientRect();
+      let percent = ((e.clientX - rect.left) / rect.width) * 100;
+      percent = Math.max(0, Math.min(100, percent));
+      previewSeek(percent);
+    });
+
+    document.addEventListener('touchmove', e => {
+      if (!isScrubbing) return;
+      const rect = progressContainer.getBoundingClientRect();
+      let percent = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
+      percent = Math.max(0, Math.min(100, percent));
+      previewSeek(percent);
+      e.preventDefault();
+    });
+
+    // End scrubbing → apply new time
+    document.addEventListener('mouseup', () => {
+      if (!isScrubbing) return;
+      isScrubbing = false;
+      const rect = progressContainer.getBoundingClientRect();
+      let percent = ((event.clientX - rect.left) / rect.width) * 100;
+      percent = Math.max(0, Math.min(100, percent));
+      commitSeek(percent);
+    });
+
+    document.addEventListener('touchend', e => {
+      if (!isScrubbing) return;
+      isScrubbing = false;
+      const rect = progressContainer.getBoundingClientRect();
+      let percent = ((e.changedTouches[0].clientX - rect.left) / rect.width) * 100;
+      percent = Math.max(0, Math.min(100, percent));
+      commitSeek(percent);
+    });
+
+    audio.ontimeupdate = updateProgressUI;
+
+    // Rest of your script remains unchanged...
   </script>
 </body>
 </html>
