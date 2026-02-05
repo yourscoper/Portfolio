@@ -34,8 +34,14 @@
       background:rgba(0,0,0,0.8);
       display:flex;flex-direction:column;justify-content:center;align-items:center;
       z-index:1000;
-      color:#fff;font-size:2.5em;text-shadow:0 0 12px #fff;
+      color:#fff;font-size:2.5em;text-shadow:0 0 6px #000, 0 0 12px #000;
       transition:opacity 0.8s ease-out;
+    }
+    #blur-overlay span {
+      font-size:0.6em;
+      margin-top:10px;
+      opacity:0.8;
+      color:#7d7d7d;
     }
     #blur-overlay.hidden { opacity:0;pointer-events:none; }
     #trail-canvas,#sparkle-canvas { position:absolute;inset:0;pointer-events:none; }
@@ -215,7 +221,7 @@
       height: 18px;
       background: #fff;
       border-radius: 50%;
-      top: 3px;
+      top: -6px;
       transform: translateX(-50%);
       box-shadow: 0 0 10px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
       pointer-events: auto;
@@ -531,8 +537,8 @@
     let isPlaying = false;
     let isScrubbing = false;
     let fadeInterval = null;
-    const FADE_DURATION = 1000;
-    const FADE_STEPS = 40;
+    const FADE_DURATION = 400;
+    const FADE_STEPS = 20;
     function fadeIn(callback = () => {}) {
       clearInterval(fadeInterval);
       let step = 0;
