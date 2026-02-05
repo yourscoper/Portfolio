@@ -18,8 +18,15 @@
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
 
   <style>
-    body {
+    * {
       margin: 0; padding: 0;
+      -webkit-user-select: none;
+      user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+    body {
       background: #000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
@@ -48,8 +55,11 @@
     #trail-canvas { z-index: 4; }
     #sparkle-canvas { z-index: 2; }
 
-    #version { position: fixed; bottom: 20px; left: 20px; color: #fff; font-size: 1em; text-shadow: 0 0 6px #fff; z-index: 10; }
-    #copyright { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.9em; text-shadow: 0 0 5px #fff; z-index: 10; }
+    #version, #copyright { 
+      position: fixed; bottom: 20px; color: #fff; font-size: 0.9em; text-shadow: 0 0 6px #fff; z-index: 10; 
+    }
+    #version { left: 20px; }
+    #copyright { left: 50%; transform: translateX(-50%); }
 
     #main-content {
       display: none;
@@ -64,7 +74,7 @@
     .player-card {
       background: rgba(255,255,255,0.03);
       backdrop-filter: blur(25px) saturate(180%);
-      border: 2px solid rgba(255,255,255,0.25); /* thicker outline */
+      border: 2px solid rgba(255,255,255,0.25);
       border-radius: 20px;
       padding: 24px;
       box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 80px rgba(255,255,255,0.12);
@@ -102,15 +112,15 @@
     .decoration { z-index: 2; }
     .status-dot {
       position: absolute;
-      top: -4px;
-      right: -4px;
+      bottom: 0;
+      right: 0;
       width: 20px;
       height: 20px;
       border-radius: 50%;
       border: 3px solid #000;
-      background: #ffc04e; /* your idle color */
+      background: #ffc04e;
       box-shadow: 0 0 10px #ffc04e;
-      z-index: 10; /* on top of everything */
+      z-index: 10; /* on top of avatar + decoration */
     }
 
     .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
@@ -129,10 +139,9 @@
       justify-content: center;
     }
     .quote {
-      font-size: 18px; /* bigger text */
+      font-size: 18px;
       font-style: italic;
       color: rgba(255,255,255,0.95);
-      min-height: 1.4em;
     }
 
     #waveform { width: 100%; height: 60px; margin: 16px 0; border-radius: 8px; overflow: hidden; }
@@ -198,7 +207,6 @@
     <div class="player-card">
       <div class="profile-top">
         <div class="avatar-wrapper">
-          <!-- AVATAR & DECORATION – update when changed -->
           <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
           <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
           <div class="status-dot"></div>
@@ -254,7 +262,7 @@
   <audio id="playerAudio" loop></audio>
 
   <script>
-    // Typewriter (repeating)
+    // Typewriter quote
     const quoteEl = document.getElementById('quote');
     const text = "I indulge scripting.";
     let charIndex = 0;
@@ -292,7 +300,6 @@
       { name: 'High For This (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/High%20For%20This%20(Lyrics).mp3' },
       { name: 'São Paulo (feat. Anitta) (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/S%C3%A3o%20Paulo%20(feat.%20Anitta)%20(Lyrics).mp3' },
       { name: 'The Morning (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/The%20Morning%20(Lyrics).mp3' },
-      // add more songs here if needed
     ];
     let currentTrack = 0;
     let isPlaying = false;
@@ -300,8 +307,7 @@
     function loadTrack(idx) {
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
-      audio.load();
-      if (isPlaying) audio.play().catch(() => {});
+      audio.load().catch(e => console.error('Audio load failed:', e));
     }
     loadTrack(currentTrack);
 
@@ -310,26 +316,26 @@
         audio.pause();
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
       } else {
-        audio.play().catch(() => {});
+        audio.play().catch(e => console.error('Play failed:', e));
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       }
       isPlaying = !isPlaying;
     };
 
-    prev.onclick = () => {
+    document.getElementById('prev').onclick = () => {
       if (audio.currentTime <= 3) {
-        // go to previous song if at beginning
         currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
       } else {
-        // restart current song
         audio.currentTime = 0;
       }
       loadTrack(currentTrack);
+      if (isPlaying) audio.play();
     };
 
-    next.onclick = () => {
+    document.getElementById('next').onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
+      if (isPlaying) audio.play();
     };
 
     audio.ontimeupdate = () => {
@@ -354,9 +360,10 @@
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
+      if (isPlaying) audio.play();
     };
 
-    // Fade transition + autoplay
+    // Fade + autoplay
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
@@ -370,11 +377,11 @@
           audio.volume = 0.5;
           volumeSlider.value = 50;
           audio.muted = false;
-          audio.play().catch(e => console.log('Play failed:', e));
+          audio.play().catch(e => console.error('Autoplay failed:', e));
           isPlaying = true;
           playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
         }, 100);
-      }, 1200); // overlay fade duration
+      }, 1200);
     });
   </script>
 </body>
