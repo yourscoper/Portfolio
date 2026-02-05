@@ -68,24 +68,20 @@ export default function handler(req, res) {
 <div class="copyright">© 2026 yourscoper. All rights reserved.</div>
 
 <script>
-// ────────────────────────────────────────────────
-// Highlight.js setup
 hljs.configure({languages:['lua']});
 hljs.highlightAll();
 
-// ────────────────────────────────────────────────
-// Block text selection globally
+// Block selection
 document.addEventListener('selectstart', e=>e.preventDefault());
 document.addEventListener('keydown', e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a')e.preventDefault()});
 
-// ────────────────────────────────────────────────
-// Input mirror with live highlighting
+// Mirror highlight
 const input = document.getElementById('input');
 const mirror = document.getElementById('inputMirror');
 const output = document.getElementById('output');
 
 function updateMirror() {
-  mirror.textContent = input.value || ' '; // space prevents collapse
+  mirror.textContent = input.value || ' ';
   hljs.highlightElement(mirror);
 }
 input.addEventListener('input', updateMirror);
@@ -94,15 +90,12 @@ input.addEventListener('scroll', () => {
   mirror.scrollLeft = input.scrollLeft;
 });
 
-// ────────────────────────────────────────────────
-// Output highlighting
 function highlightOutput(txt) {
   output.textContent = txt;
   hljs.highlightElement(output);
 }
 
-// ────────────────────────────────────────────────
-// Mouse trail
+// Trail
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
 let trailPoints = [];
@@ -133,7 +126,7 @@ function drawTrail() {
       tctx.beginPath();
       tctx.moveTo(trailPoints[i-1].x, trailPoints[i-1].y);
       tctx.lineTo(trailPoints[i].x, trailPoints[i].y);
-      tctx.strokeStyle = \`rgba(255,255,255,\${1 - age})\`;
+      tctx.strokeStyle = 'rgba(255,255,255,' + (1 - age) + ')';  // FIXED: no template literal here
       tctx.lineWidth = 2;
       tctx.stroke();
     }
@@ -142,8 +135,7 @@ function drawTrail() {
 }
 drawTrail();
 
-// ────────────────────────────────────────────────
-// Sparkles (increased spawn rate for more density)
+// Sparkles
 const sparkleCanvas = document.getElementById('sparkle-canvas');
 const sctx = sparkleCanvas.getContext('2d');
 let sparkles = [];
@@ -178,10 +170,9 @@ function drawSparkles() {
   requestAnimationFrame(drawSparkles);
 }
 drawSparkles();
-setInterval(createSparkle, 180); // faster spawn → visibly more sparkles
+setInterval(createSparkle, 180);
 
-// ────────────────────────────────────────────────
-// Button functionality
+// Buttons
 document.getElementById('obfuscate').addEventListener('click', () => {
   const code = input.value.trim();
   if (!code) {
@@ -193,7 +184,7 @@ document.getElementById('obfuscate').addEventListener('click', () => {
     .replace(/'/g, "\\'")
     .replace(/\n/g, '\\n')
     .replace(/\r/g, '\\r');
-  const wrapped = \`loadstring('\${escaped}')()\`;
+  const wrapped = "loadstring('" + escaped + "')()";
   highlightOutput(wrapped);
 });
 
@@ -213,11 +204,11 @@ document.getElementById('copy').addEventListener('click', () => {
     btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Copied!';
     setTimeout(() => { btn.innerHTML = orig; }, 1800);
   }).catch(() => {
-    alert('Copy failed – try manually selecting the output');
+    alert('Copy failed');
   });
 });
 
-// Initial setup
+// Init
 updateMirror();
 highlightOutput('');
 </script>
