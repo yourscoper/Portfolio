@@ -4,10 +4,10 @@ export default function handler(req, res) {
   }
 
   const html = `<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scoper's Obfuscator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,8 @@ export default function handler(req, res) {
     body{cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6,auto}
     .container{min-height:100vh;padding:2rem 1rem 6rem;position:relative;display:flex;flex-direction:column;align-items:center}
     h1{font-size:clamp(3rem,11vw,7rem);color:#ffffff;text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66,0 0 90px #00226644;margin:1rem 0 .5rem;letter-spacing:-1px;text-align:center}
-    .version{position:fixed;bottom:20px;left:20px;color:#aaa;font-size:1rem;opacity:0.85;z-index:10;text-shadow:0 0 8px #000}
-    .copyright{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:#666;font-size:1rem;opacity:0.7;z-index:10;white-space:nowrap}
+    .version{position:fixed;bottom:20px;left:20px;color:#aaa;font-size:1rem;opacity:0.85;z-index:10}
+    .copyright{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:#666;font-size:1rem;opacity:0.7;z-index:10}
     .editors{width:100%;max-width:1400px;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1rem 0 2rem}
     .editor-box{position:relative;display:flex;flex-direction:column;height:520px;border:1px solid #222;border-radius:8px;overflow:hidden;background:#111;box-shadow:0 10px 40px rgba(0,0,0,.7)}
     .editor-label{padding:.8rem 1.2rem;background:#1a1a1a;border-bottom:1px solid #222;font-size:1.3rem;color:#aaa}
@@ -35,7 +35,7 @@ export default function handler(req, res) {
     #trail-canvas,#sparkle-canvas{position:fixed;inset:0;pointer-events:none}
     #trail-canvas{z-index:4}
     #sparkle-canvas{z-index:2}
-    @media (max-width:900px){.editors{grid-template-columns:1fr}.editor-box{height:380px}h1{font-size:clamp(2.8rem,9vw,5rem)}}
+    @media (max-width:900px){.editors{grid-template-columns:1fr}.editor-box{height:380px}}
   </style>
 </head>
 <body>
@@ -50,7 +50,7 @@ export default function handler(req, res) {
     <div class="editor-box">
       <div class="editor-label">Input Lua / LuaU</div>
       <div class="highlight-mirror" id="inputMirror"></div>
-      <textarea id="input" placeholder="-- Paste your Lua/LuaU code here...\n-- Press Obfuscate when ready" autofocus spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
+      <textarea id="input" placeholder="-- Paste your Lua/LuaU code here...\n-- Press Obfuscate when ready" autofocus></textarea>
     </div>
 
     <div class="editor-box">
@@ -60,24 +60,23 @@ export default function handler(req, res) {
   </div>
 
   <div class="controls">
-    <button class="btn" id="obfuscate"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>Obfuscate</button>
-    <button class="btn" id="clear"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M6 12h13M10 18h10M3 6l2 2-2 2M3 12l2 2-2 2M3 18l2 2-2 2"/></svg>Clear</button>
-    <button class="btn" id="copy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy Output</button>
+    <button class="btn" id="obfuscate">Obfuscate</button>
+    <button class="btn" id="clear">Clear</button>
+    <button class="btn" id="copy">Copy Output</button>
   </div>
 </div>
 
-<div class="version">v1.0.1</div>
+<div class="version">v1.0.0</div>
 <div class="copyright">© 2026 yourscoper. All rights reserved.</div>
 
 <script>
 hljs.configure({languages:['lua']});
-hljs.highlightAll();
 
 // Block selection
-document.addEventListener('selectstart', e=>e.preventDefault());
-document.addEventListener('keydown', e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a')e.preventDefault()});
+document.onselectstart = () => false;
+document.onkeydown = e => { if ((e.ctrlKey || e.metaKey) && e.key === 'a') e.preventDefault(); };
 
-// Mirror highlight
+// Highlight mirror
 const input = document.getElementById('input');
 const mirror = document.getElementById('inputMirror');
 const output = document.getElementById('output');
@@ -92,16 +91,16 @@ input.addEventListener('scroll', () => {
   mirror.scrollLeft = input.scrollLeft;
 });
 
-function highlightOutput(txt) {
-  output.textContent = txt;
+function highlightOutput(text) {
+  output.textContent = text;
   hljs.highlightElement(output);
 }
 
-// ────────────────────────────────────────────────
-// Mouse trail — exact copy from your main page
+// Mouse trail & sparkles - EXACT from your main page
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
-trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
+trailCanvas.width = innerWidth;
+trailCanvas.height = innerHeight;
 window.addEventListener('resize', () => { trailCanvas.width = innerWidth; trailCanvas.height = innerHeight; });
 const points = [];
 document.addEventListener('mousemove', e => points.push({x: e.clientX, y: e.clientY, t: Date.now()}));
@@ -115,7 +114,7 @@ function drawTrail() {
       tctx.beginPath();
       tctx.moveTo(points[j-1].x, points[j-1].y);
       tctx.lineTo(points[j].x, points[j].y);
-      tctx.strokeStyle = 'rgba(255,255,255,' + (1-age) + ')';  // FIXED HERE
+      tctx.strokeStyle = 'rgba(255,255,255,' + (1 - age) + ')';
       tctx.lineWidth = 2;
       tctx.stroke();
     }
@@ -124,10 +123,10 @@ function drawTrail() {
 }
 drawTrail();
 
-// Sparkles — exact copy from your main page
 const sparkleCanvas = document.getElementById('sparkle-canvas');
 const sctx = sparkleCanvas.getContext('2d');
-sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
+sparkleCanvas.width = innerWidth;
+sparkleCanvas.height = innerHeight;
 window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
 const sparkles = [];
 function createSparkle() {
@@ -152,34 +151,37 @@ drawSparkles();
 setInterval(createSparkle, 400);
 
 // Buttons
-document.getElementById('obfuscate').addEventListener('click', () => {
+document.getElementById('obfuscate').onclick = () => {
   const code = input.value.trim();
-  if (!code) return highlightOutput("-- Nothing to obfuscate");
+  if (!code) {
+    highlightOutput("-- Nothing to obfuscate");
+    return;
+  }
   const escaped = code
-    .replace(/\\/g, '\\\\')
-    .replace(/'/g, "\\'")
-    .replace(/\n/g, '\\n')
-    .replace(/\r/g, '\\r');
+    .replace(/\\\\/g, '\\\\\\\\')
+    .replace(/'/g, "\\\\'")
+    .replace(/\\n/g, '\\\\n')
+    .replace(/\\r/g, '\\\\r');
   highlightOutput("loadstring('" + escaped + "')()");
-});
+};
 
-document.getElementById('clear').addEventListener('click', () => {
+document.getElementById('clear').onclick = () => {
   input.value = '';
   updateMirror();
   highlightOutput('');
   input.focus();
-});
+};
 
-document.getElementById('copy').addEventListener('click', () => {
+document.getElementById('copy').onclick = () => {
   const text = output.textContent.trim();
   if (!text) return;
   navigator.clipboard.writeText(text).then(() => {
     const btn = document.getElementById('copy');
-    const orig = btn.innerHTML;
-    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Copied!';
-    setTimeout(() => btn.innerHTML = orig, 1800);
-  }).catch(() => {});
-});
+    const old = btn.innerHTML;
+    btn.innerHTML = 'Copied!';
+    setTimeout(() => btn.innerHTML = old, 1800);
+  });
+};
 
 // Init
 updateMirror();
