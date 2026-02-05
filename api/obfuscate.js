@@ -66,7 +66,7 @@ export default function handler(req, res) {
   </div>
 </div>
 
-<div class="version">v1.0.0</div>
+<div class="version">v1.0.1</div>
 <div class="copyright">© 2026 yourscoper. All rights reserved.</div>
 
 <script>
