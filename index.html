@@ -267,6 +267,8 @@
       height: 4px;
       flex: 1;
       max-width: 140px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
       cursor: pointer;
     }
     #volumeSlider {
@@ -279,7 +281,7 @@
       margin: 0;
       cursor: pointer;
       position: absolute;
-      top: 4;
+      top: 4px;
       left: 0;
       z-index: 2;
     }
@@ -292,7 +294,7 @@
       border-radius: 50%;
       cursor: pointer;
       box-shadow: 0 0 10px rgba(0,0,0,0.6);
-      margin-top: -8px; /* centered and a bit lower */
+      margin-top: -8px;
       z-index: 3;
     }
     #volumeSlider::-moz-range-thumb {
@@ -405,7 +407,7 @@
             </svg>
           </div>
           <div class="volume-container" id="volumeContainer">
-            <div class="volume-fill" id="volumeFill" style="width: 100%;"></div>
+            <div class="volume-fill" id="volumeFill"></div>
             <input type="range" id="volumeSlider" min="0" max="100" value="100" step="any" />
           </div>
         </div>
@@ -419,7 +421,7 @@
       </div>
     </div>
   </div>
-  <div id="version">v1.0.5</div>
+  <div id="version">v1.0.8</div>
   <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
   <audio id="playerAudio" preload="auto" crossorigin="anonymous"></audio>
 
@@ -741,7 +743,7 @@
     audio.ontimeupdate = updateProgressUI;
     volumeSlider.addEventListener('input', () => {
       audio.volume = volumeSlider.value / 100;
-      updateVolumeUI();
+      volumeFill.style.width = volumeSlider.value + '%';
     });
     let isVolumeDragging = false;
     const volumeContainer = document.getElementById('volumeContainer');
@@ -764,16 +766,16 @@
       const rect = volumeContainer.getBoundingClientRect();
       let pos = (touch.clientX - rect.left) / rect.width;
       pos = Math.max(0, Math.min(1, pos));
-      const volumePercent = pos * 100;
-      volumeFill.style.width = volumePercent + '%';
+      const percent = pos * 100;
+      volumeFill.style.width = percent + '%';
       audio.volume = pos;
-      volumeSlider.value = volumePercent;
+      volumeSlider.value = percent;
     }
     vlb.onclick = () => {
       audio.muted = !audio.muted;
       vlb.innerHTML = audio.muted ? muteSVG : unmuteSVG;
       if (!audio.muted) audio.volume = volumeSlider.value / 100;
-      updateVolumeUI();
+      volumeFill.style.width = volumeSlider.value + '%';
     };
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
