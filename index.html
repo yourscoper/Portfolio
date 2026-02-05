@@ -7,6 +7,7 @@
   <title>yourscoper</title>
   <meta name="description" content="I indulge scripting." />
 
+  <!-- Coming Soon font for everything -->
   <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
 
   <meta property="og:title" content="yourscoper" />
@@ -43,7 +44,7 @@
       display:flex;flex-direction:column;justify-content:center;align-items:center;
       z-index:1000;
       color:#fff;font-size:2.5em;text-shadow:0 0 12px #fff;
-      transition:opacity 1s ease-out;
+      transition:opacity 0.8s ease-out;
     }
     #blur-overlay span { font-size:0.6em;margin-top:10px;opacity:0.8; }
     #blur-overlay.hidden { opacity:0;pointer-events:none; }
@@ -59,7 +60,7 @@
     #main-content {
       display:none;
       opacity:0;
-      transition:opacity 0.3s ease 0.2s; /* even faster fade-in */
+      transition:opacity 0.5s ease 0.1s; /* faster fade-in */
       z-index:5;
       width:90%;
       max-width:420px;
@@ -111,7 +112,7 @@
       border:4px solid #000;
       background:#ffc04e;
       box-shadow:0 0 12px #ffc04e;
-      z-index:20; /* on top of avatar + decoration */
+      z-index:20;
     }
 
     .username-container { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
@@ -171,7 +172,7 @@
       font-size:12px;
       color:rgba(255,255,255,0.8);
       position:absolute;
-      top:-20px;
+      top:-22px;
       left:50%;
       transform:translateX(-50%);
       white-space:nowrap;
@@ -296,8 +297,8 @@
     </div>
   </div>
 
-  <div id="version">v1.0.3</div>
-  <div id="copyright">© 2025 yourscoper. All rights reserved.</div>
+  <div id="version">v1.0.4</div>
+  <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
 
   <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
 
@@ -321,7 +322,7 @@
     }
     typeTitle();
 
-    // Quote autotype (fixed size box)
+    // Quote autotype
     const quoteEl = document.getElementById('quote');
     const quoteText = "I indulge scripting.";
     let quoteIndex = 0;
@@ -340,6 +341,59 @@
       setTimeout(typeQuote, quoteDeleting ? 40 : 80);
     }
     typeQuote();
+
+    // Mouse Trail (from your old code)
+    const trailCanvas = document.getElementById('trail-canvas');
+    const tctx = trailCanvas.getContext('2d');
+    trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
+    window.addEventListener('resize', () => { trailCanvas.width = innerWidth; trailCanvas.height = innerHeight; });
+    const points = [];
+    document.addEventListener('mousemove', e => points.push({x: e.clientX, y: e.clientY, t: Date.now()}));
+    function drawTrail() {
+      tctx.clearRect(0,0,trailCanvas.width,trailCanvas.height);
+      const now = Date.now();
+      for (let j = points.length - 1; j >= 0; j--) {
+        if (now - points[j].t > 1000) { points.splice(j, 1); continue; }
+        const age = (now - points[j].t) / 1000;
+        if (j > 0) {
+          tctx.beginPath();
+          tctx.moveTo(points[j-1].x, points[j-1].y);
+          tctx.lineTo(points[j].x, points[j].y);
+          tctx.strokeStyle = `rgba(255,255,255,${1-age})`;
+          tctx.lineWidth = 2;
+          tctx.stroke();
+        }
+      }
+      requestAnimationFrame(drawTrail);
+    }
+    drawTrail();
+
+    // Sparkles
+    const sparkleCanvas = document.getElementById('sparkle-canvas');
+    const sctx = sparkleCanvas.getContext('2d');
+    sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
+    window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
+    const sparkles = [];
+    function createSparkle() {
+      sparkles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight * 0.6, r: Math.random() * 2.5 + 1, a: 1, t: Date.now() });
+    }
+    function drawSparkles() {
+      sctx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
+      const now = Date.now();
+      for (let j = sparkles.length - 1; j >= 0; j--) {
+        const s = sparkles[j];
+        const age = (now - s.t) / 1000;
+        s.a = 1 - age / 1.5;
+        if (s.a <= 0) { sparkles.splice(j,1); continue; }
+        sctx.fillStyle = `rgba(255,255,255,${s.a})`;
+        sctx.beginPath();
+        sctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        sctx.fill();
+      }
+      requestAnimationFrame(drawSparkles);
+    }
+    drawSparkles();
+    setInterval(createSparkle, 400);
 
     // Music Player
     const audio = document.getElementById('playerAudio');
@@ -480,7 +534,7 @@
       }
     }
 
-    // Fade + autoplay (faster)
+    // Fade + autoplay
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
@@ -498,8 +552,8 @@
           isPlaying = true;
           playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
           initVis();
-        }, 200); // faster appearance
-      }, 1000);
+        }, 200);
+      }, 800); // faster overall
     });
   </script>
 </body>
