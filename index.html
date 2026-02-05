@@ -74,16 +74,22 @@
       75%{border-image-source:linear-gradient(0deg,#fff,#aaa,#000,#aaa,#fff)}
       100%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
     }
-    .profile-top { display:flex;align-items:flex-start;gap:16px;margin-bottom:12px; }
-    .avatar-wrapper {
+    .profile-top { 
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:12px;
       position: relative;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
     }
-    .avatar, .decoration {
+    .avatar-wrapper {
+      position:relative;
+      width:80px;
+      height:80px;
+      border-radius:50%;
+      overflow:hidden;
+      flex-shrink:0;
+    }
+    .avatar,.decoration {
       width:100%;height:100%;
       object-fit:cover;
       border-radius:50%;
@@ -92,15 +98,15 @@
     .avatar { z-index:1; }
     .decoration { z-index:2; }
 
-    /* ─── Discord-style status badge ──────────────────────────────────────── */
     .platform-indicator {
       position: absolute;
-      bottom: -4px;          /* slight overlap into avatar */
-      right: -4px;
+      bottom: 391px;
+      right: 314px;
       width: 28px;
       height: 28px;
-      z-index: 10;
+      z-index: 20;
       pointer-events: auto;
+      transition: transform 0.2s ease;
     }
     .platform-indicator:hover {
       transform: scale(1.12);
@@ -252,21 +258,17 @@
       .quote-wrapper { width:160px;padding:6px 10px; }
       .quote { font-size:14px; }
       .platform-indicator { 
-        bottom: -3px; 
-        right: -3px; 
+        bottom: 320px; 
+        right: 260px; 
         width: 26px; 
         height: 26px; 
       }
       .platform-indicator svg { 
-        width: 18px; 
-        height: 18px; 
-        top: 4px; 
-        left: 4px; 
+        width: 16px; 
+        height: 16px; 
+        top: 5px; 
+        left: 5px; 
       }
-      #volumeSlider { width:100px; height:16px; }
-      #volumeSlider::-webkit-slider-thumb { width:24px; height:24px; margin-top:-4px; }
-      .progress-container { height:16px; }
-      .progress-knob { width:16px; height:16px; top:-6px; }
     }
   </style>
 </head>
@@ -283,8 +285,6 @@
         <div class="avatar-wrapper">
           <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
           <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
-          <!-- Discord-style status badge -->
-          <div class="platform-indicator" id="platformIndicator" title="Offline • Desktop"></div>
         </div>
         <div>
           <div class="username-container">
@@ -308,7 +308,10 @@
             </div>
           </div>
         </div>
+
+        <div class="platform-indicator" id="platformIndicator" title="Offline • Desktop"></div>
       </div>
+
       <canvas id="waveform"></canvas>
       <div class="controls">
         <div class="btn" id="prev"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></div>
@@ -446,7 +449,7 @@
     }
     typeQuote();
 
-    // ─── Mouse Trail ────────────────────────────────────────────────────────
+    // ─── Mouse Trail & Sparkles (unchanged) ─────────────────────────────────
     const trailCanvas = document.getElementById('trail-canvas');
     const tctx = trailCanvas.getContext('2d');
     trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -472,7 +475,6 @@
     }
     drawTrail();
 
-    // ─── Sparkles ───────────────────────────────────────────────────────────
     const sparkleCanvas = document.getElementById('sparkle-canvas');
     const sctx = sparkleCanvas.getContext('2d');
     sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
@@ -499,9 +501,9 @@
     drawSparkles();
     setInterval(createSparkle, 400);
 
-    // ─── Music Player ───────────────────────────────────────────────────────
+    // ─── Music Player with Spotify-like fade ────────────────────────────────
     const audio = document.getElementById('playerAudio');
-    audio.volume = 0.5;
+    audio.volume = 0.0; // start silent, fade in later
 
     const playPause = document.getElementById('playPause');
     const trackName = document.getElementById('trackName');
@@ -528,6 +530,7 @@
     ];
     let currentTrack = 0;
     let isPlaying = false;
+    let fadeInterval = null;
 
     function loadTrack(idx) {
       audio.src = tracks[idx].src;
@@ -537,15 +540,63 @@
     }
     loadTrack(currentTrack);
 
+    // ─── Spotify-style fade in / fade out ───────────────────────────────────
+    const FADE_DURATION = 300; // ms
+    const FADE_STEPS = 20;
+
+    function fadeIn(callback = () => {}) {
+      clearInterval(fadeInterval);
+      let step = 0;
+      const targetVol = audio.muted ? 0 : (volumeSlider.value / 100);
+      const startVol = audio.volume;
+      const stepSize = (targetVol - startVol) / FADE_STEPS;
+
+      fadeInterval = setInterval(() => {
+        step++;
+        audio.volume = Math.max(0, Math.min(1, startVol + step * stepSize));
+        if (step >= FADE_STEPS) {
+          clearInterval(fadeInterval);
+          audio.volume = targetVol;
+          callback();
+        }
+      }, FADE_DURATION / FADE_STEPS);
+    }
+
+    function fadeOut(callback = () => {}) {
+      clearInterval(fadeInterval);
+      let step = 0;
+      const startVol = audio.volume;
+      const stepSize = startVol / FADE_STEPS;
+
+      fadeInterval = setInterval(() => {
+        step++;
+        audio.volume = Math.max(0, startVol - step * stepSize);
+        if (step >= FADE_STEPS) {
+          clearInterval(fadeInterval);
+          audio.volume = 0;
+          callback();
+        }
+      }, FADE_DURATION / FADE_STEPS);
+    }
+
+    // Play / Pause with fade
     playPause.onclick = () => {
       if (isPlaying) {
-        audio.pause();
-        playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
+        // Pause → fade out then pause
+        fadeOut(() => {
+          audio.pause();
+          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
+          isPlaying = false;
+        });
       } else {
+        // Play → fade in
+        if (!audio.src || audio.src === '') loadTrack(currentTrack);
         audio.play().catch(e => console.error('Play failed:', e));
-        playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+        fadeIn(() => {
+          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+          isPlaying = true;
+        });
       }
-      isPlaying = !isPlaying;
     };
 
     document.getElementById('prev').onclick = () => {
@@ -555,16 +606,22 @@
         audio.currentTime = 0;
       }
       loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
+      if (isPlaying) {
+        audio.pause();
+        fadeIn(() => audio.play().catch(e => console.error('Play error:', e)));
+      }
     };
 
     document.getElementById('next').onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
+      if (isPlaying) {
+        audio.pause();
+        fadeIn(() => audio.play().catch(e => console.error('Play error:', e)));
+      }
     };
 
-    // ─── Draggable Progress ─────────────────────────────────────────────────
+    // ─── Draggable Progress (unchanged) ─────────────────────────────────────
     let isDragging = false;
 
     function updateProgress() {
@@ -601,18 +658,22 @@
 
     // ─── Volume Slider ──────────────────────────────────────────────────────
     volumeSlider.addEventListener('input', () => {
-      audio.volume = volumeSlider.value / 100;
+      if (!audio.muted) audio.volume = volumeSlider.value / 100;
     });
 
     muteIcon.onclick = () => {
       audio.muted = !audio.muted;
       muteIcon.innerHTML = audio.muted ? muteSVG : unmuteSVG;
+      if (!audio.muted) audio.volume = volumeSlider.value / 100;
     };
 
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
+      if (isPlaying) {
+        audio.pause();
+        fadeIn(() => audio.play().catch(e => console.error('Play error:', e)));
+      }
     };
 
     audio.onerror = e => console.error('Audio error:', e);
@@ -663,19 +724,22 @@
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
+
       overlay.style.opacity = '0';
       setTimeout(() => {
         overlay.classList.add('hidden');
         content.style.display = 'block';
         setTimeout(() => {
           content.classList.add('visible');
-          audio.volume = 0.5;
+          audio.volume = 0.0;
           volumeSlider.value = 50;
           audio.muted = false;
           muteIcon.innerHTML = unmuteSVG;
           audio.play().catch(e => console.error('Autoplay failed:', e));
-          isPlaying = true;
-          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+          fadeIn(() => {
+            isPlaying = true;
+            playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+          });
           initVis();
         }, 200);
       }, 800);
