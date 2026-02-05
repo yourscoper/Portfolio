@@ -7,7 +7,7 @@
   <title>yourscoper</title>
   <meta name="description" content="I indulge scripting." />
 
-  <!-- Coming Soon font for everything -->
+  <!-- Coming Soon font -->
   <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
 
   <meta property="og:title" content="yourscoper" />
@@ -96,7 +96,7 @@
       100% { border-image-source: linear-gradient(90deg, #fff, #aaa, #000, #aaa, #fff); }
     }
 
-    .profile-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px; position: relative; }
+    .profile-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px; }
     .avatar-wrapper {
       position: relative;
       width: 80px;
@@ -130,6 +130,7 @@
 
     .username-container { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
+
     .guild-tag {
       display: inline-flex;
       align-items: center;
@@ -143,22 +144,13 @@
     .badges { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
     .badges img { width: 20px; height: 20px; }
 
-    .quote-container {
-      background: rgba(0,0,0,0.6);
-      border-radius: 12px;
-      padding: 14px;
-      margin: 12px 0;
-      text-align: center;
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
     .quote {
       font-size: 18px;
       font-style: italic;
       color: rgba(255,255,255,0.95);
       text-shadow: 0 0 8px rgba(255,255,255,0.4);
+      margin-top: 8px;
+      text-align: center;
     }
 
     #waveform { width: 100%; height: 80px; margin: 16px 0; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.7); }
@@ -231,11 +223,13 @@
           <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
           <div class="status-dot"></div>
         </div>
-        <div class="username-container">
-          <div class="username">yourscoper</div>
-          <div class="guild-tag">
-            <img src="https://cdn.discordapp.com/clan-badges/547906569489350657/3858554c542da4e8e4b52ff00a558ced.png?size=16" alt="CODE badge" />
-            <span>CODE</span>
+        <div>
+          <div class="username-container">
+            <div class="username">yourscoper</div>
+            <div class="guild-tag">
+              <img src="https://cdn.discordapp.com/clan-badges/547906569489350657/3858554c542da4e8e4b52ff00a558ced.png?size=16" alt="CODE badge" />
+              <span>CODE</span>
+            </div>
           </div>
           <div class="badges">
             <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Nitro" />
@@ -245,10 +239,8 @@
             <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest" />
             <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs" />
           </div>
-          <!-- Quote under badges -->
-          <div class="quote-container">
-            <div class="quote" id="quote"></div>
-          </div>
+          <!-- Quote under badges, no black box -->
+          <div class="quote" id="quote"></div>
         </div>
       </div>
 
@@ -286,25 +278,46 @@
   <audio id="playerAudio" loop preload="auto"></audio>
 
   <script>
+    // Autotyping tab title
+    const fullTitle = 'yourscoper';
+    let titleIndex = 0;
+    let titleDeleting = false;
+
+    function typeTitle() {
+      if (!titleDeleting) {
+        document.title = fullTitle.substring(0, titleIndex + 1);
+        titleIndex++;
+        if (titleIndex === fullTitle.length) {
+          setTimeout(() => titleDeleting = true, 2000);
+        }
+      } else {
+        document.title = fullTitle.substring(0, titleIndex);
+        titleIndex--;
+        if (titleIndex === 0) titleDeleting = false;
+      }
+      setTimeout(typeTitle, titleDeleting ? 60 : 120);
+    }
+    typeTitle();
+
     // Typewriter quote
     const quoteEl = document.getElementById('quote');
-    const text = "I indulge scripting.";
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 80;
-    let pauseTime = 2000;
+    const quoteText = "I indulge scripting.";
+    let quoteIndex = 0;
+    let quoteDeleting = false;
+    let quoteSpeed = 80;
+    let quotePause = 2000;
 
     function typeQuote() {
-      if (!isDeleting) {
-        quoteEl.textContent = text.substring(0, charIndex + 1);
-        charIndex++;
-        if (charIndex === text.length) setTimeout(() => isDeleting = true, pauseTime);
+      if (!quoteDeleting) {
+        quoteEl.textContent = quoteText.substring(0, quoteIndex + 1);
+        quoteIndex++;
+        if (quoteIndex === quoteText.length) setTimeout(() => quoteDeleting = true, quotePause);
       } else {
-        quoteEl.textContent = text.substring(0, charIndex);
-        charIndex--;
-        if (charIndex === 0) isDeleting = false;
+        quoteEl.textContent = quoteText.substring(0, quoteIndex);
+        quoteIndex--;
+        if (quoteIndex === 0) quoteDeleting = false;
       }
-      setTimeout(typeQuote, isDeleting ? typingSpeed / 2 : typingSpeed);
+      setTimeout(typeQuote, quoteDeleting ? quoteSpeed / 2 : quoteSpeed);
     }
     typeQuote();
 
@@ -332,6 +345,7 @@
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
       audio.load();
+      console.log('Attempting to load:', tracks[idx].name);
     }
     loadTrack(currentTrack);
 
@@ -387,6 +401,14 @@
       if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
+    audio.onerror = (e) => {
+      console.error('Audio error:', e);
+      trackName.textContent = 'Error loading track - check console';
+      // Optional: try next track
+      currentTrack = (currentTrack + 1) % tracks.length;
+      loadTrack(currentTrack);
+    };
+
     // White/grey/black gradient visualizer
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
@@ -402,16 +424,14 @@
         analyser.connect(audioCtx.destination);
         draw();
       } catch (e) {
-        console.log('Visualizer skipped (CORS?):', e);
+        console.log('Visualizer skipped (likely CORS):', e);
       }
     }
 
     function draw() {
       requestAnimationFrame(draw);
-      if (!analyser) {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        return;
-      }
+      if (!analyser) return;
+
       const buffer = analyser.frequencyBinCount;
       const data = new Uint8Array(buffer);
       analyser.getByteFrequencyData(data);
@@ -425,8 +445,8 @@
       for (let k = 0; k < buffer; k++) {
         const barHeight = (data[k] / 255) * canvas.height * 0.8;
         const gradient = ctx.createLinearGradient(0, canvas.height - barHeight, 0, canvas.height);
-        gradient.addColorStop(0, 'rgba(255,255,255,0.9)');
-        gradient.addColorStop(0.5, 'rgba(200,200,200,0.7)');
+        gradient.addColorStop(0, 'rgba(255,255,255,0.95)');
+        gradient.addColorStop(0.5, 'rgba(180,180,180,0.7)');
         gradient.addColorStop(1, 'rgba(0,0,0,0.4)');
         ctx.fillStyle = gradient;
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
@@ -434,7 +454,7 @@
       }
     }
 
-    // Fade transition + autoplay
+    // Fade transition + autoplay on enter
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
