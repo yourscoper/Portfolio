@@ -76,6 +76,7 @@
       animation:spinGradient 6s linear infinite;
       border-image:linear-gradient(90deg,#fff,#333,#000,#333,#fff) 1;
       border-image-slice:1;
+      position: relative; /* ← important for absolute positioning of status-dot */
     }
 
     @keyframes spinGradient {
@@ -86,7 +87,7 @@
       100%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
     }
 
-    /* Discord-style avatar + decoration + status (copied structure) */
+    .profile-top { display:flex;align-items:flex-start;gap:16px;margin-bottom:12px; }
     .avatar-wrapper {
       position:relative;
       width:80px;
@@ -95,43 +96,28 @@
       overflow:hidden;
       flex-shrink:0;
     }
-    .avatar-container {
-      position:relative;
-      width:100%;
-      height:100%;
-      border-radius:50%;
-      overflow:hidden;
-    }
-    .avatar {
-      width:100%;
-      height:100%;
+    .avatar,.decoration {
+      width:100%;height:100%;
       object-fit:cover;
-      position:absolute;
-      inset:0;
-      z-index:1;
-    }
-    .decoration {
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      position:absolute;
-      inset:0;
-      z-index:2;
-    }
-    .status-dot {
-      position:absolute;
-      bottom:0;
-      right:0;
-      width:22px;
-      height:22px;
       border-radius:50%;
-      border:4px solid #000;
-      background:#ffc04e;
-      box-shadow:0 0 12px #ffc04e;
-      z-index:20;
+      position:absolute;inset:0;
     }
+    .avatar { z-index:1; }
+    .decoration { z-index:2; }
 
-    .profile-top { display:flex;align-items:flex-start;gap:16px;margin-bottom:12px; }
+    /* Status dot now parented to .player-card */
+    .status-dot {
+      position: absolute;
+      bottom: 38px; /* your value (adjusted from 383px – likely typo) */
+      right: 308px; /* your value */
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 4px solid #000;
+      background: #ffc04e;
+      box-shadow: 0 0 12px #ffc04e;
+      z-index: 20;
+    }
 
     .username-container { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
     .username { font-size:28px;font-weight:bold;text-shadow:0 0 12px rgba(255,255,255,0.6); }
@@ -184,7 +170,7 @@
 
     .track-info { flex:1;min-width:140px;text-align:center; }
     .track-name { font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px; }
-    .track-artist { font-size:16px; /* ← changed to 16px as you asked */ color:rgba(255,255,255,0.8);margin-bottom:20px; }
+    .track-artist { font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:20px; }
     .progress-container { position:relative;margin-top:8px; }
     .progress-time { 
       font-size:12px;
@@ -251,13 +237,13 @@
 
   <div id="main-content">
     <div class="player-card">
+      <!-- Status dot now parented directly to .player-card -->
+      <div class="status-dot"></div>
+
       <div class="profile-top">
         <div class="avatar-wrapper">
-          <div class="avatar-container">
-            <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
-            <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
-            <div class="status-dot"></div>
-          </div>
+          <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
+          <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
         </div>
         <div>
           <div class="username-container">
@@ -317,7 +303,7 @@
     </div>
   </div>
 
-  <div id="version">v1.0.4</div>
+  <div id="version">v1.0.5</div>
   <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
 
   <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
@@ -429,10 +415,10 @@
     const muteIcon = document.getElementById('muteIcon');
 
     const tracks = [
-      { name: 'Baptized In Fear (Lyrics)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/Baptized%20In%20Fear%20(Lyrics).mp3' },
       { name: 'High For This (Lyrics)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/High%20For%20This%20(Lyrics).mp3' },
-      { name: 'São Paulo (feat. Anitta) (Lyrics)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/S%C3%A3o%20Paulo%20(feat.%20Anitta)%20(Lyrics).mp3' },
       { name: 'The Morning (Lyrics)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/The%20Morning%20(Lyrics).mp3' },
+      { name: 'Baptized In Fear (Lyrics)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/Baptized%20In%20Fear%20(Lyrics).mp3' },
+      { name: 'São Paulo (feat. Anitta) (Lyrics)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/S%C3%A3o%20Paulo%20(feat.%20Anitta)%20(Lyrics).mp3' },
     ];
     let currentTrack = 0;
     let isPlaying = false;
