@@ -1,8 +1,10 @@
-// obfuscate.js — single file — open directly in browser
+// api/obfuscate.js   (Vercel serverless function / Next.js API route)
 
-document.open();
-document.write(`
-<!DOCTYPE html>
+export default function handler(req, res) {
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Cache-Control", "public, max-age=3600");
+
+  res.status(200).send(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,94 +15,147 @@ document.write(`
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/lua.min.js"></script>
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Coming Soon',cursive;cursor:none !important;}
+    * {
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Coming Soon', cursive;
+      cursor: none !important;
+    }
     body {
-      background:#0d0d0d;
-      color:#fff;
+      background:#0a0a0a;
+      color:#ffffff;
       min-height:100vh;
-      overflow-x:hidden;
       position:relative;
-      font-size:1.1rem;
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="%23ffffff" stroke-width="3" opacity="0.9"/><circle cx="16" cy="16" r="4" fill="%23ffffff"/></svg>') 16 16, auto;
+      overflow-x:hidden;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="%23ffffff" stroke-width="3" opacity="0.9"/><circle cx="16" cy="16" r="5" fill="%23ffffff"/></svg>') 16 16, auto;
     }
-    .sparkle {
-      position:absolute;
-      width:5px;
-      height:5px;
-      background:#fff;
-      border-radius:50%;
-      pointer-events:none;
-      opacity:0;
-      animation: sparkle 5s infinite;
-      box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+    canvas { position:fixed; inset:0; pointer-events:none; z-index:1; }
+    header {
+      text-align:center;
+      padding:60px 20px 30px;
+      position:relative;
+      z-index:10;
     }
-    @keyframes sparkle {
-      0%,100% {opacity:0; transform: scale(0.3) translateY(0);}
-      50% {opacity:0.9; transform: scale(1.4) translateY(-90vh);}
+    h1 {
+      font-size:4.5rem;
+      color:#ffffff;
+      text-shadow:0 0 35px rgba(255,255,255,0.6);
+      margin-bottom:12px;
     }
-    header {text-align:center; padding:50px 20px 30px; position:relative; z-index:10;}
-    h1 {font-size:4.8rem; color:#fff; text-shadow:0 0 40px rgba(255,255,255,0.8); margin-bottom:10px;}
-    .version {font-size:2rem; color:#fff; opacity:0.92;}
+    .version {
+      font-size:2.1rem;
+      color:#ffffff;
+      opacity:0.92;
+      letter-spacing:1px;
+    }
     .container {
-      max-width:1480px;
+      max-width:1440px;
       margin:0 auto;
       padding:0 30px;
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:40px;
+      position:relative;
+      z-index:5;
     }
-    .editor {display:flex; flex-direction:column; gap:16px;}
-    label {font-size:1.7rem; color:#eee;}
+    .editor {
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    label {
+      font-size:1.8rem;
+      color:#ddd;
+    }
     textarea {
       width:100%;
       height:580px;
-      background:#0f0f0f;
-      color:#e8e8e8;
+      background:rgba(20,20,20,0.8);
+      color:#e0e0e0;
       border:2px solid #444;
       border-radius:14px;
       padding:20px;
-      font-size:1.1rem;
-      font-family:Consolas,monospace;
+      font-size:1.05rem;
+      font-family:Consolas, monospace;
       resize:vertical;
       outline:none;
+      backdrop-filter:blur(8px);
     }
-    textarea:focus {border-color:#888; box-shadow:0 0 25px rgba(255,255,255,0.2);}
+    textarea:focus {
+      border-color:#777;
+      box-shadow:0 0 25px rgba(255,255,255,0.18);
+    }
+    pre#output {
+      margin:0;
+      padding:20px;
+      background:rgba(20,20,20,0.8);
+      border:2px solid #444;
+      border-radius:14px;
+      min-height:580px;
+      font-family:Consolas, monospace;
+      font-size:1.05rem;
+      white-space:pre-wrap;
+      word-wrap:break-word;
+      overflow-y:auto;
+      backdrop-filter:blur(8px);
+    }
     .controls {
       grid-column:1 / -1;
       display:flex;
       justify-content:center;
       gap:40px;
       flex-wrap:wrap;
-      margin:40px 0;
+      margin:50px 0;
     }
     button {
       display:flex;
       align-items:center;
       gap:14px;
-      background:#1e1e1e;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.15);
       color:#ffffff;
-      border:none;
-      padding:18px 40px;
-      font-size:1.5rem;
-      border-radius:14px;
+      padding:16px 36px;
+      font-size:1.45rem;
+      border-radius:12px;
       cursor:pointer;
-      transition:all 0.3s;
-      text-shadow:0 0 12px rgba(255,255,255,0.7);
-      box-shadow:0 0 25px rgba(0,0,0,0.7);
+      transition:all 0.28s;
+      backdrop-filter:blur(12px);
+      text-shadow:0 0 10px rgba(255,255,255,0.5);
+      box-shadow:0 0 20px rgba(0,0,0,0.5);
     }
     button:hover {
-      background:#2a2a2a;
-      transform:translateY(-4px);
-      box-shadow:0 15px 40px rgba(255,255,255,0.22);
+      background:rgba(255,255,255,0.12);
+      transform:translateY(-3px);
+      box-shadow:0 12px 35px rgba(255,255,255,0.25);
     }
-    button svg {width:30px; height:30px; stroke:#fff; stroke-width:2.3;}
-    footer {text-align:center; padding:80px 20px 50px; color:#999; font-size:1.4rem; opacity:0.9;}
-    footer span {color:#fff;}
+    button svg {
+      width:28px;
+      height:28px;
+      stroke:#ffffff;
+      stroke-width:2.2;
+    }
+    footer {
+      text-align:center;
+      padding:80px 20px 60px;
+      color:#888;
+      font-size:1.35rem;
+      position:relative;
+      z-index:5;
+    }
+    footer span {
+      color:#ffffff;
+    }
+    @media (max-width:900px) {
+      .container { grid-template-columns:1fr; }
+      h1 { font-size:3.6rem; }
+      .version { font-size:1.7rem; }
+    }
   </style>
 </head>
 <body>
 
-<div class="sparkles"></div>
+<canvas id="sparkles"></canvas>
 
 <header>
   <h1>Obfuscate Lua</h1>
@@ -110,99 +165,136 @@ document.write(`
 <div class="container">
   <div class="editor">
     <label>Input Lua Code</label>
-    <textarea id="input" placeholder="-- paste your lua code here..."></textarea>
+    <textarea id="input" placeholder="-- paste your lua / luau code here..."></textarea>
   </div>
 
   <div class="editor">
     <label>Obfuscated Output</label>
-    <textarea id="output" readonly placeholder="obfuscated code will appear here..."></textarea>
+    <pre id="output">-- obfuscated code appears here</pre>
   </div>
 
   <div class="controls">
-    <button id="obf">
+    <button onclick="obfuscate()">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg>
       Obfuscate
     </button>
-    <button id="clr">
+
+    <button onclick="clearAll()">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H8a2 2 0 0 1-1.42-.587l-3.994-3.999a2 2 0 0 1 0-2.828l10-10a2 2 0 0 1 2.829 0l5.999 6a2 2 0 0 1 0 2.828L12.834 21"></path><path d="m5.082 11.09 8.828 8.828"></path></svg>
       Clear
     </button>
-    <button id="cpy">
+
+    <button onclick="copyOutput()">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-      Copy
+      Copy Output
     </button>
   </div>
 </div>
 
-<footer>© <span id="yr"></span> • All Rights Reserved</footer>
+<footer>
+  © <span id="year"></span> • All Rights Reserved
+</footer>
 
 <script>
-const spark = document.querySelector('.sparkles');
-for(let i=0;i<180;i++){
-  let s = document.createElement('div');
-  s.className = 'sparkle';
-  s.style.left = Math.random()*100 + 'vw';
-  s.style.top  = Math.random()*180 + 'vh';
-  s.style.animationDelay = Math.random()*12 + 's';
-  s.style.animationDuration = (6 + Math.random()*8) + 's';
-  spark.appendChild(s);
+hljs.highlightAll();
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Sparkles (more, brighter, white)
+const canvas = document.getElementById('sparkles');
+const ctx = canvas.getContext('2d');
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+window.addEventListener('resize', () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+});
+
+let particles = [];
+function createParticle() {
+  particles.push({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight * 1.4,
+    r: Math.random() * 2.8 + 1.2,
+    a: 1,
+    vy: - (Math.random() * 1.2 + 0.4),
+    life: 5000 + Math.random() * 8000
+  });
 }
 
-document.getElementById('yr').textContent = new Date().getFullYear();
+function drawSparkles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const now = Date.now();
+  particles = particles.filter(p => now - (now - p.life) < p.life);
+  particles.forEach(p => {
+    const age = (now - (now - p.life)) / p.life;
+    ctx.globalAlpha = 0.9 * (1 - age);
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r * (1 + Math.sin(now * 0.003 + p.x) * 0.4), 0, Math.PI * 2);
+    ctx.fill();
+    p.y += p.vy;
+    p.x += Math.sin(now * 0.0008 + p.y) * 0.6;
+  });
+  requestAnimationFrame(drawSparkles);
+}
 
-hljs.highlightAll();
+for (let i = 0; i < 220; i++) createParticle();
+setInterval(createParticle, 180);
+drawSparkles();
 
-const input  = document.getElementById('input');
-const output = document.getElementById('output');
+// Functionality
+const inputEl = document.getElementById('input');
+const outputEl = document.getElementById('output');
 
-document.getElementById('clr').onclick = () => {
-  input.value = output.value = '';
-  input.focus();
-};
+function clearAll() {
+  inputEl.value = '';
+  outputEl.textContent = '';
+  inputEl.focus();
+}
 
-document.getElementById('cpy').onclick = () => {
-  if (!output.value) return alert('Nothing to copy');
-  navigator.clipboard.writeText(output.value);
-  const btn = document.getElementById('cpy');
-  const old = btn.innerHTML;
-  btn.innerHTML = 'Copied!';
-  setTimeout(() => btn.innerHTML = old, 1400);
-};
+function copyOutput() {
+  const text = outputEl.textContent.trim();
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('button[onclick="copyOutput()"]');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<svg ...same copy svg here...></svg>Copied!';
+    setTimeout(() => btn.innerHTML = orig, 1600);
+  });
+}
 
-document.getElementById('obf').onclick = () => {
-  const code = input.value.trim();
+function obfuscate() {
+  const code = inputEl.value.trim();
   if (!code) {
-    output.value = '-- no code to obfuscate';
-    hljs.highlightElement(output);
+    outputEl.textContent = '-- nothing to obfuscate';
+    hljs.highlightElement(outputEl);
     return;
   }
 
-  // ← Replace everything below this line with your real obfuscation code
-  //    ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+  // ← Replace this part with your real obfuscation logic
+  // For now using simple placeholder (reverse + wrap)
 
-  let escaped = code
+  const escaped = code
     .replace(/\\/g, '\\\\')
     .replace(/"/g, '\\"')
     .replace(/\\n/g, '\\\\n');
 
-  output.value =
-\`-- Obfuscated v1.0.8
+  const result = \`-- Obfuscated by Scopefuscator v1.0.8
 -- Original length: \${code.length}
 
 return (function()
-  local c = "\${escaped}"
-  return loadstring(c)()
+  local s = "\${escaped}"
+  return loadstring(s)()
 end)()\`;
 
-  // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-  // ↑ Paste your actual big obfuscation function / string here ↑
+  outputEl.textContent = result;
+  hljs.highlightElement(outputEl);
+}
 
-  hljs.highlightElement(output);
-};
-
-input.addEventListener('input', () => hljs.highlightElement(input));
+inputEl.addEventListener('input', () => {
+  hljs.highlightElement(inputEl);
+});
 </script>
 </body>
-</html>
-`);
-document.close();
+</html>`);
+}
