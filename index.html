@@ -7,7 +7,6 @@
   <title>yourscoper</title>
   <meta name="description" content="I indulge scripting." />
 
-  <!-- Coming Soon font for everything -->
   <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
 
   <meta property="og:title" content="yourscoper" />
@@ -60,7 +59,7 @@
     #main-content {
       display:none;
       opacity:0;
-      transition:opacity 0.5s ease 0.1s; /* faster fade-in */
+      transition:opacity 0.5s ease 0.1s;
       z-index:5;
       width:90%;
       max-width:420px;
@@ -87,7 +86,7 @@
       100%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
     }
 
-    .profile-top { display:flex;align-items:flex-start;gap:16px;margin-bottom:12px; }
+    /* Discord-style avatar + decoration + status (copied structure) */
     .avatar-wrapper {
       position:relative;
       width:80px;
@@ -96,24 +95,43 @@
       overflow:hidden;
       flex-shrink:0;
     }
-    .avatar,.decoration {
-      width:100%;height:100%;
-      object-fit:cover;
+    .avatar-container {
+      position:relative;
+      width:100%;
+      height:100%;
       border-radius:50%;
-      position:absolute;inset:0;
+      overflow:hidden;
     }
-    .avatar { z-index:1; }
-    .decoration { z-index:2; }
+    .avatar {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      position:absolute;
+      inset:0;
+      z-index:1;
+    }
+    .decoration {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      position:absolute;
+      inset:0;
+      z-index:2;
+    }
     .status-dot {
       position:absolute;
-      bottom:0;right:0;
-      width:22px;height:22px;
+      bottom:0;
+      right:0;
+      width:22px;
+      height:22px;
       border-radius:50%;
       border:4px solid #000;
       background:#ffc04e;
       box-shadow:0 0 12px #ffc04e;
       z-index:20;
     }
+
+    .profile-top { display:flex;align-items:flex-start;gap:16px;margin-bottom:12px; }
 
     .username-container { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
     .username { font-size:28px;font-weight:bold;text-shadow:0 0 12px rgba(255,255,255,0.6); }
@@ -166,7 +184,7 @@
 
     .track-info { flex:1;min-width:140px;text-align:center; }
     .track-name { font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px; }
-    .track-artist { font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:20px; }
+    .track-artist { font-size:16px; /* ← changed to 16px as you asked */ color:rgba(255,255,255,0.8);margin-bottom:20px; }
     .progress-container { position:relative;margin-top:8px; }
     .progress-time { 
       font-size:12px;
@@ -235,9 +253,11 @@
     <div class="player-card">
       <div class="profile-top">
         <div class="avatar-wrapper">
-          <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
-          <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
-          <div class="status-dot"></div>
+          <div class="avatar-container">
+            <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
+            <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
+            <div class="status-dot"></div>
+          </div>
         </div>
         <div>
           <div class="username-container">
@@ -553,7 +573,7 @@
           playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
           initVis();
         }, 200);
-      }, 800); // faster overall
+      }, 800);
     });
   </script>
 </body>
