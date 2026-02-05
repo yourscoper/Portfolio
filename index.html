@@ -73,7 +73,7 @@
       75%{border-image-source:linear-gradient(0deg,#fff,#aaa,#000,#aaa,#fff)}
       100%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
     }
-    .profile-top { 
+    .profile-top {
       display:flex;
       align-items:flex-start;
       gap:16px;
@@ -95,8 +95,7 @@
       position:absolute;inset:0;
     }
     .avatar { z-index:1; }
-    .decoration { z-index:2; }
-
+    .decoration { z-index:2; display:none; }
     .platform-indicator {
       position: absolute;
       bottom: 40px;
@@ -129,7 +128,6 @@
       left: 5px;
       filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
     }
-
     .username-container { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
     .username { font-size:28px;font-weight:bold;text-shadow:0 0 12px rgba(255,255,255,0.6); }
     .guild-tag {
@@ -176,10 +174,10 @@
     .track-info { flex:1;min-width:140px;text-align:center; }
     .track-name { font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px; }
     .track-artist { font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:20px; }
-    .progress-container { 
+    .progress-container {
       position:relative;
       margin-top:8px;
-      height:24px;                /* bigger touch target */
+      height:24px;
       cursor:grab;
       user-select:none;
       -webkit-user-select:none;
@@ -195,15 +193,15 @@
       white-space:nowrap;
       pointer-events:none;
     }
-    .progress-bar { 
+    .progress-bar {
       height:4px;
       background:rgba(255,255,255,0.15);
       border-radius:2px;
       position:absolute;
       left:0; right:0;
-      top:10px;                   /* centered in 24px container */
+      top:10px;
     }
-    .progress-fill { 
+    .progress-fill {
       position:absolute;
       top:0; left:0; height:100%;
       width:0%;
@@ -217,10 +215,10 @@
       height: 18px;
       background: #fff;
       border-radius: 50%;
-      top: 3px;                   /* perfectly centered on bar */
+      top: -6px;
       transform: translateX(-50%);
       box-shadow: 0 0 10px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
-      pointer-events: auto;       /* crucial: must be clickable */
+      pointer-events: auto;
       cursor: grab;
       z-index: 3;
     }
@@ -254,7 +252,7 @@
       cursor: pointer;
       box-shadow: 0 0 12px #ffffff, 0 0 24px #ffffff;
     }
-    .volume-area { 
+    .volume-area {
       display: flex;
       align-items: center;
       gap: 8px;
@@ -273,17 +271,17 @@
       .username { font-size:24px; }
       .quote-wrapper { width:160px;padding:6px 10px; }
       .quote { font-size:14px; }
-      .platform-indicator { 
-        bottom: 320px; 
-        right: 260px; 
-        width: 26px; 
-        height: 26px; 
+      .platform-indicator {
+        bottom: 320px;
+        right: 260px;
+        width: 26px;
+        height: 26px;
       }
-      .platform-indicator svg { 
-        width: 16px; 
-        height: 16px; 
-        top: 5px; 
-        left: 5px; 
+      .platform-indicator svg {
+        width: 16px;
+        height: 16px;
+        top: 5px;
+        left: 5px;
       }
       #volumeSlider { width: 110px; height: 24px; }
       #volumeSlider::-webkit-slider-thumb { width: 32px; height: 32px; margin-top: -4px; }
@@ -301,8 +299,8 @@
     <div class="player-card">
       <div class="profile-top">
         <div class="avatar-wrapper">
-          <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
-          <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
+          <img class="avatar" id="userAvatar" src="" alt="yourscoper" />
+          <img class="decoration" id="userDecoration" src="" alt="decoration" />
         </div>
         <div>
           <div class="username-container">
@@ -326,10 +324,8 @@
             </div>
           </div>
         </div>
-
         <div class="platform-indicator" id="platformIndicator" title="Offline • Desktop"></div>
       </div>
-
       <canvas id="waveform"></canvas>
       <div class="controls">
         <div class="btn" id="prev"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></div>
@@ -365,51 +361,55 @@
   <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
 
   <script>
-    // ─── Discord Status + Platform Indicator ───────────────────────────────
     const userId = '765706304656113664';
     const platformIndicator = document.getElementById('platformIndicator');
-
     const statusColors = {
-      online:  '#43b581',
-      idle:    '#faa61a',
-      dnd:     '#f04747',
+      online: '#43b581',
+      idle: '#faa61a',
+      dnd: '#f04747',
       offline: '#747f8d'
     };
-
     const statusDisplayNames = {
-      online:  'Online',
-      idle:    'Idle',
-      dnd:     'Do Not Disturb',
+      online: 'Online',
+      idle: 'Idle',
+      dnd: 'Do Not Disturb',
       offline: 'Offline'
     };
-
     const platformSVGs = {
       desktop: `<svg aria-label="Desktop" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.5c-1.103 0-2 .897-2 2v11c0 1.104.897 2 2 2h7v2H7v2h10v-2h-4v-2h7c1.103 0 2-.896 2-2v-11c0-1.103-.897-2-2-2H4Zm16 2v9H4v-9h16Z"></path></svg>`,
-      mobile:  `<svg aria-label="Mobile" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1Zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5Zm5-3h-10V4h10v15Z"></path></svg>`,
-      web:     `<svg aria-label="Web" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Zm-1-13h2v6h-2Zm0 8h2v2h-2Z"></path></svg>`
+      mobile: `<svg aria-label="Mobile" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1Zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 .67 1.5 1.5-.67 1.5-1.5 1.5Zm5-3h-10V4h10v15Z"></path></svg>`,
+      web: `<svg aria-label="Web" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Zm-1-13h2v6h-2Zm0 8h2v2h-2Z"></path></svg>`
     };
-
     async function updateDiscordPresence() {
       try {
         const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
         const json = await res.json();
-
         if (json.success && json.data) {
           const data = json.data;
           const rawStatus = data.discord_status || 'offline';
           const displayStatus = statusDisplayNames[rawStatus] || 'Offline';
           const color = statusColors[rawStatus] || statusColors.offline;
-
           let platform = 'desktop';
           if (data.active_on_discord_mobile) platform = 'mobile';
           else if (data.active_on_discord_desktop) platform = 'desktop';
           else if (data.active_on_discord_web) platform = 'web';
-
           platformIndicator.innerHTML = platformSVGs[platform] || platformSVGs.desktop;
           platformIndicator.style.color = color;
           platformIndicator.style.display = 'block';
-
           platformIndicator.title = `${displayStatus} • ${platform.charAt(0).toUpperCase() + platform.slice(1)}`;
+
+          const avatarHash = data.discord_user.avatar;
+          const isAnimated = avatarHash?.startsWith('a_');
+          const avatarExt = isAnimated ? 'gif' : 'png';
+          document.getElementById('userAvatar').src = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.${avatarExt}?size=1024`;
+
+          const decoration = data.discord_user.avatar_decoration;
+          if (decoration) {
+            document.getElementById('userDecoration').src = `https://cdn.discordapp.com/avatar-decorations/${decoration}?size=240`;
+            document.getElementById('userDecoration').style.display = 'block';
+          } else {
+            document.getElementById('userDecoration').style.display = 'none';
+          }
         } else {
           platformIndicator.innerHTML = platformSVGs.desktop;
           platformIndicator.style.color = statusColors.offline;
@@ -424,15 +424,11 @@
         platformIndicator.title = 'Offline • Desktop';
       }
     }
-
     updateDiscordPresence();
     setInterval(updateDiscordPresence, 15000);
-
-    // ─── Tab title autotype ─────────────────────────────────────────────────
     const fullTitle = 'yourscoper';
     let titleIndex = 0;
     let titleDeleting = false;
-
     function typeTitle() {
       if (!titleDeleting) {
         document.title = fullTitle.substring(0, titleIndex + 1);
@@ -446,13 +442,10 @@
       setTimeout(typeTitle, titleDeleting ? 60 : 120);
     }
     typeTitle();
-
-    // ─── Quote autotype ─────────────────────────────────────────────────────
     const quoteEl = document.getElementById('quote');
     const quoteText = "I indulge scripting.";
     let quoteIndex = 0;
     let quoteDeleting = false;
-
     function typeQuote() {
       if (!quoteDeleting) {
         quoteEl.textContent = quoteText.substring(0, quoteIndex + 1);
@@ -466,8 +459,6 @@
       setTimeout(typeQuote, quoteDeleting ? 40 : 80);
     }
     typeQuote();
-
-    // ─── Mouse Trail & Sparkles ─────────────────────────────────────────────
     const trailCanvas = document.getElementById('trail-canvas');
     const tctx = trailCanvas.getContext('2d');
     trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -492,7 +483,6 @@
       requestAnimationFrame(drawTrail);
     }
     drawTrail();
-
     const sparkleCanvas = document.getElementById('sparkle-canvas');
     const sctx = sparkleCanvas.getContext('2d');
     sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
@@ -518,11 +508,8 @@
     }
     drawSparkles();
     setInterval(createSparkle, 400);
-
-    // ─── Music Player ───────────────────────────────────────────────────────
     const audio = document.getElementById('playerAudio');
     audio.volume = 1.0;
-
     const playPause = document.getElementById('playPause');
     const trackName = document.getElementById('trackName');
     const trackArtist = document.getElementById('trackArtist');
@@ -532,12 +519,9 @@
     const progressContainer = document.getElementById('progressContainer');
     const volumeSlider = document.getElementById('volumeSlider');
     const muteIcon = document.getElementById('muteIcon');
-
     const unmuteSVG = '<svg viewBox="0 0 24 24" width="28" fill="white"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>';
     const muteSVG = '<svg viewBox="0 0 24 24" width="28" fill="white"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>';
-
     muteIcon.innerHTML = unmuteSVG;
-
     const tracks = [
       { name: 'High For This', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/High%20For%20This%20(Lyrics).mp3' },
       { name: 'The Morning', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/The%20Morning%20(Lyrics).mp3' },
@@ -548,7 +532,6 @@
     let currentTrack = 0;
     let isPlaying = false;
     let isScrubbing = false;
-
     function loadTrack(idx) {
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
@@ -556,7 +539,6 @@
       audio.load();
     }
     loadTrack(currentTrack);
-
     playPause.onclick = () => {
       if (isPlaying) {
         audio.pause();
@@ -567,7 +549,6 @@
       }
       isPlaying = !isPlaying;
     };
-
     document.getElementById('prev').onclick = () => {
       if (audio.currentTime <= 3) {
         currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
@@ -577,14 +558,11 @@
       loadTrack(currentTrack);
       if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
-
     document.getElementById('next').onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
       if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
-
-    // ─── Fixed Draggable Progress ───────────────────────────────────────────
     function updateProgressUI() {
       if (isScrubbing) return;
       if (!audio.duration) return;
@@ -593,27 +571,22 @@
       progressKnob.style.left = percent + '%';
       progressTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
     }
-
     function previewSeek(percent) {
       progressFill.style.width = percent + '%';
       progressKnob.style.left = percent + '%';
       const previewSec = (percent / 100) * audio.duration;
       progressTime.textContent = `${formatTime(previewSec)} / ${formatTime(audio.duration)}`;
     }
-
     function commitSeek(percent) {
       if (!audio.duration) return;
       audio.currentTime = (percent / 100) * audio.duration;
       updateProgressUI();
     }
-
     function formatTime(seconds) {
       const min = Math.floor(seconds / 60);
       const sec = Math.floor(seconds % 60);
       return `${min}:${sec.toString().padStart(2, '0')}`;
     }
-
-    // ─── Scrubbing events ───────────────────────────────────────────────────
     progressContainer.addEventListener('mousedown', e => {
       if (e.button !== 0) return;
       isScrubbing = true;
@@ -623,7 +596,6 @@
       previewSeek(percent);
       e.preventDefault();
     });
-
     progressContainer.addEventListener('touchstart', e => {
       isScrubbing = true;
       const rect = progressContainer.getBoundingClientRect();
@@ -632,7 +604,6 @@
       previewSeek(percent);
       e.preventDefault();
     });
-
     document.addEventListener('mousemove', e => {
       if (!isScrubbing) return;
       const rect = progressContainer.getBoundingClientRect();
@@ -640,7 +611,6 @@
       percent = Math.max(0, Math.min(100, percent));
       previewSeek(percent);
     });
-
     document.addEventListener('touchmove', e => {
       if (!isScrubbing) return;
       const rect = progressContainer.getBoundingClientRect();
@@ -649,7 +619,6 @@
       previewSeek(percent);
       e.preventDefault();
     });
-
     document.addEventListener('mouseup', e => {
       if (!isScrubbing) return;
       isScrubbing = false;
@@ -658,12 +627,10 @@
       percent = Math.max(0, Math.min(100, percent));
       commitSeek(percent);
     });
-
     document.addEventListener('touchend', e => {
       if (!isScrubbing) return;
       isScrubbing = false;
       const rect = progressContainer.getBoundingClientRect();
-      // Use changedTouches for touchend
       const touch = e.changedTouches[0];
       if (touch) {
         let percent = ((touch.clientX - rect.left) / rect.width) * 100;
@@ -671,14 +638,10 @@
         commitSeek(percent);
       }
     });
-
     audio.ontimeupdate = updateProgressUI;
-
-    // ─── Volume Slider ──────────────────────────────────────────────────────
     volumeSlider.addEventListener('input', () => {
       audio.volume = volumeSlider.value / 100;
     });
-
     volumeSlider.addEventListener('touchstart', e => e.stopPropagation());
     volumeSlider.addEventListener('touchmove', e => {
       e.stopPropagation();
@@ -689,26 +652,20 @@
       volumeSlider.value = value;
       audio.volume = value / 100;
     }, { passive: false });
-
     muteIcon.onclick = () => {
       audio.muted = !audio.muted;
       muteIcon.innerHTML = audio.muted ? muteSVG : unmuteSVG;
       if (!audio.muted) audio.volume = volumeSlider.value / 100;
     };
-
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
       if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
-
     audio.onerror = e => console.error('Audio error:', e);
-
-    // ─── Visualizer ─────────────────────────────────────────────────────────
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     let audioCtx, analyser, source;
-
     function initVis() {
       try {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -722,7 +679,6 @@
         console.log('Visualizer skipped:', e);
       }
     }
-
     function draw() {
       requestAnimationFrame(draw);
       if (!analyser) return;
@@ -745,12 +701,9 @@
         x += barWidth + 1;
       }
     }
-
-    // ─── Enter site ─────────────────────────────────────────────────────────
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
-
       overlay.style.opacity = '0';
       setTimeout(() => {
         overlay.classList.add('hidden');
