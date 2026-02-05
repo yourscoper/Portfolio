@@ -120,7 +120,7 @@
       border: 3px solid #000;
       background: #ffc04e;
       box-shadow: 0 0 10px #ffc04e;
-      z-index: 10; /* on top of avatar + decoration */
+      z-index: 10;
     }
 
     .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
@@ -199,7 +199,7 @@
 </head>
 <body>
 
-  <div id="blur-overlay">Click To Enter...</div>
+  <div id="blur-overlay">Coming Soon...</div>
   <canvas id="sparkle-canvas"></canvas>
   <canvas id="trail-canvas"></canvas>
 
@@ -305,9 +305,15 @@
     let isPlaying = false;
 
     function loadTrack(idx) {
-      audio.src = tracks[idx].src;
-      trackName.textContent = tracks[idx].name;
-      audio.load().catch(e => console.error('Audio load failed:', e));
+      try {
+        audio.src = tracks[idx].src;
+        trackName.textContent = tracks[idx].name;
+        audio.load();
+        console.log('Loaded track:', tracks[idx].name);
+      } catch (err) {
+        console.error('Load track error:', err);
+        trackName.textContent = 'Load failed - check console';
+      }
     }
     loadTrack(currentTrack);
 
@@ -329,13 +335,13 @@
         audio.currentTime = 0;
       }
       loadTrack(currentTrack);
-      if (isPlaying) audio.play();
+      if (isPlaying) audio.play().catch(e => console.error('Play failed:', e));
     };
 
     document.getElementById('next').onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
-      if (isPlaying) audio.play();
+      if (isPlaying) audio.play().catch(e => console.error('Play failed:', e));
     };
 
     audio.ontimeupdate = () => {
@@ -360,10 +366,10 @@
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
-      if (isPlaying) audio.play();
+      if (isPlaying) audio.play().catch(e => console.error('Play failed:', e));
     };
 
-    // Fade + autoplay
+    // Fade transition + autoplay on enter
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
