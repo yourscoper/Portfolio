@@ -18,4 +18,4 @@ Hi, I'm **yourscoper** — a passionate programmer who loves building clean, eff
 
 ---
 
-Always learning. Always building.
+`Always learning. Always building.`
