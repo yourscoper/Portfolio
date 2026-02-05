@@ -3,25 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>yourscoper</title>
   <meta name="description" content="I indulge scripting." />
-
   <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
-
   <meta property="og:title" content="yourscoper" />
   <meta property="og:description" content="I indulge scripting." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yourscoper.github.io/Portfolio/" />
   <meta property="og:image" content="https://raw.githubusercontent.com/yourscoper/Portfolio/main/preview.jpg" />
-
   <meta name="theme-color" content="#FFFFFF" />
-
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
-
   <style>
     * { margin:0; padding:0; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
-
     body {
       background:#000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
       background-size:cover;
@@ -35,7 +28,6 @@
       position:relative;
       cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6,auto;
     }
-
     #blur-overlay {
       position:fixed;inset:0;
       backdrop-filter:blur(8px);
@@ -47,15 +39,12 @@
     }
     #blur-overlay span { font-size:0.6em;margin-top:10px;opacity:0.8; }
     #blur-overlay.hidden { opacity:0;pointer-events:none; }
-
     #trail-canvas,#sparkle-canvas { position:absolute;inset:0;pointer-events:none; }
     #trail-canvas { z-index:4; }
     #sparkle-canvas { z-index:2; }
-
     #version,#copyright { position:fixed;bottom:20px;color:#fff;font-size:0.9em;text-shadow:0 0 6px #fff;z-index:10; }
     #version { left:20px; }
     #copyright { left:50%;transform:translateX(-50%); }
-
     #main-content {
       display:none;
       opacity:0;
@@ -63,10 +52,9 @@
       z-index:5;
       width:90%;
       max-width:420px;
-      position: relative;           /* ← important for absolute children */
+      position: relative;
     }
     #main-content.visible { display:block;opacity:1; }
-
     .player-card {
       background:rgba(255,255,255,0.03);
       backdrop-filter:blur(25px) saturate(180%);
@@ -79,7 +67,6 @@
       border-image-slice:1;
       position: relative;
     }
-
     @keyframes spinGradient {
       0%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
       25%{border-image-source:linear-gradient(180deg,#fff,#aaa,#000,#aaa,#fff)}
@@ -87,7 +74,6 @@
       75%{border-image-source:linear-gradient(0deg,#fff,#aaa,#000,#aaa,#fff)}
       100%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
     }
-
     .profile-top { display:flex;align-items:flex-start;gap:16px;margin-bottom:12px; }
     .avatar-wrapper {
       position:relative;
@@ -105,7 +91,6 @@
     }
     .avatar { z-index:1; }
     .decoration { z-index:2; }
-
     .platform-indicator {
       position: absolute;
       bottom: 394px;
@@ -122,10 +107,8 @@
     .platform-indicator svg {
       filter: drop-shadow(0 0 4px rgba(0,0,0,0.7));
     }
-
     .username-container { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
     .username { font-size:28px;font-weight:bold;text-shadow:0 0 12px rgba(255,255,255,0.6); }
-
     .guild-tag {
       display:inline-flex;align-items:center;
       background:rgba(255,255,255,0.08);
@@ -134,7 +117,6 @@
       font-size:13px;
     }
     .guild-tag img { width:16px;height:16px;margin-right:4px; }
-
     .badges-and-quote {
       display:flex;
       align-items:center;
@@ -144,7 +126,6 @@
     }
     .badges { display:flex;gap:6px; }
     .badges img { width:20px;height:20px; }
-
     .quote-wrapper {
       background:rgba(0,0,0,0.5);
       border-radius:10px;
@@ -164,19 +145,16 @@
       text-align:center;
       white-space:nowrap;
     }
-
     #waveform { width:100%;height:80px;margin:16px 0;border-radius:12px;overflow:hidden;background:rgba(0,0,0,0.7); }
-
     .controls { display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;justify-content:center; }
     .btn { width:40px;height:40px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s; }
     .btn:hover { background:rgba(255,255,255,0.15);transform:scale(1.08); }
     .btn.play-pause { width:48px;height:48px; }
-
     .track-info { flex:1;min-width:140px;text-align:center; }
     .track-name { font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px; }
     .track-artist { font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:20px; }
     .progress-container { position:relative;margin-top:8px; }
-    .progress-time { 
+    .progress-time {
       font-size:12px;
       color:rgba(255,255,255,0.8);
       position:absolute;
@@ -187,7 +165,6 @@
     }
     .progress-bar { height:4px;background:rgba(255,255,255,0.15);border-radius:2px;cursor:pointer;position:relative; }
     .progress-fill { position:absolute;top:0;left:0;height:100%;width:0%;background:linear-gradient(90deg,#fff,#ccc);border-radius:2px;transition:width 0.1s linear; }
-
     #volumeSlider {
       -webkit-appearance:none;
       width:120px;
@@ -212,15 +189,12 @@
       cursor:pointer;
       box-shadow:0 0 12px #ffffff,0 0 24px #ffffff;
     }
-
     .volume-area { display:flex;align-items:center;gap:8px;justify-content:center; }
     .mute-icon { cursor:pointer; }
-
     .socials { display:flex;justify-content:center;gap:16px;margin-top:20px; }
     .socials a { width:44px;height:44px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;transition:all 0.3s; }
     .socials a:hover { transform:translateY(-4px);box-shadow:0 8px 20px rgba(255,255,255,0.15); }
     .socials img { width:24px;height:24px;filter:brightness(0) invert(1) drop-shadow(0 0 4px #fff); }
-
     @media (max-width:500px) {
       .player-card { padding:16px; }
       .avatar-wrapper { width:64px;height:64px; }
@@ -231,14 +205,12 @@
   </style>
 </head>
 <body>
-
   <div id="blur-overlay">
     Click to Enter
     <span>This site contains audio content</span>
   </div>
   <canvas id="sparkle-canvas"></canvas>
   <canvas id="trail-canvas"></canvas>
-
   <div id="main-content">
     <div class="player-card">
       <div class="profile-top">
@@ -269,14 +241,11 @@
           </div>
         </div>
       </div>
-
       <canvas id="waveform"></canvas>
-
       <div class="controls">
         <div class="btn" id="prev"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></div>
         <div class="btn play-pause" id="playPause"><svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="btn" id="next"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></div>
-
         <div class="track-info">
           <div class="track-name" id="trackName">Baptized In Fear (Lyrics)</div>
           <div class="track-artist" id="trackArtist">The Weeknd</div>
@@ -287,13 +256,11 @@
             </div>
           </div>
         </div>
-
         <div class="volume-area">
           <div id="muteIcon" class="mute-icon"></div>
           <input type="range" id="volumeSlider" min="0" max="100" value="50" />
         </div>
       </div>
-
       <div class="socials">
         <a href="https://www.roblox.com/users/8904921777/profile" target="_blank"><img src="https://www.roblox.com/favicon.ico" alt="Roblox"></a>
         <a href="https://github.com/yourscoper" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub"></a>
@@ -302,16 +269,13 @@
         <a href="https://www.tiktok.com/@yourscoper" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/tiktok.png" alt="TikTok"></a>
       </div>
     </div>
-
-    <!-- Platform indicator placed here, positioned absolutely relative to #main-content -->
-    <div class="platform-indicator" id="platformIndicator" title="Offline • Desktop">
-      <!-- SVG will be inserted by JavaScript -->
+    <!-- Platform indicator -->
+    <div class="platform-indicator" id="platformIndicator" title="Offline ・ Desktop">
+      <!-- SVG inserted by JS -->
     </div>
   </div>
-
   <div id="version">v1.0.5</div>
   <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
-
   <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
 
   <script>
@@ -324,6 +288,13 @@
       idle:    '#faa61a',
       dnd:     '#f04747',
       offline: '#747f8d'
+    };
+
+    const statusDisplayNames = {
+      online:  'Online',
+      idle:    'Idle',
+      dnd:     'Do Not Disturb',
+      offline: 'Offline'
     };
 
     const platformSVGs = {
@@ -339,8 +310,9 @@
 
         if (json.success && json.data) {
           const data = json.data;
-          const status = data.discord_status || 'offline';
-          const color = statusColors[status] || statusColors.offline;
+          const rawStatus = data.discord_status || 'offline';
+          const displayStatus = statusDisplayNames[rawStatus] || 'Offline';
+          const color = statusColors[rawStatus] || statusColors.offline;
 
           let platform = 'desktop';
           if (data.active_on_discord_mobile) platform = 'mobile';
@@ -351,17 +323,20 @@
           platformIndicator.style.color = color;
           platformIndicator.style.display = 'block';
 
-          platformIndicator.title = `${status.charAt(0).toUpperCase() + status.slice(1)} • ${platform.charAt(0).toUpperCase() + platform.slice(1)}`;
+          // Updated tooltip format as requested
+          platformIndicator.title = `${displayStatus} ・ ${platform.charAt(0).toUpperCase() + platform.slice(1)}`;
         } else {
           platformIndicator.innerHTML = platformSVGs.desktop;
           platformIndicator.style.color = statusColors.offline;
           platformIndicator.style.display = 'block';
+          platformIndicator.title = 'Offline ・ Desktop';
         }
       } catch (err) {
         console.error('Lanyard fetch failed:', err);
         platformIndicator.innerHTML = platformSVGs.desktop;
         platformIndicator.style.color = statusColors.offline;
         platformIndicator.style.display = 'block';
+        platformIndicator.title = 'Offline ・ Desktop';
       }
     }
 
