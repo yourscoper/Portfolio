@@ -180,7 +180,7 @@
     .progress-container { 
       position:relative;
       margin-top:8px;
-      height:16px;              /* taller touch target */
+      height:20px;                /* taller for better touch target */
       cursor:grab;
     }
     .progress-container:active { cursor:grabbing; }
@@ -199,12 +199,12 @@
       background:rgba(255,255,255,0.15);
       border-radius:2px;
       position:absolute;
-      inset:0;
-      top:6px;
+      left:0; right:0;
+      top:8px;                    /* perfectly center knob vertically */
     }
     .progress-fill { 
       position:absolute;
-      top:0;left:0;height:100%;
+      top:0; left:0; height:100%;
       width:0%;
       background:linear-gradient(90deg,#fff,#ccc);
       border-radius:2px;
@@ -216,39 +216,49 @@
       height: 16px;
       background: #fff;
       border-radius: 50%;
-      top: 0;
+      top: 2px;                   /* centered vertically on the 4px bar */
       transform: translateX(-50%);
       box-shadow: 0 0 10px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
       pointer-events: none;
       z-index: 2;
     }
     #volumeSlider {
-      -webkit-appearance:none;
-      width:120px;
-      height:12px;
-      background:rgba(255,255,255,0.3);
-      border-radius:6px;
-      outline:none;
-      margin:0 8px;
-      cursor:pointer;
+      -webkit-appearance: none;
+      width: 140px;
+      height: 20px;               /* taller touch target */
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+      outline: none;
+      margin: 0 8px;
+      cursor: pointer;
+      touch-action: pan-x;        /* better mobile scrolling behavior */
     }
     #volumeSlider::-webkit-slider-thumb {
-      -webkit-appearance:none;
-      width:20px;height:20px;
-      background:#ffffff;
-      border-radius:50%;
-      cursor:pointer;
-      box-shadow:0 0 12px #ffffff,0 0 24px #ffffff;
-      margin-top:-4px;
+      -webkit-appearance: none;
+      width: 28px;
+      height: 28px;
+      background: #ffffff;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 12px #ffffff, 0 0 24px #ffffff;
+      margin-top: -4px;
     }
     #volumeSlider::-moz-range-thumb {
-      width:20px;height:20px;
-      background:#ffffff;
-      border-radius:50%;
-      cursor:pointer;
-      box-shadow:0 0 12px #ffffff,0 0 24px #ffffff;
+      width: 28px;
+      height: 28px;
+      background: #ffffff;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 12px #ffffff, 0 0 24px #ffffff;
     }
-    .volume-area { display:flex;align-items:center;gap:8px;justify-content:center; flex-wrap:nowrap; }
+    .volume-area { 
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: nowrap;
+      touch-action: manipulation; /* prevent double-tap zoom on mobile */
+    }
     .mute-icon { cursor:pointer; min-width:28px; }
     .socials { display:flex;justify-content:center;gap:16px;margin-top:20px; }
     .socials a { width:44px;height:44px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;transition:all 0.3s; }
@@ -272,8 +282,8 @@
         top: 5px; 
         left: 5px; 
       }
-      .progress-container { height:20px; }
-      .progress-knob { width:20px; height:20px; }
+      #volumeSlider { width: 110px; height: 24px; }
+      #volumeSlider::-webkit-slider-thumb { width: 32px; height: 32px; margin-top: -4px; }
     }
   </style>
 </head>
@@ -335,7 +345,7 @@
         </div>
         <div class="volume-area">
           <div id="muteIcon" class="mute-icon"></div>
-          <input type="range" id="volumeSlider" min="0" max="100" value="50" step="1" />
+          <input type="range" id="volumeSlider" min="0" max="100" value="50" step="any" />
         </div>
       </div>
       <div class="socials">
@@ -347,7 +357,7 @@
       </div>
     </div>
   </div>
-  <div id="version">v1.0.6</div>
+  <div id="version">v1.0.5</div>
   <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
   <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
 
@@ -534,7 +544,6 @@
     ];
     let currentTrack = 0;
     let isPlaying = false;
-    let isScrubbing = false;
 
     function loadTrack(idx) {
       audio.src = tracks[idx].src;
@@ -571,27 +580,13 @@
       if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
-    // ─── Spotify-style scrubbing (preview only, jump on release) ─────────────
-    function updateProgressUI() {
-      if (isScrubbing) return; // don't update from audio while dragging
+    // ─── Progress bar (fixed centering + mobile volume) ─────────────────────
+    function updateProgress() {
       if (!audio.duration) return;
       const percent = (audio.currentTime / audio.duration) * 100;
       progressFill.style.width = percent + '%';
       progressKnob.style.left = percent + '%';
       progressTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
-    }
-
-    function previewSeek(pos) {
-      // only visual preview during drag
-      progressFill.style.width = pos + '%';
-      progressKnob.style.left = pos + '%';
-      const previewTime = (pos / 100) * audio.duration;
-      progressTime.textContent = `${formatTime(previewTime)} / ${formatTime(audio.duration)}`;
-    }
-
-    function commitSeek(pos) {
-      audio.currentTime = (pos / 100) * audio.duration;
-      updateProgressUI();
     }
 
     function formatTime(seconds) {
@@ -600,62 +595,24 @@
       return `${min}:${sec.toString().padStart(2, '0')}`;
     }
 
-    progressContainer.addEventListener('mousedown', startScrubbing);
-    progressContainer.addEventListener('touchstart', startScrubbing);
+    audio.ontimeupdate = updateProgress;
 
-    function startScrubbing(e) {
-      e.preventDefault();
-      isScrubbing = true;
-      const rect = progressContainer.getBoundingClientRect();
-      let clientX = e.clientX || (e.touches && e.touches[0].clientX);
-      let pos = ((clientX - rect.left) / rect.width) * 100;
-      pos = Math.max(0, Math.min(100, pos));
-      previewSeek(pos);
-    }
-
-    document.addEventListener('mousemove', e => {
-      if (!isScrubbing) return;
-      const rect = progressContainer.getBoundingClientRect();
-      let pos = ((e.clientX - rect.left) / rect.width) * 100;
-      pos = Math.max(0, Math.min(100, pos));
-      previewSeek(pos);
-    });
-
-    document.addEventListener('touchmove', e => {
-      if (!isScrubbing) return;
-      e.preventDefault();
-      const rect = progressContainer.getBoundingClientRect();
-      let clientX = e.touches[0].clientX;
-      let pos = ((clientX - rect.left) / rect.width) * 100;
-      pos = Math.max(0, Math.min(100, pos));
-      previewSeek(pos);
-    });
-
-    document.addEventListener('mouseup', () => {
-      if (!isScrubbing) return;
-      isScrubbing = false;
-      const rect = progressContainer.getBoundingClientRect();
-      let pos = ((event.clientX - rect.left) / rect.width) * 100;
-      pos = Math.max(0, Math.min(100, pos));
-      commitSeek(pos);
-    });
-
-    document.addEventListener('touchend', () => {
-      if (!isScrubbing) return;
-      isScrubbing = false;
-      const rect = progressContainer.getBoundingClientRect();
-      let clientX = event.changedTouches[0].clientX;
-      let pos = ((clientX - rect.left) / rect.width) * 100;
-      pos = Math.max(0, Math.min(100, pos));
-      commitSeek(pos);
-    });
-
-    audio.ontimeupdate = updateProgressUI;
-
-    // ─── Volume & Mute ──────────────────────────────────────────────────────
+    // ─── Volume Slider - improved mobile support ────────────────────────────
     volumeSlider.addEventListener('input', () => {
-      if (!audio.muted) audio.volume = volumeSlider.value / 100;
+      audio.volume = volumeSlider.value / 100;
     });
+
+    // Fix for iOS Safari / mobile touch issues
+    volumeSlider.addEventListener('touchstart', e => e.stopPropagation());
+    volumeSlider.addEventListener('touchmove', e => {
+      e.stopPropagation();
+      const rect = volumeSlider.getBoundingClientRect();
+      const touch = e.touches[0];
+      const pos = (touch.clientX - rect.left) / rect.width;
+      const value = Math.max(0, Math.min(100, pos * 100));
+      volumeSlider.value = value;
+      audio.volume = value / 100;
+    }, { passive: false });
 
     muteIcon.onclick = () => {
       audio.muted = !audio.muted;
