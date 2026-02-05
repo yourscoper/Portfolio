@@ -14,7 +14,7 @@
   <meta name="theme-color" content="#FFFFFF" />
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
   <style>
-    * { margin:0; padding:0; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+    * { margin:0; padding:0; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; box-sizing:border-box; }
     body {
       background:#000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
       background-size:cover;
@@ -91,12 +91,14 @@
     }
     .avatar { z-index:1; }
     .decoration { z-index:2; }
+
+    /* Platform indicator with Discord-style black circle background */
     .platform-indicator {
       position: absolute;
       bottom: 394px;
       right: 318px;
-      width: 24px;
-      height: 24px;
+      width: 36px;
+      height: 36px;
       z-index: 20;
       transition: transform 0.2s ease;
       pointer-events: auto;
@@ -104,9 +106,26 @@
     .platform-indicator:hover {
       transform: scale(1.15);
     }
-    .platform-indicator svg {
-      filter: drop-shadow(0 0 4px rgba(0,0,0,0.7));
+    .platform-indicator::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #000;
+      border: 4px solid #000;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+      z-index: 1;
     }
+    .platform-indicator svg {
+      position: relative;
+      z-index: 2;
+      width: 24px;
+      height: 24px;
+      top: 6px;
+      left: 6px;
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.8));
+    }
+
     .username-container { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
     .username { font-size:28px;font-weight:bold;text-shadow:0 0 12px rgba(255,255,255,0.6); }
     .guild-tag {
@@ -153,7 +172,12 @@
     .track-info { flex:1;min-width:140px;text-align:center; }
     .track-name { font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px; }
     .track-artist { font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:20px; }
-    .progress-container { position:relative;margin-top:8px; }
+    .progress-container { 
+      position:relative;
+      margin-top:8px;
+      height:12px;              /* taller hit area for mobile */
+      cursor:pointer;
+    }
     .progress-time {
       font-size:12px;
       color:rgba(255,255,255,0.8);
@@ -163,34 +187,61 @@
       transform:translateX(-50%);
       white-space:nowrap;
     }
-    .progress-bar { height:4px;background:rgba(255,255,255,0.15);border-radius:2px;cursor:pointer;position:relative; }
-    .progress-fill { position:absolute;top:0;left:0;height:100%;width:0%;background:linear-gradient(90deg,#fff,#ccc);border-radius:2px;transition:width 0.1s linear; }
+    .progress-bar { 
+      height:4px;
+      background:rgba(255,255,255,0.15);
+      border-radius:2px;
+      position:relative;
+      top:4px;
+    }
+    .progress-fill { 
+      position:absolute;
+      top:0;left:0;height:100%;
+      width:0%;
+      background:linear-gradient(90deg,#fff,#ccc);
+      border-radius:2px;
+      pointer-events:none;
+    }
+    .progress-knob {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border-radius: 50%;
+      top: -5px;
+      transform: translateX(-50%);
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+      pointer-events: none;
+      z-index: 2;
+    }
     #volumeSlider {
       -webkit-appearance:none;
       width:120px;
-      height:6px;
+      height:12px;               /* taller for mobile touch */
       background:rgba(255,255,255,0.3);
-      border-radius:3px;
+      border-radius:6px;
       outline:none;
+      margin:0 8px;
+      cursor:pointer;
     }
     #volumeSlider::-webkit-slider-thumb {
       -webkit-appearance:none;
-      width:18px;height:18px;
+      width:20px;height:20px;
       background:#ffffff;
       border-radius:50%;
       cursor:pointer;
       box-shadow:0 0 12px #ffffff,0 0 24px #ffffff;
-      margin-top:-6px;
+      margin-top:-4px;
     }
     #volumeSlider::-moz-range-thumb {
-      width:18px;height:18px;
+      width:20px;height:20px;
       background:#ffffff;
       border-radius:50%;
       cursor:pointer;
       box-shadow:0 0 12px #ffffff,0 0 24px #ffffff;
     }
-    .volume-area { display:flex;align-items:center;gap:8px;justify-content:center; }
-    .mute-icon { cursor:pointer; }
+    .volume-area { display:flex;align-items:center;gap:8px;justify-content:center; flex-wrap:nowrap; }
+    .mute-icon { cursor:pointer; min-width:28px; }
     .socials { display:flex;justify-content:center;gap:16px;margin-top:20px; }
     .socials a { width:44px;height:44px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;transition:all 0.3s; }
     .socials a:hover { transform:translateY(-4px);box-shadow:0 8px 20px rgba(255,255,255,0.15); }
@@ -201,6 +252,12 @@
       .username { font-size:24px; }
       .quote-wrapper { width:160px;padding:6px 10px; }
       .quote { font-size:14px; }
+      .platform-indicator { bottom: 320px; right: 260px; width:32px; height:32px; }
+      .platform-indicator svg { width:20px; height:20px; top:6px; left:6px; }
+      #volumeSlider { width:100px; height:16px; }
+      #volumeSlider::-webkit-slider-thumb { width:24px; height:24px; margin-top:-4px; }
+      .progress-container { height:16px; }
+      .progress-knob { width:16px; height:16px; top:-6px; }
     }
   </style>
 </head>
@@ -249,16 +306,17 @@
         <div class="track-info">
           <div class="track-name" id="trackName">Baptized In Fear (Lyrics)</div>
           <div class="track-artist" id="trackArtist">The Weeknd</div>
-          <div class="progress-container">
+          <div class="progress-container" id="progressContainer">
             <div class="progress-time" id="progressTime">0:00 / 0:00</div>
             <div class="progress-bar" id="progressBar">
               <div class="progress-fill" id="progressFill"></div>
+              <div class="progress-knob" id="progressKnob"></div>
             </div>
           </div>
         </div>
         <div class="volume-area">
           <div id="muteIcon" class="mute-icon"></div>
-          <input type="range" id="volumeSlider" min="0" max="100" value="50" />
+          <input type="range" id="volumeSlider" min="0" max="100" value="50" step="1" />
         </div>
       </div>
       <div class="socials">
@@ -269,12 +327,10 @@
         <a href="https://www.tiktok.com/@yourscoper" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/tiktok.png" alt="TikTok"></a>
       </div>
     </div>
-    <!-- Platform indicator -->
-    <div class="platform-indicator" id="platformIndicator" title="Offline ・ Desktop">
-      <!-- SVG inserted by JS -->
-    </div>
+    <!-- Platform indicator with black circle -->
+    <div class="platform-indicator" id="platformIndicator" title="Offline • Desktop"></div>
   </div>
-  <div id="version">v1.0.5</div>
+  <div id="version">v1.0.6</div>
   <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
   <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
 
@@ -323,20 +379,19 @@
           platformIndicator.style.color = color;
           platformIndicator.style.display = 'block';
 
-          // Updated tooltip format as requested
-          platformIndicator.title = `${displayStatus} ・ ${platform.charAt(0).toUpperCase() + platform.slice(1)}`;
+          platformIndicator.title = `${displayStatus} • ${platform.charAt(0).toUpperCase() + platform.slice(1)}`;
         } else {
           platformIndicator.innerHTML = platformSVGs.desktop;
           platformIndicator.style.color = statusColors.offline;
           platformIndicator.style.display = 'block';
-          platformIndicator.title = 'Offline ・ Desktop';
+          platformIndicator.title = 'Offline • Desktop';
         }
       } catch (err) {
         console.error('Lanyard fetch failed:', err);
         platformIndicator.innerHTML = platformSVGs.desktop;
         platformIndicator.style.color = statusColors.offline;
         platformIndicator.style.display = 'block';
-        platformIndicator.title = 'Offline ・ Desktop';
+        platformIndicator.title = 'Offline • Desktop';
       }
     }
 
@@ -382,7 +437,7 @@
     }
     typeQuote();
 
-    // ─── Mouse Trail ────────────────────────────────────────────────────────
+    // ─── Mouse Trail & Sparkles (unchanged) ─────────────────────────────────
     const trailCanvas = document.getElementById('trail-canvas');
     const tctx = trailCanvas.getContext('2d');
     trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -408,7 +463,6 @@
     }
     drawTrail();
 
-    // ─── Sparkles ───────────────────────────────────────────────────────────
     const sparkleCanvas = document.getElementById('sparkle-canvas');
     const sctx = sparkleCanvas.getContext('2d');
     sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
@@ -445,6 +499,8 @@
     const progressTime = document.getElementById('progressTime');
     const progressBar = document.getElementById('progressBar');
     const progressFill = document.getElementById('progressFill');
+    const progressKnob = document.getElementById('progressKnob');
+    const progressContainer = document.getElementById('progressContainer');
     const volumeSlider = document.getElementById('volumeSlider');
     const muteIcon = document.getElementById('muteIcon');
 
@@ -498,14 +554,52 @@
       if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
-    audio.ontimeupdate = () => {
-      if (audio.duration) {
-        const current = formatTime(audio.currentTime);
-        const total = formatTime(audio.duration);
-        progressTime.textContent = `${current} / ${total}`;
-        progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+    // ─── Improved Draggable Progress Bar (mouse + touch) ────────────────────
+    let isDraggingProgress = false;
+
+    function updateProgressUI() {
+      if (!audio.duration) return;
+      const progressPercent = (audio.currentTime / audio.duration) * 100;
+      progressFill.style.width = `${progressPercent}%`;
+      progressKnob.style.left = `${progressPercent}%`;
+      progressTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+    }
+
+    function seekTo(e) {
+      const rect = progressContainer.getBoundingClientRect();
+      let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      let pos = (clientX - rect.left) / rect.width;
+      pos = Math.max(0, Math.min(1, pos));
+      audio.currentTime = pos * audio.duration;
+      updateProgressUI();
+    }
+
+    progressContainer.addEventListener('mousedown', (e) => {
+      isDraggingProgress = true;
+      seekTo(e);
+    });
+
+    progressContainer.addEventListener('touchstart', (e) => {
+      isDraggingProgress = true;
+      seekTo(e);
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDraggingProgress) seekTo(e);
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (isDraggingProgress) {
+        seekTo(e);
+        e.preventDefault();
       }
-    };
+    });
+
+    document.addEventListener('mouseup', () => { isDraggingProgress = false; });
+    document.addEventListener('touchend', () => { isDraggingProgress = false; });
+
+    audio.ontimeupdate = updateProgressUI;
 
     function formatTime(seconds) {
       const min = Math.floor(seconds / 60);
@@ -513,13 +607,15 @@
       return `${min}:${sec.toString().padStart(2, '0')}`;
     }
 
-    progressBar.onclick = e => {
-      const rect = progressBar.getBoundingClientRect();
-      const pos = (e.clientX - rect.left) / rect.width;
-      audio.currentTime = pos * audio.duration;
-    };
+    // ─── Volume Slider (improved mobile support) ────────────────────────────
+    volumeSlider.addEventListener('input', () => {
+      audio.volume = volumeSlider.value / 100;
+    });
 
-    volumeSlider.oninput = () => audio.volume = volumeSlider.value / 100;
+    // Touch support for volume (already good, but ensure smooth)
+    volumeSlider.addEventListener('touchmove', (e) => {
+      e.stopPropagation();
+    }, { passive: false });
 
     muteIcon.onclick = () => {
       audio.muted = !audio.muted;
