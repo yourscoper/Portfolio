@@ -15,6 +15,9 @@
 
   <meta name="theme-color" content="#FFFFFF" />
 
+  <!-- Coming Soon font -->
+  <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
+
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
 
   <style>
@@ -46,7 +49,8 @@
       background: rgba(0,0,0,0.8);
       display: flex; justify-content: center; align-items: center;
       z-index: 1000;
-      color: #fff; font-size: 2.2em; text-shadow: 0 0 12px #fff;
+      color: #fff; font-size: 2.5em; text-shadow: 0 0 12px #fff;
+      font-family: 'Coming Soon', cursive;
       transition: opacity 1.2s ease-out;
     }
     #blur-overlay.hidden { opacity: 0; pointer-events: none; }
@@ -112,15 +116,15 @@
     .decoration { z-index: 2; }
     .status-dot {
       position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 20px;
-      height: 20px;
+      bottom: -6px;
+      right: -6px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      border: 3px solid #000;
+      border: 4px solid #000;
       background: #ffc04e;
-      box-shadow: 0 0 10px #ffc04e;
-      z-index: 10;
+      box-shadow: 0 0 12px #ffc04e;
+      z-index: 10; /* on top of everything */
     }
 
     .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
@@ -144,7 +148,7 @@
       color: rgba(255,255,255,0.95);
     }
 
-    #waveform { width: 100%; height: 60px; margin: 16px 0; border-radius: 8px; overflow: hidden; }
+    #waveform { width: 100%; height: 60px; margin: 16px 0; border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.6); }
 
     .controls { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
     .btn { width: 40px; height: 40px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
@@ -189,6 +193,17 @@
     .socials a:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(255,255,255,0.15); }
     .socials img { width: 24px; height: 24px; filter: brightness(0) invert(1) drop-shadow(0 0 4px #fff); }
 
+    .guild-tag {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    .guild-tag img { width: 16px; height: 16px; margin-right: 4px; }
+
     @media (max-width: 500px) {
       .player-card { padding: 16px; }
       .avatar-wrapper { width: 64px; height: 64px; }
@@ -221,11 +236,16 @@
             <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest" />
             <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs" />
           </div>
+          <!-- Guild tag from your HTML -->
+          <div class="guild-tag">
+            <img src="https://cdn.discordapp.com/clan-badges/547906569489350657/3858554c542da4e8e4b52ff00a558ced.png?size=16" alt="CODE badge" />
+            <span>CODE</span>
+          </div>
+          <!-- I indulge scripting under badges -->
+          <div class="quote-container">
+            <div class="quote" id="quote"></div>
+          </div>
         </div>
-      </div>
-
-      <div class="quote-container">
-        <div class="quote" id="quote"></div>
       </div>
 
       <canvas id="waveform"></canvas>
@@ -259,7 +279,7 @@
   <div id="version">v1.0.3</div>
   <div id="copyright">© 2025 yourscoper. All rights reserved.</div>
 
-  <audio id="playerAudio" loop></audio>
+  <audio id="playerAudio" loop preload="auto"></audio>
 
   <script>
     // Typewriter quote
@@ -305,14 +325,13 @@
     let isPlaying = false;
 
     function loadTrack(idx) {
+      audio.src = tracks[idx].src;
+      trackName.textContent = tracks[idx].name;
       try {
-        audio.src = tracks[idx].src;
-        trackName.textContent = tracks[idx].name;
         audio.load();
         console.log('Loaded track:', tracks[idx].name);
       } catch (err) {
-        console.error('Load track error:', err);
-        trackName.textContent = 'Load failed - check console';
+        console.error('Load failed for', tracks[idx].name, err);
       }
     }
     loadTrack(currentTrack);
@@ -369,6 +388,49 @@
       if (isPlaying) audio.play().catch(e => console.error('Play failed:', e));
     };
 
+    // Audio visualizer (white bars)
+    const canvas = document.getElementById('waveform');
+    const ctx = canvas.getContext('2d');
+    let audioCtx, analyser, source;
+
+    function initVis() {
+      try {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 128;
+        source = audioCtx.createMediaElementSource(audio);
+        source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+        draw();
+      } catch (e) {
+        console.log('Visualizer failed (CORS?):', e);
+      }
+    }
+
+    function draw() {
+      requestAnimationFrame(draw);
+      if (!analyser) {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        return;
+      }
+      const buffer = analyser.frequencyBinCount;
+      const data = new Uint8Array(buffer);
+      analyser.getByteFrequencyData(data);
+
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      const barWidth = (canvas.width / buffer) * 2;
+      let x = 0;
+      for (let k = 0; k < buffer; k++) {
+        const barHeight = (data[k] / 255) * canvas.height * 0.9;
+        ctx.fillStyle = `rgba(255,255,255,${data[k]/255})`; // white bars
+        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+        x += barWidth + 1;
+      }
+    }
+
     // Fade transition + autoplay on enter
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
@@ -386,6 +448,7 @@
           audio.play().catch(e => console.error('Autoplay failed:', e));
           isPlaying = true;
           playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+          initVis();
         }, 100);
       }, 1200);
     });
