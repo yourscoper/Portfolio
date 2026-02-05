@@ -12,8 +12,8 @@ export default function handler(req, res) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" integrity="sha512-Jk4AqjWsdSzSWCSuQTfYRIF84Rq/eV0G2+tu07byYwHcbTGfdmLrHjUSwvzp5HvbiqK4ibmNwdcG49Y5RGYPTNU==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCkSKVkE8f1aKL2VOpdLBSxMAQ2u26xqAXA7/6TSA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}
     html,body{height:100%;font-family:'Coming Soon',cursive;background:#0d0d0d;color:#f0f0f0;overflow-x:hidden}
@@ -32,7 +32,6 @@ export default function handler(req, res) {
     .controls{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1.5rem 0 3rem}
     .btn{display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 1.8rem;font-size:1.2rem;font-family:'Coming Soon',cursive;color:white;background:rgba(40,40,60,.6);border:1px solid rgba(180,180,255,.25);border-radius:10px;cursor:pointer;transition:all .22s ease}
     .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(120,100,255,.35);background:rgba(60,50,90,.7)}
-    footer{display:none}
     #trail-canvas,#sparkle-canvas{position:fixed;inset:0;pointer-events:none;z-index:-1}
     @media (max-width:900px){.editors{grid-template-columns:1fr}.editor-box{height:380px}h1{font-size:clamp(2.8rem,9vw,5rem)}}
   </style>
@@ -69,59 +68,72 @@ export default function handler(req, res) {
 <div class="copyright">© 2026 yourscoper. All rights reserved.</div>
 
 <script>
+// ────────────────────────────────────────────────
+// Highlight.js setup
 hljs.configure({languages:['lua']});
 hljs.highlightAll();
 
-// Block selection everywhere
+// ────────────────────────────────────────────────
+// Block text selection globally
 document.addEventListener('selectstart', e=>e.preventDefault());
 document.addEventListener('keydown', e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a')e.preventDefault()});
 
-// Input mirror + highlight
+// ────────────────────────────────────────────────
+// Input mirror with live highlighting
 const input = document.getElementById('input');
 const mirror = document.getElementById('inputMirror');
 const output = document.getElementById('output');
 
-function updateMirror(){
-  mirror.textContent = input.value || ' ';
+function updateMirror() {
+  mirror.textContent = input.value || ' '; // space prevents collapse
   hljs.highlightElement(mirror);
 }
 input.addEventListener('input', updateMirror);
-input.addEventListener('scroll', ()=>{mirror.scrollTop = input.scrollTop; mirror.scrollLeft = input.scrollLeft;});
+input.addEventListener('scroll', () => {
+  mirror.scrollTop = input.scrollTop;
+  mirror.scrollLeft = input.scrollLeft;
+});
 
-// Output
-function highlightOutput(txt){
+// ────────────────────────────────────────────────
+// Output highlighting
+function highlightOutput(txt) {
   output.textContent = txt;
   hljs.highlightElement(output);
 }
 
+// ────────────────────────────────────────────────
 // Mouse trail
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
-function resizeCanvases(){
-  trailCanvas.width = innerWidth;
-  trailCanvas.height = innerHeight;
-  sparkleCanvas.width = innerWidth;
-  sparkleCanvas.height = innerHeight;
+let trailPoints = [];
+
+function resizeCanvases() {
+  trailCanvas.width = window.innerWidth;
+  trailCanvas.height = window.innerHeight;
+  sparkleCanvas.width = window.innerWidth;
+  sparkleCanvas.height = window.innerHeight;
 }
 window.addEventListener('resize', resizeCanvases);
 resizeCanvases();
 
-const trailPoints = [];
-document.addEventListener('mousemove', e=>{
-  trailPoints.push({x:e.clientX, y:e.clientY, t:Date.now()});
+document.addEventListener('mousemove', e => {
+  trailPoints.push({x: e.clientX, y: e.clientY, t: Date.now()});
 });
 
-function drawTrail(){
-  tctx.clearRect(0,0,trailCanvas.width,trailCanvas.height);
+function drawTrail() {
+  tctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
   const now = Date.now();
-  for(let i=trailPoints.length-1;i>=0;i--){
-    if(now - trailPoints[i].t > 1000){trailPoints.splice(i,1);continue;}
-    const age = (now - trailPoints[i].t)/1000;
-    if(i>0){
+  for (let i = trailPoints.length - 1; i >= 0; i--) {
+    if (now - trailPoints[i].t > 1000) {
+      trailPoints.splice(i, 1);
+      continue;
+    }
+    const age = (now - trailPoints[i].t) / 1000;
+    if (i > 0) {
       tctx.beginPath();
       tctx.moveTo(trailPoints[i-1].x, trailPoints[i-1].y);
       tctx.lineTo(trailPoints[i].x, trailPoints[i].y);
-      tctx.strokeStyle = \`rgba(255,255,255,\${1-age})\`;
+      tctx.strokeStyle = \`rgba(255,255,255,\${1 - age})\`;
       tctx.lineWidth = 2;
       tctx.stroke();
     }
@@ -130,41 +142,52 @@ function drawTrail(){
 }
 drawTrail();
 
-// Sparkles (doubled spawn rate)
+// ────────────────────────────────────────────────
+// Sparkles (increased spawn rate for more density)
 const sparkleCanvas = document.getElementById('sparkle-canvas');
 const sctx = sparkleCanvas.getContext('2d');
-const sparkles = [];
-function createSparkle(){
+let sparkles = [];
+
+function createSparkle() {
   sparkles.push({
-    x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight * 0.6,
-    r: Math.random() * 2.5 + 1,
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight * 0.7,
+    r: Math.random() * 2.8 + 1,
     a: 1,
     t: Date.now()
   });
 }
-function drawSparkles(){
-  sctx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
+
+function drawSparkles() {
+  sctx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
   const now = Date.now();
-  for(let i=sparkles.length-1;i>=0;i--){
+  for (let i = sparkles.length - 1; i >= 0; i--) {
     const s = sparkles[i];
-    const age = (now - s.t)/1000;
-    s.a = 1 - age/1.5;
-    if(s.a <= 0){sparkles.splice(i,1);continue;}
-    sctx.fillStyle = \`rgba(255,255,255,\${s.a})\`;
+    const age = (now - s.t) / 1200;
+    s.a = 1 - age;
+    if (s.a <= 0) {
+      sparkles.splice(i, 1);
+      continue;
+    }
+    sctx.globalAlpha = s.a;
+    sctx.fillStyle = '#ffffff';
     sctx.beginPath();
-    sctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     sctx.fill();
   }
   requestAnimationFrame(drawSparkles);
 }
 drawSparkles();
-setInterval(createSparkle, 200); // faster spawn → ~2× density
+setInterval(createSparkle, 180); // faster spawn → visibly more sparkles
 
-// Buttons
-document.getElementById('obfuscate').addEventListener('click', ()=>{
+// ────────────────────────────────────────────────
+// Button functionality
+document.getElementById('obfuscate').addEventListener('click', () => {
   const code = input.value.trim();
-  if(!code) return highlightOutput("-- Nothing to obfuscate");
+  if (!code) {
+    highlightOutput("-- Nothing to obfuscate");
+    return;
+  }
   const escaped = code
     .replace(/\\/g, '\\\\')
     .replace(/'/g, "\\'")
@@ -174,25 +197,27 @@ document.getElementById('obfuscate').addEventListener('click', ()=>{
   highlightOutput(wrapped);
 });
 
-document.getElementById('clear').addEventListener('click', ()=>{
+document.getElementById('clear').addEventListener('click', () => {
   input.value = '';
   updateMirror();
   highlightOutput('');
   input.focus();
 });
 
-document.getElementById('copy').addEventListener('click', ()=>{
+document.getElementById('copy').addEventListener('click', () => {
   const text = output.textContent.trim();
-  if(!text) return;
-  navigator.clipboard.writeText(text).then(()=>{
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
     const btn = document.getElementById('copy');
     const orig = btn.innerHTML;
     btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Copied!';
-    setTimeout(()=>btn.innerHTML=orig, 1800);
-  }).catch(()=>alert('Copy failed'));
+    setTimeout(() => { btn.innerHTML = orig; }, 1800);
+  }).catch(() => {
+    alert('Copy failed – try manually selecting the output');
+  });
 });
 
-// Init
+// Initial setup
 updateMirror();
 highlightOutput('');
 </script>
