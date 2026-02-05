@@ -419,7 +419,7 @@
       </div>
     </div>
   </div>
-  <div id="version">v1.0.7</div>
+  <div id="version">v1.0.8</div>
   <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
   <audio id="playerAudio" preload="auto" crossorigin="anonymous"></audio>
 
@@ -480,8 +480,6 @@
     }
     updateDiscordPresence();
     setInterval(updateDiscordPresence, 15000);
-
-    // Typing title and quote
     const fullTitle = 'yourscoper';
     let titleIndex = 0;
     let titleDeleting = false;
@@ -498,7 +496,6 @@
       setTimeout(typeTitle, titleDeleting ? 60 : 120);
     }
     typeTitle();
-
     const quoteEl = document.getElementById('quote');
     const quoteText = "I indulge scripting.";
     let quoteIndex = 0;
@@ -516,8 +513,6 @@
       setTimeout(typeQuote, quoteDeleting ? 40 : 80);
     }
     typeQuote();
-
-    // Trail and sparkles
     const trailCanvas = document.getElementById('trail-canvas');
     const tctx = trailCanvas.getContext('2d');
     trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -542,7 +537,6 @@
       requestAnimationFrame(drawTrail);
     }
     drawTrail();
-
     const sparkleCanvas = document.getElementById('sparkle-canvas');
     const sctx = sparkleCanvas.getContext('2d');
     sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
@@ -568,11 +562,8 @@
     }
     drawSparkles();
     setInterval(createSparkle, 400);
-
-    // Audio player setup
     const audio = document.getElementById('playerAudio');
     audio.volume = 1.0;
-
     const playPause = document.getElementById('playPause');
     const trackName = document.getElementById('trackName');
     const trackArtist = document.getElementById('trackArtist');
@@ -583,11 +574,9 @@
     const volumeSlider = document.getElementById('volumeSlider');
     const volumeFill = document.getElementById('volumeFill');
     const vlb = document.getElementById('vlb');
-
     const unmuteSVG = '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>';
     const muteSVG = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>';
     vlb.innerHTML = unmuteSVG;
-
     const tracks = [
       { name: 'High For This', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/High%20For%20This%20(Lyrics).mp3' },
       { name: 'The Morning', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/The%20Morning%20(Lyrics).mp3' },
@@ -601,7 +590,6 @@
     let fadeInterval = null;
     const FADE_DURATION = 400;
     const FADE_STEPS = 20;
-
     function fadeIn(callback = () => {}) {
       clearInterval(fadeInterval);
       let step = 0;
@@ -617,7 +605,6 @@
         }
       }, FADE_DURATION / FADE_STEPS);
     }
-
     function fadeOut(callback = () => {}) {
       clearInterval(fadeInterval);
       let step = 0;
@@ -633,7 +620,6 @@
         }
       }, FADE_DURATION / FADE_STEPS);
     }
-
     function loadTrack(idx) {
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
@@ -643,7 +629,6 @@
       updateVolumeUI();
     }
     loadTrack(currentTrack);
-
     playPause.onclick = () => {
       if (isPlaying) {
         fadeOut(() => {
@@ -659,7 +644,6 @@
         });
       }
     };
-
     document.getElementById('prev').onclick = () => {
       if (audio.currentTime <= 3) {
         currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
@@ -675,7 +659,6 @@
         }
       });
     };
-
     document.getElementById('next').onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       fadeOut(() => {
@@ -687,7 +670,6 @@
         }
       });
     };
-
     function updateProgressUI() {
       if (isScrubbing) return;
       if (!audio.duration) return;
@@ -696,31 +678,26 @@
       progressKnob.style.left = percent + '%';
       progressTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
     }
-
     function updateVolumeUI() {
       const percent = (audio.volume * 100);
       volumeFill.style.width = percent + '%';
     }
-
     function previewSeek(percent) {
       progressFill.style.width = percent + '%';
       progressKnob.style.left = percent + '%';
       const previewSec = (percent / 100) * audio.duration;
       progressTime.textContent = `${formatTime(previewSec)} / ${formatTime(audio.duration)}`;
     }
-
     function commitSeek(percent) {
       if (!audio.duration) return;
       audio.currentTime = (percent / 100) * audio.duration;
       updateProgressUI();
     }
-
     function formatTime(seconds) {
       const min = Math.floor(seconds / 60);
       const sec = Math.floor(seconds % 60);
       return `${min}:${sec.toString().padStart(2, '0')}`;
     }
-
     progressContainer.addEventListener('mousedown', e => {
       if (e.button !== 0) return;
       isScrubbing = true;
@@ -730,7 +707,6 @@
       previewSeek(percent);
       e.preventDefault();
     });
-
     progressContainer.addEventListener('touchstart', e => {
       isScrubbing = true;
       const rect = progressContainer.getBoundingClientRect();
@@ -739,7 +715,6 @@
       previewSeek(percent);
       e.preventDefault();
     });
-
     document.addEventListener('mousemove', e => {
       if (!isScrubbing) return;
       const rect = progressContainer.getBoundingClientRect();
@@ -747,7 +722,6 @@
       percent = Math.max(0, Math.min(100, percent));
       previewSeek(percent);
     });
-
     document.addEventListener('touchmove', e => {
       if (!isScrubbing) return;
       if (e.touches.length === 0) return;
@@ -757,7 +731,6 @@
       previewSeek(percent);
       e.preventDefault();
     });
-
     document.addEventListener('mouseup', e => {
       if (!isScrubbing) return;
       isScrubbing = false;
@@ -766,7 +739,6 @@
       percent = Math.max(0, Math.min(100, percent));
       commitSeek(percent);
     });
-
     document.addEventListener('touchend', e => {
       if (!isScrubbing) return;
       isScrubbing = false;
@@ -776,25 +748,18 @@
       percent = Math.max(0, Math.min(100, percent));
       commitSeek(percent);
     });
-
     audio.ontimeupdate = updateProgressUI;
-
-    // Volume slider - desktop + improved mobile
     volumeSlider.addEventListener('input', () => {
       audio.volume = volumeSlider.value / 100;
       updateVolumeUI();
     });
-
-    // Mobile touch support - drag anywhere on volume container
     let isVolumeDragging = false;
     const volumeContainer = document.getElementById('volumeContainer');
-
     volumeContainer.addEventListener('touchstart', e => {
       e.preventDefault();
       isVolumeDragging = true;
       updateVolumeFromTouch(e.touches[0]);
     }, { passive: false });
-
     document.addEventListener('touchmove', e => {
       if (!isVolumeDragging) return;
       e.preventDefault();
@@ -802,27 +767,23 @@
         updateVolumeFromTouch(e.touches[0]);
       }
     }, { passive: false });
-
     document.addEventListener('touchend', () => {
       isVolumeDragging = false;
     });
-
     function updateVolumeFromTouch(touch) {
       const rect = volumeContainer.getBoundingClientRect();
       let pos = (touch.clientX - rect.left) / rect.width;
-      pos = Math.max(0, Math.min(1, pos)); // 0 → 1
+      pos = Math.max(0, Math.min(1, pos));
       volumeSlider.value = pos * 100;
       audio.volume = pos;
       updateVolumeUI();
     }
-
     vlb.onclick = () => {
       audio.muted = !audio.muted;
       vlb.innerHTML = audio.muted ? muteSVG : unmuteSVG;
       if (!audio.muted) audio.volume = volumeSlider.value / 100;
       updateVolumeUI();
     };
-
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       fadeOut(() => {
@@ -834,13 +795,10 @@
         }
       });
     };
-
     audio.onerror = e => console.error('Audio error:', e);
-
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     let audioCtx, analyser, source;
-
     function initVis() {
       try {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -849,12 +807,10 @@
         source = audioCtx.createMediaElementSource(audio);
         source.connect(analyser);
         analyser.connect(audioCtx.destination);
-        draw();
       } catch (e) {
         console.log('Visualizer skipped:', e);
       }
     }
-
     function draw() {
       requestAnimationFrame(draw);
       if (!analyser) return;
@@ -878,7 +834,6 @@
         x += barWidth + 1;
       }
     }
-
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
@@ -895,6 +850,7 @@
           isPlaying = true;
           playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
           initVis();
+          draw();
           updateVolumeUI();
         }, 200);
       }, 800);
