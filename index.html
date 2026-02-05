@@ -37,13 +37,13 @@
       color:#fff;font-size:2.5em;text-shadow:0 0 6px #000, 0 0 12px #000;
       transition:opacity 0.8s ease-out;
     }
+    #blur-overlay.hidden { opacity:0;pointer-events:none; }
     #blur-overlay span {
       font-size:0.6em;
       margin-top:10px;
       opacity:0.8;
-      color:#7d7d7d;
+      color:#a3a3a3;
     }
-    #blur-overlay.hidden { opacity:0;pointer-events:none; }
     #trail-canvas,#sparkle-canvas { position:absolute;inset:0;pointer-events:none; }
     #trail-canvas { z-index:4; }
     #sparkle-canvas { z-index:2; }
@@ -101,7 +101,7 @@
       position:absolute;inset:0;
     }
     .avatar { z-index:1; }
-    .decoration { z-index:2; display:none; }
+    .decoration { z-index:2; display:block; }
     .platform-indicator {
       position: absolute;
       bottom: 40px;
@@ -232,9 +232,9 @@
     #volumeSlider {
       -webkit-appearance: none;
       width: 140px;
-      height: 20px;
+      height: 28px;
       background: rgba(255,255,255,0.3);
-      border-radius: 10px;
+      border-radius: 14px;
       outline: none;
       margin: 0 8px;
       cursor: pointer;
@@ -242,8 +242,8 @@
     }
     #volumeSlider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 28px;
-      height: 28px;
+      width: 36px;
+      height: 36px;
       background: #ffffff;
       border-radius: 50%;
       cursor: pointer;
@@ -251,8 +251,8 @@
       margin-top: -4px;
     }
     #volumeSlider::-moz-range-thumb {
-      width: 28px;
-      height: 28px;
+      width: 36px;
+      height: 36px;
       background: #ffffff;
       border-radius: 50%;
       cursor: pointer;
@@ -289,8 +289,15 @@
         top: 5px;
         left: 5px;
       }
-      #volumeSlider { width: 110px; height: 24px; }
-      #volumeSlider::-webkit-slider-thumb { width: 32px; height: 32px; margin-top: -4px; }
+      #volumeSlider {
+        width: 120px;
+        height: 36px;
+      }
+      #volumeSlider::-webkit-slider-thumb {
+        width: 44px;
+        height: 44px;
+        margin-top: -4px;
+      }
     }
   </style>
 </head>
@@ -306,7 +313,7 @@
       <div class="profile-top">
         <div class="avatar-wrapper">
           <img class="avatar" id="userAvatar" src="" alt="yourscoper" />
-          <img class="decoration" id="userDecoration" src="" alt="decoration" />
+          <img class="decoration" id="userDecoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=160&passthrough=false" alt="decoration" />
         </div>
         <div>
           <div class="username-container">
@@ -407,13 +414,6 @@
           const isAnimated = avatarHash?.startsWith('a_');
           const avatarExt = isAnimated ? 'gif' : 'png';
           document.getElementById('userAvatar').src = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.${avatarExt}?size=1024`;
-          const decoration = data.discord_user.avatar_decoration;
-          if (decoration) {
-            document.getElementById('userDecoration').src = `https://cdn.discordapp.com/avatar-decorations/${decoration}?size=240`;
-            document.getElementById('userDecoration').style.display = 'block';
-          } else {
-            document.getElementById('userDecoration').style.display = 'none';
-          }
         } else {
           platformIndicator.innerHTML = platformSVGs.desktop;
           platformIndicator.style.color = statusColors.offline;
@@ -575,6 +575,7 @@
       trackName.textContent = tracks[idx].name;
       trackArtist.textContent = tracks[idx].artist;
       audio.load();
+      audio.volume = volumeSlider.value / 100; // Keep current slider volume
     }
     loadTrack(currentTrack);
     playPause.onclick = () => {
@@ -693,16 +694,33 @@
     volumeSlider.addEventListener('input', () => {
       audio.volume = volumeSlider.value / 100;
     });
-    volumeSlider.addEventListener('touchstart', e => e.stopPropagation());
+    volumeSlider.addEventListener('touchstart', e => {
+      e.stopPropagation();
+      e.preventDefault();
+    });
     volumeSlider.addEventListener('touchmove', e => {
       e.stopPropagation();
+      e.preventDefault();
       const rect = volumeSlider.getBoundingClientRect();
       const touch = e.touches[0];
-      const pos = (touch.clientX - rect.left) / rect.width;
-      const value = Math.max(0, Math.min(100, pos * 100));
+      let pos = (touch.clientX - rect.left) / rect.width;
+      pos = Math.max(0, Math.min(1, pos));
+      const value = pos * 100;
       volumeSlider.value = value;
-      audio.volume = value / 100;
-    }, { passive: false });
+      audio.volume = pos;
+    });
+    volumeSlider.addEventListener('touchend', e => {
+      e.stopPropagation();
+      const rect = volumeSlider.getBoundingClientRect();
+      const touch = e.changedTouches[0];
+      if (touch) {
+        let pos = (touch.clientX - rect.left) / rect.width;
+        pos = Math.max(0, Math.min(1, pos));
+        const value = pos * 100;
+        volumeSlider.value = value;
+        audio.volume = pos;
+      }
+    });
     muteIcon.onclick = () => {
       audio.muted = !audio.muted;
       muteIcon.innerHTML = audio.muted ? muteSVG : unmuteSVG;
@@ -766,8 +784,7 @@
         content.style.display = 'block';
         setTimeout(() => {
           content.classList.add('visible');
-          audio.volume = 1.0;
-          volumeSlider.value = 100;
+          audio.volume = volumeSlider.value / 100;
           audio.muted = false;
           muteIcon.innerHTML = unmuteSVG;
           audio.play().catch(e => console.error('Autoplay failed:', e));
