@@ -59,7 +59,7 @@
     #main-content {
       display:none;
       opacity:0;
-      transition:opacity 1.2s ease 0.3s;
+      transition:opacity 0.6s ease 0.2s; /* faster fade-in */
       z-index:5;
       width:90%;
       max-width:420px;
@@ -140,7 +140,7 @@
       background:rgba(0,0,0,0.5);
       border-radius:10px;
       padding:8px 14px;
-      width:180px; /* fixed width */
+      width:180px;
       height:36px;
       display:flex;
       align-items:center;
@@ -164,7 +164,18 @@
     .btn.play-pause { width:48px;height:48px; }
 
     .track-info { flex:1;min-width:140px;text-align:center; }
-    .track-name { font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+    .track-name { font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px; }
+    .track-artist { font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:4px; }
+    .progress-container { position:relative; }
+    .progress-time { 
+      font-size:12px;
+      color:rgba(255,255,255,0.7);
+      position:absolute;
+      top:-18px;
+      left:50%;
+      transform:translateX(-50%);
+      white-space:nowrap;
+    }
     .progress-bar { height:4px;background:rgba(255,255,255,0.15);border-radius:2px;margin-top:6px;cursor:pointer;position:relative; }
     .progress-fill { position:absolute;top:0;left:0;height:100%;width:0%;background:linear-gradient(90deg,#fff,#ccc);border-radius:2px;transition:width 0.1s linear; }
 
@@ -260,7 +271,13 @@
 
         <div class="track-info">
           <div class="track-name" id="trackName">Baptized In Fear (Lyrics)</div>
-          <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+          <div class="track-artist" id="trackArtist">The Weeknd</div>
+          <div class="progress-container">
+            <div class="progress-time" id="progressTime">0:00 / 0:00</div>
+            <div class="progress-bar" id="progressBar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
         </div>
 
         <div class="volume-area">
@@ -279,7 +296,7 @@
     </div>
   </div>
 
-  <div id="version">v1.0.4</div>
+  <div id="version">v1.0.3</div>
   <div id="copyright">© 2025 yourscoper. All rights reserved.</div>
 
   <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
@@ -304,7 +321,7 @@
     }
     typeTitle();
 
-    // Quote autotype (fixed box)
+    // Quote autotype
     const quoteEl = document.getElementById('quote');
     const quoteText = "I indulge scripting.";
     let quoteIndex = 0;
@@ -330,16 +347,18 @@
 
     const playPause = document.getElementById('playPause');
     const trackName = document.getElementById('trackName');
+    const trackArtist = document.getElementById('trackArtist');
+    const progressTime = document.getElementById('progressTime');
     const progressBar = document.getElementById('progressBar');
     const progressFill = document.getElementById('progressFill');
     const volumeSlider = document.getElementById('volumeSlider');
     const muteIcon = document.getElementById('muteIcon');
 
     const tracks = [
-      { name: 'Baptized In Fear (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/Baptized%20In%20Fear%20(Lyrics).mp3' },
-      { name: 'High For This (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/High%20For%20This%20(Lyrics).mp3' },
-      { name: 'São Paulo (feat. Anitta) (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/S%C3%A3o%20Paulo%20(feat.%20Anitta)%20(Lyrics).mp3' },
-      { name: 'The Morning (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/The%20Morning%20(Lyrics).mp3' },
+      { name: 'Baptized In Fear (Lyrics)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/Baptized%20In%20Fear%20(Lyrics).mp3' },
+      { name: 'High For This (Lyrics)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/High%20For%20This%20(Lyrics).mp3' },
+      { name: 'São Paulo (feat. Anitta) (Lyrics)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/S%C3%A3o%20Paulo%20(feat.%20Anitta)%20(Lyrics).mp3' },
+      { name: 'The Morning (Lyrics)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/The%20Morning%20(Lyrics).mp3' },
     ];
     let currentTrack = 0;
     let isPlaying = false;
@@ -347,6 +366,7 @@
     function loadTrack(idx) {
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
+      trackArtist.textContent = tracks[idx].artist;
       audio.load();
       console.log('Loading:', tracks[idx].src);
     }
@@ -380,8 +400,19 @@
     };
 
     audio.ontimeupdate = () => {
-      if (audio.duration) progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      if (audio.duration) {
+        const current = formatTime(audio.currentTime);
+        const total = formatTime(audio.duration);
+        progressTime.textContent = `${current} / ${total}`;
+        progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      }
     };
+
+    function formatTime(seconds) {
+      const min = Math.floor(seconds / 60);
+      const sec = Math.floor(seconds % 60);
+      return `${min}:${sec.toString().padStart(2, '0')}`;
+    }
 
     progressBar.onclick = e => {
       const rect = progressBar.getBoundingClientRect();
@@ -449,7 +480,7 @@
       }
     }
 
-    // Fade + autoplay
+    // Fade + autoplay (faster)
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
@@ -467,7 +498,7 @@
           isPlaying = true;
           playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
           initVis();
-        }, 100);
+        }, 200); // faster appearance
       }, 1200);
     });
   </script>
