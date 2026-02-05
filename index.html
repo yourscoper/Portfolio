@@ -7,6 +7,9 @@
   <title>yourscoper</title>
   <meta name="description" content="I indulge scripting." />
 
+  <!-- Coming Soon font for everything -->
+  <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
+
   <meta property="og:title" content="yourscoper" />
   <meta property="og:description" content="I indulge scripting." />
   <meta property="og:type" content="website" />
@@ -14,9 +17,6 @@
   <meta property="og:image" content="https://raw.githubusercontent.com/yourscoper/Portfolio/main/preview.jpg" />
 
   <meta name="theme-color" content="#FFFFFF" />
-
-  <!-- Coming Soon font -->
-  <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
 
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
 
@@ -33,7 +33,7 @@
       background: #000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
-      font-family: Arial, sans-serif;
+      font-family: 'Coming Soon', cursive;
       height: 100vh;
       overflow: hidden;
       display: flex;
@@ -47,12 +47,13 @@
       position: fixed; inset: 0;
       backdrop-filter: blur(8px);
       background: rgba(0,0,0,0.8);
-      display: flex; justify-content: center; align-items: center;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
       z-index: 1000;
       color: #fff; font-size: 2.5em; text-shadow: 0 0 12px #fff;
-      font-family: 'Coming Soon', cursive;
       transition: opacity 1.2s ease-out;
     }
+    #blur-overlay span { font-size: 0.6em; margin-top: 10px; opacity: 0.8; }
+
     #blur-overlay.hidden { opacity: 0; pointer-events: none; }
 
     #trail-canvas, #sparkle-canvas { position: absolute; inset: 0; pointer-events: none; }
@@ -95,7 +96,7 @@
       100% { border-image-source: linear-gradient(90deg, #fff, #aaa, #000, #aaa, #fff); }
     }
 
-    .profile-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; position: relative; }
+    .profile-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px; position: relative; }
     .avatar-wrapper {
       position: relative;
       width: 80px;
@@ -124,10 +125,21 @@
       border: 4px solid #000;
       background: #ffc04e;
       box-shadow: 0 0 12px #ffc04e;
-      z-index: 10; /* on top of everything */
+      z-index: 10;
     }
 
+    .username-container { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
+    .guild-tag {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 13px;
+    }
+    .guild-tag img { width: 16px; height: 16px; margin-right: 4px; }
+
     .badges { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
     .badges img { width: 20px; height: 20px; }
 
@@ -135,7 +147,7 @@
       background: rgba(0,0,0,0.6);
       border-radius: 12px;
       padding: 14px;
-      margin: 16px 0;
+      margin: 12px 0;
       text-align: center;
       min-height: 70px;
       display: flex;
@@ -146,9 +158,10 @@
       font-size: 18px;
       font-style: italic;
       color: rgba(255,255,255,0.95);
+      text-shadow: 0 0 8px rgba(255,255,255,0.4);
     }
 
-    #waveform { width: 100%; height: 60px; margin: 16px 0; border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.6); }
+    #waveform { width: 100%; height: 80px; margin: 16px 0; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.7); }
 
     .controls { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
     .btn { width: 40px; height: 40px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
@@ -193,17 +206,6 @@
     .socials a:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(255,255,255,0.15); }
     .socials img { width: 24px; height: 24px; filter: brightness(0) invert(1) drop-shadow(0 0 4px #fff); }
 
-    .guild-tag {
-      display: inline-flex;
-      align-items: center;
-      background: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 4px 8px;
-      font-size: 12px;
-      margin-top: 8px;
-    }
-    .guild-tag img { width: 16px; height: 16px; margin-right: 4px; }
-
     @media (max-width: 500px) {
       .player-card { padding: 16px; }
       .avatar-wrapper { width: 64px; height: 64px; }
@@ -214,7 +216,10 @@
 </head>
 <body>
 
-  <div id="blur-overlay">Coming Soon...</div>
+  <div id="blur-overlay">
+    Click to Enter
+    <span>This site contains audio content</span>
+  </div>
   <canvas id="sparkle-canvas"></canvas>
   <canvas id="trail-canvas"></canvas>
 
@@ -226,8 +231,12 @@
           <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
           <div class="status-dot"></div>
         </div>
-        <div>
+        <div class="username-container">
           <div class="username">yourscoper</div>
+          <div class="guild-tag">
+            <img src="https://cdn.discordapp.com/clan-badges/547906569489350657/3858554c542da4e8e4b52ff00a558ced.png?size=16" alt="CODE badge" />
+            <span>CODE</span>
+          </div>
           <div class="badges">
             <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Nitro" />
             <img src="https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png" alt="HypeSquad" />
@@ -236,12 +245,7 @@
             <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest" />
             <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs" />
           </div>
-          <!-- Guild tag from your HTML -->
-          <div class="guild-tag">
-            <img src="https://cdn.discordapp.com/clan-badges/547906569489350657/3858554c542da4e8e4b52ff00a558ced.png?size=16" alt="CODE badge" />
-            <span>CODE</span>
-          </div>
-          <!-- I indulge scripting under badges -->
+          <!-- Quote under badges -->
           <div class="quote-container">
             <div class="quote" id="quote"></div>
           </div>
@@ -327,12 +331,7 @@
     function loadTrack(idx) {
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
-      try {
-        audio.load();
-        console.log('Loaded track:', tracks[idx].name);
-      } catch (err) {
-        console.error('Load failed for', tracks[idx].name, err);
-      }
+      audio.load();
     }
     loadTrack(currentTrack);
 
@@ -341,7 +340,7 @@
         audio.pause();
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
       } else {
-        audio.play().catch(e => console.error('Play failed:', e));
+        audio.play().catch(e => console.error('Play error:', e));
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       }
       isPlaying = !isPlaying;
@@ -354,13 +353,13 @@
         audio.currentTime = 0;
       }
       loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play failed:', e));
+      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
     document.getElementById('next').onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play failed:', e));
+      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
     audio.ontimeupdate = () => {
@@ -385,10 +384,10 @@
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
-      if (isPlaying) audio.play().catch(e => console.error('Play failed:', e));
+      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
-    // Audio visualizer (white bars)
+    // White/grey/black gradient visualizer
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     let audioCtx, analyser, source;
@@ -403,7 +402,7 @@
         analyser.connect(audioCtx.destination);
         draw();
       } catch (e) {
-        console.log('Visualizer failed (CORS?):', e);
+        console.log('Visualizer skipped (CORS?):', e);
       }
     }
 
@@ -421,17 +420,21 @@
       canvas.height = canvas.offsetHeight;
       ctx.clearRect(0,0,canvas.width,canvas.height);
 
-      const barWidth = (canvas.width / buffer) * 2;
+      const barWidth = (canvas.width / buffer) * 2.5;
       let x = 0;
       for (let k = 0; k < buffer; k++) {
-        const barHeight = (data[k] / 255) * canvas.height * 0.9;
-        ctx.fillStyle = `rgba(255,255,255,${data[k]/255})`; // white bars
+        const barHeight = (data[k] / 255) * canvas.height * 0.8;
+        const gradient = ctx.createLinearGradient(0, canvas.height - barHeight, 0, canvas.height);
+        gradient.addColorStop(0, 'rgba(255,255,255,0.9)');
+        gradient.addColorStop(0.5, 'rgba(200,200,200,0.7)');
+        gradient.addColorStop(1, 'rgba(0,0,0,0.4)');
+        ctx.fillStyle = gradient;
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
         x += barWidth + 1;
       }
     }
 
-    // Fade transition + autoplay on enter
+    // Fade transition + autoplay
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
