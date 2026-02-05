@@ -543,11 +543,10 @@
       clearInterval(fadeInterval);
       let step = 0;
       const targetVol = audio.muted ? 0 : (volumeSlider.value / 100);
-      const startVol = audio.volume;
-      const stepSize = (targetVol - startVol) / FADE_STEPS;
+      const stepSize = targetVol / FADE_STEPS;
       fadeInterval = setInterval(() => {
         step++;
-        audio.volume = Math.max(0, Math.min(1, startVol + step * stepSize));
+        audio.volume = Math.min(targetVol, step * stepSize);
         if (step >= FADE_STEPS) {
           clearInterval(fadeInterval);
           audio.volume = targetVol;
@@ -575,7 +574,7 @@
       trackName.textContent = tracks[idx].name;
       trackArtist.textContent = tracks[idx].artist;
       audio.load();
-      audio.volume = volumeSlider.value / 100; // Keep current slider volume
+      audio.volume = volumeSlider.value / 100;
     }
     loadTrack(currentTrack);
     playPause.onclick = () => {
@@ -599,21 +598,25 @@
       } else {
         audio.currentTime = 0;
       }
-      loadTrack(currentTrack);
-      if (isPlaying) {
-        fadeOut(() => {
+      fadeOut(() => {
+        loadTrack(currentTrack);
+        if (isPlaying) {
+          audio.currentTime = 0;
           audio.play().catch(e => console.error('Play error:', e));
-        });
-      }
+          fadeIn();
+        }
+      });
     };
     document.getElementById('next').onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
-      loadTrack(currentTrack);
-      if (isPlaying) {
-        fadeOut(() => {
+      fadeOut(() => {
+        loadTrack(currentTrack);
+        if (isPlaying) {
+          audio.currentTime = 0;
           audio.play().catch(e => console.error('Play error:', e));
-        });
-      }
+          fadeIn();
+        }
+      });
     };
     function updateProgressUI() {
       if (isScrubbing) return;
@@ -728,13 +731,14 @@
     };
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
-      loadTrack(currentTrack);
-      if (isPlaying) {
-        audio.currentTime = 0;
-        fadeIn(() => {
+      fadeOut(() => {
+        loadTrack(currentTrack);
+        if (isPlaying) {
+          audio.currentTime = 0;
           audio.play().catch(e => console.error('Play error:', e));
-        });
-      }
+          fadeIn();
+        }
+      });
     };
     audio.onerror = e => console.error('Audio error:', e);
     const canvas = document.getElementById('waveform');
