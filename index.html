@@ -7,7 +7,6 @@
   <title>yourscoper</title>
   <meta name="description" content="I indulge scripting." />
 
-  <!-- Coming Soon font -->
   <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
 
   <meta property="og:title" content="yourscoper" />
@@ -21,188 +20,177 @@
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
 
   <style>
-    * {
-      margin: 0; padding: 0;
-      -webkit-user-select: none;
-      user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-    }
+    * { margin:0; padding:0; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
 
     body {
-      background: #000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      font-family: 'Coming Soon', cursive;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6, auto;
+      background:#000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
+      background-size:cover;
+      color:#fff;
+      font-family:'Coming Soon',cursive;
+      height:100vh;
+      overflow:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6,auto;
     }
 
     #blur-overlay {
-      position: fixed; inset: 0;
-      backdrop-filter: blur(8px);
-      background: rgba(0,0,0,0.8);
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      z-index: 1000;
-      color: #fff; font-size: 2.5em; text-shadow: 0 0 12px #fff;
-      transition: opacity 1.2s ease-out;
+      position:fixed;inset:0;
+      backdrop-filter:blur(8px);
+      background:rgba(0,0,0,0.8);
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      z-index:1000;
+      color:#fff;font-size:2.5em;text-shadow:0 0 12px #fff;
+      transition:opacity 1.2s ease-out;
     }
-    #blur-overlay span { font-size: 0.6em; margin-top: 10px; opacity: 0.8; }
+    #blur-overlay span { font-size:0.6em;margin-top:10px;opacity:0.8; }
+    #blur-overlay.hidden { opacity:0;pointer-events:none; }
 
-    #blur-overlay.hidden { opacity: 0; pointer-events: none; }
+    #trail-canvas,#sparkle-canvas { position:absolute;inset:0;pointer-events:none; }
+    #trail-canvas { z-index:4; }
+    #sparkle-canvas { z-index:2; }
 
-    #trail-canvas, #sparkle-canvas { position: absolute; inset: 0; pointer-events: none; }
-    #trail-canvas { z-index: 4; }
-    #sparkle-canvas { z-index: 2; }
-
-    #version, #copyright { 
-      position: fixed; bottom: 20px; color: #fff; font-size: 0.9em; text-shadow: 0 0 6px #fff; z-index: 10; 
-    }
-    #version { left: 20px; }
-    #copyright { left: 50%; transform: translateX(-50%); }
+    #version,#copyright { position:fixed;bottom:20px;color:#fff;font-size:0.9em;text-shadow:0 0 6px #fff;z-index:10; }
+    #version { left:20px; }
+    #copyright { left:50%;transform:translateX(-50%); }
 
     #main-content {
-      display: none;
-      opacity: 0;
-      transition: opacity 1.2s ease 0.3s;
-      z-index: 5;
-      width: 90%;
-      max-width: 420px;
+      display:none;
+      opacity:0;
+      transition:opacity 1.2s ease 0.3s;
+      z-index:5;
+      width:90%;
+      max-width:420px;
     }
-    #main-content.visible { display: block; opacity: 1; }
+    #main-content.visible { display:block;opacity:1; }
 
     .player-card {
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(25px) saturate(180%);
-      border: 2px solid rgba(255,255,255,0.25);
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 80px rgba(255,255,255,0.12);
-      animation: spinGradient 6s linear infinite;
-      border-image: linear-gradient(90deg, #fff, #333, #000, #333, #fff) 1;
-      border-image-slice: 1;
+      background:rgba(255,255,255,0.03);
+      backdrop-filter:blur(25px) saturate(180%);
+      border:2px solid rgba(255,255,255,0.25);
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.6),0 0 80px rgba(255,255,255,0.12);
+      animation:spinGradient 6s linear infinite;
+      border-image:linear-gradient(90deg,#fff,#333,#000,#333,#fff) 1;
+      border-image-slice:1;
     }
 
     @keyframes spinGradient {
-      0%   { border-image-source: linear-gradient(90deg, #fff, #aaa, #000, #aaa, #fff); }
-      25%  { border-image-source: linear-gradient(180deg, #fff, #aaa, #000, #aaa, #fff); }
-      50%  { border-image-source: linear-gradient(270deg, #fff, #aaa, #000, #aaa, #fff); }
-      75%  { border-image-source: linear-gradient(0deg, #fff, #aaa, #000, #aaa, #fff); }
-      100% { border-image-source: linear-gradient(90deg, #fff, #aaa, #000, #aaa, #fff); }
+      0%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
+      25%{border-image-source:linear-gradient(180deg,#fff,#aaa,#000,#aaa,#fff)}
+      50%{border-image-source:linear-gradient(270deg,#fff,#aaa,#000,#aaa,#fff)}
+      75%{border-image-source:linear-gradient(0deg,#fff,#aaa,#000,#aaa,#fff)}
+      100%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
     }
 
-    .profile-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px; }
+    .profile-top { display:flex;align-items:flex-start;gap:16px;margin-bottom:12px; }
     .avatar-wrapper {
-      position: relative;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
+      position:relative;
+      width:80px;
+      height:80px;
+      border-radius:50%;
+      overflow:hidden;
+      flex-shrink:0;
     }
-    .avatar, .decoration {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      position: absolute;
-      inset: 0;
+    .avatar,.decoration {
+      width:100%;height:100%;
+      object-fit:cover;
+      border-radius:50%;
+      position:absolute;inset:0;
     }
-    .avatar { z-index: 1; }
-    .decoration { z-index: 2; }
+    .avatar { z-index:1; }
+    .decoration { z-index:2; }
     .status-dot {
-      position: absolute;
-      bottom: -6px;
-      right: -6px;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 4px solid #000;
-      background: #ffc04e;
-      box-shadow: 0 0 12px #ffc04e;
-      z-index: 10;
+      position:absolute;
+      bottom:-6px;right:-6px;
+      width:22px;height:22px;
+      border-radius:50%;
+      border:4px solid #000;
+      background:#ffc04e;
+      box-shadow:0 0 12px #ffc04e;
+      z-index:10;
     }
 
-    .username-container { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .username { font-size: 28px; font-weight: bold; text-shadow: 0 0 12px rgba(255,255,255,0.6); }
+    .username-container { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
+    .username { font-size:28px;font-weight:bold;text-shadow:0 0 12px rgba(255,255,255,0.6); }
 
     .guild-tag {
-      display: inline-flex;
-      align-items: center;
-      background: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 4px 8px;
-      font-size: 13px;
+      display:inline-flex;align-items:center;
+      background:rgba(255,255,255,0.08);
+      border-radius:8px;
+      padding:4px 8px;
+      font-size:13px;
     }
-    .guild-tag img { width: 16px; height: 16px; margin-right: 4px; }
+    .guild-tag img { width:16px;height:16px;margin-right:4px; }
 
-    .badges { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
-    .badges img { width: 20px; height: 20px; }
+    .badges { display:flex;gap:4px;flex-wrap:wrap;margin-top:4px; }
+    .badges img { width:20px;height:20px; }
 
     .quote {
-      font-size: 18px;
-      font-style: italic;
-      color: rgba(255,255,255,0.95);
-      text-shadow: 0 0 8px rgba(255,255,255,0.4);
-      margin-top: 8px;
-      text-align: center;
+      font-size:18px;
+      font-style:italic;
+      color:rgba(255,255,255,0.95);
+      text-shadow:0 0 8px rgba(255,255,255,0.4);
+      margin-top:8px;
+      text-align:center;
+      background:rgba(0,0,0,0.4);
+      border-radius:10px;
+      padding:10px 16px;
+      display:inline-block;
     }
 
-    #waveform { width: 100%; height: 80px; margin: 16px 0; border-radius: 12px; overflow: hidden; background: rgba(0,0,0,0.7); }
+    #waveform { width:100%;height:80px;margin:16px 0;border-radius:12px;overflow:hidden;background:rgba(0,0,0,0.7); }
 
-    .controls { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
-    .btn { width: 40px; height: 40px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
-    .btn:hover { background: rgba(255,255,255,0.15); transform: scale(1.08); }
-    .btn.play-pause { width: 48px; height: 48px; }
+    .controls { display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap; }
+    .btn { width:40px;height:40px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s; }
+    .btn:hover { background:rgba(255,255,255,0.15);transform:scale(1.08); }
+    .btn.play-pause { width:48px;height:48px; }
 
-    .track-info { flex: 1; min-width: 140px; }
-    .track-name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .progress-bar { height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; margin-top: 6px; cursor: pointer; position: relative; }
-    .progress-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: linear-gradient(90deg, #fff, #ccc); border-radius: 2px; transition: width 0.1s linear; }
+    .track-info { flex:1;min-width:140px; }
+    .track-name { font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+    .progress-bar { height:4px;background:rgba(255,255,255,0.15);border-radius:2px;margin-top:6px;cursor:pointer;position:relative; }
+    .progress-fill { position:absolute;top:0;left:0;height:100%;width:0%;background:linear-gradient(90deg,#fff,#ccc);border-radius:2px;transition:width 0.1s linear; }
 
     #volumeSlider {
-      -webkit-appearance: none;
-      width: 80px;
-      height: 6px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 3px;
-      outline: none;
+      -webkit-appearance:none;
+      width:80px;height:6px;
+      background:rgba(255,255,255,0.3);
+      border-radius:3px;
+      outline:none;
     }
     #volumeSlider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 18px; height: 18px;
-      background: #ffffff;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 12px #ffffff, 0 0 24px #ffffff;
-      margin-top: -6px;
+      -webkit-appearance:none;
+      width:18px;height:18px;
+      background:#ffffff;
+      border-radius:50%;
+      cursor:pointer;
+      box-shadow:0 0 12px #ffffff,0 0 24px #ffffff;
+      margin-top:-6px;
     }
     #volumeSlider::-moz-range-thumb {
-      width: 18px; height: 18px;
-      background: #ffffff;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 12px #ffffff, 0 0 24px #ffffff;
+      width:18px;height:18px;
+      background:#ffffff;
+      border-radius:50%;
+      cursor:pointer;
+      box-shadow:0 0 12px #ffffff,0 0 24px #ffffff;
     }
 
-    .volume-area { display: flex; align-items: center; gap: 8px; }
-    .mute-icon { filter: brightness(0) invert(1) drop-shadow(0 0 8px #ffffff); width: 28px; cursor: pointer; }
+    .volume-area { display:flex;align-items:center;gap:8px; }
+    .mute-icon { filter:brightness(0) invert(1) drop-shadow(0 0 8px #ffffff);width:28px;cursor:pointer; }
 
-    .socials { display: flex; justify-content: center; gap: 16px; margin-top: 20px; }
-    .socials a { width: 44px; height: 44px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-    .socials a:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(255,255,255,0.15); }
-    .socials img { width: 24px; height: 24px; filter: brightness(0) invert(1) drop-shadow(0 0 4px #fff); }
+    .socials { display:flex;justify-content:center;gap:16px;margin-top:20px; }
+    .socials a { width:44px;height:44px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;transition:all 0.3s; }
+    .socials a:hover { transform:translateY(-4px);box-shadow:0 8px 20px rgba(255,255,255,0.15); }
+    .socials img { width:24px;height:24px;filter:brightness(0) invert(1) drop-shadow(0 0 4px #fff); }
 
-    @media (max-width: 500px) {
-      .player-card { padding: 16px; }
-      .avatar-wrapper { width: 64px; height: 64px; }
-      .username { font-size: 24px; }
-      .quote { font-size: 16px; }
+    @media (max-width:500px) {
+      .player-card { padding:16px; }
+      .avatar-wrapper { width:64px;height:64px; }
+      .username { font-size:24px; }
+      .quote { font-size:16px; }
     }
   </style>
 </head>
@@ -239,7 +227,7 @@
             <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest" />
             <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs" />
           </div>
-          <!-- Quote under badges, no black box -->
+          <!-- Quote directly under badges, no extra box offset -->
           <div class="quote" id="quote"></div>
         </div>
       </div>
@@ -275,10 +263,10 @@
   <div id="version">v1.0.3</div>
   <div id="copyright">© 2025 yourscoper. All rights reserved.</div>
 
-  <audio id="playerAudio" loop preload="auto"></audio>
+  <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
 
   <script>
-    // Autotyping tab title
+    // Tab title autotype
     const fullTitle = 'yourscoper';
     let titleIndex = 0;
     let titleDeleting = false;
@@ -287,9 +275,7 @@
       if (!titleDeleting) {
         document.title = fullTitle.substring(0, titleIndex + 1);
         titleIndex++;
-        if (titleIndex === fullTitle.length) {
-          setTimeout(() => titleDeleting = true, 2000);
-        }
+        if (titleIndex === fullTitle.length) setTimeout(() => titleDeleting = true, 1800);
       } else {
         document.title = fullTitle.substring(0, titleIndex);
         titleIndex--;
@@ -299,25 +285,23 @@
     }
     typeTitle();
 
-    // Typewriter quote
+    // Quote autotype
     const quoteEl = document.getElementById('quote');
     const quoteText = "I indulge scripting.";
     let quoteIndex = 0;
     let quoteDeleting = false;
-    let quoteSpeed = 80;
-    let quotePause = 2000;
 
     function typeQuote() {
       if (!quoteDeleting) {
         quoteEl.textContent = quoteText.substring(0, quoteIndex + 1);
         quoteIndex++;
-        if (quoteIndex === quoteText.length) setTimeout(() => quoteDeleting = true, quotePause);
+        if (quoteIndex === quoteText.length) setTimeout(() => quoteDeleting = true, 2000);
       } else {
         quoteEl.textContent = quoteText.substring(0, quoteIndex);
         quoteIndex--;
         if (quoteIndex === 0) quoteDeleting = false;
       }
-      setTimeout(typeQuote, quoteDeleting ? quoteSpeed / 2 : quoteSpeed);
+      setTimeout(typeQuote, quoteDeleting ? 40 : 80);
     }
     typeQuote();
 
@@ -333,10 +317,10 @@
     const muteIcon = document.getElementById('muteIcon');
 
     const tracks = [
-      { name: 'Baptized In Fear (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/Baptized%20In%20Fear%20(Lyrics).mp3' },
-      { name: 'High For This (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/High%20For%20This%20(Lyrics).mp3' },
-      { name: 'São Paulo (feat. Anitta) (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/S%C3%A3o%20Paulo%20(feat.%20Anitta)%20(Lyrics).mp3' },
-      { name: 'The Morning (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/songs/The%20Morning%20(Lyrics).mp3' },
+      { name: 'Baptized In Fear (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/Baptized%20In%20Fear%20(Lyrics).mp3' },
+      { name: 'High For This (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/High%20For%20This%20(Lyrics).mp3' },
+      { name: 'São Paulo (feat. Anitta) (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/S%C3%A3o%20Paulo%20(feat.%20Anitta)%20(Lyrics).mp3' },
+      { name: 'The Morning (Lyrics)', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/The%20Morning%20(Lyrics).mp3' },
     ];
     let currentTrack = 0;
     let isPlaying = false;
@@ -345,7 +329,7 @@
       audio.src = tracks[idx].src;
       trackName.textContent = tracks[idx].name;
       audio.load();
-      console.log('Attempting to load:', tracks[idx].name);
+      console.log('Loading track:', tracks[idx].src);
     }
     loadTrack(currentTrack);
 
@@ -354,7 +338,7 @@
         audio.pause();
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
       } else {
-        audio.play().catch(e => console.error('Play error:', e));
+        audio.play().catch(e => console.error('Play failed:', e));
         playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       }
       isPlaying = !isPlaying;
@@ -377,9 +361,7 @@
     };
 
     audio.ontimeupdate = () => {
-      if (audio.duration) {
-        progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
-      }
+      if (audio.duration) progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
     };
 
     progressBar.onclick = e => {
@@ -401,15 +383,14 @@
       if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
-    audio.onerror = (e) => {
+    audio.onerror = e => {
       console.error('Audio error:', e);
-      trackName.textContent = 'Error loading track - check console';
-      // Optional: try next track
+      trackName.textContent = 'Track failed - try next';
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
     };
 
-    // White/grey/black gradient visualizer
+    // Visualizer (white/grey/black gradient bars)
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     let audioCtx, analyser, source;
@@ -424,7 +405,7 @@
         analyser.connect(audioCtx.destination);
         draw();
       } catch (e) {
-        console.log('Visualizer skipped (likely CORS):', e);
+        console.log('Visualizer skipped:', e);
       }
     }
 
@@ -446,15 +427,15 @@
         const barHeight = (data[k] / 255) * canvas.height * 0.8;
         const gradient = ctx.createLinearGradient(0, canvas.height - barHeight, 0, canvas.height);
         gradient.addColorStop(0, 'rgba(255,255,255,0.95)');
-        gradient.addColorStop(0.5, 'rgba(180,180,180,0.7)');
-        gradient.addColorStop(1, 'rgba(0,0,0,0.4)');
+        gradient.addColorStop(0.5, 'rgba(180,180,180,0.75)');
+        gradient.addColorStop(1, 'rgba(0,0,0,0.5)');
         ctx.fillStyle = gradient;
         ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
         x += barWidth + 1;
       }
     }
 
-    // Fade transition + autoplay on enter
+    // Fade + autoplay on click
     document.getElementById('blur-overlay').addEventListener('click', () => {
       const overlay = document.getElementById('blur-overlay');
       const content = document.getElementById('main-content');
