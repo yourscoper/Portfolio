@@ -100,8 +100,8 @@
 
     .platform-indicator {
       position: absolute;
-      bottom: 40px;
-      right: 291px;
+      bottom: 391px;
+      right: 314px;
       width: 28px;
       height: 28px;
       z-index: 20;
@@ -180,9 +180,10 @@
     .progress-container { 
       position:relative;
       margin-top:8px;
-      height:12px;
-      cursor:pointer;
+      height:16px;              /* taller touch target */
+      cursor:grab;
     }
+    .progress-container:active { cursor:grabbing; }
     .progress-time {
       font-size:12px;
       color:rgba(255,255,255,0.8);
@@ -191,13 +192,15 @@
       left:50%;
       transform:translateX(-50%);
       white-space:nowrap;
+      pointer-events:none;
     }
     .progress-bar { 
       height:4px;
       background:rgba(255,255,255,0.15);
       border-radius:2px;
-      position:relative;
-      top:4px;
+      position:absolute;
+      inset:0;
+      top:6px;
     }
     .progress-fill { 
       position:absolute;
@@ -209,13 +212,13 @@
     }
     .progress-knob {
       position: absolute;
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       background: #fff;
       border-radius: 50%;
-      top: -5px;
+      top: 0;
       transform: translateX(-50%);
-      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+      box-shadow: 0 0 10px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
       pointer-events: none;
       z-index: 2;
     }
@@ -269,6 +272,8 @@
         top: 5px; 
         left: 5px; 
       }
+      .progress-container { height:20px; }
+      .progress-knob { width:20px; height:20px; }
     }
   </style>
 </head>
@@ -342,7 +347,7 @@
       </div>
     </div>
   </div>
-  <div id="version">v1.0.5</div>
+  <div id="version">v1.0.6</div>
   <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
   <audio id="playerAudio" loop preload="auto" crossorigin="anonymous"></audio>
 
@@ -449,7 +454,7 @@
     }
     typeQuote();
 
-    // ─── Mouse Trail & Sparkles (unchanged) ─────────────────────────────────
+    // ─── Mouse Trail & Sparkles ─────────────────────────────────────────────
     const trailCanvas = document.getElementById('trail-canvas');
     const tctx = trailCanvas.getContext('2d');
     trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -501,15 +506,14 @@
     drawSparkles();
     setInterval(createSparkle, 400);
 
-    // ─── Music Player with Spotify-like fade ────────────────────────────────
+    // ─── Music Player ───────────────────────────────────────────────────────
     const audio = document.getElementById('playerAudio');
-    audio.volume = 0.0; // start silent, fade in later
+    audio.volume = 0.5;
 
     const playPause = document.getElementById('playPause');
     const trackName = document.getElementById('trackName');
     const trackArtist = document.getElementById('trackArtist');
     const progressTime = document.getElementById('progressTime');
-    const progressBar = document.getElementById('progressBar');
     const progressFill = document.getElementById('progressFill');
     const progressKnob = document.getElementById('progressKnob');
     const progressContainer = document.getElementById('progressContainer');
@@ -530,7 +534,7 @@
     ];
     let currentTrack = 0;
     let isPlaying = false;
-    let fadeInterval = null;
+    let isScrubbing = false;
 
     function loadTrack(idx) {
       audio.src = tracks[idx].src;
@@ -540,63 +544,15 @@
     }
     loadTrack(currentTrack);
 
-    // ─── Spotify-style fade in / fade out ───────────────────────────────────
-    const FADE_DURATION = 300; // ms
-    const FADE_STEPS = 20;
-
-    function fadeIn(callback = () => {}) {
-      clearInterval(fadeInterval);
-      let step = 0;
-      const targetVol = audio.muted ? 0 : (volumeSlider.value / 100);
-      const startVol = audio.volume;
-      const stepSize = (targetVol - startVol) / FADE_STEPS;
-
-      fadeInterval = setInterval(() => {
-        step++;
-        audio.volume = Math.max(0, Math.min(1, startVol + step * stepSize));
-        if (step >= FADE_STEPS) {
-          clearInterval(fadeInterval);
-          audio.volume = targetVol;
-          callback();
-        }
-      }, FADE_DURATION / FADE_STEPS);
-    }
-
-    function fadeOut(callback = () => {}) {
-      clearInterval(fadeInterval);
-      let step = 0;
-      const startVol = audio.volume;
-      const stepSize = startVol / FADE_STEPS;
-
-      fadeInterval = setInterval(() => {
-        step++;
-        audio.volume = Math.max(0, startVol - step * stepSize);
-        if (step >= FADE_STEPS) {
-          clearInterval(fadeInterval);
-          audio.volume = 0;
-          callback();
-        }
-      }, FADE_DURATION / FADE_STEPS);
-    }
-
-    // Play / Pause with fade
     playPause.onclick = () => {
       if (isPlaying) {
-        // Pause → fade out then pause
-        fadeOut(() => {
-          audio.pause();
-          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
-          isPlaying = false;
-        });
+        audio.pause();
+        playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
       } else {
-        // Play → fade in
-        if (!audio.src || audio.src === '') loadTrack(currentTrack);
         audio.play().catch(e => console.error('Play failed:', e));
-        fadeIn(() => {
-          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
-          isPlaying = true;
-        });
+        playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
       }
+      isPlaying = !isPlaying;
     };
 
     document.getElementById('prev').onclick = () => {
@@ -606,25 +562,18 @@
         audio.currentTime = 0;
       }
       loadTrack(currentTrack);
-      if (isPlaying) {
-        audio.pause();
-        fadeIn(() => audio.play().catch(e => console.error('Play error:', e)));
-      }
+      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
     document.getElementById('next').onclick = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
-      if (isPlaying) {
-        audio.pause();
-        fadeIn(() => audio.play().catch(e => console.error('Play error:', e)));
-      }
+      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
-    // ─── Draggable Progress (unchanged) ─────────────────────────────────────
-    let isDragging = false;
-
-    function updateProgress() {
+    // ─── Spotify-style scrubbing (preview only, jump on release) ─────────────
+    function updateProgressUI() {
+      if (isScrubbing) return; // don't update from audio while dragging
       if (!audio.duration) return;
       const percent = (audio.currentTime / audio.duration) * 100;
       progressFill.style.width = percent + '%';
@@ -632,31 +581,78 @@
       progressTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
     }
 
-    function seek(e) {
+    function previewSeek(pos) {
+      // only visual preview during drag
+      progressFill.style.width = pos + '%';
+      progressKnob.style.left = pos + '%';
+      const previewTime = (pos / 100) * audio.duration;
+      progressTime.textContent = `${formatTime(previewTime)} / ${formatTime(audio.duration)}`;
+    }
+
+    function commitSeek(pos) {
+      audio.currentTime = (pos / 100) * audio.duration;
+      updateProgressUI();
+    }
+
+    function formatTime(seconds) {
+      const min = Math.floor(seconds / 60);
+      const sec = Math.floor(seconds % 60);
+      return `${min}:${sec.toString().padStart(2, '0')}`;
+    }
+
+    progressContainer.addEventListener('mousedown', startScrubbing);
+    progressContainer.addEventListener('touchstart', startScrubbing);
+
+    function startScrubbing(e) {
+      e.preventDefault();
+      isScrubbing = true;
       const rect = progressContainer.getBoundingClientRect();
-      let x = e.clientX || (e.touches && e.touches[0].clientX);
-      let pos = (x - rect.left) / rect.width;
-      pos = Math.max(0, Math.min(1, pos));
-      audio.currentTime = pos * audio.duration;
-      updateProgress();
+      let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      let pos = ((clientX - rect.left) / rect.width) * 100;
+      pos = Math.max(0, Math.min(100, pos));
+      previewSeek(pos);
     }
 
-    progressContainer.addEventListener('mousedown', e => { isDragging = true; seek(e); });
-    progressContainer.addEventListener('touchstart', e => { isDragging = true; seek(e); e.preventDefault(); });
-    document.addEventListener('mousemove', e => { if (isDragging) seek(e); });
-    document.addEventListener('touchmove', e => { if (isDragging) { seek(e); e.preventDefault(); } });
-    document.addEventListener('mouseup', () => isDragging = false);
-    document.addEventListener('touchend', () => isDragging = false);
+    document.addEventListener('mousemove', e => {
+      if (!isScrubbing) return;
+      const rect = progressContainer.getBoundingClientRect();
+      let pos = ((e.clientX - rect.left) / rect.width) * 100;
+      pos = Math.max(0, Math.min(100, pos));
+      previewSeek(pos);
+    });
 
-    audio.ontimeupdate = updateProgress;
+    document.addEventListener('touchmove', e => {
+      if (!isScrubbing) return;
+      e.preventDefault();
+      const rect = progressContainer.getBoundingClientRect();
+      let clientX = e.touches[0].clientX;
+      let pos = ((clientX - rect.left) / rect.width) * 100;
+      pos = Math.max(0, Math.min(100, pos));
+      previewSeek(pos);
+    });
 
-    function formatTime(s) {
-      const m = Math.floor(s / 60);
-      s = Math.floor(s % 60);
-      return `${m}:${s.toString().padStart(2,'0')}`;
-    }
+    document.addEventListener('mouseup', () => {
+      if (!isScrubbing) return;
+      isScrubbing = false;
+      const rect = progressContainer.getBoundingClientRect();
+      let pos = ((event.clientX - rect.left) / rect.width) * 100;
+      pos = Math.max(0, Math.min(100, pos));
+      commitSeek(pos);
+    });
 
-    // ─── Volume Slider ──────────────────────────────────────────────────────
+    document.addEventListener('touchend', () => {
+      if (!isScrubbing) return;
+      isScrubbing = false;
+      const rect = progressContainer.getBoundingClientRect();
+      let clientX = event.changedTouches[0].clientX;
+      let pos = ((clientX - rect.left) / rect.width) * 100;
+      pos = Math.max(0, Math.min(100, pos));
+      commitSeek(pos);
+    });
+
+    audio.ontimeupdate = updateProgressUI;
+
+    // ─── Volume & Mute ──────────────────────────────────────────────────────
     volumeSlider.addEventListener('input', () => {
       if (!audio.muted) audio.volume = volumeSlider.value / 100;
     });
@@ -670,10 +666,7 @@
     audio.onended = () => {
       currentTrack = (currentTrack + 1) % tracks.length;
       loadTrack(currentTrack);
-      if (isPlaying) {
-        audio.pause();
-        fadeIn(() => audio.play().catch(e => console.error('Play error:', e)));
-      }
+      if (isPlaying) audio.play().catch(e => console.error('Play error:', e));
     };
 
     audio.onerror = e => console.error('Audio error:', e);
@@ -731,15 +724,13 @@
         content.style.display = 'block';
         setTimeout(() => {
           content.classList.add('visible');
-          audio.volume = 0.0;
+          audio.volume = 0.5;
           volumeSlider.value = 50;
           audio.muted = false;
           muteIcon.innerHTML = unmuteSVG;
           audio.play().catch(e => console.error('Autoplay failed:', e));
-          fadeIn(() => {
-            isPlaying = true;
-            playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
-          });
+          isPlaying = true;
+          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
           initVis();
         }, 200);
       }, 800);
