@@ -63,6 +63,7 @@
       z-index:5;
       width:90%;
       max-width:420px;
+      position: relative;           /* ← important for absolute children */
     }
     #main-content.visible { display:block;opacity:1; }
 
@@ -107,12 +108,13 @@
 
     .platform-indicator {
       position: absolute;
-      bottom: -6px;
-      right: -6px;
+      bottom: 575px;
+      right: 571px;
       width: 24px;
       height: 24px;
-      z-index: 15;
+      z-index: 20;
       transition: transform 0.2s ease;
+      pointer-events: auto;
     }
     .platform-indicator:hover {
       transform: scale(1.15);
@@ -225,8 +227,6 @@
       .username { font-size:24px; }
       .quote-wrapper { width:160px;padding:6px 10px; }
       .quote { font-size:14px; }
-      .platform-indicator { bottom: -4px; right: -4px; }
-      .platform-indicator svg { width:20px; height:20px; }
     }
   </style>
 </head>
@@ -245,7 +245,6 @@
         <div class="avatar-wrapper">
           <img class="avatar" src="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" alt="yourscoper" />
           <img class="decoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_41445f736db3525135b6b9e1122f2254.png?size=240" alt="decoration" />
-          <div class="platform-indicator" id="platformIndicator"></div>
         </div>
         <div>
           <div class="username-container">
@@ -302,6 +301,11 @@
         <a href="https://open.spotify.com/user/chriscrafter102" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/spotify.png" alt="Spotify"></a>
         <a href="https://www.tiktok.com/@yourscoper" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/tiktok.png" alt="TikTok"></a>
       </div>
+    </div>
+
+    <!-- Platform indicator placed here, positioned absolutely relative to #main-content -->
+    <div class="platform-indicator" id="platformIndicator" title="Offline • Desktop">
+      <!-- SVG will be inserted by JavaScript -->
     </div>
   </div>
 
@@ -361,7 +365,6 @@
       }
     }
 
-    // Run once + refresh every 15 seconds
     updateDiscordPresence();
     setInterval(updateDiscordPresence, 15000);
 
