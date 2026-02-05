@@ -15,35 +15,34 @@ export default function handler(req, res) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" integrity="sha512-Jk4AqjWsdSzSWCSuQTfYRIF84Rq/eV0G2+tu07byYwHcbTGfdmLrHjUSwvzp5HvbiqK4ibmNwdcG49Y5RGYPTNU==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCkSKVkE8f1aKL2VOpdLBSxMAQ2u26xqAXA7/6TSA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    html,body{height:100%;font-family:'Coming Soon',cursive;background:#0d0d0d;color:#f0f0f0;overflow-x:hidden;overflow-y:auto}
-    body{cursor:url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23ffffff' stroke-width='2' opacity='0.9'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ffffff'/%3E%3C/svg%3E") 16 16,crosshair}
-    .container{min-height:100vh;padding:2rem 1rem 4rem;position:relative;display:flex;flex-direction:column;align-items:center}
-    h1{font-size:clamp(3.5rem,12vw,8rem);color:#fff;text-shadow:0 0 40px rgba(255,255,255,.45),0 0 80px rgba(180,180,255,.25);margin-bottom:.2rem;letter-spacing:-2px;text-align:center}
-    .version{font-size:1.6rem;color:#ddd;opacity:.9;margin-bottom:2.5rem;text-shadow:0 0 20px rgba(255,255,255,.3);align-self:flex-start}
-    .editors{width:100%;max-width:1400px;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;position:relative}
-    .editor-box{display:flex;flex-direction:column;height:520px;border:1px solid #222;border-radius:8px;overflow:hidden;background:#111;box-shadow:0 10px 40px rgba(0,0,0,.7);position:relative}
+    *{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}
+    html,body{height:100%;font-family:'Coming Soon',cursive;background:#0d0d0d;color:#f0f0f0;overflow-x:hidden}
+    body{cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6,auto}
+    .container{min-height:100vh;padding:2rem 1rem 5rem;position:relative;display:flex;flex-direction:column;align-items:center}
+    h1{font-size:clamp(3rem,11vw,7rem);color:#0066ff;text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66;margin:1rem 0 .5rem;letter-spacing:-1px;text-align:center}
+    .version{position:fixed;bottom:20px;left:20px;color:#aaa;font-size:1rem;opacity:0.85;z-index:10;text-shadow:0 0 8px #000}
+    .editors{width:100%;max-width:1400px;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1rem 0 2rem}
+    .editor-box{position:relative;display:flex;flex-direction:column;height:520px;border:1px solid #222;border-radius:8px;overflow:hidden;background:#111;box-shadow:0 10px 40px rgba(0,0,0,.7)}
     .editor-label{padding:.8rem 1.2rem;background:#1a1a1a;border-bottom:1px solid #222;font-size:1.3rem;color:#aaa}
-    textarea{position:absolute;inset:0;z-index:2;background:transparent;color:transparent;resize:none;border:none;outline:none;padding:1.2rem;font-size:1.05rem;line-height:1.55;font-family:Consolas,monospace;caret-color:#fff}
-    .highlight-mirror{position:absolute;inset:0;z-index:1;overflow:auto;padding:1.2rem;pointer-events:none;white-space:pre-wrap;word-wrap:break-word;font-size:1.05rem;line-height:1.55;background:#0f0f0f;color:#e0e0e0}
+    textarea{position:absolute;inset:0;z-index:10;background:transparent;color:#fff;resize:none;border:none;outline:none;padding:1.2rem;font-size:1.05rem;line-height:1.55;font-family:Consolas,monospace;caret-color:#0f8}
+    .highlight-mirror{position:absolute;inset:0;z-index:5;padding:1.2rem;pointer-events:none;white-space:pre-wrap;word-wrap:break-word;font-size:1.05rem;line-height:1.55;background:#0f0f0f;overflow:hidden}
     pre{margin:0;height:100%}
     pre code.hljs{padding:1.2rem !important;height:100%;overflow:auto}
     .controls{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1.5rem 0 3rem}
-    .btn{display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 1.8rem;font-size:1.2rem;font-family:'Coming Soon',cursive;color:white;background:rgba(40,40,60,.6);border:1px solid rgba(180,180,255,.25);border-radius:10px;cursor:pointer;transition:all .22s ease;backdrop-filter:blur(4px);text-shadow:0 1px 4px rgba(0,0,0,.6)}
-    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(120,100,255,.35),0 0 40px rgba(180,160,255,.25);border-color:rgba(200,190,255,.6);background:rgba(60,50,90,.7)}
-    footer{margin-top:auto;padding:2rem 0 1rem;color:#888;font-size:1.1rem;opacity:.7}
-    #trailCanvas,#particles{position:fixed;inset:0;pointer-events:none;z-index:-1}
-    @media (max-width:900px){.editors{grid-template-columns:1fr}.editor-box{height:380px}h1{font-size:clamp(3rem,10vw,5.5rem)}}
+    .btn{display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 1.8rem;font-size:1.2rem;font-family:'Coming Soon',cursive;color:white;background:rgba(40,40,60,.6);border:1px solid rgba(180,180,255,.25);border-radius:10px;cursor:pointer;transition:all .22s ease}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(120,100,255,.35);background:rgba(60,50,90,.7)}
+    footer{margin-top:auto;padding:2rem 0 1rem;color:#666;font-size:1.1rem;opacity:.7;text-align:center}
+    #trail-canvas,#sparkle-canvas{position:fixed;inset:0;pointer-events:none;z-index:-1}
+    @media (max-width:900px){.editors{grid-template-columns:1fr}.editor-box{height:380px}h1{font-size:clamp(2.8rem,9vw,5rem)}}
   </style>
 </head>
 <body>
 
-<canvas id="trailCanvas"></canvas>
-<canvas id="particles"></canvas>
+<canvas id="trail-canvas"></canvas>
+<canvas id="sparkle-canvas"></canvas>
 
 <div class="container">
   <h1>Scoper's Obfuscator</h1>
-  <div class="version">v1.0.0</div>
 
   <div class="editors">
     <div class="editor-box">
@@ -67,65 +66,53 @@ export default function handler(req, res) {
   <footer>© 2026 yourscoper. All rights reserved.</footer>
 </div>
 
+<div class="version">v1.0.0</div>
+
 <script>
 hljs.configure({languages:['lua']});
 hljs.highlightAll();
 
-// Disable text selection globally
-document.addEventListener('selectstart', e => e.preventDefault());
-document.addEventListener('keydown', e => {
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
-    e.preventDefault();
-  }
-});
+// Block all selection
+document.addEventListener('selectstart', e=>e.preventDefault());
+document.addEventListener('keydown', e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a')e.preventDefault()});
 
-// Input mirror for fake highlighting
+// Input mirror highlighting
 const input = document.getElementById('input');
-const inputMirror = document.getElementById('inputMirror');
+const mirror = document.getElementById('inputMirror');
 const output = document.getElementById('output');
 
-function updateMirror() {
-  let code = input.value || '';
-  inputMirror.textContent = code;
-  hljs.highlightElement(inputMirror);
+function updateMirror(){
+  mirror.textContent = input.value;
+  hljs.highlightElement(mirror);
 }
 input.addEventListener('input', updateMirror);
-input.addEventListener('scroll', () => { inputMirror.scrollTop = input.scrollTop; inputMirror.scrollLeft = input.scrollLeft; });
+input.addEventListener('scroll', ()=>{mirror.scrollTop=input.scrollTop; mirror.scrollLeft=input.scrollLeft;});
 
-// Highlight output
-function highlightOutput(text) {
-  output.textContent = text;
+// Output highlight
+function highlightOutput(txt){
+  output.textContent = txt;
   hljs.highlightElement(output);
 }
 
-// Mouse trail (fading lines)
-const trailCanvas = document.getElementById('trailCanvas');
-const tctx = trailCanvas.getContext('2d');
-let trailPoints = [];
-function resizeCanvases() {
-  trailCanvas.width = window.innerWidth;
-  trailCanvas.height = window.innerHeight;
-  particlesCanvas.width = window.innerWidth;
-  particlesCanvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvases);
-resizeCanvases();
-
-document.addEventListener('mousemove', e => {
-  trailPoints.push({x: e.clientX, y: e.clientY, t: Date.now()});
-});
-function drawTrail() {
-  tctx.clearRect(0,0,trailCanvas.width,trailCanvas.height);
+// Mouse trail (copied logic)
+const trail = document.getElementById('trail-canvas');
+const tctx = trail.getContext('2d');
+trail.width = innerWidth; trail.height = innerHeight;
+window.addEventListener('resize', ()=>{trail.width=innerWidth;trail.height=innerHeight});
+const points = [];
+document.addEventListener('mousemove', e=>points.push({x:e.clientX,y:e.clientY,t:Date.now()}));
+function drawTrail(){
+  tctx.clearRect(0,0,trail.width,trail.height);
   const now = Date.now();
-  for (let i = trailPoints.length - 1; i >= 0; i--) {
-    if (now - trailPoints[i].t > 800) { trailPoints.splice(i,1); continue; }
-    const age = (now - trailPoints[i].t) / 800;
-    if (i > 0) {
+  for(let i=points.length-1;i>=0;i--){
+    if(now-points[i].t>1000){points.splice(i,1);continue}
+    const age=(now-points[i].t)/1000;
+    if(i>0){
       tctx.beginPath();
-      tctx.moveTo(trailPoints[i-1].x, trailPoints[i-1].y);
-      tctx.lineTo(trailPoints[i].x, trailPoints[i].y);
-      tctx.strokeStyle = \`rgba(255,255,255,\${1-age})\`;
-      tctx.lineWidth = 2.5;
+      tctx.moveTo(points[i-1].x,points[i-1].y);
+      tctx.lineTo(points[i].x,points[i].y);
+      tctx.strokeStyle=\`rgba(255,255,255,\${1-age})\`;
+      tctx.lineWidth=2;
       tctx.stroke();
     }
   }
@@ -133,72 +120,56 @@ function drawTrail() {
 }
 drawTrail();
 
-// Sparkles (2x amount)
-const particlesCanvas = document.getElementById('particles');
-const pctx = particlesCanvas.getContext('2d');
-let particles = [];
-class Particle {
-  constructor() { this.reset(); }
-  reset() {
-    this.x = Math.random() * particlesCanvas.width;
-    this.y = particlesCanvas.height + 30;
-    this.size = Math.random() * 2.8 + 0.8;
-    this.speed = Math.random() * 0.7 + 0.2;
-    this.opacity = Math.random() * 0.5 + 0.35;
-    this.delay = Math.random() * 3000;
-    this.glow = Math.random() > 0.5 ? 1 : 0.5;
-  }
-  update(time) {
-    if (time < this.delay) return;
-    this.y -= this.speed;
-    if (this.y < -20) this.reset();
-  }
-  draw() {
-    pctx.globalAlpha = this.opacity;
-    pctx.shadowBlur = 15 * this.glow;
-    pctx.shadowColor = '#ffffff';
-    pctx.fillStyle = '#ffffff';
-    pctx.beginPath();
-    pctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    pctx.fill();
-  }
+// Sparkles (2× density → create every 200ms)
+const sparkle = document.getElementById('sparkle-canvas');
+const sctx = sparkle.getContext('2d');
+sparkle.width = innerWidth; sparkle.height = innerHeight;
+window.addEventListener('resize', ()=>{sparkle.width=innerWidth;sparkle.height=innerHeight});
+const sparkles = [];
+function createSparkle(){
+  sparkles.push({x:Math.random()*innerWidth, y:Math.random()*innerHeight*0.6, r:Math.random()*2.5+1, a:1, t:Date.now()});
 }
-for (let i = 0; i < 360; i++) particles.push(new Particle());
-function animateParticles(time = 0) {
-  pctx.clearRect(0,0,particlesCanvas.width,particlesCanvas.height);
-  particles.forEach(p => { p.update(time); p.draw(); });
-  requestAnimationFrame(animateParticles);
+function drawSparkles(){
+  sctx.clearRect(0,0,sparkle.width,sparkle.height);
+  const now = Date.now();
+  for(let i=sparkles.length-1;i>=0;i--){
+    const s=sparkles[i];
+    const age=(now-s.t)/1000;
+    s.a=1-age/1.5;
+    if(s.a<=0){sparkles.splice(i,1);continue}
+    sctx.fillStyle=\`rgba(255,255,255,\${s.a})\`;
+    sctx.beginPath();
+    sctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    sctx.fill();
+  }
+  requestAnimationFrame(drawSparkles);
 }
-animateParticles();
+drawSparkles();
+setInterval(createSparkle, 200); // 2× faster creation → roughly 2× more sparkles
 
-// Buttons
-document.getElementById('obfuscate').onclick = () => {
-  const code = input.value.trim();
-  if (!code) return highlightOutput("-- Nothing to obfuscate");
-  const escaped = code
-    .replace(/\\/g, '\\\\')
-    .replace(/'/g, "\\'")
-    .replace(/\n/g, '\\n')
-    .replace(/\r/g, '\\r');
-  const wrapped = \`loadstring('\${escaped}')()\`;
-  highlightOutput(wrapped);
+// Buttons logic
+document.getElementById('obfuscate').onclick=()=>{
+  const code=input.value.trim();
+  if(!code)return highlightOutput("-- Nothing to obfuscate");
+  const escaped=code.replace(/\\\\/g,'\\\\\\\\').replace(/'/g,"\\\\'").replace(/\\n/g,'\\\\n').replace(/\\r/g,'\\\\r');
+  highlightOutput(\`loadstring('\${escaped}')()\`);
 };
 
-document.getElementById('clear').onclick = () => {
-  input.value = '';
+document.getElementById('clear').onclick=()=>{
+  input.value='';
   updateMirror();
   highlightOutput('');
   input.focus();
 };
 
-document.getElementById('copy').onclick = () => {
-  if (!output.textContent.trim()) return;
-  navigator.clipboard.writeText(output.textContent).then(() => {
-    const btn = document.getElementById('copy');
-    const orig = btn.innerHTML;
-    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Copied!';
-    setTimeout(() => btn.innerHTML = orig, 1800);
-  }).catch(() => {});
+document.getElementById('copy').onclick=()=>{
+  if(!output.textContent.trim())return;
+  navigator.clipboard.writeText(output.textContent).then(()=>{
+    const b=document.getElementById('copy');
+    const o=b.innerHTML;
+    b.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Copied!';
+    setTimeout(()=>b.innerHTML=o,1800);
+  }).catch(()=>{});
 };
 
 // Init
