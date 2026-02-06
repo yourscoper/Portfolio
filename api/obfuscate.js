@@ -120,7 +120,7 @@ export default function handler(req, res) {
       inset:0;
       background:transparent;
       color:transparent;
-      padding:1.2rem;
+      padding:1.2rem 1.2rem 1.2rem 1.2rem;
       font-family:Consolas,monospace;
       font-size:1.05rem;
       line-height:1.55;
@@ -129,10 +129,11 @@ export default function handler(req, res) {
       resize:none;
       white-space:pre;
       tab-size:2;
+      caret-color:#fff;
+      caret-shape:bar; /* ensures thin vertical bar */
     }
     #input {
       z-index:3;
-      caret-color:#fff;
     }
     #output-container {
       z-index:3;
@@ -156,6 +157,8 @@ export default function handler(req, res) {
       background:#111;
       color:#e0e0e0;
       overflow:hidden;
+      letter-spacing:0;
+      word-spacing:0;
     }
     .controls {
       margin-top:1.5rem;
@@ -361,7 +364,7 @@ setInterval(() => { createSparkle(); createSparkle(); createSparkle(); }, 250);
 // Buttons
 document.getElementById('obfuscate').onclick = () => {
   const c = input.value.trim();
-  if (!c) return highlightOutput('-- Nothing to obfuscate');
+  if (!c) return highlightOutput('Please Insert Code');
   const e = c.replace(/\\\\/g,'\\\\\\\\').replace(/'/g,"\\\\'").replace(/\\n/g,'\\\\n').replace(/\\r/g,'\\\\r');
   highlightOutput("loadstring('" + e + "')()");
 };
