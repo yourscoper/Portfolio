@@ -37,8 +37,21 @@ body{
 }
 h1{
   font-size:clamp(3rem,11vw,7rem);
-  text-shadow:0 0 30px #0066ff88;
+  text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66;
   margin-bottom:.5rem;
+}
+.version{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  color:#aaa;
+}
+.copyright{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  color:#666;
 }
 .editors{
   width:100%;
@@ -53,6 +66,7 @@ h1{
   border:1px solid #333;
   border-radius:8px;
   overflow:hidden;
+  box-shadow:0 10px 40px rgba(0,0,0,.8);
 }
 .editor-label{
   padding:.8rem 1.2rem;
@@ -63,43 +77,60 @@ h1{
   position:relative;
   height:100%;
 }
-textarea,
-#output-container{
+textarea{
   position:absolute;
   inset:0;
-  padding:1.2rem;
-  background:#111;
-  color:#e0e0e0;
+  background:transparent;
+  color:transparent;
+  caret-color:#fff;
+  z-index:3;
   font-family:Consolas,monospace;
   font-size:1.05rem;
   line-height:1.55;
   border:none;
   outline:none;
   resize:none;
-}
-textarea{
-  z-index:3;
-  caret-color:#fff;
+  padding:1.2rem;
 }
 .highlight-mirror{
   position:absolute;
   inset:0;
   z-index:2;
+  padding:1.2rem;
+  white-space:pre-wrap;
+  word-wrap:break-word;
+  font-family:Consolas,monospace;
+  font-size:1.05rem;
+  line-height:1.55;
   pointer-events:none;
+}
+#output-container{
+  position:absolute;
+  inset:0;
+  padding:1.2rem;
+  overflow:auto;
 }
 .controls{
   margin-top:1.5rem;
   display:flex;
-  gap:1rem;
+  gap:1.2rem;
 }
 .btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
   padding:.9rem 1.8rem;
-  font-family:'Coming Soon',cursive;
+  font-size:1.2rem;
   background:rgba(40,40,60,.6);
   color:#fff;
   border:1px solid rgba(180,180,255,.25);
   border-radius:10px;
   cursor:pointer;
+  transition:.25s ease;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(120,100,255,.35);
 }
 #trail-canvas,#sparkle-canvas{
   position:fixed;
@@ -127,8 +158,8 @@ textarea{
 <div class="editor-box">
 <div class="editor-label">Input Lua / LuaU</div>
 <div class="editor-area">
-<pre class="highlight-mirror"><code id="inputMirror" class="language-lua"></code></pre>
-<textarea id="input" spellcheck="false" placeholder="-- Paste your Lua/LuaU code here..."></textarea>
+<pre class="highlight-mirror"><code id="inputMirror"></code></pre>
+<textarea id="input" spellcheck="false"></textarea>
 </div>
 </div>
 
@@ -141,31 +172,36 @@ textarea{
 </div>
 
 <div class="controls">
-<button class="btn" id="obfuscate">Obfuscate</button>
-<button class="btn" id="clear">Clear</button>
-<button class="btn" id="copy">Copy Output</button>
+<button class="btn" id="obfuscate">⚡ Obfuscate</button>
+<button class="btn" id="clear">🧹 Clear</button>
+<button class="btn" id="copy">📋 Copy Output</button>
 </div>
 </div>
+
+<div class="version">v1.0.1</div>
+<div class="copyright">© 2026 yourscoper. All rights reserved.</div>
 
 <script>
 hljs.configure({languages:['lua']});
 
-const input = document.getElementById('input');
-const mirror = document.getElementById('inputMirror');
-const output = document.getElementById('output');
+const input=document.getElementById('input');
+const mirror=document.getElementById('inputMirror');
+const output=document.getElementById('output');
 
 function updateMirror(){
-  mirror.textContent = input.value || ' ';
-  hljs.highlightElement(mirror);
+  const code=input.value||' ';
+  mirror.innerHTML=hljs.highlight(code,{language:'lua'}).value;
 }
 input.addEventListener('input',updateMirror);
+input.addEventListener('scroll',()=>{
+  mirror.parentElement.scrollTop=input.scrollTop;
+});
 
 function highlightOutput(text){
-  output.textContent = text;
-  hljs.highlightElement(output);
+  output.innerHTML=hljs.highlight(text,{language:'lua'}).value;
 }
 
-// Ctrl+A logic
+// Ctrl+A fix
 document.addEventListener('keydown',e=>{
   if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a'){
     const out=e.target.closest('#output-container');
@@ -182,27 +218,6 @@ document.addEventListener('keydown',e=>{
   }
 });
 
-// Mouse trail
-const trail=document.getElementById('trail-canvas');
-const tctx=trail.getContext('2d');
-trail.width=innerWidth;trail.height=innerHeight;
-window.onresize=()=>{trail.width=innerWidth;trail.height=innerHeight};
-const pts=[];
-document.onmousemove=e=>pts.push({x:e.clientX,y:e.clientY,t:Date.now()});
-(function draw(){
-  tctx.clearRect(0,0,trail.width,trail.height);
-  const n=Date.now();
-  for(let i=pts.length-1;i>0;i--){
-    if(n-pts[i].t>1000){pts.splice(i,1);continue}
-    tctx.beginPath();
-    tctx.moveTo(pts[i-1].x,pts[i-1].y);
-    tctx.lineTo(pts[i].x,pts[i].y);
-    tctx.strokeStyle='rgba(255,255,255,'+(1-(n-pts[i].t)/1000)+')';
-    tctx.stroke();
-  }
-  requestAnimationFrame(draw);
-})();
-
 // Sparkles (3x)
 const sc=document.getElementById('sparkle-canvas');
 const sctx=sc.getContext('2d');
@@ -212,7 +227,7 @@ const sparks=[];
 function sparkle(){
   sparks.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight*.6,r:Math.random()*2+1,a:1,t:Date.now()});
 }
-(function drawS(){
+(function draw(){
   sctx.clearRect(0,0,sc.width,sc.height);
   const n=Date.now();
   for(let i=sparks.length-1;i>=0;i--){
@@ -224,7 +239,7 @@ function sparkle(){
     sctx.arc(s.x,s.y,s.r,0,Math.PI*2);
     sctx.fill();
   }
-  requestAnimationFrame(drawS);
+  requestAnimationFrame(draw);
 })();
 setInterval(()=>{sparkle();sparkle();sparkle()},400);
 
