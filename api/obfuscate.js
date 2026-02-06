@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
+  // Handle GET: serve the frontend HTML
   if (req.method === 'GET') {
-    // Return the frontend HTML when accessed via GET
     const html = `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -254,6 +254,7 @@ updateLineNumbers(output.parentElement, outputLines);
     return res.status(200).send(html);
   }
 
+  // Handle POST: proxy to MoonVeil
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
