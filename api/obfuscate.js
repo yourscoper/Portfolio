@@ -60,7 +60,6 @@ export default function handler(req, res) {
       font-size:1rem;
       opacity:0.7;
       z-index:10;
-      white-space:nowrap;
     }
     .editors {
       width:100%;
@@ -95,20 +94,28 @@ export default function handler(req, res) {
       flex:1;
       overflow:hidden;
     }
-    textarea {
+    textarea, #output-container {
       position:absolute;
       inset:0;
-      z-index:3;
-      background:transparent;
+      background:#111;
       color:#e0e0e0;
-      resize:none;
-      border:none;
-      outline:none;
       padding:1.2rem;
       font-size:1.05rem;
       line-height:1.55;
       font-family:Consolas,monospace;
+      border:none;
+      outline:none;
+      resize:none;
+    }
+    #input {
+      z-index:3;
       caret-color:#fff;
+    }
+    #output-container {
+      z-index:3;
+      overflow:auto;
+      white-space:pre-wrap;
+      word-wrap:break-word;
     }
     .highlight-mirror {
       position:absolute;
@@ -120,18 +127,9 @@ export default function handler(req, res) {
       word-wrap:break-word;
       font-size:1.05rem;
       line-height:1.55;
-      background:#0f0f0f;
+      background:#111;
       color:#e0e0e0;
       overflow:hidden;
-    }
-    pre {
-      margin:0;
-      height:100%;
-    }
-    pre code.hljs {
-      padding:1.2rem !important;
-      height:100%;
-      overflow:auto;
     }
     .controls {
       display:flex;
@@ -171,7 +169,6 @@ export default function handler(req, res) {
     @media (max-width:900px) {
       .editors { grid-template-columns:1fr; }
       .editor-box { height:380px; }
-      h1 { font-size:clamp(2.8rem,9vw,5rem); }
     }
   </style>
 </head>
@@ -194,7 +191,9 @@ export default function handler(req, res) {
 
     <div class="editor-box">
       <div class="editor-label">Obfuscated Output</div>
-      <pre><code id="output" class="language-lua"></code></pre>
+      <div class="editor-area">
+        <pre id="output-container"><code id="output" class="language-lua"></code></pre>
+      </div>
     </div>
   </div>
 
@@ -213,13 +212,13 @@ export default function handler(req, res) {
 hljs.configure({languages:['lua']});
 hljs.highlightAll();
 
-// Allow selection ONLY inside textareas
+// Allow selection ONLY inside editors
 document.addEventListener('selectstart', e => {
-  if (!e.target.closest('textarea')) e.preventDefault();
+  if (!e.target.closest('.editor-area')) e.preventDefault();
 });
 document.addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
-    if (!e.target.closest('textarea')) e.preventDefault();
+    if (!e.target.closest('.editor-area')) e.preventDefault();
   }
 });
 
@@ -244,7 +243,7 @@ function highlightOutput(text) {
   hljs.highlightElement(output);
 }
 
-// ─── Mouse trail & sparkles ──────────────────────────────────────
+// Mouse trail & sparkles
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
 trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -253,9 +252,7 @@ window.addEventListener('resize', () => {
   trailCanvas.height = innerHeight;
 });
 const points = [];
-document.addEventListener('mousemove', e => {
-  points.push({x: e.clientX, y: e.clientY, t: Date.now()});
-});
+document.addEventListener('mousemove', e => points.push({x: e.clientX, y: e.clientY, t: Date.now()}));
 function drawTrail() {
   tctx.clearRect(0,0,trailCanvas.width,trailCanvas.height);
   const now = Date.now();
@@ -266,7 +263,7 @@ function drawTrail() {
       tctx.beginPath();
       tctx.moveTo(points[j-1].x, points[j-1].y);
       tctx.lineTo(points[j].x, points[j].y);
-      tctx.strokeStyle = \`rgba(255,255,255,\${1-age})\`;
+      tctx.strokeStyle = 'rgba(255,255,255,' + (1-age) + ')';
       tctx.lineWidth = 2;
       tctx.stroke();
     }
@@ -284,13 +281,7 @@ window.addEventListener('resize', () => {
 });
 const sparkles = [];
 function createSparkle() {
-  sparkles.push({
-    x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight * 0.6,
-    r: Math.random() * 2.5 + 1,
-    a: 1,
-    t: Date.now()
-  });
+  sparkles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight * 0.6, r: Math.random() * 2.5 + 1, a: 1, t: Date.now() });
 }
 function drawSparkles() {
   sctx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
@@ -300,7 +291,7 @@ function drawSparkles() {
     const age = (now - s.t) / 1000;
     s.a = 1 - age / 1.5;
     if (s.a <= 0) { sparkles.splice(j,1); continue; }
-    sctx.fillStyle = \`rgba(255,255,255,\${s.a})\`;
+    sctx.fillStyle = 'rgba(255,255,255,' + s.a + ')';
     sctx.beginPath();
     sctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
     sctx.fill();
@@ -310,27 +301,16 @@ function drawSparkles() {
 drawSparkles();
 setInterval(createSparkle, 400);
 
-// ─── Buttons ──────────────────────────────────────────────────────
+// Buttons
 document.getElementById('obfuscate').onclick = () => {
   const code = input.value.trim();
-  if (!code) {
-    highlightOutput("-- Nothing to obfuscate");
-    return;
-  }
-
-  // Better obfuscation (basic string encoding + different loader)
-  const encoded = btoa(code);
-  const loader = [
-    "local a='loadstring'",
-    "local b='game'",
-    "local c='HttpService'",
-    "local d=b[c]:JSONDecode",
-    "local e='" + encoded + "'",
-    "local f=d('{\\"data\\":\\"" + e + "\\"}')",
-    "a(f.data)()"
-  ].join(';');
-
-  highlightOutput(loader);
+  if (!code) return highlightOutput("-- Nothing to obfuscate");
+  const escaped = code
+    .replace(/\\\\/g, '\\\\\\\\')
+    .replace(/'/g, "\\\\'")
+    .replace(/\\n/g, '\\\\n')
+    .replace(/\\r/g, '\\\\r');
+  highlightOutput("loadstring('" + escaped + "')()");
 };
 
 document.getElementById('clear').onclick = () => {
