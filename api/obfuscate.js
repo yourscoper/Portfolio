@@ -35,7 +35,7 @@ export default async function handler(req, res) {
             mangleSelfCalls: true,
             mangleStrings: true,
             prettify: true,
-            vmDebug: true,
+            vmDebug: false,
             vmSafeEnv: true,
             vmWrapScript: true
           },
