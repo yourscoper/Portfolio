@@ -209,7 +209,7 @@ export default function handler(req, res) {
         <div class="line-numbers" id="inputLines"></div>
         <div class="code-wrapper">
           <div class="highlight-mirror" id="inputMirror"></div>
-          <textarea id="input" spellcheck="false" placeholder="print("Hello, World!")" autofocus></textarea>
+          <textarea id="input" spellcheck="false" placeholder='print("Hello, World!")' autofocus></textarea>
         </div>
       </div>
     </div>
