@@ -121,6 +121,7 @@ export default function handler(req, res) {
       background:transparent;
       color:transparent;
       padding:1.2rem 1.2rem 1.2rem 1.2rem;
+      padding-left:45px; /* ← THIS fixes the caret alignment */
       font-family:Consolas,monospace;
       font-size:1.05rem;
       line-height:1.55;
@@ -130,7 +131,7 @@ export default function handler(req, res) {
       white-space:pre;
       tab-size:2;
       caret-color:#fff;
-      caret-shape:bar; /* ensures thin vertical bar */
+      caret-shape:bar;
     }
     #input {
       z-index:3;
