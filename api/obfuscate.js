@@ -1,9 +1,7 @@
-export default function handler(req, res) {
-  if (req.method !== 'GET') {
-    return res.status(405).send('Method Not Allowed');
-  }
-
-  const html = `<!DOCTYPE html>
+export default async function handler(req, res) {
+  if (req.method === 'GET') {
+    // Return the frontend HTML when accessed via GET
+    const html = `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
@@ -16,186 +14,30 @@ export default function handler(req, res) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    html, body {
-      height:100%;
-      font-family:'Coming Soon',cursive;
-      background:#0d0d0d;
-      color:#f0f0f0;
-      overflow-x:hidden;
-    }
-    body {
-      cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6,auto;
-    }
-    .container {
-      min-height:100vh;
-      padding:2rem 1rem 6rem;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-    }
-    h1 {
-      font-size:clamp(3rem,11vw,7rem);
-      color:#ffffff;
-      text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66;
-      margin:1rem 0 .5rem;
-      text-align:center;
-    }
-    .version, .copyright, .editor-label, .btn {
-      font-family:'Coming Soon',cursive;
-    }
-    .version {
-      position:fixed;
-      bottom:20px;
-      left:20px;
-      color:#aaa;
-      font-size:1rem;
-      opacity:0.85;
-      z-index:10;
-    }
-    .copyright {
-      position:fixed;
-      bottom:20px;
-      left:50%;
-      transform:translateX(-50%);
-      color:#666;
-      font-size:1rem;
-      opacity:0.7;
-      z-index:10;
-    }
-    .editors {
-      width:100%;
-      max-width:1400px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1.5rem;
-      margin:1rem 0 2rem;
-      position:relative;
-      z-index:10;
-    }
-    .editor-box {
-      height:520px;
-      background:#111;
-      border:1px solid #333;
-      border-radius:8px;
-      overflow:hidden;
-      box-shadow:0 10px 40px rgba(0,0,0,.8);
-      display:flex;
-      flex-direction:column;
-    }
-    .editor-label {
-      padding:.8rem 1.2rem;
-      background:#1a1a1a;
-      border-bottom:1px solid #333;
-      font-size:1.3rem;
-      color:#aaa;
-    }
-    .editor-area {
-      position:relative;
-      flex:1;
-      display:flex;
-      overflow:hidden;
-    }
-    .line-numbers {
-      width:40px;
-      background:#0a0a0a;
-      color:#555;
-      text-align:right;
-      padding:1.2rem 0.5rem 1.2rem 0;
-      font-family:Consolas,monospace;
-      font-size:1.05rem;
-      line-height:1.55;
-      user-select:none;
-      pointer-events:none;
-      border-right:1px solid #222;
-      overflow:hidden;
-      white-space:pre;
-    }
-    .code-wrapper {
-      flex:1;
-      position:relative;
-      overflow:auto;
-    }
-    textarea, #output-container {
-      position:absolute;
-      inset:0;
-      background:transparent;
-      color:transparent;
-      padding:1.2rem 1.2rem 1.2rem 1.2rem;
-      padding-left:45px; /* ← THIS fixes the caret alignment */
-      font-family:Consolas,monospace;
-      font-size:1.05rem;
-      line-height:1.55;
-      border:none;
-      outline:none;
-      resize:none;
-      white-space:pre;
-      tab-size:2;
-      caret-color:#fff;
-      caret-shape:bar;
-    }
-    #input {
-      z-index:3;
-    }
-    #output-container {
-      z-index:3;
-      overflow:auto;
-      cursor:default;
-      padding-left:45px;
-      color:#e0e0e0;
-      background:#111;
-    }
-    .highlight-mirror {
-      position:absolute;
-      inset:0;
-      z-index:2;
-      padding:1.2rem;
-      padding-left:45px;
-      pointer-events:none;
-      white-space:pre;
-      font-family:Consolas,monospace;
-      font-size:1.05rem;
-      line-height:1.55;
-      background:#111;
-      color:#e0e0e0;
-      overflow:hidden;
-      letter-spacing:0;
-      word-spacing:0;
-    }
-    .controls {
-      margin-top:1.5rem;
-      display:flex;
-      gap:1.2rem;
-      flex-wrap:wrap;
-      justify-content:center;
-    }
-    .btn {
-      display:inline-flex;
-      align-items:center;
-      gap:.6rem;
-      padding:.9rem 1.8rem;
-      font-size:1.2rem;
-      background:rgba(40,40,60,.6);
-      color:#fff;
-      border:1px solid rgba(180,180,255,.25);
-      border-radius:10px;
-      cursor:pointer;
-      transition:.25s ease;
-    }
-    .btn:hover {
-      transform:translateY(-3px);
-      box-shadow:0 12px 30px rgba(120,100,255,.35);
-    }
-    #trail-canvas, #sparkle-canvas {
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-    }
+    html, body { height:100%; font-family:'Coming Soon',cursive; background:#0d0d0d; color:#f0f0f0; overflow-x:hidden; }
+    body { cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6,auto; }
+    .container { min-height:100vh; padding:2rem 1rem 6rem; display:flex; flex-direction:column; align-items:center; }
+    h1 { font-size:clamp(3rem,11vw,7rem); color:#ffffff; text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66; margin:1rem 0 .5rem; text-align:center; }
+    .version, .copyright, .editor-label, .btn { font-family:'Coming Soon',cursive; }
+    .version { position:fixed; bottom:20px; left:20px; color:#aaa; font-size:1rem; opacity:0.85; z-index:10; }
+    .copyright { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:#666; font-size:1rem; opacity:0.7; z-index:10; }
+    .editors { width:100%; max-width:1400px; display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1rem 0 2rem; position:relative; z-index:10; }
+    .editor-box { height:520px; background:#111; border:1px solid #333; border-radius:8px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.8); display:flex; flex-direction:column; }
+    .editor-label { padding:.8rem 1.2rem; background:#1a1a1a; border-bottom:1px solid #333; font-size:1.3rem; color:#aaa; }
+    .editor-area { position:relative; flex:1; display:flex; overflow:hidden; }
+    .line-numbers { width:40px; background:#0a0a0a; color:#555; text-align:right; padding:1.2rem 0.5rem 1.2rem 0; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; user-select:none; pointer-events:none; border-right:1px solid #222; overflow:hidden; white-space:pre; }
+    .code-wrapper { flex:1; position:relative; overflow:auto; }
+    textarea, #output-container { position:absolute; inset:0; background:transparent; color:transparent; padding:1.2rem; padding-left:45px; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; border:none; outline:none; resize:none; white-space:pre; tab-size:2; caret-color:#fff; caret-shape:bar; }
+    #input { z-index:3; }
+    #output-container { z-index:3; overflow:auto; cursor:default; padding-left:45px; color:#e0e0e0; background:#111; }
+    .highlight-mirror { position:absolute; inset:0; z-index:2; padding:1.2rem; padding-left:45px; pointer-events:none; white-space:pre; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; background:#111; color:#e0e0e0; overflow:hidden; letter-spacing:0; word-spacing:0; }
+    .controls { margin-top:1.5rem; display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center; }
+    .btn { display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.8rem; font-size:1.2rem; background:rgba(40,40,60,.6); color:#fff; border:1px solid rgba(180,180,255,.25); border-radius:10px; cursor:pointer; transition:.25s ease; }
+    .btn:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(120,100,255,.35); }
+    #trail-canvas, #sparkle-canvas { position:fixed; inset:0; pointer-events:none; }
     #trail-canvas { z-index:1; }
     #sparkle-canvas { z-index:0; }
-    @media(max-width:900px){
-      .editors{grid-template-columns:1fr}
-      .editor-box{height:380px}
-    }
+    @media(max-width:900px){ .editors{grid-template-columns:1fr} .editor-box{height:380px} }
   </style>
 </head>
 <body>
@@ -219,7 +61,7 @@ export default function handler(req, res) {
     </div>
 
     <div class="editor-box">
-      <div class="editor-label">Script Output</div>
+      <div class="editor-label">Obfuscated Output</div>
       <div class="editor-area">
         <div class="line-numbers" id="outputLines"></div>
         <div class="code-wrapper">
@@ -253,16 +95,13 @@ hljs.configure({languages:['lua']});
 
 // Block selection outside code areas
 document.addEventListener('selectstart', e => {
-  if (!e.target.closest('.code-wrapper')) {
-    e.preventDefault();
-  }
+  if (!e.target.closest('.code-wrapper')) e.preventDefault();
 });
 
 // Ctrl+A only inside editors
 document.addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
-    const isInside = e.target.closest('.code-wrapper');
-    if (!isInside) e.preventDefault();
+    if (!e.target.closest('.code-wrapper')) e.preventDefault();
   }
 });
 
@@ -309,6 +148,46 @@ function highlightOutput(text) {
   output.innerHTML = hljs.highlight(text, {language: 'lua'}).value;
   updateLineNumbers(output.parentElement, outputLines);
 }
+
+// Obfuscate using MoonVeil API via proxy
+document.getElementById('obfuscate').onclick = async () => {
+  const code = input.value.trim();
+  if (!code) return highlightOutput('-- Nothing to obfuscate');
+
+  try {
+    const res = await fetch('/api/obfuscate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ script: code })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      highlightOutput(`-- Error: ${data.error || 'Unknown API issue'}`);
+      return;
+    }
+
+    highlightOutput(data.result);
+  } catch (err) {
+    highlightOutput(`-- Fetch failed: ${err.message}`);
+  }
+};
+
+document.getElementById('clear').onclick = () => {
+  input.value = '';
+  updateMirror();
+  highlightOutput('');
+};
+
+document.getElementById('copy').onclick = () => {
+  navigator.clipboard.writeText(output.textContent).then(() => {
+    const btn = document.getElementById('copy');
+    const orig = btn.innerHTML;
+    btn.innerHTML = 'Copied!';
+    setTimeout(() => btn.innerHTML = orig, 1800);
+  }).catch(() => {});
+};
 
 // Mouse trail & sparkles
 const trailCanvas = document.getElementById('trail-canvas');
@@ -362,24 +241,6 @@ function drawSparkles() {
 drawSparkles();
 setInterval(() => { createSparkle(); createSparkle(); createSparkle(); }, 250);
 
-// Buttons
-document.getElementById('obfuscate').onclick = () => {
-  const c = input.value.trim();
-  if (!c) return highlightOutput('Please Insert Code');
-  const e = c.replace(/\\\\/g,'\\\\\\\\').replace(/'/g,"\\\\'").replace(/\\n/g,'\\\\n').replace(/\\r/g,'\\\\r');
-  highlightOutput("loadstring('" + e + "')()");
-};
-
-document.getElementById('clear').onclick = () => {
-  input.value = '';
-  updateMirror();
-  highlightOutput('');
-};
-
-document.getElementById('copy').onclick = () => {
-  navigator.clipboard.writeText(output.textContent);
-};
-
 // Init
 updateMirror();
 highlightOutput('');
@@ -389,6 +250,65 @@ updateLineNumbers(output.parentElement, outputLines);
 </body>
 </html>`;
 
-  res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.status(200).send(html);
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    return res.status(200).send(html);
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
+
+  const { script } = req.body;
+
+  if (!script || typeof script !== 'string' || script.trim() === '') {
+    return res.status(400).json({ error: 'No script provided' });
+  }
+
+  const apiKey = process.env.MOONVEIL_API_KEY;
+
+  if (!apiKey) {
+    return res.status(500).json({ error: 'Server misconfigured - missing API key' });
+  }
+
+  try {
+    const response = await fetch('https://moonveil.cc/api/obfuscate', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'Accept': 'text/plain'
+      },
+      body: JSON.stringify({
+        script,
+        options: {
+          cffDecomposeExpr: true,
+          cffEnable: true,
+          cffHoistLocals: true,
+          embedRuntime: true,
+          mangleConstLift: 0,
+          mangleEnable: true,
+          mangleGlobals: true,
+          mangleNamedIndex: true,
+          mangleNumbers: true,
+          mangleSelfCalls: true,
+          mangleStrings: true,
+          prettify: true,
+          vmDebug: false,
+          vmSafeEnv: true,
+          vmWrapScript: true
+        }
+      })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      return res.status(response.status).json({ error: errorText || 'MoonVeil API failed' });
+    }
+
+    const obfuscated = await response.text();
+    return res.status(200).json({ result: obfuscated });
+  } catch (err) {
+    console.error('MoonVeil proxy error:', err);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
 }
