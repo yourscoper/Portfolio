@@ -1,5 +1,7 @@
 export default async function handler(req, res) {
-  // Handle GET: serve the UI (executor-style, one wide input box, buttons bottom-right)
+  // ──────────────────────────────────────────────────────────────
+  // GET → serve beautiful executor-style UI
+  // ──────────────────────────────────────────────────────────────
   if (req.method === 'GET') {
     const html = `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -19,9 +21,9 @@ export default async function handler(req, res) {
     .container { min-height:100vh; padding:2rem 1rem 6rem; display:flex; flex-direction:column; align-items:center; }
     h1 { font-size:clamp(3rem,11vw,7rem); color:#ffffff; text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66; margin:1rem 0 .5rem; text-align:center; }
     .version, .copyright, .editor-label, .btn { font-family:'Coming Soon',cursive; }
-    .version { position:fixed; bottom:20px; left:20px; color:#fff; font-size:1rem; opacity:0.85; z-index:10; }
-    .copyright { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:#fff; font-size:1rem; opacity:0.7; z-index:10; }
-    .editor-box { width:100%; max-width:1600px; height:50vh; background:#111; border:1px solid #333; border-radius:8px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.8); display:flex; flex-direction:column; position:relative; }
+    .version { position:fixed; bottom:20px; left:20px; color:#aaa; font-size:1rem; opacity:0.85; z-index:10; }
+    .copyright { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:#666; font-size:1rem; opacity:0.7; z-index:10; }
+    .editor-box { width:100%; max-width:1600px; height:65vh; background:#111; border:1px solid #333; border-radius:8px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.8); display:flex; flex-direction:column; position:relative; }
     .editor-label { padding:.8rem 1.2rem; background:#1a1a1a; border-bottom:1px solid #333; font-size:1.3rem; color:#aaa; }
     .editor-area { position:relative; flex:1; display:flex; overflow:hidden; }
     .line-numbers { width:40px; background:#0a0a0a; color:#555; text-align:right; padding:1.2rem 0.5rem 1.2rem 0; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; user-select:none; pointer-events:none; border-right:1px solid #222; overflow:hidden; white-space:pre; }
@@ -164,7 +166,7 @@ document.getElementById('clear').onclick = () => {
   updateMirror();
 };
 
-// Mouse trail & sparkles — galaxy / blinking stars in space (full page coverage, 5x fewer but twinkling)
+// Mouse trail & sparkles
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
 trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -194,43 +196,37 @@ const sparkleCanvas = document.getElementById('sparkle-canvas');
 const sctx = sparkleCanvas.getContext('2d');
 sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
 window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
-const stars = []; // renamed to "stars" for galaxy feel
+const sparkles = [];
 
-function createStar() {
-  stars.push({
-    x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight, // ← full page (0 to 1.0)
-    r: Math.random() * 1.8 + 0.4,   // small stars
-    baseA: Math.random() * 0.6 + 0.3, // base brightness
-    phase: Math.random() * Math.PI * 2, // random blink offset
-    t: Date.now()
+function createSparkle() {
+  sparkles.push({ 
+    x: Math.random() * innerWidth, 
+    y: Math.random() * innerHeight * 0.8, 
+    r: Math.random() * 4 + 1.5, 
+    a: 1, 
+    t: Date.now() 
   });
 }
 
-function drawStars() {
+function drawSparkles() {
   sctx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
   const now = Date.now();
-  for (let j = stars.length - 1; j >= 0; j--) {
-    const s = stars[j];
-    // Slow pulsing (blink like stars) — sine wave for natural twinkle
-    const t = (now - s.t) / 1000;
-    s.a = s.baseA + Math.sin(t * 1.5 + s.phase) * 0.4; // slow blink between ~0.1 and ~1.0
-    s.a = Math.max(0.1, Math.min(1, s.a)); // never fully off
-
-    sctx.fillStyle = `rgba(240,240,255,${s.a})`; // slight blue-white for space stars
+  for (let j = sparkles.length - 1; j >= 0; j--) {
+    const s = sparkles[j];
+    const age = (now - s.t) / 1000;
+    s.a = 1 - age / 3.0;
+    if (s.a <= 0) { sparkles.splice(j, 1); continue; }
+    sctx.fillStyle = \`rgba(255,255,255,\${s.a})\`;
     sctx.beginPath();
     sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     sctx.fill();
   }
-  requestAnimationFrame(drawStars);
+  requestAnimationFrame(drawSparkles);
 }
-drawStars();
-
-// Initial stars + slow respawn (very few, calm galaxy)
-for (let i = 0; i < 120; i++) createStar(); // ~120 stars total on screen
-setInterval(() => {
-  if (stars.length < 120) createStar(); // slowly replace faded ones
-}, 3000); // very slow respawn
+drawSparkles();
+setInterval(() => { 
+  for (let i = 0; i < 15; i++) createSparkle();
+}, 80);
 
 // Init
 updateMirror();
@@ -243,16 +239,19 @@ updateLineNumbers(input, inputLines);
     return res.status(200).send(html);
   }
 
-  // Handle POST: proxy to MoonVeil → return raw text only
+  // ──────────────────────────────────────────────────────────────
+  // POST → proxy MoonVeil → return **raw text only** (no JSON)
+  // ──────────────────────────────────────────────────────────────
   if (req.method !== 'POST') {
-    return res.status(405).send('Method Not Allowed');
+    return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   let body = '';
-  req.on('data', chunk => body += chunk);
+  req.on('data', chunk => { body += chunk; });
   req.on('end', async () => {
     try {
-      const { script } = JSON.parse(body || '{}');
+      const data = JSON.parse(body || '{}');
+      const script = data.script;
 
       if (!script || typeof script !== 'string' || script.trim() === '') {
         return res.status(400).send('No script provided');
@@ -300,7 +299,7 @@ updateLineNumbers(input, inputLines);
 
       const obfuscated = await response.text();
       res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-      res.status(200).send(obfuscated);
+      res.status(200).send(obfuscated);  // ← only raw code, no {"result":...}
     } catch (err) {
       console.error('Proxy error:', err);
       res.status(500).send('Internal server error');
