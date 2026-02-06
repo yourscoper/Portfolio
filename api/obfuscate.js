@@ -1,7 +1,5 @@
 export default async function handler(req, res) {
-  // ──────────────────────────────────────────────────────────────
-  // GET → serve beautiful executor-style UI
-  // ──────────────────────────────────────────────────────────────
+  // Handle GET: serve the UI
   if (req.method === 'GET') {
     const html = `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -21,8 +19,8 @@ export default async function handler(req, res) {
     .container { min-height:100vh; padding:2rem 1rem 6rem; display:flex; flex-direction:column; align-items:center; }
     h1 { font-size:clamp(3rem,11vw,7rem); color:#ffffff; text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66; margin:1rem 0 .5rem; text-align:center; }
     .version, .copyright, .editor-label, .btn { font-family:'Coming Soon',cursive; }
-    .version { position:fixed; bottom:20px; left:20px; color:#aaa; font-size:1rem; opacity:0.85; z-index:10; }
-    .copyright { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:#666; font-size:1rem; opacity:0.7; z-index:10; }
+    .version { position:fixed; bottom:20px; left:20px; color:#fff; font-size:1rem; opacity:0.85; z-index:10; }
+    .copyright { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:#fff; font-size:1rem; opacity:0.7; z-index:10; }
     .editor-box { width:100%; max-width:1600px; height:65vh; background:#111; border:1px solid #333; border-radius:8px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.8); display:flex; flex-direction:column; position:relative; }
     .editor-label { padding:.8rem 1.2rem; background:#1a1a1a; border-bottom:1px solid #333; font-size:1.3rem; color:#aaa; }
     .editor-area { position:relative; flex:1; display:flex; overflow:hidden; }
@@ -166,7 +164,7 @@ document.getElementById('clear').onclick = () => {
   updateMirror();
 };
 
-// Mouse trail & sparkles
+// Mouse trail
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
 trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -192,41 +190,56 @@ function drawTrail() {
 }
 drawTrail();
 
+// Galaxy / slow twinkling stars (full page, smooth, sparse, like real space)
 const sparkleCanvas = document.getElementById('sparkle-canvas');
 const sctx = sparkleCanvas.getContext('2d');
 sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
 window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
-const sparkles = [];
+const stars = [];
 
-function createSparkle() {
-  sparkles.push({ 
-    x: Math.random() * innerWidth, 
-    y: Math.random() * innerHeight * 0.8, 
-    r: Math.random() * 4 + 1.5, 
-    a: 1, 
-    t: Date.now() 
+// Create calm starfield
+for (let i = 0; i < 80; i++) {  // 80 stars = sparse & smooth
+  stars.push({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,  // full page, bottom included
+    r: Math.random() * 1.4 + 0.4,
+    baseA: Math.random() * 0.5 + 0.25,
+    phase: Math.random() * Math.PI * 2,
+    t: Date.now()
   });
 }
 
-function drawSparkles() {
+function drawStars() {
   sctx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
   const now = Date.now();
-  for (let j = sparkles.length - 1; j >= 0; j--) {
-    const s = sparkles[j];
-    const age = (now - s.t) / 1000;
-    s.a = 1 - age / 3.0;
-    if (s.a <= 0) { sparkles.splice(j, 1); continue; }
-    sctx.fillStyle = \`rgba(255,255,255,\${s.a})\`;
+  for (let j = 0; j < stars.length; j++) {
+    const s = stars[j];
+    const t = (now - s.t) / 1000;
+    s.a = s.baseA + Math.sin(t * 0.6 + s.phase) * 0.3; // very slow blink
+    s.a = Math.max(0.1, Math.min(0.9, s.a));
+
+    sctx.fillStyle = \`rgba(240,245,255,\${s.a})\`; // soft space white-blue
     sctx.beginPath();
     sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     sctx.fill();
   }
-  requestAnimationFrame(drawSparkles);
+  requestAnimationFrame(drawStars);
 }
-drawSparkles();
-setInterval(() => { 
-  for (let i = 0; i < 15; i++) createSparkle();
-}, 80);
+drawStars();
+
+// Super slow respawn (one star every ~20s)
+setInterval(() => {
+  if (stars.length < 80) {
+    stars.push({
+      x: Math.random() * innerWidth,
+      y: Math.random() * innerHeight,
+      r: Math.random() * 1.4 + 0.4,
+      baseA: Math.random() * 0.5 + 0.25,
+      phase: Math.random() * Math.PI * 2,
+      t: Date.now()
+    });
+  }
+}, 20000);
 
 // Init
 updateMirror();
@@ -239,19 +252,16 @@ updateLineNumbers(input, inputLines);
     return res.status(200).send(html);
   }
 
-  // ──────────────────────────────────────────────────────────────
-  // POST → proxy MoonVeil → return **raw text only** (no JSON)
-  // ──────────────────────────────────────────────────────────────
+  // Handle POST: proxy to MoonVeil → return raw text
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+    return res.status(405).send('Method Not Allowed');
   }
 
   let body = '';
-  req.on('data', chunk => { body += chunk; });
+  req.on('data', chunk => body += chunk);
   req.on('end', async () => {
     try {
-      const data = JSON.parse(body || '{}');
-      const script = data.script;
+      const { script } = JSON.parse(body || '{}');
 
       if (!script || typeof script !== 'string' || script.trim() === '') {
         return res.status(400).send('No script provided');
@@ -299,7 +309,7 @@ updateLineNumbers(input, inputLines);
 
       const obfuscated = await response.text();
       res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-      res.status(200).send(obfuscated);  // ← only raw code, no {"result":...}
+      res.status(200).send(obfuscated);
     } catch (err) {
       console.error('Proxy error:', err);
       res.status(500).send('Internal server error');
