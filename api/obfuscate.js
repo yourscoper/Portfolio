@@ -19,8 +19,8 @@ export default async function handler(req, res) {
     .container { min-height:100vh; padding:2rem 1rem 6rem; display:flex; flex-direction:column; align-items:center; }
     h1 { font-size:clamp(3rem,11vw,7rem); color:#ffffff; text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66; margin:1rem 0 .5rem; text-align:center; }
     .version, .copyright, .editor-label, .btn { font-family:'Coming Soon',cursive; }
-    .version { position:fixed; bottom:20px; left:20px; color:#aaa; font-size:1rem; opacity:0.85; z-index:10; }
-    .copyright { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:#666; font-size:1rem; opacity:0.7; z-index:10; }
+    .version { position:fixed; bottom:20px; left:20px; color:#fff; font-size:1rem; opacity:0.85; z-index:10; }
+    .copyright { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:#fff; font-size:1rem; opacity:0.7; z-index:10; }
     .editor-box { width:100%; max-width:1600px; height:50vh; background:#111; border:1px solid #333; border-radius:8px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.8); display:flex; flex-direction:column; position:relative; }
     .editor-label { padding:.8rem 1.2rem; background:#1a1a1a; border-bottom:1px solid #333; font-size:1.3rem; color:#aaa; }
     .editor-area { position:relative; flex:1; display:flex; overflow:hidden; }
