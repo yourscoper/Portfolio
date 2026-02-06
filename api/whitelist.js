@@ -12,6 +12,7 @@ export default function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
+
   res.setHeader('Content-Type', 'application/json');
-  res.status(200).json(whitelistData);
+  res.status(200).send(JSON.stringify(whitelistData, null, 2));
 }
