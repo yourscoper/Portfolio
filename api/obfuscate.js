@@ -79,6 +79,8 @@ export default function handler(req, res) {
       border-radius:8px;
       overflow:hidden;
       box-shadow:0 10px 40px rgba(0,0,0,.8);
+      display:flex;
+      flex-direction:column;
     }
     .editor-label {
       padding:.8rem 1.2rem;
@@ -89,12 +91,33 @@ export default function handler(req, res) {
     }
     .editor-area {
       position:relative;
-      height:calc(100% - 48px);
+      flex:1;
+      display:flex;
+      overflow:hidden;
+    }
+    .line-numbers {
+      width:40px;
+      background:#0a0a0a;
+      color:#555;
+      text-align:right;
+      padding:1.2rem 0.5rem 1.2rem 0;
+      font-family:Consolas,monospace;
+      font-size:1.05rem;
+      line-height:1.55;
+      user-select:none;
+      pointer-events:none;
+      border-right:1px solid #222;
+      overflow:hidden;
+    }
+    .code-wrapper {
+      flex:1;
+      position:relative;
+      overflow:auto;
     }
     textarea, #output-container {
       position:absolute;
       inset:0;
-      background:#111;
+      background:transparent;
       color:#e0e0e0;
       padding:1.2rem;
       font-family:Consolas,monospace;
@@ -114,12 +137,14 @@ export default function handler(req, res) {
       z-index:3;
       overflow:auto;
       cursor:default;
+      padding-left:45px; /* space for line numbers look */
     }
     .highlight-mirror {
       position:absolute;
       inset:0;
       z-index:2;
       padding:1.2rem;
+      padding-left:45px;
       pointer-events:none;
       white-space:pre;
       font-family:Consolas,monospace;
@@ -178,15 +203,21 @@ export default function handler(req, res) {
     <div class="editor-box">
       <div class="editor-label">Input Lua / LuaU</div>
       <div class="editor-area">
-        <div class="highlight-mirror" id="inputMirror"></div>
-        <textarea id="input" spellcheck="false" placeholder="-- Paste your Lua/LuaU code here...\n-- Press Obfuscate when ready" autofocus></textarea>
+        <div class="line-numbers" id="inputLines"></div>
+        <div class="code-wrapper">
+          <div class="highlight-mirror" id="inputMirror"></div>
+          <textarea id="input" spellcheck="false" placeholder="-- Paste your Lua/LuaU code here...\n-- Press Obfuscate when ready" autofocus></textarea>
+        </div>
       </div>
     </div>
 
     <div class="editor-box">
       <div class="editor-label">Obfuscated Output</div>
       <div class="editor-area">
-        <pre id="output-container"><code id="output" class="language-lua"></code></pre>
+        <div class="line-numbers" id="outputLines"></div>
+        <div class="code-wrapper">
+          <pre id="output-container"><code id="output" class="language-lua"></code></pre>
+        </div>
       </div>
     </div>
   </div>
@@ -213,20 +244,24 @@ export default function handler(req, res) {
 <script>
 hljs.configure({languages:['lua']});
 
-// Selection control: only inside code areas
+// Block selection outside editors
 document.addEventListener('selectstart', e => {
-  if (!e.target.closest('textarea') && !e.target.closest('#output-container')) {
+  if (!e.target.closest('.code-wrapper')) {
     e.preventDefault();
   }
 });
+
+// Ctrl+A only inside editors
 document.addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
-    const isInEditor = e.target.closest('textarea') || e.target.closest('#output-container');
-    if (!isInEditor) e.preventDefault();
+    const isInside = e.target.closest('.code-wrapper');
+    if (!isInside) {
+      e.preventDefault();
+    }
   }
 });
 
-// Tab → insert 2 spaces
+// Tab → 2 spaces
 document.getElementById('input').addEventListener('keydown', e => {
   if (e.key === 'Tab') {
     e.preventDefault();
@@ -237,25 +272,35 @@ document.getElementById('input').addEventListener('keydown', e => {
   }
 });
 
-// Mirror highlight
+// Line numbers + mirror highlight
 const input = document.getElementById('input');
 const mirror = document.getElementById('inputMirror');
 const output = document.getElementById('output');
+const inputLines = document.getElementById('inputLines');
+const outputLines = document.getElementById('outputLines');
+
+function updateLineNumbers(container, linesEl) {
+  const count = (container.value || container.textContent || '').split('\\n').length;
+  linesEl.innerHTML = Array.from({length: Math.max(count, 1)}, (_, i) => i + 1).join('\\n');
+}
 
 function updateMirror() {
   mirror.innerHTML = hljs.highlight(input.value || ' ', {language: 'lua'}).value;
+  updateLineNumbers(input, inputLines);
 }
 input.addEventListener('input', updateMirror);
 input.addEventListener('scroll', () => {
   mirror.parentElement.scrollTop = input.scrollTop;
   mirror.parentElement.scrollLeft = input.scrollLeft;
+  inputLines.scrollTop = input.scrollTop;
 });
 
 function highlightOutput(text) {
   output.innerHTML = hljs.highlight(text, {language: 'lua'}).value;
+  updateLineNumbers(output.parentElement, outputLines);
 }
 
-// Mouse trail (exact from your main page)
+// Mouse trail & sparkles (more dense)
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
 trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -281,7 +326,6 @@ function drawTrail() {
 }
 drawTrail();
 
-// Sparkles — 3× density
 const sparkleCanvas = document.getElementById('sparkle-canvas');
 const sctx = sparkleCanvas.getContext('2d');
 sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
@@ -306,7 +350,7 @@ function drawSparkles() {
   requestAnimationFrame(drawSparkles);
 }
 drawSparkles();
-setInterval(() => { createSparkle(); createSparkle(); createSparkle(); }, 300); // faster + triple spawn
+setInterval(() => { createSparkle(); createSparkle(); createSparkle(); }, 250); // denser
 
 // Buttons
 document.getElementById('obfuscate').onclick = () => {
@@ -329,6 +373,8 @@ document.getElementById('copy').onclick = () => {
 // Init
 updateMirror();
 highlightOutput('');
+updateLineNumbers(input, inputLines);
+updateLineNumbers(output.parentElement, outputLines);
 </script>
 </body>
 </html>`;
