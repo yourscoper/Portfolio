@@ -41,6 +41,10 @@ export default function handler(req, res) {
       margin:1rem 0 .5rem;
       letter-spacing:-1px;
       text-align:center;
+      user-select:none;
+    }
+    .version, .copyright {
+      user-select:none;
     }
     .version {
       position:fixed;
@@ -88,6 +92,7 @@ export default function handler(req, res) {
       border-bottom:1px solid #333;
       font-size:1.3rem;
       color:#aaa;
+      user-select:none;
     }
     .editor-area {
       position:relative;
@@ -106,6 +111,8 @@ export default function handler(req, res) {
       border:none;
       outline:none;
       resize:none;
+      white-space:pre-wrap;
+      word-wrap:break-word;
     }
     #input {
       z-index:3;
@@ -114,8 +121,7 @@ export default function handler(req, res) {
     #output-container {
       z-index:3;
       overflow:auto;
-      white-space:pre-wrap;
-      word-wrap:break-word;
+      cursor:default;
     }
     .highlight-mirror {
       position:absolute;
@@ -153,6 +159,7 @@ export default function handler(req, res) {
       border-radius:10px;
       cursor:pointer;
       transition:all 0.22s ease;
+      user-select:none;
     }
     .btn:hover {
       transform:translateY(-3px);
@@ -204,25 +211,33 @@ export default function handler(req, res) {
   </div>
 </div>
 
-<div class="version">v1.0.0</div>
+<div class="version">v1.0.1</div>
 <div class="copyright">© 2026 yourscoper. All rights reserved.</div>
 
 <script>
-// Highlight.js
+// Highlight.js setup
 hljs.configure({languages:['lua']});
 hljs.highlightAll();
 
-// Allow selection ONLY inside editors
+// Allow selection ONLY inside the code areas
 document.addEventListener('selectstart', e => {
-  if (!e.target.closest('.editor-area')) e.preventDefault();
-});
-document.addEventListener('keydown', e => {
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
-    if (!e.target.closest('.editor-area')) e.preventDefault();
+  const isInsideEditor = e.target.closest('#input') || e.target.closest('#output-container');
+  if (!isInsideEditor) {
+    e.preventDefault();
   }
 });
 
-// Mirror for input highlighting
+// Block Ctrl+A outside editors
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
+    const isInsideEditor = e.target.closest('#input') || e.target.closest('#output-container');
+    if (!isInsideEditor) {
+      e.preventDefault();
+    }
+  }
+});
+
+// Mirror for input syntax highlighting
 const input = document.getElementById('input');
 const mirror = document.getElementById('inputMirror');
 const output = document.getElementById('output');
@@ -237,7 +252,6 @@ input.addEventListener('scroll', () => {
   mirror.scrollLeft = input.scrollLeft;
 });
 
-// Output highlight
 function highlightOutput(text) {
   output.textContent = text;
   hljs.highlightElement(output);
@@ -263,7 +277,7 @@ function drawTrail() {
       tctx.beginPath();
       tctx.moveTo(points[j-1].x, points[j-1].y);
       tctx.lineTo(points[j].x, points[j].y);
-      tctx.strokeStyle = 'rgba(255,255,255,' + (1-age) + ')';
+      tctx.strokeStyle = 'rgba(255,255,255,' + (1 - age) + ')';
       tctx.lineWidth = 2;
       tctx.stroke();
     }
