@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     .highlight-mirror { position:absolute; inset:0; z-index:2; padding:1.2rem; padding-left:45px; pointer-events:none; white-space:pre; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; background:#111; color:#e0e0e0; overflow:hidden; letter-spacing:0; word-spacing:0; }
     .executor-controls { position:absolute; bottom:12px; right:12px; display:flex; gap:0.8rem; z-index:10; }
     .btn { display:flex; align-items:center; gap:0.5rem; padding:0.6rem 1.2rem; font-size:1rem; background:rgba(40,40,60,.7); color:#fff; border:1px solid rgba(180,180,255,.3); border-radius:8px; cursor:pointer; transition:.2s ease; }
-    .btn:hover { background:rgba(60,50,90,.9); transform:scale(1.05); }
+    .btn:hover { background:rgba(255,255,255,0.25); color:#000; transform:scale(1.05); } /* ← changed to white-ish on hover */
     #trail-canvas, #sparkle-canvas { position:fixed; inset:0; pointer-events:none; }
     #trail-canvas { z-index:1; }
     #sparkle-canvas { z-index:0; }
@@ -56,17 +56,13 @@ export default async function handler(req, res) {
     </div>
 
     <div class="executor-controls">
-      <button class="btn" id="obfuscate">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-        Obfuscate
+      <button class="btn" id="download">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
       </button>
       <button class="btn" id="clear">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M6 12h13M10 18h10M3 6l2 2-2 2M3 12l2 2-2 2M3 18l2 2-2 2"/></svg>
         Clear
-      </button>
-      <button class="btn" id="download">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download
       </button>
     </div>
   </div>
@@ -127,10 +123,10 @@ input.addEventListener('scroll', () => {
   inputLines.scrollTop = input.scrollTop;
 });
 
-// MoonVeil obfuscation via proxy + direct download
-document.getElementById('obfuscate').onclick = async () => {
+// Download obfuscated code
+document.getElementById('download').onclick = async () => {
   const code = input.value.trim();
-  if (!code) return alert('No code to obfuscate');
+  if (!code) return alert('No code to obfuscate/download');
 
   try {
     const res = await fetch('/api/obfuscate', {
@@ -156,7 +152,7 @@ document.getElementById('obfuscate').onclick = async () => {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 
-    alert('Obfuscated! Downloaded as .lua file.');
+    alert('Downloaded obfuscated .lua file!');
   } catch (err) {
     alert('Error: ' + err.message);
   }
@@ -199,26 +195,38 @@ const sctx = sparkleCanvas.getContext('2d');
 sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
 window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
 const sparkles = [];
+
 function createSparkle() {
-  sparkles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight * 0.6, r: Math.random() * 2.5 + 1, a: 1, t: Date.now() });
+  sparkles.push({ 
+    x: Math.random() * innerWidth, 
+    y: Math.random() * innerHeight * 0.8, 
+    r: Math.random() * 4 + 1.5,  // bigger particles
+    a: 1, 
+    t: Date.now() 
+  });
 }
+
 function drawSparkles() {
-  sctx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
+  sctx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
   const now = Date.now();
   for (let j = sparkles.length - 1; j >= 0; j--) {
     const s = sparkles[j];
     const age = (now - s.t) / 1000;
-    s.a = 1 - age / 1.5;
-    if (s.a <= 0) { sparkles.splice(j,1); continue; }
-    sctx.fillStyle = \`rgba(255,255,255,\${s.a})\`;
+    s.a = 1 - age / 3.0;  // much longer fade (3 seconds) for denser effect
+    if (s.a <= 0) { sparkles.splice(j, 1); continue; }
+    sctx.fillStyle = \`rgba(255,255,255,\${s.a * 1.2})\`;  // brighter
     sctx.beginPath();
-    sctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     sctx.fill();
   }
   requestAnimationFrame(drawSparkles);
 }
 drawSparkles();
-setInterval(() => { createSparkle(); createSparkle(); createSparkle(); }, 250);
+
+// 5x sparkle density: 15 per tick + faster spawn
+setInterval(() => { 
+  for (let i = 0; i < 15; i++) createSparkle();  // 15× spawn per tick
+}, 80);  // 80ms interval = very dense
 
 // Init
 updateMirror();
@@ -231,7 +239,7 @@ updateLineNumbers(input, inputLines);
     return res.status(200).send(html);
   }
 
-  // Handle POST: proxy to MoonVeil → return raw text only (no JSON)
+  // Handle POST: proxy to MoonVeil → return raw text only
   if (req.method !== 'POST') {
     return res.status(405).send('Method Not Allowed');
   }
@@ -288,7 +296,7 @@ updateLineNumbers(input, inputLines);
 
       const obfuscated = await response.text();
       res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-      res.status(200).send(obfuscated);  // ← raw text only, no JSON
+      res.status(200).send(obfuscated);
     } catch (err) {
       console.error('Proxy error:', err);
       res.status(500).send('Internal server error');
