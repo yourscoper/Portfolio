@@ -197,43 +197,30 @@ drawTrail();
 const sparkleCanvas = document.getElementById('sparkle-canvas');
 const sctx = sparkleCanvas.getContext('2d');
 sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
-window.addEventListener('resize', () => { 
-  sparkleCanvas.width = innerWidth; 
-  sparkleCanvas.height = innerHeight; 
-});
+window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
 const sparkles = [];
-
 function createSparkle() {
-  sparkles.push({ 
-    x: Math.random() * innerWidth, 
-    y: Math.random() * innerHeight * 0.7, 
-    r: Math.random() * 3.5 + 1.2,
-    a: 1, 
-    t: Date.now() 
-  });
+  sparkles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight * 0.6, r: Math.random() * 2.5 + 1, a: 1, t: Date.now() });
 }
-
 function drawSparkles() {
-  sctx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
+  sctx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
   const now = Date.now();
   for (let j = sparkles.length - 1; j >= 0; j--) {
     const s = sparkles[j];
     const age = (now - s.t) / 1000;
-    s.a = 1 - age / 2.4;
-    if (s.a <= 0) { sparkles.splice(j, 1); continue; }
-    sctx.fillStyle = `rgba(255,255,255,${s.a * 0.9})`;
+    s.a = 1 - age / 1.5;
+    if (s.a <= 0) { sparkles.splice(j,1); continue; }
+    sctx.fillStyle = \`rgba(255,255,255,\${s.a})\`;
     sctx.beginPath();
-    sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    sctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
     sctx.fill();
   }
   requestAnimationFrame(drawSparkles);
 }
 drawSparkles();
+setInterval(() => { createSparkle(); createSparkle(); createSparkle(); }, 250);
 
-setInterval(() => { 
-  for (let i = 0; i < 9; i++) createSparkle();
-}, 100);
-
+// Init
 updateMirror();
 updateLineNumbers(input, inputLines);
 </script>
