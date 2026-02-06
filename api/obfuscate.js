@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  // Handle GET: serve the UI
   if (req.method === 'GET') {
     const html = `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -74,19 +73,16 @@ export default async function handler(req, res) {
 <script>
 hljs.configure({languages:['lua']});
 
-// Block selection outside code area
 document.addEventListener('selectstart', e => {
   if (!e.target.closest('.code-wrapper')) e.preventDefault();
 });
 
-// Ctrl+A only inside editor
 document.addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
     if (!e.target.closest('.code-wrapper')) e.preventDefault();
   }
 });
 
-// Tab → 2 spaces
 document.getElementById('input').addEventListener('keydown', e => {
   if (e.key === 'Tab') {
     e.preventDefault();
@@ -97,7 +93,6 @@ document.getElementById('input').addEventListener('keydown', e => {
   }
 });
 
-// Line numbers + mirror
 const input = document.getElementById('input');
 const mirror = document.getElementById('inputMirror');
 const inputLines = document.getElementById('inputLines');
@@ -123,7 +118,6 @@ input.addEventListener('scroll', () => {
   inputLines.scrollTop = input.scrollTop;
 });
 
-// Download obfuscated code
 document.getElementById('download').onclick = async () => {
   const code = input.value.trim();
   if (!code) return alert('No code to obfuscate/download');
@@ -158,13 +152,11 @@ document.getElementById('download').onclick = async () => {
   }
 };
 
-// Clear
 document.getElementById('clear').onclick = () => {
   input.value = '';
   updateMirror();
 };
 
-// Mouse trail
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
 trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -190,18 +182,16 @@ function drawTrail() {
 }
 drawTrail();
 
-// Galaxy / slow twinkling stars (full page, smooth, sparse, like real space)
 const sparkleCanvas = document.getElementById('sparkle-canvas');
 const sctx = sparkleCanvas.getContext('2d');
 sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
 window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
 const stars = [];
 
-// Create calm starfield
-for (let i = 0; i < 80; i++) {  // 80 stars = sparse & smooth
+for (let i = 0; i < 80; i++) {
   stars.push({
     x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight,  // full page, bottom included
+    y: Math.random() * innerHeight,
     r: Math.random() * 1.4 + 0.4,
     baseA: Math.random() * 0.5 + 0.25,
     phase: Math.random() * Math.PI * 2,
@@ -215,10 +205,10 @@ function drawStars() {
   for (let j = 0; j < stars.length; j++) {
     const s = stars[j];
     const t = (now - s.t) / 1000;
-    s.a = s.baseA + Math.sin(t * 0.6 + s.phase) * 0.3; // very slow blink
+    s.a = s.baseA + Math.sin(t * 0.6 + s.phase) * 0.3;
     s.a = Math.max(0.1, Math.min(0.9, s.a));
 
-    sctx.fillStyle = \`rgba(240,245,255,\${s.a})\`; // soft space white-blue
+    sctx.fillStyle = \`rgba(240,245,255,\${s.a})\`;
     sctx.beginPath();
     sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     sctx.fill();
@@ -227,7 +217,6 @@ function drawStars() {
 }
 drawStars();
 
-// Super slow respawn (one star every ~20s)
 setInterval(() => {
   if (stars.length < 80) {
     stars.push({
@@ -241,7 +230,6 @@ setInterval(() => {
   }
 }, 20000);
 
-// Init
 updateMirror();
 updateLineNumbers(input, inputLines);
 </script>
@@ -252,7 +240,6 @@ updateLineNumbers(input, inputLines);
     return res.status(200).send(html);
   }
 
-  // Handle POST: proxy to MoonVeil → return raw text
   if (req.method !== 'POST') {
     return res.status(405).send('Method Not Allowed');
   }
@@ -311,7 +298,6 @@ updateLineNumbers(input, inputLines);
       res.setHeader('Content-Type', 'text/plain; charset=utf-8');
       res.status(200).send(obfuscated);
     } catch (err) {
-      console.error('Proxy error:', err);
       res.status(500).send('Internal server error');
     }
   });
