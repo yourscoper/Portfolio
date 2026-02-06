@@ -108,6 +108,7 @@ export default function handler(req, res) {
       pointer-events:none;
       border-right:1px solid #222;
       overflow:hidden;
+      white-space:pre;
     }
     .code-wrapper {
       flex:1;
@@ -118,7 +119,7 @@ export default function handler(req, res) {
       position:absolute;
       inset:0;
       background:transparent;
-      color:#e0e0e0;
+      color:transparent;
       padding:1.2rem;
       font-family:Consolas,monospace;
       font-size:1.05rem;
@@ -137,7 +138,9 @@ export default function handler(req, res) {
       z-index:3;
       overflow:auto;
       cursor:default;
-      padding-left:45px; /* space for line numbers look */
+      padding-left:45px;
+      color:#e0e0e0;
+      background:#111;
     }
     .highlight-mirror {
       position:absolute;
@@ -201,18 +204,18 @@ export default function handler(req, res) {
 
   <div class="editors">
     <div class="editor-box">
-      <div class="editor-label">Input Lua / LuaU</div>
+      <div class="editor-label">Script Input</div>
       <div class="editor-area">
         <div class="line-numbers" id="inputLines"></div>
         <div class="code-wrapper">
           <div class="highlight-mirror" id="inputMirror"></div>
-          <textarea id="input" spellcheck="false" placeholder="-- Paste your Lua/LuaU code here...\n-- Press Obfuscate when ready" autofocus></textarea>
+          <textarea id="input" spellcheck="false" placeholder="print("Hello, World!")" autofocus></textarea>
         </div>
       </div>
     </div>
 
     <div class="editor-box">
-      <div class="editor-label">Obfuscated Output</div>
+      <div class="editor-label">Script Output</div>
       <div class="editor-area">
         <div class="line-numbers" id="outputLines"></div>
         <div class="code-wrapper">
@@ -238,13 +241,13 @@ export default function handler(req, res) {
   </div>
 </div>
 
-<div class="version">v1.0.1</div>
+<div class="version">v1.0.2</div>
 <div class="copyright">© 2026 yourscoper. All rights reserved.</div>
 
 <script>
 hljs.configure({languages:['lua']});
 
-// Block selection outside editors
+// Block selection outside code areas
 document.addEventListener('selectstart', e => {
   if (!e.target.closest('.code-wrapper')) {
     e.preventDefault();
@@ -255,9 +258,7 @@ document.addEventListener('selectstart', e => {
 document.addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
     const isInside = e.target.closest('.code-wrapper');
-    if (!isInside) {
-      e.preventDefault();
-    }
+    if (!isInside) e.preventDefault();
   }
 });
 
@@ -272,16 +273,21 @@ document.getElementById('input').addEventListener('keydown', e => {
   }
 });
 
-// Line numbers + mirror highlight
+// Line numbers + mirror
 const input = document.getElementById('input');
 const mirror = document.getElementById('inputMirror');
 const output = document.getElementById('output');
 const inputLines = document.getElementById('inputLines');
 const outputLines = document.getElementById('outputLines');
 
-function updateLineNumbers(container, linesEl) {
-  const count = (container.value || container.textContent || '').split('\\n').length;
-  linesEl.innerHTML = Array.from({length: Math.max(count, 1)}, (_, i) => i + 1).join('\\n');
+function updateLineNumbers(el, linesEl) {
+  const lines = (el.value || el.textContent || '').split('\\n');
+  const count = lines.length;
+  let numbers = '';
+  for (let i = 1; i <= count; i++) {
+    numbers += i + '\\n';
+  }
+  linesEl.textContent = numbers;
 }
 
 function updateMirror() {
@@ -300,7 +306,7 @@ function highlightOutput(text) {
   updateLineNumbers(output.parentElement, outputLines);
 }
 
-// Mouse trail & sparkles (more dense)
+// Mouse trail & sparkles
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
 trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -350,7 +356,7 @@ function drawSparkles() {
   requestAnimationFrame(drawSparkles);
 }
 drawSparkles();
-setInterval(() => { createSparkle(); createSparkle(); createSparkle(); }, 250); // denser
+setInterval(() => { createSparkle(); createSparkle(); createSparkle(); }, 250);
 
 // Buttons
 document.getElementById('obfuscate').onclick = () => {
