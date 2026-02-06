@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  // Handle GET: serve UI
+  // Handle GET: serve the UI (executor-style, one wide input box, buttons bottom-right)
   if (req.method === 'GET') {
     const html = `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     .version, .copyright, .editor-label, .btn { font-family:'Coming Soon',cursive; }
     .version { position:fixed; bottom:20px; left:20px; color:#aaa; font-size:1rem; opacity:0.85; z-index:10; }
     .copyright { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:#666; font-size:1rem; opacity:0.7; z-index:10; }
-    .editor-box { width:100%; max-width:1400px; height:70vh; background:#111; border:1px solid #333; border-radius:8px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.8); display:flex; flex-direction:column; position:relative; }
+    .editor-box { width:100%; max-width:1600px; height:75vh; background:#111; border:1px solid #333; border-radius:8px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.8); display:flex; flex-direction:column; position:relative; }
     .editor-label { padding:.8rem 1.2rem; background:#1a1a1a; border-bottom:1px solid #333; font-size:1.3rem; color:#aaa; }
     .editor-area { position:relative; flex:1; display:flex; overflow:hidden; }
     .line-numbers { width:40px; background:#0a0a0a; color:#555; text-align:right; padding:1.2rem 0.5rem 1.2rem 0; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; user-select:none; pointer-events:none; border-right:1px solid #222; overflow:hidden; white-space:pre; }
@@ -127,7 +127,7 @@ input.addEventListener('scroll', () => {
   inputLines.scrollTop = input.scrollTop;
 });
 
-// MoonVeil obfuscation via proxy
+// MoonVeil obfuscation via proxy + direct download
 document.getElementById('obfuscate').onclick = async () => {
   const code = input.value.trim();
   if (!code) return alert('No code to obfuscate');
@@ -231,62 +231,67 @@ updateLineNumbers(input, inputLines);
     return res.status(200).send(html);
   }
 
-  // Handle POST: proxy to MoonVeil
+  // Handle POST: proxy to MoonVeil → return raw text only (no JSON)
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+    return res.status(405).send('Method Not Allowed');
   }
 
-  const { script } = req.body;
+  let body = '';
+  req.on('data', chunk => body += chunk);
+  req.on('end', async () => {
+    try {
+      const { script } = JSON.parse(body || '{}');
 
-  if (!script || typeof script !== 'string' || script.trim() === '') {
-    return res.status(400).json({ error: 'No script provided' });
-  }
+      if (!script || typeof script !== 'string' || script.trim() === '') {
+        return res.status(400).send('No script provided');
+      }
 
-  const apiKey = process.env.MOONVEIL_API_KEY;
+      const apiKey = process.env.MOONVEIL_API_KEY;
 
-  if (!apiKey) {
-    return res.status(500).json({ error: 'Server misconfigured - missing API key' });
-  }
+      if (!apiKey) {
+        return res.status(500).send('Server misconfigured - missing API key');
+      }
 
-  try {
-    const response = await fetch('https://moonveil.cc/api/obfuscate', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-        'Accept': 'text/plain'
-      },
-      body: JSON.stringify({
-        script,
-        options: {
-          cffDecomposeExpr: true,
-          cffEnable: true,
-          cffHoistLocals: true,
-          embedRuntime: true,
-          mangleConstLift: 0,
-          mangleEnable: true,
-          mangleGlobals: true,
-          mangleNamedIndex: true,
-          mangleNumbers: true,
-          mangleSelfCalls: true,
-          mangleStrings: true,
-          prettify: true,
-          vmDebug: false,
-          vmSafeEnv: true,
-          vmWrapScript: true
-        }
-      })
-    });
+      const response = await fetch('https://moonveil.cc/api/obfuscate', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'Accept': 'text/plain'
+        },
+        body: JSON.stringify({
+          script,
+          options: {
+            cffDecomposeExpr: true,
+            cffEnable: true,
+            cffHoistLocals: true,
+            embedRuntime: true,
+            mangleConstLift: 0,
+            mangleEnable: true,
+            mangleGlobals: true,
+            mangleNamedIndex: true,
+            mangleNumbers: true,
+            mangleSelfCalls: true,
+            mangleStrings: true,
+            prettify: true,
+            vmDebug: false,
+            vmSafeEnv: true,
+            vmWrapScript: true
+          }
+        })
+      });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      return res.status(response.status).json({ error: errorText || 'MoonVeil API failed' });
+      if (!response.ok) {
+        const errorText = await response.text();
+        return res.status(response.status).send(errorText || 'MoonVeil API failed');
+      }
+
+      const obfuscated = await response.text();
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      res.status(200).send(obfuscated);  // ← raw text only, no JSON
+    } catch (err) {
+      console.error('Proxy error:', err);
+      res.status(500).send('Internal server error');
     }
-
-    const obfuscated = await response.text();
-    return res.status(200).json({ result: obfuscated });
-  } catch (err) {
-    console.error('MoonVeil proxy error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
-  }
+  });
 }
