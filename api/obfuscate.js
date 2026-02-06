@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     .highlight-mirror { position:absolute; inset:0; z-index:2; padding:1.2rem; padding-left:45px; pointer-events:none; white-space:pre; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; background:#111; color:#e0e0e0; overflow:hidden; letter-spacing:0; word-spacing:0; }
     .executor-controls { position:absolute; bottom:12px; right:12px; display:flex; gap:0.8rem; z-index:10; }
     .btn { display:flex; align-items:center; gap:0.5rem; padding:0.6rem 1.2rem; font-size:1rem; background:rgba(40,40,60,.7); color:#fff; border:1px solid rgba(180,180,255,.3); border-radius:8px; cursor:pointer; transition:.2s ease; }
-    .btn:hover { background:rgba(255,255,255,0.25); color:#000; transform:scale(1.05); } /* ← changed to white-ish on hover */
+    .btn:hover { background:rgba(255,255,255,0.25); color:#000; transform:scale(1.05); }
     #trail-canvas, #sparkle-canvas { position:fixed; inset:0; pointer-events:none; }
     #trail-canvas { z-index:1; }
     #sparkle-canvas { z-index:0; }
@@ -58,7 +58,7 @@ export default async function handler(req, res) {
     <div class="executor-controls">
       <button class="btn" id="download">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Obfuscate
+        Download
       </button>
       <button class="btn" id="clear">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M6 12h13M10 18h10M3 6l2 2-2 2M3 12l2 2-2 2M3 18l2 2-2 2"/></svg>
@@ -164,7 +164,7 @@ document.getElementById('clear').onclick = () => {
   updateMirror();
 };
 
-// Mouse trail & sparkles
+// Mouse trail & sparkles — galaxy / blinking stars in space (full page coverage, 5x fewer but twinkling)
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
 trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -194,39 +194,43 @@ const sparkleCanvas = document.getElementById('sparkle-canvas');
 const sctx = sparkleCanvas.getContext('2d');
 sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
 window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
-const sparkles = [];
+const stars = []; // renamed to "stars" for galaxy feel
 
-function createSparkle() {
-  sparkles.push({ 
-    x: Math.random() * innerWidth, 
-    y: Math.random() * innerHeight * 0.8, 
-    r: Math.random() * 4 + 1.5,  // bigger particles
-    a: 1, 
-    t: Date.now() 
+function createStar() {
+  stars.push({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight, // ← full page (0 to 1.0)
+    r: Math.random() * 1.8 + 0.4,   // small stars
+    baseA: Math.random() * 0.6 + 0.3, // base brightness
+    phase: Math.random() * Math.PI * 2, // random blink offset
+    t: Date.now()
   });
 }
 
-function drawSparkles() {
+function drawStars() {
   sctx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
   const now = Date.now();
-  for (let j = sparkles.length - 1; j >= 0; j--) {
-    const s = sparkles[j];
-    const age = (now - s.t) / 1000;
-    s.a = 1 - age / 3.0;  // much longer fade (3 seconds) for denser effect
-    if (s.a <= 0) { sparkles.splice(j, 1); continue; }
-    sctx.fillStyle = \`rgba(255,255,255,\${s.a * 1.2})\`;  // brighter
+  for (let j = stars.length - 1; j >= 0; j--) {
+    const s = stars[j];
+    // Slow pulsing (blink like stars) — sine wave for natural twinkle
+    const t = (now - s.t) / 1000;
+    s.a = s.baseA + Math.sin(t * 1.5 + s.phase) * 0.4; // slow blink between ~0.1 and ~1.0
+    s.a = Math.max(0.1, Math.min(1, s.a)); // never fully off
+
+    sctx.fillStyle = `rgba(240,240,255,${s.a})`; // slight blue-white for space stars
     sctx.beginPath();
     sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     sctx.fill();
   }
-  requestAnimationFrame(drawSparkles);
+  requestAnimationFrame(drawStars);
 }
-drawSparkles();
+drawStars();
 
-// 5x sparkle density: 15 per tick + faster spawn
-setInterval(() => { 
-  for (let i = 0; i < 15; i++) createSparkle();  // 15× spawn per tick
-}, 80);  // 80ms interval = very dense
+// Initial stars + slow respawn (very few, calm galaxy)
+for (let i = 0; i < 120; i++) createStar(); // ~120 stars total on screen
+setInterval(() => {
+  if (stars.length < 120) createStar(); // slowly replace faded ones
+}, 3000); // very slow respawn
 
 // Init
 updateMirror();
