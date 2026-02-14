@@ -1,11 +1,15 @@
-export default function handler(req, res) {
-  if (req.method !== 'POST' && req.method !== 'GET') {
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const auth = req.headers.authorization;
-  if (auth !== `Bearer ${process.env.API_SECRET_TOKEN || 'default-secret-change-me'}`) {
-    return res.status(401).json({ error: 'Unauthorized' });
+  const { key } = req.body || {};
+
+  if (!key || typeof key !== 'string') {
+    return res.status(400).json({ 
+      valid: false, 
+      message: 'No valid key provided' 
+    });
   }
 
   const rawKeys = process.env.WHITELISTEDKEYS;
@@ -15,22 +19,18 @@ export default function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
-  const validKeys = rawKeys.split(',').map(key => key.trim());
+  const validKeys = rawKeys.split(',').map(k => k.trim().toLowerCase());
+  const submittedKey = key.trim().toLowerCase();
 
-  if (req.method === 'GET') {
-    return res.status(200).json({ keys: validKeys });
-  }
+  const isValid = validKeys.includes(submittedKey);
 
-  const { key, hwid, discord } = req.body || {};
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  if (!key) {
-    return res.status(400).json({ valid: false, message: 'No key provided' });
-  }
-
-  const isValid = validKeys.includes(key.trim());
-
-  res.status(200).json({
+  return res.status(200).json({
     valid: isValid,
-    message: isValid ? 'Access granted' : 'Invalid key'
+    message: isValid ? 'Access granted' : 'Invalid or expired key'
   });
 }
