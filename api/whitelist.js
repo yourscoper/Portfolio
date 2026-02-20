@@ -7,6 +7,10 @@ const whitelistData = {
     "e468867bb1f1e32befd01431089dd5621dcc69a14e3bc2a404ac0866fff23402": {
       "discord": "1312924157578711071",
       "key": "scoper-pd8bDG1TgZKTH2svNH3VAogwb9ZKRK"
+    },
+    "34e9c95c-0b0d-11f1-b000-806e6f6e6963": {
+      "discord": "1439964270434717826",
+      "key": "scoper-PoV3hnlsy8uzKTwYLkMkkyIaAiXNYv"
     }
   }
 };
