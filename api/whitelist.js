@@ -16,6 +16,11 @@ const whitelistData = {
       "discord": "1140785097684037745",
       "key": "scoper-ruS3MHWL6VDklQNR2q1CUX3U01SY8Z"
     }
+  },
+
+  "shared": {
+    "status": true,
+    "key": "scoper-limited20127889ef1zq19lZkKEIJCXJI"
   }
 };
 
