@@ -12,6 +12,10 @@ const whitelistData = {
       "discord": "1312924157578711071", //IceGodFTBL
       "key": "scoper-pd8bDG1TgZKTH2svNH3VAogwb9ZKRK"
     },
+    "6470FA296EEFA29ECED18DFE1C328D": {
+      "discord": "1439964270434717826", //Unicornman
+      "key": "scoper-PoV3hnlsy8uzKTwYLkMkkyIaAiXNYv"
+    },
     "34e9c95c-0b0d-11f1-b000-806e6f6e6963": {
       "discord": "1439964270434717826", //Unicornman
       "key": "scoper-PoV3hnlsy8uzKTwYLkMkkyIaAiXNYv"
