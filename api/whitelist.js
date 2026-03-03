@@ -12,7 +12,11 @@ const whitelistData = {
       "discord": "1312924157578711071", //IceGodFTBL
       "key": "scoper-pd8bDG1TgZKTH2svNH3VAogwb9ZKRK"
     },
-    "6470FA296EEFA29ECED18DFE1C328D": { // Xeno
+    "62584A29F26BEA55FE8F7952BE6125": { // Velocity
+      "discord": "698726180458725416", //Alex
+      "key": "scoper-RonH5cWXjZHxz66KE2WZU1vzkPNM7K"
+    },
+    "6470FA296EEFA29ECED18DFE1C328D": { // Velocity
       "discord": "1439964270434717826", //Unicornman
       "key": "scoper-PoV3hnlsy8uzKTwYLkMkkyIaAiXNYv"
     },
