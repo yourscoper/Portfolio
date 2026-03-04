@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       }
 
       // Dev check: only this exact Roblox UserId gets [DEV]
-      const isDev = body.userId === 9129948947;
+      const isDev = body.userId === 9170940222;
 
       // Optional: you could add more UserIds later like:
       // const isDev = [9129948947, 123456789].includes(body.userId);
