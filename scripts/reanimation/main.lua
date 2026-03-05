@@ -1,7 +1,6 @@
 return{
     ["poodle afk animating"] = "https://absent.wtf/poodle%20afk%20animating.lua",
     ["poodle suck own dick"] = "https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/scripts/reanimation/animations/poodle%20suck%20own%20dick.lua",
-    ["sharp jojo pose"] = "https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/scripts/reanimation/animations/sharp%20jojo%20pose.lua",
     ["poodle aggressive slap"] = "https://absent.wtf/poodle%20aggressive%20slap.lua",
     ["poodle aggressive twerk"] = "https://absent.wtf/poodle%20aggressive%20twerk.lua",
     ["poodle ass slap"] = "https://absent.wtf/poodle%20ass%20slap.lua",
@@ -130,6 +129,7 @@ return{
     ["sharp hug intro"] = "https://absent.wtf/sharp%20hug%20intro.lua",
     ["sharp hug"] = "https://absent.wtf/sharp%20hug.lua",
     ["sharp huh"] = "https://absent.wtf/sharp%20huh.lua",
+    ["sharp jojo pose"] = "https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/scripts/reanimation/animations/sharp%20jojo%20pose.lua",
     ["sharp ice twerk 10"] = "https://absent.wtf/sharp%20ice%20twerk%2010.lua",
     ["sharp ice twerk 11"] = "https://absent.wtf/sharp%20ice%20twerk%2011.lua",
     ["sharp ice twerk 12"] = "https://absent.wtf/sharp%20ice%20twerk%2012.lua",
