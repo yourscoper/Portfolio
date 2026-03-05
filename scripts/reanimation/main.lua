@@ -262,6 +262,8 @@ return{
     ["sharp twerk V2"] = "https://absent.wtf/sharp%20twerk%20V2.lua",
     ["sharp twerk"] = "https://absent.wtf/sharp%20twerk.lua",
     ["sharp underground"] = "https://absent.wtf/sharp%20underground.lua",
+    ["sharp scoper jerk"] = "https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/scripts/reanimation/animations/sharp%20scoper%20jerk.lua",
+    ["sharp scoper hidden"] = "https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/scripts/reanimation/animations/scoper%20hide.lua",
     ["sharp up thrust 3"] = "https://absent.wtf/sharp%20up%20thrust%203.lua",
     ["sharp up thrust 4"] = "https://absent.wtf/sharp%20up%20thrust%204.lua",
     ["sharp up thrust"] = "https://absent.wtf/sharp%20up%20thrust.lua",
@@ -277,4 +279,4 @@ return{
     ["sharp xstep"] = "https://absent.wtf/sharp%20xstep.lua",
     ["sharp you ladies alright"] = "https://absent.wtf/sharp%20you%20ladies%20alright.lua",
     ["sharp zesty run"] = "https://absent.wtf/sharp%20zesty%20run.lua",
-   }
+}
