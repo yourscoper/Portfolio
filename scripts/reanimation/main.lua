@@ -1,6 +1,7 @@
 return{
     ["poodle afk animating"] = "https://absent.wtf/poodle%20afk%20animating.lua",
     ["poodle suck own dick"] = "https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/scripts/reanimation/animations/poodle%20suck%20own%20dick.lua",
+    ["poodle pole dance"] = "https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/scripts/reanimation/animations/poodle%20pole%20dance.lua",
     ["poodle aggressive slap"] = "https://absent.wtf/poodle%20aggressive%20slap.lua",
     ["poodle aggressive twerk"] = "https://absent.wtf/poodle%20aggressive%20twerk.lua",
     ["poodle ass slap"] = "https://absent.wtf/poodle%20ass%20slap.lua",
@@ -278,5 +279,5 @@ return{
     ["sharp whos over there"] = "https://absent.wtf/sharp%20whos%20over%20there.lua",
     ["sharp xstep"] = "https://absent.wtf/sharp%20xstep.lua",
     ["sharp you ladies alright"] = "https://absent.wtf/sharp%20you%20ladies%20alright.lua",
-    ["sharp zesty run"] = "https://absent.wtf/sharp%20zesty%20run.lua",
+    ["sharp zesty run"] = "https://absent.wtf/sharp%20zesty%20run.lua"
 }
