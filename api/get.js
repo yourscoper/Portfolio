@@ -130,7 +130,6 @@ export default function handler(req, res) {
   const response = {
     args: req.query || {},
     headers: outputHeaders,
-    "x-amzn-trace-id": headers["x-amzn-trace-id"] || "not present",
     location,
     origin: location.ip,
     url: `https://${headers["host"]}${req.url}`
