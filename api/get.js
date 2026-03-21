@@ -2,7 +2,6 @@ export default function handler(req, res) {
   const headers = req.headers;
   const ua = headers["user-agent"] || "";
 
-  /* ---------------- DEVICE DETECTION ---------------- */
   let device = "Unknown";
   const secPlatform = headers["sec-ch-ua-platform"] || "";
 
@@ -16,7 +15,17 @@ export default function handler(req, res) {
     device = "Android";
   }
 
-  /* ---------------- COUNTRY MAP ---------------- */
+  function getFlagEmoji(countryCode) {
+    if (!countryCode || countryCode.length !== 2 || !/^[A-Za-z]{2}$/.test(countryCode)) {
+      return "🏳️";
+    }
+    const codePoints = countryCode
+      .toUpperCase()
+      .split("")
+      .map((char) => 127397 + char.charCodeAt(0));
+    return String.fromCodePoint(...codePoints);
+  }
+
   const countryMap = {
     AF: "Afghanistan", AL: "Albania", DZ: "Algeria", AS: "American Samoa",
     AD: "Andorra", AO: "Angola", AI: "Anguilla", AQ: "Antarctica",
@@ -29,7 +38,6 @@ export default function handler(req, res) {
     GB: "United Kingdom", US: "United States", VN: "Vietnam"
   };
 
-  /* ---------------- US STATE MAP ---------------- */
   const regionMap = {
     AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas",
     CA: "California", CO: "Colorado", CT: "Connecticut",
@@ -38,7 +46,6 @@ export default function handler(req, res) {
     DC: "District of Columbia"
   };
 
-  /* ---------------- CONTINENT MAP ---------------- */
   const continentMap = {
     NA: "North America",
     SA: "South America",
@@ -49,7 +56,8 @@ export default function handler(req, res) {
     AT: "Australia"
   };
 
-  /* ---------------- LOCATION ---------------- */
+  const countryCode = headers["x-vercel-ip-country"] || "";
+
   const location = {
     ip: headers["x-real-ip"] || "",
     city: headers["x-vercel-ip-city"]
@@ -60,10 +68,14 @@ export default function handler(req, res) {
       headers["x-vercel-ip-country-region"] ||
       "",
     postal: headers["x-vercel-ip-postal-code"] || "",
-    country:
-      countryMap[headers["x-vercel-ip-country"]] ||
+    countryCode: countryCode,
+    countryName:
+      countryMap[countryCode] ||
       headers["x-vercel-ip-country"] ||
-      "",
+      "Unknown",
+    country: countryCode
+      ? `${getFlagEmoji(countryCode)} ${countryMap[countryCode] || countryCode}`
+      : "🏳️ Unknown",
     continent:
       continentMap[headers["x-vercel-ip-continent"]] ||
       headers["x-vercel-ip-continent"] ||
@@ -72,34 +84,30 @@ export default function handler(req, res) {
     longitude: headers["x-vercel-ip-longitude"] || ""
   };
 
-  /* ---------------- HEADERS (CLEAN) ---------------- */
   const outputHeaders = {
-    "Accept": headers["accept"] || "",
+    Accept: headers["accept"] || "",
     "Accept-Encoding": headers["accept-encoding"] || "",
     "Accept-Language": headers["accept-language"] || "",
-    "Host": headers["host"] || "",
-    "Device": device,
+    Host: headers["host"] || "",
+    Device: device,
     "User-Agent": ua,
-    "X-Amzn-Trace-Id": headers["x-amzn-trace-id"] || ""
+    "X-Amzn-Trace-Id": headers["x-amzn-trace-id"] || "not present"
   };
 
   for (const key in headers) {
     const lower = key.toLowerCase();
 
-    // ❌ Vercel + Roblox session junk
     if (
       lower.startsWith("x-vercel-") ||
       lower.startsWith("roblox-session-id")
     ) continue;
 
-    // ❌ Location headers (already normalized)
     if (
       lower.startsWith("x-real-ip") ||
       lower.startsWith("x-forwarded") ||
       lower.startsWith("x-vercel-ip")
     ) continue;
 
-    // ❌ Browser / routing noise
     if (
       lower === "cache-control" ||
       lower === "forwarded" ||
@@ -111,7 +119,7 @@ export default function handler(req, res) {
 
     const normalizedKey = key
       .split("-")
-      .map(k => k.charAt(0).toUpperCase() + k.slice(1))
+      .map((k) => k.charAt(0).toUpperCase() + k.slice(1))
       .join("-");
 
     if (!(normalizedKey in outputHeaders)) {
@@ -119,10 +127,10 @@ export default function handler(req, res) {
     }
   }
 
-  /* ---------------- RESPONSE ---------------- */
   const response = {
     args: req.query || {},
     headers: outputHeaders,
+    "x-amzn-trace-id": headers["x-amzn-trace-id"] || "not present",
     location,
     origin: location.ip,
     url: `https://${headers["host"]}${req.url}`
