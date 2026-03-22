@@ -73,9 +73,7 @@ export default function handler(req, res) {
       countryMap[countryCode] ||
       headers["x-vercel-ip-country"] ||
       "Unknown",
-    country: countryCode
-      ? `${getFlagEmoji(countryCode)} ${countryMap[countryCode] || countryCode}`
-      : "🏳️ Unknown",
+    country: countryCode ? getFlagEmoji(countryCode) : "🏳️",
     continent:
       continentMap[headers["x-vercel-ip-continent"]] ||
       headers["x-vercel-ip-continent"] ||
