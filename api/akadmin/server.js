@@ -25,40 +25,25 @@ app.get("/api/executors", (req, res) => {
 
 app.post("/api/execute", (req, res) => {
     const { username } = req.body;
-
-    if (!username) {
-        return res.status(400).json({ error: "username is required" });
-    }
-
+    if (!username) return res.status(400).json({ error: "username is required" });
     const db = loadDB();
     const usernameLower = username.toLowerCase();
-
     if (!db.includes(usernameLower)) {
         db.push(usernameLower);
         saveDB(db);
     }
-
     res.json({ success: true, username: usernameLower });
 });
 
 app.delete("/api/executor/:username", (req, res) => {
     const { secret } = req.body;
-
-    if (secret !== process.env.ADMIN_SECRET) {
-        return res.status(401).json({ error: "Unauthorized" });
-    }
-
+    if (secret !== process.env.ADMIN_SECRET) return res.status(401).json({ error: "Unauthorized" });
     const username = req.params.username.toLowerCase();
     const db = loadDB();
     const index = db.indexOf(username);
-
-    if (index === -1) {
-        return res.status(404).json({ error: "User not found" });
-    }
-
+    if (index === -1) return res.status(404).json({ error: "User not found" });
     db.splice(index, 1);
     saveDB(db);
-
     res.json({ success: true, removed: username });
 });
 
