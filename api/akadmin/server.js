@@ -3,6 +3,13 @@ const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 
+// 1️⃣ Load admin token from environment
+const ADMIN_SECRET = process.env.ADMIN_SECRET;
+if (!ADMIN_SECRET) {
+    console.error("❌ ADMIN_SECRET is not set! Exiting...");
+    process.exit(1);
+}
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DB_PATH = path.join(__dirname, "data", "executors.json");
@@ -35,13 +42,16 @@ app.post("/api/execute", (req, res) => {
     res.json({ success: true, username: usernameLower });
 });
 
+// 2️⃣ Admin DELETE route now uses the token variable
 app.delete("/api/executor/:username", (req, res) => {
     const { secret } = req.body;
-    if (secret !== process.env.ADMIN_SECRET) return res.status(401).json({ error: "Unauthorized" });
+    if (secret !== ADMIN_SECRET) return res.status(401).json({ error: "Unauthorized" });
+
     const username = req.params.username.toLowerCase();
     const db = loadDB();
     const index = db.indexOf(username);
     if (index === -1) return res.status(404).json({ error: "User not found" });
+
     db.splice(index, 1);
     saveDB(db);
     res.json({ success: true, removed: username });
