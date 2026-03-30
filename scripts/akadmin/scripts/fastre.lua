@@ -151,11 +151,6 @@ local function performInstantRespawn()
         countdownLabel.Text = "Respawning..."
     end)
     
-    -- Use replicatesignal if available (exact same as original)
-    if typeof(replicatesignal) == "function" then
-        replicatesignal(player.ConnectDiedSignalBackend)
-    end
-    
     -- Wait the exact same time as original script
     wait(respawnTime)
     
