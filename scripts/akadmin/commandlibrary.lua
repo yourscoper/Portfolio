@@ -100,7 +100,7 @@ _G.cmds = {
     ["!copyserver"]             = "https://yourscoper.vercel.app/scripts/akadmin/scripts/copyserver.lua",
 }
 
-function Library:execute(input)
+function Library:Execute(input)
     if not input or input == "" then
         warn("[AK Admin] No input provided")
         return
