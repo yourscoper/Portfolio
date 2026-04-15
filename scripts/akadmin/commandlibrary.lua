@@ -102,26 +102,26 @@ _G.cmds = {
 
 function Library:Execute(input)
     if not input or input == "" then
-        warn("[AK Admin] No input provided")
+        --warn("[AK Admin] No input provided")
         return
     end
 
     local url = _G.cmds[input] or input
 
-    if not url or url == "" then
+    --[[if not url or url == "" then
         warn("[AK Admin] Invalid command or empty URL:", input)
         return
-    end
+    end]]
 
     local success, err = pcall(function()
         loadstring(game:HttpGet(url, true))()
     end)
 
-    if success then
+    --[[if success then
         print("[AK Admin] Successfully executed:", input)
     else
         warn("[AK Admin] Execution failed for", input, "| Error:", err)
-    end
+    end]]
 end
 
 return Library
