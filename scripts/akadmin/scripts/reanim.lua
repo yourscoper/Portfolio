@@ -1,15 +1,4032 @@
---[[
-       d8888 888    d8P 
-      d88888 888   d8P  
-     d88P888 888  d8P   
-    d88P 888 888d88K    
-   d88P  888 8888888b   
-  d88P   888 888  Y88b  
- d8888888888 888   Y88b 
-d88P     888 888    Y88b
-------------------------------
-discord.gg/akadmin
-]]--
-
-
-return(function(MS,Yu,Rp,MK,zT,eR,TL,FL,wZ,jZ,GB,bk,rP,Sr,ju,pm,Ds,zg,fb,yu,fD,aU,zp,oV,zK,Ny,GE,sr,MC,Tb,YC,QH,tf,zz,gZ,SQ,eG,su,Ec,Sb,Hi,XO,oM,Xl,Ta,mY,sY,rf,UA,zf,co,YZ,eM,Em,zV,jT,Vk,UB,ti,KN,mO,iL,qa,No,Wd,WH,gp,Tf,ds,Fh,mU,Yr,Ms,oz,KP,Ho,PX,AV,Iv,NJ,mh,np,Gu,nR,sg,OT,pT,Ry,DM,aE,dp,DZ,Eg,KI,oR,HP,du,Lp,hy,pM,TW,xQ,lX,Jc,Cx,Ff,TT,pH,kK,qF,LZ,bY,YW,hz,BC,KR,Mu,UD,...)while(fD)do if((Tf)<=(0B_1011_))then if((Tf)<=(5))then if((Tf)<=(2))then if((Tf)<=(0))then else if((Tf)>(1))then while(fD)do if(pH<1 or pH==1)then if(not(pH==0))then pH=4;Jc=((jZ^gp))else pH=2;mh=Hi;end;else if(pH<2 or pH==2)then pH=3;DZ=MK;else if(pH>3)then break;else pH=1;Ry,DM,oz=DZ,mh,pm(Ds)end;end;end;end;else pH=0;end;end;else if((Tf)<=(3))then kK=1;else if((Tf)~=(5))then while(fD)do if(kK<=1)then if(kK>0)then kK=2;Fh=((Jc-Ds))else kK=3;Ff=((sr)or(function(cz,...)local LY=0;while(fD)do if((0)<(LY))then break;else return({lX({...},Ds,((cz>iL)and(cz)or(Ds)));});end;LY=LY+1;end;end))end;else if(kK==3 or kK>3)then if(not(kK~=4))then break;else kK=4;fb=nil;end;else kK=0;lX=function(jI,YO,LU)local lZ,IW,qh,OX,nM=0;while(fD)do if((lZ)<=(3))then if((lZ)<=(1))then if((lZ)~=(1))then IW=fb;else qh=2;end;else if((lZ)==(2))then while(fD)do if(qh>=2)then if(qh==2 or qh<2)then qh=1;if((YO>LU))then return;end;else if(not(qh==4))then break;else qh=0;if((IW==Vk or IW>Vk))then return(jI[YO]),jI[(YO+Ds)],jI[(YO+jZ)],jI[(YO+Yu)],jI[(YO+XO)],jI[(YO+aU)],jI[(YO+jT)],jI[(YO+zf)],lX(jI,(YO+Vk),LU);end;end;end;else if(qh<1)then qh=3;if((IW==zf or IW>zf))then return(jI[YO]),jI[(YO+Ds)],jI[(YO+Ds)],jI[YO+Yu],jI[(YO+XO)],jI[(YO+aU)],jI[(YO+jT)],lX(jI,YO+zf,LU);end;else qh=4;IW=((LU-YO)+Ds)end;end;end;else OX=2;end;end;else if((lZ)<=(5))then if((lZ)>(4))then nM=2;else while(fD)do if(OX>2 or OX==2)then if(OX>=3)then if(OX>3)then OX=0;if((IW==aU or IW>aU))then return(jI[YO]),jI[(YO+Ds)],jI[(YO+jZ)],jI[(YO+Yu)],jI[YO+XO],lX(jI,(YO+aU),LU);end;else OX=1;if((IW==Yu or IW>Yu))then return(jI[YO]),jI[(YO+Ds)],jI[YO+jZ],lX(jI,YO+Yu,LU);end;end;else OX=4;if((IW>=jT))then return(jI[YO]),jI[YO+Ds],jI[(YO+jZ)],jI[YO+Yu],jI[(YO+XO)],jI[(YO+aU)],lX(jI,(YO+jT),LU);end;end;else if(OX>0)then break;else OX=3;if((IW>XO or IW==XO))then return(jI[YO]),jI[(YO+Ds)],jI[(YO+jZ)],jI[(YO+Yu)],lX(jI,YO+XO,LU);end;end;end;end;end;else if((lZ)==(6))then while(fD)do if(nM==0 or nM<0)then nM=1;return(jI[YO]),lX(jI,(YO+Ds),LU);else if(nM==2)then nM=0;if((IW>jZ or IW==jZ))then return(jI[YO]),jI[YO+Ds],lX(jI,(YO+jZ),LU);end;else break;end;end;end;else break;end;end;end;lZ=lZ+1;end;end;end;end;end;else qF=3;end;end;end;else if((Tf)<=(8))then if((Tf)<=(6))then while(fD)do if(qF<1 or qF==1)then if(qF==1 or qF>1)then break;else qF=4;aE=4;end;else if(qF==2 or qF<2)then qF=0;AV=Ff(Ds)else if(not(qF~=3))then qF=2;mU=Ff(Ds)else qF=1;Iv=sY;end;end;end;end;else if((Tf)<(8))then LZ=4;else while(fD)do if(LZ>2 or LZ==2)then if(LZ>3 or LZ==3)then if(not(LZ==4))then LZ=2;for sW=iL,Iv-Ds do local lw local PQ=3;while(fD)do if(PQ>2 or PQ==2)then if(PQ>3 or PQ==3)then if(PQ==4 or PQ>4)then PQ=1;AV[lw]=sW;else PQ=4;lw=bk(sW)end;else break;end;else if(PQ>0)then PQ=0;mU[sW]=lw;else PQ=2;AV[sW]=lw;end;end;end;end;else LZ=3;ds=0XC1__;end;else LZ=1;HP=MS;end;else if(not(LZ~=0))then break;else LZ=0;Ho=1;end;end;end;end;end;else if((Tf)<=(9))then bY=2;else if((10)<(Tf))then YW=0;else while(fD)do if(bY>2 or bY==2)then if(bY<2 or bY==2)then bY=4;TW={}else if(not(bY~=3))then bY=0;oR=function(Pr,uK,...)local pS=0;while(fD)do if((pS)>(0))then break;else if(not(Pr~=0_B1111001100_01101_01101_0_10__))then return(Rp((((uK)-2_09_114_))-0x9107D_,0x9_0F55));elseif(not(Pr~=0x_6_3_9AD2_))then return(Rp(Rp((uK)-0_B1000_00_01_0000_101001_10,176290),0b_1_1000011110_0011110));elseif((Pr==0x622155))then return(Rp(Rp(Rp(Rp(uK,0b1000110101010010110),0_X6E38_D),739408),0b1001111000000001011));elseif(not(Pr~=0b10_00101_1_1_1_00_111_1_1110_111_1_))then return(Rp(Rp(Rp(uK,0B10100101000100111011),0x42501),0B10101101001010000001));elseif((Pr==633_91_58))then return(Rp((((uK)-5325_53))-0B110_11100011111001_01_0,0X_56_85D_));elseif(not(Pr~=0_x355CCE_))then return(Rp(Rp(Rp(Rp(Rp(uK,738715__),0B11_0_0_1101_000_00_010_00_11_),0b_10_1_11100100_00_010_100),94_8455),317259));elseif((Pr==8_478848_))then return(Rp(Rp((((Rp(uK,9176_0_1))-0_x5_40_A_4))-0b11001100000110011010,44_4480),522466));elseif(not(Pr~=0x1037C1))then return(Rp(Rp((uK)-0B1_0_1_0000_01_010_1_0000_000_,179958),0xD9E01));elseif(not(Pr~=0X4563E9))then return(((Rp(Rp(Rp(uK,748_72_),0_b1011101_00100101110_11),0x_B4_E4D_))-8806_10__));elseif(not(Pr~=7623370))then return(Rp(((((((((uK)-0XB_38BE_))-0_x82B97_))-0b_10_00_101_000_011_0_111))-0_b10_010011_01_110001000_),0_B1_01_0_1_11_10101_0_10_01_));elseif(not(Pr~=0X128808__))then return((((Rp(Rp(Rp(uK,0X_AA3_BD_),0x66_1C1_),0xB12F9_))-0x346E2)-39_9209__));else end;end;pS=pS+1;end;end;else bY=1;Ms=0;end;end;else if(bY<1)then break;else bY=3;xQ=(function(Ac)local yL,Jn,Xq,ml,Ty,cI,iO,rq,lj,OS,nt,oZ,VK,nF,Mb,pC=0;while(fD)do if((yL)<=(4))then if((yL)<=(1))then if((0)==(yL))then Jn,Xq,ml,Ty,cI,iO,rq,lj,OS,nt,oZ=fb;else VK=0;end;else if((yL)<=(2))then while(fD)do if(VK==2 or VK>2)then if(VK==3 or VK>3)then if(VK==3 or VK<3)then VK=2;ml=mO(Ac,aU)else VK=1;Jn=1;end;else VK=4;iO=nil;end;else if(VK<1)then VK=3;rq,OS,cI=tf(Ac,1,5)else break;end;end;end;else if((yL)==(3))then nF=3;else while(fD)do if(nF>2 or nF==2)then if(nF>3 or nF==3)then if(nF==3)then nF=2;lj,Xq=mh,mh;else nF=0;nt=function()local CX,MV,tZ,Nn=0;while(fD)do if((CX)<=(2))then if((CX)<=(0))then MV=fb;else if((1)==(CX))then tZ=1;else while(fD)do if(tZ>=2)then if(tZ<=2)then tZ=0;MV=(MV+(TW[tf(ml,(Jn+2),(Jn+2))]-1));else if(tZ<4)then break;else tZ=3;MV=(MV+(((TW[tf(ml,Jn,Jn)]-1))*0X_2_1_C_9_));end;end;else if(not(tZ~=1))then tZ=2;MV=0;else tZ=4;MV=MV+((TW[tf(ml,(Jn+1),(Jn+1))]-1))*93;end;end;end;end;end;else if((CX)<=(3))then Nn=2;else if((CX)>(4))then break;else while(fD)do if(Nn>=2)then if(not(Nn~=3))then break;else Nn=0;Jn=Jn+3;end;else if(Nn<1)then Nn=1;MV=(MV-0_x_2_34_1_);else Nn=3;return(MV);end;end;end;end;end;end;CX=CX+1;end;end;end;else nF=1;oZ=Ff(Jn)end;else if(nF==1)then nF=4;if(not(((rq+OS)+cI)==zV))then ds=ds+oM;Iv=(Iv+su);end;else break;end;end;end;end;end;end;else if((yL)<=(6))then if((yL)==(5))then Mb=0;else while(fD)do if(Mb<1 or Mb==1)then if(Mb<1)then Mb=3;iO=nt();else break;end;else if(Mb==2 or Mb<2)then Mb=1;Ty=1;else if(not(Mb~=4))then Mb=2;oZ[1]=lj;else Mb=4;lj=AV[iO];end;end;end;end;end;else if((yL)<=(7))then pC=0;else if((yL)>(8))then break;else while(fD)do if(pC==0 or pC<0)then pC=1;while Jn<(#ml)do local Ki,dg local jG=0;while(fD)do if(jG==1 or jG<1)then if(jG>=1)then jG=2;if(Ki)then Xq=Ki;else Xq=(lj..mO(lj,1,1));end;else jG=4;dg=nt()end;else if(jG<=2)then jG=3;mU[Iv]=(lj..mO(Xq,1,1));else if(not(jG~=3))then break;else jG=1;Ki=mU[dg]end;end;end;end;local VU=4;while(fD)do if(VU>2 or VU==2)then if(VU==3 or VU>3)then if(not(VU==3))then VU=1;oZ[(Ty+1)]=Xq;else break;end;else VU=0;Iv=(Iv+1);end;else if(not(VU~=1))then VU=2;lj=Xq;else VU=3;Ty=(Ty+1);end;end;end;end;else if(not(pC~=1))then pC=2;return(mY(oZ));else break;end;end;end;end;end;end;end;yL=yL+1;end;end)end;end;end;end;end;end;end;else if((Tf)<=(0_x_11__))then if((Tf)<=(14))then if((Tf)<=(1_2__))then while(fD)do if(YW<1 or YW==1)then if(YW<1)then YW=2;Eg=-1;else YW=4;pT=(((""..co).."\115")..co.."\115")end;else if(YW<2 or YW==2)then YW=1;KP="\95\95"else if(not(YW==4))then break;else YW=3;KI=((("\105"..GB).."\100")..WH.."\120")end;end;end;end;else if((Tf)==(0b1101))then hz=1;else while(fD)do if(hz>2 or hz==2)then if(hz>3 or hz==3)then if(hz~=3)then hz=2;PX=eR;else break;end;else hz=3;hy=function(aF,PN,GM)local Mc,qy=0;while(fD)do if((Mc)<=(0))then qy=0;else if((Mc)~=(2))then while(fD)do if(qy==2 or qy>2)then if(qy>3 or qy==3)then if(qy<3 or qy==3)then break;else qy=3;return Ec(aF,PN,GM)end;else qy=1;if(not(GM))then GM=#aF;end;end;else if(qy==0)then qy=2;if(not(PN))then PN=1;end;else qy=4;if((GM-PN+1)>7997)then return lX(aF,PN,GM)end;end;end;end;else break;end;end;Mc=Mc+1;end;end;end;else if(not(hz~=1))then hz=0;du=function()local Cg,nn,bS,aM,kP=0;while(fD)do if((Cg)<=(2))then if((Cg)<=(0))then nn,bS=fb;else if((Cg)==(1))then aM=1;else while(fD)do if(aM>=2)then if(aM<2 or aM==2)then aM=4;ds=bS%0X10_0_;else if(aM>3)then aM=0;nn=Rp(nn,ds);else aM=2;bS=Rp(bS,ds);end;end;else if(aM==1)then aM=3;bS,nn=tf(xQ,Ho,(Ho+2))else break;end;end;end;end;end;else if((Cg)<=(3))then kP=0;else if((Cg)<(5))then while(fD)do if(kP>2 or kP==2)then if(not(kP==3))then kP=3;Ho=(Ho+2);else kP=1;return((nn*0X100)+bS);end;else if(not(kP~=0))then kP=2;ds=(nn%0X_100_);else break;end;end;end;else break;end;end;end;Cg=Cg+1;end;end;else hz=4;dp=TL(pT,"\95\95",KI)end;end;end;end;end;else if((Tf)<=(15))then BC=0;else if((Tf)==(0x10))then while(fD)do if(BC>2 or BC==2)then if(BC==3 or BC>3)then if(not(BC==3))then BC=3;for hr=0,94 do local My=2;while(fD)do if(My==2 or My>2)then if(not(My~=2))then My=1;if(hr==3)then Ms=Ms-1;end;else break;end;else if(My==1 or My>1)then My=0;TW[(0X20+hr)]=Ms;else My=3;Ms=(Ms+1);end;end;end;end;else BC=1;Yr=function()local Dy,Cq,FV,Od,Qg,Ev,pP,nY=0;while(fD)do if((Dy)<=(3))then if((Dy)<=(1))then if((Dy)>(0))then Ev=4;else Cq,FV,Od,Qg=fb;end;else if((Dy)==(2))then while(fD)do if(Ev>2 or Ev==2)then if(Ev==2 or Ev<2)then Ev=1;FV=Rp(FV,ds);else if(Ev~=3)then Ev=3;Od,FV,Cq,Qg=tf(xQ,Ho,Ho+5)else Ev=0;Od=Rp(Od,ds);end;end;else if(Ev<1)then Ev=2;ds=(Od%0B100_00_00_00_);else break;end;end;end;else pP=4;end;end;else if((Dy)<=(5))then if((5)~=(Dy))then while(fD)do if(pP==2 or pP>2)then if(pP>3 or pP==3)then if(pP~=4)then pP=2;Cq=Rp(Cq,ds);else pP=3;ds=(FV%0X100);end;else pP=1;ds=(Cq%0x100_);end;else if(not(pP==1))then break;else pP=0;Qg=Rp(Qg,ds);end;end;end;else nY=1;end;else if((6)<(Dy))then break;else while(fD)do if(nY>=2)then if(not(nY~=3))then break;else nY=3;return(((((Qg*0_x10_00000_))+(Cq*0_B_1_000_0000_0_0_000_00_00_))+((FV*256_)))+Od);end;else if(nY==0 or nY<0)then nY=2;Ho=(Ho+4);else nY=0;ds=(Qg%0B_10000000_0_);end;end;end;end;end;end;Dy=Dy+1;end;end;end;else BC=4;np=function()local cy,ch,Ou=0;while(fD)do if((cy)<=(1))then if((0)<(cy))then Ou=1;else ch=fb;end;else if((cy)<(3))then while(fD)do if(Ou==2 or Ou>2)then if(Ou<=2)then Ou=3;return(ch);else if(Ou==4)then Ou=2;Ho=((Ho+1));else break;end;end;else if(not(Ou==1))then Ou=4;ds=(ch%0b100000000);else Ou=0;ch=Rp(tf(xQ,Ho,Ho),ds)end;end;end;else break;end;end;cy=cy+1;end;end;end;else if(BC<1)then BC=2;NJ=function(sG,Ks)local xa=0;while(fD)do if((0)==(xa))then return No(sG/Ks);else break;end;xa=xa+1;end;end;else break;end;end;end;else KR=2;end;end;end;else if((Tf)<=(0b10_100))then if((Tf)<=(0B_1001_0))then while(fD)do if(KR<1 or KR==1)then if(KR==1 or KR>1)then KR=4;TT="\35"else KR=1;pM=function(cJ,Gm,ho)local OH,Ba,lb=0;while(fD)do if((OH)<=(1))then if((OH)>(0))then lb=2;else Ba=fb;end;else if((3)~=(OH))then while(fD)do if(lb>=2)then if(not(lb==2))then lb=1;return((((cJ%(Ba+Ba)>=Ba)and(1))or(0)));else lb=0;if(ho)then local JB=((cJ/2^(Gm-1))%2^((ho-1)-(Gm-1)+1));return((JB-((JB%1))));end;end;else if(lb==1 or lb>1)then break;else lb=3;Ba=(2^(Gm-1))end;end;end;else break;end;end;OH=OH+1;end;end;end;else if(KR<2 or KR==2)then KR=0;Cx=TL(pT,TL(pT,KP,""..GB..WH.."\119"),KI)else if(not(KR~=4))then KR=3;Lp=function(...)local Er=0;while(fD)do if((Er)~=(1))then return{...},Wd(TT,...);else break;end;Er=Er+1;end;end;else break;end;end;end;end;else if((0x14)~=(Tf))then Mu=0;else while(fD)do if(Mu>2 or Mu==2)then if(Mu==2 or Mu<2)then Mu=1;sg=OT()else if(Mu>4 or Mu==4)then Mu=2;Gu=function(Sp,EU,Bt,...)local QU,Pa,PC,HB,yH,wI,fi,OC,Ia=0;while(fD)do if((QU)<=(1))then if((QU)>(0))then Ia=0;else Pa,PC,HB,yH,wI,fi,OC=fb;end;else if((2)==(QU))then while(fD)do if(Ia<1 or Ia==1)then if(not(Ia~=0))then Ia=3;HB,wI,PC,yH,fi,OC=hy(Sp)else Ia=2;return(Pa)end;else if(Ia<3)then break;else Ia=1;Pa=function(...)local AY,xf,Uk,II,rE,qc,zx,UH,GI,oX,rK=0;while(fD)do if((AY)<=(6))then if((AY)<=(2))then if((AY)<=(0))then xf=-1;else if((1)<(AY))then II=rP(Ff(Ds),{[""..Em.."\95"..wZ..UB..qa.."\101"]="\118"})else Uk=Wd(TT,...)-1;end;end;else if((AY)<=(4))then if((AY)>(3))then qc=Ff(Ds)else rE={...}end;else if((AY)==(5))then zx=Ff(Ds)else UH=pm()end;end;end;else if((AY)<=(9))then if((AY)<=(7))then GI=OC[yH]else if((AY)<(9))then oX=(UH==Bt and Bt or UH)else for nK=0,Uk,1 do if((nK==wI or nK>wI))then zx[(nK-wI)]=rE[nK+1];else qc[nK]=rE[(nK+1)];end;end;end;end;else if((AY)<=(0b_1_011_))then if((10_)==(AY))then if(not(oX==UH))then eG(Pa,oX)end;else rK=(Uk-wI+1)end;else if((AY)>(12_))then break;else while(fD)do local YA=GI;local FG=YA[75_];GI=YA[0X48];if(FG==oR(0B11_00_01110011_010_110100_10,0X_9_D0_31)or FG<oR(0x_6_39AD2_,0b1_001_11_01000_00_011_0_0_01_))then if(((FG>0B1_1100)or not(FG~=28)))then if(((FG>oR(QH,0x1550D6))or FG==oR(QH,0_X1_5_50D6_)))then if(FG>0_X31_ or not(FG~=4_9_))then if((FG==(((Ry[5577934])or((function(Pc)Ry[0X551CCE]=(Rp(Rp((Pc)-6223_6_1_,0_b1_010_0_0_1110_1_11_010011__),0x18_5E8))-0x50868;return(Ry[0_B1_0_101_010_0_0111_00_110_011_10_]);end)(Rp(0x93FC97,10023726)))))or FG<(((Ry[0_X551CCE_])or((function(Pl)Ry[0B10_1_01010001110_011001110]=(Rp(Rp((Pl)-0X97F19,0b1010001110111010011),0b_110_00010111_1_01_000_))-0x_5_086_8_;return(Ry[0X551CCE]);end)(Rp(0_B_1001_00_1_11_11_1_11001001_011_1,0_B_1_001100_01111_001_1_0010_111_0_)))))))then if((FG<49)or not(FG~=49_))then if(((fi[YA[64]]>qc[YA[0b1010111]]or fi[YA[6_4_]]==qc[YA[0X57_]])))then GI=YA[0B_1011_0_];end;else if(not(FG~=(((Ry[0x_5_51CCE])or((function(Hh)local FA=0;while(fD)do if((FA)<=(0))then Ry[0x551CCE]=(Rp(Rp(((Hh)-62_2361_),33531_5_),0B11000010111101000))-0b1010000100001101000;else if((1)<(FA))then break;else return(Ry[5577934]);end;end;FA=FA+1;end;end)(Rp(0B100100111111110010010111,1_002_3726__)))))))then local RK=YA[0b1000000];local dJ,Nz=Lp(qc[RK](hy(qc,(RK+1),YA[22])))xf=(Nz+RK-1);local LJ=0 do local pD,KU=RK,xf;while(fD)do LJ=((LJ+1));(qc)[pD]=dJ[LJ];if((pD==KU or pD>KU))then break;end;pD=pD+1;end;end;else(qc)[YA[0B1_0_00_000_]]=Ff(0b10000000_0_);end;end;else if((FG==0B1_1_01_0_1__ or(FG<0x35_)))then if((FG>Rp(0X4_E6281_,0B1_0_0_1110011000101011_0_10_1_)))then(qc)[YA[0X40]]=((qc[YA[22_]]/fi[YA[0B1010111]]));else(qc)[YA[64]]=-(qc[YA[0_B_1_0110__]]);end;else if(not(FG~=0_b_1101_10))then local FR,LS,zm,tw=0;while(fD)do if((FR)<=(3))then if((FR)<=(1))then if((FR)~=(1))then LS=YA[0X40]else qc[LS]=0+(qc[LS]);end;else if((FR)>(2))then qc[LS+2]=0+(qc[(LS+2)]);else qc[LS+1]=(0+(qc[(LS+1)]));end;end;else if((FR)<=(5))then if((FR)<(5))then zm=qc[LS]else tw=qc[(LS+2)]end;else if((FR)>(6))then break;else if(tw>0)then if(zm>qc[LS+1])then GI=YA[22];else qc[(LS+3)]=zm;end;elseif(zm<qc[LS+1])then GI=YA[22];else qc[(LS+3)]=zm;end;end;end;end;FR=FR+1;end;else if(not(not(qc[YA[87]]==qc[YA[64]])))then GI=YA[22];end;end;end;end;else if((not(FG~=oR(Rp(4443471,0_B_1100001010_10110_11_100_1_11_1_),0_X_1_D3_2A_C_))or FG>oR(Rp(4443471,0B1_100_00_1_01_010110_111_0_011_11_),0X_1D32AC_)))then if(FG<0b101110 or(FG==46_))then if(FG>oR(Rp(0X_4_3CD_4F_,12_75847_9),0x1D32A_C_))then(qc)[YA[0_B10_0000_0__]]=Bt[fi[YA[0B10110]]];else if((qc[YA[0B1000000]]>qc[YA[0B1010111__]]))then GI=YA[0x16];end;end;else if(FG<0X30)then(qc)[YA[64]]=(qc[YA[2_2_]]+qc[YA[0X57]]);else qc[YA[0x40_]]=fi;end;end;else if(FG==0B101011 or FG>43)then if(FG>0B101011)then(qc)[YA[0X_4_0]][fi[YA[0X_1_6__]]]=fi[YA[0_b10_10111_]];else qc[YA[6_4_]]=rf(qc[YA[0X16_]],fi[YA[0X57]]);end;else local aS=YA[0_B1000000_];(qc)[aS]=qc[aS](hy(qc,(aS+1),YA[0B10110]));do local vS,JV=aS+1,HB;while(fD)do if((vS>JV or vS==JV))then(qc)[vS]=fb;break;else(qc)[vS]=fb;end;vS=(vS+1);end;end;end;end;end;else if((not(FG~=0B100011)or(FG>0b10_00_11_)))then if((FG<0B_1_00101_ or FG==37))then if(not(FG~=oR(0_b10_0101_0001000_0_00_010_0_0_,0b_11_10_1000111011_101_01_0))or FG>oR(0_x12_8808,9_5_409_0))then if(FG>oR(1_2_14472,0b1_11_0_1000_111_0_11_1_01_01_0__))then if(not(qc[YA[0_B1_0000_00_]]))then GI=YA[22];end;else local WV=YA[64_];local Kl={qc[WV](hy(qc,WV+1,xf))};local UR=YA[87];local Ip=0;for Wg=WV,UR do Ip=(Ip+1);(qc)[Wg]=Kl[Ip];end;for oF=(UR+1),HB do(qc)[oF]=fb;end;end;else do return(qc)[YA[0_B1_0_00000_]]();end;end;else if(FG<0X27 or FG==39)then if(FG>0_x_2_6_)then if(not(not(qc[YA[0B1_00_0_000_]]~=qc[YA[0b1_010111_]])))then GI=YA[0X16];end;else(qc)[YA[0B1000000]]=(qc[YA[0_B_1_011_0]]*qc[YA[87]]);end;else if((FG<oR(10628_49__,zT(0x3256BE,1))or FG==oR(1_0_62849__,zT(0_x_3256BE__,1))))then local VQ=YA[0_X4_0];local sw={};do local Gn,KC=1,#II;while(fD)do local OW=II[Gn];if(OW)then do local rZ,bn=0,#OW;while(fD)do if((rZ<bn or rZ==bn))then local gv=OW[rZ];local NU=gv[1];local GV=gv[2];if(((not(not(NU==qc)))and(((GV>VQ or GV==VQ)))))then sw[GV]=NU[GV];gv[1]=sw;end;end;if((rZ>bn or rZ==bn))then break;end;rZ=(rZ+1);end;end;end;if((Gn>KC or Gn==KC))then break;end;Gn=(Gn+1);end;end;else(qc)[YA[0_B_100_000_0_]]=(qc[YA[0b10110]]-qc[YA[0X57__]]);end;end;end;else if(FG>=0X_1F_)then if(FG<=3_2_)then if(not(not(FG~=0_X_1F)))then(qc)[YA[64_]]=(qc[YA[0x1_6_]]*fi[YA[0X57]]);else(qc)[YA[0b1000000]][YA[0b_10_110_]]=qc[YA[0_b101011_1_]];end;else if(((FG<33_)or not(FG~=33_)))then local UF=YA[0x40];do return(lX)(qc,UF,xf);end;else local EW=YA[0B1000000];local uf,pI=Lp(qc[EW](hy(qc,((EW+1)),YA[0X_16_])))xf=((pI+EW-1));local xG=0;for Mm=EW,xf do xG=((xG+1));(qc)[Mm]=uf[xG];end;end;end;else if((FG>0B_11_101_)or not(FG~=0_b111_01))then if(FG<0x1E)then local Mp=YA[0b1000000];local lN,MJ=Lp(qc[Mp](qc[(Mp+1)]))xf=((MJ+Mp)-1);local Qd=0;for lO=Mp,xf do Qd=(Qd+1);(qc)[lO]=lN[Qd];end;else if(not(not(fi[YA[6_4]]~=qc[YA[0X5_7_]])))then GI=YA[0_X_1_6];end;end;else(qc)[YA[0x40_]]=(qc[YA[22]]*qc[YA[0X57]]);end;end;end;end;else if((not(FG~=0x_E_)or(FG>0xE)))then if((FG>0x15_ or(FG==0x15)))then if(not(FG~=0b11000)or FG>0_X18__)then if(((FG==2_5_)or(FG<0b11_001_)))then if((FG>0b11001 or not(FG~=25)))then if(((fi[YA[0B10_0_0000]]>qc[YA[0_x_5_7]])))then GI=YA[0x16_];end;else if(not(not(fi[YA[0_B1_0_00000_]]~=fi[YA[87]])))then GI=YA[0B10110];end;end;else if(not(not(FG==0_B1_1_0_1_0__)))then local BR=YA[0x40];local ba={qc[BR](qc[BR+1])};local aj=YA[87];local yB=0 do local aG,Je=BR,aj;while(fD)do if((aG>Je or aG==Je))then yB=((yB+1));(qc)[aG]=ba[yB];break;else yB=((yB+1));(qc)[aG]=ba[yB];end;aG=(aG+1);end;end;do local mR,Bl=(aj+1),HB;while(fD)do if(mR>=Bl)then(qc)[mR]=fb;break;else(qc)[mR]=fb;end;mR=mR+1;end;end;else if(qc[YA[64]]>fi[YA[0_X_5_7_]])then GI=YA[0B10110];end;end;end;else if((FG<2_1 or FG==21_))then do return(qc)[YA[0x_4_0]];end;else if(not(not(FG==((((Ry[0B_101_0_11_01_0_0_000000_001_01_11__])or((function(QI)Ry[0b10101101000000000010111]=Rp((((Rp(QI,7280_40__))-0b10010111010000010000)-551_9_75_)-0xB98D3,0b11001000100110000);return(Ry[0b1_0101_101000_00000_0010111]);end)(0B101000001000111011000))))))))then local cS=YA[0b10_00000_];(qc)[cS](hy(qc,((cS+1)),YA[0_b101_1_0__]))do local Nu,pb=cS+1,HB;while(fD)do if((Nu==pb or Nu>pb))then(qc)[Nu]=fb;break;else(qc)[Nu]=fb;end;Nu=Nu+1;end;end;else(qc)[YA[0_b1000_000__]]=Ff(YA[0B10110]);end;end;end;else if((not(FG~=((Ry[2232_182_])or((function(WR)Ry[0_B_10001000001_11101110110_]=(Rp((WR)-0_b11011_11_001_0111110111_,0X_1_7_C07_))-0b1110000000110101101;return(Ry[0X_220_F_76]);end)(0B101000110001110110001))))or(FG<(((Ry[0B1000100000111101110110])or((function(BW)local cr=0;while(fD)do if((cr)<=(0))then Ry[2_2321_82]=((Rp((BW)-910839_,0_X1_7C0_7_))-0X70_1AD__);else if((cr)<(2))then return(Ry[0B_10_001000_0_01_1110111_0110_]);else break;end;end;cr=cr+1;end;end)(0x1463B1)))))))then if(not(FG~=0X_E)or(FG<14))then local Ky=qc[YA[87]];if(not(Ky))then(qc)[YA[0X40]]=Ky;GI=YA[22_];end;else if((not(FG~=oR(Rp(850779_0_,14773208),1790053))or(FG<oR(Rp(8_50_7_7_90__,0B11_10_00_0101_1_0_101111011_000),1790053))))then(qc)[YA[0b_10_000_0_0_]]=fi[YA[0x16]]-qc[YA[0X_57__]];else(qc)[YA[64_]][fi[YA[2_2]]]=qc[YA[0b_1010_11_1_]];end;end;else if((FG==18_ or FG<18_))then if(FG>0_X_11_)then local Cn=YA[0_x40__];local RV,vc=Lp(qc[Cn](qc[((Cn+1))]))xf=vc+Cn-1;local OU=0 do local XD,gh=Cn,xf;while(fD)do OU=OU+1;(qc)[XD]=RV[OU];if((XD>=gh))then break;end;XD=(XD+1);end;end;else local VA=YA[0x40];(qc)[VA](qc[(VA+1)])for Jt=VA,HB do(qc)[Jt]=fb;end;end;else if(((FG==20_)or(FG>0_b101_0_0_)))then(qc)[YA[0b1_0000_0_0_]]=qc[YA[0x16]][qc[YA[0X57]]];else(qc)[YA[0x40]]=(not(not(YA[22]~=0)));end;end;end;end;else if((FG<6 or FG==6))then if(FG==2 or FG<2)then if((FG>oR(0X8BCFEF,0X_4_A6BA_))or not(FG~=oR(9_1_627_35_,0b1001_010_0_110101110_10_)))then if(not(not(FG==oR(0x8B_CF_E_F__,0B10_010_1001_1010111_0_10__))))then if(not(not(qc[YA[64]]==fi[YA[0b10_10_11_1_]])))then GI=YA[0X16];end;else qc={};end;else local QO=YA[64_];local nJ=YA[0_b10110];local ac=((50__*(YA[87]-1)));local ob=qc[QO];local tH=0 do local dH,Ae=(QO+1),nJ;while(fD)do(ob)[(ac+tH+1)]=qc[QO+(dH-QO)];tH=(tH+1);if((dH>Ae or dH==Ae))then break;end;dH=(dH+1);end;end;end;else if(((FG<4)or not(FG~=4)))then if(not(not(FG~=4)))then(qc)[YA[64_]]=(qc[YA[22]]%qc[YA[87]]);else local HL=YA[0B10_110_];qc[YA[0x40]]=qc[HL];do local pF,We=(HL+1),YA[0x57];while(fD)do qc[YA[0b1000000]]=((qc[YA[64]]..qc[pF]));if((pF==We or pF>We))then break;end;pF=(pF+1);end;end;end;else if(not(FG~=5))then(qc)[YA[64__]]=((qc[YA[0X16]]/fi[YA[87]]));else(qc)[YA[0_X40_]]=(qc[YA[22]]/qc[YA[0_b10_1_0_11_1__]]);end;end;end;else if((FG>(((Ry[0x5D1280])or((function(uv)local oJ=0;while(fD)do if((oJ)<=(0))then Ry[0B_1011101000_1001010000000__]=((Rp(Rp((uv)-0_B_1_0010_0_1_1_0110_110_011_0_,8_5_317_2_),562492_))-567759);else if((oJ)>(1))then break;else return(Ry[0X_5_D_1_280]);end;end;oJ=oJ+1;end;end)(Rp(3474458,0x24D7AD)))))or not(FG~=((((Ry[609_95_8_4_])or((function(yA)local pv=0;while(fD)do if((pv)<=(0))then Ry[0x5D1280]=((Rp(Rp(((yA)-0b10010011_0110110_0_11_0),0b11010000010010110100),0_X_8953_C_))-0X8_A_9CF_);else if((pv)<(2))then return(Ry[0X5D1280]);else break;end;end;pv=pv+1;end;end)(Rp(0x_35041A_,0x2_4D7AD)))))))))then if((FG<11)or not(FG~=0xB))then if not(not(FG~=((Ry[6099584])or((function(Un)local FN=0;while(fD)do if((FN)<=(0))then Ry[0b1_01_1_10_1_000100_10_1_0_0000_00_]=(((Rp(Rp((((Un)-30_1_9_26__)),0_XD_0_4_B4_),0b10_00_1_00_1010_10_011110_0))-5677_5_9_));else if((1)==(FN))then return(Ry[6099584_]);else break;end;end;FN=FN+1;end;end)(Rp(0X35041A,0B10010_0110_1_01_1_11_01_0110_1_))))))then qc[YA[64]]=PX;else qc[YA[64]]=AV;end;else if((not(FG~=0b_1_101_)or(FG>0XD)))then local nf=YA;(qc)[YA[64]]=function()local CB=0;while(fD)do if((CB)>(0))then break;else return(nf)[0X40_];end;CB=CB+1;end;end;else local xM=YA[0X40];(qc)[xM](hy(qc,(xM+1),xf))do local iW,iI=xM+1,xf;while(fD)do YA[iW]=fb;if((iW==iI or iW>iI))then break;end;iW=(iW+1);end;end;end;end;else if((FG>=oR(0x_6_22155_,0xD3148)))then if((FG==9 or FG>9))then if(((qc[YA[64__]]>fi[YA[87_]]or not(qc[YA[0B100_00_0_0_]]~=fi[YA[0x_57_]]))))then GI=YA[22];end;else if(((qc[YA[0_B_10_10_1_1_1_]]>qc[YA[64]])))then GI=YA[0b10110];end;end;else qc[YA[64_]]=PX;end;end;end;end;end;else if(((FG==0x_53)or FG<0b_1_0_100_11_))then if((FG>7_0_ or FG==0X46))then if((FG>0b1001101 or not(FG~=0X4D_)))then if(FG<oR(0b11000001011101001010110,0_x1B5_025)or FG==oR(6339158,0b110_1101_0_1_0_00_0001_001_0_1))then if((FG>78 or FG==78))then if(not(FG==0X4E))then qc[YA[64]]=qc;else(qc)[YA[64]]=(qc[YA[0X1_6]]+fi[YA[0_B_101011_1_]]);end;else GI=YA[0X_1_6];end;else if(not(FG~=0X51)or FG<0X51)then if((FG>0x51 or FG==0_B_1010_00_1))then(qc)[YA[0B1000000]]=qc[YA[0x16]][fi[YA[0_B_101_0111_]]];else(qc)[YA[0x_40_]]();end;else if((FG==((Ry[0_B_10_0_0101_101010_000101_00_001_])or((function(Gi)Ry[0B100_0_10_11_01_01000_0_1_0100001__]=(Rp(Rp(((Gi)-0_X6_5C81_)-205_1_2_2_,0x3E9D5),0B1011111110110100101))-0b_10_1001011_110101_1_0;return(Ry[9_130145]);end)(0b_1000_0110101_10000_110_11__)))or FG<((Ry[0X8B50A1])or((function(Nt)Ry[0b100010110101000010100001]=(Rp(Rp(((Nt)-0B1100101110010000001)-0B110010_0_00101_000010__,0X3E9_D5),0X5FDA5))-0B_101_001_0_11_11_0_101_1_0__;return(Ry[0x8B50A1]);end)(1_103_387_)))))then local FT=YA[0B_100_0_000_];local go,jk=Lp(qc[FT]())xf=((jk+FT-1));local kH=0;for qs=FT,xf do kH=(kH+1);(qc)[qs]=go[kH];end;do local Ca,qr=xf+1,HB;while(fD)do if((Ca>qr or Ca==qr))then(qc)[Ca]=fb;break;else(qc)[Ca]=fb;end;Ca=(Ca+1);end;end;else(qc)[YA[0_B1_00000_0]]=((qc[YA[22]]-fi[YA[0b1010111_]]));end;end;end;else if(((FG<0b1001000)or FG==72_))then if((FG<0X4_6_ or FG==70))then(EU)[YA[22]]=qc[YA[0b_1_00_0000__]];else if(FG>71)then local oe=YA[64_];local WG=({qc[oe](hy(qc,oe+1,YA[0X16]))})local Vv=YA[87_];local ei=0 do local Fa,Fm=oe,Vv;while(fD)do ei=((ei+1));qc[Fa]=WG[ei];if((Fa>Fm or Fa==Fm))then break;end;Fa=Fa+1;end;end;do local CT,Cv=(Vv+1),HB;while(fD)do qc[CT]=nil;if((CT>Cv or CT==Cv))then break;end;CT=(CT+1);end;end;else if(qc[YA[0x40_]])then GI=YA[0_x16_];end;end;end;else if((FG>0_b100_1_0_11 or not(FG~=0X_4B_)))then if(FG<0_b1_00_1100__)then local Xs=YA[64];local yt=qc[Xs];local cR,ig=0,((50*((YA[87]-1))));do local jy,zL=Xs+1,xf;while(fD)do if((jy>zL or jy==zL))then(yt)[(ig+cR+1)]=qc[jy];cR=(cR+1);break;else(yt)[((ig+cR)+1)]=qc[jy];cR=(cR+1);end;jy=(jy+1);end;end;else(qc)[YA[0_B1_000_000_]]=((qc[YA[0b_1_0_1_10_]]*qc[YA[0x57]]));end;else if(not(FG==0_x49_))then(qc)[YA[6_4]]=(qc[YA[0b_10_110_]]*fi[YA[0x57]]);else(qc)[YA[0B10000_0_0]][qc[YA[22_]]]=fi[YA[87]];end;end;end;end;else if(((FG>0_x_3F__)or(FG==6_3)))then if((not(FG~=0B_10_0001_0_)or(FG>0B_1000_0_1_0__)))then if(FG<=0b1000011)then if((FG>0x42_))then(qc)[YA[0X40]]=#qc[YA[0X_16_]];else(qc)[YA[0B10_00000]]=fi[YA[0x16]];end;else if(not(not(FG~=0x45)))then(Bt)[fi[YA[22_]]]=qc[YA[64_]];else qc[YA[0_x4_0_]]=Bt;end;end;else if(FG<63 or FG==0B111111)then local WC=YA[0X40_];local vL=qc[((WC+2))];local nu=((qc[WC]+vL));(qc)[WC]=nu;if(vL>0)then if(((nu==qc[(WC+1)]or nu<qc[(WC+1)])))then GI=YA[0x16_];(qc)[(WC+3)]=nu;end;elseif(((nu>qc[(WC+1)])or not(nu~=qc[(WC+1)])))then GI=YA[0_B10110_];(qc)[(WC+3)]=nu;end;else if(not(not(FG==0B10_0_0_0_01)))then local cC=YA[64__];(qc)[cC]=qc[cC]();else if(not(not(fi[YA[0X40]]~=qc[YA[0B1010111]])))then GI=YA[0b10110];end;end;end;end;else if((not(FG~=58)or(FG<0B1110_10)))then if((not(FG~=SQ)or FG>SQ))then if(not(not(FG==SQ)))then if(((qc[YA[64]]==fi[YA[0_B1010_111_]]or qc[YA[0x40]]>fi[YA[0_X_5_7]])))then GI=YA[0_b101_10_];end;else(qc)[YA[64]]={};end;else local mt=YA[0B1000_000_];do return qc[mt](lX(qc,(mt+1),YA[0B10110]))end;end;else if(((FG>0b111101)or not(FG~=0B111101)))then if(FG>=0X_3E)then if(fi[YA[0x40__]]>fi[YA[87]])then GI=YA[22_];end;else qc[YA[0x40]]=YA;end;else if(not(not(FG~=oR(0b1000_10_10110_0011111_01_001_,835216_))))then if(((fi[YA[0B1000000]]>fi[YA[0_b10_1_0111_]]or fi[YA[64]]==fi[YA[0b1010111]])))then GI=YA[22_];end;else if(qc[YA[6_4_]]>=qc[YA[0x5_7]])then GI=YA[0x16_];end;end;end;end;end;end;else if((not(FG~=0b1100010)or FG>98_))then if((FG>=105))then if(FG<0B1_101011__ or FG==0x6B)then if(((FG>0b1101010_)or not(FG~=0_b110_1_010__)))then if(not(not(FG~=0x6A)))then qc[YA[0X40]]=oV(qc[YA[0_X_16]],fi[YA[87]]);else qc[YA[0_b_1000000]]=Gu(PC[YA[2_2_]],fb,Bt);end;else(qc)[YA[0x40]]=qc[YA[22]];end;else if((FG>11_0_)or not(FG~=0B_1_1_0_11_10))then if(FG==oR(Ta,zT(32_9_8864_,1))or FG>oR(Ta,zT(3298_8_6_4,1)))then local Zr=YA[64_];(qc)[Zr]=qc[Zr](qc[(Zr+1)]);do local Rx,Vy=(Zr+1),HB;while(fD)do if((Rx>Vy or Rx==Vy))then(qc)[Rx]=fb;break;else(qc)[Rx]=fb;end;Rx=(Rx+1);end;end;else(qc)[YA[0B1000000]][qc[YA[0x16__]]]=qc[YA[87_]];end;else if(FG<0B110_1101_)then(qc)[YA[64]]=(not(not(YA[22]~=0)));else(qc)[YA[0X40]]=(not(qc[YA[0X16]]));end;end;end;else if(((FG>oR(zT(0xC735A4,1),6_4_3_199))or FG==oR(zT(13_055_39_6,1),0X9D07F)))then if(FG<oR(7_96_6058_,0x1_5508A)or not(FG~=oR(0B11110011000110101101010,1396874)))then if(not(not(FG==oR(zT(0XC7_35_A4_,1),643_199_))))then local Jh,hM,dt,FZ,Hu,uu=0;while(fD)do if((Jh)<=(3))then if((Jh)<=(1))then if((Jh)<(1))then hM=PC[YA[22]]else dt=YA[26_]end;else if((2)==(Jh))then FZ={}else Hu={}end;end;else if((Jh)<=(5))then if((Jh)<(5))then rP(Hu,{[dp]=function(dC,GA)local Tc=FZ[GA];return(Tc[1][Tc[2]]);end,[Cx]=function(fo,dz,SR)local Nw=FZ[dz];(Nw)[1][Nw[2]]=SR;end});else do local dM,kj=1,YA[0x57__];while(fD)do if(dM>=kj)then local Lv=dt[dM];local Lt;if(not(Lv[0]~=0))then Lt={qc,Lv[1],nil,nil};else Lt={EU,Lv[1],nil,nil};end;FZ[(dM-1)]=Lt;II[#II+1]=FZ;break;else local Qo=dt[dM];local Fb;if(not(Qo[0]~=0))then Fb={qc,Qo[1],nil,nil};else Fb={EU,Qo[1],nil,nil};end;FZ[(dM-1)]=Fb;II[#II+1]=FZ;end;dM=dM+1;end;end;end;else if((Jh)<=(6))then uu=YA[0X40]else if((7)<(Jh))then break;else qc[uu]=Gu(hM,Hu,Bt);end;end;end;end;Jh=Jh+1;end;else qc[YA[64]]=nil;end;else if(FG==0b1100111 or FG<10_3_)then(qc)[YA[6_4]]=(qc[YA[22]]*fi[YA[0_b1_010_1_1_1_]]);else if((not(qc[YA[0B_1_0000_00__]]==fi[YA[87]])))then GI=YA[0X16];end;end;end;else if(FG==0x63_ or FG>99)then if(not(not(FG~=10_0)))then local Eo=YA[0x40];local NM=YA[2_2_];local Gx={qc[Eo](qc[Eo+1],qc[Eo+2]);};do local Vp,pL=1,YA[87];while(fD)do if((Vp<=pL))then qc[(((Eo+Vp)+2))]=Gx[Vp];end;if((Vp>pL or Vp==pL))then break;end;Vp=(Vp+1);end;end;if(qc[((Eo+3))])then(qc)[(Eo+2)]=qc[(Eo+3)];GI=NM;end;else if(((qc[YA[0X57__]]>fi[YA[0x_40_]])))then GI=YA[22__];end;end;else local wH=YA[0b1000_000_];(qc)[wH]=qc[wH](hy(qc,(wH+1),YA[0B10110]));do local ZM,jp=(wH+1),HB;while(fD)do if((ZM<jp or ZM==jp))then(qc)[ZM]=fb;end;if((ZM==jp or ZM>jp))then break;end;ZM=(ZM+1);end;end;end;end;end;else if((not(FG~=0X5B)or FG>0X5B))then if((FG>((Ry[0B1000111010010010000100])or((function(oH)Ry[0_B10_00_1_1_10_1001_001_0_0_0_0100__]=(Rp(((Rp(oH,995636))-973468)-0X855_B7_,0_b11_1_0_1011110_0_00001_))-646786;return(Ry[0X23A484__]);end)(zT(0b1000000001000100000000,1))))or FG==((Ry[2335876__])or((function(Qx)Ry[0b_1_0001_11_0_100_100_10_0_0_0100__]=(Rp(((Rp(Qx,0xF3_134))-0xEDA_9C_)-0_X8_5_5B7_,0b11101011110000001))-0b10011101111010000010;return(Ry[0x2_3A4_84_]);end)(zT(0_b10000000_01_0_0010_00000_0_0,1))))))then if(FG>0x60 or FG==0X60)then if(not(FG~=0b1_100_000_))then(qc)[YA[0b1000000]]=EU[YA[22]];else local ek=YA[64];local TM=qc[YA[0X16]];(qc)[(ek+1)]=TM;(qc)[ek]=TM[fi[YA[0b1_0101_1_1_]]];end;else if(not(not(FG==0b1011111)))then(qc)[YA[0B1000000]]=fi[YA[0B10110]]+fi[YA[0X57]];else do return;end;end;end;else if(FG==92 or FG>0_b10_1_1_100)then if(not(not(FG==92__)))then local mp=YA[0b1000000];local TD,GJ=Lp(qc[mp]())xf=((GJ+mp)-1);local DA=0 do local Ab,Dm=mp,xf;while(fD)do if((Ab<Dm or Ab==Dm))then DA=DA+1;(qc)[Ab]=TD[DA];end;if((Ab==Dm or Ab>Dm))then break;end;Ab=Ab+1;end;end;do local LK,am=(xf+1),HB;while(fD)do(qc)[LK]=fb;if((LK>am or LK==am))then break;end;LK=(LK+1);end;end;else(qc)[YA[6_4_]]=(not(qc[YA[0_B10110]]));end;else local Nm=YA[64];local kp=qc[YA[0X16]];(qc)[(Nm+1)]=kp;(qc)[Nm]=kp[qc[YA[0b1010111]]];end;end;else if(FG==0X57 or FG>0_b1_0_1_0111)then if(((FG==0_b_1_011_000_)or(FG<0X58)))then if(FG<0B10_1_1000_)then local Xm=YA;(qc)[YA[64]]=function()local TH=0;while(fD)do if((0)==(TH))then return(Xm)[0x40];else break;end;TH=TH+1;end;end;else local Ro=YA[64];do return(qc)[Ro](lX(qc,(Ro+1),xf))end;end;else if(not(not(FG==oR(0b1000_10101100_0_11111_01_00_1__,0b11001011111010110101))))then qc[YA[0x40_]]=oV(fi[YA[0X16]],qc[YA[0X57__]]);else end;end;else if((FG>0B1010101 or FG==0_X5_5_))then if(not(FG~=0b_101_01_01_))then do local KZ,nd=YA[0X40],YA[22_];while(fD)do if((KZ<nd or KZ==nd))then(qc)[KZ]=(nil);end;if((KZ>nd or KZ==nd))then break;end;KZ=(KZ+1);end;end;else(qc)[YA[0b100_0000_]]=(fi[YA[22]]+qc[YA[87]]);end;else if(((qc[YA[0b1000000]]==fi[YA[87]]or qc[YA[0x_40_]]<fi[YA[87]])))then GI=YA[0_b10110_];end;end;end;end;end;end;end;end;end;end;end;end;AY=AY+1;end;end;end;end;end;else break;end;end;QU=QU+1;end;end;else Mu=4;OT=function(...)local xZ,MX,eC,Ww,uo,gf,JD,xU,vP,qZ,Qr=0;while(fD)do if((xZ)<=(0))then MX,eC,Ww,uo,gf,JD,xU,vP,qZ,Qr=0;else if((xZ)~=(2))then while(fD)do if((MX)<=(9))then if(((MX)<=(4)))then if(((MX)<=(1)))then if((0)<(MX))then if(not(not(zK(xQ)==((((("\102\117"..GB..YZ).."\116\105")..UB)..GB)))))then xQ=xQ(HP)end;else eC,Ww,uo=Ff(Ds),Ff(Ds),Ff(Ds),Ff(Ds)end;else if(((MX)==(2)or(MX)<(2)))then for dQ=0,(Yr(ds)-1)do local EQ=np(ds);if(not(not(EQ==20)))then uo[dQ]=mh;local PM=Yr(ds);local RR={tf(xQ,Ho,Ho+PM-1)};do local PH,ON,Gt,PD=Sr(RR);while(fD)do Gt,PD=PH(ON,Gt);if(not(Gt))then break;end;local st=Rp(PD,ds);ds=((st%0B100000000));uo[dQ]=uo[dQ]..AV[st];end;end;uo[((dQ+0XC350))]=uo[dQ];Ho=((Ho+PM));end;if(not(not(EQ==0_b_10_1000_)))then uo[dQ]=(not(np(ds)==0));end;if(not(not(EQ==24_)))then local Co,Sd,NN,hE,Sg,kX,vCd=0;while(fD)do if(((Co)==(3)or(Co)<(3)))then if((Co)<=(1))then if((Co)>(0))then NN=Yr(ds)else Sd=Yr(ds)end;else if(((Co)>(2)))then Sg=(pM(NN,1,20)*((2^32)))+Sd;else hE=1;end;end;else if(((Co)==(5)or(Co)<(5)))then if(not((Co)==(5)))then kX=pM(NN,0b10101,0x1F)else vCd=((-1)^pM(NN,0x20))end;else if(not((6)~=(Co)))then if(not(kX~=0))then if(not(Sg~=0))then uo[dQ]=((vCd*0));else kX=1;hE=0;end;elseif(not(kX~=0X7FF))then uo[dQ]=(not(Sg~=0))and((vCd*((1/0))))or((vCd*((0/0))));else uo[dQ]=(YC(vCd,kX-0B_11_1111_1_111__)*(hE+(Sg/(2^52))));end;else break;end;end;end;Co=Co+1;end;end;if(not(not(EQ==0B100_10_)))then local gN=Yr(ds);uo[dQ]=mO(xQ,Ho,(((Ho+gN))-1));Ho=(Ho+gN);end;end;else if(not((4)==(MX)))then gf=Yr(ds)else JD=0;end;end;end;else if(((MX)<(6)or(MX)==(6)))then if((MX)>(5))then xU=0;else while(JD<gf)do eC[JD]=Ff(Ds)JD=((JD+1));end;end;else if(((MX)==(7)or(MX)<(7)))then JD=0;else if(((MX)<(9)))then while(((JD<gf)))do local Lg=np(ds);if(not(Lg==0))then local gw,ze,sM,Ku,yq,EV,XK,Yq,ys=0;while(fD)do if(((gw)==(0B1000_0_)or(gw)<(16)))then if(((gw)<(7)or(gw)==(7)))then if(((gw)<(3)or(gw)==(3)))then if((gw)<=(1))then if(not((gw)~=(0)))then Lg=(Lg-1);else ze,sM,Ku,yq,EV,XK=0,0,0,0,0,0;end;else if(not((3)==(gw)))then Yq=pM(Lg,1,3)else if(not(Yq~=3))then ze=eC[Yr(ds)];end;end;end;else if(((gw)<(5)or(gw)==(5)))then if(((gw)~=(5)))then if(not(Yq~=3))then EV=du(ds);end;else if((Yq==3))then XK=du(ds);end;end;else if(((gw)==(6)))then if(Yq==3)then sM=np(ds);end;else if(not(Yq~=2))then ze=eC[Yr(ds)];end;end;end;end;else if(((gw)<(1_1_)or(gw)==(0x_B)))then if(((gw)==(9)or(gw)<(9)))then if(not((8)~=(gw)))then if((Yq==2))then EV=du(ds);end;else if(not(Yq~=2))then sM=np(ds);end;end;else if(not((0b_10_10_)~=(gw)))then if(Yq==0)then ze=du(ds);end;else if(not(Yq~=0))then EV=du(ds);end;end;end;else if(((gw)==(13)or(gw)<(0_B1_101)))then if(not((13)==(gw)))then if(not(Yq~=0))then XK=du(ds);end;else if((Yq==0))then sM=np(ds);end;end;else if(((gw)<(14)or(gw)==(0B111_0)))then if(not(Yq~=1))then ze=(Yr(ds));end;else if(not((0b1111_)~=(gw)))then if(not(Yq~=1))then EV=(du(ds));end;else if(not(Yq~=1))then sM=(np(ds));end;end;end;end;end;end;else if((gw)<=(2_5_))then if(((gw)<(20)or(gw)==(0_X_14_)))then if(((gw)<(0_x12_)or(gw)==(0b10010)))then if(((17_)==(gw)))then if(Yq==5)then ze=Yr(ds);end;else if(not(Yq~=5))then EV=du(ds);end;end;else if(not((gw)==(20)))then if(Yq==5)then XK=du(ds);end;else if(not(Yq~=5))then sM=np(ds);end;end;end;else if(((gw)<=(22_)))then if(not((0X15)~=(gw)))then if(not(Yq~=5))then Ku=Ff(Ds);for Ur=1,XK,1 do Ku[Ur]={[0]=np(ds),[1]=du(ds)};end;end;else if(not(pM(Lg,4,4)~=1))then EV=uo[EV];end;end;else if(((gw)==(0X1_7)or(gw)<(23_)))then if((pM(Lg,8,8)==1))then yq=eC[Yr(ds)];else yq=eC[(JD+1)];end;else if(not((gw)==(25)))then if(not(pM(Lg,5,5)~=1))then ze=uo[ze];end;else if(not(pM(Lg,6,6)~=1))then XK=uo[XK];end;end;end;end;end;else if(((gw)<(0_X1D__)or(gw)==(29_)))then if((gw)<=(0B11_011__))then if(((gw)<(0B11011)))then if((pM(Lg,7,7)==1))then Ku=(Ff(Ds));for rA=1,np(),1 do Ku[rA]=Yr();end;end;else ys=eC[JD]end;else if(not((0B11100)~=(gw)))then ys[6_4_]=EV;else ys[0B1010111]=XK;end;end;else if(((gw)<(31_)or(gw)==(31)))then if(((31)~=(gw)))then ys[22]=ze;else ys[0X48]=yq;end;else if(((gw)==(0x20)or(gw)<(32_)))then ys[0B110_1_0_]=Ku;else if(not((0x22__)==(gw)))then ys[0_X4B_]=sM;else break;end;end;end;end;end;end;gw=(gw+1)end;end;JD=((JD+1));end;else vP=du(ds)end;end;end;end;else if(((MX)<=(0B_1_110)))then if(((MX)==(0XB)or(MX)<(0xB)))then if(not((0b1010)~=(MX)))then for PS=0,(Yr(ds)-1),1 do Ww[PS]=OT();end;else qZ=np(ds)end;else if(((MX)==(0_XC_)or(MX)<(12)))then Qr={}else if(not((MX)~=(0B1101_)))then Qr[((#Qr+1))]=vP;else Qr[((#Qr+1))]=qZ;end;end;end;else if(((MX)<(0_X1_1_)or(MX)==(17_)))then if(((MX)<(0B1111)or(MX)==(15)))then Qr[((#Qr+1))]=Ww;else if(((MX)~=(0b1000_1_)))then Qr[((#Qr+1))]=xU;else Qr[((#Qr+1))]=uo;end;end;else if(((MX)==(18)or(MX)<(0b1_0010_)))then Qr[(#Qr+1)]=eC;else if(((0X14__)~=(MX)))then return(Qr);else break;end;end;end;end;end;MX=MX+1;end;else break;end;end;xZ=xZ+1;end;end;end;end;else if(not(Mu~=1))then break;else Mu=3;OT=nil;end;end;end;end;end;else if((Tf)<=(21_))then UD=0;else if((Tf)>(0b10110))then break;else while(fD)do if(UD<=0)then UD=2;nR=Gu(sg,Ff(Ds),oz)else if(UD==1 or UD<1)then break;else UD=1;return nR;end;end;end;end;end;end;end;end;Tf=Tf+1;end;end)("LPS:#(:#&2#&)#&&#&:#&B#&.#&&#&&#'2#&@#&[#&Z#&C#&;#&E#&1#'C#&9#&-#(s#'*#&5#&@#&C#&N#&N#&*#'B#&?#&3#(s#&o#&M#&C#&<#&=#&,#&M#&\\#&=#&*#&E#&0#&,#':#&=#(n#&&#';#&9#&+#'9#)=#(s#';#&C#&)#'A#&6#&*#(s#'<#&@#&9#&E#':#&D#&0#(s#&r#&I#&.#&Z#)6#)8#):#':#(o#(s#',#&5#&/#&*#&9#&S#&Q#&7#&/#&/#(z#&C#&,#&Q#&T#&*#&6#)o#)Q#)S#&&#'.#&1#&3#&7#&1#)a#)j#&'#(}#)!#&&#'R#&*#&,#&)#&)#)!#'a#&8#&,#(s#&j#&G#&-#&6#&A#&@#'0#&>#&2#)^#)u#&,#&.#&.#&5#&)#&B#&,#&-#&=#':#&@#&4#)^#(m#&&#&/#&,#&=#&9#&,#&9#&6#&)#&,#&(#*@#*B#&&#)_#)a#&9#&<#&<#*U#&:#&(#&(#)u#':#&7#&+#)^#*:#&B#&<#':#)J#(s#'(#&&#&Y#&/#*d#)K#&&#&x#&]#*G#')#*3#)E#&-#&A#&W#&V#&'#&W#&d#&(#&=#&A#&C#'/#(~#(s#'0#&(#&7#&-#&<#&1#&>#'+#)n#(s#&z#&W#)g#)i#&,#&z#'<#)Y#)9#);#*)#)L#&A#&/#&9#&=#&'#'9#*^#(s#&|#&e#&@#)&#*q#*4#&&#'6#&2#&0#&4#&8#&+#*}#&;#&)#&4#*j#(q#(s#(u#&6#*Z#)u#+?#*A#)E#&7#&2#&'#&C#&B#&)#&/#&7#&A#(r#)x#':#&-#&9#(s#&m#&X#&B#&3#&\\#&]#&(#&4#&@#&-#&,#&1#&P#+6#):#'F#&>#(s#(s#($#&]#(;#&z#&+#&7#+$#+&#&B#&'#)-#&'#&1#&D#&(#&C#&E#&;#)3#&3#'6#)R#(s#'/#&:#&C#&(#&D#+v#&A#&-#&/#'<#&C#&/#(s#'@#&>#&C#&?#&>#&)#&7#&(#);#*r#+I#&(#&@#&,#&<#&.#&(#&?#&9#&*#,L#'0#+9#)?#*U#&*#&<#&7#')#+\\#&&#&y#&I#&7#&<#&?#&1#&=#&G#+z#);#+A#&&#'=#&A#&3#&1#&C#')#*e#&&#&v#&b#&/#&C#'5#+##&&#*g#&b#*a#*c#,D#(s#&x#&a#&4#&5#&B#&z#'5#&O#&(#'<#),#-)#&Y#&>#&@#&(#&8#&-#&J#&W#&9#&9#&2#&D#'0#+U#&&#'<#,a#&&#&C#,A#&:#'0#,'#(s#&g#&0#'4#';#&]#&*#&5#&-#&*#&s#&r#+R#&+#&'#&'#&k#&[#,8#&&#'5#-Y#&=#,?#,A#'<#({#(s#'7#&1#&8#&:#&&#*a#*=#*?#,p#+@#&.#&A#&'#'0#,x#&g#&_#)1#'0#-g#-D#,a#*G#&*#&+#&1#&'#&(#&;#'6#-!#,:#,<#&^#&M#&A#'F#-C#'+#,s#,h#,`#&7#'-#&<#&(#*f#&>#&y#,p#&y#&b#&@#&A#&0#'9#-C#'-#&3#&5#&&#&8#&C#&*#&.#':#-|#.+#&(#&R#&X#&&#,a#&c#&S#.C#(r#&&#)/#&@#&7#&=#&B#&5#&3#'A#&,#&8#(s#&s#&R#&9#&?#&4#&7#&*#+o#,N#&\\#,n#':#,P#.>#.@#&0#&]#.o#,]#';#&=#&<#&,#&>#.L#,P#-E#.\\#&5#&+#&?#&8#&3#&4#*U#'9#-!#.x#&:#)n#&<#&-#+G#(s#'+#&)#&8#&<#&y#&(#&w#)u#&2#.%#.p#+H#&r#&O#/5#&G#&K#&&#,4#&d#-1#'<#-C#&l#&U#&+#&/#)(#&<#&A#'E#.b#-M#&H#.%#&2#->#*8#&1#&@#)5#)7#+7#/>#+V#&@#&:#&,#&2#&.#&*#*{#,2#&9#':#-!#&|#&Y#*G#*}#&g#&M#-C#,r#&B#-d#,B#)D#*m#-6#'6#&)#&=#*+#&Q#/d#&b#&d#&3#&)#+&#&J#&b#/&#&4#&-#&O#+n#&F#&M#&.#&/#'D#-_#'8#&'#&S#/L#-S#&1#-e#-C#.O#&R#&_#&7#*1#-|#',#*6#&.#&H#&U#&H#&G#.##'9#,]#-$#&(#)-#'A#.*#,;#&(#&K#&A#&+#&h#)]#&&#&i#&Q#&/#)`#&(#&S#&G#+u#*}#+x#,n#+|#+~#(s#&.#&n#&z#+j#,)#+'#&6#+e#&?#&*#-k#,<#&?#&B#&@#)7#)B#-(#&&#+%#&7#/6#&)#+X#.6#,x#'1#&C#&8#*O#-|#/!#&C#&3#,.#)&#1+#'6#,x#'+#&,#&3#&E#'+#0k#&&#+C#1,#&0#&R#&H#.j#&'#*>#.n#/]#)[#,]#&i#&R#*%#&C#/p#,p#)F#.s#'9#04#&'#&N#&Z#/|#&I#&M#0O#-C#+@#&(#&.#-7#)O#':#-4#(t#)&#-j#-l#-n#*>#/_#18#/m#*|#1H#'##&-#&@#&k#&-#&H#-!#&j#&\\#*U#,>#,B#&A#.G#&&#&k#&G#&3#(y#+R#&/#1A#)Z#);#,x#&m#&L#/d#)\\#-l#*m#..#)&#.K#&\\#&V#0o#&*#/\\#2!#/j#)}#'*#&9#&'#-t#&5#&8#')#0y#'2#&-#)v#&=#/Y#&@#')#-L#0z#+&#&&#0u#0w#&3#1,#/Z#&C#1/#-_#'9#,1#0\\#/M#&&#&1#.B#,p#'B#&6#&2#&/#&.#'9#,P#*n#+s#&,#&'#'&#1i#1k#1m#&3#&?#(s#&y#2/#&A#0p#&L#+r#+t#+v#&9#&;#)z#&c#.o#/S#*R#)`#)b#&,#)f#)h#&E#)j#&+#)n#)p#-|#05#&O#1=#-G#,A#&X#&K#'-#2E#'/#&5#&A#)3#/$#&0#*9#&'#&7#&7#/n#*~#,x#'*#&8#+u#'C#,]#.O#&J#.V#30#0R#&^#&a#&-#&7#&R#&c#.K#/0#&;#&2#&C#'-#-C#'@#+O#&C#&7#&6#&l#&'#&L#3T#3V#+^#&~#1m#1u#,9#0R#&H#&c#&A#/<#&@#&;#2t#2b#'C#1]#.>#+K#&.#&3#&e#2w#.c#*m#&L#&_#&N#&<#.H#&,#0+#&/#)X#1B#);#-|#&x#..#&t#+5#4##':#2E#&s#&H#,S#&<#&M#&]#&'#&&#-t#'(#';#/L#36#'H#2x#&v#&W#&;#&B#'##'?#&-#&R#&'#,S#)G#&b#&e#*=#2C#3=#&(#&2#&B#'0#,p#&}#&e#+`#&7#*k#+$#/c#.}#+H#'1#)!#&*#&3#&9#,s#&=#)z#'C#3]#*}#+^#'##3[#,x#&l#&O#4D#')#1]#&p#&K#4I#&-#&F#.v#**#0Y#&L#,E#&K#.V#1]#)_#&)#,.#&)#4^#&3#4`#3l#,p#'>#*_#,4#'/#,P#&z#&I#.c#&1#2v#4*#-_#*g#&Q#&A#/t#&,#,@#,B#,p#'<#&-#&;#1X#'<#+}#+~#&~#(C#,%#,d#&t#&a#&>#-T#,l#&\\#/.#&6#*6#':#0y#0{#/f#&C#&A#55#'0#'g#'c#&6#&&#&0#&M#&&#'?#&&#&w#&P#0f#5b#5c#5d#5e#5f#5g#-[#5g#0f#&4#*%#*Q#5b#'H#'H#5j#5r#5f#'H#'<#&L#5a#5s#5y#5f#5l#(s#1v#&&#0W#&h#&5#&'#&w#'&#5s#+E#(s#&f#6$#&)#)\\#':#&/#&-#'E#&b#&s#+R#5z#5e#'H#)\\#&)#._#'9#'<#&'#.G#'G#&|#5x#67#6D#&5#'9#':#&(#,,#5f#'E#'E#5j#&5#5~#&&#&2#*4#5u#+H#&&#'E#6.#(n#66#5z#69#6;#.9#5g#&f#&t#&J#6C#6D#5s#+S#)g#)}#5j#,A#5n#5b#6O#5k#02#6>#6.#6M#(s#5T#.9#&5#/P#6e#61#6D#&f#&r#5w#6d#5z#&-#&C#&>#6^#5z#6L#5b#+S#6h#-m#&3#7&#&f#&s#6w#(s#7(#72#6r#5e#7*#5j#5q#5q#5c#6`#6b#6~#5y#6m#7)#6]#5g#73#7*#77#&&#0v#1v#6##&5#&=#&@#0f#6*#6s#&A#5e#7@#5g#+s#&4#&+#7+#0f#'E#6B#7>#5j#7F#+~#7^#6i#6g#44#7Q#+~#6*#7S#&f#&f#&-#6h#5T#+~#7l#7)#6y#5|#(n#':#7:#7;#&s#&'#6U#7e#&V#6c#7\\#0f#7S#0f#5T#7~#5f#7n#&5#&:#7d#7G#-H#7n#5T#7h#6V#75#7O#7c#7}#1v#8$#'&#6(#+~#6R#6V#&)#'+#+u#5b#'%#'?#7{#7|#5}#6P#5b#&f#&b#75#5t#'-#7Q#+E#8&#&y#'%#&&#'%#8O#8,#7Q#73#7n#82#5q#&\\#&j#7w#6%#4|#-[#&2#81#&&#7F#73#8>#8@#8B#8!#7d#8V#83#74#5d#6{#*|#&@#'.#8J#8C#7l#8s#'0#6M#73#73#6*#'H#&1#'B#&5#+s#&)#&0#&-#6O#+E#69#&/#&1#0:#+~#8$#8i#(s#&@#7z#8f#+~#8Q#-m#8D#7m#8)#9-#8!#&m#'%#8s#&A#5q#8J#&A#8u#44#9A#'3#&;#5q#7(#7H#6^#7F#7O#'2#'0#*B#81#8`#9.#7M#5b#*u#8A#7\\#+E#9P#96#0f#8Q#6{#7x#6+#&B#&N#'=#(s#'%#&B#&r#)K#&'#'>#'E#6,#.9#'=#'8#27#.H#&:#&8#&E#,R#7M#+S#'D#6r#7O#9%#&@#6m#&5#&u#&f#9P#8$#+~#7Z#9U#7|#'&#&'#8O#5d#93#9Y#8/#5c#7Q#7d#8Q#&2#&4#&E#&6#9##8E#&t#+&#0a#7d#'/#'*#1j#.@#9=#&&#'F#&h#&u#32#'-#'9#.G#7S#8c#:##7N#90#91#92#8P#5e#8V#'G#'G#7N#9R#+~#&f#'$#8h#&;#&4#8c#&B#&B#5c#6m#5T#5T#7O#&@#'##:Z#.Y#&/#&r#8n#7M#7S#6R#7f#95#5b#9/#:&#7\\#8O#:*#5d#7(#:d#:W#:2#7x#8V#7(#9\\#(s#,+#&C#(s#+S#'A#60#)}#-t#9R#&A#&<#:7#7m#&:#.G#'$#'$#:V#8Q#:##89#7y#:t#7>#&@#&l#:w#9Q#96#7j#;##8P#8O#6L#9'#62#75#6{#*B#&h#7v#6U#:3#.F#6l#84#95#7~#86#92#8Q#&y#:q#8V#&5#&K#;;#6~#28#:W#9b#:w#;,#:X#&r#8_#'##7v#6=#*%#6O#'<#8H#8c#'B#'-#&&#'&#&f#8$#8'#:0#8)#9+#5~#+S#'$#;b#&:#8(#5d#7@#+S#&S#;]#7>#8c#82#:$#8H#&&#&f#&g#43#/<#6g#6*#6`#5n#:y#1u#&7#''#:E#6n#'A#'<#*|#<(#/<#&-#+S#*W#.9#93#<?#8.#:/#7Q#<$#<&#6~#<(#7n#;B#&f#5c#7*#7@#:,#'H#&e#6$#7w#2m#&h#&t#':#60#'A#5q#&3#&0#&+#7&#93#7n#'/#'/#3i#.G#<F#/a#6y#8%#7Q#;[#<J#7>#;C#:e#;`#(s#<?#94#96#7*#+_#9##&f#&/#&o#'H#'9#(o#7Q#;C#9+#8N#8V#7l#<(#<g#5r#8##;\\#:O#5f#&@#'/#6M#6*#98#7e#:W#6%#)g#9!#7X#&5#;l#<)#:.#0g#-s#&A#:,#;D#;@#:a#5~#:b#:c#<n#=/#5e#'E#<f#7O#<(#=6#8!#&;#<k#;Q#7G#&;#8N#7Y#75#6L#&A#9:#=Q#=?#:V#;x#8C#'%#&y#=.#=K#5c#;=#;E#6r#8w#6r#=C#&A#;2#7R#1v#'=#'=#=C#8k#9.#'##'##;`#7n#=P#:,#<r#44#&B#<%#=f#5c#4D#7d#=k#8k#=m#;w#8j#7G#7M#9X#<3#8P#&m#>+#:~#8H#=|#;-#7Q#8?#<o#8B#7n#>0#=k#:,#=<#6r#7F#8V#=}#5c#=[#:\\#8E#:h#=>#82#&5#=X#8,#&W#>:#8f#;9#<,#;e#'E#'9#*4#=M#>.#7M#6`#&:#7%#9Y#+S#'B#:U#=D#8l#&P#'3#5d#=z#&b#;e#94#7*#+E#:b#&:#=e#>$#:x#;m#'E#&A#'$#&t#:]#6V#8V#&f#&F#&E#&&#':#6=#<`#6^#<3#8-#>i#7@#>L#;?#88#&r#;M#8s#=S#<@#61#9{#&u#'3#>P#91#<(#<-#43#>[#=2#=5#5f#&(#61#'<#':#&u#&u#':#6>#9##=5#:T#9B#'E#+E#8.#6O#>B#>O#>p#6_#>v#;d#&r#&r#'<#&e#7h#>I#6d#6,#&h#<O#6,#6%#*|#;Q#)g#+E#'E#&F#:*#<j#*9#5}#>o#?P#5e#7/#7w#74#?m#?V#65#)\\#7t#7|#?m#+H#9%#&:#<k#9x#32#7d#=J#?k#5s#73#;##6{#&r#&h#.9#6,#-m#&&#7r#>}#0f#)>#(s#7r#?t#6+#0W#:T#?\\#9Z#'%#&5#&;#7M#93#?~#@!#5j#;C#=z#<+#6~#>0#+~#&(#6%#&2#@E#6s#/t#9<#@>#@?#5j#9G#'##>i#9X#@D#7v#'<#&&#'H#&-#&1#&r#>v#@$#<O#?M#?1#?j#@O#@P#=3#&@#6{#1,#>$#6,#&4#?T#?T#'/#>e#8a#&/#6R#?0#>##@c#5s#@g#43#@O#&f#&P#'1#7.#&h#&3#6G#&/#&S#&}#&&#A&#,>#+k#*m#&V#&@#&_#&U#._#&;#1z#&0#&6#4r#4*#1]#';#+^#+`#+b#)h#&(#,@#2C#1N#&c#&J#&D#)K#&*#-e#,P#/l#3;#:Y#1j#1l#&H#+-#2F#&7#,K#7V#-[#&/#*[#&7#&?#&/#&<#'0#/,#2J#3`#&H#,P#&m#&[#&C#&@#&+#&I#.o#AN#0{#-H#-H#&;#._#&,#*N#*[#&3#24#(s#'5#&D#5S#3j#4T#.~#,a#&?#&.#&7#3j#+Q#+S#.M#&1#(s#&n#&b#&&#&*#Ae#4*#,]#3>#.S#)3#/2#+I#+K#&4#&=#0w#.%#.'#'6#,p#*S#)b#'/#&(#3z#AO#&Q#&U#,1#&2#,T#&&#&R#&\\#2L#)&#6O#&2#&=#'/#/J#(x#.P#0?#*1#-q#&9#0N#&&#.a#3u#&v#&^#&7#&0#&@#&0#0N#&b#&H#,2#,4#&,#&C#&2#AY#A7#A9#+a#+c#&2#&-#&D#-Z#')#,p#*,#&/#&3#&>#'6#2E#/!#*G#2V#&'#&=#*Z#Bb#,5#'6#-C#/@#/5#&X#&O#44#B0#.O#&I#&G#,2#&2#&3#4x#'9#-|#'6#,R#,T#&z#&g#*{#3z#'0#-_#(u#&E#6O#*;#-o#B##)L#&0#&=#,t#)&#1?#1[#2E#B&#B(#&H#A,#&_#&W#&?#&`#.o#-_#+m#&B#CR#B+#4t#'0#&0#&2#,4#&1#'E#32#(s#,z#&3#&;#&8#,|#&E#&T#&U#&)#.[#&]#..#&C#*I#&(#1~#/^#B9#)w#)a#')#/w#05#&1#1\\#)-#*R#+_#Bj#*F#.\\#&*#&;#4T#-|#(u#A3#2[#&.#&+#1|#1d#A8#C}#A;#&1#&5#2'#-_#0{#&@#&1#)b#.y#/1#3b#0Y#&R#.9#&.#&=#3:#Cq#)[#-C#0{#7j#5=#&.#'H#0y#'=#*J#,N#&-#0&#DI#0y#',#/0#&&#&=#/Z#.U#'9#17#&y#&a#+<#+>#&V#&[#1|#&]#2p#+u#+w#'6#,]#'+#*H#@,#BL#,p#*g#&U#&E#&>#',#,x#0Z#)h#')#AN#/K#&+#&>#.\\#58#&H#&Q#*:#+S#+?#1]#-*#-,#&B#/C#/E#&=#&Y#&Y#&E#'B#DR#3Q#Ab#+`#@Z#':#4c#3W#&6#&j#1m#1]#1E#1G#,m#5L#5N#D<#.x#/0#*}#)=#5!#5$#){#-|#Ah#BH#2N#,6#,x#)M#+v#'E#-C#(u#=S#&)#&.#B{#'/#&'#&;#2j#2l#0p#&J#Ba#2S#&/#5J#4*#,P#'7#D+#1,#C.#&3#&+#1[#EX#(s#&{#+o#1q#&,#C,#39#3;#,m#4*#,d#&n#&S#D$#&?#&2#&7#B*#23#,]#-a#B(#&P#&[#')#/k#1f#*}#&f#3\\#.X#ER#,;#(z#(|#E$#-+#--#&^#&I#&>#&8#E*#E,#E.#,E#1^#&G#..#&&#7j#,B#,x#0C#+<#'/#C3#C5#&<#&z#&x#35#DI#D<#0{#&7#2N#,T#28#+a#D3#.L#FN#::#&-#&+#7W#Aj#Al#AY#,p#4-#4/#6H#B>#Cb#Cd#Cf#&Q#&Z#3g#2V#&=#A5#23#2E#Dw#Dy#B4#&'#.u#)g#*G#)z#'?#5@#(s#(<#'9#')#(@#-!#',#+_#2U#*p#2h#(s#&l#&I#D$#1?#&=#Db#/0#57#CD#)z#&I#&R#6O#*N#BL#-|#&y#&M#&;#*I#.\\#&H#&W#1X#'H#-_#)@#&5#&0#&1#,=#3z#+?#0y#05#&J#&e#,H#&?#,A#'H#Fx#'G#(f#'s#'8#&{#2E#)U#&2#0N#Ei#&A#3k#&'#&`#D`#B!#52#&&#&W#-j#,>#&0#+`#'5#5:#&)#EY#+?#3F#.,#3I#&E#+=#&'#/'#&^#3M#4X#(s#1E#&C#&=#&[#G>#&.#):#B=#*2#+H#&g#.R#,a#22#/^#/w#'.#&<#&)#'-#,]#&g#&U#9(#AX#'0#/w#&t#&Q#&8#',#0y#&}#&^#,I#,K#,M#4$#B$#-`#&<#&t#&}#GY#,<#.y#0z#,d#G!#A:#+c#-[#G.#)1#'6#,P#(u#&+#CE#&+#&3#01#->#&/#'A#B9#._#3Q#'-#A[#->#+>#*c#,d#.x#4>#7-#Am#1b#*?#,P#HL#C~#Bl#Bn#&'#Bp#*_#&&#'/#&0#(n#*~#,|#(s#&k#&c#&.#,4#Fi#&3#&,#&\\#G9#D%#&L#1=#&*#G+#DC#,o#Hs#*g#&R#*G#'?#Ek#&&#H1#-U#C\\#)z#07#/%#&F#Ba#&?#&E#1,#BL#Hl#0D#@G#&M#&S#&+#Gq#)<#)>#+J#&?#'5#30#EE#)z#&t#&k#&C#H}#*G#&7#+?#,]#'B#+<#BU#'A#1]#'5#HD#&v#&'#/c#,1#C9#0z#,]#5;#3j#I`#-v#*l#'2#HX#*j#17#'4#&4#&B#&e#&Z#-?#&.#Db#/f#+Z#&H#&Y#,s#'D#Fx#(s#&J#'-#&z#C$#/A#&8#-/#/H#5P#G:#AP#HX#&.#AY#Hy#1w#H|#H~#/<#I##&Q#&G#*}#6O#B^#G]#50#Fm#,(#&&#&s#3y#3{#&(#41#&,#Fl#/^#FG#4/#&}#&w#FL#'H#,p#4<#)%#&-#AZ#)}#0{#&8#&)#+*#'+#AG#&e#1:#&b#CS#)r#(u#.##4d#?0#*P#Gx#I)#I+#4s#)^#D##D%#5O#F<#E%#--#C'#C)#,]#'8#,E#&;#,a#Cv#)>#'5#9(#'C#-|#,r#&2#/$#/&#/(#/*#D<#&m#&H#B^#A{#+w#+y#4*#K%#2&#&.#G|#.c#JF#)[#-|#*g#&X#A{#A}#D-#,x#Jx#B|#'-#E/#.%#(z#4I#')#-_#31#33#&<#*A#0\\#.`#-!#'-#&'#&/#&0#/$#*j#,p#-a#F7#BL#2E#&g#&Z#&7#I##&O#&O#Bf#JE#.o#Dl#*h#Jy#A[#.##&(#&{#3[#,]#'0#&*#9##01#'D#,d#1E#B(#4L#&<#K2#+8#4t#/4#/6#/8#&F#A[#/.#&B#33#Cz#(s#.C#Bt#&^#&U#I6#G]#3A#4t#2>#)1#B/#-!#/!#JU#JW#5+#Gv#Ea#23#K_#&X#*[#+@#Hs#'C#&a#BQ#Ii#(s#'1#:`#&*#3/#J>#*n#4>#&+#J:#IU#Cl#*}#Co#':#I3#IL#2:#&Q#&d#GC#&a#&Y#-Y#&a#-%#C@#1c#1]#+%#9)#*H#D%#*t#)v#AY#EH#+&#&F#&a#@,#07#-U#'B#K_#&a#14#'+#-_#'?#HV#Il#HZ#'A#DE#2G#.j#-@#Kh#5Y#AO#2H#0v#.##&-#+_#.[#Be#')#,]#',#@G#I##H[#,P#C%#&8#E(#,4#E+#E-#2E#D6#FU#*N#,-#A{#/t#&1#L8#K~#BT#1U#.X#-i#-:#,1#+>#'6#AN#+W#.z#*t#+s#-m#LX#-p#Hs#'+#,a#/0#F'#)}#G!#.@#,S#&.#'7#,]#'>#&A#&D#,M#DI#17#',#Ji#&7#&`#&b#GY#&&#&X#&b#)x#.G#)x#'A#17#J@#/P#&Q#4C#.[#/Z#E]#,I#I>#EV#11#&5#&>#&?#)I#*l#'/#GE#M9#-_#Io#&B#,k#)g#0q#*c#Bw#-F#2I#.##2K#1-#EK#'6#.8#K~#&?#'F#1]#&n#&O#.j#&C#&0#&V#.o#,x#'=#Cd#&>#5?#+~#'M#&y#'i#&\\#&{#0y#)$#)&#&P#-=#G?#4,#&N#&.#&d#Cm#Co#I,#E4#.X#&g#&K#+q#/6#/*#F2#E&#M.#&=#/G#-2#,x#31#*_#'A#C<#&@#B{#.##B6#.(#B9#/<#&'#AY#D<#+/#+1#3!#)4#.o#0y#'<#F8#2s#.l#Ks#(s#'A#&.#M<#,q#I}#'9#(C#(S#&z#/w#)F#*~#,P#F`#,T#NT#,]#)t#&3#Nm#*]#Hs#+J#C]#6W#/|#&&#&F#&i#MF#&A#&(#&X#LQ#L&#)z#&C#'&#&j#0t#){#-_#G8#38#J5#&K#3j#'>#,P#&{#&L#)2#,m#,(#-H#&/#-J#Ie#0n#2m#&*#Hr#(s#'B#&^#L<#-_#HL#G$#EF#'C#&[#&G#G'#&M#&(#36#&3#Lg#&*#I7#2b#&c#&M#.!#&2#AE#3~#,n#&Y#'-#&L#-_#-a#7V#AT#&1#AV#*j#JH#,T#&}#@(#HI#'0#0y#3U#4d#6;#/M#Aq#&&#P-#E6#.e#M2#+&#By#Gg#B|#,1#,3#C!#,P#0{#Az#A|#3j#D-#+t#3c#,<#&e#3f#3j#)z#&R#&M#&7#/5#2U#&^#F)#&C#-u#0X#&F#&y#Gk#&&#&'#&a#&Z#Ip#&A#0:#CD#OE#OG#'C#,d#0{#.y#*=#O>#&2#.c#Ju#-_#)/#Hp#I%#,N#&5#'C#,P#4<#4>#3s#&>#&/#&E#KA#-!#&k#D2#*B#&'#&.#&x#/{#PE#&(#3H#3J#3L#3N#5<#3Q#AA#*_#&+#&@#'4#Fx#(<#(.#':#'k#(A#Pc#+&#&=#G##&1#Fu#2b#&C#H$#+]#D0#Bk#&-#Kk#I3#Cb#&>#&B#G,#&N#Mx#Cc#*}#Et#L4#Hs#,f#,h#&?#L(#(s#05#&P#&S#+_#/+#JS#P7#DV#++#17#0{#&Q#&Q#N+#&+#&a#BG#N.#1/#/w#G!#4N#Lt#0|#5Z#I##/I#.X#N##9z#LF#DI#-_#'6#J.#JB#2?#&=#'5#0<#0R#&N#54#&>#F;#+.#5-#2U#&M#00#02#FC#&2#&E#&/#'6#D<#.e#D%#*|#3q#3s#4*#17#/!#1j#&*#QL#G]#&B#)A#&3#*<#JR#Q%#&e#&;#&+#&|#B9#+Y#Ap#/w#'7#&'#Dp#Kg#,*#+a#'F#GI#&'#&b#F?#FA#Qq#*f#D]#4D#2b#'##P6#0m#20#/P#)v#/c#/=#/w#EN#'C#AN#D/#HM#AX#-F#2N#Pv#CB#*R#)x#BT#A|#&&#.\\#&B#)|#(s#'t#&+#*B#&3#&-#&(#'y#I}#&&#&>#&~#&z#AN#&x#PH#G]#&S#&\\#-U#&9#&T#&T#&B#B8#Hs#'5#EU#IR#'-#/w#-a#&.#Nw#4t#K5#*[#&'#Rp#JT#(~#&,#+o#MO#-!#'.#Be#DM#&=#')#.N#0R#&J#&`#&B#&Q#OM#4T#Qm#5R#5T#I|#+H#(u#0u#3J#Hj#K}#,Q#4/#&z#&i#&=#N&#/6#1d#Ah#7##5<#F]#C;#)r#.x#.##-c#57#-e#3=#3j#Pp#Kb#<a#&v#&(#&F#,x#RM#,.#':#D<#LD#&B#LF#.'#IU#0F#-t#/1#,x#'@#*W#Rw#I3#&g#&]#&=#3j#&9#&W#&W#)7#J;#.o#HS#7M#OZ#0p#A~#*j#,]#N6#GC#01#':#AN#&|#&_#&,#):#&L#0[#&;#H)#K3#HB#0C#I##*8#BU#E`#'/#17#KD#T2#MA#.j#&*#1+#AT#,<#.J#,w#*l#'+#)-#)H#S{#,u#&2#SM#HB#G8#Sq#&/#&W#&]#2h#&6#P1#'3#Do#,I#Sr#*l#'=#&3#)h#Sg#,*#4[#,V#Ao#S~#1v#.O#&N#&V#AW#E*#H2#)x#AY#KU#T1#T3#&W#TK#TM#);#-!#'0#&.#)x#S@#U!#0l#*J#KF#K7#PB#B!#/w#'+#,u#4l#C{#Ku#/7#&(#'4#&`#/;#/=#,p#KK#Bs#Bu#Hl#QB#A<#A>#,c#*Q#05#*y#*{#*}#&S#&d#*_#-[#M:#&&#2Q#UR#,d#(u#&C#P##&)#GM#R<#,j#BL#R-#K{#'E#RP#3:#B|#-3#C{#DF#T<#.k#&/#&8#/Q#/w#KK#-2#D'#Ng#&6#&@#&?#/g#IG#-|#&k#&O#)v#&)#&<#&'#&V#Gv#4U#*R#/c#&+#'A#SN#,<#&T#S.#DU#/Z#2D#J>#&g#&W#&&#1S#LJ#*N#NT#-C#N##AT#P*#E5#PM#Sx#&F#Q8#&7#&Q#42#,-#&1#&W#&^#&8#&B#'F#R9#Us#&]#&Q#&'#&+#&.#3)#)u#BJ#+?#M+#J&#F5#KS#M0#Li#Hs#'<#*;#&+#,v#-!#D8#*=#P~#--#.w#2A#,W#/i#0y#4-#-[#+b#H@#P1#MR#*0#&>#&<#'7#11#.3#V.#Ew#0J#-!#2`#&4#2b#'&#&M#-|#Rj#C~#+e#&E#'-#He#Bi#A;#1,#VN#'C#T+#,U#,v#-|#5F#5H#*>#&F#&Y#0]#':#,]#'!#,{#@,#Dp#H+#S8#I3#E;#&)#&C#E=#)n#*6#S1#&B#Pw#KA#1]#U_#1j#1+#Qh#,6#2E#L!#&>#&S#Le#&)#On#Op#OH#)r#'-#AP#)G#/u#'<#2x#5;#&A#&E#&J#W`#Wb#G]#Q?#-C#Sn#<a#KO#Rp#+C#&A#2b#&:#&3#&_#OR#BL#.*#,|#)7#*[#'E#,P#W.#A;#NZ#Rw#Lb#L\\#2s#&7#&4#Ip#'6#1]#H7#PM#GM#&N#/L#3h#')#D<#Bx#*U#&@#U<#T>#V.#'1#Uu#&A#2^#0f#&f#(;#,%#11#6;#.B#.w#&9#GC#GE#2Y#Tv#.J#.L#,p#)$#H3#O4#(s#,r#..#0V#,x#C4#,X#P1#Wu#&7#E8#&H#,x#2>#Kk#A[#Hg#,N#)q#+V#&-#&>#Lp#&+#Jj#,p#RM#&,#&@#*c#-!#+@#Tx#,(#4T#,p#,r#2?#,}#3B#Cf#C\\#M%#4t#)@#/P#Jy#U{#B{#Bz#4`#HX#'G#J%#/5#&z#'*#F:#EM#&B#)j#2<#F<#.O#&d#&V#0N#P%#HB#'1#O2#E&#&M#Y?#Tx#+i#A*#&t#J7#&C#J9#.'#2u#.o#.D#Wg#*{#Gk#-B#.X#O}#Wv#P0#17#EA#Ay#TR#Uc#-8#D%#1X#Uc#.)#)}#.O#4x#,v#>a#6+#'r#,%#,P#Wf#,H#-?#.%#KF#1[#-q#A=#1j#B0#L?#B(#&U#&S#&=#5L#MO#V`#/5#Vb#F8#N`#S=#)E#0w#&7#.e#Ua#&@#&*#Gf#+*#.8#4`#IG#0y#IL#+u#&8#KO#AY#5P#+&#5=#1g#-u#.w#28#6?#2;#Q`#,*#6J#,.#,0#B~#Bd#Bf#,\\#L)#&?#&7#-s#-u#17#GX#GZ#4^#T8#R8#A*#/!#Qb#Qd#Qf#EJ#1/#0y#NW#.u#4*#.=#&a#28#&,#X<#1v#X*#HN#Nn#+v#HQ#2x#U$#U&#E`#&Y#U)#AX#VX#&)#&t#1]#C4#JI#&f#Sd#)a#Sf#0y#RM#Eg#Ei#)P#,P#LN#&8#&Q#LW#*<#1c#-C#.Z#&H#Tn#&?#Tp#3n#G9#G;#&=#&H#&b#Bt#QI#'/#,p#'+#.j#,a#H/#4t#Tw#)h#&0#&/#)@#)}#T,#R}#&(#-e#17#T0#T2#G:#&]#1y#5S#WN#Af#Ly#G!#,1#&7#+=#Bl#F\\#I##Bg#C{#05#&N#1T#&&#7W#&/#&I#&Q#Mx#Rx#)?#-G#G\\#Jj#17#S*#/(#/{#&Q#)Y#+=#F>#V?#*O#,x#*g#&^#&*#'@#U3#Lu#JW#MD#EJ#&5#&E#Y9#)j#V*#*}#'/#O)#T2#3S#.X#&j#&K#.g#&R#&[#&9#&>#'*#'[#(/#&K#&}#(%#(c#(1#'-#(,#.=#I&#&-#Q1#+~#Q3#':#&H#Em#.X#'/#X%#Iw#&'#'F#F!#&E#29#2;#MW#&+#&:#Xr#4T#Ag#+&#*.#20#&=#S^#,p#'A#&_#L<#,x#1W#DI#/w#N>#Pp#Q~#,<#&I#&U#2'#U?#1z#'/#Q$#,q#7Q#&)#&M#S2#Ir#It#Iv#Ao#&'#Iy#,s#'@#H]#&)#/d#'H#X_#&2#&?#&<#W8#*l#&k#R$#'B#C$#&K#E&#OV#5?#+H#UD#/8#I_#Rd#SA#,P#&h#&I#D,#Cp#T9#+H#Ed#Ok#+`#&E#C/#[$#SB#Q9#C}#Sj#2C#1]#,r#G\\#&3#&N#&W#+j#L'#-C#-$#+_#7-#&;#')#\\p#Nq#2~#)j#Ld#&e#[8#,N#PK#[[#HA#+.#&W#Be#U1#XZ#Ht#&:#4`#&.#Wf#Hs#0{#,Y#'@#Ux#&1#&A#MP#Gx#Mo#)w#2C#Bw#*t#&E#&W#&S#&&#Wq#OC#\\C#0f#&:#&z#S(#Ly#ER#IN#2b#*=#B(#&4#Gm#J>#Pd#BU#5l#1X#*7#*9#*>#'/#1]#&v#4H#1j#4q#.o#,d#+/#Be#&\\#Y{#[q#4*#I3#HL#*9#+M#*>#&J#L%#Oo#T8#,b#,d#4Z#B(#*7#A|#/d#&7#M8#C2#HB#ZR#&3#&b#[8#QH#X##)}#Xc#3Z#&L#W-#W4#+c#DU#&&#'3#Fx#NC#'i#(!#(A#Gj#QS#'C#,p#+/#Oo#-A#Wt#*U#-k#&*#W|#'A#0y#UL#[D#ET#EV#OI#[4#2|#G{#+n#'F#Lb#IU#&+#*G#To#AY#G&#,e#&b#&)#HW#V\\#KL#&U#]w#Mq#I<#Mt#&=#'3#'K#@0#O:#'O#)e#Hs#&z#&a#PR#&B#'D#\\X#.\\#^4#DP#Gz#To#':#_2#+/#&.#,2#Cn#&9#&1#&`#&H#*N#/O#&A#&^#_<#I?#'/#-_#/!#VY#_/#[1#Xm#AO#V!#P##AW#AY#,d#&r#&K#FY#[J#Ow#4*#1)#,a#Q:#E2#Ak#]J#C{#TD#)o#0n#2}#+2#US#QA#Rk#_(#D$#4T#XL#*_#'9#HK#*:#,.#^M#&0#&H#1Q#&&#&E#)P#-_#'*#,(#&;#2V#@G#P0#-_#&{#/D#,4#&L#_G#&'#_I#L5#Mx#'A#/w#MC#&-#[h#*g#S.#Gg#,}#CT#1=#]g#_K#[)#Mc#Me#Mg#2U#H[#1]#]4#UF#Zc#]7#Jk#Ar#(n#&*#QX#4|#,B#1D#&+#Is#2'#11#0v#3<#Tv#Ak#&,#'E#KQ#ET#&|#&'#&J#-!#A`#+=#3!#EL#*l#'>#Gs#''#&R#-|#)$#L&#&7#&W#W`#H\\#Hs#M^#+a#0z#/,#*t#F@#-e#-!#QG#QI#-u#B=#(s#PU#5<#D%#&`#OA#^O#OC#P`#,+#[h#Tb#@,#)a#Pp#UO#`%#2z#&9#^:#Uq#+&#5R#P<#ZI#AY#,]#KK#`^#a6#&&#&n#-t#&<#OM#&;#&H#_:#&@#Mr#I=#_`#KC#3d#C(#Jt#,b#17#&l#Oj#&,#^M#L&#QN#N<#M{#-T#.B#-|#+/#/0#]g#N1#&&#'8#4N#0X#1E#4D#FP#&2#&[#&H#EF#J<#/^#2x#05#&d#[8#Fe#,2#NQ#Ak#&0#R}#,B#Nv#,a#0}#1!#H`#)}#/l#+>#,S#){#^;#0)#&8#0+#G2#G4#*{#B<#Fc#^_#QI#&`#]e#*W#ZU#23#P&#*V#0n#)G#BV#EM#KG#4b#.X#,r#28#W>#BL#4;#&[#&=#&E#&*#>.#Q>#Kr#]h#4{#S}#[|#[X#*[#++#Og#(s#YK#RU#&]#LE#LG#&'#&M#&6#&:#Wa#G0#2b#&5#_W#K+#23#-!#X`#&9#&\\#&`#,v#2x#&k#&Y#_W#&@#Or#AT#as#.o#D<#&q#S2#,s#/)#&<#Z`#E~#4t#'?#*I#1g#[;#Hs#N>#D-#2E#H{#H}#*|#J4#I$#.o#-!#P3#+^#&w#&R#-_#)U#KS#`A#_H#'D#bc#Ld#@,#Ne#J^#&@#5Y#S^#N\\#F4#F6#Z%#/H#[<#,u#&m#3[#Rf#I1#D5#\\Y#Us#JQ#1]#&u#&_#+=#&D#)v#&F#-=#-?#-A#,p#&h#&T#7-#M\\#A*#&i#&H#3j#0%#)W#&\\#)b#)w#&^#ck#Lw#aT#&v#Ba#DA#&*#T[#&3#3)#T^#21#am#,F#Ei#.6#30#32#DA#*0#+)#1?#.[#B4#MO#3B#]j#`3#)P#1]#KK#;/#CE#2M#CH#)P#,p#'.#/|#2N#'/#D<#'1#ZE#&1#&R#&S#,u#&O#-=#*=#P+#Jl#F3#&B#&b#&O#GC#'9#0y#&y#&\\#Ft#Oe#UK#&'#*%#BL#Qw#B2#+c#_$#BL#H;#&X#&-#&W#Mb#&.#.i#V9#]v#R\\#bN#E`#QO#/^#,]#&y#&P#9##ZN#'B#-_#4&#&A#b$#)[#aa#,<#&F#&R#&;#57#&7#'5#,]#&x#WA#GD#&(#d|#cQ#,L#->#)-#)g#0P#)}#'\\#B^#(s#,N#'T#K_#UZ#U^#-_#'@#ch#&6#&B#&a#YG#+T#.X#Wu#+w#-H#'0#,d#&h#&V#7$#,`#L3#/^#1]#&l#Fh#/<#.t#YQ#.X#R:#5<#G?#Ux#&,#&+#RY#&&#Yn#7$#&3#&*#1##*l#co#_f#0y#+J#&,#61#PR#IU#_g#&o#ZN#&)#cA#)}#O1#Ct#O\\#Ie#&<#d^#Y;#d-#Ja#,u#\\B#I}#'1#(N#(6#&z#-!#c4#b8#3l#X)#^g#Bs#,,#SA#N=#N9#DI#[w#&&#&`#&:#'.#-_#,z#0*#&-#+y#*I#Z'#,^#&<#1!#Th#f##3W#G.#58#'<#R_#Az#,V#Y_#T&#Yb#&1#Bv#J>#TF#TH#&,#TJ#)h#Or#d6#.^#.`#,p#ag#,N#F^#Hs#KK#*>#&8#'<#,x#3/#Jj#,x#D6#bR#+V#Z\\#,6#Sv#&3#4f#&L#fk#/b#&=#Lo#)>#M?#',#2E#_{#)o#&`#*w#U/#_~#Ns#B0#^3#)-#&E#e^#DI#H0#))#._#]t#\\p#K&#L\\#.A#&F#0[#e6#U6#I,#0e#5c#&:#-|#'.#Bs#PM#V*#V,#.K#WC#4t#'-#Mg#P0#0y#&|#I*#.o#2E#a3#&=#GK#Ph#&J#gL#J>#/!#&[#^N#Wc#&c#&I#Gl#2^#+H#Pd#]H#_x#cc#C{#^<#_5#B\\#bw#/^#,d#2k#20#&z#',#]w#M$#eV#&P#+R#&;#.u#S/#WR#HR#+H#2Q#,D#KO#7j#+s#`J#Ie#Wi#AN#O-#40#42#44#&'#'(#'>#[f#QT#AN#&n#&c#*3#6%#13#&\\#&c#44#-<#*I#KB#)r#.O#&H#&S#*9#*p#3n#E[#d+#K,#1v#f}#:6#a{#Nr#Y:#-C#05#2v#`'#+?#,p#A`#/|#&1#Fw#XH#&?#&?#J$#.X#ba#,k#)=#';#,d#2%#/d#D%#&+#c1#/^#DK#DM#*=#DP#'H#bc#-H#Xi#)}#Gy#[6#+n#.p#5b#(\\#(;#&Q#EM#&(#*M#T`#(s#O6#&B#'E#f8#-6#')#PD#O:#&g#-T#a=#2b#&W#&Y#Q/#&-#[)#RJ#&q#OF#a@#11#+_#]t#2E#E;#*E#Q=#&'#e##);#P,#-:#^X#/d#do#ay#bp#br#EF#bu#0c#Eu#*Q#BY#B[#B]#A4#.o#1]#.O#&G#&I#GY#&3#Gu#gC#XW#St#'%#&L#/w#C2#Dp#AN#/!#L{#0w#L~#a{#M$#AN#OQ#)2#&a#&M#Hp#]g#2E#_F#Xw#&1#F>#ih#gS#)L#,a#,+#VN#ZG#aN#,6#-_#eP#.A#&.#&N#1F#WM#'/#AN#H1#A0#A2#iK#4*#a.#+f#Ww#gh#&\\#3z#b9#i9#U8#C|#Rk#*V#OU#7$#*j#/w#*n#+?#,x#&}#&\\#_T#')#au#Em#'&#,x#&{#&7#Ex#'B#aT#W=#5I#WO#5M#I##WR#WT#Yv#3n#dj#,L#&3#gf#)[#FW#VK#&R#KG#._#&Y#Mb#+`#dS#-)#dU#Y5#F:#,p#jD#Ex#'(#&L#,P#U$#&c#0@#Si#,B#_K#B|#)-#[c#&:#Us#]u#ed#I`#ez#fG#,e#D\\#Gr#D_#c:#J>#(u#&<#FQ#\\(#3W#S^#-!#az#Od#')#[-#)0#Sj#I##LL#EY#J1#c=#I!#ai#&Z#`C#Qf#A6#C{#Zh#*F#aH#'/#0y#N##&E#&:#It#La#HB#id#eT#jV#1v#az#Mp#a]#__#EV#VF#&)#Ke#ft#*l#C4#GE#.x#)>#'*#,[#R_#Pf#a0#OW#cb#YV#iq#Qn#b.#&,#'<#Np#]e#&2#VW#)h#]g#K_#&P#&A#&)#]-#\\.#ST#&W#V-#f_#4j#+u#^%#&&#&_#''#&M#'J#(A#Vp#N,#cE#,x#Jz#4`#SY#`$#C~#/P#Xo#',#c`#_-#_e#Tp#Zm#R!#Zo#U(#H3#&<#&P#.&#&t#0X#d\\#,T#*t#1+#_Y#39#JV#FZ#2N#ZJ#R_#\\Z#O[#&8#^,#){#2$#\\3#Bu#M&#]U#.'#O]#-D#a9#JQ#I3#&z#&b#28#&<#&Z#dQ#&3#&R#X!#du#)[#,P#Zx#,T#,V#,X#B4#H[#N)#0@#M4#BU#P~#^X#@Z#'9#1]#R:#Us#XB#.~#Nx#[Z#k/#,O#+H#eW#\\i#C-#]C#C0#.V#bc#&B#&E#ch#'9#li#fN#,1#/Z#fQ#_T#fS#Y3#&8#dW#dY#iM#0R#0>#0@#&X#Zr#':#&2#5@#c,#m%#kC#/d#.n#E>#I##a~#Ms#_`#D<#&|#+=#1u#D3#28#E`#_0#&m#,]#ER#Ww#11#Un#'?#\\p#[n#5l#&=#&P#bk#T$#bm#LI#Cn#*N#IH#hx#E{#'##I0#@,#0&#7&#&s#(:#'D#(e#43#X2#&e#(R#(H#*_#&)#(F#mq#+~#-W#43#9)#e<#&&#(f#ml#2U#&1#?\\#(V#(T#<t#&2#?\\#(.#(.#.9#2K#&h#(-#'2#([#*_#9)#&\\#(H#n0#@,#(U#n5#.d#&r#2V#;9#'2#dJ#6Q#+H#&v#&y#(X#(Z#@x#J?#&r#43#&L#&L#(s#&X#&W#&K#nJ#mv#&u#'n#'n#.9#7j#?\\#nR#D?#&.#nV#nS#*E#&/#&h#&j#C[#(s#&0#B^#&(#'.#g>#,E#nb#+w#C{#9)#d&#ne#*8#5Z#)S#7j#&&#*Z#&'#GD#n<#n>#;9#&v#&x#'3#'2#</#n'#(2#'V#F<#@r#QD#&6#&D#**#&)#MY#4t#J?#&u#'2#'2#n+#&3#&h#&i#2V#9)#2K#'$#'!#n)#o1#o3#*=#X2#Gx#6$#&4#my#&&#&P#'w#'S#*Q#9)#7j#&M#&[#/b#@,#&7#oL#.d#(:#'e#>|#&&#->#&e#&l#'E#mr#'C#oX#mv#&t#0H#0f#&s#&u#o:#n?#&h#(2#&i#(.#*_#6R#*8#&S#&J#F<#9!#F<#n9#nE#(s#''#'(#&J#&K#&J#&J#nI#'7#'5#07#I~#&J#&T#&R#=r#.9#&K#&K#o3#ov#ow#p&#&:#Cd#&9#p&#(s#T2#'p#'m#nH#&L#?\\#Db#.9#R*#?\\#'-#'-#.9#)(#?\\#Jt#43#KZ#?\\#'e#'h#43#&P#&P#?\\#3$#(n#Qb#?\\#'w#'u#(s#&R#&R#?\\#(%#('#(s#&S#&S#?\\#'>#'>#.9#S1#?\\#&^#&`#(s#&U#&U#?\\#(F#(E#43#&V#&V#?\\#'_#']#(s#T5#?\\#&T#&S#43#&X#&X#?\\#'4#'4#.9#E+#?\\#(b#(`#(s#&Z#&Z#?\\#Qb#.9#&[#&[#?\\#(5#(6#43#.n#?\\#(K#(K#.9#Db#?\\#(W#(U#(s#&^#&^#?\\#&L#&J#(s#\\`#?\\#(!#(!#.9#&`#&`#o3#&a#&`#p&#5i#5i#nI#Ar#'7#ob#p9#@z#&P#p=#&N#o3#PX#KZ#Ar#'6#pF#5x#'5#qV#&&#Qb#&8#&8#&X#&V#p2#43#pQ#?\\#0##pV#&S#Ch#dM#pW#'k#'i#&y#&y#($#($#p\\#&T#?\\#&p#&n#pa#pc#&f#(2#(0#(s#ph#o3#*v#pW#(s#&P#&Q#&S#&R#Qb#pW#oz#p7#BE#pR#8F#&d#qf#qh#pW#&S#qk#qm#qo#qq#qs#qu#&&#pb#pz#(b#.9#q|#&i#q~#]~#oC#r%#r'#r%#&S#oz#p;#.9#qc#r.#r0#_9#r2#r4#qn#qp#&&#p]#&f#qt#qv#r<#r>#pi#r@#&V#r!#rC#r&#r(#rG#'5#q$#r,#qd#r/#^!#qg#rN#qj#ql#rQ#r7#rU#r9#r;#&f#(b#r=#&&#r?#rA#r##rD#r`#oz#p@#rd#rL#rg#r1#rj#qm#nW#rS#qr#rn#rW#&f#s%#ru#r\\#rB#r$#r_#rF#oz#pD#qb#r-#qe#r~#ri#r3#rk#s%#rT#rV#r:#qw#s+#rZ#rv#r^#rE#r)#IL#,Z#r|#s6#pW#s!#s9#s$#n[#s<#ro#s?#n[#s,#r]#s/#sD#ra#q)#s4#re#rM#qi#sL#&y#s;#s'#s=#rp#s@#q}#s-#rw#s0#sE#pN#pP#s5#rf#sJ#s8#rP#(4#(6#(s#sO#s)#sc#r[#sT#rx#s1#'5#pT#sj#sZ#s7#s\\#rP#s_#r8#st#sR#sA#se#sC#ry#'5#pZ#rJ#sk#s[#rO#s:#sN#s`#sP#nZ#rY#sd#sw#sg#ra#q.#t.#s}#sm#t!#rk#sp#sr#t4#t&#t7#sv#s.#sx#sE#p_#s|#r}#t?#t1#qm#&t#7v#s&#t%#s>#?\\#&P#4j#rt#t(#t9#sV#oz#pe#sY#tM#rh#t@#tP#tR#ss#tU#&f#&H#&H#tF#sB#sU#t+#pk#tL#sI#ta#tO#s^#t3#tT#sb#t'#t8#tH#t:#oz#q3#to#sl#tq#s##&y#tQ#43#te#rp#tW#pg#tZ#ty#t\\#'5#pp#t_#tp#sK#rP#(d#(g#u&#tD#tf#u)#tY#tx#sf#u-#pv#t=#t`#u2#rk#u4#u6#tu#qw#th#tj#t)#tl#sy#p{#t}#t0#u##t$#s(#tf#su#tk#tI#ra#q9#uM#s~#tr#uC#tS#uQ#u(#tX#sS#u,#ry#05#r,#q]#q_#qa#rg#s}#S1#Ch#&U#uj#rP#r6#tf#'B#'D#q{#pi#qx#qz#Gc#&W#o3#&V#&W#S1#rw#dM#pQ#S1#r*#+r#uh#r}#uj#pb#um#rk#uo#rp#-7#us#rX#uw#uy#u{#&T#u}#r&#&R#v##'5#rI#v&#s6#v(#ul#S1#un#rR#rp#(B#(A#u*#v0#pn#&i#uz#u|#rC#u~#v7#&T#oz#rc#pW#ui#S1#v)#v?#v+#vA#qw#v.#u:#rq#rs#vG#vI#v4#vK#v6#v8#r{#vQ#v'#vS#v>#&T#t##n[#rp#($#('#vE#s*#n[#v]#v3#v5#v!#vN#'5#s3#v;#rf#v=#v*#sM#.9#vk#vm#vZ#s%#vq#vJ#r$#vL#v8#pJ#vx#tC#uk#v{#ts#v}#qw#vl#vn#w$#ux#vH#vr#v`#vt#oz#sX#w+#s&#w-#vU#v|#tf#w2#w##vp#w5#v^#vs#vM#oz#si#w<#vz#w?#&y#tB#wA#w!#q|#vo#.9#w%#v_#w'#va#vu#s{#wK#vf#w.#s%#v~#w3#wD#v2#w&#Mn#wX#oz#t-#w[#w>#vh#t2#w0#?\\#wB#wR#w4#wb#wV#wd#w9#'5#t<#wh#vT#wj#qm#wO#w_#wC#wT#wE#w7#wW#wt#tK#ww#vg#rP#u%#tf#vY#wR#u9#wU#wG#v8#t^#x'#w.#x*#v-#9R#wR#uG#v1#w6#wc#w(#vu#tn#x3#wM#w^#w1#wQ#ut#wp#x;#wr#x=#t{#q4#x@#wy#u$#tR#x6#v/#@z#tX#x/#w8#wH#u.#pq#xL#u3#u5#x+#x7#ut#x.#x!#x<#we#'5#u>#xY#uB#x[#xP#vZ#x9#xT#x$#xV#uL#xe#w@#w|#wo#wa#xG#x0#vu#uW#xo#&y#u[#xh#x-#xS#x`#xH#we#uc#r]#&X#&Y#u6#nK#y'#s>#nK#uz#&X#vE#&i#-,#T5#p0#&;#ug#ps#p6#v%#py#&f#v:#p~#p?#V*#&&#q&#pC#pE#&&#q,#&f#w*#q1#&f#wJ#q6#pS#pU#ky#&_#pY#p[#f9#qB#&f#x&#&a#&a#pd#pf#&&#^^#pj#pl#&&#&c#&c#po#xX#&d#&d#pu#pw#&&#&e#<U#rq#p|#<,#6,#&i#&g#&f#T5#qG#pr#dj#&-#q_#(*#((#(s#py#&i#43#p~#qU#y&#ps#p~#oz#'m#'o#yx#&Y#o3#(w#y|#Ht#'0#y~#&X#z##'5#(V#(V#px#z(#&i#z*#&Z#,9#z-#&Y#z!#&Z#oz#6O#z4#t6#&&#y<#&i#z.#z0#'s#'s#z@#wS#zB#q!#zD#z;#z/#z=#'5#(;#(9#z'#n(#n*#zK#o3#zE#zP#]^#43#yy#z7#z9#zY#'7#uc#E+#y)#y{#z8#Md#y*#q&#Ar#'3#0\\#(s#.n#*Z#ne#->#.H#&8#Fr#+q#&]#+V#n>#Db#Ca#&w#43#zy#zg#43#q6#zd#yM#y,#&`#&_#43#qA#?\\#&j#c\\#&&#yU#o3#43#^^#y,#&8#Ly#y^#'3#'5#DA#(s#yb#FZ#ne#y^#*h#&Y#zK#(o#-l#&I#&I#&,#9p#(s#yg#{<#'.#{>#{D#{B#{?#zK#&,#G:#6+#&f#*%#ne#zi#zc#yb#.b#2)#&g#&g#{U#{K#h4#zy#;}#*J#k2#&h#&h#{J#{>#;}#&&#zy#zc#p~#&,#&6#B>#&i#&i#{^#{>#{##{b#.\\#*+#&j#{s#h4#{i#q6#&,#&D#5@#&k#&k#nl#{_#yY#B'#{i#yU#&,#&E#2i#&&#&l#&l#|&#{>#yU#{N#^^#SE#9R#&m#&m#|2#h4#`4#{N#&F#&F#Bd#7d#&n#&n#|;#O:#&F#{N#`4#Xv#:`#.Y#&o#|E#\\`#{N#qA#57#;&#&&#&p#&p#Am#{=#h4#qA#{N#|O#{l#&Z#.{#&D#(s#&q#&q#)g#|X#yf#&e#&&#&j#&j#6!#0W#|U#aU#qu#|0#V=#&I#yk#5i#?T#nK#&Z#I=#.d#&s#zo#'.#q]#&&#?T#fX#|G#&&#&t#&t#-[#ne#}!#&M#Oh#&&#?B#}(#dE#)3#E]#Ca#&v#6R#ne#3j#.S#3z#B4#&&#qI#u|#r!#y2#pb#tY#&&#qT#)(#&&#R*#&,#&K#|r#5_#/:#&1#}6#EY#*V#DU#/|#qI#&v#&v#q[#&Q#oC#5a#pQ#&&#p/#th#7c#&,#&H#q:#*m#&x#|W#'.#}7#}:#7l#}\\#:_#-G#)j#&I#/D#,e#/8#nd#'.#2K#zr#JE#nO#^(#}/#N-#&z#&{#}z#,9#')#F>#+B#&|#B4#}M#&&#)o#zr#}8#S%#+}#}f#7Q#}\\#?B#2H#:`#2N#&&#hT#J?#&s#&&#}r#}&#}n#>-#<v#&w#&w#&&#&G#Oh#ps#&&#^(#&&#}z#5i#&}#A&#Md#&Z#&T#&N#(s#&~#&~#{J#~B#}:#~2#~4#~H#&,#&U#C(#&&#'!#'!#9)#ne#}:#~B#~O#A'#A&#zc#zy#~4#&D#|`#~2#6m#th#&,#&R#5x#=w#}c#}:#}7#|=#~`#&~#~Z#'!#&,#)d#(s#;4#nb#~^#/|#}7#~@#Md#.R#|=#~a#=w#<v#}\\#FQ#&P#&R#;a#|?#ne#|}#39#18#&|#/E#EY#}:#;4#d;#{O#|9#~?#~A#.R#~a#}\\#&x#&x#8a#*B#}O#qI#r!#u|#}@#R*#}W#|(#1w#&k#{%#zy#{##~[#|L#0Y#&i#I4#&g#~b#&(#&p#&o#43#86#o3#&5#&4#86#86#&:#&<#(R#(R#.9#'(#'(#o3#'%$!a$!h#'$#'&#r%#*f#'(#{J#{##|\\#{@#zy#~[#&'#os#;U#.S#>n#&L$!\\#'&#p!#{D#.9#''#''$!j$!a$#'#9p#&N#v_$#'#{^#|b#|/#&l#;D#5i$!{#[X#(@#(C$#!#p!#&K#5\\#&&$#'#{0#;q#87#3X#oq$#>#'&#(Y#([#nE#&s#&t#nC$#I#&t#(_#(]$#I#o.#o0#~7#o2#&i#01#o6#&3#o8#ob#n,#&i#o=#*Q#&i#o@#oB#oD#'e#5@#oH#&-#&M#(R#(0#mr#(.$#j#mv#&r#O2#|}#(t#'1#0n#zq$#r#43$#q#'8#(W#'h#)j$#T#q]#1Y#.z#@,#*U#o,#o`#:3#n&#'3#'4#n}#(s#&I#&H$$,#~?#&F$#D#'##&~#'E#Yi#6!#&f#'V#'W#43#-[#p!#7&#*Z#'3#'1$#8#43#*Z#&j#&k$$D#6^#&k#8Z#mf#(s#&u#&s#'S#'Q#(s#d&#Ch#hu#FZ#zw#43#Am#-[#q_#4|#(s#7j$$*#'A#'B#Am#7j#0n#+v#d&#(s#)2#43$$f#y]#&b#3$$$V$#v#&&#Am#q{#&X$$P$$]#&-#Ch#+v#nn$$o#)g$$Z#&V#nr#na#&0$$_#IX#KM#A3#ZN#61#)}#)2#&e#&d#nq#DU#&;#(k#(i#=@#?\\#'A#'A#.9#)g#?\\#'Z#'Z#.9#nb#?\\#'M#'O#(s#9)#?\\#(&#(%#n}#?\\#'B#'C#43#n,#&f#'0#KK$!C#?\\#&}#&z#43#6O#?\\#'f#'h#(s#)o#?\\#'j#'j#.9#39#?\\#()#(+#(s#q]#?\\#'K#'I#(s#->#?\\#(@#(B#(s#;}#?\\#PG#(s#3j#?\\#(Y#(Y#.9#*V#?\\#(N#(N#.9#B4#?\\#XJ#.9#&>#&>#?\\#nA#43#hT#?\\#(a#(c#9Q#q##~Y#5T#?\\#(H#(K#43#:_#?\\#&`#&^#(s#2N#?\\#Y|#43#~g#p?#5=#d;#?\\#&<#2)#|?#pS#(%#.9#~@#?\\#'X#'V#(s#th#?\\#pb#.9#{D#tV#~M#&&#ow#?\\#'H#'F#(s#p&#?\\#?@#(s#nI#q8#&K#43#qM#';#LL#&&#p>#&f#&Y#*w#}B#&O#?\\#'`#']#qW#?\\#&r#&u#43#pL#&f#'~#'~#u?#(X#(X#.9#vd#(f#(f#rm#(C#(C#wl#6`#&r#xQ#((#(*#pm#ux#&f#S1#.9#y6#&f#'z#'|#zT#&f#ps#.9#y<#&f#&?#7d#y@#&f#(c#(`#q+#&\\#p^#&^#q0#&]#?\\#'R#'T#q5#q7#&f#(.#(,#q;#yN#&i#O`#7j#5i#&(#(A#(C$%3#rq#(a#43$%8#&f#'a#'d#43$%=#&f#|C#.9$%B#&f#'T#'T#.9#6R#?\\#ow#o;#&f#'g#'f#mm#&4#?\\#(Q#(Q#6u#&5#?\\#&_#&`#43$%Y#&f#(O#(L#43$%^#&f#&R#&U$#w#&8#?\\#([#(Y$%g#&9#?\\#((#((#.9$%m#&f#(>#(>#.9$%q#&f#&i#&f#43$%v#&f#'R#'S#43$%{#&f#(?#(<#43$&!#?\\#X2#.9$&'#9~#-8#>-#?\\#(h#(k#43$&.#&f#'B#jG#~0#?\\#(3#(1$&7#&C#?\\#&u#nG#&&$&<#&f#'E#'H#43#`4#?\\#'Q#'T#43$&C#&f#(%#(&#43$&G#:Y#'!$&K#&H#q-#(H#43$&P#&f#&\\#&[#43$&T$(9#.&#}Z#p'#&f#(3#(3#.9$&]#&f#ph#p8#&M$(F#*:$&d#qQ#8F#&b#.9#pB#&f#C,#r##pH#&f#(U#(V$&r#&Q#?\\#&,#*l#rK#(j#(i#43#vd#(1#(2#uD#&f$$N#s)#&I$$2#vZ#(R#(Q#43#pn#&f#&w#&y#nK#pt#&f#(V#(U#z\\#z($)R#&x#ze#po$!-#y?#q'#s*#'o$'?#?\\#&q#&o#(s#yG#''#:(#&&#yJ#&f#'s#'r#43#q<$'O#&_#g{#.9#,1#&D#43#*8$%9#'\\#(s$'Z#'L#'L$%<#&0#?\\#&9#J>$'c#-U$%F#&f#&Z#h&$%K#&o#&o#.9#X2#?\\#pW$'t#?\\#(J#(I$'y#&6#?\\#43#(n$(!#/($(&#?\\#'x#'x#.9$%h#&f#'J#'L$%l#&:#?\\#'%#'(#43$(6#(-#(.$(:#&<#p?#O9$(@#(2#(1$(D$&##&f#(1#(1$(H#&?$(V$(X$(L#&f#o|#7c#?\\#._#;$#&B#?\\#'[#'Z#43$&8#&f#(Y#nD$(^#&D$%P#&{#(s$(d#&f#(]#(]#.9$(i#(F#(F$&F#&G#?\\#'i#'l#43$&L#>z#&H$$-#&I$&U#'H#.9$({#'i#'i#p%$)!#(4#(7#p4$(M#(j#(s#qM#&@#5@$&e#&g#&h#pA$&j#&f#'y#'|$&n$'8#Ng#}U#?\\#'+#'*#t_#0&#(n#vd#'X#'U$)G#'P#'M#43#rp#'{#'y#xQ#(=#(=#w~$&Z#'9#yr#?\\#'!#;5#{?#?\\#9(#p}#q!#&f#(M#(M#q%$)b#'=#5^#yC$'@#&f#0|#z|$'D#&f#(D#(F$'H#?\\#U~$)r$'N$'P#DO#(n#,=#,0#&&$){#&f#&{#`s#n\\#?\\#&[#zv#no#?\\#&B#|`#m~#?\\#hu#(n$'h#F+#&L$'k$!h$*3$'p#&f#&G$$/#94#?\\#=w#.9$'z#(P#(S$'~#&7#?\\#(E#(G$%b$('#&f#'Z#'[#43$*G#(E#(F#43$(1#6=$*P#&;#?\\#'o#'o$%u$*U#&f#']#'_#p0#&=#?\\#AE$*[#?\\#&z#&}$&&$*a$'`#&p$&+#&f#(R#(P#7P$*h#G#$&3#&f$&5$(Y#?\\#(A#(B$&;$*u#&f#'F#'G$(c#&E#?\\#&k#3Z#|F#?\\#'l#'j#(s$(n#(e#(e#.9$+*#'^#'`$+-#?\\#(##'}$(z#&J$+g#&.#(n$&Y#6,#<.#};#p5#&f#'o#'m$+<$)+#&f#'S#'S#qP#?\\#&6#3u$)3#7W$)6#?\\#'g#'g#.9$&s#'Q#'Q#u?$*D$&z#pX#&f$&b$)G#.##(n#rp#'|#'|#t7#&f$'T$'*#?\\#'p#'n$)U$,]$-H$+f$-F$,_#zW#&f#&c#&d#43$';$'j$+r#?\\$&|$'C#?\\#'d#'d#.9$)n#(<#(?$+~#o3$,#$$f#&($$t$,(#nY#&f$(.$%7#n]$',#&T$*%#?\\#(C#(@#mx#n!$-K$-M#oc#&f$(G$#T#?\\#''#:*$*4$(2#(=$%S$'u$+t#zs#~&$*<#&f$&V#(s$(!$*6#zr#?\\#&l$$G#oT$(,#&f#(,#(/$,X$*L#&f#(C#(A$%p$,\\#7i#*$#}8#?\\#zn#}P#?\\#'*#'+$,i#&f#|b$*`#?\\#'T#'Q#43#+E#?\\#':#';$(P#&A$-O#+X$(U#&f#'9#2Q#}j#@7#da$*t$+L#')$*x$-(#&f#&|#&|$*}#&F#?\\#'h#'f$-0$+%#&f#\\`$-4$(r$.`$.b#|q#?\\$*+$&S$-=$*-#h&$-A$*1$)&$-E#'}#(#$&`$-J$,s#(s$&e#9)$)2$+D#'U#'U#.9#pG#?\\#L;#(s$&s#&8#IU#r|#(O#(O$-^#?\\#('#($$)G$(=$+X#qw#(*#()#vn#'U#'X$)P$'+#qA$'.$)V#i($'3#(J#(J$'6$+j#'|#'z#(s$';#'7#'7#.9#yD$#O$)i$+w#')#'+$+{#&f#'{#'z$.*$)t#7j$$V#&(#'\\#'Z$'V#E+$.4#?\\#'Y#'\\$'^$*&#&f$!c$%A$.=#'3#'3$'g#n'#&f#(a#(a$'k#'t#'t$,>#?\\#(D#(G$.J$'v#&_$,F$.O#2N$%]$,K#&f#)(#.9$%c$(7$!W$.Y$+&$+4#{B#?\\#'D#'A$,[#?\\#&c#|g$.g$(9#6I$.j#&f#qm$%~$*\\#g{#~3$,n#&Y#V<$*d#(+#(($.z$/2#'h#.9$,x#'_#'_#.9$*p#nN$-!$0^#'D#.9$*y#]j$(h$/1#&f#'t#'q$(m$/6#'?#'?$/9#?\\#'c#'a$-8#&f#'W#'V$-<#?\\$#%$(~$%r#([$&\\$-E$-V$)*$(e$-[$).$.#$.%$&i#?\\$.($+H$-c$+K$.`$.;#r|$-f$/_$-v$-x#u\\$.E#s)$.\\#vn#(>$.I#v1#&f$-m$-o#&f#'G#6r#y9$+3$/u$(e#'S$/y$)b#(7#(4$)e#&f#~O$.!#7/#&u$0'#(=#(>$0+$,#$$q#&(#&j$#3$.0$%_#(*$'Y$.5#'(#'%$08$0[$'b$.=#FZ$0@$05#'[#(s$%K#'8#'8$0H#&f$1d$,C#&f#'8#'6$%X$.O$23$(!#(d#(d$0V$,P#'c#'b$,T$.Z$23$(1$*f$(6#&O#l8$0e#ox$,e#?\\#')#')$0k#pd#(D#(s$(I#'^#'_$.u#&@$*8#(H$,u#&f#([#([$0x$*k#&f#'e#'g$,{$*z#(_#(s$(_#(`#(`$1%$/,#q&$/0#?\\#(O#(M$/5#?\\#'W#'W$11#&f#|0$&O$+.#:Y#'$$+1$/A#((#(+#43$-A#39$/F$'q#(R$/J$%d#'K$-N$22$0\\$)3$&A$-T$+k#(O$/X$)<#&f#'x#'v#tL#)X#qf#?\\#|9#rm#'(#87#rp$$(#vZ#(S#(Q$-k#&f#'<#'<$/o#?\\#(]$2f$-r#qk$+i#?\\#(\\#(\\$+n#?\\#'0#'.#zm$+s#'&#''$+v#?\\#'6#RM$)m$'I#&o#&p$1u$)u#7j#)!#&(#(4#(4#nX#?\\#(8#(:$)~$.5#'q#'t$2%$3.$2'#?\\#'s#'q#n&#?\\#'=#'@$%J#o2#&f#:_$21$0c#8C#?\\#(c#(c$0O#?\\#(/#(,$,J#?\\#&~#'$$*B#&f#(G#(D$2B$*l#'[$(0$._#'.#'0$.c#?\\#'u#'w$$g$,a#&D#|K$(@#(U#(U$2P#&f#'k#'k$.q#&f#_9$2W#p:#'/$2[$(7$&2$2`$3M$2d#'c#'c#.9$(_#'0#+%$&?#&f#'P#'P$2n#&f#'O#'M$2r#&f#'b#'c$+)$/:#(`#(b$15#'9#';#o}#?\\#'?#`|$1<#<O$$\\$)'#'[#'Y$-I$2&$1E$)o#zH$1H#&f#'Y#'Y$/T$)7#^($-X$36#(g#(d#t_#(h#(h$1R#@7#u\\$23#rp#(D#(D$-h$23$)Q#~H$3K#&f#('#(%$'3$2m$-u#(i#(j$-y$)b$2i$/}$+s$2p$0##pC$2c$3a#?\\#&d#&c$3e#7j#nn#&($23$,)#3H$1~#?\\#&{#~I$'_#*V$3v$4N#rB$,9#(##(#$'k#&V#.R$%O#&f#'>#I2$24$1;$'z#'y#'y$0R$%U#'g$43#&[#&\\$47$4h#'d$*K#pY#'@$4>#&f#'l#'l$,`#?\\#(6#(5$(?$,f#&f#(i#(k#(s$(E#&f#o/$4M#*Z#.9$.v#7/#|z$*g#&f#(+#()$*j$&$$!B$/%$44#(E$2g$-##'o#'n$-'$,2#&E$1(#?\\#(`#(c$1-$6J$4n#&&$+*#&V#y*$(v#&P$&R$({#'u#'x$3$$)!#'{#'{$3'$3u#}E$-J$$C$4~$17$+C$,|#(A$5(#?\\$1+$);#?\\#&M#}m#rK$23#vd#m%$)G#'$#&~$/e$4}#wR#']#'`$/l$,g#&-$+b#r}#y9#'`#'^$3Q$6+$5E$)a$6J$2j$-|$'{$2q#{j$+w$5B$)n#&g$!U#yM$.+$3f#)g#nr#&4#@h$,)#'U#'W$3p$5M$%!$)=#DO$,5#&f$5Q$*,$23$%K$0s$'o#?\\#&|#&z$4'$6_$'z$./$(!#'L#'I$43#(B#(@$(+$&/#(H$4:$([#&u$(5$.d#(;#(8$*T$4}$(@#'4#n>$6/$23$(I#(I#(J$4P#&f#?D$2[#'/#;p$.~#'##'!$*o$(Z#<O$$~$(_$23$*y#'6#C4$-,$6_$(n#~@$2v#'%#''$15$23$({#&4#+H$-A#';#=!$-D$.V$.X#qM#&x#z{$4~#']#']$/P$4}$/U#&f#'m#'p$6k$6_#rK#7h$1R#(c#(a#tC#?\\#(j#(h#s)#)g$-h$6:$3G#qg$6~$4m$'3#(T#(V$7&#(##'~$1h#p:#'0$1l#'@#'>$5L$6_$)n#,2$'M$76#7j#nb#nr#&q#&n$)z$.1$23$'Z#yg$.8#&f#'f#'f$5`#(<#(>$3z#&f#(g#(g$'k#&m$$K$.G#yb$*7#&f$$A$28#?\\#'F#'F$5r#&f#(S#(P$43#'M#'P$5x#(&#($$5{#&f#GD#(n$(6$23$(;#')#',$6)#?\\#(G#(G$4I$7i$,n#3!$,q#'*#'*#.9$(Q#'e#'e$2_#?\\#(e#(f$7v#q=#'~$1!#&f#(:#(9$6F$4#$6H$8!#<[$+$$2s#'U$(q$,6#*Z$/=$'J#(-$19$94#&/$6Z$3L$3N$)'#d&$1B#&f#($#(&$/M$)/#(k#(k$8:#&f$#'$6h$66$5+$--#'i#t_#(,#(,$1R#'2#'3$)G#'1$$+#tf#'_#'^#vn#'\\#'Y$6{#&f#&x#}T$!$#?\\$/g$)Z$*'#BT$-u#y^$3U#&f#(J$2Z$7,$5K$7/$4,#(/$.&$'I#(Z#(Z#.9$)s$,##my#&(#&o#&q$'V#(:#(:$04#&f#'5#'7$7A#{T#0&$7D#&|#Ke$.@#'@#'=$3~$6l#&J$7K#&f#C/#(n$%T$2{$4+#&f$2U$4/#&f#(F$2R$.U$)##(0$5x$2]$7\\#yH#'v$0a$+E#'{$4B$.k#',$2L#&f$5B$6/#(6#(4$2S$,n#&F#&I$7m$/'$68#(5#(5$9K#?[$0|$7w#'/#'.$9R#(e#(g$/+#?\\#'1#@|$8!$(k$6M$:R#uc$+*#v7$15#-[$2}$(V$)%$4v#\\%$+9$)0$9l#o8$9p$(s$6e#&f#(_#(\\$+H$*R$8@$)A#t_#'N#'P$3<#&f#At$)G#'j#'k$6v$$9#'X#xQ#&N#5x$)Q#'x#'u$6~$23#y9#'O#'N$)^#&f#(Z#(Y$5F#?\\#(L#(L$5I#?\\#T5$1o#'W$9]$5O$9u#''$:G$,!$3f#89$9`$'V#FY$7?$1m#'#$:U#(k#(h$.<$4}$,9#'V#'V$'k#'I#'K#;'$,?$23$:e#'v#'x$9%$6_$(!#'^#'^$2>#?\\#&>#-t$0Z#&f#{4$93$23$(6#(?#(?$6%$(<#'R$%z$6*#'6#'8$6.$*\\#'r#'s$,m$%i#(@$64$2X#&f#(j#(j$9G$.{#&f#(0#(3$4U#?\\#(=#(?$2d#'5#'5$4[$-##('#('$2k$3+$4c#(a#(b$;=$:4$6P$/:$23$(v#&1#EU$/@#?\\#(S#(S$+5#?\\#(I#(I$6^$23#qM#&O#}V$4~$23$)3#'@#'@$9w#'b#'b$9y$8A#r-#@*#v&#&y#I_#u\\#Am$'$#&y#~>#vZ#'h#'e$:.#B4$5=#86#zI#',#')$;n#'w#'w$::#(.$9c$7,#{\\$1o#*K#{!$'I$31$75$0,#2?#)-#,W#V!$1{#&f#'L#'J$<)#~=$8o#(&#(&$5`#(^$#P$.@#',#'*$2-$4!#_.$:a#ne$9!$'w$*;#?\\#'|#'y$:j#(Q#(S$,O#?\\#(7#(5$7Y#&f#'v#'w$.^#?\\#(?#(=$5~#'S#'R$7c$22#'k$:|#'8#'5$.n$$\\$0n#q##&N$7m$/R$<a#?\\#36$6<$1]#'p$;0$%w#(L$6B$&@#&;$9V$4W$8!#&l#|j$!<#?\\#'r#'t$9^#&f#'K#'J$(u$2z#|U$;D#&f#2K$=%$'4#&W$;I#&_#Le$6`#?\\#'z#'z$3-#oz#(s$)3#'z#'{$+H#'I#'L$8@#(W#(T#t_#(/#(-$;Z#nC$8G$+k#(N$;`#q_#xQ#'G#'F$:.#{q$5=$1a$'3$3r$;n$7W$8Y$60#'4$3Y#?\\#'a#'c$8_$5-$=V#?\\#U5$5S#<@#*B#&(#&]#&[$'V#@\\$<)#8Q$8o#(6#(6$5`#*#$8v#(T#(T$'k#2V#(n$.G#(I#(K$7O#'q#'s$<=#&\\#zf$(!#|i$<B#&f#6t$<F#(9#(:$>'#&f#'C#'B$:v#'d#'b$:y$?[#'A$:|#'!#4f#~*#?\\#(^#(^$4M#q]$<\\#?\\$#J$0u#&f#(9#(;$>>#&a#&^$9O#s*#'p$>D#&f#(T#(W$9V#(1#(3#a7$1)#R*$9[#&f#()#()$2v#(N#(M$>T#q(#(7$4r#&f#'u#'u$>Z#[X$1?$4s#9a$>`$<c#(0$3-#(7#(7$9t#TR#}W$-}#(d$35#?\\#'N#'N#u?$$~#v&#(g#(e$>u#G~#s)#ea#vn#'C#'C$+_#&f#(8#(8$5=#',#M'$-r#&]#k7$-u#'q#'q$::#}S$;v#&f#'}#'}$1o#(>#(<$0'#(9#(9$<!$8d#9$#.G#&(#'M#'M$3l#&f#(\\#(^$<)#'d#'a$3t#(<#(<$5`#'~#(#$8v#'v#'v$'k#'F#7:$.G#'T#'R$7O#nb$:g#(i#(i$9)#(,#(.$=|$'l#'e$>##'m#'m$:s#'&#*g$!5$,D#~u$0e$!_#(n$(@#(Z#(X$<U#?\\#R#$<Y#&f#'X#'X$?m#&f#&k#&m$2[$!A$;.#(K#(I$2d#pQ$<m$+L#'+$<q#&f#&J#&M$6I#&f#(*#(*$@'#'}#(!$>P#0H$@.#&f#p&$>W#}&$>Z#(^#(\\$@7$9*$=$$@:#&z$!4$4~#(-#(/$>f$+D$Ay$32$A}$1M$B!#rK$&!$1R#:T#rm#'~#(!$;`#T2#xQ#}z$@U#2m$1_#~[#zI#|?$1e$<c#(2$?(#(P#(P$@d#'j#'l$8_#J}$?1#&f#(L#(O$?4#~'#UF#'2$'V#(E#(E$:Q#';#';$8o#'N#'O$</$.P#'E$*,#4G$:^#&f#'A#'D$:a#(\\#(_$0L#&f#(!#'}$<=#(B#(B$9)#<e$?T#6I$5x#(W#(W$:s#?T$7_#?\\#'P#'N$?a#(X$#H$0h#'1#@o$6/#(U#(W$;%$5P#B'$*d#'r#'r$>;#tg#}$$,x$B!$*p$=#$AZ#&f#KZ$A]#'a#'a$4c#'J#'J$@'#(H#(J$>P#p~$2y$-O#9n$({#KM$9g$1*#'r$Ar#(_#(_$9l#6R$3-#(n$;O#'`#'`$9w#(-#(-$=6#;P#r|$/n#v&#(:#(8$>u#&m$!N#tf#'D#'B#xQ#(d#(f$3G#'7#qZ$'/#(]#(^$:5$,@#}I#zC#(w#7j$!2#I`#QD#.X#ym#'\\#'\\$04#(2#'4#(V#*_#*8#)g#&]#(f#(4#mr#(:$Cz#o\\#oZ#Hs#o-$8/#n&#p!#yU$0H#&i#O2#6R#X2#o8$?S$%O#&i$!_#;9$6U$D%$#T$D'#&a$*7#&i#C/#2K#6O#o8$?'$,C#y0#._#C{$D4$80#X2$D7$4+$D1#X2#&4#)o#o8$@W$DH#3X#o>#oC#&N$D5#6O$DG#Ru$,K$DA#6O#39#o8#6L$5r#&i#0n#7@$DD$28$DV$%c#&i#3X#)o#q]#o8$B@$.U#&i#&9#{4#Ly$Db$DW$DV$%h$D_#39#[X#&9#o8#'C$?c$0Z#&i#lI$!2$DR#`4$<B$D*#Ph#q]#-k#p-$#u$7q$D5#;}$DV$%v#&i#&;#;}$!c#&<#o8$A,$:y#Sc$&A#2)#r$$,[#qU#.@#}O#~E$%R#~0#{$#~2#z~$*t#{$#`4#*%#q_#(P#(R$@$#o3#&F#~@#},#'/#'0#&G#>{#&E#~@#oz#([#(X$6I#&i$EP$!##z,$EU#`4$EX#'5#'J#'K$E\\$E^$ER$ET$EV$Ec#|$$2n#yz$!<#{$#uG#O?#&V#(8#(;$Aj#ob$&T#ct$$.#}_#&J#oz#'O#'O$C9$'J#zV$Ey#&H$E{#ow#oz#(2#(2$F$$*f#ow#p!#p$$4v$*f#nI$F1#'=$1B#&i#&M#nI#&L#R*#&:#'Y#'k#nO#nI#-[#&m#&q#+H#6;#7x#mw#5b#os$.<#mz#m|$BR#n$$8v$#[#o2#(-#'7#(T#n1#&1#&\\#(G$FV#@,#(Z$F[#.d#&u$6b#-[$1y$*f#6R#p!#01#(n$#\\$D+$D;$F>#'B$<.#n?$&X#-;#o)#&G#&J$$&#&u$FN$=_$FP$,-$F%$.8#(-#'V#&.#**#*8#&\\#&^$G!#@,#HX$Fu$Fd#&2$Ff#&/$Fh$#U$Fj#2K#p,$Fj#Gx#&g$Fy#n,#(2#(j#'H#oh$D;#&b#(-$Fn#&)$8I$#I$(]$%.$;d#'A#'C$$u#?\\#&A#&>$8j#p!$+h#n\\$$*$8j#?b#&>$1A#no#p!#(+#(+$3v#o4#nb#GD#&1#p,$08#-M#&i$5p$2'#p!#&s$67$'h#&i$G]#&1#6R#p,#01#n<#'4#(L#(N$=n#o3#C/$#b#'w#'>$;R#m~$FC#{y#@1#@,#o_#(:#n/$FW#&e#&D#Os#@,#&H$H(#op$FJ#(I$FU$H%#&D#},#&)#o^$#n#*=$%.$ES$H6#Ye#KK#)>#*8$$A$)>$3p#{7#_5$%!#}/#7j#**#4t#9)#}/$A/$./$Fe$(%$#T#{$#X2#d&#q_$CV$4'#8Z#)}#)o#{J$8f#nn#nq$78$HH#-,#X2#)o#oz$>=#94$%$#X2#6O$-P$CS$7O#)x$28$$*$H^$DK#&6#oz$@O$Hc#'4$'w#:3$Hf#&7$D2#+H#r$#O2#}r#(t#'4#ob$*4$Eo$H|$26$I!$,?#;}$9!#ob$%Y#(-$Ef$<7#&\\#(:#m}#&)$@L$#I#(:#'Q#I##m~#&e#(;$=j#&)$#O$GC$#D#''#(I$F~$G##&.#&e#(=$Bt#&)$#G$#I#(5$;m$=n#q]#RV$#|#Ue$#|$H,#oB#.9$Fw$'c$Fy$,9$FR#n-$I7#**#n2#&c$I8#ET$I8$F_#n{$%F#o!#F<#7j#oi#&P$+,#@,$,A#o_$(]$#u$IV#m}$*G$Fy$(1#ob$%q#(-#oR$(+#&\\#&O#oS#*;#oS#.d#o]$H+#o-$;l#n}#p!$*f#2K$G-$?H$'p$D:#2K#/(#&4$G_$Fo#av#'6$9E#o;#(2$Fm#n}#2K#&M#(a#(C#mr#(=$J@#mv#&S#')#}@$$L#~*#5b#J!#&~#\\7#\\9#\\;#\\=#(8#S$#hq#&Z#HB#*M$D##J?#(:$I.#PX#&'#]^#)>#6Y#o_#l:#_A$FI#0f$FK#5b$$4$>5#-[$,6#@F#&(#@7#6^#*%#n-$JZ#-[#+q#@x#0&#oq#&s#&n$JW#[b#Hs#kC#)}#'f#D+$$D#&-#'I#2)$JI#0f#hq#&M#S$$JK$JM#\\:#\\<#'-#(F#*Q#_5#o,#nF$I@#(I$C3#0f#&e#&X#C{#+R#C{$F_$>5#(s$#@#0f$E2$$3$42#5b#.9$H?#+~$*=#)>$Ji#<O#6^#*Z#n-$K8#+~$?P$Jn$(}#o\\$7:#o_#|M#5b$$n$&!$JJ#'-#&~$JR#(;#&M$K-$JO#\\>#by#5Z#/Y#BV$K&$DQ#&)#AE$J`$0g#mv#(:$KR#{H$1T#@,$Kp$H,$Jd#'%$KI$KA$Eo$KC#&:$KE$#D$KO#0f$Jj#(s$KM$>5$KP#(-$Ks#yC#&Z$KU#7&#J?$KZ#0f$<&$K]$K(#hr$K&$$n$Ju$Io$KE#PX#0f#'($3\\#5b$KD$FJ#'%$L1$J[$*K#+~$$q#@,$KV$Kx#+~$Je#0f$$4#7&$Ji$K}$J[#.#$#D#,4$LF$$y$J|#(s#&`#/'#&g$7^#S0$>F#Ar#Mz#Xn#Kk#d`#fe#GP#7;#&z#g~#Tk#'<#,p#O6#DV#XG#5c$#u#*&#*l$H,$<&$E2#PX#*Z#7j#tQ$Kw$K5$Jf$6u$KL#&'#Ch$J[#.&#/9#&y$KI$KP#{T$Jt#&)#o3#hu#5i#rC$$<#@x$>J$<($J[$M'#-[#I`#&,#&w$=<$<&#'2#ye#@1$M0#&i$M2#@x#oD$IM#nr$Bh$8,$L0$L<$FJ#'#$Lv#PX#3$$%l$Ll#fK#,]$L]#&3$L_#&(#&W#S$$%l$Lo#C\\#DV#)I#@1#KM$MN$Jd$*O$LG#E)$LR$M&#&U$M(#*%$M>$$H#+V#'4$>5$Jo$ME#8]#rw$M(#*Z#u%$L1$Jc#+~#:g$M5#(s#')$+N$MJ$$W$Mh$#y$F#$L($M;$8{$J^$G~#mv$L3$L($!_$<U#5b#0h$K`#hp#hr#Xg#QD#&/#,G#7;$N7#0f#&6#&v$N?#+~#^'#&z$Lg#&=#ff#hc#BT#he#5>$Kd$K/#(,#-!#'u$6}#Am#&1#&4#('$Lb#-`#'A#,]#N}#O!#'=$K+#J##BS#BU#&z$&6$$$#Ly#oP$JZ#*Z#3s#om#[D$Io#mg#6^$7q$GO#*%$$T$Km#*l#')#'/#o,$2)#}p#ns$$<$-c#)>$$h$N&#/E#;/#oo#nF#3$$<&$0%$?B#mf$Ns#*%#7j$Mo$JH$!k$Mp#&&#&~$7u$O#$EU$$3#(J#'a#|K$M;#&'#'1#cL#@1#&6#A*$Lw#6^$N$$*>#)>#q_$*i#B(#&*$M:$$n$OF$OK$&7#,+#mf#-[#&q#&p$,7#*%#&)$M>#hu$<&#O`$O3#&G#'n#'v#~Y#-[#*%#'1#&k#rB#&)#pp#o_#(5#'z$?9$LU#&*$:&$N.$Jb#&t$;'$Nm$63$N#$N%$Lx$L!$O#$%<#.X$M-$8,$MC#?\\$>5#d&$Jp#@x#*Z$Js#@1$L~#&s#(5#'c$,4$M3#'1#&o$H2$H4$OD$/M#&Q$Ot#nP$O+#*Z#Ch$Nn#*Z$)S$;*$Jo#&f$Hq$P&#&i$O(#6^$O]$O7$)L$Jd#'&$P9#.d#(5#'p#}I#-[#FZ#'1#'+#)r#+c#)r$J$$PN#J?#&q#2b$#D#a0$P+$Jv$(]$LP#;5$M;$Ow$O3#n=$N!#av$3`$M3#&l#{-$PL#_A#da$KI#&>$NN$JP$Ka#&Q#-!#4R$=\\#2b#&T$N_#>i$Kv$Pb$L#$KG$@J$KJ$(9$M%$P$$P($Jl#(-#'S$O&#&\\#&e$Nk$O&$M|#or#(I$Q/$K9$JT#@1#U5$J`$Q<$N0$MQ$OP$K'#+~$JK$Ka$Kc#\\8$K.#\\=$NP#)}#'Q#*$#0&#2\\#'J$FF$LL$M!$Mf$Q%$L4#mz$Q($Mj$Q+#e<$Q-#'R$PY#yC#&b$PW$Md#o\\$Nl$Kq$Q]$K9#d]#@1$Qd#.d$N1$$R#*l$L6#+~$K)$Pu#'-$JQ$K^#f+#)}$&y#&.#*4#2K#(R$FF$P,$Pc$M}$KF$QV$K@$$8$@J$KM$$?$Q\\$Q^#&\\$Q`$Mc$Q^$#J$<|$Me$LN#(I$Qf#+~#&e#&]#.X#JV#.X$Qk$Q@$M3#9p#4t$N\\#BU#'2#Hs$L;$#n$$3#&~$LF#Ch$#D#&v$86$Ky$LF$M3$Qo#(s#hq$R9$Pa$R3#(s$M~#5b$OO#0f#&t$&q#5b$Pn$L>#+~$R[#+~$RM$I@$LE#7)#*Q#js#*l#FD#aI$MU#AF#g]#+&#P@#K8#+S#g:$Qp#hr#bc#L/#&>#'7$M]#(o#XO#fE#+&#lR#c9#B!$NJ#DN#hf#-!#`L#&-#`N#Gi#fc#G+#ff#lO#,,#lQ#hh$N;#03#)r#*g#Gd#&8#Gf#+`#&I$+e#&)#3H#o_#&u$O+#)g#Ch#2\\$8f$H}$OJ$%B$Gi#)x#F<#oD#'L#)}$78#}Z#&T$JU$Q>#n9$QN#F<$N$#01#=9#Zu#&u$SX#G'#&k$<D$MN$SR$SZ#)g$G.$S]$1~#G'$AR#KL$SY$N%$SR#nA$Sb$P:#4t$SE#H2#G~#J^#'4$Hj$,5$SL$SR#oD#'X#HB$${#&'#&m$-+$Q#$Ou$HE#{F#,U#)r#*8#&T#'s#(>$Aw#*8$FC#'!$,4#WM$,4#oP#']#O9#*%#&e#&A#}`#\\s#}`$LM#or$Mg$$y$N$#2\\#*8#*%$R]$8j$Sj#PX$TD$N%$$y#nA$,+$SB$PA$MD#PX$$j#ym$;*#FZ#n-#'y#{@#mf#&\\#&)$Om#ev$Om$H,$TM$TF$-?$Sh$.0$TK#P~#.X$OO$TO#2k$T\\$SW#1X$Tk#'*$Te$TH$S^$Tq$S`$6R$H!#(!$T`#&)#&e#Ba#@1#At$Io#PX$T)$J4#*8#7j#p,#hu$Sd#'*$S[$%)$F>#'t$Ml$.0$Cw#&D#~Y#&)#tW$RW#&&$$4$K{#rS#&R$M8$LS$#D#'8#'7#+v$M3#T2$Hq$P<#Ci$63#6R$)S$Ms$Oh#BA$OX#(s$)S$-S$OK#Ch#3$#d&#9)$)S$Hq#FZ#Ch#.#$Ny$)S$O+#Am$Ff#)r#7j#Ch$H9#*8$M>#Vm$Pf#.&#mg#y3$UT$Nr#&R$PD$OL#1F#@x$U\\#&U#Kc$Bh#nr$TS#o3#0&$TV#<.#)>$TY#(-#'a#7d#*%#&\\#&G$T:#d:#nP$@J$T-#&U#*=$SR$Pi$Th#av$#z#7d$$y#&K#KW#@1$/Z#o_#&g#9]$$j$Pt$QG$Ke$QJ#(s#(Z#[b$$p#&4#&.#(_$QE$P~$FF#-U$Ko$Q$$KG$R&$#>$Mg$LP$RI#5b$KK$N+$Jm$Q[#n-$R6#zm$R.#aC$R0#(:$V^#yf$Ku$RF$R=#5b#*%$%l#Km#0[#->#*{#.\\#&Y#/D#U\\#0y#Ds$Vn#DA#^a#dq#Od#'/#3u$Vg$QS$M}$Kz#5b#}($%N$M5#@x$N$$M(#-[#&w#(A$SP$N+$&X#&N$K<$KX$#n$M($Ow$W5#5_#}T$M;#*Z#'*$=K$JH#n=$MF$$g#+>$FJ$Mg$M3#n=$Lz$OE#kY$63$W+$=<$M3#0|$Kn$Q?$M3$LZ#,x#&j#QY#+?#-C#h.#h0#I`#A!#,P#j<#_T#C'#&C#U/#VY#2]#`f#`h#&.$Ru$%l#}v#k2#/K$S,#T(#1?#VW$Wb#&Q#&O#&K#&U#&3#.c#RC#D=#mx#*p#h-#h/$B@#h2#h4$T=#dQ#Yx#oM#3u$Tp$<&$ES$O3$.W$W3$P6#&&$N$$MF#*Z$OB$Q~$I@#*g$M)$UR#&v$Nn#Am#'*#'0#o,$9k#}p$W/#VY#/f#6^#&<#&;$WO$H,$PS#&+#'*#',$UN$M1$Mv#oC#'w$W.$Mh#4x$R:$R2$RG$Jf$KF$M3#')#(P#'R#C{$M3#&K#&Y#B>#Gk#B>$XH$M)$XK$Uo$M0#&f$KI$PE#3$$M3$MH#@x$X_#0I#@1$VO#mv$Jx$M3$Vj$R}#4t$PF$We#_{#B%$W|#h1#+p$X!#h6#Ze#,d$Wk#`0#&U#T)$Wo#VZ#'1$QQ$M{$R!$TB$QU$Rb$N%$Q[$XK$L*$Jl#{r$L1$Xo#5c#&K#&R$Q3$MN$M3$M>$W7$.W$P,#&t#_A$J[$Xx#(p#F-#3i$G.#EU#BL#au#'*#&0#G@#)r#+J#+L#df$YP#'G$FF#ea$SB$Q'$U>$Jh#&'$KB#+~#0|$SV$V~$RX$VW#0f#p!$Ya$Yc#QV#(W$S~#0f$FC$T&$V}$Q5$#>$Rg#0f$%.#&:#-_#&p#OG#&1#&Q#O2#/=#`6#i%#Wc#Q?#f5#iT#Hs#'8#)1#EV#au#aw#j_#,q#XU#3O#H_$Na#)-#'?#9R$JV$SB$O+$Nr#&N$X>$XC#8p$MS$N{$JH#0|#U~$U:$RY#0f$Rc#zz#nE$EJ#{@$Pf$X/$=m$Xp#&'#0n$Ju$W($9F$M%$-P$KI$$=$Ml$W:#/9$WL#@x#yn#.#$N+$-P$O+$Z[$O[$WH$Nn$X8$OW$Pg$QA#n=$Xm$M)#&n#(8#'f#|.$X_$:`$RV$XW$Jd#'$#-Z$ZR$%l#P,#3^#P/#&/#16$Zw$TA$U;$Yi#+~$RK$Mh$W)$X7$ZP$:W#+~$O!$Pp#5c$Yy#X~#XB$Z6#BV#,p$Z,#V*#BL#,]#[B#&;#[D#';$Y{#OG#&0#&G#`^#Wt#0w#`;#*j$Z%#OB#Q>#OQ#@1#Qn#nP$;*$$S$UP$$n$V3$$j$#y#'h#7d$$j#'1#'7#4t$K3$Io#hu#d&#Am$W,$[Z$Qm$&X#H=$U##|S$K?$Q,$P=$,7$Ow$OW#d&$M>$U}$Nu$ZQ$[V#'1$Ux#*%$Zq$[f$O##ov$Jt$X4$WC$Y4$Zl#0f#ny$R&#p!$U@$Mk$WG$Ow$[0#-[$[{#>+#}Z$Y@$Qi$Q4$(]$<&#qY$O3$E2$[b$XC$[e$[[#*l#&K#&+#}$#&)$)K$[a$Nt$[d#Sx$Nt$Sj$\\<$P?#&v$UW#*l$R`#&'$$j$\\9$QA#G:$K4$V4$Rj#X[#Tx#&;#_g#YX#Sp#fK#-!#CK#&*#&]#1=#')#&]#}I#Yx#,Z#&o#EY$YH#,h#/Z$7t#/5#&o#'$#,h#Sj$*+#i*#'##&h#&?#&:#'>$[8#a)#K~#ZN#-t#4O#c8#XB#fk#4W#c,#@1$XG#J?#(5$#d#(s$Ny$=J$Oq$Ou$ON$N%$$n$Re$\\$$]9$Pd$#D$X[#'o$Il#0f#&K#&*$P4#},$H,$$n#y&$MR#Hs$M7#Hs$Uv#3$$LJ$V3#FZ#7j#U~$P,#&u$KI$Up$P%$OL$UJ$[w$$i#*l#+a$OG#d&#&J#'i#'m$\\C#)>#&K#&d$V'$Sq#n9#PX$SH$TE$Sv#)g$C_$]S#7&$]L#*##L)#n>$$n$#y$Yp$Jz$$Y$EU#@1$\\E$Zx$LN$VU$^!$Ra#qU$#D$>J$;*$KA$Xj#*l$$=#&R$UT$UI$P>$M*$Xh$[+$$j$WF#VY#S5#MC$Z{#*Z$Zq#'^#J>$O=#&m#&g$[_#_.#o_#&l#HB#+~$$j#&:$\\}#-q$]##-u#/r#55#Wi$[C#,+$Y~$Z##&'#^}$]+#7+$P-$]/$J[#*Z#',#'5#1v#]!#6P#o`#7&$Z=$Z?#}/$ZC$Xx#0|$V,$['$ZH$Y5$RL$RN#+~$$[$ZR$M:$O)$N%$Oc#Cj#V!$Jv$7^#+~$Z[$Zi$[/$63$Mn$X9$[o$ZP$][#zw$Zo$^;#(8#'\\#O9$X_#&L$]3$]~#or#8O#6^$Ub$Uw#7W#)}$V3$LJ$UC$MS$$p#&,$]o$Jv#&k#EU$Q,$Z}#F<#cC$[##_Q#|.#&F#&l#*>#&?#[R#M`#a<$Z'#a?#&'#2>$[&$Yg$[($RJ$Ut$VZ$Eo$^t$[0$WA$I@#'&$YI#n\\$MT#[A$\\[$[A$^K#ZO#ZK#Xn#L+#Ze$[6#K9#an$S,#.W#Z(#Kc#Ww$^Q#nt$[F#O3$\\}#_2$_J$_L$_N#a;$Z&#Wr$_R#&x$B}#&)$^j#nF$S_$ZP$V1$TF#za$U,$Sm$U/$U*#'Y#'j#}m$T##&m#&o$K2#/($U:$Je$$j#y&$[t#G'#{y#@x$[T$$U#Hs$[W$]s#U~#&L#}m#n9$`/$Ow$`,#*8#oz$;*$St$U/$[r$\\N#Ki#)r$N$#*=#oB#n=#GD$S|#'w$`4$3p$FC#')$#=#&)$A_$ZG$R$$^m#5b#ny$UT#sr$U?#Hs$^-$Hb$KP$Y;$N+$Zq#'}$$}#5b#&K#&<$T\\#&)$Ty#nP#7&$`C#_5$`E#n>$[X#(W#'r#rB#d&$Od#')$XU$R<$]-$MI$X?#',#&~$>_$S@$>_$F_$`Q#&/#Ch$U/$\\M#3$$]k#'*$`Y#HB$`[$SM$$g#&;$`I$MN$`=#LT#&($$j$.W$],$FI$<&$`>$Ov#|/#|%$^X#&u$^/#&($M:$Xx$X0$OX$\\H$TU$[u$]H#zw$[y#&)$Zq$a($Q[$&X$\\B$]|#}$$J$$aM$V>#5b$^H$_u$^S#O3#,x#&t#\\k#XV#Hs#/+#IZ$_g#-t#'1$V'$Xt#n9#.#$$Y#6&$`U#(s#Am$C_$GK$`f$]<$Y6$Rd$^o#y,$;*$Z[$\\-$_&$YJ$^w$b)$V-#6^$^|$aQ$N$$^}$[s$_%$OO$^5#'1$_)#&($Zq#'g#9R$X_#&W#2)#/{$K&#o-$@J$^d$^G#I*#&'$=r$Uy$^h#&8#&?#;`$P-$MI$;C#&(#',#'8$FF#D3$`;#'!$6}$_C#(o$Z~#P.#Ww#m;#a7#i$$[M#*x#P[#K{#P^#&=$_R$_T$T'$_1$_W#5b$Yk$ZR$#@$_\\$L1$[2$LN$_`#5c$SR$^I$]&#D-$[>$_e#[E$ay#-u$_u$[E#`^$\\}#,x#]+$GK#'B#-!#m=#&`#&R#/=$[H$_s#P0$bh#i#$`!#)z#&W$bm#P]$S,$bp#i/#&'#H1#@1$b_#nP$M,$aW$Z\\$aY$ZW$OX$OY$W9$$j$[-$[w$aa$Zq$PQ$ae#}Z#&V#k2#V)#k2$PO$F@$Qm$^\\#&n$=-#&)#R#$`;$^#$RX$`g$\\&$Rd#}b$MQ#p!$UT$`o$O}$Y:$\\/#&'$Zq#'q$)`$]@$Zv$bs$[l$Qm$Ns$]Z$QA$#y$cX$QA#'1#'>#|S#&)$U$$#n#0&$a>#*=#nb$]n#'6$Qj$M!$aH$`?#|/#|j#6^$a!$d!$[c#Xv#&?$d3$FI$d5$aJ$\\P$_A$^F#o-$M8$`R$Sf$\\H$U/#*8$F>#o#$3p$&X#+D#@1$bV$Q=$dE$aN#6^$aP$<&$.W$Yf#&s$^E#5b$SR$RR#&&$K)$M]#&f#&z#EM#&E#o*#h8#(s$Y|$^R$Z!#Nm$Wg#(o#^(#/w#N##'6$K&$c$#)L#PW#hM$av#O!#&~#zf$Yt$Y2$U;$cj$b3$\\'$b.#Md#Y?$^{$Yb$^+$V\\#&f$^c$M0#(-#'v#v_$Jr#&,$`v#&)$&g$Z;#4t#nU#&g#m%$SB$Hb$b9$bz#*Z$_#$+P#)>$b?#Ij$bA$bP$_*$P/$W/#}Z$dQ#@,$dS$H5#+v$H6#0n$U&#)}$`X$3g#d&#p,$H9#FZ$W,#'d#oS$'Q$T$#&s$Qa$R0#&u$Hb$bN$ca#nd#p<$,%$bS#)>#0|#&C$T7$_V#os$b!$eS#.j#Hs$b'#'6#qg$Y^#6^$TY$PF$]s$a`#FZ#_.$)>#-Z$_=#*Z$]G#1?$eV$a?$eX#^{#e)$3g$O/#(A#'Y#2)$e`#&m#rb#@1$cf$#n#3$$e`$EP$H9#2j#&v#Y|$H!#'|$`v#-[#&e#&Y$b^$FH$'&$^7$Ow$U^$UW$F>#'s#v_$$n#_o$Il#&)$In#mv$_A$M3$R?$be#3W$[#$[%$c{$_V$LQ$bv$HM$XZ$ZQ$bz#0f$b|#or$b~#5b#;9$d`#<,$NF#Vf$dx#U]$S%#*j$df$dh$c9#YY#KP$dz#IZ$c'#[C#[E$c,$_w#.%$do#^'$NC$RS$L8$ND$dr#Ip#&g$Nd$U8#~Y$F_$Sy$P&$94#.X$TY#&f$Sy#Am#n-#'m$#=#d&#b|$fH$\\F$U-$08$f(#&Y#hu#9)$dL$[@#9)#.%#6&#(A#'_#3u$HH$T$#';$T`$(x$TR$H<#nY$#]#,A#F<#n=$Te#N&#<a#+c$TF$F>#'l$#=$SR#}H$^B$K4#-W$]j$G]#0n$gE$<|#&.#p,$Gj$UY#(A$_,$0<$FC#'=$`z$`|#n9#GD#nb#9)#0n$`,#nb$C_$`e$Sr$c}$[U$a$$_'$V5#(!$5h$X?#'1#n|$_U#o`$M8$^0$b>$cO#*&#&-$b=$cS$[v$a$$cV#(8$h*$cY#&K$eN#&)$eP#oP#'X#+H#d&#JZ$5h#&)#&W$5h$^k$e$$ZJ#,y#&x$M8$`l$ZZ$\\,$[.$b;$b8$cu$h<$hK#+~#&K#&`$I~$e=$bt$.E$Hq$%B#&g$`(#-W$a@#a7#&G$Gj#)g$=;$[Q#.d$al#0f$$n$L[#P2#&<#[I#-e$ao$dm#UJ$fz#0O#-!#Tr#GM#Tu#fn#01#'G$V'$\\#$];$RZ$b,$ZK#+~$ZM$W7$[-#-[$`T$_<#-[$eT$ZO$i/#@x$O0$Zc#,($i5$ZQ$^v$OZ$ZX#.c$hW$[n$eA$Bh$b=$cN$h($Zn$eI$bC#(8#'[#B>$X_#&X$V+#O9$['$1V$Jn$Oh$Z>$bO#zo$ej$MJ#5i$bT#Jt#o_$Xv$Z|$bd$_E$[!#KO$f^$d~$RH$RJ$fc$ZV$b2$hV$fg$WB$[3$N5#.X$hr$h}#Tt#`e$_d$f}$[B#)r$dk$_v$[G#eJ$[I#Ww$^J$c%#B!#Xg#Il#P1#[H#R~#,A#&k$fT$i'$R#$b+$RL$cm$Yj#4C$M%$^s$Zh$hW$Zq#'W$Q^$&X#&[#Ly#4~$Nf$eq#'%$]W$c~$h'$d##(W$j:$Qm$PT$Lr#o*#I}#o`$cK$[n$cN$OW$\\M$d6$cT$h:#<a$,7$j9#)r$<&#&K$ST$Q;$dU#&r$\\<$[p$a#$\\H$$e$U^$gj$\\J$ZP$`D$O/#&v#*=#d&#FZ$jg$h8$`D$X8$][$jo#&9$Qb#.d$P]$Vi#)>$dv#U^$^L#Sl$dj$Y}$hx#SA$[8$Z8#@1$QR$Yu$LO$j/$i)$^n$#D#q_$Mj$j6$Zl$^v#U~#*K$Io$_<#FZ$C_$k7$b7$MC#~L$Z?$iX#hu$iZ$OG$.R#1'$Jv#(5$jH$^[$b[#WC$[P$X'$bL$iA$UJ$iC$WK$eD$Zl$b@$bB$Zq$bY#@x#&K#K[$cH$FH#&p$bb$eL#,;$ib$bf#/M$ie$j.$Yh$ih$Pj$[-$ff$[1$in$b}$_a$LZ$\\}#mP#7##)2$_l$j$$[K$iy$[D$g#$k&$av$j~#Nb#ao$_q#)?$i~#P0$f|$[@#&/#''$g.$ZF$#n$`L$`+$gX$`O#'8#3$$U-$`N#MU#'5$@J$dH#)g$e\\#&v#.#$d.#@Z$aA#'1$`\\$SN#'w$]>$``$T$#',$T>#&M$T@$M!$aO$gD$Um$aR$2H$aG#*l#y&$ja$lQ#6c$#J$lR$XW$aH$lV$>J$Xk$]X$jr$$o$d<#U~$fV$hL$j0$`i#&x$_X$Ze$hT$kl$\\0#(8#'Q#9]#}Z#&4$cd$f9$PO$a0$XC#',$kL$X&$ez$3p$a:$Sf$WK$l>$`W$f,$`Z$lB$aC#.S#&;$le$jA$R*$jP$eE$h4$eC$dB$W6$fK$#r$h;#'T#1v$j[$`y#@1$gw#o-$UT$d:$jE$a&$m8$eh$O?#A*#0~$OC#J?$ho$Jk$%l#N=#N?#JM$fp#QS#'D$c\\$kg$e#$lg$e&$^%$e%$b-$_]$mY#zz$kB$`h$e&$_<$ck#zz$Zb$m_$b-#+v$ZI$i*$hO$ki$e*#&w#&}#o,$^v#8p#Vm#2\\$XB$M3$Yd#&6$Rf$Uy$_=$mL#*l#T,#j>#C`#|h#&G#)g#39#&'#&j$S^#&.#&j$bj#i&#&'#&t$ME#Ao$do$fn$j##K~#Yu#2C#mP#<g#/M#-E$h/$e!$fa$j3$R($Yb$LT$.R#(~$JW$[+$fd$UB#(W$^=$Y>#&U$ec$gT$Yj$iV$N+$W%$Pj$Yd#*I$cn$_Y$J[$Ym#Ru#q]#J>$]i#oq$hN$RM$m[$n_$e'$.E$my$R?#KJ#KL#KN#/M#',$[_$mT$n>$[*$ii$mb#Ru$mw$LD$LF$%!$%l#2_#&]#j4#&a#&G#gY#QS#&l#&N$kb#Ca#bD#_)#VS#d[#2/#hP#0-#VS#/w#&o#&`#&X#&{#mP#ZM$_h$ks$_k#jy#K&#&7$Y-#J.#DV$@T#B>$Y)$Wm#&-$o;#&Y#4R#GD#&G$o0#jD$kw#Jz#@1$he#&u$\\+$[+$L{#&-$W<$O3$]]$b4$A_$d[#9e$f$#d&$XK$;*$){#&i#2\\$LJ$S}#HB$LJ#&K$bH#@1$fA#mv#(5#'K#4t$bZ#',#'F$T5$eo$SB$g8#&,$$w#Am$ov$YD$f*$fL#VZ#F-#XD$G!#4t$O!#FZ#-[$($$oX$es$UR#(A$]x$od$W1#@1$X-$f`$hM$b,#*8$XK$@J$`q$m[#oD$eK$`w$cz$if$FJ#&}$O&$Jz$_c#+V$o4$]$$nx$nz$n|#,g#,i#^s#a*#aH#'##&O#h_#X[#T>#'3$^_$nm$[)#sr$np$mY#*Z#U~$p/$jN$cn$HM$Q[$O0$nG#5b$#C$WC$a]#*%$($$p[#(5$]x$Q[#',#'.$ge#o_$jy#0f#oB#]j#)>$o/$o1#Bq$[F#0N$N^$N8#&Q#h\\#1=#&V#&G#fE#+w#<`#JP#k`#6!#5-#&<#G|#h7#,x#W%#)B$o3$j~#5+#&L#XP#)G#[X#DV#&3#&@#S4$]!$_h#-|$o9$o;#)2#(|$Y(#L%$Y*$Y,#VX#VZ#&t#5x#,L$kN$hf#FY$jW$($$Y]$h`$ch$#>#(F#'b#|S$om#Kh$Xs$MQ#-W$$m#Hs$XK$KI#nU$gW$$n#oD$lF$p@#}Z$Xa#@1$i]$bt$Rc#nb$XK$h1$cs$Y<#'w#'I$Q@#}Z#h/#@1$b6$lf$RZ#(P#'i$lL$G{$_0#n9$jm$XC$($$m,#o`$lk$oP#?>#&/$oS$O#$oU$^v$A_$qQ$a~$f$#)#$XL#@x$o^$o`#4t#oD#'J$ev#4t$[~$h/#(5$XR$pk$b]$k]$e>$a.$nF$ij$M;#*%$r-$M3$oU$Q[$A_$r'#&j$p?#7O$\\Y#~E#3I#,v#,x#/@#K<#O)#5S#Y(#Ca#-=#DV#2C$_m#B!$qC$Wl$Y+$Wn$qG#2]#iY#\\%#Lx$X~$WY$W~#h5#dQ#'5#'^#')#&~#&;#&}#&W#'?#'W#&P#`H#]&#e,#Y)#Vq#Xa#aT#H&#.S#^J#&;#&[#_o#D8#&9#&J#*i#]!#&0#1+#'*$R|$fm$dd#Vt#I0#ep#38#SA#cG#|r#&*#&c#PQ#\\o#O9$s'#,U$!_#&;#L$#Uu#),$s.$s0#+K#1/#l%#&E#l'#]%#4>$Lr$Rv#Qc#.X#^<#0u#FQ#){#RL#-j#',$Wd#It#'F#_@#0f#&F#_C#F(#3;#/p$o6$ku#(`$>S#@,$8,$GC$ZU$m4$XI$Xg#)}$Mt$W@$XP#&{$>*$W*#&m#&x$Oz#V)$Oz#n9#0n#q]#X2$W,#(N$4R#zr#lg#'L$1g#@,$(=$Io$Ux$N##(P#&v$7X$kC#&m#'>#y*$hI#y*$n]#X2#*V$M>$!_#6O#6O$M>#01#)o#->#&y#&x$Dg#Ly#&Z#&[#GD$E!$N$$tI#39#Y9#-,$Hf#eE#YM$Hn#6O#ul#.y$g{#)o$eu$tN#'*#2V#39$H`#'6$0_$cg$X5#0&#9)#nb#p,#PX#;9$N$$Fj#FZ$W<#GD$DQ#n=$Hx#rw#2V#2K$tF#Q##0N$J1$tj#&'$DQ$N$$!_#X2$to#')#C/#~'$#r$DP#*Q#oD#'~$0q#;9#&K#&y$+q#&)$5k$Io$#^$Ow$u#$7:#&3$F>$X]$<7$&X#'S$<<#@,$6X$H!$e2$<7#&e#(P$,N#@,$0J$t0#&+$n[#oN#'Y$cw#n&#q]#&S#&b$ns#/5$ns#oP$V&$$u#&e#(_$CT#@,$7a$U%#Gs#3u$N$$Dn#q]$u%#2V#;}#2K$tG#0&$E3#;}#3j#9p#3u#oD#(j$GH#~(#}Z#'m$=b#@,$>R$cg$p($ZP$eR$)>#^{#'Y#&9$-7$_=$FC#&7$,l#@,$5\\$GC$i.$i<#da$OY#(A$bE$eL#&K#&F#I*#@,$)>$GC$t@#8'#&:$t?$Hn$t>#&v$!_#39#;}$M>$tP#&7#&O#&N#_}#J>#'/#(N#(#$T\\#nb#2K#'1#'O$VF#@,$*r$H!#(3$.X#Am#&e#&i#6r#&)#'H#8H$qM$h8$\\O#o?#43$]F#&Y#lI#FZ#6R#v7$OJ$g9$e}$%.$MA$@6$1{#(-#(5$,p$_=#&\\#';$.X#&)$CV$GC#3$#7@$N$$tS#&5#9)$F>#(b$4q#94$FC#'G$?v#@,$&5$v,$M<$vC$W9#7j$v?$TL$gm$v<$jl$3g#*8$=,$0;$.0$SF#*8#H}#&;$M>#+v$V2#n>$$y$UC$Te#7j#Y9$l4$Sm$wJ$`O#'6$+>$I?$WC#GD$#q$N$$t$$E($tR#2:$E(#ul#3X$#u$MA$w;$E.#&U$E2$um$w@#&v$Dn#}7$$o#{i$Pk$wa#kC#&9$wI#D$#k2$N$#GD$un#&:$C_$*9$uK$v}#'*$w!$w$#'Y#'`$.M#6O$FC#(h#yL#&)#vl$Oj$u-$u=#}Z#'9$*w#@,$:Y$H!#&5$;{$vY#&+#p`#@,$'w$Io#3X#39$tB#&x$aM#&u$vp$vl#0&$%.#ym$vp$){#(-#(g$D{#Am#&\\#(&$;{#&)$+S$Io$Dn#->$w0#-,#->#->$vG$D~#J>#&w$x;$^X$\\7$dW#i)$XC$S`$jw#J?#(8$=b$Xx#)A$WB#ET#Gg$#n$x8$Hw#&5$xX#'.$t)$Tp$d0#OW#Gl#oB$wp$gI$uf#b.#C{#n=$Gu#HB#oD#(h$D{#oB#&K#'c$%a#@,$3!$uK#}:$ZP#GD$&!$v?#Fj#&=$&!$C_$?P$IK#'f$GL$JH#&K#'E$(p#@,$7t$SB$l_$UV#d&#&*#hT$Ui$qN$N##[=#A*$vl#43$)v$f)$dL$w6#+v$5T#&.$i4#*8$w3$Sl$w0$g[#&/$vG$x@$Cl$g|#-U#*l$ku$y\\$Ow$vb#0Y#&h#2\\$ON#(P#(J$KF#FZ#d&#&b#'_$?N#@,$<W$y=#*l$[T$\\O#nb$yC$]5$h(#0|$+d$GC$u6$ZP#C/#6O$tx$u8#6O$u;#C{$DQ#&K#'A$2$#@,$.E$so$dB#->$ox$]5$fM$u%$f;$_8#'1#*=$qc#'w#(*$x4$fR#'.$-C#&)$TW$#n#.#$ww#O2#)o$v?#GD$tT$C_$-P$GC$Gn#/W#&9$tG#GD$H|$tm#6R$D;#Y9$D;#C{$7q$OJ$I#$v|#1v$vo#A*$I,#'x$)`#X2#&\\#&>#v_#Wa#v_#n9#3$$y*$xu$y-#&<$M>$y/$y1#'6$Cb$J`$x6$f:$e~$ZP#L}#+($zm$`U$$b#&-$C_$SA$zu$O)#(P$kI$N{#&m#(.$Bq#@,$;l$Io#+v$bz$Xx#&i#(3#'s$HM#*%#6R#'1#1\\#@1$l-$H,$aH$r$$S`$2@$Oj$u<$HN#}Z#]N#@1#&Q$&R$r3$ww$wy$G^#:\\$tA#-[$W<#3$$t^$vI$w$#`9#&0$wS#26#Z7#1v#r$#.y#6R$Hf#3?#5@#)o#Ch$vE$M>#nu#&2#_|${^$Dc#&U${b#&v#3X#6R#_|$eu$u($xu#)o#6O$C_#nL$u`#q]$xQ$wX#q]$vG$Dn$E!$xX$aM#&r$zi#O9$N$$y/#*V#za#So$|%#'*#)2#B4$ti#Jt#B4#+>#&'${O$yA#|.$N$#Mx#hT$|/#2V#7O$N$#*0$y*${Z#+)#hY$-P$+>$<U#Ch#,J$&!#39${c$gI$&!$|C#5@$&!$|F$&!#Dy#&7$vD#5M#+*#&>#0n#.#$L6$|&#&0$&!#B4$C_$td$d,$my$X[$v2$XS#'@#&y$*>$P@$W4$i5#(P$|d$X_#&@$0d#&)#4G$u`$Xx#'5#'8#,4$wP$i($XZ$|l$bF$kZ#&S$9f#@,#)x$GC#0n$H|$:#$uJ$oi#'!$AW$y7#'/$74#&)$(7$cg${=$X/#(P#&C$?`$OK$FC#'h$:m#&)$45$uK$LJ$N$$u}$eY#&;$u}${N#2D#.K$Tr$Te$}B#2V$U-#01$oa#&Q#.y#FZ#Am$|M$$u$Uf$3g$|I#&v#GD$]P#*.${g#a0$}U$Ci$|S${k#&6$}Z$|X$_7$y`#AE$eR#z>#C{$qa#DP$Cm#&g$vp$%8#(-#'{$0q#7j#^D$]g#;w$gg$v/$UY$\\I#5m#&4$W,#'X$xh#B4#*%#'-#(X$$Q#@,$.s$MN$lN$t1$aR$.:$k8#&*$zj$|,$|1$ti#'Y#'?$@x#}P$FC#'X$;$#@,$1j$~0$zC${e#{o$zz$zG#&5$tb$.x$\\F$|z$kY$FC#&H$3X#@,$;2$~0$}?#:>$ov$eY#'Y#(+$>_$b##&m#'S#zS#@,$9T$Io#01#nb$tx$m$$|/$hg$ZP$zL$tx$Gj$Gl$gH#9)$\\H#*=$tl#'*$Fj#)g$G3$zS$\\H$~h#&2$vG$Gj$t&#&v#2V$gz#&1#ul#01#FZ$g~#'6$3c$Ou$fd$Mm$v0#(%#lX$sz#'&$Z9$hB#nF$u{$N$$zx$v?$]M$H6$C_$6y$~^#)a$Nu#(P#(4$'&$QA#&K#'Z$Ba#@,$-:$Io#C/#X2$~a#R{$DJ#p,$zB$DB$~r#)o#X2$=,$-P$.R#&7#Ch$vI#)g$)S$Hb$De$xR#&9%!Q#&N$xV#rw$vE#*=#*=$t^#C/#q]$tx$vI${w#&;$vI$~l#&-${V$ud#/'$u:#G:$E(%!m$#u$N$#C/#;}$tx#lI$xP$um%!{#BT$Z^#0n#;}$}E$Dn$E@#n=#3X$y*#n=#)2$wh#r$#lI$wf$w]#B>#*V#Ch#.y#*V#3j$M>$E2%#+#n>$E@$UC%#6$XE#4>#.J#HU$|+$|-#&=$~5#'z$@^#Fq$T$#(@$)}#@,$06#o_#&|#;w#&'$]{#(o$s&#H'$s)$s+#@Z#)b$s/$G.$sM#,6#aT$o@$rg$oB$ri$oD#nt#im$oH$o.%#h#II$r~#eB#eD#eF#eH#`_#aU#&G#&?#&^#QY#E&#hw#&&#l&#&C#'D$s\\#H9$s_#2'#\\p#dJ#VN#dM#dO#dQ#GK$sY#OC$]%$q<#-t#'$$o##-C$sX#1.#2b#hR#:X#&e#(+#(@#-C#]:#/6$q,#&,#'5$R|$R@$r_#+=#V8#\\p$sD$s)$sH$bU#4]%#\\$s1#1+#dZ$re$qE$rh$Wb#0K#ZL$^L#kx$g(#&Q#M2#2t#.s#_7#g5#D~$9f$l$$WX$W}#A!#dI#dK%$'#&C#dP#*I#JQ#-|#YC$Hu#&B#YF#Y@#P1#AH#1g#&g#[f#5b#(L#(K#&Q#au#'(#.;#-C#H1#,t#7##+>#'E$sb$Rd#(b#hs#kT#C\\#&B#'x$@#$f_$Yu$RY$|z#&l$A5$XS#&x$5}#@,$3|$Io#`:$WH$Fg$m0$OW$yB$_$$eB#*;#)G$63#5T$=@$,3$P##&f$8b$UU#08$a*$cQ#0&$[w#hu$]N#4Z$u~#rw$LV$\\R#)n#&9$%H$Oj#&A$%W$kJ#',#(=$:x#@,$>h$SB$4D#=@$w=$Cv#&/$M>#.##*8#q]$3c$qx#nF#Y9$NT#dL#&S#*=$w>#&.$M>$r9#*8$OB$BY$cg$sp$}4%%4$v3#&k$/*#@,$=J%%f#|K$V/$Te$&!%%z$w>#FZ$F>#&m$Az$V4#&K#'~$4{#@,$:,$rF$}T$V0$f0$h6$l=$o{$N'$%.$wF$o~$$c#&8#vY$Ue%&>$T)$O0$z|$-P%&I$$v%&K$eR$M>$g|$eS#b{$Tb#o-$Hq$Z[#*=$^t$M5#*%#U~$'m$Oj#&b$92%%`#'H#|K#&)#\\%%&+%%h$HM$SR#y&#01%%j$OB$(f$u`$~Q$u}#->$|4$$y$gZ$o~#r##'w#&?$/4$mz#}Z#'U$C@#@,$)p$~H$W(#(P#(?#~I$X_#'T$4A#@,$>%$SB#vY%&-$w>$O/#&y$CO$'Z$OJ$'_$CO$SK#GD$$y#r$$wB$TF$wA#TH#C[#&2$tC$Sf#nb$=,%%g$GV#&U$~{#[D%%k#&y$Hb#9)#Ch$Gj$jk#2\\#nv$FL$Pk$hj#&/#Y9$m$#9)$C_$BP$`;#'%$w;$$=#'s#(\\$@9$X_#'d$')#@,#()%'k$PO$gM$$u$af$\\C$]}$n]%!($M;#)o$W,%&%$XS$[i#@,$d+$Tp%'v$i3#&6$W,#(1$0Y$^?#'N%%5#&)$*R%&<$}]%&R$jk%%m$o|$yI#)}%&E%&N%&H#9R%&J$H9$\\H$$X$eS%(8%&=%(;$M=#&v%&U$$c#&9%&a$#n#01$iC$[r#(A$ur$Q[#Ig$md$Z:$#n$UE%')#&6#y\\$X_#&:$0q#&)${u$|j%%3%%5$X_#'B#:*#&)$2#%'b%'3#&.%%i$o~%&M#^7%&O#9R%'4#*8$\\H%&U%%|$*($qL#&r%(I$j7#*Z$yB#(A$r<%(N#&;#'1#&>$80#&)#'<$80$F_%'K%(m$S[%&0#*8%&2#=S$o~%(q%%~#nP%)'%(f$Su%%j%)*#D+#\\T$5'$%@$.0$FC#&)$>K$vy$>K%)&%&,%)3$yV$W,#&5$'G%);$T$#'9$,0#&)$*.$SB$=X$Z[#2\\%&]$b4#U~$hm#nF$yN#R~#&($XK$3C$%8$#V$%)%&{$Ol%'q#}Z%)b#@,$aF$oi$~V$N+$^\\#&[$Aw#kQ$Aw$n]%&t$ov%&v#Du%&B$#r$r9#rw$yY$`M$3g%)q#.#$wC#01$%.#oD%'p%'!#&K#'H$<+#@,$?e${-$H6$W;#G!#*Q%)\\%)}#)}#oD%&}%)a#&K#&g$7r#&)$%M$~0$pa$M@#n>$WM$uW$^!%&#$i6${N#',#,4$P#$Mu$Xn#'w%(M$XS#'p$<6#@,$Ee%&s#4t$}@%)p#&9%&w$o|%)u$XP%)`%*$#()$14#@,$@z$SB%&Z$Mk$~-$OO$k5#&?$gS$h`#'%%)2%(g%!X#(A$^Z$V8$of#Dj$bK#&s$>X$Yq#)2$%l$NX#'##&t#au#&i#'<#AB#)r#eC#&3#eE#eG%$q%$!#.L$NX#&~#&r%*z#';#&K$r}#&?#')%%'#Ca%%)%#i$o1%$2#&e%$+%$5#S$%$x%%*#2j#&`#1[$NX#'!#&s$sf%$t#&M%#}#M'$o?$qD$oA$oC$oE%#g%+6#.X%$<$q+#dQ#lR#-r$]$%$l#YD#--%$p#YH#0y#&n%#s%#u%$n#k,#.X%$b$Y##'9$sR#hz#-!#4-#5T#&C#&j#';#&a#7:#&)$*N%**%%x$XK$w;$%=$G[%'?#'w#(E#87$V8#&Q$`9#6k$P-%+z$b&$r>$p;$Q~$mX$Rc#6O$XK$=X$p6$qq#(X#'1$Yq$T$#&($CW#&)$.W$u5$Cl$WK%)D#;X#C{$l:#&/$~y$SG#&0$`T$gk$Ow$Gj$\\M%'N#9)#Y9#2\\#9)$UL$\\I$~n$Fj#q]$|J%,L#4M#,D$Qy#+H$i>$zQ#'*$zV$\\M$G1#RA#1+#2[$SN$>8#)>#nb#Ch%'N$~y$#W$lA$G`$Pk$a@$WK$~m#+_$b$$~p%%k$}X$gI#6R$vG%,H#&1#Y9#PX#Am#nb$y[#nb$l<%'N%!X%,<$0<%'T$gI$~y#n;#Ou#&*%,X#C{%!w$J1%,\\$zS#2K#Y9$tv$D+$i>$t~#)$$DJ%,Q#}4$J1#X2%-4#+L#*Q$i>${I$tA$\\M$z##--$tV$#b%,b$D&$Wt$zS$~y$zP$xy#nw#+H$UC#*=#2K$l<$#^$l<$u8%!X%-<#2K%!^%,]%']$f$${m#&9$)k%'b$OJ%)($~y$`,%,C#9!$m%%'N$\\M$U/#nb%%s$S,%'E$i>$xt$YS$gI%-;%,w%-p#oB$i>%,O$zS$\\M$~u#Y9%'>#.X#r$#GD#Am%(q$9:$cg$$x$w>$XK$<H$,1%+w%.%#'w#(S$:{%&6#',$1z#&)$-*$Oj$ok$MC$^\\#&Z#~I#&)$,k$b*$qz#(f$$7$&X#&f$~M#&)$~O$oi#(d$v\\#mg#',#&A$D{#&)$|`$n]$ZI#(P#'U$a.$FC#&_#>a#&)$-%%!'$ZV$Zg$\\.$63%-;$Mx#&(%,y$M;#nb$=@$aV$&9$c\\$UO$OW$a\\%%Y#zw%%Q$jV$Xx%#/$mF#0~$D~$k>%%N$[u$OG#FZ#U~%.*#nP$*(%.z#.#$h8%.}#Q/#&?%-c$oi%.4%,%$&X#'F$AA#&)$6t$`;#&t$j@$Mh$j|$aw#)-#'3$nl$VQ$VV$RJ$nP$kJ#8p$$<$W7$mv$mx$M3$c##.q#&\\#&7#zi#57#,k#38#1d#Wy#W{#)-#gr#/L#g\\#B%#Ex#&+#3)#,X#2B%+a#*+#&S#&@#JU#E!#`+#*Q%#a$qF%$S#-C#&z#*-#&B#&L%/Y#)C$pt$o0#'2$pN#-|#^\\#&e#h@#'8$V'#J}$YB%%Y$p4$iT$XN$Xn#}V#oq#'2#(Y$dN$`w$qh#@,$qj$`K#)>#7j$($$d?$fJ%(##@x$qn$RE$MD$h(#qY$Zo$_^$]:$k-$mh#nE$o[$r6$V\\$`r#+~#oD%0($cy$\\!$VQ#-[$X;#',$ef$MD$sv%0E#F<$X_#&H$st$aM$Jx#>%#@x%/9#O!%/<$n<$ig$bv%/A$O=%/C$Mh%/F$nt$M3$Yy%/t#iP#0N%/v#20#B0%/R#&'#W|#/E#&]%/V%+5#\\H%/_%/a#1|#V_#+H$q/%/[#&9%/]%$P%+K$ri#&r#3y$Xb$nm$p1#nE$to%0A$MJ$U|$qq%.X$Y>$j]#@,$oX$X5$m^#Am$($$XV$Xe%1*$]U%0N$XO#r$$mX%0&%1/$`w$V:#@,$V<$XW$bZ$XK$e/%0!$MG#'w%1A$X_$\\4#@,$d?$Ql$'H$%l%+,#&K#0y#'.#->#/Z#r%#fB#^q$pI$](#2'%+h#&H%+j%+l%(C#]*#],#k)#4v#AX#3J#Rp$WT#&@#*;#Bt%0q#2'$q1$_h%+5#'!$Pw#0y#&p#GL#&C#&F#GL#F8#'/$ar$at#V.#N>%&H#hg#)}#d~#k]#'H%+2#_B%+=#,e%+?#dC#Hs#&i#Ci#S}#-_#&g#&Y#)w#&'$sP#D-#`P#&7#]g#-C%1m%/b%$`#Ob#Q;#i7#QU#,y$r`#V8#-|#d##&A#Oo#_W%$i#Ze#I3%/f%$R#VZ$Wq$Ws$Wu#0z#0y#&{#&a#R?#*$#&1#(n#e8#-M#gW#Jj%+\\%+^%#v#--#'%$pN#E:#&H#/d#*H#&X#iX#h=#SL#W9#j>%*z%*|#-_%1m#2Z$Wy#SL#H;#BG#&-#F5#Gl#X($N5#0i%+W%$n%+Z#&/#J@$YL$KA$q*%$>#ju#*,#HP#&<#X4#C{#&i#V6$ra$\\d%2n#&9#'>#W'#/m#JV#(n#SI#2=#&@#[t#k]#)M%/e%+J%#b$o;#dZ#F<$Vu#BT$Vw#<f#*Q$o9$q!$q$#2V#&+$q'%#m%+#%#o%$q%#`%3I%/g#VZ%#e$oF$oH$\\}$W{$ro$Y$$rq#h7#2E#T##T%#D%#Fr#NR#m`%+'#4+#J>%+c$WZ#Cl#Av#]}#Ty$c*$q(%3t#13#^Z#Gx#0[#0]#I%#Av#&y#h&#&)$'\\$Io%,A$Zl$SH$]8$SH%&n$%&$Sj%,j#y&%'N$`@$Hb%,d$_6%-t$Gj#pW$r-#oB$oU#nb#6R$A_$85$H!#(D$+e#FZ#&e#(1$C]#@,$9M%4+$Sv$Mq$O+$SK%,w$b!$gX%,|$%(#nb#5T%'C$SH$Pn$gB#O?#&Y$F($G\\#1;#07#&T%4a#dM$d/#)r$Pn#+v#nb#~@$M>$EP#)g%4V%4j$G]$|J%4o#A3#&9$*m$cg$v:#)g$q_#*l$%^$Du$Da#'w#(A$=A#7@#&K#&E$x4#&)$zt#n9%4y$r,#',$6m%!T#o3$D`${Y#'w$e^#8C$&X#'i${*#&)${,$#n$E2$z1$f#%#8%&A#FZ#|?$r-$$n#3X%5>#Hs$N$#p,#FZ#KZ$($%.:$xi$}b%5I#'*$fM%5D$W=%5F#)J$f##z9#3X$$n$.W$7f%!F#<_%-k$G\\#R*$M>%.#%'O$OB$})#n9#2V$ww$*;$gC$vA#&7#`4$M>#&D#:5#_}$D`#.i$xW$=<$t\\$x8$v:$tb%4D$oi$T0$dO#}Z#(N%%/#&)$<d$Oj#&|$8u%*$#&i$t)#&)$xn$Io%5H$Ow#&Q#&P#FZ#ow#dM$la$X[$p9$fR#&l%.5#&)%/#%0-$a>%'N#Qb$XK#vY$Gh#O2$SH#oD#&_$6;#no$[h$OR$d*$OR$PO$q|$%!$^\\#&N$:M#@,#&n%6W$iR#(F#(T$l8#a0$FC#&:$)T#@,#nA$SB$SJ#&1%-'$/O#/9#&}$6}#n&#|d$%N$Mx$ek$}8#-,#38$mw#0n#&'$Dn#5i#oB#0|#:3$#Q$>y#n\\#~L#/f$%!#|&$i[#`a#I*$G_$Si#Ru#XP%,=$a9#&U$U/#~g$)S$CO%+v%7+#0|$p[$oY$ye#'4$1>$Jz$T3$op$ep#-W$je#+V#'3$1s%61#\\U%5R$fM%#8#(A#(.$1z$fR$~v#@1$U9$l.$a#$Sj%%w#&.#E+$M>#3$$$y$Pn$Dn#FZ#:_#dM%(2#39$r-$wE#'7%(2$Sj%7\\#&+%67#&S#hu$Td$w>%,M%){$Sm%4,$H}%4Q#n!$G[$~|#N,%,`%4V%7o$Ow$U/#pb$XK$3;$Sz$lC%&{#&;$01$_b#}Z#&P$^_%/z$zu$%.$9:$:)$Io#y&$}c$nD$zK#0\\#1v$u!$Hn%'x$v@$tS%5|$=A$r3#Am$&!%7~#&\\$%3$o_%&z#rC$zx%6D#',$0p$7?%)]%)~#'w#(C%6b$od#':$7N#@,$%Q$uK%6B$G\\#B4$W,$MI#nb$FC#'|#yj#&)$'=$uK%7l#*8%8I#vY%+v#2V%+x#'7$8U%&6#(f$?K#@,$&0%.C#0f$^($j5$Z\\#-[%&v#',$5g%*F%0O%0$#-[%8I$XM%*G$MG%-J$MJ$iB#&(%8x%8z$OK#o3$PG%)v$63%8I$6U$Qm%9-$x^$DR$TS$O-#4~%*T%8y$5h$e|$N}#rw$OW%8I$B1$Jz#o3%9>#rC$ya$vK%6*$nQ$T$#'`$@j#@,$(B$Io$!_%-t%'Y$RM$Gj$t2#(2#0W#m~$j<$/[#4~$/[$r3%-t$qA$~{$X3$Pb$Z##HB$OO#oB$RM#Ni%9e%,Z$D+$Ow$tZ$Gk${e#PM#*[%9j#.#$~n#r&%,S%(U#&W$8X%8(#&K#(\\$/<#&)#vC%!:#9)#Db%05$=n#Ch$zV#p~$M>$zV$~y$x{$aD$TQ$#n%46#z,#.y%4[#&k%6|$oi%9I$t6#'?$&h%(Z$&h$]E%5I#(P#'k$A`$qf#&K#&b$y6#Cj$y6#n9%:/$y+$gI%5c#&v%-4$SM$OB#(!%9z$PO#'5#n%%9{#&Y$xf$|w$#n$!_$a>%,j$t4#&o$~[$V8#&4$2I$ce$2I%0-$U-#.y%&p#A|#&:#*8%7^#&U$)9$MN$ve$vg$]I#&m%5[%:A%,0$]0#Hs#OM$e6$e8$oi#'&$6A$Jz$^\\#'I$34#@,$BC$uK$}L$Sf#nI$r-$SR#&7#'^#'I$f&$fR#'o$*J#@,$>k%*_#)r$g6#I;%,%$?2$Ud#&-#n-#'W#C{#FZ#&\\#'6$S?$41%8W%5a#nb%8I%8K#oc$E&%6I#'w%8\\#)r#&K#'h$9o#@,$(k$\\F%5?#FZ%;N$}s%;B$qb#Hs#r$%!2$~R#Am%;^%8D%*W#oD#&+$uw$od#&\\$.M%.x$GC$l/$Se#)g%7}#',%8!%'=$m)$Hz#+K$m%%:`#&w$d-$m%%,D$ZP#r&$~|%(U#'($uH$gc#b{#@1$5v$cg%9U$ZP$E2#9)%67#&U$+A%**#7j%7W#^p$7%%6_$T$#(2$uw#&)$uy%(H$%&%5U%,j#0|$>n$]4%7H$f##pQ$W,#&3$A-%7=$T$#'6#VX#@,$=,$GC#o5#P##&7%4>#HB$UC%<0$Pn%<0%!3#&+$~n%9n${m#B[$gI$Ow%<2%,x#&B$($$/g$SB$?8%:{#Ch#lI$~Q$vd$_7#U~%<G%*g%':#&0%,e$G\\%72%'7#1v$SK%<E#&6$E2#*8%<4$~]#nP%6~$U\\%/A$b##8p$W5$}Q#Xv#'g%::$fR#'*%)>$8{#o_#'(#JU$V#$J{#Ky#.k#K|#M+%0h#&3$,A#_j#H4#a2#G}#.i#JQ%0~%3J$ri#Q[%3.#1X#oA#&0#':$mS%/>%0=$me$rK%1+$`q#PX$|t#C4#_A#oD$f3$Y>%8*#@1%8,$F_$m.$cM$OX%/}%:{%9D#D,#)>#z;$O3$O5$O^$)L$^v%4{%8{%1=#'w%=^$XS%1O#on$`;#&~$\\W$^H#k)#4C#k+%2x%/`%2z#k+%+\\#Ex#*I#/0#D$%+T#O!#V&#@1$r2#o-$^)#rS%0_$M;#8p%&#$Yd#&8#nN%8r$Rb#(P%=v$N+#9:$}v%,8%0>$Jk$i8#+~$W<%)Q$j7#0f%'@$K4%4\\$LD%>3$bw$N+$GQ$pb%>:#nO%.U%>=$O;$Y>%,'$Pb$mg$me$}E$#D#0|%01%14#_A$X[%56$`w$j=#@1$k<$zh$MQ$X[$c`$`w#1m#@1$r'$&q#_A%7#$hW$iX$Xm%%X%>T%>;%(R$K4$X[%0F$h[$iO$oL$iQ#J?$YH$Xx$DQ$o$#)s%1Y#&@%1[#kd%2S%3^%2U#&.%2W$Wt$Wv%1_#.L#MW#MY#M[#'H%0g#iQ#^^#[9#dc%4h$Y+#&=#1~#+=#k?%3M$Vm%3O#.\\%?H#B%%2g%+`%=I%3_#2]$WW$Y!$WZ#1M#)r$o9#ii#LC#m[%3l#LH%3o#*O#a2$o&#-u#,p%+]#,A$:K$)`$c]$l|%9'$kQ#4L%'F%%B$dB$b=#*Z$\\H$Nn%-Z%=Y$h5$yC%%C$OB%01$W7$&5$OJ%,.$O=$LG#*Z%1*$[S$]X$a_$lb$]\\$OR$<&#J}$lu$M!$|z%0($X_%)c#&)%)e$^k#~u$L1$[+$%!$XK$GO%,.%>K%<R#=@%1H$Jk%1-%>K#'w#'x$=-$]@#&]$V|%)U$FI%03%*C$Sy$su%=t%@2$kZ%>[%/{$sq$M;$XK%@P%1<%*H%@S$&X$h]#@1$h_$iR%={$ip$m{%3.#0O#-_#/K#33%?F#KT%?[#bl#T&%3n#[u#gD#(s#MX#MZ#G?%3>%2_%2a%?Q%?3%?W#+l#`Q#d,#0z#4W#'9$c\\$oX%?|$'B%@C$Y;%@#$'R$Bh$o\\#)>$[T%@)$`F$OQ$O3#J}$x`$k+$qS$$4$`k#rS$p^$_=%=g%1,%0C#rw%1)$XJ$nk#*l%@>%0D#'w$kI%0G$h/$pp$mK#(o#4h%?D#P1#e.%@x#Ht$PW%1'$mV$J[%>F#)#$/*$[.#qY$m[%*u$n^$mi$]8$io$pq#HB$Yz%?C%@j#[r%@l#-)%?\\#m]%?_#]h%?e#AT%#q%1X#c%%?/#fg#*l$X=#2'%@z%#c%$S%2>#]g%@w%3@#BV%2[%2]#*I%B$$NZ#4t%@t%?<%AP#33#&}$hH%A7$]T$p]#nE%0K$Y9%@D%0D%@@$Jz%A/%0B$p7#pN${G%?#$iP%><$t2$nJ$p:%0H$Ou%.V#'u%B@%'r$ah$u`%.V#oF$Y>%7O#@,%7Q$Xe%A[$Pj#0|${F$u`$M3$,z$KO$qp%A,$O3%@Y#F<%A1$m5%A3#-G%@,#6^#J}%BY$|a%>D$$u%>F$qm$W=$\\8#/z$b{#B|%>d%Ab#&y%Bj$iR$Kz%B4$LI#&,$Y8$Q,%B8%AB#+~%1*$`p$qp%@E%BJ$Y>%*o$bJ$po$\\W#Gs#A*%Ag#*C%2{#)z#4i#,J#5d$ps#).$oH%2A%/`%2C#GH$gY%3D#RW#-e#1D#i}#1H#&M%1a%1c#';#&v%2v#&J%?>%0i#h@$o8#1=$q@$o=%>$#cR%2F#SL%+G$c*#'C$eo#)r$as#/d#41$(P#&'$o!$hr#]+%$_#+?#AN#]:#1X#I7#.s#&M%CE#&g#'G#~6$sm$K>$O'$U^$|I#(A#($$B}$p$$T$#':%8C#@,%<.$oi$U2$MC$&X%(X#@1%([$['$hN%>F#9)$r-#0f$pc%Bl$!C$($%Bx$p0$b+$md#)o#dM%,)#(P$Zs$Y>#1q$OA$mH#o`$OJ$pV%*A$b,$pY#&?$($$Io$|X$bP$($#]^$U:%D+#(A%C*$`w#{E#@1$^C$zu#FZ%=V$Sy$qa$z7%;b#'w%Cx%:{$&X%@U#nP%DB%A<$v-$M(%Bo$Pj$rN$MJ$A_%DM%Db%Cs$y?$pa$Q[#U~%6Y$\\F%.V%D<$`w#'+$AR#@,#{,$Oj$qs$L4$b[#&g$fT$r'$j`$a#%=V$UT%DZ$yD$XP%D$%:E#&B#&_#@1#{'%;[%:A%D^$OK#FZ#&]#&F%BB%DV$o{%&0#*%$ju%DH$oi$qV%D~#',#&u%?h#_9$~0#FZ$tB#&y$Ua$ot#L%$ov$UL$)T#6^#nU$KN$'V$l9#n]%)]$}N%7g$}R#&9%Ds%7R$mh$_<%D8#&U${:$eq#(F#(&#rf$pk#&O$vt#&)%!&#mv#&m$j;#~a#(o#-!#M,#&b%#s#K=%C@%3E#RX#,x#S*#44#'%$o##Z!#M-#`?#F9#E-#H0#b!#4a#^t#`B#_I#d}#dU#&W#&O$7:#Dp$^N#bU#5I#c7#M;#IZ#0y#M,%F/%F1#M^#Hs$W]#+u#B0#M,#N^#Z&#cU#&B#Z$%F%#Ve$pP#1|#&s$pN%1U%FE%FC#/H$du%F-#E&#gV#[c$Wg#(L#'X#&U$Qv#Hz#D}%0w%3~#&&$q?$ri$qA#])%F\\$c2%C<%0v%/c#-C%?Y#I&#4T#1]#4-#,X#&G#&S#33%2G#Te#M$%F!#&M#3I#U~$YP#5*#+H$o9#&e#S2#kB#kD$q(%Es#dX#.B%CH#*}%1d%2E%C4#3l%>(#2{%>+#]W#N=$\\[#Fb#G'%?2%A|%3`%+M$oG$o1$s8#eo#7#$s;#P1#.O#RE#RG#`=%F$#cJ#`C#'D#_2$o9#0(#Bt#&6#,A#&L%2d#)z#&`$q4#1X#&>%$-$#>#&\\#L@#]m#mb#O7%?T%3f#m(%3s%?U#13%3v#D%%3x$\\\\%FS#--#}l#*0#/1#m0#Jo#]t%3z%FO%F$#Vd#W9$wl#fm#*m#dU%Et#&?%Ev#j`#E&#m2#&0%3%#+~#(,#'k#&H$Lk$Xz%Cn#&M%Ch#&I%Cj%$[#.A%Cm#1G#/p%+G%CN#3r%CP%3e%$c#h3%3h#Ze%F!%FG#Z&%F9#J&%Gk#+u%$@%C8#]K#5T#A1#]O#]Q#4a$ar#&Q#*7#DJ#F<#DS#)!$ra#DX#W'%CB#,B$s=#cI%F+#'D#,x#&z#V-#-_%C^#&.%C`#h'#'C%CL%H>#cW%FH%FE%H?#/H#g=#g?#V)#V+#V-#0y#Jm#&B%Go#UB%G}%+Y%Fy#Az#EV%Hr$X!#&d#4o#Yv#m0#&e#&K#B$%#q#M,%FU#,A#NU#X[$^O#Tk#'7#2N#dT#E&%I%%I'#S)#-R$`!#&7$-*#32#1?#&{$j=#*l$q/$l$%2M#|A#1/%=~%2{#Jv%C:$o1#,x#G8#Wm%G|#&&#kA#m?#J.#eN%3H$rf%?R%Ga%2c$bk#&d%1b%IC#&3#'>#&4#.9#&)$<S$GC#O2#8L#&A%(U#(B$|g#7c#?M#'~$x$$x&$eQ%8.$f,$Yy$uO#xX$f5#(F$=D#@,#'g%Iv#n9#-,#)o#qm$XK%%L$De$Dn$u(#oD#(b#6>$.N$&X#'4#l:#@,$#J$yp$%!$$*%<V#zw%'W#SZ#n>#oB%<[$m)$:#$y($#n#2\\$%8#&h$)S$?P$%!%<y#nb#.n$)S$>^$0<$'v$>_$,9%JG$.C$J0%6I#Fg#&[%4t$OB$C_$Io%I{%=#$w@#(A#'$%8o$u(#&K#&>#h4#@,$5Q%!:$vn$z6%-q%4-#9#$z}#'6#Yz$}%#+e#&A$/.$XK$vp$&8#&i#Y9#7n#tW$.l%5_$wC$w4#Ar#'8#(5$+8$qR#C/%Id%(U#&T$3s#7c#*V#&4#&j%Ej%El%>k%K##']#&b$%E#7c%-\\#'|$0t#@,#yv$IK#(]$8^#+~#q]#'1#(%$(C#@,$@i$w.#Am#+E%'C#Am#ow$W,#'O$$\\#|+#&,#'-#&G$$K%,6$$K$PO$vM$[g#}Z#(@$Gy#&)$Ap$GC#lI#5T%Jn#',#p!$,{%Jr#5S#7d#tW$73$GC#+v${p#(P%JZ#8C#)o#&]#&}%&(#&)%&*$XW$jQ$OX%K]$53%9=%=j%&{$vK$MC$FC#(;$>-$~)%K~#n9#3X%K\\#&|$XK$:L%K`%Js%Kc#&O$7$$GC#.y%L&$XK#&n$vt%Jq%L+#r##&O$>N$v9#&4#nb${s#Jr$yP#Ly$tO#_|$z$#'Y%J'$*;$FC$Xj$*>#*#$IK%D}%*$#(J$;6#@,#u4$u`$l5%-q$gG#}y%JR$i:%;-#)g#}z$W,#(U$>3%9{#(J$9N%LP%La$PO#&'${*$)v#',$qY#@,$a}$]-#&2%K~$j[#'.$7x$z?$7x#n9#p,#C?#&)$($%8q$#n$Pn%K.#',$={#7c$t%#(A$uH#&)%5h#o-%;>$!C%:)#.F$z\\#n>$DQ$#y#&t%J}$DJ#&4#'1#&u$`c$h##n9$$F%K.#(W$<T#7c$&!#&4#'6$.m#@,$0%$IK#'`#A*$a1#&_$KF#&)$yy$#n#yn%K.#&;$:-#7c#hT#&4#(g$'>#@,#p{$GC$M>%K.$fP#7P$D,#(B#yX$}<#yX%BU$ZP$M(#{D$XK$;d%=s%*H#&O$;h$sz#'5%:f$;d$w.$va$y@$W+#(A#'{#h&$$j#&K#'$$(b#@,$A)$GC%JV%I}#',$,/$=|$Dm$Do%&{%Kj%J)#}Z#&_%&g%&i$qR${d#^($r-#;9#0|%(c%J<$Sv%K]$,z%;P%6H#)r#r$%,K#&1%K]$:0$Gs$J0$#b#0[%,V%K]$KI$I#$tt#rC#2\\#2K%K]$*f$%T$DA$H|%N>#dn#&4%K]$P!$.N#o3$u*#rw#2\\#6O%K]%/%$DW%52$xk%N\\%L?%K]#Yz%N&%J$$Dp%NF#39%K]$AQ$7Y$D}$*(#J>%NT#q]%K]%%I$0]$E1$uo%Nd#->%K]%9+$%q#&i#p,$#u%NT#;}%K]$>J$E8#.y%#.%NF#3j%K]$OJ$%{#O<#[N%Nd#*V%K]$/W$?g#&i#,J$E@%NT#B4%K]$HS$>6#&i#Mx$|?%NF$&!%Ku$7x$.v#&i#V{#5@%NT#hT%K]$2K$*g#&i#.@#~4$M4#>-#)o#&X$B+$+W#7c#nb#&4#'L$+T#@,$;z%M~#?|%K]%;O%L5%Kb%L7$|i$H,%40#*i#U5%9e#(P#&y$'U$Gz$T$#(1$>l%*N%Os$F_%*E$w<%)4#&.#~H%)6$l<$RM$yO$yQ$Tr$`,#2N%;0#F<$UC#}y%:l%Jy$ZP$Te%L[%Cw$5R%&6$&S$*>#q9$w.%-t$zL$Ow$Fj%4l#&v$Fj$!A$X<$HB$!C#|W#;p$Uk$:W$${$ms#Bz%NK#r$$EU%9w#&9#(b$8F#nP$;A#m~$l~%'X#m~#2K#U~#?D$GC$Dn%L1#',#x&%Od%Jt#&O$,H$Oj#(g#7:%6i#',#'u$?s#@,$Eu$`;#(F#(k#ur$OS%<P$qJ$lZ#n9$$J%K.%@G#7P#3j#&4#'`$@{#@,$13$GC#m&%K.#oe$.z#->#&4#&]%E0$w,%Q)%0-%)o#Am$}B$u}#{e%J@#zf%(:$3g#p&%JF$>_$,)$/q$Fz$=X%8h%Jg#rw$tK%&N#&9$m=$k+#'%#&t%!?${`#&U#-,$E!$V3$u($#y#(O#EW%N+#)0#Zc$x5%QS#n9%)W$Ow#,J#7j#6O#v7%PQ%&J$w4#R*%7b#.X$oU#FA#&/$A_%N6%)n#4t$|u$'K$GC%8$$#r%P,$|u$,c$GC#2\\${p$N%$3&%4^#-,#q]#{q$M>%NZ#0|#{4#X1$wX%8:$xj#q]#0n%JV#39$C_%PX$oi$*]%(=$^\\#&z%)K%)M$|j$TM$%,$$y%P#$Ow$T%#*8#yU%D9$Tj$m4#*8%Q[#xX$TM%7+%OV${A$j[#'v$~(#&)$~*%R3$Tr#PX%LY#&/%L[$W9%8X#nb%RP%:3$#`%-n#&0$Gm$Sf#{\\$M>#&c#&b%&p%J$$w.%8d#&.%RP$Te#Gx#(3#'h$+J%R:#&a#'1%H^$*>#PG$#M%R2%By%M)$V/$`,$N'$wE#(W%&4#=@#X2#'1#&{%!,#&)#b($#Q%48%<x$HM$m'%,j$#y#'1$;q%6M#}Z#(/$,I#@,$=z$#Q%PQ$m@$kU$`G#&?%JT%:]#&4$^5%7D$.)%*g$'9%&k%Ru$$o%Rw#(=$x,$T2$T$#(/$4f#@,$+V$Io#z;%K.$X[#7P#;}#&4#'C$4u#&)$8]%KB#&,#hT$r-$_:#'6%Ow%Q4#7j#Qb$yC#7j#yg%KH$$\\$z|#&]#(k$6($~=%Sj$F_%PQ%'S$HM%-|#6R#*V%N3#+H$oU$#X$A_%Ly$t##0@#:@%(U#&6$:*#7c%!P#&n%.8%5O$g1#o$$G,#&N%6l$#T#}/$gO#n?%PV#'g%M1$$0#&K%.H#@1%.K%>k$$j$ES%.s#p0#&<%!6$oz%Io%D[$'R%PQ$_5$zx$N'%.(#&.#U~%:8#n9#,J%P[$@J%P^%L,$|u$Oj#';$6O%Pe#'z%S>#&)$<h%L:%P[#7&%TP%L7$mT$k,$ci$kj#(P$x($sz#&c$BZ#@,#uq$IK#&e$(l#m~$^\\#(+$*:#@,$AV$GC$E2%P[$Hq%T^#oC#&O$9+$u`$\\8#'8$3[$SB%6~$^-#o`%0B%BW%*?$TB$a]$}f#d&#yb$W,%Mv$h(#&M#(2$'}#@,#(N%U4$IT#HB#y&%N?$S`$#8%**%K.$w&#7P#9)#&4#'q$8?#@,#'n%UE$H,%Ks#*%%K]$O+%Kw%.u#&O#(M$Gr%:2#&0%P[$)g%L*%Oe%Ty$4e$GC$F:%K##+e#&@$V2#'3%J;#n9#dM%K.#(R$0&#7c#39#&4#&S#}I#&)$P[$P-#'.$7.$V8#&K$9`#*%$<&#nF#p,%P[$UT%Tx#tW%@/#-W%&o#.X$5\\%QF%JB%S'%,i%S-$UC%'N#KZ$XK%92%N;%;{%&{#'~$&h$SH#&K#'_$>i#@,#'y%V7$gx#]s%Jm%L'#',$%o$/%%Ka%P_$~G$#n#O`%K.#(Z#@o#5T#B4#&4#(F#vD#@,$.a$wP$iC%OE%93$e}$<&$x}$?]$MJ$Gf#'1#'Z$5.#@,#(f%V]%T(%JB%/A$gO#ne$W/$~|#&@%T2%J}%V4#'9$EB#&)$7M$GC#Ch%K.$MI#5T$DJ#'0#n>#&)$$A$IK%LE#<v#}Z#h<#@1%18#nF#C/%P[#s=%U{#&O$5?%Kf$H6$t2%LL$%.#&K#'?%6b#&)%6d%PP#v_%So%-*$N'$#X#U~#'-%QP#.d$xb%'!#&9#(>$4.$LK$K@$FI$SH#R#%Qq#nP%M)$HL%-O$N'#;9$#y#&9$2V#n?%R{#IL$*>#FY$|x$LN#(F#'T#^0%!@#&5%<R#&)%<T$#n#)2%P[$?;%VA%L6%Ty$:#$Io#O2%P[%'K%W($ey%US%Jx#,.%9j$Gj#|?$W,#':%PO$gO#&m#&1#tR#&)$$N$z-%/($QA$RM%U+$ZP$%,#d&$Gf#dM$Rf$Sy%,d#))#6^%Vd$~M#5i%Vg#.A%J9#'1%8i#F-#'3%WI%Va$GV#&N#D,$gs$bQ%X2$08#9)%Vh%WQ%,j#&K#(U$9U$u^%XJ%Q,%*Q%;e$u~$F>%KS%*$#(;%8l#&)%:r$#n#Mx%P[$GO%W($4z$#I%W?$<&#&9#&s$8(#@,$CY$w.%RN%RP$U/%Rf$%@$.4#yU$bA%L^#&)$`P$oi%>f$`6#'o$7.#&)$@,%LR$Sm$gh$Ow%'N%RP#PX%4;$gI%RP%<0$#`%,w#p,%'N%R[#&v%R]%JR%R`#mv#&y#o(#4t$<&$rU%Ay#.L$\\a#B'$\\c#1=#'E$R:$k*$e!%Ta$bu$Yj%A=%>_$O#$il#+~$PI#0f$,A$YI$R?#O|#-b#/u#'8$R:$pT$mk%Dp#+~$UC$#D$$.$#D$O8$nt$am#*l%C2%F`#1=#&a#h<#&5#*G#JQ%?8$do#hq#&Q#A7#U}#/&#.S#FP#&3#''#EY#&J$JU$pT$\\)%A=$r5$;*$`q$kD$^~%%C$-c$Y<%B:$\\M$LW$t!$LN$MP$W$%0X%YM#7V$\\_#,A%YP$k)$Y1$X5%0]%YB$kj$mi%YV#5b%YX#5b#iO$LF$#u%3-#|~#J&#J(#-2%Hr#ja#-0#-2%F*#cK%Er#J&#&[#F:#-C%Hs#&^#cY$k}$_h%ZH#Z#%Hl#HB%Fa$Wb%Fc#JN#dQ#&k#&K%2##`i%I?%/n%ZB#E&#jb#E-#m0%Zc#'B%H9$Y#%H;$X##h7%ZL#dU%ZJ#E-%G*%+k%CJ%0s#,]#4<%$D#2C%$;%3/#dQ#&q$|p%Pr%Ct#-[$g{#&9%'~$]-%EB%T0#&3#'1#&t#nO#&)%>{$PO#'{%C}#6R#9)$PU$nM%1F#@x%8&%Te$63$b[#'-%0T$xZ$!_%[##&1$OB%[&%A8#Bz%Wr%[C$[k$dF#Hs%&J%.,#7j%Qa%A4#k]%Qe#ig%[I$P-#'P#)>#6R#nb#'1#}q$p.%Cs#-W${d$Uh%P<$zS%-Z#O2%[A%8k%(z#n?${6#ke#@1$]h#nF$MF%[$%[D#(5$z:$$u$^\\#'4$a-$Io%[_%%y%[a#6R%Cv%[(#;9#&M#&W$Xb%0,#nF%[x$W,%[}$8-%@_#@,%@a$`)$Bh%[o%[T#&r%(S%\\0%.C$M3#q_$qo$[+$O.$oR$W=$Xx$oU#*Z$]_#&M%W#%7A$eS#&6$XK%!S$,-%8M%*1%1L#.X%W/%=`#@,%=b$]-#(($Nd#;9#'1$0T${E%B@$P-%=v#6R#-[$h-%BG$#n${d#)o$XK$CO%NJ$8,$Hy#'w%\\)$&X#Ep#@1%Un#6$$Yq%,y$Xy#Gx#`g#It%#q%IO%G%%3C%Ex#GO%$A%+f#h{#*l$sX#Hd%IS%$Q%G9#2]%+A#70#6^%*{#&J$WS#aY#'>%+G$rY#&O#B|%(}$p{%*w#&t%3z%H]#V-%Z]%Y7#b6#PQ#1I$pK#O2#3R%Hm#V(#gA#V-%3(#YE%#p%Zq%1d%0s%+7%+9#){$p}#&7%3T#&6$q%%3W#+u#'0%HG#]M%HJ#2s#4a%+)#&r#Gj#g[%3Y%+$#eH#B<$*>$+7$Oj%)g$f'$b[#'P$,t#@,%T{$oi$}6%,%$^\\#'}%Oo#&)%U=$#n%!G#&4%Ss#',$M8$%Y$Df#&6$DQ#oD#(M$~M$z'%;W#@1%;Z$zu%Sq#/<$G^#'Y$MI$u/#&p%M=#&)%TR#nP$3C$_5$eU%-Z%(=#*8$ZF$Jb%E&%-t%-*%8:$~u$F>$MI$y##(=%8`%8b$l[$[u#pJ$hA#&?$xX%Wo$a7%=:#&h#&g%(G%>k%DW#*M#'K%*3%<O#&m%!.$dR$bW#(5$W,$=n$&X$]B#@1$P5%Ct%-8$u8${S$u8%[`$u8%-3%,_#6O%D-#')%5n$f!$#q#n=$Dn$Da%NF#9)$Hf#+k%^=#0&#2K%-Z$zV$~q#.]$J#$d4%^J$y@$z/$W9%EI$xl$`U$jn%/Z#'v$|d$cP#]}%N.#|K%By%^6%EM$z4$Zl%TH#U~$6'$H!#(i%.\\$T}#'t#y\\#&)$&l%%;$G]%]y$M8$#\\%:L$Y=%9Y#}Z%@J$kM%:$$gl%'G#oi%[y$Fj%8Z%,s%,S%,v%'E%[`%_W#&=$)S%N`$J,#\\k$J1$yt%[a#X2%KD%&A%-C#6O#:_$v=$He%-G#O2#6O%(1#&+%Qt$tI${x$tT#Y9$zD#&6#2K%%l#,'#J>$wT$Dv%_l$}a%5y#Y9#3X%NS#&N#7&$DF#A/$DJ%_e$y}%M-$'o#QV#'7%^h%,x%,U#)g$H_#&9%_>$|a$M3$5\\%NX$Mt$h($N$$\\O$WK$ya$#`$\\O#6R$=@%NX$V$#(&%Q)$V(#&n%.\\%.^%N7%PL$\\#%TA$3g%,m$bb#Am$J4%`U$e`%'C#*8#6R$R]%&\\$Tq#]j%_F%^*#+H$zR%[3${K$Fj%[`%-5$X8%-^%%E#2K$X;#')%5j$~E%(%$W9$u(#qY%`($DC#'w%^$%^a#}Z#&F$RE%>1$q\\#Oo%`f$~o$zS$wz%[V#n&$&X#'_$'2%V8%a/$H,%`[#+j#&9$O0%Rb%,:$w>%`Y%)-%R?$xl#(A#()%Q)$U)#&-#&S#(1%:X#&)%<u%(!$ZV$Pj%Ac$^!%Yz$aZ#*%$WK%`A#'*%`C$b$%`E#@(#8]$}B%aM$h4$WK$Zg$UL#&x$;g%Pk#&N#pO$sz$Vc#@1$>,%BZ%')#&g$*c$^?#(-%):#&)%'a%7R%Y##9)$~q#'Y%a+%_N#&K#(@#(]#@1$=i%J/$_=$ou#Am%-;%TF$H}$o]$.1%NX%*/#*F$r:#&Q#+v$[w%,z#eo%%k#(A#&z%9M$od%+}#@1$`:%<B#9)%]y$B-%JM%_L#'w$P-$0<$&X%Lp#@1$(8$Ou#;j%_-$a]$tB$}{$Nt#&O#'v%M\\#mf#*%#3g%E:$PO%b@%9{#'K$?y#@,$8>$~0%^+${S%`j%_V$zS%-o%`o#Tx%b1%>f$H|#]/$lt%@H%^f#*Q%88#X2%^i$DJ%[`%`0$X8%-F%_x#J}$w##&1$W<%^r$m6$uL#3u%^u${X%Nd%^y$~E#BT%0I$rI$O=$W,#'<$&*$sz%#L#@1%#O$oi#&[$/x%]h#',#&}$d}$@]%\\5%c'$M)$W,#&(%):$X_#'|$,d#@,$2U$SB%_8$M:#7j%8A$W=$%.$oU%TH$A_$Q~%N?%-a$N/$J$%]m%8?%XN$u}%_l#(A#'y#zf#Am%\\[$tK#@1%*f%Mc$OO$iC%_*%aY%%@%^M%?o$OX#-9#27$M)$OB%Qg%!1$r4$u|$ov$vC#(A%*Y%cZ#&2#'1#'y$};$}=$XW%a3%cb$V4$]l%SG%'C#)g%`_#&u$yV#p,$Te$tB%a>%Q)$yO#&b#'$$4=#@,#'-%d0%>k$tl#(P%au$u/#'($us#ko$us%d4%`f#(P%^/$8-$nL$R/%@V$b3%ca%a5$=<%UJ#o*#&A$O0$cP#Y9$Nn#*%#ul#lI$bZ%6v$[,$v.%(x#(D%(a#8]#&W#(Y$:=#&)#(K$:=#.d#''$mH$'^%Af$^N#56#fK$mM%2'#DR#DT%HT#.V%3]%IT%?3%3a%+N%0t#aU%Gc#A!%\\w%HW%Aw#,F#W:#')$du$[8#'=%2-#&V#'_#_D%$.#RN$?*#@,$-w%T|#6^#qY#he#)>$:#$XE$Oj%:z$OK$^\\#'?$c\\%e3$qR%69%5S$f#$e\\#(A%6S%:E#&;%:~$`v${;%!<%7L$Qm$FC#'.%E$$]?%Ct%X#$$j#nA%DU$PO%LL%aA#&'%X%#@,%5}$iR$qS#''$+!%Xc$X_%6g#@1%^O%&Y#)r$[T%T<$b3$lc#GN$q[$|#$U^$Zl$]7#Q#$Uu#&+$U]$f#$[d#&y$os$#@%5F#&8%J.$qR%>c%;\\$f#$W,#(6%J,$fR$]f%[k$}w%02%')#(P%&($^?#'-%Ul%Un$fJ$ye#(J%*'%Cz#&m#'<%c6#zf$PO$]x#-[#7j#'1#&\\%Xc#&)%U!%7R%e}$P?%e@#}`$fR#'2%!?%W}%!?%By$]q%eq$UP%Q-#An$O0$]v$7~%,%%cE$z5%(=$Yn%eA%=/#&M#&s#@o#&)%Wi$bt%%2%')$d%$X_${D#@,%D4#-W$lV%`B$y@%fE#'Z#k2%Mx%?$#@,$he$(]%Mr%%O%=r$_=#o3%7B$XP$XR#d&$FC#f+%D?$Oj%*Y${'#&y$bI$oh%:@$t2%cX%D_$lr%bh$SB#7&$St%7q$V3$SR$26#7&%49%<$$xu%6i$O0$SH$#y%LL%4t$F:%\\^$F_$Hb%=*#o,$=>$ei$Zb%@#%5W$I@#(F%.<$[}%b6$G(%,!#-X$|b$v.%*v$O3#qY$Zk#z,%fk%aR$y@%e?%fo%KT#&K#'0%9X#&)%<6$oi%eT#.X$V9#J>#/5$n\\$eq#&x%,o$ka%df%YO%YQ%=S%Tb$RZ$A\\$e*$k3$b3$rM%6Q#88#@h%Ad$L(#C/$%l%do%]$%+L%#f%G<%dt#/s#Wi%G0%>*#-U#]W%dx#7Q#RX#.~#a9#&7#&N$$/#7##\\)$du%IE#k+#d`#db%F6$j}$_h%G_%$c#U]%/:%B%%HQ%dl#DW#.V%di#&>#&X$y:%ge%9X$F_%`J%fO$fM$O/#&}%7$$_=#nl$W&$J[$mg%f~%<r$kE%\\P$d@#*l#R#%.B%[7#y)%&#$Pn$sv$i6$Mn%Mu%C}$X_#`t#@1$lK%&!#&($]5%!c%cT$ov$\\M$u}$X;#-K$gU#}5%h]$Oc%I_$ek$Ul$mt$LV$mg$M;$ms#01#KL%8F#r$$q]$}R%9]$^$$n^#(P$uP$e*$`7%+~%(.$Z[%9.%g{$v/$ld%eM%a%%e}$~T$mC$Jz$p$$Ra$Yt#(5#(0$7x$om#&{%C}$T_%C}%0-%03$gp%[1$v3$h@%!0#o`$Hq$Ub%/A$e`#ne%Cz%'!#0|%eR$_V$hN%Ba%B=$qq%8P%,2#&m#&.$1q#@,$&p%.;#4t$fR%fg#&)%fi#(5$qe%e>$T$%T&$1z%aH#El#&y%T,%aO$bQ$W&$lV%Be#yn%0:$#r%i>$iH%iD$v!%iF$fR#&a%7?$Oj%iw%:|#&7%f8%BC$}4%BP$`w%fr$`'%?&#o`$>5%TE$}e$$o%S\\$>5%&J%7k$}H$w>$}z%(4$Yn$qe$z|#&M#'@$:1#&)$=;$uz%cn$OO$LJ#nA%D!%gD#.X$e@$WH%&^$^w%hg$PO$h=%%`%[u%W!$a.#&s$rR$$j%YL#)r%2y%CW#';%/=%j8%ie$W=%D/%U)$Yv$LF$H|#&>%2-$sd$Px#)}%1y$h~#,B#CJ%dv%Ge#a&$|~$\\\\$h|#Ts#GN#,B%hE%+d$c0#],%h'%1!$Wb%dr%h+#BN#/|#*&#0O$j&#TC#cB$ht$j*#59$hz%hI#.d$s9%G@#er%Fn#&H%Fp%Fr#)3#EF#&i$Og%'t%?'%EG#nP$Hb$PE$h(#C]%Bb#&*$#@$$j#,4$M8$yr%fm$Z^$\\O$f1%>Y#mf#d&%Cm$SU$dU%>s%VT%kT%#F#.X%kS$\\U%kj$_Z$Pj%kZ#Hs%k\\$X?%7X%Ms$gK$]x#*%#d&#&]#&W$pn$qk$b,%0K$cK%C#$XP$`_%i9#&n%8+$^a#(5$N*$e*#&W#&[#*l$Lu%(.$K|%Z$$\\%$}4$iL%ij$T4#@1$oq#o\\%kP$Xe%,M$M($UY#&y$UH$aW%/A%j#%Ve%@$$,7%Vh%BE${'#&p$W2%[]%Y?$Zz$fY%0X%Fj#`Q%Fl$ie%Y>%Z1$XX%AX%A[$mX%YH#+~%Z:#5g$H|$p<$i(%.V$lp$Y>%=x%01$na$ZW%YT$kE$cI%>W$t2%lg$`w%a!%>0$JW%QD$LF$rT%+D#/o#Oj%+I%dp%]%%k4%3c%ZP$]$%]5%k-$WZ%H$$sU%gr$Lm%h@#/{#FF#YB%+X%$o%#p%h6#Av%h9#1?#[R%hB%hH#'A%]'%Zu%2J#2C%]K$sW%+8%$4#-u#1&$Xz%\\r#\\l#fy$s]%]`%3[#YH%]\\%dk%HS%hL%3L#/`%\\x#FB#`m%2'$du%CL%]I#';#(I$}7#&)$t/%US$iC%,Q#k~%c@%@%#-Z#'$%*'%MK%*'$r3%cF#&>%_|#*8%&/#&v$Te%-g$w8#V[%T+#^7%mq%ms$}}#/8#+~%,>$}W%,A%_*%J2%:M#9)%-w$G\\%,I%,U$gI#&1$zn%'E%P9$zS%[`%.!%,U#6R$_#%`l$y|$J1%-;%`n#O2$S|%!_#Ly%49%'N$}W%,h$N'%g>#-i$G\\$wH#H>%!#%4u%6@%)V$QM$jb%j#$F>%eH#mf#Fq#'X$7>#@,$$:$e9%SA$gX%Rv#.X$26$SD%7/$m$%X|$G\\$w0%7+$#y#(7%im%%j#&M#&l$=m#@,$+M%?j$UI$95$m0$$H#d&%/!%.5$F_%*`#~L%T,$N{%>7$Uy%*>%DD%i.#6?#&5$($%/,$F_$w;$Nr$UP%\\:$mm%hZ$y@#&*%0a$M5#2\\$W*$ZD#&8%T'%@0%c9%*C%1;%1J%&{%SE%9J#&m%al#@1%ao$r#$,$$Zl$Xx#nA$7T%!:$Pm%Wz#nc%.b#*Z$Uh#(A%f3$Q[$PT$h.%%0$1q$iT$ou%X#%E>%/*%io$oi#([%e*%Uu$b[#&;$u2$u4$zA$_7$UL#(A%/.$P`%`~%a#%lv%Y?#'(%hl$^u$Z`#yE%95$X[%nR$bZ#&]#&m%)!%)$%[w#GE$OE#(P#&8%me#6^%I&$ze%eb%A8$i.#(P#(%%J_$^?#&a$v\\$v^%e-%Jz%oe$PO$v$$Q[$^\\#(a%c@#&)%cB#nP%nx%/A%n{#'-$sp%n~%gU%o#%Q[#&U%8V$oi%ng%*4#'j%SJ#&)%SL$|j$aY#(P%nR$Xx%1V$g.$?u%*:$M6#{-%Bq%9E%aN#Gk%JX#(^$u2$]d#'&%.R%.T$]-#&*$%f$[}$}.#@1$}1%of%dI%cq%pa%D%#}Z#'7%6W$ab%6Z%\\.%03%*k#(<%8T$X_%T6$~N$~M%QV%nN$ji$OX#-[%nQ%.8$]d%^c$H)$]D$]-%pK#a0#Fq#ou#@1%@6%px%c9%*k%,$$XS#&=$hH$hJ%c8$t2%.M$v3#'D%f@%fB%UI$eE%pS%q*$&X#&n$27#@,%S9%ml$=[$XK%9B%b)%8N%oj%W/#'=$=A#&)%eY%Ed%oj$fR#'}%8'#&)%4w#mv#y0$Xx%Y4%CU%>&#Q<#SL%m5#D%%m7%h;#&C#'>$st%AW$k.$ml$=<#0f%D.%0c$RO$KG#6^#>\\#+H#If%qj%h:%m9%qe%CW#5;%0\\%l[%qq#0f%>F%YD%js$mx#5f%lc%lj$L1$aZ%lm$nZ%\\B$fJ%.V%1A%AK%%0%oo%l6$X[%r8$h[%lt$v7%lv$^z%,2$+]$N4#0f#'!#'b#(@%m>%Zw%HE#0f#&B#'%$g'#(s#(,#(@%F!%FP#-2%=E#*_#b/$Li%rG#hU#2E#&p%k*#,A#'0#'*%GR%+:$bv#'7$g'#'I#(]#&W%F[#^j%r`#,B#N5%2h#&B#&t#.[#m&#aU#*q#0f#'I#(M#'j#(@%Gr#E)#Z&#k-#]b#Jc#|/%G8%3K#m0%H!#'E$b\\#(&#(U#'o#'d#(j#('#&Q#0y#gN#&[#_*%]L%mD#'C#c^#fw$K&%jx#_A#&v#(b$K*#XH#+E#hV#El#&B#1;#+a#,k#^k#0f#(,#'e#-.%k:#*j#0y#^B#&2%#u#*&#lh#J>#&}%k=#_q%rb%rd#&'%$6#+~#&n#&.%rQ#&V#(\\#(@#/w#(N#'3#&@#'O%1]#&?%s_#).#&/#&~#'4#&A#(e#'E#'Z#&i$&|#&\\#3W#Hs#je#&*#jg$o)#{w#&1$o,#ho#0f#&z#^'#Vt#&^#,J#&C#p&#E3#,P#Gy#N$#Fk#i)#RA#&,$Ww#k*%qg$di#~C#kg#&]%H+#dw%Fl#&<%$W#{.#'D$fo#(s$H;%m/%Za#--%Z@#'<#&V#}`#1E#lf#&x#'0#Aa#.s#&j#&.$d]$n'$#o#^`#+>#&j$D1#o*#,+#,A#&t$W|%sF#&+#&K#+u%#u#V|#Ng#h~#9R#gi#bN#&T#&I#&9#&a#&J#BC$M[$q4#&5$q6%$D$q9#gv#).#ig#-Z#ki#0]#E##C{%ZM%Hh#Z&#/w#m=#Yd%d{$hu#,B%/t#&S%th#PY#&c$[<#_a#)r#Vg#Gl#&S%t|#Hq#l;#2/%tm%to%tq%ts#&L%H+%]^#PX%m*#{:#'G#&z#d}$ny#,a#+4%21#V.#1E#/=#Ev#1y#-\\#'+#dN#,D#[X#*=%tB#&N#'1%rh#(M#&G%rQ#&R#'5#&z#bg#D=%tP#'<#VQ#'!%tV#B$%tX%?A%t[%t]#55#1?#&/#&t$M\\%3&%rQ#&F#')#&z$c<%GL#Ba#iv#&`%4##AT#Fr#&`#+S#._%2b%t;#^C#Y{%rw#:X#)o%H)#Gx#&L#/Z%?L#aT%Ci$Qy%H0#N:%tu%tw$q8$q:#KU%s]#&t#'7$at%6W#&`%HY#F8%GH#&B$N=#0f#&L#'/#&z#0y#4i#K\\#&e#&I#/t%IG#I4#]~#BW#EZ#FP#(n#[c#&I%kI%2G#D<#&h#&S$Z-#,l%21#&[#0?#,D$pz#0f#&J#(P#(D%2-#'9#(B$}O#)>#N#$s4#5b#S&$de%1f$c2$NX#'2#'F#4,#4.#,T%Hc#45#47#Qu#NA#0f#&o#'R#(@%G-#Od#4a#Pk%u9#Pn#&,#&5#'?%VN#+~#&F#(?%HN#3u%tl#(n%tn#&9#&L#lX#36#.$#C:#,p#*n#j4#ju$c5$c7#SA#gM#]_#13#DO$YP#&W%Cn%$v#0f#{r%rQ#&H#'+%sq%ss%su#&i#z2%sB#^&#&z%rQ$fn#d[#cy$*(#&1$1z$L]#4t#&m#&N#55#@q#OO#5b#&Z#(`#(D#S$#>v$g'#(L#'S#&P#&z#,d%1m#lx#'(%rt#|`#&J#,d#-N#-P#)7$c>#R]#1D#&\\#Pf#&(%wj#+~#(L#'N#'n#F}#)}#YX#5-#&B#&w#S$#&d#(j%$:#.X#M,%Hu%]0#/5%rM%s`#'Q#(@%ZF%GI#I3#)U#7V#b/$^@%x$#+`#87#&`#AN%24#*T#&L#kg$n{#&N#K[#.z#Q@%Z>#Z#%u&#-1%r[#(s#'I#(?#&9#&z$W\\#j=#&C$W_$Wa#VZ%uE#'y#(4#&^%tE#|/$X|#jC#jE#&*#'>#'`#&s#&]#(I#'=#(?#'.#(A#[f#/?#J&#N^#Vd%GF#E)%vE%vG#+~#&Z#'=#&~%bi#&&#(<#(H%wZ%x\\#(2#'O%w(#)r%sS$P*#-t%2H#WL#1H%wO#+~#&V%Vl#,]#&u%2]#5##-u%Hj%Hh#Vd#,]#'##&9#&M$S-$pE#,a$n{$n}%1^%mW#N@#S$#&^#(d#(@%tI#-.#Y6#E-#-_#h$#KZ$~1#/i#1]#N#$cB#&0#2o%Ca%sn#}%#'W%rJ#4t#,f#Gl#''#A^#5b#8G%rh#(=#'Z%wn#5b#'-#&J%x`#+H#&}#0$#eE#&x%wz#aU#'5#d[#&b#)j#&a%u2#EV%wA#-R#Vi#,7%y3#kg%3*$WV%x9%Z?%yX#XS#Oi#&=#&+$rm#&&#m=%G$#/d#&k#gl#.%%vA#/w#NW#6V#I}%cw#'q#(@#-|#-N#&?%I7#-U#&P#VR#'&%yV%H!%mS#~E#&B#&?#&W%rY#a1#b6#+D#D7$Rt#I}#'I#(2#+3%yV%Go%x>#*+$Oo#QK#S$#&_#'B#O(#)>#_F#&E%]3#0f%+<%H]#kg%2j#4>#.X%sS#&M%uM%IJ%uM#D<#Cb#,N#R}#dg%xP#M$#^A#kg#&R#&?#IE#+S#ET#V8%yZ%v{#Kq$p|#.\\%sK#+~#'I#(,#'I%ys%vg$K_#'}#'y#&l#&d#'($,t#(L%y.#;$#(H%x8#)T%Z?%ZD#'<$NX#Og%2L%zV#~7#,A$Wq%x=#S$$NA%uH#)r#Pl#-Z#U/#Gg#j:#*l%Ha#V.#4i#4D%zc#S%#(D%{D#\\q%dg#-e#gh%u<%vX#,A#&G$We$n2#(o%#}#'8%.F#'I#(E#&Q#CT%wg#WS#&2#Yz#ET$+a#k2#&F#+5#d^#&z%uT#,u#'!#'9#dQ#&-%xK%H-%H/#Ab%H1%H+#aq#kg#}l%/%$>F%A%#@x%+B#OI#&c#GC#&4#&k#'6#/U#SA%r}#M/#F:%{%#Be%u/%{)$YO#V8$q.%/Y#'E%sr%st%sv$+!%vn#)##0O%Hg#Vc#F:#au#(/#&z#'X#&8%xu#(?%xs#(9#(d%{A#Md#';%wu#*Q#&o#Il#'.%rc$bk%ye#&\\#'?%rQ$db#8E#44$~z#@,#9h$PY$$'#*Q$b1$M;$(.$)S%50%A@$Pj$UC#(#$B+#&'$.$#dM#'O$9/#&'$4K%R<$M3$-P$3C$h2#*Z%|x#&y$CY%*F$O3$26#xw%o*$OW%}0#wZ$g3$Sy$g6#wZ$g9$?b$GI$gW%.u#&Q#'q$C#$,7$-P%}6%.n$OX%}0$1^%9,$.A#+H$g6%}M%}?$?-%}A%e0#rw#lI%?y#&8$<5%.z%}8#(($)S%}:%kW$(j#yL%}=#yL$vl#+v%}C#(-$9~%}G#&7#&o#&n#*Z#5p#dM$R]#*Z$<o%R<$N{%},$K2%}J#*%%}0$|D%9,$Eo$Xx$26$GG$h%$\\O%}9%}c#0V$g4%;?#&i%f{#r$$yX$Nt$i4%oa%}w%~%$y@%}0%}2%9C$Eo$[X#'6#xw$Uv$fM%}0$?r%;?%}b$GI%~B$=_#x&%b)$qc%}D#'r%_/%}H%fG%hV$f#%~'%~A#wZ%ES#wZ$,)#wZ%~G%;b#H8#,Y$jf%}l#|D#&*#XJ%}q$SC#&*%}t#]~%%Y$X2#&8$3C%~=%~O%}^#&y%S@%fy$Eo%fT#xw$_5$u}%~?%Ph%ES#7&$,)%~@$Fz#wZ%Q=$}N%}E%=/%~L%fV%EN#Am%~P#a0$1:#},%~U#yL$'Z%~{$*&$G[$}N%:u%i3%}m#FZ%~_#&S#'p#'o#FZ$0>#v7%}[%a}&!%#&,%~t%~C%~y%~x%Ph%b)$}N%64&!!#&7#'r#'q#FZ$*##v7$7M&!$$u}$5d%KE#&,#ne$M>#(!#(#&!!#&8&!P&!>$u}$0F&!T#|9$M>#'s#Rz$f$$i4$yi#)n%~g#*Q%~r$ov%~6$CZ&!($Eo%S\\#xw%S_#&-&!'$,)$-.$<)&!.#?\\$Hh%8##0:%*1%~I%(7&!r%&Q$H9&!u$.1$)S&!x#yL$'_&#)&!|%)~%~Y%(7&!=&!s%}0$w;$,)$w;$'Z%+u&!/#2V&#/%}i%&N#&7%``#&,%~c%b/#d&%~3%(/&#&%~k%}|$o^%jK$J6%~$%Ox$Te&!'$'Z#'+%&(%Q=%'?$Wq%T+$yZ$i:$T)&#E%)(&!m%8L$TJ$J6#xw%,>&!'$'_$53$'c#wZ$,9$53%_K%bc#rw%}E%&p#&8&#a%7/$U/&#c$09$p4$7D&#g$0A&#u&#j$S|%~Y&#n&!=&#b%~k$8N$,1$69%6L$'c&$$%6G%,`#rw%}i%:l$R]#*8&#B$Tj$}R&!i$l}%70$Sf%}{#5@%75%8(%~#$us%n@$G\\&!'$'c$@J&$*%JO$vG%LW%RM$TF&#E&$>#nb%}0$=a%JH$Eo%g>%~;#}`%So$Gj&!A$.@#wZ$%K%~y$.G#wZ%NQ#-,%NE%}E%<'%~\\#nb&!6&!8#nb#3j%R<#nh#{n$/[#oB$\\T#;9$:S&$W$#U#2V#X2$/.%_m#&4%V,$X=#+~#)o#~|#'.#89#}r$HH$L>$$q$T2$Ju$M2%>x#-Z%N[$!|$3C%`,$u8&$L$uw%NQ%`2&#`#}`$DU%QI$tA&!'$'z$3n%51%~D$0W&%9$D|#lI%^w%}E%_n&!##94#Ch$w!&$U$'z$&[%Na&%;$,P$B`%No&%?${Y%~Y&%B%}Z%*M&%4&%F%~k#wZ$'z#wZ$(!#wZ%J#%b~#rC%}i&%B%~\\#X2$@)#dM&!8#X2#`4&!<&%T#&5&%E&%6%~k%~y$'z%~y$(!%~y&%]%^w%64&%a#']#'^#X2#'p#'p&!O%8T&%U$tA&!S#&v$w!&!V#&v&!X&%a$R]#X2&$1$HP&!h$3C&&!#6O&$8$9%$Eo#7@&$<${h$tI&!'$(!$4@%Nh%N(#rC$vG$tT$i4#?M$DK&$4$.N${a#_|&%.%51$Eo%QM&$Q%!T%!V$Dv&!'&%<$3o$<F#wZ$(1&%=%N~#p,$E!#r$%}E%5y&%C#39&&O#39&$U$0W$E7&&T#yL$(1&%M$A?%O!#D%%Nr%~Y&&]&%S&&N#&U$vI&&Q$,P#wZ$*G&&U$*L%Nx&&Z#&Q%}i&&]%~\\#)o&%d&!7#'o#)o$??&%i&&p&&r&%n%Ph$0W%~y$*G%~y$%m&&y&&l%64&&}&%x#)o&%{&%}&')$Dv&&$$vI&&'&!X&&}$R]#)o&$1#)o&#D&&E&&_&&q&&P&#H#5@$De$,J#QV#'6&#M#q]#Ch%!p&!'$*G&&<%Nw$E2$#q%~.#&N#39%R&$i:$ta$Dh$3C&'Q#&U&'S%~k%~m$Dt$(&&'N#xw#->%<o$xS&$U$(1%Nv$(6#wZ$(;#s6%O0#)2%O$%~I%!g#*K&#o#}`&'k#&U%!~&!'$(1$73$5~&'r$,a$@i$2L%O1&'w#lI&'y#0n%}m#q]&$c#'o#q]$88&'($.Y&'l#->%}0&$$$(1&$$$(6&$$$E0#.y&'w%64&(.&!J#'q#q]$=M&'9&(7&'~$xS&&$%!~&'>#(#&(D#PX$?l#&(&#E&'}&(!%~k%~7&'1$2B&'i#}`$w_$wj&$U$(6%Nv$(;#wZ$(@$B=$AH%O8#&>%O+%}E%!|&%C&(^$E3&!'$(6&(%$0e&(d$6*$9C%O7#,J%O+%!~#;}&(/#&n#->&!6#PX$Vn&(T&&E&(n#;}&&I&&i$.^&(\\$.c#Ch#p,#3j%}0%M)$(;$;*$(@%~y$6/#wZ$&'%O@#&?$wf&&[#'r$wb&%C#3j&).#A}&!'&(c#yL$(@#wZ&)7#yL&)9#Mx&)<%~Y&)?&&o$!5&)B&)0&%W#yL&)E$:|&)H$&#&(h&)M%}i&)?%~\\#;}#nR&%e#'o#;}%X*#&T&!=&)A#&U&)/#&;&$U$(;%~y&)5%Ph$(E&)Z#k2#r$%64&)]&!K#;}#|b&(I&)g&)i&&$&)i&(O&)]$R]#;}&$1%!y&'z$3C&)z&)C%~k&$M$.g$Eo$wf%}5#}`%#4#&U%#?&)1$Il$(@$;*$6/%~y$(I#wZ%OG#d3#B>&)=#3j#bL&'{$4B%#5#*V#&<&*5$:|&#u&)I$B{%~D&*=#Xw&*?%~Y&*A#fE&)P&*2&*4&)T&)W#yL&*K%O?#Mx%O:&&{#(,&*R&(|%#8#cE&'$#3j$CI&(6&*U&*F&$U&)n$AH$?q%Ph&)K#]'&*P%64&*`&(E#3j&)x#&T&!\\&*h#*V&&$%#?&(O&*s$R]#3j&$1#T3&*'#*Q&*y&*G&*+$uw%O0$*T&),#}P#Ch%#E&*H$?g$Q)&*L%~y$65#wZ$&.%OP#33#O9&)=#*V#B4&%C#B4&+0$|1%}0$=l&*l&&h&*;#yL&+7#yL&+9#.@%OB#lI&+>#&=$-P&!=&+A#&U&+1&*W&+3&)8$,n&*<$2X%OH#0v&+<&*^&+P&(|$t>&*c&!8#*V#pv&(6&+T&+V$)S&)6$*\\&*:$,n&+6&+\\$|>&+_%64&+a&(E#*V&*v&!\\&+i$|1&&$%#E&(O&+u$R]#*V&$1#*V#->&#E&+z#B4&))&)p$6)&+.$|O#&U$|G#&>&+2$(I$;*$65%~y$(Q#wZ$&3#&i#+a$L6&)=#B4$|L&*C#~*$|P$&!%}0$<;&*L&#-&+J$2[&,9$*k&,;#&B&,=%~Y&,?$|W&)P&,/&,1&!'&+H$,q&+8$.{&+:&,O%}i&,Q&(|%8Z&+d#'o#B4#Qb&(6&,T$|Q&$U$(I&+p#?\\&,7&,Z#.@&,O%64&,^&(E#B4&+x%8T&,f$&!&&$&,1&(O&,q$R]#B4&$1#B4&,'&&E&,v&,2&+*$B{$Eo$L6&*0$;%#Ch$|8#&?&+2$65$;*$(Q%~y$,x#wZ%Od%OR&)=$&!#hT&%C#hT&--#hT&-/%~k$@!$,q&(r&,8#yL&-5#yL&-7#|.%.v&-:#[1&)P&-=#&U&-.&!'&,I$68&,K#o3#+a&-8&*^&-L&(|%&/&,a$&!$C!&(6&-O&-Q&'+$,q&,l&,k%Ph&,:&-W&-J#Qb#&P&-Z&(E$&!&,t&-,&-P&-?&&$&-.&(O&-m$R]$&!&$1$&!&-#$3C&-a&-?&&3$(L$Eo%OR&&7#>-#Ch#*0#+E&!'$(Q&'V&-h#0u#9R&'Z#hT#+E$i4#hT&,@$3C#+E&.)#9W&))&+9$2W&+.#5T%Vq#:c&+2$,x$;*$*p%~y$(_#wZ$(d#&i%5r%Jt%~I%K#&,A&.@%Eb&.B%~k#uq$>>&'V$*p#wZ&.H#yL&.J&.L%Kc%~Y&.O&!=&.Q#:@#&A&!'&-G$2d&.Y$*u#&i#m&&.M%}i%U]%}m%KD&,a#+E$@s&(6&.b&.S&+k&-g$2`%~y&.F%Ph$&<&.j#&D&.M%64%U]&!K#+E&-p#7c&.A#5T&&$&.c&(O%U]$R]#+E&$1#+E&-|#*Q&.u#5T&.#&,:$.z&'N&#M#:_#Ch#+a#:_&!'$*p&'V&.}#m&#}i&&?%wg#55#&B$i4#:z&#E&/=#&U&/?#&B&.#%Jq$4U&/;$us#2N#Ch#\\&#&C&!'$(_&'V&.\\#3!#|S&'Z#:_#2N$i4#:_&({&&E&/W#&U&/Y&.#&.}$7v&/U$6B#Ch#m&#~g&!'$*y&'V$&C#&i$EU#~g#rw$vG#2N#~g$i4#2N#3j&#E#~g&/p#~g#&D&.#&.J$-!&/n#d;#Ch%5r#`4&!'$(i&'V$&G$E]#&G#|=&/G#~g#`4$i4#~g&*B$3C#`4&0.#`4#&E&.#&/v$-'&0,#|?#Ch$EU#|?&!'$(n&'V$&L#&i$$.#|?&/z#&N#`4#|?$i4#`4&+?&&E&0G#&U&0I#&F%}0%O>&04$1(&+.#~@#Ch$Eh&$U$+*%Nv$(v#wZ$({&%=$&Y#&i#ou$E_&)=#|?#~@&%C&0c#&U&0e&+W$+*&(r&0i#yL$({$+p$&X#p'&0n#&K&0p%~Y&0r#&G&+R%*M&0u&0w%}_#yL$+*#wZ&0{$4r#&i#ov&1&%}i&1(&(|#|?&)`&'$#|?&$f#&S#'t#'s#|?#p;&(6&1,$EQ&0f$/:%~y$(v%~y$Ey&15#},&)s#&P&18&)P&1E#~@&(:%6L$+*&$$$(v&$$&1L#&J&1&$L@&18&(E#|?&/(&1S#&G&&$$Eh&(O&1_$R]#|?&$1$B5&)%$3C&1c&.#&0N$1-&0,#th#Ch$E{#&H&!'$(v&'V&1[#}\\&/G#~@#th$i4#~@&0U&&E&1t#&U&1v%}0$9n$-8$Eo&1|&-+#|q#Ch$F(#{D&$U$({%Nv$-A%~y$)'$>e$>`#&i$F<#{M#rC%}E#th#{D&%C#{D&21#{D#&I&!'$({&(r$-A#wZ$)'%Ow#p9&2<#&M&2>%.v&2A#&I&(|#th&!6#:g#th$@f&(6&2D#0G&2F&24$/A%~y&27%Ph$&]$F9#&L&2R#&Q#&_#_^&22#0n#uz#th&1;$R]#th%}t&*w%8T&2]&22#&I#}&$M>&2w#n)$M>#&u#o]&2l$i:$Er&#E&2v&2_%~k%6~$Ey$>T&0,$F0#&U#p)#&J&!'$-A$=9&2e$F:#ow%%W#Ad#&I#ow$-P&!\\&3.&30$Co$M>&30%JE#&v#'[#'\\#{D&3;$i:#{D&2!&&E&3>#ow&31&(X&!n&0m$-<&+.#p&#Ch#ou#p&&$U$)'%Nv#qM#wZ$&e%ON#pB#&i%xS#p/&2?#'r#p*%Z\\&,A&3U#&U&3W#&K&!'$)'&(r&3\\#yL$&e%Ow&3`&3b#}m%.v&3f&(|#ow&!6#'h#'g#ow%})%~d$'j&1m#*Q&3i&3k&0^$CW&2e$6Z&+.$F5#&U$F:#nI&$U&3p$;M%~D$)3&%=$/U#0Z#&P#qI&3d#p&#nI&%C&4.&40#&L&!'&43$4~#wZ$)3#wZ&48%64&4;%.v&4=#ft&)P&4@$F;&4C$-J&3]$)/&4F$&j&3a#&O&4K&*^&4M&(|#p&&1;&!8#p&&1>&1@#p&$*1&(6&4P&41&-c$@:%~y$&e%~y&3t&4Y#nO&1O&4\\&4O#&L#Ch&4A&1U$4|&$&&44&$$&4n&4Z$L@&4\\&(E#p&&/(&4g#&L&&$&4A&(O&5!$R]#p&&$1#p&&3;&&E&5&&.#&2O#p4&0,#R*#Ch$F<#R*&!'$&e&'V&4n$!J&/G#nI#R*$i4#nI#p&&#E&57#&U&59#&M&4)$;M$Eo&5?&2/#)(#Ch$vG#)(&$U&4G#yL$8<#wZ$&s$%V#s|%kL#&R#}D&3d#R*#)(&%C&5P#~X#)(#&N&!'&5U$32&5X$36%K_#rd&5\\&5^%.v&5`$vH&)P&5c&5R&5f&+W&5h$@B%~D#pL#&i#r$&5o&*^&5q&(|#R*&4_#'o#R*&4b#'s#R*$C/&(6&5t&5e&5T$+D%~y$8<%~y&5{&5}$&R&1O&6#&5s$#-&5d&5S&$#%6L$)3&$$$8<&$$&65${F&67#&Q$L@&6#&(E#R*$2N&(I&6.#)(&&$&5u#^^&!W#(#&6I#(,#(-#R*&'8&2t$9p&5Q&5e&!_#&v&5u$/#&!b#'t&69&!\\&6N#&N$*^$M>&5u$A:$M>#(0#(1&6I#'>#'=#R*&4!&5I&'8#&S$R]#R*&$1#R*&50$3C&6f&.#&3`#43&5^&.'#KZ#Ch%xS#KZ&!'$8<&'V&6D#qT&/G#)(#KZ$i4#)(&5B&&E&7&#&U&7(#&O&#]$@B$Eo&7.&2/#pG#Ch%64#pG&$U$&s%Nv#rK%~y#vd&2:#p]%24#&T#pG&#l#'r#KZ#pG&%C&7?#&U&7A#&P&!'$&s&(r#rK#wZ#vd%Ow&7J#ul&7M#rC#lI&7P#&P&(|#KZ&3{#'g#KZ&4!#qS#-1&4%$)6&7@#pG&7V%~k&2+$+K$Eo&7`&2/#Qb#Ch&)s#&Q&$U&7Z#yL#vd%~y#rT#wZ#r;#&i&7@$=-&)=#pG#Qb&%C&7x#&U&7z&!'&7}$;Z#wZ&8$#yL&8&&8(%}W#&9&8+#hs%~\\#pG&2X#'$#pG&2[&)e%*M&8.&80&4i&7F%Ph&8!%Ph&7^#&T#Qb#rw&2j&8;&2m#>O#&P&2p#&u#pG&$1#pG&71&&E&8E#Qb&7{&3)$`v#qc$Eo&8N&#L$us#v!#Yz#pQ#&R&!'#vd&'V&8L#}Y%8G#&+&,d#&R&3<%8T&8f#v6#&R&3@#&v&8v&3C&3E&8q$i4&-k&7d#/0#@x#pQ&$z#pG#1?#^-$6}%o3#q]%i(%i.#Bz#GD$\\R#-Z#r&#r]$MA#vY#rT#zR#s)%~y#u`$WA&94#rB$MA%<m#u\\%'K#rp&#u&9<#B.&9>$Mq$Hq#rT$UT#rp$=9&9F$&A#&H#}$#sJ%X/#tC#|{&7M#Qb#5i#r]#[X$3C#tN#pW&7:&7J$)C#rB&2/#wL#&T&$U#rp%Nv#wR%~y$)Q&2:#y6#&i#z;#wc%}E#sJ#&T&%C&9d&!'#rp&(r#wR#wZ$)Q%Ow&9m&9o#wr#lI&9r&(|#pW&7g#qj#'k%R<$*6&7m#w=#wx%}0%~m&8&#y(&%2#qv#Ch#uk#&U&$U&9y#yL$)Q#wZ$'/&(f$+f#zM$JG&)=#vf&%C#v)#ul#pb&:7&+W&:9$3G&:<$)V&'V#yy#y&&:A%~Y&:C%~\\#S1&(2#S1#9)&(6&:E&:6&:8#ut&9j$'+%~y&9}#m8$U3&1O&:S&!K#S1#yb&(I&:Z&:G&&$&:6$Ac&6S&:C&![%8T&:j#pb&6^&:6&6a#&v&!c&:S#PX#S1#pW&#E&:s&:H$)S%~7#r?$/e&+.#ph#Ch#*v#ph&$U$)Q%W<$1_#wZ#y9&#-$Cg#&Z#ph&7N#pb#ph&%C&;)#&U&;+#&V&!'$)Q&'V$'/&;1$)[&5Z#zW#z6&;5$`v%.v&;8#&V&1*#us&;*#ph&;>&+W&:;#yL&;B#yL&:O$&g&;I&*^&;K&(|#pb&8U#pb&$1#pb&:}&&E&;;&;=&.##vG#u*&0,#T5#Ch#uz#T5&!'$'/$=9&;W#y2&/G#ph#T5$i4#ph#pb&#E&;j#&U&;l#&W&7:&9m$/l&+.#ps#Ch#zN#&X&!'#y9$53$'7#wZ$';$53#q,#&i#.u#~B&3d#T5#ps&%C&<%#&U&<'%}L$-n$-r$+Z$7&%}M$';&<>$-|&<1#&\\&<3%.v&<5#&X&;M$!$&<&#ps&<(&4i#y9%~y$'7%~y#y@#&i$tK&<F&*^&<H&(|#T5#*V%~`#T5&$1#T5&;x&&E&<8&<:&'J#zT$Eo&<3&.'#E+#Ch#y&#E+&!'$'7$@J&<T$tK#zc&/G#ps#E+$i4#ps&;u&&E&<j#&U&<l#&Y&:/#7d#zC$)Z&+.#p~#Ch#z7&$U$';#wZ#yD#wZ#yG&:>#yJ#&i&2j#z+&)=#E+#p~&%C&='#&U&=)&+W&=+#yL&=-#yL#yG%ON&=1&=3#zf%.v&=6#&Z&(|#E+&(2#E+#'[#'[&(6&=9&=;&.w$?(%~y#yD%~y#q1%37$@]&=E&-k&=G#0n&!K#E+&:h&6Z#zK&=(#p~#&Z&&$#z7&:n&&($vM#&Y&=7&:q$+i&=c#p~&6^#z7&:w&!c&=\\$i:#E+&;b$3C&=P&=d&7:&<T#ze&+.#q&#Ch$tK#q&&$U#yD&;/$:@%~D$)n&#-$:H#&_#zi&3d#p~#q&&%C&>##&U&>%#&[&!'#yD&'V#yG#wZ$)n%9B&>.&>0%.v&>2$j=&)P&>5&>7&>9$+s&=.$+w&>=#q7&=2#&^&>A&*^&>C&(|#p~&8U#p~&$1#p~&=x#*Q&>F#q&&>8&<e&<C$5F&0,#.n#Ch#.u#.n&!'#yG$=9&=C#&^#.n&0R#q&#.n$i4#q&&=l$3C&>b#&U&>d#&\\&7:&=W$'?&+.#Db#Ch#zu#&]&!'$)n$53#q<%~D#{*#6,$7x#{/#&i#&`#&a#z}&)=#.n#Db&%C&>{#&U&>}&<;$0'&<B&?%%}M&?'&<B&?*&?,&?.%~Y&?0#&]&<J&?3&?5&4i$)n%~y&?%%~y#{*#&i#qD&??%}i&?A&(|#.n&<\\&6v#&u#.n&$1#.n&>q#*Q&?D#Db&>~&>^&=1$+v&0,#q6#Ch&2j#q6&!'&?%$@J&?K#qD#{#&/G#Db#q6$i4#Db&>n&&E&?b#&U&?d#&^&))$)s$=V&+.#\\`#Ch#O`#\\`&!'&?'$O+#{/%~D#yZ#yS$x4#y^#o3#&b#&c#|O&3d#q6#\\`&%C&?{#&U&?}#&_&?6#yQ$5[#~I&@%#wZ&@'$00#(s&@*#&i&@,&@.%.v&@0#&_&<J&@3&@5&@!#yR#wZ&@;#yL#yZ#&i%R]&@C&*^&@E&(|#q6&6&#q6%R;&8C$'M&?|#\\`&@6&4i&?'%~y&@%%~y&@O&@Q%Q)&1O&@T&(E#q6&/(&@H&@]&&$&@5&(O&@h$R]#q6&$1#q6&>Y&@[&@4&@]&.#&?K$+~&0,#qA#Ch#qD#qA&!'&@%&'V&@d#&b#|Z&/G#\\`#qA$i4#\\`&?n$/[&A*$\\T#|4#-`#'3%X?#|(#{<#.E#*4#y2#S1%i(#C/#*N#*l#y^&A9#O2$+r#{?&A>#I#%P@$8~#}p#}@#|6$$p#{H#&e#|{#y|#y^#V+#&W#7h#~[$M>#yn#7h&$v#1?$KA#@(#}p#|Z#yb#&'$#`#<F#)2#.u&AV#'!&AX#7h$C,#&O$X<$VI&A]#|{#|4#yg&Ab#?\\$7x#)2$!_#<F$N$&AY$'4#&X&Ai&AZ&Al#'0#)`&A]#|&&A`#r/&Aq#4R&Ac&Au#\\\\#&4&Ax#'*&Az$&u&A}&Ak$X<#+K&Ao&A_#p`#yU&As&Ad#&=&2j#7h&$s#&v&Az&$v#,t&A]#7j#8p&AD#y2&>k#u|#E+&AG&B;&B,&B>$@2#'u&B3&$v#n`#|k#}/#q6&BN$WA&BP$'e&BS&B!#)u&A]&BW$?v&B+$$g#&:$3C#7h#Ch&Az&7:#{\\$#@#<F&2/#{\\#Ch#<-#{\\&$U#{e$,2$,4#{q&-f#{x#?\\&2:#|$#o3$$F#{\\&7N#7h#{\\&%C&Bo#&U&Bq#&g&!'&Bt#<-$74&Bw%~D#|i$*V#Hz#&k&B}#&k&C!&7a#&9&C$#&g&(|#7h&7g#7h&7j#&'$8C&:,&C'&C)&=!&A]$#@&C7&2/#{e#Ch$#`#{e&$U&C/#wZ&C1%~D&B|$(`#>a#|0#o3$T%#{e&7N&Bk#&h&%C&CK#&U&CM#&h&!'&CP#yL&CR#wZ&CT#wZ&CW#&i&CY%9X%.v&C\\&(|#{\\&(2#{\\#y^&(6&C_&Ca&CO&Ac%~y&CR%~y&B|#&i$$F&CZ#rC%64&Co&(E#{\\&=`&!\\&Cv&Bt&&$&Ca&=h&!X&Co&=m#|k&CL&Bt&6^&Ca&=s#'t&D&#PX#{\\#7h&#E&D+&CN&-'$!T$#@&D#&2/#{q#Ch#o3#{q&$U&Cf#yL&Ch#yL&CW$;a#+l#&m#o3$Pn#{q&7N#{e#{q&%C&DF#pc#{q#&i&!'&DK&C3#yK#G'#&l$%Z$B>%F`&DR#&i&DT$74%.v&DW$D_&)P&DZ&DH&D]&+W&D_$!M&Da$#2&CX#&l&DU&%_#(,&Dl&(|#{e&6&#{e$GX&(6&Do&D\\&DJ#&j&Bx&Dt&*m&Db&Dw&Dy&1O&D|&(E#{e&(H&=a&E&#{q&&$&Dp&(O&D|&D2&E6#&i&6^&Dp&D8&E1$R]#{e&$1#{e&D=&&E&E=&.#&C1$Eo&Dy&.'#|i#Ch$$J#|i&!'&CT&'V&Cj$T%#|i&0R#{q#|i$i4&Bw&C]&&E&EO#&U&EQ#&j%}0$/3&D`$Eo&EX&8d&C3#Ch$$F#|$&!'&DO&'V#|9&DS$CV$CW#r$#'{#'|#|i#|$$i4&C1&C]#[X%o6$CW#T2#(0$B8&Dv$.P$&W&Df#?\\%L3#B%#&n#?\\$?##|L$=}$>!#|T#&p#?\\%./#|b#?\\#qy#)T#@'$4`${*$Gf$-U$A8#}%#&t$)=#*l#?B#?\\$8]#}3$3^%M=#~=$*h%u$#&x$;w$T\\#qm#?\\$3P#~C#&z#?\\$4p#El#&{#?\\$,c#~!$1f#(s#~H$=v%c2#~O#?\\%PQ#~[#o3$O5#|$#5i#*7%/e#&l#{U$ej$mt#-,#0N#1v#|9%>S#|C#qU#&n$*1$)h#z,$#`#|U&B@$OU#|U&$v#fE&F:#|d#'.&Fu$*1%i($MS#|}&CZ#|$&Df$#2#&'#-W#|m$!|$4<$dj&F4$:b#*Q#|b#Ch#&p#|b#&q&CF#|~#@'$Eo$#1&:3&G@#Ch#-W#?T&$U&F>%~D#}&&Du&FE&CU&FH#&i$M>#|u&3d#|b#?T&%C#?T&GF#@l&!'&GJ#wZ&GL%~D&FE#&i$OU#}S#zw&GR%!?%.v&GU#&r&(|#|b&(2#|b#(/#(/&(6&GX#&U&GG#&r&GI#&s&E*&G^%~y&G`$R]&GS&1O&Gh&=]#'q#|b&D)%8T&Gq&Gs&&$&Gs&D/#(#&G~&D2&H'#@l&6^&Gs&D8&G~$i:#|b&EG$3C&H/&GH&3P#|y$#@&GS&2/$Gf#Ch#?,$Gf&!'&G^&!w#}-#&u&Du#}S&!z$u]&FK#&i$RM$Gf&7N#?T$Gf&%C&H@#&U&HB#&s&$U&G^$%e$$M&HH%~D&HJ&Ga#&p#~=#XJ$R]&HO%Cq%.v&HR#&s&<J&HU&HW&#4#B>&G^$w;&GN$w;&H_$M>&HP&Dz&Hh#0n&G{#&r&$1#?T&H7#*Q&Hk$Gf&HX&>^&GL$Eo&Hu&.'#}&#Ch&2~#}&&!'&GN&#R&GP$M>#~9&/G$Gf#}&$i4$Gf&GV&&E&I*#&U&I,#&t&7:&G`#43&I3&2/#?B#Ch$R]#?B&!'&HJ&?($UR#&w&Du$!A#?\\$53&FQ#&i#&x#&y#~/&3d#}&#?B&%C&ID#&U&IF#&u&IH#&v$:z&IK&IM&FN#&f&#u&IQ&IS&IU%.v&IW#&u&<J&IZ&I\\&4w#,y&I_&4y#}J#?\\&$$&IN#&i$tG&Ih&*^&Ij&Hx&I,&$1#}&&I9$3C&Im#?B&I]&>^&H_#43&IU&.'#}S#Ch$M>#}S&!'&FK%ET#}a#o3$tG&Gc&/G#?B#}S$i4#?B&I6&&E&J-#&U&J/#&v&))&HM#43&J7&2/#~=#Ch$RM#~=&$U&IN%~D&FQ&E,&FT&Du#}z#o3#}y#~=&7N#}S#~=&(|#}S&(2#}S&1>#PX#}S&GV$}`#~=&B@&JJ#&w&$v#{9#}n%6n$kB&9-$#C%6v%6x%dR$L>#|u#}&#&'&IS&JV&%*%-A#&w&JI#~=#&w&G?&Iv#43&Jv&2/$!A#Ch$tG$!A&$U&JO$&I#+.&FU%~D&JS$9S$u]$/.#o3#&}#&|$!A&7N#~=$!A&%C&K%#&U&K'#&x&!'&JO#wZ#^(&JR&FY&H`$/.$6#$R]&K4&K6&C8&K8#&x&(|&Hb#(;&)a#~=#o/&(6&K;&K=%}0#&~%*'&JO&KX&K,$40%*'&JS#&i#}y&KJ&1O&KL&H!#~=&E4&!\\&KU$!A#&x&&$&K=&(O&Kd&D2&Ki$!A&6^&K=&D8&Kd$i:#~=&H}#-)#&x&K&&Kj&7:&IQ#43&KJ&2/#qm#Ch&IS#qm&$U&KB$:/$:1&K/#wZ&K2$B_%!C&F_#&i#&|#&}#qm&7N$!A#qm&%C&L&#&U&L(#&y&!'&L+$0%&FX&Du&K2&H`#~H#'h#'h$R]&L5&L7&C8&L9#&y&<J&L<&L>&L@&K-#wZ&L.#yL&LE&K4&LL#r$%}i&LN&(|$!A&8U$!A&$1$!A&Ky#}n&L'#qm&L?&>^&KB$Eo&LL&.'#^(#Ch#&{#^(#&z&!'&K/&#u&LX$7M%8T&'Z#qm#^($i4#qm&K9&&E&Ln#&U&Lp#^(&7:&K_#43#~D&GD#}z#Ch#}y#}z&!'&L0#s6&F_%~D&Fb#r}&Fe#&i$O5#}{&3d#^(#}z&%C&M,%FZ#}z#&{%}0%J|&F\\#&f$91&F^#P($1]&<<&M5&MG#~v&Ff#'!&M:%.v&M<#&{&<J&M?&M.&MB&4i&L0%~y&M3%~y&Fb#&i#'!#&~&MQ&*^&MS&(|#^(&?S$R]#^(&$1#^(&L~$3C&MV&MA&.#&LE#43&M:&.'$/.#Ch&K4$/.&!'&M3&#-&M^&M`$/.&0R#}z$/.$i4#}z&L{$/[&M~&A5#{G#~b&Fm$Ly#~D#~=#{Q#A*$1n#}p&K6#~H#&'&Lp#~[&AW$NB&N9&$v#-k#~z$2|#}p&M~#~O#&'#:g$!R#B.$!_&NF$N$$O5#~[#ps$M>&NK#'!&$v#2s&N?#|{&NB$6u&NE$y:&Av#&4&NI#'*&NO&B2&N;#~[&$v#{o&N?#}/$/.&ND#o8&NX#&:$4&&MN&G8$RX#'##Ch%mh#=w&G?#;4$#@$!(&GD#;4#Ch#:g#;4&$U#8Q&Du$!]%~D$#?&GO#-#$!i#&i#os$!8&3d#=w#;4&%C&Nw#&U&Ny#'$&!'&N|%~D&N~#wZ$#?&M8#'!$!h#zw&O($+e%.v&O+#'$&(|#=w&(2#=w#{\\&(6&O.&O0&N{#'%&E*&N~%~y&O7$L@&O)&1O&O?&H!#=w&H%&N?&Nx#;4#'$&&$&O0&H+&OR&D2&OG&OX&6^&O0&D8&OR$i:#=w&Ld&O_&Nz&H;#;D$#@&O)&2/#8Q#Ch#'&#8Q#'%&!'&N~&HF&O##wZ$!h&HK$N##')#o3$W<#:,&)=#;4#8Q&%C&Oo#&U&Oq#8Q&$U&N~&H[$#>$#(%~D&Oy&O8$2N&Hc#&u&O~#:*%.v&P$#'%&<J&P'&P)&Os%~k$w;&N~$w;&O#$w;&P1#os&P!&*^&P9&I|#;4&$1#;4&Ld&P<&Or&.#$!]$Eo#:,&.'#86#Ch$!k#86&!'&O#&I0&O%#o3$!z#87&'Z#8Q#86$i4#8Q&O,&&E&PV#&U&PX#'&&7:&O7$#!&+.$#'#Ch$L@$#'&!'&Oy&IJ$X/&O|%~D$9E&IO$7x#'+#'+#o3#',#'+$#'&7N#86$#'&%C&Pp#&U&Pr#''&Pt$!i&Id%.5$2N&Du&Pz&Q0#/3&P~#&i&Q#&Q%&C8&Q'#''&<J&Q*&Q,&Io&Pu&$$&Q2&Ir&Pz#&i$N$&Q:&L[#(,&Q<&I|#86&$1#86&Pf$3C&Q?$#'&Q-&>^&P1#43&Q:&.'$!h#Ch#os$!h&!'&QD$@J&QF$N$&O:&/G$#'$!h$i4$#'&Pc&&E&Q[#&U&Q]#'(&))&Q2$Eo&Qd&2/$2N#Ch$W<$2N&$U&Q4#wZ&P}&E*$@Z&Du#p;#o3#8p$2N&7N$!h$2N&(|$!h&(2$!h&J^#h(#'(&O,#<7#'($2N&B@&Qw#')&$v#{w#&&&P}%PB&Jk#zs$J4#43$!8#86#&'&Q#&R&#B.$O5$2N#qA%QF$3C$9E#Ch$N$$9E&G?&Q|$Eo$9E&+.&P}#Ch&Q#&P}&$U&Q~%~D&R#%~D#ne#?\\$$6#,9#'/#o3#'0#'/&P}&7N$9E&P}&%C&RU#&U&RW#'+&!'&RZ#wZ&R\\#wZ&R^#&i$W<#<e#zw&Rd&Rf&C8&Rh#'+&(|$9E&(2$9E#pb&(6&Rk&Rm&RY#',&E*&R\\%~y&Rt#'-#'.&Rz&1O&R|&H!$9E&OU&R:#'+&RV&P}#'+&&$&Rm&H+&S3&D2&S'&S:&6^&Rm&D8&S3$i:$9E&Ld&SA&RX&Oj&Q~$Eo&Rz&2/$@Z#Ch#'+$@Z#',&!'&R\\&HF&R^%~D#<e&Oz#0z%gc%6-#'0$@Z&7N&P}$@Z&%C&SQ#&U&SS$@Z&$U&R\\&P-&SY#wZ&S[&Ru#')$4]&P4$ES&Sa&C8&Sc#Dq&)P&Sf&Sh&SU&P?#B>&R\\$w;&SY$w;&So&Rd&Su&QJ&Sw&I|&P}&$1&P}&Ld&Sz&ST&.#&R#$Eo&Su&.'#p;#Ch#8p#p;&!'&SY&P\\&T&$7q$7r&'Z$@Z#p;$i4$@Z&Ri&&E&T7#&U&T9#'-&7:&Rt#43#p;&+.#ne#Ch&S/#ne&!'&S[&Pv$4]&Du$;9&P{#+V#'2#o3$h-%lH&)=#p;#ne&%C&TQ#&U&TS#'.&TU&Rb&Q5&S]&TY#'1&I`#(t&T]#&i&T_$~M%.v&Tb#'.&<J&Te&Tg&Io&TV&$$&TX&Ir&TZ#&i#n=&T`&*^&Tv&I|#p;&$1#p;&TF$3C&Ty#ne&Th&>^&So#43%lH&.'#<e#Ch&Rd#<e&!'&T~$@J&U##n=&Rw&/G#ne#<e$i4#ne&TC&&E&U7#&U&U9#'/&))&TX$Eo&U@&2/$4]#Ch$ES$4]&$U&TZ%~D#o/&E*$0>&Du#pv#o3$$*$4]&7N#<e$4]&(|#<e&(2#<e&R.#<e&Ri#&7&Rd$4]&B@&US#'0&$v#|!&T\\&A9&R=%/D&Rf#p;$O>#9L%d0$&A$3C&UQ#&U&Un&))&U##43&U_&GD$;9#Ch#n=$;9&!'&UX%.H%d0&UZ%~D&U\\$@V&&S$<k#o3#'6#'5$;9&7N$4]$;9&%C&V(#&U&V*#'1&V,&T]&C-#(s&V0#wZ&V2%Ow&V5#&i&V7&V9&C8&V;$#s&)P&V>&V@&VB&Du&VF#yL&U\\#&i$$*&VM&QJ&VO&(|$4]&6&$4]$=4&(6&VR$;9&VA&4i&V-%~y&V0%~y&VX&VZ%,1&D$#&P&V]&(E$4]&Kg%8T&Vd$;9&&$&V@&(O&Vq$R]$4]&$1$4]%~f$3C&Vv&Vf$)S%}|&UX$Eo&VM&.'#o/#Ch$h-#o/&!'&V0&P\\&Vl#'4#o/&0R$;9#o/$i4$;9&Ub#&8$;#&T\\$#@$0>$^&%IN%e*$\\T$<k#qU#qY$7}#z9#43$/{#qJ$3C$2/#Ch#za$2/&))$/#$#@$2/$nC&WN#'8&WP$2/#'8&WS#'9&WU%M=&2/$/##Ch#>~$/#&!'#<[&Dd#)E#';&Du$3I&Wh#,q#'=#o3&6p$/#&7N$2/$/#&%C&Wb#&U&Wd#'9&$U&Wg$37$39#)?&Wj&JP&Wl&W}#X[&Wo#&i&Wq$80%.v&Wt%+e&)P&Ww&Wy&Wf#':&Du$BM&Wk#'<#o3#';%)$&X+&*^&X-&(|$2/&6&$2/#}z&(6&X0$/#&Wz&4i&W|%~y&X5&X$&X7#&i&X9&Wr&Vo&X=&(E$2/#7h&(I&XD$/#&&$&Wy&H+&XQ$R]$2/%~c#'P#'O$2/&(H#&S&3|$2/&C@$2/%~f$./&XV#'9#pW$mm#|-#(s$9Z#}p&WV#o/#5i&XO&9[#*Q&Xj&.#&Wg$Eo&XO&.'#<[#Ch#6G#<[&$U&XJ#wZ&Wl&XM#?@#)\\&/G$/##<[$i4$/#$2/#0n#za#<[$@3$M>&Y##':&$v#0u#)L#6>%XA$2/#&'&X9#<[$WA&Y3#':&B\\#&v&Y7&$v#5S&Y;#}/&Y>&Y@&Y+#)2&Y7#}|#&@#|K$BM#|{&YA$M;#za$3I&B@&X9$3I&$v#*}%@s#`|%XA$BM#&'#'=#'>$3I$$g#&6#&>$,4$3I#|{&W6&Xg$3C#=r#Ch&6p#=r&7:#pZ$#@#=r&+.#pZ#Ch&Yd#pZ&$U$1/&Bu#,F#'@&Du$%5#{+$1z$(S#o3$$`#pZ&7N#=r#pZ&%C&Yy#&U&Y{#'>&!'&Y~&VD#P2&Z$&JP&Z&#&f$4z#O^#'B&Z*#'B&Z,&C8&Z.#'>&(|#=r&)!&Yc$F7&:,&Z1&Z3&G?&Y~$Eo&ZB&2/$1/#Ch#'@$1/#'?&!'$=1$--$-/#BV#'A&Du&Z)&K0#(s$@S#o3#'D#'C$1/&7N#pZ$1/&%C&ZS#&U&ZU$1/&ZX&Z9#wZ&Z;#wZ&Z_#wZ&Zb#&i&Zd&Zf&C8&Zh#'?&(|#pZ&(2#pZ$2t&(6&Zk&Zm&ZW&4i&ZY&Z:&Z]&JP&Z)#&i$$`&Zy&1O&Z{&H!#pZ&6L&=a&[&&ZV&&$&['&(O&[3&D2&[8$1/&6^&['&D8&[3$i:#pZ#=r&#E&[?&[(&;$&!n&ZY$Eo&Zy&2/$=1#Ch#'?$=1#'@&$U&Z;#7&&Zt#yL&Zb$)R%6b#'D#'D#o3#'C#'D$=1&7N$1/$=1&%C&[Q#&U&[S$=1&!'&Z;&;E&[Y&Za#'C$V[#&&&[^&[`&[b%%8%.v&[e#'@&<J&[h&[j&[U&+W&Zr#yL&[o%#y&[q&Zw#'C&[c&Dz&[y&(|$1/&8U$1/&$1$1/&[G&&E&[|&[T&.#&Z&$Eo&\\*&.'$%5#Ch#'B$%5#'A&!'&Z_$=9&Zv&Zd$%5&0R$=1$%5$i4$=1&Zi&&E&\\<#&U&\\>$%5&7:&[.#43&\\F&GD$(S#Ch$$`$(S&!'&[[#s6&[t%~D#6L#s}$9'#o3#'E#'F$(S&7N$%5$(S&%C&\\W#&U&\\Y#'B&@7&[[&MM&\\^%}M&\\`&MF%&d&\\b$v[&\\e&!n%.v&\\h#2Y&)P&\\k&\\m&$U&[[%~y&\\^%~y&\\`#&i#'F#'E&\\f&Dz&\\|&(|$%5&Mg#&u$%5&$1$%5&\\L$3C&]!$(S&\\n&>^&Zv#43&]-&.'$@S#Ch&Zd$@S&!'&\\^&#-&])&]+$@S&0R$(S$@S$i4$(S&\\I&&E&]A#&U&]C#'C&G?&[t$Eo&]J&GD&[^#Ch&[a&[^&!'&\\t&HF&\\b%~D#@6&Z`#@X#'H#o3#'G#'H&[^&7N$@S&[^&%C&][#&U&]]#'D&]_#'E#?\\$9$#:B#:C&]c#'G&Du#5p&]h&]j%Pn%.v&]m%H\\%~\\$@S&(2$@S$6\\&(6&]p&]r&$U&\\t%~y&]b%~y#@6#&i#'H#'G&]k&Vo&^%&H!$@S&[6&!\\&^-&[^#'D&&$&]r&(O&^:&D2&^?&[^&6^&]r&D8&^:$i:$@S&\\3$3C&^G&]s&DA&])#43&^8&2/#6L#Ch&]+#6L&!'&]b#x&&]d#wZ&]}&Pv#'I#'I#o3#'J#'I#73&)=&[^#6L&%C&^X#&U&^Z#'E&$U&]b$:S#(s&^_#yL&^a&#u&^c&^e&^g#6r%.v&^j#h{&)P&^m&^o&^\\&]y#wZ&^u#(s&]}#&i&]i&^h&*^&^~&(|&[^&6&&[^#8Q&(6&_$#6L&^p&4i&^2%Ph&]d%~y&_+&_-&^|&-k&_0&(E&[^#*Z&(I&_7#6L&&$&^o&(O&_C$R]&[^&$1&[^&^O#*Q&_H&_9&W'#5@&\\w#43#73&.'$9'#Ch&\\d$9'&!'&]d&(r&_?$&V&F(&'Z#6L$9'$i4#6L&]n&&E&_\\#&U&_^#'F&7:&^4#43$9'&+.#:T#Ch&^6#:T&$U&^a#wZ&^y%~D$C2#?\\$A=#(s#'K#'K#o3#'L#'K#?H&3d$9'#:T&%C&_v#&U&_x#'G&!'&_{#yL&_}#wZ&`!&V3&`%&`'#&i&`)&`+%.v&`-#'G&(|$9'&ZH$9'&[G$/[&`+#q_&_>&]g#&f&LB#&&&_}%~y&`!$9c#'Q#)S#5p$Q1#*[%1P&`X#n9#.y$*#$Ow#'K$*#&`)#'K$Fl#(c#)S&`]#}Z#'u#'L#)S#&)#'S&`i#nP$5?#(s$@G&*E$F!$Ow&X_$F!&`&#p,&`u#'O#\\`$O0$@G$Yn#&B#'[#)S$@G$G{$Q<#(n$SV%[^#&1#5p%T=$Dn&^c#zw#lI$C2#zw$EU&`&#zw$$.&`f#n=&6p$@s#zw#ov&`}$#r%xS&`s$#r#za$4a#zw$ES$-Z#zw#dM#'R%<N#n=#yn$-L#zw#'T#'S#5p&Fi#}2&`O#'I#6O#ne#th#&'%C7&Xs#Mx#;_#>&$Ck#A:#`C#PR%ru#|}&WF$7}#6?#^0%5r#}G#}I$C2&aW%eK$$/%5r$/@&Tp#&&&WL&U_#qT#r!#8.#|?&a`#,J#RN#2i&a/$#%$26#(s$C2$$F#43&a2&A5#}_&`;&Fm#2V&Z\\&\\&#Ep#}m$*##|{&Zf&`&#}t#(s$@s&b-#)S&\\F$@S#&(&9Q&`p#'N#~L#}~#&&$F!#|{&b<$%I#43&a>#3X&ZU$@G&N:#'M$@G#'N&$v#~L#(s$4a#|{&a2$*##&'%}&&a>&NY&a>$N$&bO$@G&NM#&v&b_&bQ&B!#~X&bT$4b#}p&bW$>l&bZ${*&b\\${*&b^&bP&N^&bc&$v#~m&bg#}/$C2&bY$Bp&bm#&=&[a$@G&B@&bs&B!#~y#&&$4a#}/$@s&by&b[&b|#'D$@G&Y5&bb&bP&$v$!,&bv%XA&[^&c*&b{&b}#'N&YE&c#$X<$!p&c&%}'#ne&c6&bl$WA#3X&b~#&|$M>&c<#'0$#-&bg%h\\&91$M2$:W$M;&cC&NG#&4&cF&cH&c1&B!#&O$U3$4a#)o#ne#pv#^j#>e&aR$L>$9`#o>&37&W6&au$4=&aw#]~#8.&WV#}\\&az&cR#OS#&F$@G#|i$XK#z%&bg#o3&cR#r$&c<$b\\%qK$4a#Ch&co#T2#&:&cU&c0$@G&$v#2.&bg&G&&cf$:T#{i#}7#}O#}:$K]#6*$3I&c7$WA#p,&d%&cI%k{&bg&BF#'.&W6#}7#{i&d0#/|&d3#6>&d!#.y&d8&cW$X<#&Z$5h$4a&d<&W6#}O&d.$!6&dB#7M&d4&d!#)2&dG&d'&B!%ZJ&bg#*8#ne&W6#}:&dP#~)&d2&dS&dD&bz$WA#,J&dW&bd$X<#z/&d[#&.&d]$BH$K]&d`&dA#~;&dT&de#B.#*0&dh&$v#&Y$Om$4a&d\\&d=$BH#6*&dq#}9#/|$K]&dt&c+$ES&dx&B!#N;&bg&$z&WL&37&U_#}\\#p/$!J&9-&a|#Vm$]]&d!&e*#'N&c/&cI#Tm&c4#ne$4]&d5#B.&e;&c;&dH#'0#&d$Nd&c'%XA&eB&d!&bI${*#qY%}&&aA#&{#&y#&e%Q)$-Z#|&&`}&`s&aD%?r&A)#(s&aJ&eY$Bq&`s$9`$4a#&,#&c$>_$-L#}/&a%#3$$'e&N:#'S$'e#'T&$v#Ma#(s$<2#}/$-Z#&'#'U#'V$'e$WA$!_&e{$ZP&eo$'e&ba&f#&eq&B!%z&&et$18%XA&aJ&ex&ez%)G&NY&e~$N$&f&&N^&f&&$v#&^#rf&eu%XA&ei&ey&e~#)2&!8#q]$3I#v7&b?#&&$'e#~L#&_$0d$>:$ei#^.&9-#43&e~%D0$^!&^6$@s&`w#Ak&cT&bo#'*&bc&bN&eG#}+&bg#}c&bX#HI&`&#,.&b;$?c$@S&eC#r$&M`$@s$@G$OB$t,%|s$n=%1(#+~$=1%\\F#3u%AG%C$#-[%,+#',#'b$5z#mf%o<$XP$kY$&X#&S#JV$}#&g$$H,&`f#R##(j&`d$Kq$-M#B$#5p#&e#(3#(^&`j#(g&g2$#n&`\\%;8$N$&`_$*#&fT&g:#'L$!A$W,#'B&g+$*##Ig#&g#&q#B$$z?&gF$#n&^6&g;&`b#&;&g=#Db$)S&`o#&&$@s&*E&b]&fX&bP&fT&bc&`{$=<&a;$Pk&!8$*#$@s#0n&g7&`^&``&g<&``&g?#(A&gA&`e%;8#&K#'j$jH%pO%AJ#mi#'4#(M#,E&g/#(8#(f#,E#&)#(\\&gx$#n&!8&fi#'N&<J&`q#&U&bc&$U$F!&E*$4a&E*$-Z#o3#'R#'Q&a>&1O&h!&H!$@s#{q&(I&h%&bc&&$&bc&(O&h3&#?#&u$@s&$1$@s$*#&#E&h8&bP&.#&h)$Eo&a>&.'$F!#Ch&`y&!'&h+&[\\#(s&h-#&i&h/&aA&'Z$@G$F!$i4$@G&ga&&E&hL#&U&hN&DA&h+$Eo&aA&2/&c}#&U%}&$4a&$U&h-%~D&aJ&Du$-L#?\\$*I#(s$'e#o3&eo&aD&3d$F!&c[&,A&hf&hh#'P&!'&hk#wZ&hm%~D&ho&O$&hs#&i&hu$;Y&C8&hx#'P&<J&h{$4a&h}&+W&i!#yL&i$#wZ&ho#&i&aP&hv&QJ&i-&(|$F!&6&$F!#p~&(6&i0&hi%~k$=@&hR#'Q#?\\&iG#)~#'R&iJ$=A&i8&i:&i+&1O&i=&(E&bE#.P&=a&iD#'P&&$&h|&(O&iT$R]$F!&$1$F!&hC&&E&iY&.#&hS#43&hv&.'$-Z#Ch&h/$-Z&!'&i$&#-&iP$$P$~(&'Z$4a$-Z$i4$4a&hY$/[$-Z$ZM#+q$-Z&ga#&7#'V#'U$-Z&iz&M`$-Z#{D#dM&`>#'G$-Z#za#'N#'M$-Z#?T$M>&im#'Q&$v#|x#&&$-L%h\\&f`$<6&c)$$h&aP&aG#B.&X_$-Z&B@&j6&$v#&L#}$$-L#~|#S9#3z&a5$F!#Nn#/|#?H&9-%[@&b.&bG#&'&jA$~($O!&g(#tX&a5$&d#&Q#'J&`T#nP&`K$2M%Ug&`P%Ph&`R#&;#'e&`U#'H#&\\#(J&gt#@,#(W&jp$H,&j^#R##'^&jk&g6#&<&gV&bc&`w%at$Q<&a>#&K#(5#(Q&gy#([&k&&`n$5@#&&&h%&`)$F!$@Z$EP&`y#XJ$tG&eO#QV#'5#'d&a#%*g$3C$*##Ch&g=&7:$@s$#@&`f&2/&gT#&U&j1$@s&MC$@0&k,#'N&Du&h)&JP&hP#wZ&hS&h/&g]&)=&g`#'M&%C&kD&kF#'M%|x#&v&`)$@G&k3#&x&bc#*V$EP&bc#39%QF#wZ&kM#wZ&kO#yL&kQ#'Q&kS%~Y&kU&(|$*#&ZH$*#&_h&&E&kX$@s&kZ%~k%O>$@G$#@&g]&2/&hE$@G&h(#'O&Du&kj&iH&hp%;8&hm#&i#'Q#'R&h1%~I&h3&,A&l##'N&!'&kh#yL&l(#&&&i4&e_&iM&l-&l/${*%.v&l2&!=&l4&l6&l&%~D&l9&kl&l0%}i&h=%}m$@s&1;&dF&bo%d6&k!${*#&K#(F#(a&`j#(h&lW&gJ#'G&gL#p,&g=$/R$M>#.y&g]$N$&kY&fT&kY&g?#&v&kY#;}$XK%~y&kM$=9&hb%}&&kn&g_#'L&j#&gK&`a&l^&``&l`#&y&!=&kw&kG&4i&k|&JP&kM%~y&lp$+V%SJ&1O&kp&D2&k<#&U&g=#86&la#&<&lc#'*&le&gM&lg$85#&v&g=$@s$F>#&*#'S&gk$&X#&q#'-&`j#'6&mB#mv#(/#'W#<F%OR$d`%|m%H%%H'%vt$UR#&J#\\U%uE#rt%se%sR#R(#&1#R*#Kk%CD%H3#bo%vu#&>%x*#(s%FX#&U%w]#(o%|*%v5%|,#5[%uB$mP#,i#'?%{p%{r#D<#&k#&J#3?#,A%vZ%Fs#Oe#/w#&u$'x$r^#0Y#T6#`'$sa%s?%sA#S$#0h%zj#-h$s]#V%&mr#+u#3~#1T#=S%GB#0R%GD#&|%s8$sZ%Fd$Z2#36%w$#XH%xk%s|#jg#,x#QG#&+$v\\%pf%iZ$jZ%lE%j!#8]%o1$O3&fP%U*$ZO$\\T%oK$mX$Pn%DD$W7&V7%hj#&j$hS$M:#-[$|I%<|$e-$Z<%}y#/5#&8$i>%oa$U`#4t%ks%a&%ku#d&%_{$`U%0#$^}$X[#(;%6W$j[%\\+$J!%**${/%nr$O##3X&nk%d?$bc#&K%.7#@1%o7%A8%.a%Y{#7U$|4$h8%A2#n>$b#%\\7%[K&#%%)y%a5%'Q#.X$,)$>5$'Z$UT%Q=&#/$}M$et${.#6^#r$$Nn%cG&nI#+X$lP$hV#*Z#X2$W<%/'$a^%Bd&o(#An#q_%S^&o,$}_$)S%~w$.1$a8$><#.X$'_$w;%;x&#/$E2%(7$M8&!s&nY&oO$L'$Fz%g8&#:%Q>#rC&o7$$c#+'#An%9/#*Z&o=&nu#Uv$jM#&u%lD$k?$i,$OX$mq&9+#EU%o#&ok%T`%op&o@$WI&oB#&4&o%&oF$d!&o)#&V&oZ&oL#3J$|S&nZ$=_%'8$.5%74&oa&o6%b*&oe&o9&oh#&(&oj$<&#3X&o!&oA&o$%)r&o&&oG%R.$Es&oK$}^&p(%!Y&o0$.1&#7$.5%S%#?\\&oU%7t#GD&oW#/b%(>&p&&pB&nY$GO$,)$GO$'Z$GO&o5&!~&od#\\Z&p3#rC&o<#\\5%Bp#6^#0|%%q#o`%b<$pV$#D#yn$v-$W'#&'%bM%[g%($#E`%j2%fb$hM#(P%U@$`w#'8%K+$vt$hn#GY%B]%@e$hs#_T$f7%zo#(X#&V$^_%r5%D:$rB$h[$Xr%Lj%ej%lk$RL%EK$xZ%lZ%/?$bv$nW$UA$pb%jt$X[&q*%D`%gC#o-$LF$L5&n%#0i%2t#&C%Y<%r&$VV$\\)#D>$e*$nY&nJ#-`#qZ%8s$Po$LN$Yw#XH$7x$rU$c1#R%#,]%wf%wh#&2#'B#_2#&u#&c$:0#0|#3J#&k#&q#Ip%z;#&.#&k$D:%z?#zm#S$$g&#S$%y'%rQ#&j#&*&mO%v(#&2%{_#&d%uG%{t&qZ%{x#2]#jd%xo#jg%/i%z.%uM%FR%z-#Be%t=&m\\%t0#&R%sI%t3#HW#RB&mf%Ck%|-&m\\%xM#H2#)b%{##&2%xR%xT%t6#/w%zl#[@%$C$ra#ju%t8#*p#DZ#d]#*F#&=#Y5%s]$7x%xL#Ly%37%x(#&s#'4%G#%IP#No#7I%v_$[<$oG#)O%vc#FP#&/%vf#+~%wS%uu%uw%x<#2;%v3%H.&mg#.s#&V%v8#e4%v:#'6%|/#Be%|1#`8%C?#.d%t+#,H%t.#Cy%zy#1[#-!%y4%v*$VL#5b#>v%|b#]d%|C#W^#R{%|F%Zx%mB%]M&n6%uO#\\M$K+%vi#S$%uZ#&z%z{%wI%z~$YP&r8#`#&qt%{'%|E%{+#&@%{_$QD%$w%$y&m[#WM#/p%2[%zT%{L#b/#,C#F<%vM#.z%vO#/t%zs#-C#Em%sH%t2#\\*%mJ#&8#'8$s5%zg#'B#'1%$1#bS%I.#fK%vz#4/%v}#h(%w!#49%sR#kg%sU#,A$\\~%xl%\\s%xn#jF%u.%u0%z&%u3%wH#Hh&s5#B{%wM%H3#&Q&mn$sV%t{#]b$Wg#'I#(G#&A%xk%+U$c+&r'#&2%y5#lK$\\P#kv#jy#4<%zW#&/%{O#&8$=2$*>$/j%**%(7$Wq%&k$Te#S1$)S%Nv$'Z%Nv$'_%Nv%;x&#U#O2%TH#0n#2V#Am#R*#v7&oO%(g%U.%mr$w>$WK$%,&tF#1'#+~%)(#nI%)6%mq$F:&tF#oN#e)#~W#rN%&U#*%$-P#x&%)(&t<#&y%Ng%\\H&#_$26%8!%,>&te$*f$'_%Ow%;x&#{#C/%:l#0n%(n#{n#&8%~F&#q$Sf&te%Mh%.0%ne#'6%8!&$J%<x#&T$)S$*f$'c%Ow&$C%N=#LP$Q2$%&#0n#0n#Ft&tw#x&&u%&te&(v%<~%V)#'6$Sy&$S$gI&te%Nv$,9#iO$Gs$*e$U3$.G$M8&$\\%bv#rw#+a%<'#&8&u<%6g$nL&u>&u'#&y$G+$VY$.C&uD$<7#?\\%%L&uH%NE$EP&uL&t9%PR&uP%'S&uR&uT&uW&uV$*f%\\d%NE%:^$gi#AP$d>#&0#)(#dM%4q&:X#ok#&K$A/&iW&u_&u=&ub&t=$,4$,9%Nv$%K%Nv&uh$x|$dm&u^#~Y&ux%6g&uR%O6$,9%O6$%K%O6&v#&8O#&^&$`%'N&<\\$.7#+~&v(&tN$Gj#th$M>$%,&$`#*0#nb&8h&v6%-&&ua#&1&tW%_Y$|V$M>$F:&uL#7&&v(%Wu&vG%8:$EU&$`#-,#nb#T5%Ud#.A#1;#pQ#&S$gn#&0&S%#&S#0n#nb&ta&tx$x4&v(&te&tg$Gh%'Y&tj%[2$G,%-L$Fe&uc$U3$%K%Ow%\\d$D3#/~#,t%9o&u1#)w%9a$/[&$m#+J$J1#z9#+v#X2%7W%8;#X2#q]$X<#o,${r#&5#ne&$|#)-$$Y$^%$Ul#no$XB$M(%i*&9*%i/#P~$9f$Ju&%)$qA%-@%Sa&w%#+M#&8$X<%T,#)o#}5#'.%8]&w0$kB$$Y$MS$M;&w5&a`%i-$9f&w;$kn$_2%9+%_b#YD#*Q$V3$I%#'6%9+%`,#PX%_j#1v$J4%M/#(W$Bq$3~#X2#&M#'s$&J%O^&wh$n]%Rb$%l%^.$r7%Ok#&'#(f%LO#&)%LQ$oi$MI#7j#->#'1#'`$6-#@,$(N%o}$vn#'3%&r%fb#&~#x&%}7$OX&te&9A%kl%~!&u;%kV$y?$$S&uR%Nv$g6$*f%}?$*f%ES%JL$r8#/e#*l#r$#Bj%~0#[(#~Y&nd&tm$U3&x5$U3&x7$U3%E*$$j#r$$AC%~0&ul#*%#\\`#dM#p,%dP#rN#+q%~2$/[$h8$ZT&x@#x&&xC&uR&tg$e|$h(&vi%<n$_6$U\\&vn%~A$#<%}U%E+#r$#C/%~K$x8%%O&tb$z;%~N&xe%Q2%~+%ha$J6$os%a~$ot&x3$,4%ES&uB$=_$*f$'Z$KI%~|%b+#+a&!Z&xx&!?&xD%~C%b&$*5$U3$'Z$;*&y&#rw$EP&!I#Mx#FZ#~g&up#ea$Z{$-P&u_&!k$Ub&x{%~C%Nv$,)&t>%EW&o7#rw#O2&!I%3V%7h#&J&tK%B|&xy&tN$u}%[`$%,&!Z#7&&y?#fX#&L&!T&tY#&L&!I#0n%^V&xp&!Q$ov&te%V@$qa%fY&xw$Ih&p'&u?$,4$,)&x~$'Z&tn$09%6~&oV&!~#+a%(7%DY&yi&xf$=_&oQ&ue$'_$UT&yr&y4$[F%(>&u_&!s&y,&y!&y0$.5&yo#o3&#;&!~$!_&#>#Mx#Am&uo#&T$vp$qa%P,%c~$iq&wn#=@$&X#'k&i+#&)$9.$SB#b(%&k$`*$Tl$Sv$]R$^%#o`$=X$e;$P,#(5%.E#=@$^\\#(T%)G#&)&x%#.d#'%#,M#6^&@.%qz#]v&r-#W@&r/#&,%tB&n&%u;%vW#rS%u>%tr#*N%uA&sx#S$%|j%uu#(L#(@&sm#)*&ss%z}%wK&sv%H+%k/$c2%+G%uy#1=#Mr%u|%u~#6I#&]%v$#KH#'=&sz%rK&rA#OP#T$%te%3!%u/#KF#Hq%yF%yH#`N%v+#+~%x6%yh#+l%{u#@q%FI&sk#2'&q}#jf&-l#5d$RR#'I#(R#&L%rQ#&6#(<#(@$du%zq#M$#4h&t-%s##lx$do%uv%rl&rC#SL%rX%{M%HX&t(&r)&sC%y:$g(#&M%jy#_C&sP%sG&r,%t2#'#$o#%]:#j1%v^%v`&rX#&E&rZ#,D%v'&rz#Q|%w_#cz%wb$L\\#i!%w8&zd%tp&zf%tt$q5&rj#)u#&@%vq#0f#8G#^)#Gx&r6%w;%xQ#&G%xS#K\\#+%#B>%v4&r2%v7&{{$q7&{}&|!%x+%$y&r1%v6%H2&sC#..#1v%z|%wJ%{!#kg&s8&{v#[c%{j%\\s#1o$q##Zk%34#2x&{v%w:%w<#nt#D+#&1#3z%tB%w^#F<#.>%z%%z'$[=%H*&sx%y*#(L#(X%2/#&y%21$do&s?$N@#&v%sE&qt%zw#1[&n4#Fv#S$#S&#'L%&5%ld%=T$t2%[g$]@#(Q$'L#@,$4-%BN#+~$\\T%8s#&j%}|&pg&tU%%y#&y%./&q7#0f$UC&nO$Sk$ZI#'+%N`%|v#-[$Uh#&y&(v$M-%\\G$PB%\\G$g3$vp%Kw%0#$]G$J[$i4&},&}.$hT&}0&}$%\\G&}4$V|$Xi&(v$g3$*f&}:$MG#[q$,0$i3$i:&},%;O&}/$Tj$)S&}D$Jl#&f&}5$Xi&}7%kW$e}%0#%64$i9%,)#'*$vG$)U%R<$mh$$.$,O&}e$Y5%h%#zK&}i%.b$fd#GD$Zc$}\\&}!#=@$)S%%L&}'%YU#'6$oO%8v&}T&LO&fs&}W%9B%@Q%0##nE&}O$v-&}p&}=$}\\&}S&}1&x~%Yy$N(#.)#J>%}.$Tq$)S&(v$PB$l_$-O#3u$g6$;*%}f&og#rC#y&%dS%.y%?k$Nn&}1&}Y#p6$Om$g3%\\G$g6&9A&~=%VV&}M&~A%;O&~3&}1%Nv$PB%Nv$g3&x4#0V#&i$~-&1O%dS$vF$>8#&'#ps#dM#.y#-[&1>$E<#`t&yM#&T&~Q$cL&~D&}$&~6&}G#|S$g3&(v%Kw&~N$]]%cj#&8&~j%9(&}1$Hq$PB$Ur%;@%=h&~Z$jW#rw%(S$X2$o:$5w#&'&iB#&T$aV%9(%_X$Nn%bJ$$h%cj#E|$$/$ua#dM#C/#-[&iB#&S$F<#-[#|?%}u$WH&91&~v%}|&~R&}$%%L%`@$O#$26$M8&x)#*%&~E#3u$g3%N:%UN#)>$E<$MJ&ta%<d%}v$}\\'!K#ET&}$&5l&x-#)>$26%N`&nd&}1&~r%~)$=X%}?&(v%ES$3C&x;&xK#&Q$`>&x@'!`$]X$\\O'!M%=h&ue%}?%\\G%ES%ON'!j&x=&}M%ky#)n&~^#1G#&C#dM#ul%j##v7%;O'!a&~m#|S$g6&(v'!f#|S&xJ'!z$eD&#D#&7#ou#*%%5M%Uk#&H#*%#q]'!7#0%%)L#&Z%R<$h8%nq&'E%}|'#)$)S%hU%kX#*l'!I$]K&xr%E<&}}%~A&x8%;`%D[#rw#.@%~K#+N#)}%~i#FZ#ph%_|#FZ%P;#*v&xm#GD&xo$/[$]F#|^%B|#->%i_#U[$OG&G*#I*$LV$Ju$UE$W5&wN&ou$9f&90#.%%[d'!8$N3%f~%QW$$o$%.$]8$%.#qY$w4%4z#',&#9&z,#36%.%%NF%^;&{~#'0%T,&uu#ne#nq$$Y%X8%0;$QT#5b&|{#+~%>N$Mf&}a#nE%4=%jr%>9$%D&|y$t2#&c&k+$]@#'b#yw#@,$0s$^D%o~#us$M^$kw%@r%2I%rL#S$#&o%sp$N_%rQ%+<&rd%|+&rg&ri&|3%ty&so&{.&sq#Mu#*l%`4%Z^#G'&t-%h>%t9%+G#-!#&F$mR#&G#,.#&^#et%m%&t'&{7&qz&g##2]&|8&mh&|:%CF&r##]f&|a&sX$p{$si#B/#au#Ik%+e%yP$YU&s#&t)#h&%y6%v]&rV#B{&{j&{l#H[%m.%Ak#J?%{.&sb#46#48#g,&|Z&|;$l!$S,&mS%|j&qs#M,&m{&qY%{v%z4#1w%1g#)}%32&|I#C##.X#)/%s$&rw#&E#'F&|\\&|^%s=%y*#(\\#(h#H8%$U$_h$NX#&F#&Z#-_%sS&{Y%CF&{0%yI#Gh%|B#&2&s:&s&&s<#'5&{^%2/%sS#lR&n<#&L#`q#KS%2!#*l#/I#)j%{_#(\\#&u#&;$ym$mG%EH#IF#&E%5E#Hs%6{$^a#&r%,A'$<%S)%nF#nb#+E%St$Mq%_a$#U#PX$DQ#qY&uj%&{${A%V4#'N#'i#@1#'l'&;$oi%q9$]1#(`$v%#&)%!9&wv#oq$^\\#'G$d)%[p#(G$A>$]1#I|$qw$jM$n=#&~%NX&}!%YT%DF%hc#&u$=X'#X%#C$mm&A7%gH%n|%6w#zs&xv&qL%Y@&~@$R_&}+$me&w>'$;#&S%qu&'N$n@&F5#Ly$M-&fD'!Y$yt#&y%b<'!]&'N'!\\'!p$y@'&u%N`$g6%./%}?%./%ES%~m'!y&z!'!|$-P%9B&nd'&u%~<%~)%~q#&,#q8#}`'#0#rw&xM'#3$N}#th#dM&o;#JV#dL#&T'','&{#d&'&}#J>$g6$KI%}?$q`'#Q$y_#rC$F<''*%R!$cP#v7&~V''A$}G&nf#4\\#&3%E=&x@''Q&x1#&*#KZ''T%`$%xS''M#.y&ta#&6#dM%~/$pf#&S%}g#&)&v]$jT$ZQ''*&tT%~4#d&%-;&xv$aZ%%T%f{#)2$\\<%mq$\\O%4z&$w%,%#X2#8p&%&'#k#-Z$UE$mr'#q&fb%#f#,,#+_'#v#^0%6s$#C''u$WB$`=#&V%hU&&O%<q$Jz$]Q#.h%[]#(5$]`#0f#{D&w3&q-$SB&fD&u%'&u%b<&u9&$P&5l&v(''C$8v%./$%K%./$.G%~m&u[&v$&u]$gi#Uv#|.'(I#&0$)S&t}$,9&t}$%K&t}&v0#rC&uj$g{$eu#nb'':#&T%ON$SK$zL$jk$~u#.#%.&'(T%9B'(W%_`#J>$,9'&1$*'#J>'(_#r$$F<&vR#GC#Hv%Lw#S2$,4&v(%n2$gI#2N%&0&uL&tB&uO$Gj''\\&vG''^#&O&$`%:5#A3''c#&S$~w'(|#dM$tg%9j$gh$g{''n&u`$Gj''q$J5$|[$}'$Y/&vu$WA%<V%mq%'[$X<%hZ$D<&w+&Fn$MS$${&wM'(&&w8'((&91'#u#1,%[@'(.$mw%:L$O!$$y#R#%1E$J$'&E%=c%C%'#L&t<$z{#L)$Mr#@x$$^#'4'#R$!|%|z$]r%%T%<r'(8')^&q>#+~&u%%-;#3$%S(#n?$gC%,n%%|#0|#-?%,`$}&%V0#B.$Nn&ke#(6${A$bZ#&S#('%p;%p=#.d#jB$$j$#q$j|#Vg#^r#-C#O;#aH#+>'%&%d{#j>&sB%CF'%_%t<&mj%e(#L=#,q$mN&{I#*l%sS&q#%x+&|^$\\}%h3%2+'%l%{n&sz&rE%{~%|g$n-&rK&|G%33&|5$g(#'?&Fy$zf$Oj%DQ%Mx#&D$a4${!$['#qY%>]%7T#7+$]l$XZ#/4%C!$!U$Z]%){%j[$ZS#3:'*h$.m%8u$M(%_{#&y%N`$M-$3C$PB$g2&}\\%j)%i1$^,$ZS')<#sr%>5$W%$Uj&q8#01%.V$|d$]@$|o#@1$|r'&F%EC#'A%>B%e{#5b%45$Q^%<]$dE$Rc$gp#'n%q.$&X%pk#@,%pm$F_$O+&}s$MJ'#F#+H&}w$.R#&6'+,%>='+.$h[&n{#@,&n}$(]$Xx#R#&pd$oY%D1%\\a'$=$kE%cP%D5$i)%De')h#&-%}m&q/$`i#&w$m^$Ow%o3#94#dM$ma%P-%\\L#4B%/Y%.V%au$]@#&5%Pq$lX&on%;<%eq%T+#@x%=,#'.%h`$qf%BX%\\X$oN$nE%'M%{X$ck%DF'+X&AD$me#Ca#&y%^e#-W&}k$nq#nA%iY$k_$<&$kq#Hs#*n#.##&C#10'*G&|A&qC#'5&sz%+G'*?&r(%t>'%;%y9$dc%(C&qF$M}%@8$j3$cp$nA%>`&q9$ZQ#0f%X+%gw$r)&}{$[r$|g#)>$M-$U{&+4%}}'+!#&Q$md&}O$I@$Zz%Z($%l%r#%2{%jn',L%gv%D1%BV&q8%r-',g%AO'$a#FU#'2$FF$aM%X_#6^#+=%l1%a$%r;$O#$Ly%A]#'8%Lk%%1$KF$<&$ox$Xx$W,%[g%%C%i.$h/$Ql#+&%C1%d~&mk%sm%+;%$y&qC%t:'%`&zu'%''%$#A!'*6#&y%uK&s2#&u#KW%k@&r]%$X%m,$\\`'%I&|H#Bd%34'*=%$u'%l'*M%Ey',t'$c&qt%vR#fz$c*#&H%qW%q5$FI'+V#&Q%o]%eZ',3$m\\#,y%~l%^^$lw$W0%lO%**%D1%^p%>`#&8%pX%kQ$g5'+z%T,'+}',!%ex$mT#y&&~)$Sj',-$ck$t&$v1#<s#}Z&q,%l2%S:',n'-d'+^$h0','$ZL$OY%-%$nX$nB$nr&b.%>='+s%BA%?%$SB%\\G$pV'!A',*#,R#&?'-`'+_$mh$i.#'+&oo$UJ%dI%(<'!H$:T$Q,$`.%Bu$^n'+m$hV%03%bJ#3X$i9$md$Ow'.Q#+~&y:%.V%\\R%lh$YA$bt%e/#7+$Pn'+j%7{$9f$W(#'+%.k$Y;%dI%bJ%!)#.#'.U&}O'.`$X/#'+%NX&}S&nY$p5&}W%@Z&[r$Xl$bP#rw$i2'+%$\\)'+(%j$$ms',R'.2$t2'.4%^b$]C$Oj&q*$^\\#A8$V;%gm#&s',7#6^$LZ',E#kh'*A#*m%z*',=%+G'-O&m]'%)%{_#<,#&~&sz&qC#'-$j>$pT%A;$\\*$`n',Q',p$i)'.z',V&},$b0&}A%c:%EK%Y3&}W&n\\$,g&nc'*~'.x%OS$i9',e$Jy%jj%0u%qf#*G',k%r:%r<$mi'&m$nr',q#0f$LJ%Y^#ct#Mw$NH#&F%uM&{=%s}#iX&sU&sW%C8#[L#,g#+b#&?#38%uA#a{#/Z&|h#)P%+A#&}$K2%qp&},$Ya&nW'/P%Yx&}W',^%@'#qR$m5%<_&!g'#[%e~%&A&~%$e*%dT$Jd%@c$jz&p}%2&#&>#]$$m|#W:'%k&n#&z4%[\\$cg$mX'$6$`@$mk$N+&#)$hW&qK#5Y%Aa$k/'$5&qN'$7&qP$Y3%r'%.V%l-%r9$Yt%rC$N@#Ly%$B#D=&m\\%3z'*F'%)%#x'0=$mO$dw#^r',A$Pw%xM%x'#MG&rP&rR#kD#'4'%l$\\}'/3'%a%$u'-7%|O&at$s]'-R#-e$c<#PU'-B#&A#&u#O<&rO&qd#m>#kD#&]%)>'+2%V;$pa$M3#nA%5+%\\Q$Nd$om#&w%q<$hZ%hd$P7'-&'+x%fV'+{$$u#}/%i`$LJ%ib$gf%B3$N+'0)%et$Sy&~/%*>'+*$}4%[r$XS%Da%5i',)%i?',/%lo#nF$v-&nk$N%%dI$m2$^v'.J'1/#@x$RM%j)%r2$Tj%7_$Z{$Ow&p]$0%$CO$Mt%dO$Km$g]&~]%>y'.n%=d$Nn'*w%`?$Xi$m?%}a'#G'!#&~N'!A%~f$oO%p@$Bh#8p%>y'1K$k`'1M$x4$X_'*a#@1'*c%o8#y)'/!$Sj&ov%Md$M;'-}%lr$X_%D>#@,$OB%ip%g.$XT%je%'b'0($Su%)R%*d'-&&fn%Z4%!)$W,'1N$bZ#B{%\\$$Xd#J?$_A',8#.X#&>&sz'0u'-<'*;#,v'/9',H%]>%Al',<'*Y#6+&qs%sS'/B',l$[($Y_#p!$lk'0N$b+#^.$Jz'/L$Rb#12'+$'0)$Mn%m|$e-%1I$e.$bO%94%0#$Ra',d$FJ',f%,2',h%jk%>%%jm%jo&pr%l\\#&&'/e'&d&qR$L(#Ok#F<$J4#~Z#&s'/v#^X$hA'/z#a\\'/~#ma'0z#H9'/p#jg#-_'/k#Xp#&8'/n#)O%{l%s>$sc#_C'0j$K^#&x$V|'/D#7+'2d$ol'/H%r,%gw'/N'0)$P?%i~#Hs$M-'!J$Xi%k[&}\\%@)'01$Z{'03$X8$fM#*8$R]'1o'+#'/Z$FJ'0:#7_$Ri%\\{$Rn%k?#El&q~#F,#Ca%mC$sZ%ye#&B#(H%vj#_A%jz&{J#Tg#Y%#C.#&;%{_#'!#hU%rp%$n%rs#.$#-.#&D&{3&ma%$y%+G$rk#Dp%]F%+Y#eH#&g$T>%lY%0<$Yh$\\+&oR%U'$JH$0%$`~''R%,M%.s%0J%6l''t%%V#rC$a]#d&$zU'#='#3%?v$yE$@J&nd%jJ$qf$MA''F''2$PC%;A&FC%;h&x<%9?$OX'#3$kT'.n$jC%.{%'6%}<&~Y&yf%*R#Am&nh%~-%b,$QM'#3%gZ$X[$MI%pU%q,$H3%q.%a%$iF$JH#nA$P,$rR$Yq$N3#(o%mL%+%#YH$W\\%yz#&B%y|'4&%uH'4)#&&%+<'4-'/t%r\\&n''37#',&|j%re%rN%{C'3j%dz&qt'0B'3C%2/#hy#Ul#4t#\\J'3{'%o&q~#&<'43%Z0'45$[(%*`'4U%|{'4:#'+$GO&nd$m2%Cz#Vm%'!#n='4f'4E#.k#PR%kb'!}'4J'.n$OJ&nd$l<&xv$MA$UT%}?$@J%ES$UT''(#rC''h'4Z$b>$PV%kk'4=%'F#PV%ep$#@%fQ$X8'4f%%>'4i$UQ$}4'4l%q+'/($zu'4r%oG#/8$Jv'4v$^{'+j&mK#hr#,P#&g'/w'32#&7#b|&|i&s)%s9#H]%]@#'-#j#'6('/y%/L'3p%HL%%+$sS%$A%+)#&s%=R$ZG#3`'/G'2n$cQ$$H$jS$63$jk%cc'4Y%-,%bK$jk'1k$vG'6G%j#&n`%?w%cf#*M$[c%%J'4<'2u&}L$ik''l%e1#n>&p7%jt#'''2z$L('+j$j|#)_'60'62'31'64#&['66'50%m+'6-&n5%+f$sT#^&%]\\'6&'63#38'6+#&E%A%'2a$U<'2m&}{$js'!T%%P$63'.F%dI%a[$a[%(B'6L$>8'4:$h4$jk%.o'7($_!'6S'3V'.v'/W'2v$hU'6Z$N''6]'/[$Yq$_<$j|#ik#+)#X(#+H#h$'%7#&K#1]#kG#if#Hp#&F%k'#V.&qV%m<'6y$XY'0*',\\&~k%[;$Z^$Nn%Mt%iF%ox#&d'.[%eZ$M5'3R'0+%9('6D'-)#(A%1M$M)#&M#&N%l*%ag&WB&nN$i;$Ph%*=#@x#0|%\\B$YH'7;%Y]'7E#X!'7G#-Z'7I%3y#_E#&a#il%\\|%Fe#R%#O,'%6'%+#h(#&J$c\\$|!$W7&nM%pZ&pj$O#$V3$WM#F8%*q'2D$Mh'0L$Q[%9($X8'1k%8[$ZR#*Z%Q(%i;%hh#5_%EQ'86%?l'88$WJ$gK%=v$bZ%gB'2a$)k$Pq'7<'7t#ie%u9'7x$\\\\&zv#R%%F*'7|%kF#4/%h9%/\\#U5#&@#'&$U7%qp$|z%l8$XS%r@%(Q%Mc$UM$[m'8C$W8'89$gL#3u%ox#&P'&J%\\1%lZ$YC'5l'8B$b<%?o%fE%f;'7d#&d#|.$^w'7h%dE#6^'8/'7n#&8%\\%#-W%*A#(P'8x%\\i%f/#}I%iS%aI'8.'7m$kE%13'84'8s&~C$aQ%?q$63$W,'8a'8H#&[%@K%(s$Pj'8f'8t'97'6R$W,%Dv%ox#&a$g?#o\\'8L'7s#C{'7F'8P'7J'8S&{:'7>#C^'8#&sa'8%#'(#&K$bI'44'$4$|y$i7'95&~3'8D%%C$W,%@S'8<#&_'8>%Mc'8+%43$Mh'#~$ZO$YF%c&$UR'9_'7R'-)'8v#/9#(A$kY#*Z#\\t'7Z%?'$Pq&~)'6$%e'#~E'3m'5/$s['/s'0x'4##E&%rs%5o#|`#&n'5&'3s%rT%yx'4~%y|':,%y~'3x%t:%+!%]a%$q'4/%m3#Y@#G(%lu'-j',.'-d'2C&q3&|q$ZP'/$#BE#xX$mh'+N#pP%~d'0'$^r&}{'2o%l$#&f'/T$e,%}N%UM&~Y'3b#&Q$ct$ZT%r1'*k'1F':Q'.-':S':U&~8':T%iq':Y'1e&p^$hW$jg$mh'+j#FZ'+l%>l$Ts'+o'1d%.V%LL'0Z$P,%AM$cY#*Y&|.&re&|0&rh&|2%tx&{~'%S#&`$RE'0&%>^#&''2j$_2&q?#6^$d`'$V':|'$X#.A';!%tv&{|$q9#o['/b'0W$Y5$mX';,%ju#5b$u(#g<#HB#(N#'G#&5#'|#'1#1y%Y!#&z#&T'3;#&H#&5#r&%vX#1,#':%${#.;%$e%$&%uU%2Q%$k%ZU%CR%Fb#DV#4i#@;%]#%k2#VZ%hG$n6%/^$q)%$=$rr$Pw$pw#M5%B*$pB$k~%Z_#0J$q3';#%v:#&w$o#%+5#'H#rf$j?%,8%a<$XK$Hq&#T%.2%gO$V8#&?$`&%Dl$lv$M/%[t%[v$k=$O,%o+$OX%dL$a#$:L$^3&qI%kh'4O$[x%Kx#B.':E%gv$|z%ka$X_#&8%R1$,0%i|$}4%>n$^?#'$%_5$SB$Nq$UO'5R$r-$$j$oU%o[$A_%ic%A8'!8$Sl%}*$t}#&4#&R#'q%r>${6#'H%bS'1V$v/&fw%gE':h%.u$z9%5)#8]#&m#'?%(Y%D)'<_%03%`q%Yz$W?%1=':[$b:&o{#,N%B}$W=$kV%95$u,$0q$X_'4n',1',~$Mf$eD'<a'-q%=i'<d%[(%j##&m#'@%eD'8}$X['<>$kZ%C,%g*$]-$`u$h>%q;#@1%q=%]v#R}$gX$($'<R$d]$^{$md%/9';e#-_';D';F#'<#3I#Mx';K';T#&t#5S#1v%$%%Y!%$g';Y#'B%AV%gu'2b$kP&w4'6I%j^$:L$k2$nW&~/$Xx'<p$M3$fh$#>%Z'$^{#&d$0d$hr&t/&{V#'H'%S%|_%Yh'$W&rf';4'$Z';$'*Y&mb%v.'0`&|;&s`%v|'9W&sd#S<&|l$57&qA'=v'%D&{9'/3&t*%ye'3~#&~'-Q&|U%z$#&,'$_#Dk%s{&q~&{?#8E&|f%$3$sZ#4O%yR#'A'=v%Zv&rA%A{$o;&mS%wS%rl'%J'-M#Df'%Z$]$'2S&m\\'4,#)>#}$&=H%{Z$at$do%+<#0Q#PF#RF%#Q'=N%$f';X%|''*C%s|'%F'%n%{K&t0&t2&|B%{g#[b%{i$X|&{)%td%tf&{-%ti&sE%zU&t0#ec'%N#lx#2(%vV%u=&{x%u@'2T'%G$c2#f_$X|'$v%Cl%H+#_2%Ce#1|#&k#&x%x#$bk#&t#&l%I;#&-%I='$z#&2'35&rb&s>$K_#I}%H&%H('%c$S-%sl#Pq#+H%t1#,k&z]%t5'*C%{]&s=#S$%/r#&z';T%$|%C8'%P&{g'%.%va&rY%vd&r\\&ql#^('$f#*p&{`&sR#,k$Nw%w7'>c&|M%w=&|P#C:&{u'?Y&ze%ts#&W'=r&rk'%f'%h%{*'8[%#x'=E#'|#(B$6O#&)%Pj$oi%1A$V8%d9#@1%%\\%Bk%>=#&>&F@$]@%dB$Va$Oj%SP#mf$^\\#'~$%k#@,$,}$MN$LJ#R#'<R%E&%.V%iF%>@#(G&F@#&)$=C#o_%W?$$y%6x#@1%^H%lp&qM$^'#&j%|z'+G$yB#dx$&R'+K$Pk&}*%,)#'+$3C&}S'@@'.s&~G%%J&x,%}a%PQ&}K#rw#.u&}`$n^'@G%|u'/O'@@&9A$M-&9A$PB'4L%}a'<b%=i%0#'.k'*q'@F&}z$M('@Y$Om'@[$T|'@L',`'/X&5}$Ob'@d%Aa$m^$p%':N$Y5#+q$1h&}m$ZP$M'#rg'@y%<_$fd#lI&}q'@>%A<#nE'@@#x&'@C$26&}v'@X%^M%4''@i&}W&tg&~$&}L#uz'@T'A!#A*$i3#&8%|z'@I'A.%M)'1J#@x$26%}-'9r$=]'85&f{#yE#)}$g3$@J$g6'5^''2%~,&~>#r$#.u&~A'AB%9('@h%%J%kR%}a&9A$g6$Hb&~M&o:#)e$mw'!3$X1#.P#&S&?,&}B#v7%\\8%?l'@J%/~&J3'AI$e{':h&~N%gB'!3%R]#Vv%<i#S-#42#&'#q&#dM$RK#06&94'6Y%dR&~v%|z&~3'@@&x~'!G$<&'A+$I~&n]'AU%}N$CO'!Q%C$%}Y&xh'<.$OW&nh$OW%4Y%-<%?y')}'!W%Ow%o*%f{$OO%o[#U~'<R%M6$`5&tz#)g'@@';~&!/&u!$3C&u%'Ai%JH#&f&9A$,9&9A$%K%\\G%\\d%JO#Fs&u0#-:#Hs'BL'A.%NX$'c%NX$,9%NX&#j%JO%xS%LW$`/$p%#V5#zf&u%%72$~z%nG#&-$F>%Kz%S-#&K%XT#@1%XW'1Q$m'%,n#zw'(k#&+$EU#)g');%JA')=$gI'Bk%'U'Bn#'Y$T.%bA#}Z#(k$+z#@,$,V$~0$mh%#T#pG':p&},'@f$M;'BM%1,$M.%%J$]W'6W#rw%C7&~*%6~'+'$mo%>6#3/'/X%qv&qQ$M8&v('C8$,9$@J$%K$@J'(w#&O$0)$Io#,J'B}%[B#&7%N>#)h#&;#v7'B2&v(&ba%'[$M>#z;'CU$-P'C\\')*$gI#y^%,R#dL#&R$M>&@,'Cb'6*#&]#)g'Ax#rh#)g#pW#dM#lI$T#$-P%|z'CJ'A.#xw&vg%_N'B)%-K$Fj'B,$%K%N:&vr$Hy$P8#&G%9w')}%ar#&/&tu#@q#BC%(B$Fj#\\`&wB#@x$u$#&+'$/$NS$6}$Xm%o3$${%NK$O!$SR#R#%r5%r<%d6$_a#&K#(b$<i#@,$.('$@$}4%0&$Y>#(A$Aq#@,$;Q%U#$e6$iU%o.$Z@$;3$$H%7''+L$Rf'CI'Ce#9)')&#&y$GO$,9%Q:$%K%NI$J/%9Q$x|#'w%c1%X@#&m#(Y'%|$yo#nP%8g$*&#&g%c/%0-%Rb&lk#')%4g#zw'$2$XP#'9#yj#*8#39%[Z'-i#nP#s6$%=#(2#&=%#M%8]$T$#'n%UR#&)%UQ$U:'0H#|/'0U$VT'$:$[1#&<'3'#&8$;p$u`$$y$|u$P,#6-$gU$6.&{&'2X'/;'-V%CY',:'/7%z,'%)'0v'EI$m}#,}',J'/C'=U$$4'+F$U>',P'2f$i)$[0#d&';>$0%'2?'2F'2p'C9'2r'6V&}]&}L',c'*q'7:#0f$#u'2Q#5b%{q#54'>W';W%$(%$j$Ww%GC'>U#,]#PU#,@#[g'>I&|;%sl#'?'%S'0y#fz'?F#S$'>*'0x'-O&{['=u':7#,x'?j#&^$Pw'$i$8i#W7#/w#}$'F1#5b%/r#&;$x,#&)%c7$|j%>D%r3&nv%r1%or$yE'0+'0/$bZ%9t$X^'*q$na'5I#HB&}S%'6$CO$M-'2r$O+'.w%0#'.z$OB%kN%a%%*;'9!%Vw$m0'1k'FI&~]'1a'5h'9B$N{'<1%oN$,7$F>%]g$j[#&/%EF$cx%[!'!3'D^$nE'.}'&`%>`#&9$Hb'+G%aP%dU&~&%0n#'Y%ii$`w%BR$g/%cC#6k#od%*#%>@%6a#@1%W4$F_%@='AC'3R'.u&}X'!N'1w%}P'An&o:#'w$p9${'#'E'*b$a6$f`#&~'Fw'A&%qr%Z4'F{$F>%9W%>Z&q=#o`'G.%9('FP$^_$Xi$CO$g3'B.'G6%L7%l<%0-'F@'9/%js'+e'*j%./%=X'*n%<`'FJ':]&},$GO'FO$h6%lC&nD#?\\'1i$Xi&~}'Eg'.y'+$'FX$ai#o-%N`$KA$}n$qL$P]$WQ'2P$dc%{S'EO'>w'ER'-W$s]':7%z)'2['EG#]v%H3&2U'6y',N$[*'<5'./',R$b+$k9#&+'E_'.d#)}&}S'2o$P;'/S$[_$Xi'FT'74'6X$ZR'08$LN'6`&}#$%l'EK'3l&{>$s5%e$%e&'30'/x'33'/|#/[%uM';M'/l'3>%uM%]'&qC#'.%gk'3I$j3'/N'E[':O':`$W7'AE$M-$bM$Xi'@^'0/%j-'03$\\H':Z'Ei'H?#or'3f#+~&/y%\\p'=w%CF&n*&ms&n-#Cc$ft#*l#&w&mQ#)B'39'>4&ma%FY&md';0#(K&{]&n#'=m#hr%]/',?#Be'/=$dd'>S#&(&n2&|K%|8#+L#&k#|z#.%#|$#D2%F^#1D&m}#D%$Wg'?5#&z'?!%F]#+S'?%'?'$n-'?)'?+%I=#DZ'I2%|:'I5#-\\#&j$q9%C>%zR#5,#5.&mY#02'E}%CF'F!&sz&mp&n+&mt%v[#EF%ye%sd&zn%\\}#^_',>'7~#kp'3o%]M'F#%$w&|^&mx&mz'>|&r3&sC#(($;b#@,&zT'<_$mh'.2%D8'@u$yE$k2&}{%-$%C'#?\\%~m$PB%~m'FU&}L'A#&~*$=X'CB$e*$W%%/E'D]$LD%)O$M&'1>$kC%=-$Uk'7n'6^#'(%(S%@W&oC'D{%oE%eg$eG%<r$$|&yV%EM$u}%EP&p&'Gg#1v$,)$KI&!F%b+$wI&!e$eu'75#-[&oj%*>'J:'22#-['J<#2\\'4r$b@%<r$f(#*w#)>&yW'I}'+o&C2$=_$dG$.5&pX&oa$}N#*0&yU&yO&!?'Ja%~C$Hb$,)$Hb'JL#rw'JN%i3':Z$M('JS'J7$v-%[F#2K'<V'Iz$Jk%9(%-$':U'AW'/U'!!&~[%~Y%dS#-?'&''+e#0f&nS$L1'$8$^p$lO&qO$k0$x]'K6'+8#&Y'.S$d7'.8'GA$3p$US'H4$e+%9B&~3$kS'7S$)S&~#&n]$v?$OW%`$'+h':j$|z%oR$XS'27'%}%>|%03'J<%}V'J?$N'%Cz$k1'Jl$u}%-$%E)%;B'AG$'V$UT'Js#rC'Ju&$i'Jw$M;'Jy'+L'JU$i6'JX$Tf%S6'KZ$jW#q_&~<'JD$ov%-$'JG#<{#HB$,)'Je$+g#HB&y3#rC'Jj&!e')<'J`%'P%b<%ES%b<$,)%b<'Ke#r$'Kg$}d'JQ#RN&p`%U('J{%{X#39'J~'1p'K#%?l'Jn'AF'&w%}a%~m&~s'A]'A~$X2'K-%jp#(P#(,%)@$J[$T%'GH$^E'2O&p}'G|'3x',B'Eo%{r',D&{X'/5',;#Vi'2\\$fn'-O'H(';:&q4$j3'2e'.0&qL$[-%:{'H2',P'6A'H_&}W'Ha'73'C=%9F'Gm%i4#or'HA$\\X'IV#/p'LS'H%'Hp'0w$Lj'H#%z+'-9%#}#-v'H)'EX#p!$hS'H[';<%ep'H2'3P&}{%'6'@K&J3'@]$d9'H<%C$'3d$Zy$Jy%_N$rU'%n%wv%/`%wx#Ac%,x#&z#'G'=~&{6#lS#Tk%2,&n#':!'%p':%'Ii$sc#&y'5,#M?'5*&|6'%Y#,9#Y&#&;#MM'7N$M5#7j&y5$bP#-[&L5$Pj$\\Q'*j'Ag&~l'Ff$H}'Hc$g7#F<$g6$@J'A\\'!%$P^'!'%*A'*t'Fd#Ok'(X'95'!G%Mr&~N'7\\&(T'Lr$#>$ba$Yq'6b%+)#&f$Pw'6s'6g'6u'/o%]?#H_%\\{'6f'HK'65'Ih%$A':%$mR'H)&nV':a$O0$oQ'98'6}%dI$l<%gZ'98'#6'7*%dI$\\M'N<'6R$u~'H9$QZ'@m'75$^t'5W$V3'79'2y$JW'(?#&:'8N#&='7v#&''8Q'7K#],'9U'=z%Ca'9X'8U#+)#'F$c\\%78'8*#qZ'7j'F[$N''80'=3%@M'9^$Y9'87'8i'70$W,'8G'7d$!~'MX'94'Nj'8h'98%fE'9w$?7&p%$^W$`;$fj$L('7<'N\\#C^'8W#,T'8Y%0|'?h'NQ'NS'NU'8S#'D$Xb%A''7k'90%BW#/6$c^%o8'7]'7Q'7_'7T'8E'8:%)h$?7#&^'7g'3$$[,#(P%g`'8b%om%/{'O7'Mq'7`#6^$W,'OD'8H'Nq'L`$ko'7r&p}&qV#'B'NX#h%'NZ#&K'O##'E'O*'9O#)h#'@$V|'93$M3'9i$aR%A7$(]$i='Ec&~3$m2%[;$W,$kI'ON'GH'=!$k-'Og'1q'Nm%?o%Mt'Nx#&]'K;$qZ$J`$Pq%ru&me#Ly&|/&|9'/5&n<'H|'5'%FY%rl'Ew#&+#'#$Pw#i4%{'#+=#&x%uf#&8#'!#P{%Cf&mS$%l'I@%$_'IC#-S'?('?*#T)%I='Lv%+F&sU#Dq&m^'>]&|A'/:#2x%tO'P1'P3#'!'IN%Fh%$`'MK#S$'I`&n>'Ic'Hr&n,#&Z&n.#&/'I=%H''/?'LU%|_'/>'F$'Il#&''56%%(%2/'Hx#\\U%$T#Gx'I;#&7'>Q%$y'?9'IZ'Hs&mu%kJ#4a&mV'IS#R+#(R%<N%Um'9-'Iu$Y5&~)%0/'Iy'.n'.p'/O%-$':S%b<$PB'L@'Lo%NT&}q%~m'J+%9J'J5$mu'J/$Ky%~m$$='J3%pA'#o'J7$tf'FC$#D'K1&||&(v'+G%-$%Ow$KM'.C'*&$}`&p_$UZ$PW&n]'KM$OX'KK%=\\'<r$|z$ga$v3%/1#@1%/4'OA%.V%MF%ij$Ys$Q~%oq'@g#&?$|4'JZ'J@%<O#q_%NX'L($)S&oK'Jc$,)%Ow'L/%<R&!I'Ki%($$rL'J7'Q_'C7'Qa%)r'Qc'Kr'J]%j@'Kv#Am'K%$e:'Ka$=X$,)%n_$&@#2)'L#&xL#7V'L&'Qg'Q}%b0$)S&z5'Ka$xC$.1$}o&yF%b*%C$'Qp':i%1>%'w%\\E$W=%*>&~($gJ'J}%~d'*j%NX&~3'Q(%l1$Xi$vp$g3%b<'LC%Nd'K,%hc%E&%03%SZ$}F'Qy$$o'K['(3#+H&yW'H6'R#&~9%EU#6^'Qn%<r'Jv'R;%8}$ZS'R>%U('Qu#-['RT%p]$N%'J[%;&$Es'Q|&xy'RH%~C$CO'R&$Ss$.5%Q<'Jh%b+$!_&!Z'R.'Rr%'P''H'5F'JJ#*l'Ra$]y'Kh'Rd$M('+['L6$i;'!A':o'RD'.c'RF'AC%-$#vY&~7$yq%}a#vY'RN%NL$_B'LF%hc'LO'/1$iq'2W'H&'%<'I*&qu'/@'0@#j>'PB'L}#&C'L\\#&f',K'OP$Yh$U=$co'KB'M)%.b%,%'H2'Ea$ZO$P@'7Q&uU$PB'0.'Gk&8o'M6'H@$Jy$WR'SJ#,v'SM'SO'Gy&qt'0v&sy'LU'MS'Lz'EI'%n'M#'EU'6>$_X'&o'Ld',S%>]'@t$]<#16'6@'M.'Gd':S%o;':V'J&'4X'Sd'Ls'M8&07$RR'=u'I:#T7#4T'/:#,x'Ph#)B'9Q'LS'F$'PU#Bt#'*',C#)>&my#Hq'In&mi&m\\'PB%$Z&mh%$]'IA%$`#WK'P0#&=%tQ%tS#.A#|i'IO%F^'F!%2-%s@%|_'I`'I.&n2'Pv#R)#R+%GJ#|.'?#'IB'?&'P='IE'P?%I<#&_'0x%+G'Pq&n,'Ps%2G'PR$N8'P`$QB#:X$7N#2)'PK'TM%tR&mh$$F'I8%/c'PW#,A'PY'Hu'P\\%H('39#(''Pz#6=%._%@W$}E'4j'Rm'Qd'RX'Mj'R/&nY%9B%ES&(v$,)%g2'R7$}N&yK'Rc'L3%[N'R?'J7&nQ$O=$|3'RU&nt'Rn$Ny#q_%Nv&yW%#8#&y%}|%ES%./$,)%qQ$.5'Dt'$&$}N#)2&!Z'U0&xy'UJ'UL'Ka&#I$.1%}|'Qn'U:'S*'U<%\\;'S.$fd%%X#5T'L:&LB%B]%9('UJ$=X$PB'#D%}a'&Z'GR#rC'1{&(T#&9%%:#nP'&T'K?#+~$<S'Uy$1y'K>%@:$!5%73#1v$KM$jO%?l%`$'89$M+'RI%98'QP#*%%-Z'KN$6U'Q&$T.'GF'1O'Oo'U@$O=$W<'U,$iG$]u$Z{$>y$_4'R/'UJ$CO%ES'Ru$.1&p,#o3&yG#rC'U`'L2'H=%f<'Uc$Mh'FB%@N'UB%^K'Kq'RW'Ks#&V'UH'VB$w@#&y'U3'Ka%(e$GJ#|.$'Z'UR&!0%b+'UU'L&'UW&!?'UJ$Hb%ES'Jp$.1'Jr'U8%b+'VL'JP'VN$f*'Qs'+L$v-%%X'RC'.A'.s'Uk'V\\%}|$PB'K'':f'K)'!$'Us$gJ'LF'Uw$qy%.V%jb%>@#&b%Pn#)H%Pn$F_'@H'J2%nz'2!%PC#yq'Q5%i5$mh$md#->'@}$0&'=W$M;'UY#5@$M-':U'H;'Q-#&Q&~)'A9$3C'Q1$W*'Q3'H.$FJ#&{'$J$V4'En%rx#(E'P`$dd'-9'/:'SM'EN'Sm%H+'I)'%)'2`'SR'=V$j3$Yl'Sz'2g'AH#&*'M,'*u$M;%et$R*&o^$PB'Ef',a'Hi'Mz'6_'Sf$iq'M!'PD'/:'Lv'So'WX':!'LZ'SN'Gx'3x'Wd&|p$kh&q5'Lc'WR$mh'2h'S1'S~$n@'0)$W+'V,$e-'T'&~8'Sb#r$'@s'Ej'NM#5c$YK#M&#O=#e1#/k%zZ$NU#T?#4t%q|#,h#C_$G}$Jb%W?$M3%[%$K<'93%le'M*$|z'9*%RM'<,%'u%')'8x#ns%iI%,(&nL#'8'N`'H>'Ww'3)$O##&>'F$'=o':~'?c&{}';9'X*$mU'+`#oq';>$nd%qx%h&';2'=p&|1';6'$[&{~'-7';''Nr%D1'S}%Y[%r)$=A%Z=%zv'$|%sL'P]%wo#&4%rQ&{5'?T&{b'?V&r+&z\\%t4#RB#5+#kg#&W#[Q#XB#1D%v0#d6%m0'%)&ro#/E#+?'W~'?4&%{#(@'=y'OW#h''%8#Qu#'H'T4#*l&|`#)O%FL#&;%{-#4/%y\\#*H$X}#0Y&|'&r8&r:#K\\#'4&mn%|_'>B#[/$)P#&E#&4#'8#RE#&1#&t#';$I`#mX#&~#'<$A`#KX#&,#&u#i$#&0%t\\#M_&C6#&g#&t#-j#&}#&m#4W$<T#&^#&B#&4#','Pl'Yv#'/#/A$YP#&x#&o#&-#&t#'@#H=#,J#,L#,N#&k#&t#FU$n'#&(#'2'0p#/d$zm#~M#-y#&4#'9$&_#C7#)-#&r#'!#KF#&-#&x&rQ'1)#m@#5K#WP#[\\#&y'Z+#&t#J$#&3$-*$YO#B{#'A#5x#&.#'6#&J#*[#&n$n,#Wc#&t'V]#1j#Az&E)#&-'Z3'Z5'TQ#.G#/{$ra#&>#&;#&v#|r#&d#*A'Z?#&=#7V#.@#&n'ZD#+u#&x'Y{%z<'-C'Yi#[o#&=$4q$T<#&4#'3%I!'ZP#+o#&k$\\N'Zr#Q/#,s$n''Zy&qg#&}#At#&B'Zu'ZE#&x#IQ#\\'#FS$?c%:G#&4#{K'[8%I9'ZQ&qh#+_#&>#+=#_(&IS#Us&FU#,A#Ue#&s#S2'6m&|k'WX#hU&qy%{v&q{%uE$a,#&N%y)'Ij%|_%u`&|f'>p#Ak#k0'?7'%e#*Q%sS'?f&s''Pe#K~#(B%|_'$R%|l$Rw#)}&{o#'5#Dr%wF$_H#B%$K*$%Q'1$#gl#RN'[D&rI$bk#&C%tB#&X%|a%{n#S$#&j#'M%y2#.d%{.#g5'Y='*W&|I'*Y$'8#hU'?R%2s'SG%{_%wl%{7%rR#(##&]&n;'>3'?4#'{#&X%rQ%zh&s!&qt%|D'%i'?h&zo#e2'%)&t*#'C#'&&Fy$sh#.\\#&x$D:'[w#)3#OV$FE'?*$S,#&j'1(&qf'[A#Yq'ZN'Z,'Zv'ZF'[7#FR#*}&Lp#&y#&}#GM#H?'Z2#&l'ZT#BL'%-&{i%vb'?N$Ld%xW#&8'*I#Fy%y-#S$%uv'Y-#'G%rQ#'7#&T'$U'I$'?P'>$&{8#&2&m`#0f$d`#vN%rQ'3~%xk#eW&sl'PF&r=#&a#&E#&~%zf$JJ#(P$<['Xu'Xi';s&{}#'6&sf#Be&sh'?O#5b%vI%rQ#J!#&z'\\J#``%Z+#/u#?B#4W#46%Y9$\\d#&7#'%#&0#&p#L@%Ek$\\l%,~#)a#&-#&i#&u#Dy#&k#''#3:#B=#'&$3d#&9#'!#'5#4C'[C#)3#.\\&OJ$\\z#o4$J[%u2#6^%|V#'L&{L#4k'TB'$x'Lw#*l#1E#R/'2\\&qq$g'%H&#'k'MD'>=#/Z#(X$2A%&:$*n'Ds#;`'V#%KG#&y$53'A*$3`'K9&},&tg&}S'^*%V@$M-&5l$PB%V@$g3'@P':h%0#&}k'2x'^0#rB'^2#&J$)S#x&$M-&~{$Xi&x\\%}a%U&%~8':Z$Ly&}='Mz$0%'V4&}{'^3%J_$M-%V@'^7%J_'T)#rC$gg'^N$b+$$F$3Y'E_#'*#(w&@?#&c'^`#.@&AO'^`$v-$YD&~*#vY'+G'^*'M('.0$26&}R'/O'^S$e-#s6'A3&38'3d$fd'^j'A9#vY'^A$)S$1y'49$M3$26&tg&~3'^*'!F$Xi%|z$g3%V@$g6%N:'Mk#rC'<T%~f'_''AC'^t'AF#s='_-%J_$g6%JL'_1#r$$KD'!3&b'%2;#&E#dM%64#-['(e'S4%9('_)'B*&uY#oS$g3%%L'S<#r$%o#'!'$M5#hT#v7#ym'Mq#|b'98$v?&G<&~A'_X'96#*Z'V*$63#q&$M>&~u'!'#.@#-[&uo#xX$^t$Mo&~v#vY'_('^B#2k$hH%07'!H%Ji$Og&n]'_7&}I&xE%~)%V@&xH&xi%}C#C/%}Y'A2'_x'_q%%L$g3$TX'_|%J_%}?%JL%E*%}C$\\;%}G#b=$FF'`'$)S'^8%}a'_.'`,%~+''h#rw%fj%}k$$F#*Z'L9#)d#qO$!Y#&p#v7'1t%98'_K%93%%K#oS$g6%%L&~=%}C%(u'!U$$H&j+#&T'__'!Y'_Z%bK&6R#&v&G<'B9#(w#*Z&Ct%/`#O>#&('_j%aY$OZ'`3'S7'`6'X6%}}%Yz'^q$0q&nd'_7$g6#s=&~='!k$N}'#3$[s#mg':]$UX%n-%_.''[&B!%gG$P^%o1''u#>\\#9R'`q'_q'_#%~8&xa'_v&xc$fM'`K%fy$C,$=-%ES%V@&o1#@x%~W#rw&xl$jf#&8&x_'#L'_7%}?#s='a6%J_$,)%We'a:#rC$E2&xm$$F#d&&%h'`D#d&'W@#&T'(4&xd&yL&}u#oS%}?%%L%ES%%L&x;%~H#01&xm$][#|9'_W$0Y'&['`Z$fM'`\\&G<'#U'__'&[%`$$fM'_d#&v#+a'ai'ac'#L'#Z%5B#0V%J?#4<#&V&xm#2\\#d&#X2&vV#d&'`f$qf$N$%%l'a='S;'a@'_q$53$yH$qf'_&#rB&yW'a2%ES$=,$'V%V@&t?$,4'R*&vt&!Z&tg'b0'_q&yd'Ka#s=$,)'b5$.5%Ow'b8%5H&$3'R~&!?'_7'aD'b4%J_'Qn$q\\'JO$$F#FZ#qA#dM#(w#FZ'`b#.@#FZ'b#$~Q%7X'L&#vY'b<$)S'S$&!p#4t'`o%(@$3g'_7$,)#s=%qR&!~$es&oe$Ui&y;%(k'be#7j'^*&fD&#J%ok'b.&t:$w>'a2$'Z%O(&$%%%L$'c'b|&$*&#U#C/%P!'a>#rB%)('_7$'Z#s=$'_%V@$'c%JL'c$'$($E2%P!#Xd#1l#&-'aN%64#7j&4e'aR#+H'c*'_q&(v$'Z%%L$'_&u8&pL$gl#rw%*0')|%(4#|C'ab'bx#*8'`Z$Te%P;&G<'c5#2\\#7j'a}''g$H6&h6'`W$0Y%)(%`$$Te'an#+a'c''__%)('at$wG%&@#*v'c5#3X#7j&h6'`c#DG'CZ#&S$wA$qN'bp&#N'by'_q%9+%)\\&ti'a/%7!&$6#)g'_7$'_$@J$'c%V@$,9$J+$#U#C/&tr#J-#)g$-P&tg%,>'^*&u5$09$;*$'c%%L$,9#s6&#z$SN#&Q%=$$S[$-P%b('BE%Qe'b=%J_'c.%J_'d$%J_&$*&#{%U~'d<'c6%mp#&>'_E#&P#*8&)d'd>$l~'c}'`(#oS$'_'b~$.='d5#n'$E&&#{%V!'d,$/[#*8'aa'c[&$5$U/'`Z$U/'ag#&q%:l#(w#*8'bW#+f$w?#dM$tC%)7'cs'd/'_q&y%'BI&$;#'6%;O&u%'_7$'c%N%%V/%JO%7o%4V%%z&$H#)f$Sv&vF%V+&B!%T,%\\[%XA$T2%N<$WA%,A%bJ'e+')I%Bh%,o#nm#EU'e1#B.%,A$}z'e5%h~#n&#|{#nq'e0'*$$&A'Dt%JC#&0'^*'a,'(F#)r'bw'C#%<3'dU$8v'b3&uV%V@$.G%NP$'u$DA%NE#C/&uL&tg&v('_7$,9#s=$%K'eU$,?%O6'(Q#rw$E2&$`$$F#nb'c9#dy#&0#E+'`H#+H'e^'c@#|S$,9&(v$%K&(v'(w#&Q$~_&uk$08'#;'dc'eO#&1'`Z$Gj'dh&$`%,A'a}'f!&v(%`$'C&'_e%sG&uk#.s&un#i|#xX%-t${c'e|'5C$^l$t2$MI$]@#'z%T!%_E%T!%D*$b,%Q`'+\\$nZ$P,'*0'+$$%l'\\+'-M#':%gt%jp'/d'fE&qL$X*'&g'/g$cY'3B%w3#_C'Xh%v6';5%v9'Xk';('EV$p1';=':J&qQ';.$6.'Xg']7'f['Xj';8'f_'fO'fb'fU$QA$hr']v#Ez#-\\#&['?9':7#Ax#/##/%#/'#c/$Y/'H)%>P$pW$i6%Z#&q8&}a$m[#v7'.|'CC'J-$ZO'CG';-$M3$^H'3E#0f#(d#(3'%m',@']u#a!#*j'fN&x&$_X'Wh'X.$Y5$[0''f'fo#5c$L:';)',4$nc'Xd$hq'XA%x($c3%zY#+E'XF'$N'XI$E5&70#-,'2=$qk#(P&|s$MJ#'1#'-'9I%eZ&}a%iI%Lw#^N'LH%lr$Yq'X]$Pb'g_$`B'Wl'gb$`}#5b$SH'9~$g+#S3':7%F3$GK%F5%s='Gx'-I%\\y$Qu%uC#&''P8#r,$rE'+7'.@'O1%[;$f)'N:$\\B#&G%gZ$tG%>I'!U$WG'E^'@u#*Z$C_%Ec'-'$b+'8-$N+$F>%Dv%>@#&k$MM'8?$kk$WH%.e%d($_B$%X#,M$XO%*c'1_'5|$nN$no'V9%c:%qs%YU#(W%>f$]@%is%fi%gT'*j'H7%\\9$m0%X&%p^$}B$OW%[`%}4#'7$ZU'LF&zL%Xs#F<#&?#&Y'+v$Oj'hQ#a0#+;'9>$i^$Jy$wf'fq%>!'$g#)>#v_#&`'g{%/o#|a#S2#/z#O9#d##HI#&y#i$#&=#'!'1(#'!'\\h#&C&IS$dg&t$'%^#)r#Oc%qg%w+%{T%w-#ah#&5#P+'F!$Pw'>K#(s$ds',i%>#'LX&sx%vk%vm'LS'Gx$du'7E'9H$q9'TP&}2#o*#&z#&Z'F+'-7#''%nl'Xm'f:'JV'GW$J[$F>$ad%i9'?G#@,'+X'K<$0%%\\G$LS'6Y%.e#.#'gU'^N'i\\$yF'H]%.h'Ms'1I&}W'Um$Xi$=X'^Y&xk'G_#&8'G@&op'Q2'61':i'g.$VT'h6'h%$63'h'%%?$OX#)o$EP$OW$hk$ty'B9#e0#+&#3K'h1#&($C_$Oi$zu'h$%YT%q($NX$Jz%>F#6R'3'$}b':q'h7'iU$XF&o+$($$|!'iz'j2%0n'j4$gp#(9&Fy%!T&~`$gv$To%id%gV$mY'j3&~)'`C%lk'ic''f'FL$vp&}S'&u'AB#?\\'*{$Xi$3C'io&vt$i9'KN$nb'.M'jM$Rc'j3%AC$W,&q;#}Z%>p$Im%iB%gT$mh'ic'@t'ie'^o$ik':_&f{'*m$^v'ib'V&'*q'ie'jV'/O'&u'ij#?\\'G1'in'M4'_2'G_'Mz$ES'Km$v.%.p$M3'D6$MC#~]%pB#6I'.S#qG$^[#4|$Xm'(%&ot')R%8|%1?#n>'M7'LP#S%'SI'2U'I,'MO'G~'SG#lR'X%'W_'-;&m\\'L^'Sv&x&&qH'Sy'g?$}f'Lg'fc$yE'Li'N5'Oh&}W'Ee'2t'X:'4g'T+$#>'Lt%OR%Y^'i/#i7%ye'5(#)>#Wj#fw'\\!$p{%w,#Pm'i4&n6%{['PB$Vt';N#M)#*E%{Y'Ie'\\0#f!$q)%GV'Z1#&,$do&n&%u(#S2'T='Sp#,x#&F'-C#Is#)}%2\\$p$#[g$c4#S2$c6#/='/:#-|%v^%tT'iI'i,'gp'W_%jl%IF'H!'-5%2H#&k#&\\#1!#3j%)!%[l$dV%9m#.8$tz'!?'lI%oO#&.'lL'.n&}Y%98'2o'j]%}a%~h%~)%_8%fz%q%#r$%`a&va%Ow$P<%lF&nG'W:&o>'1X$Nn#3j$r-&p7'A:$lL%A8$$H&nY%@Z%98$}W$OW%&/'9v$Q,#*%#&]#'&%f_%fa$^k#(J'OM'=1%g)'82'lm&p)'lo'</'lq'j!%(%%fF$Q['lv%>:%q4$`J$eq&oy$^t'VU&o##*%$J4#*%'m(#*%$\\H'`2'`T%YE'1Y#,L$}`'7.'6P%*,$KI$g6'R.'lZ%}C#.y'B9$O3'i]&}F'lS':b'S9'5F''E#*l'`Q'!R%HN%)X'!U%*b$Ox#6^%O~&~>%fl$cN'1k&xS'97#(A#(3$74$j[%6=#@1%nL%\\C'm3#,Z'F^'70$eZ'J>%p^'N;$OX$qm'$,%ep#}c'3*'k8#I*&wO'((%9E'!S'B9'jt$vp$Mt$ya'1h#1v&x`$_=$}W%h|%(B'7.#So'lJ'h.$hU&R}'mN'</'2o'C<':V$g6'Q|'mH'mV'l]%.x'l_%lE%hZ%lG'lc&nu#*L'<s'lf#&;'lh&pb'lj&nr$WH'm4&p:'m6#+Q'9C'nH'nJ$kE'+D$lM'j*$)S'm&$OW'm9''=$W,'G9$,7'8I%%0$k_$Xx$^H'Sj'X''Sh%#x%sS&qE'We$$4'2c&q6'3M'ix$aZ',U'kV';?#0f%jw'\\~'hw'l1#CV%wF&|b#J#':%%He%p&#&g#U]'%p'3z#]C'3|'-7%|_#&>%{a':7'53%#}#'%$cd'hT'6Y'4['nP$`''nR'Fe'6R'``'5t$[-$h8%ef%fl%_/%5K%kv''T$/y#z8$v/'#3'nO#+,'/V''Z'4>%hv$`E$Sx#F<%}?'Vl'Ka$Sy'5c'+#''M%p]'FM''o$}g$)S$M8$e|%b/%.b%Io$u}$U*$}C$ov$WK'4f$?G%~0$s.$#=$OD'g%'N@'9u'QT'6~'nb'Xm%Y@%Y@#'##(J'+?$v3%@5#@1%[/#J?'5~#e<$Hb$rU'ER'LT'WX'WZ%xk'kJ':7'LW'Gz'kM'2X'L_'iQ$pU$U>'kR'/I%E_'RI'Lh'KB'0)$e\\'9q'NF$PB'C<'k^'S|'X='M7%qx'nx#5b$NE'g{&mS'o.'Ia'0d'$h#)}%wE'l4'5;'MU#j?'o%&mS%$x%|_']C'o#'39#&L'3j#&s$qJ',}$$H'5['4:#(P%DQ%%C#&M%70'gV'l{&f~#}Z'G#%BT'<_&ns'Fg'nQ'7U$b$%?t#&/'o=$cN'hZ$WI$]5$\\O%),%aS'oF#y?'oH''M'oK'5J''R$`T%ef$MA'U0'48&!(&J3'oX#&Q'ok''8'<9'^P$hE''R%et$UT'oa$M<'oc$f+'oe'Bn'og$b#%'C'!k$[q%%Z'hT'<;$#>$p>$L4#s6%Z='[\\#Al%=Q#@x#&F'F8%{3%yq%xA$]I%{k%z]$9c#&z#1]#m=%ya%yc%Hd'PB'?e%{('\\C#V8'N!'i@&s{#,y'6j%s^%z]#(<#'Y'\\&'%5#4/'\\)%{1'F$'kz'F.'>O%1r%we']#'%F#'0#fv#'4%mF'SE%CF#0y'pR&CA#_X'>''8%#Pb%/e%+F$_M#4d&sb#'C%H`$at'r1%s;#'?'YS#,T'YU#&9$do&s1&{'%|G&m^']%#rt%Vl'?.'/~%{l$rU'?A'G}#H9$Vt#Mo#&;#&.#@Z#_>%z]#(E#'b'\\5%$X'fZ&mh'f\\';7$q:#,x#&h%b,#.B'\\E%sg%C[#'Z#S{#FU$do#<O%rh#(D#'a'MD#DS%x(#'>'kC'\\p#dp'qq'NY'YI'=|#GP'?;'Y0&r.'??#,P#Br#+d%2?'8%%ye#&f#'I'qW'HE%s}'P'$,(#0i'r`#&D#'['\\k&rW'\\m&r[#'A']r%H+'Y/&r-%{2'MR'gv#5b&{Q'%P#&n%>!%6'%%/$F_$=X%,>&v;%eu#F<$'_&uN'k$%T)#o3%n<$SN#4j%WE%\\2$H6')|%5r#7j&y9'Au'MZ#e'%v_#/t$bb$-P&tL%Oy'sD&pG$#@$wE#'6'C!'sC'-Z',0#}$$'_'eS$'c%|z$,9&fD'd8#rw&@,&#n'sd'd?'sD%|z$'_%Q:$'c&fD'sm#}$'so'VK'$''d_$F:#*8#p&':p$gA#no#pG%'G%4t$F>$+W%7+#&K%bC#@,%bE'gl'bq#1m'sf&#5$gV&#K$26'C!%)('sD&fD$'Z'eS$'_'Cy$.='sz'd[#O2&#U&@,'c''t<%)C$w>'su'BD'K~$:U&fD'sy#}$'c2$tu%Jg')|$F:#7j't&%7j'!Z$Zl#)g't*&tO%%j$F>'(<%&6#'P$>0#@,$;^$~0't(#nb't`%RW%RY'd,%`u$U/&w'#','(E$.='c1'tF&$+&oc$Sf%SZ%5/#}m$'c'BP'tx$`]#'o$;(#n\\$FC#c\\'#i$#Q'4<''Z's_#B>'n*%~:'C!'&['tN%~+#hu$vn#'4%|z$,)'t?'R7%~H&@,'#U'u3'#L't>#}$%}?&fD%ES'bt$.1'u<'VI#&/%~H#2V'#U'Uq%er#FZ'uC%~A'uF'Ka'uH#o3$yd%~X&2j&xm$F:#d&'bS#&T$>5'n*#Am't`$fM%Q.#R{#&5'uO#2)'u4'sf%|z%}?%|z%ES'u:$gV'uY'Ml&xm%5r#d&'Ug#&T'!c'uQ'B{#&G'03$}W$EP'#U'uz'aT%_r#FZ#pb$yC&xm#+q#d&'!>'sY%h`'s\\')b'u{'sD%O6'b,%fT%V.&yW'uS'q0''''ur%i0#&Q#uz&!I&y($UW$$d$ov#,9#(N%>n&no$)y%\\,'vJ%W>$=b%X`#&1'/y#@,#'f$5N'sA#2)'se%|y#}m'tB't~$.='sl'u$$lD%KI$1~$Yr'Oo#-,'c5%jG't^#&/'t`%d'#'Y#'3$vS$V8#(<%PO#&)%PN%p3#-`%/x'vQ$F_%8!$){#&g%*^#nP&u_$){#(2#&B%*\\%SG#&m#(S'&>#&)'&=%g1#+~&!s'u/%8D't:$[^$eR$Mq'C!'w-'sf'uW'a4$<)'sv$09'tR'cF&#/&@,%(7'w4&p''u5$=_&5l$'Z'(B'w;#}$&y~'s~&#>&tZ#}G$Y?#&S#-,%TH#v7&zJ'wB'ul#}m$,)$OJ%'9#C{&pY'Ml&#>&aj#{~#&D#dM#+q#Am'v.&yt$P^$OB'p!%%1$[)&}S'sD'FF$Eo'_%'sc#zf&~3'wC$PB&fD$g3&fD'mS'`<'AO#[)$5R'!3'Ap't['mL#'*'_f'My'6Y$OG't`'ma#'Y%Vh$Q[&wy#(R%nV#&)%nX$eQ#)g'at$U/&oC#+%#*l#9)&Us#_A$'Q%i.$Ju%Qm#)2%J=#&/'x6$Sf'x8%P@$gF&dm'CE'6!#(r$T2'#s'(*#7w#1:$m)&NY'tk#&0't`$.<#FZ#y&$F($gO#0n#,J#nk'!}%9`&oe%9i')|#z;$~k&$i$}K#9(#&1#za$Rf'R%'tL#*8'sD%PQ$'Z%PQ$'_%Sn'cF%'?#&O%\\B'&Y#2)'t='wV$<)%X-'wH&$N%.$%&{'?q$_B#&m#'r$vS$II$vS$Tp%pR#'g$<E#*%#pW#'1#'='5T%&h'5T$F_'B2$%8#&g#iO%W+%:l%5r#*8#^^#v7'cA'd?%P;$U/'v!#&G%:l#+q#*8'we#(q$_B&y^#&*%d$%?n'x7&o}''{%Op#ne%f~'xA%z6'yQ#&/%_h'yT'k0'yW'+~#I*'yZ$wJ'xE%`8'yU%hZ%6i'2#$D#%#f$SR#&<#'[#&~$:=$od#d($*>$Wq$IK'y0$O3#&K#(D$%2#@,$)A%?j$Jo#&g%ez$F_%}I#od%f#%K{$T$#'&'y1$'9$z-%8.%:B#nO#7j'y3#(9&<<#&)$6D%JU#&5%:l$wJ%Jf'tm%'H%RX&z:%9{%&8#@1%&;%>|'x5#&V't+%,?'yU&A7'xI'J5$^{$UE$Xm$M2')Q%i.'xA#&;%d_#o_#y0$LJ%Y4'rV'$Y']9$q9#'*';&'fl'QY';*'Xq'Xd'z['fh'rW'fj'Xz&s@'X|'nm&fo$N+'ze'fe#(o'gx#,B'->#'6#om'gF'L;'ig$kR$b$%Dh%g}#<t%h!'OQ#@/$j{'rc%1`%x0#-Y%x2$<G$i&'f`'jA%c9$X8$Ra#*Z'+d'FC'+a$YC$W9$Q[%}m'ja'jd'jM$ox'{:$Jx'j:$i;'H^'{9$MJ%}m'i\\%Ab#&w'*f'-c$RM'2h',4%eo%Z3'+f'fo';A'PB'Wb'-V#0y#TU#&='r/#fI%C['->%%&#_A%vl'I'#&M'rn'$b%?9'2X&{[$ND'zt$Ln'l@'r`#&C#'Z's+#'{$d}%e:'fB'{7$Sl'{?$OK'{5$mh$[0%R@'FL%nx&}{'X5'I~%~*'AF'K''k^'F{$OB%>j%[m'.K'+f'.M#(P%ka$MC$d''8o'fm'{C%i,%,r'GD#'Y'o{%BF'8J#@9%Dn'H,#-[%>S%D/#9q%_6'jL'{u%-$'_I%=e%nO$a#'N6#6^&})'.I#'8%lk$[0'cW'{}#)r&}S'X5%.k'W&'AF'q)'WJ'|)&,''hn$Xw$j{#-!%x1#VR#&w'%l&qC'nl'p4'no'g>$pb$:7'{Q$e&'gC$u('I#%j{$Vy%qg'[e#U^%vm'SL'l@'{(#.L'qw$KA'r]'Pj'Sr'kn#-Z%w.#Pp&zx#5@'h}#3z'i!#7K'i%#Ip#'!'-C#&h#P^$vt$zc$N8%sy#/w'hu&sP'iF%tT#'0%Dy%S!%J_'@:#qY'K<$\\Q%D1$l<'{K$Pn'jc%>]&ur'.M'Fc$M9&}{'&u'S4$(F'`5&o^'j^'X<':l$Y5%>]'cW$#D$H8'2&$i6%?u'UA'y`'!L'xJ&wM&wH'mz#qG&%%'<q'k>'qI$i6%@W$l<$Ra#2K'{y':B$RM'{<%>]'Q#'ja'}O'jW'Ms'M0'Lm'Ak'k''X;$ZX#*^%>l#Tb'jz'0/$iC'}p'G]'pD'yP&},$e?'j~'Ms'}S'2s'6U'k]',a'}X#*)$cn'Fs'CE'Q4'/f'5C'ox'fa'|6$XI%r*'F|'LJ$Y>%iX$bW'+Y%>='f<$h['<&#@1'<(#J?$Jx'kA'M:&|A'{U':''L|'EL',<'Id&p~#,v'F+&mn&&q'H)$hQ$U>'HZ'Wi%r($OK'H2',X%.e'KA$e-$Xh#pI'Wk'WJ'2w'pE'Se#5b&mJ$Pw'||#V.%{['?9#2E'r\\$S,%xG$ME#Al#,E%$`#0y%v4'\\f#);'0c#0z#fv#c4'l-#&a'l/'-6%3&%vK#F<'r'$g7#&`'r['r]&R`'X#'pP'hy'n|$g$'0x'o0#4t'lB'lD'$N%y8&sD#F<'l7'TP'l+'r6'9Q'PB'i<'|v'i@#&j'W2'=9$n]'pr%q&'6O%ho'm,'F=#&1'<'$B}'7[$MJ$t&'&v%.m%98$~y'h]%%y#(A%gO%%C#&]#'=$}/'nW%a%$^t&p8%9r':p$O)'n4%}\\$OX'*w'Uo$+|#5@$g6%}|'mU#rw'mJ%}k'mZ(!r'h0%*b(!v'B3(!x''V#&y%NX$g3'#G%}O'wz'mI'n1%;p'O8'la$W%%>y'NL%Bq$X+#&m$^}$ES$b2%hk&oz$Nn#B4'nU$nZ'@+$$H(!b'Q*&n](!f$OX%e?$XR'ph#&P'E('l{%iL$v3#&6$gR%&X'll(!a%m{(#K(!e$}}%bK%Cv%RE$,7#&]#&A'Fm$\\F$iC(#E&pa'W<'0V${$%E5$j['1P%nM(!W%p^'Fy'a|(#_$Zg#d&#za%`a$Zl$<&'1`%ou'm?(#M&na'6J$oR#',$U[%~)%EL'n<'4X'm6#&:%@B'!s%ev'AN%}C(!r'!U%i>'mM(!w#*%'*w'6V'~5%9C($<(#!#rC(#$'mY'W($0%'n%'_t(#u''T$a<$y@%[N($'#)r%}?$O+''5#rC'qF'.j#+X(#%($C(#*'!Y'*w'GO%}a%fN'JH(#3'mV($A(#6'86'J3'nC(#:&pb$ns(#<$O#&nP$aQ(#@$[.(#B(#h#&=(#F'1C#o_'2N'M3'$L'2Z'L['nh'2U'nj#kg'|i$pT'|k$bx'~f$mh'KN'zq%@d',s($z'iM$Lj'Lx'Sp'|z($w'/8&sU'M$'nm'p5%K_'0M(%$$Y5%15#~l'nu'E`':P$M(%'6'T&'RI'5F'j^'Wv'Ek$Jk#&'#ov&p}'{e$Wg'[U&qs#)M'3@#I}#(L#'I#&F%wq#'Y#'y%zG';[$o:';]#(|'s9$sc%uw'p]'HD#-`#Ue#F8's7#<,#+E#&o#+a'[M'6k'5'%x-'pN#Ht#ao&mS%Yh$rc$fy'0h%yO#)L%%s#ju#+C'gO$S&#Y<$_|#4d#AY(!B#QV#55%yA#'0'{^%$A'>z$s`'PS%se'fK#HQ%1u#I}#'i#(5#'r(%n'YO#)P'gK#MG#'B#g~#Av#aP#L)$kt#B/$c*#'g$(*&|w&|v'vM$Mh#&9#(@%6&%:##mv'XN#@x#&9#(\\%;)%mj'.7'mN'J3$X?%o1%[@%Yz'&d#'('^M&}O'{N%q&'KP%*''2I$m^$J_$oi#(8#r9%0J#2b'^j%jR$:1'9.$t2#&U$>O$J[#B4#'1#(''DJ#&)'DL$qk'}z'Q'%'P'G[&}W'J#$Xi%./$g3'mE'^;&}L&aq'^\\%gw'~1'0)%-$'KD&}W'~n$?U#|.$g3'ua('''a;'G_#&9#n{'8}$|u%p5%W$#J-%)x$wC&#_#0|$+'%Wj'ty%;s%b*$F>#(F%Xc'yR#'1#(g%#M#&)'Dw$xa$=b'XO#'c'Pz%Xx%E;#:_'&$$kE'z8(&y(','I|(&|'&q(&~$V'('##Ly$g3'lW'@a('(#oS'^>'2k('^$M(('.#|.$M-('1''@'tP'^K'Rd'^=$ZS('9$BH%/$#J>'vW$=<$SH$V3%6i'&f'xf'x]#&>$#f&v_'xS#&;%4*'zF$%&%P'%`3$U/%,+%A\\$m'%Qm#oD#&E&fz$gc#'6#r9#&)$8h%Dt%>=%*Y$@$#'1#(a%&~#&)%^T'<l#@x$|u%;+(&M('S(&O#'.$u2'wi$fJ'EA#'8$?|$SB%N`'!Y%c|$^5$MB$Jz$$*%9E$&A'B&$UO'V=%/)#U~('D$bt%41%03$yS#-[%Dg$N(%nF$^t'4j%Om%]s%Um#&F#L?$@9%SV$@9(&G'XO#'`%pN$u_%\\_'WU$9:%]u#n9(&]'*q':L(&`%')#&}'DJ#-[#~@#&'#(U%aE%aG'<_'EA%=[$Sd#(P$#y$3p#3j#'1#&j(#f$zu$XZ#',%pP'GU%>='C)(%G#'o%bX#&)%bZ%5=#2)&}O'{H%hl#(P%^`$J[&az'gf%7F'k`'1b$t2%dX$N+()-#'Z%&9#&)'zE'XY%Jz%01()M()W$kJ#&'#'j'w('w*((L$V4#&9#(d$Bz#@,%qD$_V$f)&qO%lk()M&pu'!=((s#&=%+o$(a$Oj%Pm%.=$b[%6?#@1%Kq%>k%.V%bM%D=$mF'29%7R$|z'<E#B{#&=#'1#&Z%(a%cl$P-%DQ%oa#',#'/'OF$oi#&p&&S$pk#(b%<;#&)%80%E^%>=%'+#0f(&s#(.'Dq$ym'g^'X_%M'$Yu$0%('m'|7$)S(&}'J!('c'&p'`L&~X('h#rw(')('k$yE(*N#AS%'P('/'~o%%J('s',_'@Q'k($Zc('y'6>&x~'&U%c9$u%'z~#nE#*Z$A_('\\()$()J'*q'{K()U$}4#&0%nV(),'$l#(J%8o#&)%Sy((H%Jz()@%Ct#lC'SN#',%&P#o<&xj#'w$O_'2;'=7#@,(!U('R(&H#(4%M%$3r(';#'8%6(#nP((`$[n'Rn'B@#&?((-(*r'j`%>d#(P()C$/5#&'#'I%<?%<A((x(&O%U_#@1'x3()^'vt%af()I$i9'.m(*v$X[%Up$N+#Fq#*v#@1%;!(&n$}4()*'O=%6t%>i$j@$P-((8&z;#}Z%gQ#&)%b8&pz$<&$R?'||',v'N{$XW$Oy$X5$b2'EB$Jv',y$%g$.M$G~%^=$Q%'9s'5W$W,%au'-.#Eh':@$Q?$L4$Sy$j|'%p'-9%]''HJ'6)'/{#kL'rE%$A'HP'3='3?'%Q'$T'*O&sU#||'H)&qH'EZ(%8'K!'ig&}B'b`%AF&}W'X8'mQ'*m%e}$_#$fM$\\M'ue#&,'3a'Rd(%E'3e$\\W$!C%rF'MR'l?$dw#g[#,p#Hu#Hw#BM(%j#){'53'6o'MC'p]'o)#C\\'?2%rQ$NE%+G#au%*5#'H'{.'6>'~j$rJ'6B$MJ#nb$EP$^}$TI((l'x$%?v#9)#(w'1k$i4(!u%0M%98%,M$iG#'4'q;%~)'JC(*`&!o'KX'+#'B9&nk'T!($8$g^$)S'5Y'3Y&oG'm~%0$'mK$FJ#&|%.Y'6b'6/#3Q%zn'pI'N+#Ly'6''N&'N.%s9'o#'N%'N-'6v'qQ#~N'N#$N8#&P'6=&x&'X3'6|$W8%ns'6I$X:%(B'6N'<0%bK%?s'70'6M'7+$OW'ms'm:'7/%%C$)>$XM'Kb'NG'H='NI$v/'78($f(%F$TL'3,'p.'PD'o#%{I#&G'p]'pK'o,'=~'rT$da#(;'~a'zn%D6#Hs#*8'WA'N4$W*#6&'/Q'~m$st'H:'/V(-,(*d&o;':k%9q%D1'gB(,T$d^(-s'ni'{V'*H(-|'0s'>2#jf'3n'qj'N/&s@'d:#@x#&[#&J'HW'EV(%5#I0'+$'SW'.n'C6%c(#&y'|Y',^'1v&uU(.2'k_'^N'g''SB'Xq'Hl'fp'OV'7C'O\\'7H'7J'OZ'8S'7M$LK'5B'9\\'Oq$M;'S]'Mq'KF'7a'9d'O>'O@(+Q'Oc'M`'9/%*<'O3$\\#(.R'7^%?l(.o'99'lt'O='9y$\\5'O{'OR#(o(.b'7w'9P'PF'O%#&<'O'%/]'O##'G$Xb(+l'm1'9@'9q'Nk'Nv'9u%*#%ox#&e'XX'2-'8@'Nt'8u'8j'Nx#oJ'hm'OA$~I$i`$#<'h=(+Q%c`'F\\(.y$Jv'7q$^{'O!'7z'7|'9Q(.`'9W'7D'9M'7u'O]#&;'O_%Z/$te%r''Og(/B'Ot$^1'9c%0Q$M)#&]'9H'h!'9h'Nb$M6'h<%c&'n7'8g'89%?o$p)(/E#&T'9z$#J$Pq%AC'X}'}t'gH'zr':{%=M'Xv'rX'Xy'z`'Ij'zm'iQ'zo$J[(%'%D~(,W'4*#&Q'z\\'=q'z^#&@'Xl'zy'Lf'.V'nu'Xr'2{%Eq'-K%33#'?$^_',}'{<$#D'j8'qI'iR$nb%D:'~M$&X%11%{+%BH$`h'Ob'0S$kE$]p%vr#5@%/9$j~'kz'p]'XD(%{#j7'T?$'x'\\r'5''Ik#)>%sh%sj(-t&n(#H9'Tj'I\\&mv'[N#5c$RR%xh%xj'T[&mX'T]'T1&m~%z]%rj(!4#]v#,1#WS$n&'*:%20(%P#5b&qw#&z'T|'Ht&n/'T5'Hy(0~#QG';u&qU#],$NX#&Q#':%mi%:1(!`$Ky'Uy'V#&}1'47$0:#B>&~3%-;$Nn$z/%g($Xb&n]'V1'6H$i>%@?'Ri#,,#&3'Qb'UD'U.'V?$$}'VA&xy&~z'4T&Nl$=_$Hq$'Z%N`'b8%:x'U;'Eh($C$f,#*Z#B4'lP'9l$dY$Sk#*Z'Dz&o>$WG%bJ'pu&w($bO$nR$MR%95$XE%Y>$\\<&$f%pH%8T%hT#7x(19&}$(1;$w;(1>&n_%?o(1A%o)(1D%,r'qF(1G%B9(1I#2K(1L'VV$]O(1O'Vi&yR&}$$Hq'!h#*Q$,)(1W'Jf'L!'Rz%!a%5Q(1\\&38$^t%`a%16'_k%e.$27($m(1e#&((1g'nE(1i%_-(1k'mv$Qm%i#'#m&w6'm|'xO')U&ah$t}#6%$$<%i>(1q$Y1'0G(0S'E7%D:%DQ%>@#&=%jQ%jS't4'hK%gU(*n'.<%pI$c_%>V$MJ$]2'XL'LH&nm'GG$h/'SA'gD'zb'W-&|z(2]'K3';-#5b$[5'$p$_i#av(&&#+>$Ww(%z%z['XG#)L%h7$E5$pN#bP#1[(&9'`d%^2%c^%\\.$ye(*C$Jz%aO%q3%)d'm0'9'$dB$ju'j/$n]$$n$|u$y<$|a$ye$Oa%:{%aO$F<#@1%M8(34%:A(#U'S)'NT'5x(&G$$n#&9#'%%im%)?$u`$ye%p-$jI#&+%\\!'2K%<H$t2%gO%Cz#\\z'9,(3_$}4%e5%=/%f>%qC%Xc$Tp$ye%nR%Cz#'1#pH#@1%gf$Tp%~K#S0#rB(3l%:A'~G%iG#-Z'4x(+k%,!%W?(3S#&^$cd't3(3R#Hs#&9#&p%hQ'<R(4#(4)#'<%Ko%j`(+3(3S#'G%qK'G$$|j(3A$UC%qK(3t$jf(3v$Oj#']$j@$^\\#&'%Ug#&)%Jv(3D%:A'V6%ix#Mx${9#|.%oD$ye#(K$+e%_/#&M#Is%g$'g<$fb'GC$Jk#U~(3?#nF&yK$t2(&g(3[#&M#'?%qW%qY%iC%:A%`|%E6(3\\$c7$j^(3X#S5#'8%U}(4.$%g#)7&n|%i{'<_(49'.>$}x(49'2C$[t'E^#ul(3w(4u(4m%N/(3x$t2(36%=/%/D%r:$[t(3>(4~(3<$ye(4I%=j$\\,#@,%E@#n9%!!%:A%5$(3[#Tn%5)'12(4x(4m(*#%\\.(3u(4[#-W'us$}4%p{(4`#'4%fJ$(\\%E3$N##',(5$(5@(4=(5B$e!#qY'-y'E7$X5$fM$t2%VH(4`'pj$}#%jf(4p#oT#--#@1%K,%nM$ye%jb(4R#&_&pq(4<(5,%C.(2u'Xt(0%']8'Xx'=s'0x'|c'{+%zN#/w$~o#,q'i@#&N$T:$pT%>3$nY(2z&qM&}*'K/(0.'t\\%D1'h0'jc%0?'Wl'+q$me'h0(*u$b,'h0(&_$Rc'h0(+V%Ab$!B%@9%Yv#,y(0!$K[$J{(04'Xw'f]'z_'o,'qh(5s#7V%x2%zO(%}'{Z$_N#&<#F''N3$MQ(5~'&h$ck'@t(6%&_F(6'$me(6U(6*$Jk':t(6W'Ab(60$j1'g!'0Q%qw$hp%=;'{*(6F%zN(6?(0'';$'>F#)^'XB'rA'pY'i@#.f'H)$Y_(6P'gh$MC')7'{6'gi%68%Bu$Ra(6)'{B$Qm(6[$m4(7!'cX'.'#ny'0J$b-'fo$K\\(6C'{`%vm(6E#Ad%zN(&<#D%#AY(6h'zj#'5(-S%@7(5}'.0'}F$Y5'+m(6w'p9'zp(6V'kT(6&'jc'/K(6-(7D'@t(60(7G(63(67'2c(6:%aK(2{(6c$6.'qh(76(06%u*(%b(6f%x3(!A'%u#)N#&E#.x(6N$L&(7<(6Q'22(6v&g#(6x'nt'{<'fb'jc'fb'{H'fb(60(7o%>}',T(0;(7M$j1(7O(6a'fd(6=(5m'k|(0&'zj(6k(3##+o(3%(70%x2%x4&s@'I%#0f%vl(-R(,>#oq(6t'0P&oq(7@(6.(6,(0E$bO'C4(84(7#$mY(6/(7r(6+%4f'*h(7N(69(7x(7R#+~'T.(%Q(%V(-}%sd#(T$o#'PB(%+(%^'[W&q$':[#O9%Ha&C6#GC%t\\#Nm'IC#Kz#33#-\\'Tg'Y)%H(#-!%zB#-[#''#&@'l,#RD'>U%+G's3'0a'-5%sn(%M':%';_%IJ$iO#/i(0['gN(3(%FW(%m(!+(&7#P1'|d(7[%sC#&@'2^#kg'%x'I(#)>%zB'pX'\\}%zo'H~$R|&]Y#H.%d3'P}&WB&qO&}a'J('Ix%lk(4K$DW(83$yE(.)'ih&uz$e-%0M#?\\&}H'~#$dm(+C&},'i^'/O%lB'_o&}W(-i#vY$g3($\\'!#%0##HI'^N'}y(9F'0)%lB%Nv'3U%06&Z!%}N('g(9O&}L'jp('x$:&%,8%)R$N{#za%>I(#{$Bh#za%(u(9g#zz($6$s4#V!#.''co'mZ#Mx#*Z&1>%gX#qZ(1d'A}%#!(6U'1X(9s#A=(#e(7g(!u%1;%98(9V$,4&~W$,4$g6'VZ($+#rC#O2'B9&p9($W&n](9H'a)%}a('5$<C#9R%}?'wT(++(#4(:0&o@(:2(:&%n-#&y''Q$/>'#K(9Z%}?'UZ(:<'mV&Fp%}k'1g#U@#om($F$eG($R#Dx(9o'!U(:N(:%'</%lB%'K$g3'b(#?\\%'K($?'~$%}Y%?~&nE$M/$W%'J:&p7#2s#O9$UI$O3#nA(9a$oi$qe&~d%(|#&*%6^#&)$>2'C0$me%%A'1o$i6%(x%6]$KC$>F#os#@1%+q'zc$t2#(Q%nl%>@'Q]'=U#os'1g(9n$oQ&y:(:$'V-(:Y(:B(9L%}a':X'K(%~n'`=($Q#mg&va(:c'it%Po#8p(:g(-p(-<#T}(+h%C9'37'MQ'Tr'PB(,Y'/6'~[',A'Ly(!G'p3$pT'~c%>Q'H-'p8(%9%A0(6,'S~'kX'H^(.,'C9'WH(.0'k^':\\'Ww'Lt'Sg'0d(8M'EH'W{(0h(;J#6+'P^'X#'SM#'2'kO(7:%>t$`m%ko(;X$ck'Q#'X2'WC$i0%-,(;_'WG'NE'|Z'j^'~r'Hj'ka'M8'zg(5n'fi(06(0)&q$(0+(09$b,'Y!(6b%AN'|s(7V(5p%v:(08'{/'Xo'nt'fo$R?':%&mE'zn'Na'M_#{-'{8$YE#&m(1I'8D%oK'fU$Ck%gW#~N#&r'o#%y>#ac#Ju(-y#QQ%#p%+G%+A#&l$I~'lG',~%c($W9(-m$bZ$yX$b:'Mp(#+%o[$i>%fv'Hw'`~%-i%e}'3^$f#$\\M'ob$W8(,O#ul%%S%hy$ov%(B$}A'6I'u7$f+%(A%Sb%)X$ox&tv(<~#*8#ul(-.(-:%}G%c%%q>'5u(/J#Oj(/`#mv'p$%0b'gE(<<#0f'E6(6!(0=$bO'OS'NW'7A'8$'OX(/*'NT(.d(/U#+)$O@#@,'1U(#Z'Nd$$o'80(.z'/P'Os'Ok'9D(/#$kJ$6m(/L'+_$bZ&oN'L<(/f'Ou$gK%l-%ox%k|%DT$gf(/R'N~%Y]'9Q(=@'NU'OZ(/.(/0'8[#AZ'Nr(.R(=N$iD(=P'7c'8<(/k(=F$fI(4X(.x'VQ$/Z'9?$W*(=W(.n'pv'KG'8k(/$(5[$R;'N|'9K(=;$c2(=e(=B#+.'7{'7?(/X'NZ#R(#@,'j@(={'kZ%9((.~%fE%BE'8H%F0%b7%gS$Q%(=m(=X'O;(=P%j:%ox$5w%r&'1^',/')r$k+'N}$tk#C{(;H'-X(2~'W\\'EH'i7$p{%Er#&I#AR$n'#&Z#-|#&F'Z]#Wr'*C(.=&{@(5r(6e(71#&B#'&'Lv#&7$j-(.K'no'47'Ld#_W$O&'NF$Z['x$%j^#U~(=G$R!#FZ#tQ(=G$kH'|V$M;#',#'6'9g(+#'.n'H7$#@'=_(-('~p$Y;%\\?$jn'/!'!''.A(.|$b<'Ge%%J'3X&~~('u&~N%[d&~v'Gb$Mk%aJ$j2$M9'1~'g,'W;'~?$Jd$ba'Gv($v(;N%z+'/:'{V'G|'W~'Y^($y&qt'X)(5|(;u'X-(;x$l0(<>%gw'S[(=V'3S$e-'72#7i%kr(9B'FW(;e'M8$JH%Z=%h-$Lm'n{'l3$k|%e(#&w$fT$ph(#P$63#',#fg(+d$u`%a3%&2#'Y$|d$f5#RH'/-$MN%`\\(=Q$T)$lK$r!'|,(?t#\\T'{Z'~J$O9'l}$&X#0)(4L%hu(@%$F>(?w$bb#&m$eb%dC'<-(:k'7+(-X$]R(;,#(F(4@%*4%N-#@1(5N%a%$TD%gx&$5'D|$$z#F<$oU$$y#J}'|+$d\\$dE%Uv$SR(0,'3%%X%(81$e&(6%$i+(<5#+~",3,bit32.bxor,{},bit32.rshift,{},string.format,table.insert,"\109",2,"\110",string.char,setmetatable,pairs,string.rep,getfenv,1,string.match,false,false,true,5,rawset,bit32.bor,type,bit32.bnot,bit32.lshift,table.create,table.remove,bit32 or bit,math.ldexp,7966058,string.byte,error,string.gsub,57,setfenv,114,unpack,rawget,"",4,27,string.find,1062849,table.concat,256,bit32.band,tostring,7,"\37","\99",coroutine.yield,"\95",239,6,8,"\111",pcall,tonumber,string.sub,0,"\100",math.floor,select,"\101",32,0,...)(...);
+local v1 = game:GetService("Players")
+local v_u_2 = game:GetService("Workspace")
+local v_u_3 = game:GetService("UserInputService")
+local v_u_4 = game:GetService("RunService")
+local v_u_5 = game:GetService("ReplicatedStorage")
+local v_u_6 = game:GetService("TweenService")
+local v_u_7 = v1.LocalPlayer
+local v_u_8 = nil
+local v_u_9 = game:GetService("HttpService")
+local v_u_10 = false
+local v_u_11 = nil
+local v_u_12 = nil
+local v_u_13 = nil
+local v_u_14 = nil
+local v_u_15 = nil
+local v_u_16 = nil
+local v_u_17 = {}
+local v_u_18 = {}
+local v_u_19 = {}
+local v_u_20 = {
+	["idle"] = nil,
+	["walking"] = nil,
+	["jumping"] = nil
+}
+local v_u_21 = "ak/state_animations.json"
+local v_u_22 = {}
+local v_u_23 = {
+	["heightScale"] = 1,
+	["widthScale"] = 1
+}
+local v_u_24 = "ak/animation_list_cache.json"
+_G.hiddenBodyParts = _G.hiddenBodyParts or {}
+local _ = _G.hiddenBodyParts
+local v_u_25 = {
+	"Head",
+	"UpperTorso",
+	"LowerTorso",
+	"LeftUpperArm",
+	"LeftLowerArm",
+	"LeftHand",
+	"RightUpperArm",
+	"RightLowerArm",
+	"RightHand",
+	"LeftUpperLeg",
+	"LeftLowerLeg",
+	"LeftFoot",
+	"RightUpperLeg",
+	"RightLowerLeg",
+	"RightFoot",
+	"Torso",
+	"Left Arm",
+	"Right Arm",
+	"Left Leg",
+	"Right Leg",
+	"HumanoidRootPart"
+}
+local v_u_26 = false
+local v_u_27 = 1
+local v_u_28 = 0.1
+local v_u_29 = true
+local v_u_30 = false
+local v_u_31 = {
+	["Head"] = Vector3.new(101, 3, -2152),
+	["UpperTorso"] = Vector3.new(101, 3, -2150002),
+	["LowerTorso"] = Vector3.new(101, 3, -2150002),
+	["Torso"] = Vector3.new(101, 3, -2150002),
+	["LeftUpperArm"] = Vector3.new(0, 3, 0),
+	["LeftLowerArm"] = Vector3.new(0, 3, 0),
+	["LeftHand"] = Vector3.new(0, 3, 0),
+	["Left Arm"] = Vector3.new(0, 3, 0),
+	["RightUpperArm"] = Vector3.new(999999, 3, 0),
+	["RightLowerArm"] = Vector3.new(0, 3, 0),
+	["RightHand"] = Vector3.new(0, 3, 0),
+	["Right Arm"] = Vector3.new(999999, 3, 0),
+	["LeftUpperLeg"] = Vector3.new(-10000000, 3, 25000000),
+	["LeftLowerLeg"] = Vector3.new(-10000000, 3, -25000000),
+	["LeftFoot"] = Vector3.new(0, 3, 0),
+	["Left Leg"] = Vector3.new(-10000000, 3, 25000000),
+	["RightUpperLeg"] = Vector3.new(10000000, 3, 25000000),
+	["RightLowerLeg"] = Vector3.new(10000000, 3, -25000000),
+	["RightFoot"] = Vector3.new(0, 3, 0),
+	["Right Leg"] = Vector3.new(10000000, 3, 25000000)
+}
+local v_u_32 = {
+	["Head"] = Vector3.new(101, 1003, -2152),
+	["UpperTorso"] = Vector3.new(101, 1015, -2150002),
+	["LowerTorso"] = Vector3.new(101, 996.8, -2150002),
+	["Torso"] = Vector3.new(101, 1015, -2150002),
+	["LeftUpperArm"] = Vector3.new(0, 1000, 0),
+	["LeftLowerArm"] = Vector3.new(0, 1000, 0),
+	["LeftHand"] = Vector3.new(0, 1000, 0),
+	["Left Arm"] = Vector3.new(0, 1000, 0),
+	["RightUpperArm"] = Vector3.new(999999, 1000, 0),
+	["RightLowerArm"] = Vector3.new(0, 1000, 0),
+	["RightHand"] = Vector3.new(0, 1000, 0),
+	["Right Arm"] = Vector3.new(999999, 1000, 0),
+	["LeftUpperLeg"] = Vector3.new(-10000000, 1015, 25000000),
+	["LeftLowerLeg"] = Vector3.new(-10000000, 1015, -25000000),
+	["LeftFoot"] = Vector3.new(0, 1000, 0),
+	["Left Leg"] = Vector3.new(-10000000, 1015, 25000000),
+	["RightUpperLeg"] = Vector3.new(10000000, 1015, 25000000),
+	["RightLowerLeg"] = Vector3.new(10000000, 1015, -25000000),
+	["RightFoot"] = Vector3.new(0, 1000, 0),
+	["Right Leg"] = Vector3.new(10000000, 1015, 25000000)
+}
+local v_u_33 = {}
+local v_u_34 = {}
+local v_u_35 = {}
+local v_u_36 = 3000
+local v_u_37 = {
+	"Head",
+	"UpperTorso",
+	"LowerTorso",
+	"LeftUpperArm",
+	"LeftLowerArm",
+	"LeftHand",
+	"RightUpperArm",
+	"RightLowerArm",
+	"RightHand",
+	"LeftUpperLeg",
+	"LeftLowerLeg",
+	"LeftFoot",
+	"RightUpperLeg",
+	"RightLowerLeg",
+	"RightFoot"
+}
+local v_u_38 = {
+	["isRunning"] = false,
+	["currentId"] = nil,
+	["keyframes"] = nil,
+	["totalDuration"] = 0,
+	["elapsedTime"] = 0,
+	["speed"] = 1,
+	["connection"] = nil
+}
+local v_u_39 = {}
+local v_u_40 = {}
+local v_u_41 = false
+(function()
+	-- upvalues: (ref) v_u_8, (ref) v_u_7
+	local function v46(p_u_42)
+		-- upvalues: (ref) v_u_8
+		if v_u_8 then
+			local v43 = p_u_42:WaitForChild("HumanoidRootPart", 5)
+			if v43 then
+				v43.CFrame = v_u_8
+			end
+			v_u_8 = nil
+		end
+		local v44 = p_u_42:FindFirstChildOfClass("Humanoid")
+		if v44 then
+			v44.Died:Connect(function()
+				-- upvalues: (ref) p_u_42, (ref) v_u_8
+				local v45 = p_u_42:FindFirstChild("HumanoidRootPart")
+				if v45 then
+					v_u_8 = v45.CFrame
+				end
+			end)
+		end
+	end
+	if v_u_7.Character then
+		v46(v_u_7.Character)
+	end
+	v_u_7.CharacterAdded:Connect(v46)
+end)()
+local v_u_47 = {}
+local v_u_48 = {}
+local v_u_49 = {}
+local v_u_50 = "ak/custom_animations.json"
+local v_u_51 = "ak/speed_keybinds.json"
+local v_u_52 = {}
+local function v_u_53()
+	if not isfolder("ak") then
+		makefolder("ak")
+	end
+end
+local function v_u_57()
+	-- upvalues: (ref) v_u_53, (ref) v_u_39, (ref) v_u_40, (ref) v_u_9, (ref) v_u_24
+	v_u_53()
+	local v54 = {
+		["animations"] = v_u_39,
+		["order"] = v_u_40,
+		["timestamp"] = os.time()
+	}
+	local v55, v_u_56 = pcall(v_u_9.JSONEncode, v_u_9, v54)
+	if v55 then
+		pcall(function()
+			-- upvalues: (ref) v_u_24, (ref) v_u_56
+			writefile(v_u_24, v_u_56)
+		end)
+	end
+end
+local function v_u_62()
+	-- upvalues: (ref) v_u_53, (ref) v_u_24, (ref) v_u_9, (ref) v_u_39, (ref) v_u_40
+	v_u_53()
+	local v58, v59 = pcall(readfile, v_u_24)
+	if v58 then
+		local v60, v61 = pcall(v_u_9.JSONDecode, v_u_9, v59)
+		if v60 and (typeof(v61) == "table" and (v61.animations and v61.order)) then
+			v_u_39 = v61.animations
+			v_u_40 = v61.order
+			return true
+		end
+	end
+	return false
+end
+local function v_u_71()
+	-- upvalues: (ref) v_u_41, (ref) v_u_39, (ref) v_u_57
+	if v_u_41 then
+		return
+	else
+		v_u_41 = true
+		local v63, v64 = pcall(game.HttpGet, game, "https://yourscoper.vercel.app/scripts/akadmin/animlist.lua", true)
+		if v63 then
+			local v65, v66 = pcall(loadstring(v64))
+			if v65 and type(v66) == "table" then
+				v_u_39 = {}
+				local v67, v68, v69 = pairs(v66)
+				while true do
+					local v70
+					v69, v70 = v67(v68, v69)
+					if v69 == nil then
+						break
+					end
+					v_u_39[v69] = v70
+				end
+				v_u_57()
+			end
+		else
+			return
+		end
+	end
+end
+local function v_u_79()
+	-- upvalues: (ref) v_u_53, (ref) v_u_47, (ref) v_u_9
+	v_u_53()
+	local v72, v73, v74 = pairs(v_u_47)
+	local v75 = {}
+	while true do
+		local v76
+		v74, v76 = v72(v73, v74)
+		if v74 == nil then
+			break
+		end
+		v75[v74] = tostring(v76)
+	end
+	local v77, v_u_78 = pcall(v_u_9.JSONEncode, v_u_9, v75)
+	if v77 then
+		pcall(function()
+			-- upvalues: (ref) v_u_78
+			writefile("ak/favorite_animations.json", v_u_78)
+		end)
+	end
+end
+local function v_u_88()
+	-- upvalues: (ref) v_u_53, (ref) v_u_9, (ref) v_u_47, (ref) v_u_39, (ref) v_u_40
+	v_u_53()
+	local v80, v81 = pcall(readfile, "ak/favorite_animations.json")
+	if v80 then
+		local v82, v83 = pcall(v_u_9.JSONDecode, v_u_9, v81)
+		if v82 and typeof(v83) == "table" then
+			v_u_47 = {}
+			local v84, v85, v86 = pairs(v83)
+			while true do
+				local v87
+				v86, v87 = v84(v85, v86)
+				if v86 == nil then
+					break
+				end
+				v_u_47[v86] = v87
+				if not v_u_39[v86] then
+					v_u_39[v86] = v87
+					if not table.find(v_u_40, v86) then
+						table.insert(v_u_40, v86)
+					end
+				end
+			end
+		else
+			v_u_47 = {}
+		end
+	else
+		v_u_47 = {}
+	end
+end
+local function v_u_96()
+	-- upvalues: (ref) v_u_53, (ref) v_u_48, (ref) v_u_9
+	v_u_53()
+	local v89, v90, v91 = pairs(v_u_48)
+	local v92 = {}
+	while true do
+		local v93
+		v91, v93 = v89(v90, v91)
+		if v91 == nil then
+			break
+		end
+		v92[v91] = v93.Name
+	end
+	local v94, v_u_95 = pcall(v_u_9.JSONEncode, v_u_9, v92)
+	if v94 then
+		pcall(function()
+			-- upvalues: (ref) v_u_95
+			writefile("ak/animation_keybinds.json", v_u_95)
+		end)
+	end
+end
+local function v_u_106()
+	-- upvalues: (ref) v_u_53, (ref) v_u_9, (ref) v_u_48
+	v_u_53()
+	local v97, v98 = pcall(readfile, "ak/animation_keybinds.json")
+	if v97 then
+		local v99, v100 = pcall(v_u_9.JSONDecode, v_u_9, v98)
+		if v99 and typeof(v100) == "table" then
+			v_u_48 = {}
+			local v101, v102, v103 = pairs(v100)
+			while true do
+				local v104
+				v103, v104 = v101(v102, v103)
+				if v103 == nil then
+					break
+				end
+				local v105 = Enum.KeyCode[v104]
+				if v105 then
+					v_u_48[v103] = v105
+				end
+			end
+		else
+			v_u_48 = {}
+		end
+	else
+		v_u_48 = {}
+	end
+end
+local function v_u_111()
+	-- upvalues: (ref) v_u_53, (ref) v_u_52, (ref) v_u_9, (ref) v_u_51
+	v_u_53()
+	local v107 = {}
+	for v108 = 1, 5 do
+		if v_u_52[v108] then
+			v107["slot" .. v108] = {
+				["speed"] = v_u_52[v108].speed or v108 * 2 - 1,
+				["key"] = v_u_52[v108].key or ""
+			}
+		end
+	end
+	local v109, v_u_110 = pcall(v_u_9.JSONEncode, v_u_9, v107)
+	if v109 then
+		pcall(function()
+			-- upvalues: (ref) v_u_51, (ref) v_u_110
+			writefile(v_u_51, v_u_110)
+		end)
+	end
+end
+local function v_u_118()
+	-- upvalues: (ref) v_u_53, (ref) v_u_51, (ref) v_u_9, (ref) v_u_52
+	v_u_53()
+	local v112, v113 = pcall(readfile, v_u_51)
+	if v112 then
+		local v114, v115 = pcall(v_u_9.JSONDecode, v_u_9, v113)
+		if v114 and typeof(v115) == "table" then
+			for v116 = 1, 5 do
+				local v117 = "slot" .. v116
+				if v115[v117] then
+					v_u_52[v116] = {
+						["speed"] = v115[v117].speed or v116 * 2 - 1,
+						["key"] = v115[v117].key or ""
+					}
+				end
+			end
+		end
+	end
+end
+local function v_u_122()
+	-- upvalues: (ref) v_u_53, (ref) v_u_20, (ref) v_u_9, (ref) v_u_21
+	v_u_53()
+	local v119 = {
+		["idle"] = v_u_20.idle,
+		["walking"] = v_u_20.walking,
+		["jumping"] = v_u_20.jumping
+	}
+	local v120, v_u_121 = pcall(v_u_9.JSONEncode, v_u_9, v119)
+	if v120 then
+		pcall(function()
+			-- upvalues: (ref) v_u_21, (ref) v_u_121
+			writefile(v_u_21, v_u_121)
+		end)
+	end
+end
+local function v_u_127()
+	-- upvalues: (ref) v_u_53, (ref) v_u_21, (ref) v_u_9, (ref) v_u_20
+	v_u_53()
+	local v123, v124 = pcall(readfile, v_u_21)
+	if v123 then
+		local v125, v126 = pcall(v_u_9.JSONDecode, v_u_9, v124)
+		if v125 and typeof(v126) == "table" then
+			v_u_20.idle = v126.idle
+			v_u_20.walking = v126.walking
+			v_u_20.jumping = v126.jumping
+		end
+	end
+end
+local function v_u_135()
+	-- upvalues: (ref) v_u_53, (ref) v_u_49, (ref) v_u_9, (ref) v_u_50
+	v_u_53()
+	local v128, v129, v130 = pairs(v_u_49)
+	local v131 = {}
+	while true do
+		local v132
+		v130, v132 = v128(v129, v130)
+		if v130 == nil then
+			break
+		end
+		v131[v130] = v132
+	end
+	local v133, v_u_134 = pcall(v_u_9.JSONEncode, v_u_9, v131)
+	if v133 then
+		pcall(function()
+			-- upvalues: (ref) v_u_50, (ref) v_u_134
+			writefile(v_u_50, v_u_134)
+		end)
+	end
+end
+local function v_u_144()
+	-- upvalues: (ref) v_u_53, (ref) v_u_50, (ref) v_u_9, (ref) v_u_49, (ref) v_u_39, (ref) v_u_40
+	v_u_53()
+	local v136, v137 = pcall(readfile, v_u_50)
+	if v136 then
+		local v138, v139 = pcall(v_u_9.JSONDecode, v_u_9, v137)
+		if v138 and typeof(v139) == "table" then
+			v_u_49 = {}
+			local v140, v141, v142 = pairs(v139)
+			while true do
+				local v143
+				v142, v143 = v140(v141, v142)
+				if v142 == nil then
+					break
+				end
+				v_u_49[v142] = v143
+				v_u_39[v142] = v143
+				if not table.find(v_u_40, v142) then
+					table.insert(v_u_40, v142)
+				end
+			end
+		else
+			v_u_49 = {}
+		end
+	else
+		v_u_49 = {}
+	end
+end
+local function v_u_145()
+	-- upvalues: (ref) v_u_53, (ref) v_u_62, (ref) v_u_106, (ref) v_u_88, (ref) v_u_144, (ref) v_u_127, (ref) v_u_118, (ref) v_u_24, (ref) v_u_71
+	v_u_53()
+	v_u_62()
+	v_u_106()
+	v_u_88()
+	v_u_144()
+	v_u_127()
+	v_u_118()
+	task.spawn(function()
+		-- upvalues: (ref) v_u_24, (ref) v_u_71, (ref) v_u_144
+		wait(2)
+		if isfile(v_u_24) then
+			pcall(function()
+				-- upvalues: (ref) v_u_24
+				delfile(v_u_24)
+			end)
+			print("Deleted old animation cache")
+		end
+		v_u_71()
+		v_u_144()
+	end)
+end
+local v_u_146 = {}
+local function v_u_152()
+	-- upvalues: (ref) v_u_7, (ref) v_u_146
+	local v147 = v_u_7:FindFirstChildWhichIsA("PlayerGui")
+	if v147 then
+		local v148, v149, v150 = ipairs(v147:GetChildren())
+		while true do
+			local v151
+			v150, v151 = v148(v149, v150)
+			if v150 == nil then
+				break
+			end
+			if v151:IsA("ScreenGui") and v151.ResetOnSpawn then
+				table.insert(v_u_146, v151)
+				v151.ResetOnSpawn = false
+			end
+		end
+	end
+end
+local function v_u_157()
+	-- upvalues: (ref) v_u_146
+	local v153, v154, v155 = ipairs(v_u_146)
+	while true do
+		local v156
+		v155, v156 = v153(v154, v155)
+		if v155 == nil then
+			break
+		end
+		v156.ResetOnSpawn = true
+	end
+	table.clear(v_u_146)
+end
+local function v_u_168()
+	-- upvalues: (ref) v_u_12
+	if v_u_12 then
+		local v158 = v_u_12
+		local v159, v160, v161 = pairs(v158:GetDescendants())
+		while true do
+			local v162
+			v161, v162 = v159(v160, v161)
+			if v161 == nil then
+				break
+			end
+			if v162:IsA("BasePart") then
+				v162.Transparency = 1
+			end
+		end
+		local v163 = v_u_12:FindFirstChild("Head")
+		if v163 then
+			local v164, v165, v166 = ipairs(v163:GetChildren())
+			while true do
+				local v167
+				v166, v167 = v164(v165, v166)
+				if v166 == nil then
+					break
+				end
+				if v167:IsA("Decal") then
+					v167.Transparency = 1
+				end
+			end
+		end
+	end
+end
+local function v_u_209(_)
+	-- upvalues: (ref) v_u_10, (ref) v_u_11, (ref) v_u_12, (ref) v_u_26, (ref) v_u_34, (ref) v_u_33, (ref) v_u_37, (ref) v_u_35, (ref) v_u_36, (ref) v_u_29, (ref) v_u_28, (ref) v_u_27
+	if not (v_u_10 and (v_u_11 and (v_u_11.Parent and (v_u_12 and v_u_12.Parent)))) then
+		return
+	end
+	if not v_u_26 then
+		return
+	end
+	local v169 = v_u_12:FindFirstChild("HumanoidRootPart")
+	if not v169 then
+		return
+	end
+	if not v_u_34 then
+		v_u_34 = {}
+	end
+	if not v_u_33 then
+		v_u_33 = {}
+	end
+	local v170 = v_u_37
+	if #v170 == 0 then
+		return
+	end
+	local v171 = v169.AssemblyLinearVelocity.Magnitude > 0.1
+	if not v_u_35 then
+		v_u_35 = {}
+	end
+	table.insert(v_u_35, 1, {
+		["pos"] = v169.Position,
+		["rot"] = v169.CFrame - v169.Position
+	})
+	if v_u_36 < #v_u_35 then
+		table.remove(v_u_35)
+	end
+	if v_u_29 then
+		local v172 = v170[1]
+		local v173 = v_u_11:FindFirstChild(v172)
+		if v173 then
+			if not v_u_34[v172] then
+				v_u_34[v172] = v173.CFrame
+			end
+			if not v_u_33[v172] then
+				v_u_33[v172] = v173.CFrame
+			end
+			if v171 then
+				local v174 = v169.Position
+				local v175 = v169.CFrame - v169.Position
+				v_u_34[v172] = CFrame.new(v174) * v175
+			end
+			local v176 = v_u_33[v172]:Lerp(v_u_34[v172], v_u_28)
+			v173.CFrame = v176
+			v173.AssemblyLinearVelocity = Vector3.zero
+			v173.AssemblyAngularVelocity = Vector3.zero
+			v_u_33[v172] = v176
+			for v177 = 2, #v170 do
+				local v178 = v170[v177]
+				local v179 = v_u_11:FindFirstChild(v178)
+				local v180 = v_u_11:FindFirstChild(v170[v177 - 1])
+				if v179 then
+					if v180 then
+						if not v_u_34[v178] then
+							v_u_34[v178] = v179.CFrame
+						end
+						if not v_u_33[v178] then
+							v_u_33[v178] = v179.CFrame
+						end
+						if v171 then
+							local v181 = v180.Position
+							local v182 = v180.CFrame - v180.Position
+							local v183
+							if v177 == 2 then
+								v183 = (v181 - v169.Position).Unit
+							else
+								local v184 = v_u_11:FindFirstChild(v170[v177 - 2])
+								if v184 then
+									v183 = (v181 - v184.Position).Unit
+								else
+									v183 = v182.LookVector
+								end
+							end
+							if v183.Magnitude < 0.1 then
+								v183 = v182.LookVector
+							end
+							local v185 = v181 + v183 * v_u_27
+							v_u_34[v178] = CFrame.new(v185) * v182
+						end
+						local v186 = v_u_33[v178]:Lerp(v_u_34[v178], v_u_28)
+						v179.CFrame = v186
+						v179.AssemblyLinearVelocity = Vector3.zero
+						v179.AssemblyAngularVelocity = Vector3.zero
+						v_u_33[v178] = v186
+					end
+				end
+			end
+		end
+	else
+		local v187 = #v_u_35
+		local v188 = { 0 }
+		for v189 = 2, v187 do
+			v188[v189] = v188[v189 - 1] + (v_u_35[v189 - 1].pos - v_u_35[v189].pos).Magnitude
+		end
+		for v197 = 1, #v170 do
+			local v191 = v170[v197]
+			local v192 = v_u_11:FindFirstChild(v191)
+			if v192 then
+				local v193 = (v197 - 1) * v_u_27
+				local v194 = v197
+				local v195 = nil
+				for v196 = 2, v187 do
+					if v193 <= v188[v196] then
+						v195 = v196
+						break
+					end
+				end
+				local v197
+				if v195 and (v_u_35[v195] and v_u_35[v195 - 1]) then
+					local v198 = v188[v195 - 1]
+					local v199 = v188[v195]
+					local v200 = (v193 - v198) / math.max(1e-6, v199 - v198)
+					local v201 = v_u_35[v195 - 1].pos
+					local v202 = v_u_35[v195].pos
+					local v203 = v_u_35[v195 - 1].rot
+					local v204 = v201:Lerp(v202, v200)
+					local v205 = CFrame.new(v204) * v203
+					if not v_u_33[v191] then
+						v_u_33[v191] = v192.CFrame
+					end
+					if not v_u_34[v191] then
+						v_u_34[v191] = v192.CFrame
+					end
+					v_u_34[v191] = v205
+					local v206 = v_u_33[v191]:Lerp(v_u_34[v191], v_u_28)
+					v192.CFrame = v206
+					v192.AssemblyLinearVelocity = Vector3.zero
+					v192.AssemblyAngularVelocity = Vector3.zero
+					v_u_33[v191] = v206
+					v197 = v194
+				else
+					local v207 = v169.CFrame
+					local v208 = v207 + v207.LookVector * (-(v197 - 1) * v_u_27)
+					v192.CFrame = v208
+					v_u_33[v191] = v208
+					v197 = v194
+				end
+			end
+		end
+	end
+end
+local function v_u_231(p210)
+	-- upvalues: (ref) v_u_10, (ref) v_u_11, (ref) v_u_12, (ref) v_u_26, (ref) v_u_209, (ref) v_u_31, (ref) v_u_30, (ref) v_u_32, (ref) v_u_25, (ref) v_u_23, (ref) v_u_16
+	if v_u_10 and (v_u_11 and (v_u_11.Parent and (v_u_12 and v_u_12.Parent))) then
+		if v_u_26 then
+			v_u_209(p210)
+			return
+		elseif groundModeEnabled then
+			local v211, v212, v213 = pairs(v_u_31)
+			while true do
+				local v214
+				v213, v214 = v211(v212, v213)
+				if v213 == nil then
+					break
+				end
+				local v215 = v_u_11:FindFirstChild(v213)
+				if v215 and v215:IsA("BasePart") then
+					v215.CFrame = CFrame.new(v214)
+					v215.AssemblyLinearVelocity = Vector3.zero
+					v215.AssemblyAngularVelocity = Vector3.zero
+				end
+			end
+			return
+		elseif v_u_30 then
+			local v216, v217, v218 = pairs(v_u_32)
+			while true do
+				local v219
+				v218, v219 = v216(v217, v218)
+				if v218 == nil then
+					break
+				end
+				local v220 = v_u_11:FindFirstChild(v218)
+				if v220 and v220:IsA("BasePart") then
+					v220.CFrame = CFrame.new(v219)
+					v220.AssemblyLinearVelocity = Vector3.zero
+					v220.AssemblyAngularVelocity = Vector3.zero
+				end
+			end
+		else
+			local v221, v222, v223 = ipairs(v_u_25)
+			while true do
+				local v224
+				v223, v224 = v221(v222, v223)
+				if v223 == nil then
+					break
+				end
+				local v225 = v_u_11:FindFirstChild(v224)
+				local v226 = v_u_12:FindFirstChild(v224)
+				if v225 and v226 then
+					if _G.hiddenBodyParts[v224] then
+						if not _G.hiddenBodyPartPositions then
+							_G.hiddenBodyPartPositions = {}
+						end
+						if not _G.hiddenBodyPartPositions[v224] then
+							local v227 = Vector3.new(0, -500, 0)
+							local v228 = v225.CFrame - v225.Position
+							_G.hiddenBodyPartPositions[v224] = CFrame.new(v227) * v228
+						end
+						v225.CFrame = _G.hiddenBodyPartPositions[v224]
+					else
+						if _G.hiddenBodyPartPositions then
+							_G.hiddenBodyPartPositions[v224] = nil
+						end
+						v225.Anchored = false
+						v225.CFrame = v226.CFrame
+					end
+					v225.AssemblyLinearVelocity = Vector3.zero
+					v225.AssemblyAngularVelocity = Vector3.zero
+				end
+			end
+			local v229 = v_u_12:FindFirstChildWhichIsA("Humanoid")
+			if v229 and (v_u_23.heightScale ~= 1 or v_u_23.widthScale ~= 1) then
+				local v230 = v_u_16 * v_u_23.heightScale - 0.5
+				v229.HipHeight = math.max(v230, 0.2)
+			end
+		end
+	else
+		return
+	end
+end
+local function v_u_246()
+	-- upvalues: (ref) v_u_10, (ref) v_u_12, (ref) v_u_16, (ref) v_u_23, (ref) v_u_17, (ref) v_u_18
+	if v_u_10 and v_u_12 then
+		local v232 = v_u_12:FindFirstChildWhichIsA("Humanoid")
+		if v232 then
+			local v233 = v_u_16 * v_u_23.heightScale - 0.5
+			v232.HipHeight = math.max(v233, 0.2)
+			local v234, v235, v236 = pairs(v_u_17)
+			while true do
+				local v237
+				v236, v237 = v234(v235, v236)
+				if v236 == nil then
+					break
+				end
+				if v236 and v236:IsA("BasePart") then
+					v236.Size = Vector3.new(v237.X * v_u_23.widthScale, v237.Y * v_u_23.heightScale, v237.Z * v_u_23.widthScale)
+				end
+			end
+			local v238, v239, v240 = pairs(v_u_18)
+			while true do
+				local v241
+				v240, v241 = v238(v239, v240)
+				if v240 == nil then
+					break
+				end
+				if v240 and v240:IsA("Motor6D") then
+					local v242 = v241.C0.Position
+					local v243 = Vector3.new(v242.X * v_u_23.widthScale, v242.Y * v_u_23.heightScale, v242.Z * v_u_23.widthScale)
+					v240.C0 = CFrame.new(v243) * (v241.C0 - v241.C0.Position)
+					local v244 = v241.C1.Position
+					local v245 = Vector3.new(v244.X * v_u_23.widthScale, v244.Y * v_u_23.heightScale, v244.Z * v_u_23.widthScale)
+					v240.C1 = CFrame.new(v245) * (v241.C1 - v241.C1.Position)
+				end
+			end
+		end
+	else
+		return
+	end
+end
+local function v_u_249()
+	-- upvalues: (ref) v_u_2, (ref) v_u_7
+	pcall(function()
+		-- upvalues: (ref) v_u_2, (ref) v_u_7
+		local v247 = v_u_2:FindFirstChild("VirtuallyNad")
+		if v247 then
+			local v248 = v247:FindFirstChild("HeadMovement")
+			if v248 and v248:IsA("LocalScript") then
+				v248.Disabled = true
+			end
+		end
+		v_u_7:SetAttribute("TurnHead", false)
+	end)
+end
+local function v_u_252()
+	-- upvalues: (ref) v_u_2
+	pcall(function()
+		-- upvalues: (ref) v_u_2
+		local v250 = v_u_2:FindFirstChild("VirtuallyNad")
+		if v250 then
+			local v251 = v250:FindFirstChild("HeadMovement")
+			if v251 and v251:IsA("LocalScript") then
+				v251.Disabled = false
+			end
+		end
+	end)
+end
+local v_u_253 = nil
+local function v_u_289(p254)
+	-- upvalues: (ref) v_u_10, (ref) v_u_5, (ref) v_u_7, (ref) v_u_11, (ref) v_u_13, (ref) v_u_12, (ref) v_u_16, (ref) v_u_23, (ref) v_u_168, (ref) v_u_17, (ref) v_u_18, (ref) v_u_14, (ref) v_u_152, (ref) v_u_2, (ref) v_u_157, (ref) v_u_249, (ref) v_u_15, (ref) v_u_4, (ref) v_u_231, (ref) v_u_22, (ref) v_u_38, (ref) v_u_252, (ref) v_u_253
+	v_u_10 = p254
+	local v_u_255 = game:GetService("ReplicatedStorage"):FindFirstChild("event_rag")
+	local v_u_256 = game:GetService("ReplicatedStorage"):FindFirstChild("Ragdoll")
+	local v_u_257 = game:GetService("ReplicatedStorage"):FindFirstChild("Unragdoll")
+	local v_u_258 = nil
+	if not (v_u_255 or v_u_256) then
+		local v261, v262 = pcall(function()
+			-- upvalues: (ref) v_u_5
+			local v259 = v_u_5:FindFirstChild("LocalModules", true)
+			local v260 = v259 and v259:FindFirstChild("Backend")
+			if v260 then
+				local _ = require
+				local _ = v260.FindFirstChild
+			end
+		end)
+		v_u_258 = v261 and v262 and v262 or v_u_258
+	end
+	if v_u_10 then
+		local v263 = v_u_7.Character
+		if not v263 then
+			return
+		end
+		local v264 = v263:FindFirstChildOfClass("Humanoid")
+		local v265 = v263:FindFirstChild("HumanoidRootPart")
+		if not (v264 and v265) then
+			return
+		end
+		v_u_11 = v263
+		v_u_13 = v265.CFrame
+		v263.Archivable = true
+		v_u_12 = v263:Clone()
+		v263.Archivable = false
+		local v266 = v_u_11.Name
+		v_u_12.Name = v266 .. "Celeste"
+		local v267 = v_u_12:FindFirstChildWhichIsA("Humanoid")
+		if v267 then
+			v267.DisplayName = v266 .. "Celeste"
+			v_u_16 = v267.HipHeight
+			v_u_23 = {
+				["heightScale"] = 1,
+				["widthScale"] = 1
+			}
+			v267.WalkSpeed = v264.WalkSpeed
+			v267.JumpPower = v264.JumpPower
+		end
+		local v268 = not v_u_12.PrimaryPart and v_u_12:FindFirstChild("HumanoidRootPart")
+		if v268 then
+			v_u_12.PrimaryPart = v268
+		end
+		v_u_168()
+		v_u_17 = {}
+		v_u_18 = {}
+		local v269 = v_u_12
+		local v270, v271, v272 = ipairs(v269:GetDescendants())
+		while true do
+			local v273
+			v272, v273 = v270(v271, v272)
+			if v272 == nil then
+				break
+			end
+			if v273:IsA("BasePart") then
+				v_u_17[v273] = v273.Size
+			elseif v273:IsA("Motor6D") then
+				v_u_18[v273] = {
+					["C0"] = v273.C0,
+					["C1"] = v273.C1
+				}
+			end
+		end
+		local v274 = v_u_11:FindFirstChild("Animate")
+		if v274 then
+			v_u_14 = v274:Clone()
+			v_u_14.Parent = v_u_12
+			v_u_14.Disabled = true
+		end
+		v_u_152()
+		v_u_12.Parent = v_u_2
+		v_u_7.Character = v_u_12
+		if v267 then
+			v_u_2.CurrentCamera.CameraSubject = v267
+		end
+		v_u_157()
+		if v_u_14 then
+			v_u_14.Disabled = false
+		end
+		if v267 then
+			v267:ChangeState(Enum.HumanoidStateType.Running)
+		end
+		task.spawn(function()
+			-- upvalues: (ref) v_u_10, (ref) v_u_255, (ref) v_u_11, (ref) v_u_256, (ref) v_u_258, (ref) v_u_249, (ref) v_u_15, (ref) v_u_4, (ref) v_u_231
+			if v_u_10 then
+				if v_u_255 then
+					pcall(function()
+						-- upvalues: (ref) v_u_11
+						local v275 = game:GetService("ReplicatedStorage"):FindFirstChild("event_rag")
+						if v275 then
+							local v276 = v_u_11 and (v_u_11:FindFirstChildOfClass("Humanoid") and v_u_11:FindFirstChildOfClass("Humanoid"))
+							if v276 then
+								game.Players.LocalPlayer.Character.Humanoid.HipHeight = v276.HipHeight
+							end
+							v275:FireServer(unpack({ "Hinge" }))
+						end
+					end)
+				elseif v_u_256 then
+					pcall(function()
+						local v277 = game:GetService("ReplicatedStorage"):FindFirstChild("Ragdoll")
+						if v277 then
+							v277:FireServer(unpack({ "Ball" }))
+						end
+					end)
+				elseif v_u_258 then
+					pcall(function()
+						-- upvalues: (ref) v_u_258, (ref) v_u_249
+						v_u_258.Ragdoll:Fire(true)
+						v_u_249()
+					end)
+				end
+				if v_u_15 then
+					v_u_15:Disconnect()
+				end
+				v_u_15 = v_u_4.Heartbeat:Connect(v_u_231)
+			end
+		end)
+	else
+		local v278, v279, v280 = pairs(v_u_22)
+		while true do
+			local v281
+			v280, v281 = v278(v279, v280)
+			if v280 == nil then
+				break
+			end
+			if v281 then
+				v281:Disconnect()
+			end
+		end
+		v_u_22 = {}
+		if v_u_15 then
+			v_u_15:Disconnect()
+			v_u_15 = nil
+		end
+		if v_u_38.connection then
+			v_u_38.connection:Disconnect()
+			v_u_38.connection = nil
+		end
+		v_u_38.isRunning = false
+		if not (v_u_11 and v_u_12) then
+			return
+		end
+		for _ = 1, 3 do
+			pcall(function()
+				-- upvalues: (ref) v_u_255, (ref) v_u_257, (ref) v_u_258, (ref) v_u_252
+				if v_u_255 then
+					local v282 = game:GetService("ReplicatedStorage"):FindFirstChild("event_rag")
+					if v282 then
+						v282:FireServer(unpack({ "Hinge" }))
+					end
+				elseif v_u_257 then
+					local v283 = game:GetService("ReplicatedStorage"):FindFirstChild("Unragdoll")
+					if v283 then
+						v283:FireServer()
+					end
+				elseif v_u_258 then
+					v_u_258.Ragdoll:Fire(false)
+					v_u_252()
+				end
+			end)
+			task.wait(0.1)
+		end
+		local v284 = v_u_11:FindFirstChild("HumanoidRootPart")
+		local v285 = v_u_12:FindFirstChild("HumanoidRootPart")
+		local v286 = v285 and v285.CFrame or v_u_13
+		local v287 = v_u_12:FindFirstChild("Animate")
+		if v287 then
+			v287.Parent = v_u_11
+			v287.Disabled = true
+		end
+		v_u_12:Destroy()
+		if v284 then
+			v284.CFrame = v286
+		end
+		local v288 = v_u_11:FindFirstChildWhichIsA("Humanoid")
+		v_u_152()
+		v_u_7.Character = v_u_11
+		if v288 then
+			v_u_2.CurrentCamera.CameraSubject = v288
+		end
+		v_u_157()
+		if v287 then
+			task.wait(0.1)
+			v287.Disabled = false
+		end
+		v_u_253 = nil
+	end
+end
+local v_u_290 = {}
+local function v_u_304()
+	-- upvalues: (ref) v_u_38, (ref) v_u_12, (ref) v_u_18, (ref) v_u_14, (ref) v_u_290
+	v_u_38.isRunning = false
+	if v_u_12 then
+		local v291, v292, v293 = pairs(v_u_18)
+		while true do
+			local v294
+			v293, v294 = v291(v292, v293)
+			if v293 == nil then
+				break
+			end
+			if v293 and v293:IsA("Motor6D") then
+				v293.C0 = v294.C0
+			end
+		end
+		local v295 = v_u_12
+		local v296, v297, v298 = pairs(v295:GetChildren())
+		while true do
+			local v299
+			v298, v299 = v296(v297, v298)
+			if v298 == nil then
+				break
+			end
+			if v299:IsA("LocalScript") and (not v299.Enabled and v299 ~= v_u_14) then
+				v299.Enabled = true
+			end
+		end
+		if v_u_14 then
+			v_u_14.Disabled = false
+		end
+	end
+	if v_u_38.connection then
+		v_u_38.connection:Disconnect()
+		v_u_38.connection = nil
+	end
+	local v300, v301, v302 = pairs(v_u_290)
+	while true do
+		local v303
+		v302, v303 = v300(v301, v302)
+		if v302 == nil then
+			break
+		end
+		v303.NameButton.BackgroundColor3 = Color3.new(0, 0, 0)
+	end
+end
+local function v_u_402(p_u_305)
+	-- upvalues: (ref) v_u_12, (ref) v_u_38, (ref) v_u_304, (ref) v_u_290, (ref) v_u_39, (ref) v_u_47, (ref) v_u_14, (ref) v_u_19, (ref) v_u_18, (ref) v_u_4, (ref) v_u_23
+	if not v_u_12 then
+		warn("Reanimate first!")
+		return
+	end
+	if p_u_305 == "" then
+		return
+	end
+	local v306 = v_u_12:FindFirstChildWhichIsA("Humanoid")
+	if not v306 then
+		return
+	end
+	local v307 = v_u_12:FindFirstChild("LowerTorso") ~= nil
+	if not (v307 and v_u_12:FindFirstChild("LowerTorso") or v_u_12:FindFirstChild("Torso")) then
+		return
+	end
+	if v_u_38.isRunning and v_u_38.currentId == p_u_305 then
+		v_u_304()
+		v_u_38.currentId = nil
+		return
+	end
+	local v308, v309, v310 = pairs(v_u_290)
+	while true do
+		local v311
+		v310, v311 = v308(v309, v310)
+		if v310 == nil then
+			break
+		end
+		v311.NameButton.BackgroundColor3 = Color3.new(0, 0, 0)
+	end
+	local v312 = { v_u_39, v_u_47 }
+	local v313, v314, v315 = pairs(v312)
+	local v316 = nil
+	while true do
+		local v317
+		v315, v317 = v313(v314, v315)
+		if v315 == nil then
+			v320 = v316
+		end
+		local v318, v319, v320 = pairs(v317)
+		while true do
+			local v321
+			v320, v321 = v318(v319, v320)
+			if v320 == nil then
+				v320 = v316
+				break
+			end
+			if tostring(v321) == p_u_305 then
+				break
+			end
+		end
+		if v320 then
+			break
+		end
+		v316 = v320
+	end
+	if v320 and v_u_290[v320] then
+		v_u_290[v320].NameButton.BackgroundColor3 = Color3.fromRGB(0, 150, 255)
+	end
+	if v_u_14 and (v306.MoveDirection.Magnitude > 0 or v306:GetState() == Enum.HumanoidStateType.Running) then
+		v_u_14.Disabled = true
+		local v322, v323, v324 = pairs(v306:GetPlayingAnimationTracks())
+		while true do
+			local v325
+			v324, v325 = v322(v323, v324)
+			if v324 == nil then
+				break
+			end
+			v325:Stop()
+		end
+	end
+	local v326 = v_u_19[p_u_305]
+	if not v326 then
+		local v327 = nil
+		local v328 = nil
+		if tostring(p_u_305):match("^http") then
+			local v329, v_u_330 = pcall(function()
+				-- upvalues: (ref) p_u_305
+				return game:HttpGet(p_u_305)
+			end)
+			if v329 then
+				local v331
+				v331, v326 = pcall(function()
+					-- upvalues: (ref) v_u_330
+					return loadstring(v_u_330)()
+				end)
+				if v331 and type(v326) == "table" then
+					v327 = true
+				else
+					v326 = v328
+				end
+			else
+				v326 = v328
+			end
+		elseif tonumber(p_u_305) then
+			v327, v326 = pcall(function()
+				-- upvalues: (ref) p_u_305
+				return game:GetObjects("rbxassetid://" .. p_u_305)[1]
+			end)
+		else
+			local v332
+			v332, v326 = pcall(function()
+				-- upvalues: (ref) p_u_305
+				return loadstring(p_u_305)()
+			end)
+			if v332 and type(v326) == "table" then
+				v327 = true
+			else
+				v326 = v328
+			end
+		end
+		if not (v327 and v326) then
+			return
+		end
+		v_u_19[p_u_305] = v326
+	end
+	if type(v326) ~= "table" then
+		v326.Priority = Enum.AnimationPriority.Action
+		v_u_38.keyframes = v326:GetKeyframes()
+		if not v_u_38.keyframes or #v_u_38.keyframes == 0 then
+			return
+		end
+		v_u_38.totalDuration = v_u_38.keyframes[#v_u_38.keyframes].Time
+	else
+		local v333 = next(v326)
+		if not v333 then
+			return
+		end
+		v_u_38.keyframes = v326[v333]
+		if not v_u_38.keyframes or #v_u_38.keyframes == 0 then
+			return
+		end
+		v_u_38.totalDuration = v_u_38.keyframes[#v_u_38.keyframes].Time
+	end
+	v_u_38.currentId = p_u_305
+	v_u_38.elapsedTime = 0
+	v_u_38.isRunning = true
+	local v334 = v_u_12
+	local v335
+	if v307 then
+		local v336 = v334:FindFirstChild("HumanoidRootPart")
+		local v337 = v334:FindFirstChild("Head")
+		local v338 = v334:FindFirstChild("LeftUpperArm")
+		local v339 = v334:FindFirstChild("RightUpperArm")
+		local v340 = v334:FindFirstChild("LeftUpperLeg")
+		local v341 = v334:FindFirstChild("RightUpperLeg")
+		local v342 = v334:FindFirstChild("LeftFoot")
+		local v343 = v334:FindFirstChild("RightFoot")
+		local v344 = v334:FindFirstChild("LeftHand")
+		local v345 = v334:FindFirstChild("RightHand")
+		local v346 = v334:FindFirstChild("LeftLowerArm")
+		local v347 = v334:FindFirstChild("RightLowerArm")
+		local v348 = v334:FindFirstChild("LeftLowerLeg")
+		local v349 = v334:FindFirstChild("RightLowerLeg")
+		local v350 = v334:FindFirstChild("LowerTorso")
+		local v351 = v334:FindFirstChild("UpperTorso")
+		v335 = {}
+		if v336 then
+			v336 = v336:FindFirstChild("RootJoint")
+		end
+		v335.Torso = v336
+		if v337 then
+			v337 = v337:FindFirstChild("Neck")
+		end
+		v335.Head = v337
+		if v338 then
+			v338 = v338:FindFirstChild("LeftShoulder")
+		end
+		v335.LeftUpperArm = v338
+		if v339 then
+			v339 = v339:FindFirstChild("RightShoulder")
+		end
+		v335.RightUpperArm = v339
+		if v340 then
+			v340 = v340:FindFirstChild("LeftHip")
+		end
+		v335.LeftUpperLeg = v340
+		if v341 then
+			v341 = v341:FindFirstChild("RightHip")
+		end
+		v335.RightUpperLeg = v341
+		if v342 then
+			v342 = v342:FindFirstChild("LeftAnkle")
+		end
+		v335.LeftFoot = v342
+		if v343 then
+			v343 = v343:FindFirstChild("RightAnkle")
+		end
+		v335.RightFoot = v343
+		if v344 then
+			v344 = v344:FindFirstChild("LeftWrist")
+		end
+		v335.LeftHand = v344
+		if v345 then
+			v345 = v345:FindFirstChild("RightWrist")
+		end
+		v335.RightHand = v345
+		if v346 then
+			v346 = v346:FindFirstChild("LeftElbow")
+		end
+		v335.LeftLowerArm = v346
+		if v347 then
+			v347 = v347:FindFirstChild("RightElbow")
+		end
+		v335.RightLowerArm = v347
+		if v348 then
+			v348 = v348:FindFirstChild("LeftKnee")
+		end
+		v335.LeftLowerLeg = v348
+		if v349 then
+			v349 = v349:FindFirstChild("RightKnee")
+		end
+		v335.RightLowerLeg = v349
+		if v350 then
+			v350 = v350:FindFirstChild("Root")
+		end
+		v335.LowerTorso = v350
+		if v351 then
+			v351 = v351:FindFirstChild("Waist")
+		end
+		v335.UpperTorso = v351
+	else
+		v335 = (function(p352)
+			local v353, v354, v355 = pairs(p352:GetChildren())
+			local v356 = {}
+			while true do
+				local v357
+				v355, v357 = v353(v354, v355)
+				if v355 == nil then
+					break
+				end
+				if v357:IsA("BasePart") then
+					local v358, v359, v360 = pairs(v357:GetChildren())
+					while true do
+						local v361
+						v360, v361 = v358(v359, v360)
+						if v360 == nil then
+							break
+						end
+						if v361:IsA("Motor6D") and (v361.Part1 and v361.Part1.Parent == p352) then
+							local v362 = v361.Part1.Name
+							v356[v362] = v361
+							if v362 == "Left Arm" then
+								v356.LeftArm = v361
+							elseif v362 == "Right Arm" then
+								v356.RightArm = v361
+							elseif v362 == "Left Leg" then
+								v356.LeftLeg = v361
+							elseif v362 == "Right Leg" then
+								v356.RightLeg = v361
+							elseif v362 == "Head" then
+								v356.Head = v361
+							elseif v362 == "HumanoidRootPart" then
+								v356.Torso = v361
+							end
+						end
+					end
+				end
+			end
+			return v356
+		end)(v334)
+	end
+	local v_u_363 = {}
+	if not v_u_18 then
+		v_u_18 = {}
+	end
+	local v364, v365, v366 = pairs(v335)
+	while true do
+		local v367
+		v366, v367 = v364(v365, v366)
+		if v366 == nil then
+			break
+		end
+		if v367 and v367:IsA("Motor6D") then
+			v_u_363[v366] = v367
+			if not v_u_18[v367] then
+				v_u_18[v367] = {
+					["C0"] = v367.C0,
+					["C1"] = v367.C1
+				}
+			end
+		end
+	end
+	if not v_u_38.connection then
+		local v368 = v_u_12
+		local v369, v370, v371 = pairs(v368:GetChildren())
+		while true do
+			local v372
+			v371, v372 = v369(v370, v371)
+			if v371 == nil then
+				break
+			end
+			if v372:IsA("LocalScript") and (v372.Enabled and v372 ~= v_u_14) then
+				v372.Enabled = false
+			end
+		end
+		v_u_38.connection = v_u_4.Heartbeat:Connect(function(p373)
+			-- upvalues: (ref) v_u_38, (ref) v_u_12, (ref) v_u_304, (ref) v_u_363, (ref) v_u_18, (ref) v_u_23
+			if not (v_u_38.isRunning and v_u_12) then
+				v_u_304()
+				return
+			end
+			if not v_u_38.keyframes then
+				return
+			end
+			v_u_38.elapsedTime = v_u_38.elapsedTime + p373 * v_u_38.speed
+			if v_u_38.totalDuration > 0 then
+				v_u_38.elapsedTime = v_u_38.elapsedTime % v_u_38.totalDuration
+			end
+			local v374 = nil
+			local v375 = nil
+			for v376 = 1, #v_u_38.keyframes - 1 do
+				if v_u_38.elapsedTime >= v_u_38.keyframes[v376].Time then
+					if v_u_38.elapsedTime < v_u_38.keyframes[v376 + 1].Time then
+						v374 = v_u_38.keyframes[v376]
+						v375 = v_u_38.keyframes[v376 + 1]
+						break
+					end
+				end
+			end
+			if not v374 then
+				v374 = v_u_38.keyframes[#v_u_38.keyframes]
+				v375 = v_u_38.keyframes[1]
+			end
+			local v377 = v375.Time - v374.Time
+			if v377 <= 0 then
+				v377 = v_u_38.totalDuration
+			end
+			local v378 = v_u_38.elapsedTime - v374.Time
+			local v379 = 0 < v377 and v378 / v377 or 0
+			local v380 = math.clamp(v379, 0, 1)
+			if v374.Data then
+				local v381, v382, v383 = pairs(v374.Data)
+				while true do
+					local v384
+					v383, v384 = v381(v382, v383)
+					if v383 == nil then
+						break
+					end
+					local v385 = v_u_363[v383]
+					if v385 and (v_u_18 and v_u_18[v385]) then
+						local v386 = v_u_18[v385].C0 * v384
+						local v387 = v375.Data
+						if v387 then
+							v387 = v375.Data[v383]
+						end
+						if v387 then
+							v385.C0 = v386:Lerp(v_u_18[v385].C0 * v387, v380)
+						else
+							v385.C0 = v386
+						end
+					end
+				end
+			else
+				local v388, v389, v390 = pairs(v374:GetDescendants())
+				while true do
+					local v391
+					v390, v391 = v388(v389, v390)
+					if v390 == nil then
+						break
+					end
+					if v391:IsA("Pose") then
+						local v392 = v_u_363[v391.Name]
+						if v392 and (v_u_18 and v_u_18[v392]) then
+							local v393 = v_u_18[v392].C0 * v391.CFrame
+							local v394 = v375:FindFirstChild(v391.Name, true)
+							if v394 and v394:IsA("Pose") then
+								v392.C0 = v393:Lerp(v_u_18[v392].C0 * v394.CFrame, v380)
+							else
+								v392.C0 = v393
+							end
+						end
+					end
+				end
+			end
+			if v_u_23.heightScale ~= 1 or v_u_23.widthScale ~= 1 then
+				local v395, v396, v397 = pairs(v_u_18)
+				while true do
+					local v398
+					v397, v398 = v395(v396, v397)
+					if v397 == nil then
+						break
+					end
+					if v397 and v397:IsA("Motor6D") then
+						local v399 = v397.C0 - v397.C0.Position
+						local v400 = v398.C0.Position
+						local v401 = Vector3.new(v400.X * v_u_23.widthScale, v400.Y * v_u_23.heightScale, v400.Z * v_u_23.widthScale)
+						v397.C0 = CFrame.new(v401) * v399
+					end
+				end
+			end
+		end)
+	end
+end
+local function v_u_410(p403)
+	-- upvalues: (ref) v_u_12, (ref) v_u_10, (ref) v_u_20, (ref) v_u_38, (ref) v_u_304, (ref) v_u_402
+	if not (v_u_12 and v_u_10) then
+		return
+	end
+	local v_u_404 = v_u_20[p403]
+	local v405 = false
+	if v_u_38.isRunning and v_u_38.currentId then
+		local v406, v407, v408 = pairs(v_u_20)
+		while true do
+			local v409
+			v408, v409 = v406(v407, v408)
+			if v408 == nil then
+				break
+			end
+			if v409 and (v409 ~= "" and tostring(v409) == tostring(v_u_38.currentId)) then
+				v405 = true
+				break
+			end
+		end
+	end
+	if v_u_404 and v_u_404 ~= "" then
+		if v_u_12 then
+			if v_u_12:FindFirstChildWhichIsA("Humanoid") then
+				if v_u_38.isRunning and v_u_38.currentId then
+					if not v405 then
+						return
+					end
+					if tostring(v_u_38.currentId) == tostring(v_u_404) then
+						return
+					end
+				end
+				if v_u_38.isRunning then
+					v_u_304()
+					task.wait(0.05)
+				end
+				if v_u_12 and v_u_10 then
+					pcall(function()
+						-- upvalues: (ref) v_u_402, (ref) v_u_404
+						v_u_402(tostring(v_u_404))
+					end)
+				end
+			else
+				return
+			end
+		else
+			return
+		end
+	else
+		if v405 then
+			v_u_304()
+		end
+		return
+	end
+end
+local function v_u_441()
+	-- upvalues: (ref) v_u_12, (ref) v_u_10, (ref) v_u_22, (ref) v_u_38, (ref) v_u_20, (ref) v_u_304, (ref) v_u_410, (ref) v_u_4, (ref) v_u_23, (ref) v_u_18
+	if not (v_u_12 and v_u_10) then
+		return
+	end
+	if not v_u_12:FindFirstChildWhichIsA("Humanoid") then
+		return
+	end
+	local v411, v412, v413 = pairs(v_u_22)
+	while true do
+		local v414, v_u_415 = v411(v412, v413)
+		if v414 == nil then
+			break
+		end
+		v413 = v414
+		if v_u_415 then
+			pcall(function()
+				-- upvalues: (ref) v_u_415
+				v_u_415:Disconnect()
+			end)
+		end
+	end
+	v_u_22 = {}
+	if v_u_38.isRunning and v_u_38.currentId then
+		local v416, v417, v418 = pairs(v_u_20)
+		while true do
+			local v419
+			v418, v419 = v416(v417, v418)
+			if v418 == nil then
+				break
+			end
+			if v419 and (v419 ~= "" and tostring(v419) == tostring(v_u_38.currentId)) then
+				v_u_304()
+				break
+			end
+		end
+	end
+	local function v_u_424()
+		-- upvalues: (ref) v_u_12
+		if not v_u_12 then
+			return "idle"
+		end
+		local v_u_420 = v_u_12:FindFirstChildWhichIsA("Humanoid")
+		if not v_u_420 then
+			return "idle"
+		end
+		local v421 = v_u_420.MoveDirection.Magnitude
+		local v422, v423 = pcall(function()
+			-- upvalues: (ref) v_u_420
+			return v_u_420:GetState()
+		end)
+		return v422 and ((v423 == Enum.HumanoidStateType.Jumping or v423 == Enum.HumanoidStateType.Freefall) and "jumping" or (0.1 < v421 and "walking" or "idle")) or "idle"
+	end
+	local v_u_425 = v_u_424()
+	local v_u_426 = v_u_425
+	local v_u_427 = v_u_425
+	if v_u_20[v_u_425] and v_u_20[v_u_425] ~= "" then
+		task.defer(function()
+			-- upvalues: (ref) v_u_12, (ref) v_u_10, (ref) v_u_410, (ref) v_u_425
+			if v_u_12 and v_u_10 then
+				v_u_410(v_u_425)
+			end
+		end)
+	end
+	v_u_22.stateMonitor = v_u_4.Heartbeat:Connect(function(_)
+		-- upvalues: (ref) v_u_12, (ref) v_u_10, (ref) v_u_22, (ref) v_u_424, (ref) v_u_427, (ref) v_u_38, (ref) v_u_20, (ref) v_u_304, (ref) v_u_410, (ref) v_u_426, (ref) v_u_23, (ref) v_u_18
+		if not (v_u_12 and v_u_10) then
+			if v_u_22.stateMonitor then
+				pcall(function()
+					-- upvalues: (ref) v_u_22
+					v_u_22.stateMonitor:Disconnect()
+				end)
+				v_u_22.stateMonitor = nil
+			end
+			return
+		end
+		if not v_u_12:FindFirstChildWhichIsA("Humanoid") then
+			if v_u_22.stateMonitor then
+				pcall(function()
+					-- upvalues: (ref) v_u_22
+					v_u_22.stateMonitor:Disconnect()
+				end)
+				v_u_22.stateMonitor = nil
+			end
+			return
+		end
+		local v_u_428 = v_u_424()
+		if v_u_428 ~= v_u_427 then
+			v_u_427 = v_u_428
+			local v429 = false
+			if v_u_38.isRunning and v_u_38.currentId then
+				local v430, v431, v432 = pairs(v_u_20)
+				while true do
+					local v433
+					v432, v433 = v430(v431, v432)
+					if v432 == nil then
+						break
+					end
+					if v433 and (v433 ~= "" and tostring(v433) == tostring(v_u_38.currentId)) then
+						v429 = true
+						break
+					end
+				end
+			end
+			if v429 then
+				v_u_304()
+			end
+			if v_u_20[v_u_428] and (v_u_20[v_u_428] ~= "" and (v_u_12 and v_u_10)) then
+				task.defer(function()
+					-- upvalues: (ref) v_u_12, (ref) v_u_10, (ref) v_u_410, (ref) v_u_428
+					if v_u_12 and v_u_10 then
+						v_u_410(v_u_428)
+					end
+				end)
+			end
+		end
+		v_u_426 = v_u_428
+		if (v_u_23.heightScale ~= 1 or v_u_23.widthScale ~= 1) and v_u_18 then
+			local v434, v435, v436 = pairs(v_u_18)
+			while true do
+				local v437
+				v436, v437 = v434(v435, v436)
+				if v436 == nil then
+					break
+				end
+				if v436 and (v436:IsA("Motor6D") and v436.Parent) then
+					local v438 = v436.C0 - v436.C0.Position
+					local v439 = v437.C0.Position
+					local v440 = Vector3.new(v439.X * v_u_23.widthScale, v439.Y * v_u_23.heightScale, v439.Z * v_u_23.widthScale)
+					v436.C0 = CFrame.new(v440) * v438
+				end
+			end
+		end
+	end)
+end
+local function v_u_773()
+	-- upvalues: (ref) v_u_7, (ref) v_u_6, (ref) v_u_289, (ref) v_u_10, (ref) v_u_12, (ref) v_u_441, (ref) v_u_20, (ref) v_u_39, (ref) v_u_122, (ref) v_u_22, (ref) v_u_38, (ref) v_u_304, (ref) v_u_23, (ref) v_u_246, (ref) v_u_3, (ref) v_u_11, (ref) v_u_26, (ref) v_u_33, (ref) v_u_34, (ref) v_u_35, (ref) v_u_27, (ref) v_u_30, (ref) v_u_52, (ref) v_u_111, (ref) v_u_49, (ref) v_u_47, (ref) v_u_48, (ref) v_u_402, (ref) v_u_135, (ref) v_u_96, (ref) v_u_79, (ref) v_u_290
+	local v442 = v_u_7:WaitForChild("PlayerGui")
+	if not v442:FindFirstChild("AKReanimGUI") then
+		local v_u_443 = Instance.new("ScreenGui")
+		v_u_443.Name = "AKReanimGUI"
+		v_u_443.ResetOnSpawn = false
+		v_u_443.Parent = v442
+		local v_u_444 = Instance.new("Frame")
+		v_u_444.Size = UDim2.new(0, 280, 0, 395)
+		v_u_444.Position = UDim2.new(0.5, -140, 0.5, -197.5)
+		v_u_444.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_444.BackgroundTransparency = 0.6
+		v_u_444.BorderSizePixel = 0
+		v_u_444.Parent = v_u_443
+		local v445 = Instance.new("UICorner")
+		v445.CornerRadius = UDim.new(0, 15)
+		v445.Parent = v_u_444
+		local v446 = Instance.new("Frame")
+		v446.Size = UDim2.new(1, 0, 0, 30)
+		v446.Position = UDim2.new(0, 0, 0, 0)
+		v446.BackgroundTransparency = 1
+		v446.BorderSizePixel = 0
+		v446.Parent = v_u_444
+		local v447 = Instance.new("TextLabel")
+		v447.Size = UDim2.new(1, -100, 1, 0)
+		v447.Position = UDim2.new(0, 50, 0, 0)
+		v447.BackgroundTransparency = 1
+		v447.Text = "AK REANIMATION"
+		v447.TextColor3 = Color3.new(1, 1, 1)
+		v447.TextSize = 16
+		v447.Font = Enum.Font.Gotham
+		v447.TextXAlignment = Enum.TextXAlignment.Center
+		v447.Parent = v446
+		local v_u_448 = Instance.new("Frame")
+		v_u_448.Size = UDim2.new(0, 40, 0, 18)
+		v_u_448.Position = UDim2.new(0, 6, 0, 6)
+		v_u_448.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+		v_u_448.BorderSizePixel = 0
+		v_u_448.Parent = v446
+		local v449 = Instance.new("UICorner")
+		v449.CornerRadius = UDim.new(0, 9)
+		v449.Parent = v_u_448
+		local v_u_450 = Instance.new("Frame")
+		v_u_450.Size = UDim2.new(0, 14, 0, 14)
+		v_u_450.Position = UDim2.new(0, 2, 0, 2)
+		v_u_450.BackgroundColor3 = Color3.new(0.7, 0.7, 0.7)
+		v_u_450.BorderSizePixel = 0
+		v_u_450.Parent = v_u_448
+		local v451 = Instance.new("UICorner")
+		v451.CornerRadius = UDim.new(0, 7)
+		v451.Parent = v_u_450
+		local v452 = Instance.new("TextButton")
+		v452.Size = UDim2.new(1, 0, 1, 0)
+		v452.BackgroundTransparency = 1
+		v452.Text = ""
+		v452.Parent = v_u_448
+		local v_u_453 = false
+		local v_u_454 = false
+		local v_u_455 = 0
+		v452.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_454, (ref) v_u_455, (ref) v_u_453, (ref) v_u_6, (ref) v_u_448, (ref) v_u_450, (ref) v_u_289, (ref) v_u_10, (ref) v_u_12, (ref) v_u_441
+			if v_u_454 then
+				return
+			else
+				local v456 = tick()
+				if v456 - v_u_455 >= 3 then
+					v_u_454 = true
+					v_u_455 = v456
+					v_u_453 = not v_u_453
+					local v457 = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+					if v_u_453 then
+						v_u_6:Create(v_u_448, v457, {
+							["BackgroundColor3"] = Color3.fromRGB(0, 150, 255)
+						}):Play()
+						v_u_6:Create(v_u_450, v457, {
+							["Position"] = UDim2.new(1, -16, 0, 2),
+							["BackgroundColor3"] = Color3.new(1, 1, 1)
+						}):Play()
+					else
+						v_u_6:Create(v_u_448, v457, {
+							["BackgroundColor3"] = Color3.new(0.2, 0.2, 0.2)
+						}):Play()
+						v_u_6:Create(v_u_450, v457, {
+							["Position"] = UDim2.new(0, 2, 0, 2),
+							["BackgroundColor3"] = Color3.new(0.7, 0.7, 0.7)
+						}):Play()
+					end
+					v_u_289(v_u_453)
+					if v_u_453 then
+						spawn(function()
+							-- upvalues: (ref) v_u_10, (ref) v_u_12, (ref) v_u_441
+							wait(0.3)
+							if v_u_10 and v_u_12 then
+								v_u_441()
+							end
+						end)
+					end
+					spawn(function()
+						-- upvalues: (ref) v_u_454
+						wait(3)
+						v_u_454 = false
+					end)
+				end
+			end
+		end)
+		local v_u_458 = Instance.new("TextButton")
+		v_u_458.Size = UDim2.new(0, 22, 0, 22)
+		v_u_458.Position = UDim2.new(1, -48, 0, 4)
+		v_u_458.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_458.BackgroundTransparency = 0.7
+		v_u_458.Text = "\226\136\146"
+		v_u_458.TextColor3 = Color3.new(1, 1, 1)
+		v_u_458.TextScaled = true
+		v_u_458.Font = Enum.Font.Gotham
+		v_u_458.BorderSizePixel = 0
+		v_u_458.Parent = v446
+		local v459 = Instance.new("UICorner")
+		v459.CornerRadius = UDim.new(0, 10)
+		v459.Parent = v_u_458
+		local v460 = Instance.new("TextButton")
+		v460.Size = UDim2.new(0, 22, 0, 22)
+		v460.Position = UDim2.new(1, -24, 0, 4)
+		v460.BackgroundColor3 = Color3.new(0, 0, 0)
+		v460.BackgroundTransparency = 0.7
+		v460.Text = "\195\151"
+		v460.TextColor3 = Color3.new(1, 1, 1)
+		v460.TextScaled = true
+		v460.Font = Enum.Font.Gotham
+		v460.BorderSizePixel = 0
+		v460.Parent = v446
+		local v461 = Instance.new("UICorner")
+		v461.CornerRadius = UDim.new(0, 10)
+		v461.Parent = v460
+		local v_u_462 = Instance.new("TextLabel")
+		v_u_462.Size = UDim2.new(1, -16, 0, 12)
+		v_u_462.Position = UDim2.new(0, 8, 0, 32)
+		v_u_462.BackgroundTransparency = 1
+		v_u_462.Text = "Ready"
+		v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+		v_u_462.TextSize = 10
+		v_u_462.Font = Enum.Font.Gotham
+		v_u_462.Parent = v_u_444
+		local v463 = Instance.new("Frame")
+		v463.Size = UDim2.new(1, -16, 0, 25)
+		v463.Position = UDim2.new(0, 8, 0, 48)
+		v463.BackgroundTransparency = 1
+		v463.Parent = v_u_444
+		local v_u_464 = Instance.new("TextButton")
+		v_u_464.Size = UDim2.new(0.166, -2, 1, 0)
+		v_u_464.Position = UDim2.new(0, 0, 0, 0)
+		v_u_464.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_464.BackgroundTransparency = 0.5
+		v_u_464.Text = "All"
+		v_u_464.TextColor3 = Color3.new(1, 1, 1)
+		v_u_464.TextSize = 11
+		v_u_464.Font = Enum.Font.Gotham
+		v_u_464.BorderSizePixel = 0
+		v_u_464.Parent = v463
+		local v_u_465 = Instance.new("TextButton")
+		v_u_465.Size = UDim2.new(0.166, -2, 1, 0)
+		v_u_465.Position = UDim2.new(0.166, 2, 0, 0)
+		v_u_465.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_465.BackgroundTransparency = 0.8
+		v_u_465.Text = "Favs"
+		v_u_465.TextColor3 = Color3.new(1, 1, 1)
+		v_u_465.TextSize = 11
+		v_u_465.Font = Enum.Font.Gotham
+		v_u_465.BorderSizePixel = 0
+		v_u_465.Parent = v463
+		local v_u_466 = Instance.new("TextButton")
+		v_u_466.Size = UDim2.new(0.166, -2, 1, 0)
+		v_u_466.Position = UDim2.new(0.332, 4, 0, 0)
+		v_u_466.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_466.BackgroundTransparency = 0.8
+		v_u_466.Text = "Custom"
+		v_u_466.TextColor3 = Color3.new(1, 1, 1)
+		v_u_466.TextSize = 11
+		v_u_466.Font = Enum.Font.Gotham
+		v_u_466.BorderSizePixel = 0
+		v_u_466.Parent = v463
+		local v_u_467 = Instance.new("TextButton")
+		v_u_467.Size = UDim2.new(0.166, -2, 1, 0)
+		v_u_467.Position = UDim2.new(0.498, 6, 0, 0)
+		v_u_467.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_467.BackgroundTransparency = 0.8
+		v_u_467.Text = "States"
+		v_u_467.TextColor3 = Color3.new(1, 1, 1)
+		v_u_467.TextSize = 11
+		v_u_467.Font = Enum.Font.Gotham
+		v_u_467.BorderSizePixel = 0
+		v_u_467.Parent = v463
+		local v_u_468 = Instance.new("TextButton")
+		v_u_468.Size = UDim2.new(0.166, -2, 1, 0)
+		v_u_468.Position = UDim2.new(0.664, 8, 0, 0)
+		v_u_468.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_468.BackgroundTransparency = 0.8
+		v_u_468.Text = "Size"
+		v_u_468.TextColor3 = Color3.new(1, 1, 1)
+		v_u_468.TextSize = 11
+		v_u_468.Font = Enum.Font.Gotham
+		v_u_468.BorderSizePixel = 0
+		v_u_468.Parent = v463
+		local v469 = Instance.new("UICorner")
+		v469.CornerRadius = UDim.new(0, 10)
+		v469.Parent = v_u_468
+		local v_u_470 = Instance.new("TextButton")
+		v_u_470.Size = UDim2.new(0.166, -2, 1, 0)
+		v_u_470.Position = UDim2.new(0.83, 10, 0, 0)
+		v_u_470.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_470.BackgroundTransparency = 0.8
+		v_u_470.Text = "Others"
+		v_u_470.TextColor3 = Color3.new(1, 1, 1)
+		v_u_470.TextSize = 11
+		v_u_470.Font = Enum.Font.Gotham
+		v_u_470.BorderSizePixel = 0
+		v_u_470.Parent = v463
+		local v471 = Instance.new("UICorner")
+		v471.CornerRadius = UDim.new(0, 10)
+		v471.Parent = v_u_470
+		local v472 = Instance.new("UICorner")
+		v472.CornerRadius = UDim.new(0, 10)
+		v472.Parent = v_u_464
+		local v473 = Instance.new("UICorner")
+		v473.CornerRadius = UDim.new(0, 10)
+		v473.Parent = v_u_465
+		local v474 = Instance.new("UICorner")
+		v474.CornerRadius = UDim.new(0, 10)
+		v474.Parent = v_u_466
+		local v475 = Instance.new("UICorner")
+		v475.CornerRadius = UDim.new(0, 10)
+		v475.Parent = v_u_467
+		local v_u_476 = Instance.new("TextBox")
+		v_u_476.Size = UDim2.new(1, -16, 0, 22)
+		v_u_476.Position = UDim2.new(0, 8, 0, 78)
+		v_u_476.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_476.BackgroundTransparency = 0.5
+		v_u_476.Text = ""
+		v_u_476.PlaceholderText = "Search..."
+		v_u_476.TextColor3 = Color3.new(1, 1, 1)
+		v_u_476.PlaceholderColor3 = Color3.new(0.7, 0.7, 0.7)
+		v_u_476.TextSize = 11
+		v_u_476.Font = Enum.Font.Gotham
+		v_u_476.BorderSizePixel = 0
+		v_u_476.Parent = v_u_444
+		local v477 = Instance.new("UICorner")
+		v477.CornerRadius = UDim.new(0, 10)
+		v477.Parent = v_u_476
+		local v_u_478 = Instance.new("ScrollingFrame")
+		v_u_478.Size = UDim2.new(1, -16, 1, -175)
+		v_u_478.Position = UDim2.new(0, 8, 0, 105)
+		v_u_478.BackgroundTransparency = 1
+		v_u_478.ScrollBarThickness = 4
+		v_u_478.ScrollBarImageColor3 = Color3.new(1, 1, 1)
+		v_u_478.ScrollBarImageTransparency = 0.5
+		v_u_478.BorderSizePixel = 0
+		v_u_478.ScrollingDirection = Enum.ScrollingDirection.Y
+		v_u_478.Parent = v_u_444
+		local v_u_479 = Instance.new("UIListLayout")
+		v_u_479.Padding = UDim.new(0, 3)
+		v_u_479.SortOrder = Enum.SortOrder.LayoutOrder
+		v_u_479.Parent = v_u_478
+		local v_u_480 = Instance.new("Frame")
+		v_u_480.Size = UDim2.new(1, -16, 0, 80)
+		v_u_480.Position = UDim2.new(0, 8, 0, 105)
+		v_u_480.BackgroundTransparency = 1
+		v_u_480.Visible = false
+		v_u_480.Parent = v_u_444
+		local v_u_481 = Instance.new("TextBox")
+		v_u_481.Size = UDim2.new(1, 0, 0, 22)
+		v_u_481.Position = UDim2.new(0, 0, 0, 0)
+		v_u_481.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_481.BackgroundTransparency = 0.5
+		v_u_481.Text = ""
+		v_u_481.PlaceholderText = "Animation Name..."
+		v_u_481.TextColor3 = Color3.new(1, 1, 1)
+		v_u_481.PlaceholderColor3 = Color3.new(0.7, 0.7, 0.7)
+		v_u_481.TextSize = 11
+		v_u_481.Font = Enum.Font.Gotham
+		v_u_481.BorderSizePixel = 0
+		v_u_481.Parent = v_u_480
+		local v482 = Instance.new("UICorner")
+		v482.CornerRadius = UDim.new(0, 10)
+		v482.Parent = v_u_481
+		local v_u_483 = Instance.new("TextBox")
+		v_u_483.Size = UDim2.new(1, 0, 0, 45)
+		v_u_483.Position = UDim2.new(0, 0, 0, 27)
+		v_u_483.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_483.BackgroundTransparency = 0.5
+		v_u_483.Text = ""
+		v_u_483.PlaceholderText = "Keyframe Code..."
+		v_u_483.TextColor3 = Color3.new(1, 1, 1)
+		v_u_483.PlaceholderColor3 = Color3.new(0.7, 0.7, 0.7)
+		v_u_483.TextSize = 9
+		v_u_483.Font = Enum.Font.Code
+		v_u_483.TextWrapped = true
+		v_u_483.TextXAlignment = Enum.TextXAlignment.Left
+		v_u_483.TextYAlignment = Enum.TextYAlignment.Top
+		v_u_483.ClearTextOnFocus = false
+		v_u_483.MultiLine = true
+		v_u_483.BorderSizePixel = 0
+		v_u_483.Parent = v_u_480
+		local v484 = Instance.new("UICorner")
+		v484.CornerRadius = UDim.new(0, 10)
+		v484.Parent = v_u_483
+		local v_u_485 = Instance.new("Frame")
+		v_u_485.Size = UDim2.new(1, -16, 1, -175)
+		v_u_485.Position = UDim2.new(0, 8, 0, 105)
+		v_u_485.BackgroundTransparency = 1
+		v_u_485.Visible = false
+		v_u_485.Parent = v_u_444
+		local v_u_486 = Instance.new("ScrollingFrame")
+		v_u_486.Size = UDim2.new(1, 0, 1, 0)
+		v_u_486.Position = UDim2.new(0, 0, 0, 0)
+		v_u_486.BackgroundTransparency = 1
+		v_u_486.ScrollBarThickness = 4
+		v_u_486.ScrollBarImageColor3 = Color3.new(1, 1, 1)
+		v_u_486.ScrollBarImageTransparency = 0.5
+		v_u_486.BorderSizePixel = 0
+		v_u_486.Parent = v_u_485
+		local v_u_487 = Instance.new("UIListLayout")
+		v_u_487.Padding = UDim.new(0, 10)
+		v_u_487.SortOrder = Enum.SortOrder.LayoutOrder
+		v_u_487.Parent = v_u_486
+		local function v547(p_u_488, p_u_489, p490)
+			-- upvalues: (ref) v_u_486, (ref) v_u_20, (ref) v_u_39, (ref) v_u_122, (ref) v_u_462, (ref) v_u_10, (ref) v_u_22, (ref) v_u_38, (ref) v_u_304, (ref) v_u_441
+			local v491 = Instance.new("Frame")
+			v491.Size = UDim2.new(1, 0, 0, 110)
+			v491.BackgroundColor3 = Color3.new(0, 0, 0)
+			v491.BackgroundTransparency = 0.7
+			v491.BorderSizePixel = 0
+			v491.LayoutOrder = p490
+			v491.Parent = v_u_486
+			local v492 = Instance.new("UICorner")
+			v492.CornerRadius = UDim.new(0, 10)
+			v492.Parent = v491
+			local v493 = Instance.new("TextLabel")
+			v493.Size = UDim2.new(1, -10, 0, 20)
+			v493.Position = UDim2.new(0, 5, 0, 5)
+			v493.BackgroundTransparency = 1
+			v493.Text = p_u_489
+			v493.TextColor3 = Color3.new(1, 1, 1)
+			v493.TextSize = 12
+			v493.Font = Enum.Font.GothamBold
+			v493.TextXAlignment = Enum.TextXAlignment.Left
+			v493.Parent = v491
+			local v_u_494 = Instance.new("TextButton")
+			v_u_494.Size = UDim2.new(1, -10, 0, 25)
+			v_u_494.Position = UDim2.new(0, 5, 0, 30)
+			v_u_494.BackgroundColor3 = Color3.new(0, 0, 0)
+			v_u_494.BackgroundTransparency = 0.5
+			local v495 = "Select Animation..."
+			local v496
+			if v_u_20[p_u_488] and v_u_20[p_u_488] ~= "" then
+				local v497, v498
+				v497, v498, v496 = pairs(v_u_39)
+				while true do
+					local v499
+					v496, v499 = v497(v498, v496)
+					if v496 == nil then
+						v496 = v495
+						break
+					end
+					if tostring(v499) == tostring(v_u_20[p_u_488]) then
+						break
+					end
+				end
+				if v496 == "Select Animation..." then
+					v496 = "Custom Keyframes"
+				end
+			else
+				v496 = v495
+			end
+			v_u_494.Text = v496
+			v_u_494.TextColor3 = Color3.new(1, 1, 1)
+			v_u_494.TextSize = 10
+			v_u_494.Font = Enum.Font.Gotham
+			v_u_494.TextXAlignment = Enum.TextXAlignment.Left
+			v_u_494.BorderSizePixel = 0
+			v_u_494.Parent = v491
+			local v500 = Instance.new("UICorner")
+			v500.CornerRadius = UDim.new(0, 8)
+			v500.Parent = v_u_494
+			local v501 = Instance.new("UIPadding")
+			v501.PaddingLeft = UDim.new(0, 8)
+			v501.Parent = v_u_494
+			local v_u_502 = Instance.new("TextBox")
+			v_u_502.Size = UDim2.new(1, -10, 0, 40)
+			v_u_502.Position = UDim2.new(0, 5, 0, 60)
+			v_u_502.BackgroundColor3 = Color3.new(0, 0, 0)
+			v_u_502.BackgroundTransparency = 0.5
+			v_u_502.Text = ""
+			v_u_502.PlaceholderText = "Or paste keyframe code..."
+			v_u_502.TextColor3 = Color3.new(1, 1, 1)
+			v_u_502.PlaceholderColor3 = Color3.new(0.7, 0.7, 0.7)
+			v_u_502.TextSize = 9
+			v_u_502.Font = Enum.Font.Code
+			v_u_502.TextWrapped = true
+			v_u_502.TextXAlignment = Enum.TextXAlignment.Left
+			v_u_502.TextYAlignment = Enum.TextYAlignment.Top
+			v_u_502.ClearTextOnFocus = false
+			v_u_502.MultiLine = true
+			v_u_502.BorderSizePixel = 0
+			v_u_502.Parent = v491
+			local v503 = Instance.new("UICorner")
+			v503.CornerRadius = UDim.new(0, 8)
+			v503.Parent = v_u_502
+			local v_u_504 = false
+			local v_u_505 = nil
+			v_u_494.MouseButton1Click:Connect(function()
+				-- upvalues: (ref) v_u_504, (ref) v_u_505, (ref) v_u_494, (ref) v_u_20, (ref) p_u_488, (ref) v_u_122, (ref) v_u_502, (ref) v_u_462, (ref) p_u_489, (ref) v_u_10, (ref) v_u_22, (ref) v_u_38, (ref) v_u_304, (ref) v_u_441, (ref) v_u_39
+				if v_u_504 then
+					if v_u_505 then
+						v_u_505:Destroy()
+					end
+					v_u_504 = false
+				else
+					v_u_504 = true
+					v_u_505 = Instance.new("Frame")
+					v_u_505.Size = UDim2.new(1, 0, 0, 180)
+					v_u_505.Position = UDim2.new(0, 0, 1, 2)
+					v_u_505.BackgroundColor3 = Color3.new(0, 0, 0)
+					v_u_505.BackgroundTransparency = 0.3
+					v_u_505.BorderSizePixel = 0
+					v_u_505.ZIndex = 10
+					v_u_505.Parent = v_u_494
+					local v506 = Instance.new("UICorner")
+					v506.CornerRadius = UDim.new(0, 8)
+					v506.Parent = v_u_505
+					local v_u_507 = Instance.new("TextBox")
+					v_u_507.Size = UDim2.new(1, -8, 0, 22)
+					v_u_507.Position = UDim2.new(0, 4, 0, 4)
+					v_u_507.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+					v_u_507.BackgroundTransparency = 0.3
+					v_u_507.Text = ""
+					v_u_507.PlaceholderText = "Search..."
+					v_u_507.TextColor3 = Color3.new(1, 1, 1)
+					v_u_507.PlaceholderColor3 = Color3.new(0.7, 0.7, 0.7)
+					v_u_507.TextSize = 10
+					v_u_507.Font = Enum.Font.Gotham
+					v_u_507.BorderSizePixel = 0
+					v_u_507.ZIndex = 10
+					v_u_507.ClearTextOnFocus = false
+					v_u_507.Parent = v_u_505
+					local v508 = Instance.new("UICorner")
+					v508.CornerRadius = UDim.new(0, 6)
+					v508.Parent = v_u_507
+					local v_u_509 = Instance.new("ScrollingFrame")
+					v_u_509.Size = UDim2.new(1, -4, 1, -30)
+					v_u_509.Position = UDim2.new(0, 2, 0, 28)
+					v_u_509.BackgroundTransparency = 1
+					v_u_509.ScrollBarThickness = 3
+					v_u_509.ScrollBarImageColor3 = Color3.new(1, 1, 1)
+					v_u_509.ScrollBarImageTransparency = 0.5
+					v_u_509.BorderSizePixel = 0
+					v_u_509.ZIndex = 10
+					v_u_509.Parent = v_u_505
+					local v_u_510 = Instance.new("UIListLayout")
+					v_u_510.Padding = UDim.new(0, 2)
+					v_u_510.SortOrder = Enum.SortOrder.Name
+					v_u_510.Parent = v_u_509
+					local v_u_511 = {}
+					local function v_u_540()
+						-- upvalues: (ref) v_u_511, (ref) v_u_507, (ref) v_u_509, (ref) v_u_20, (ref) p_u_488, (ref) v_u_122, (ref) v_u_494, (ref) v_u_502, (ref) v_u_505, (ref) v_u_504, (ref) v_u_462, (ref) p_u_489, (ref) v_u_10, (ref) v_u_22, (ref) v_u_38, (ref) v_u_304, (ref) v_u_441, (ref) v_u_39, (ref) v_u_510
+						local v512, v513, v514 = pairs(v_u_511)
+						while true do
+							local v515
+							v514, v515 = v512(v513, v514)
+							if v514 == nil then
+								break
+							end
+							v515:Destroy()
+						end
+						v_u_511 = {}
+						local v516 = v_u_507.Text:lower()
+						local v517 = Instance.new("TextButton")
+						v517.Size = UDim2.new(1, 0, 0, 22)
+						v517.BackgroundColor3 = Color3.new(0.15, 0.15, 0.15)
+						v517.BackgroundTransparency = 0.3
+						v517.Text = " [None]"
+						v517.TextColor3 = Color3.new(1, 0.5, 0.5)
+						v517.TextSize = 10
+						v517.Font = Enum.Font.GothamBold
+						v517.TextXAlignment = Enum.TextXAlignment.Left
+						v517.BorderSizePixel = 0
+						v517.ZIndex = 10
+						v517.LayoutOrder = -1
+						v517.Parent = v_u_509
+						table.insert(v_u_511, v517)
+						v517.MouseButton1Click:Connect(function()
+							-- upvalues: (ref) v_u_20, (ref) p_u_488, (ref) v_u_122, (ref) v_u_494, (ref) v_u_502, (ref) v_u_505, (ref) v_u_504, (ref) v_u_462, (ref) p_u_489, (ref) v_u_10, (ref) v_u_22, (ref) v_u_38, (ref) v_u_304, (ref) v_u_441
+							v_u_20[p_u_488] = ""
+							v_u_122()
+							v_u_494.Text = "Select Animation..."
+							v_u_502.Text = ""
+							if v_u_505 then
+								v_u_505:Destroy()
+							end
+							v_u_504 = false
+							v_u_462.Text = p_u_489 .. " cleared"
+							v_u_462.TextColor3 = Color3.new(1, 0.7, 0.3)
+							spawn(function()
+								-- upvalues: (ref) v_u_462
+								wait(2)
+								v_u_462.Text = "Ready"
+								v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+							end)
+							if v_u_10 then
+								local v518, v519, v520 = pairs(v_u_22)
+								while true do
+									local v_u_521
+									v520, v_u_521 = v518(v519, v520)
+									if v520 == nil then
+										break
+									end
+									if v_u_521 then
+										pcall(function()
+											-- upvalues: (ref) v_u_521
+											v_u_521:Disconnect()
+										end)
+									end
+								end
+								v_u_22 = {}
+								if v_u_38.isRunning then
+									v_u_304()
+								end
+								task.wait(0.1)
+								if v_u_10 then
+									v_u_441()
+								end
+							end
+						end)
+						local v522, v523, v524 = pairs(v_u_39)
+						local v525 = {}
+						local v526 = 0
+						local v527 = 50
+						while true do
+							local v528
+							v524, v528 = v522(v523, v524)
+							if v524 == nil then
+								break
+							end
+							if v516 == "" or v524:lower():find(v516, 1, true) then
+								table.insert(v525, {
+									["name"] = v524,
+									["id"] = v528
+								})
+								v526 = v526 + 1
+								if v527 <= v526 then
+									break
+								end
+							end
+						end
+						table.sort(v525, function(p529, p530)
+							return p529.name < p530.name
+						end)
+						local v531, v532, v533 = ipairs(v525)
+						while true do
+							local v_u_534
+							v533, v_u_534 = v531(v532, v533)
+							if v533 == nil then
+								break
+							end
+							local v535 = Instance.new("TextButton")
+							v535.Size = UDim2.new(1, 0, 0, 22)
+							v535.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+							v535.BackgroundTransparency = 0.3
+							v535.Text = " " .. v_u_534.name
+							v535.TextColor3 = Color3.new(1, 1, 1)
+							v535.TextSize = 10
+							v535.Font = Enum.Font.Gotham
+							v535.TextXAlignment = Enum.TextXAlignment.Left
+							v535.BorderSizePixel = 0
+							v535.ZIndex = 10
+							v535.Parent = v_u_509
+							table.insert(v_u_511, v535)
+							v535.MouseButton1Click:Connect(function()
+								-- upvalues: (ref) v_u_20, (ref) p_u_488, (ref) v_u_534, (ref) v_u_122, (ref) v_u_494, (ref) v_u_502, (ref) v_u_505, (ref) v_u_504, (ref) v_u_462, (ref) p_u_489, (ref) v_u_10, (ref) v_u_22, (ref) v_u_38, (ref) v_u_304, (ref) v_u_441
+								v_u_20[p_u_488] = tostring(v_u_534.id)
+								v_u_122()
+								v_u_494.Text = v_u_534.name
+								v_u_502.Text = ""
+								if v_u_505 then
+									v_u_505:Destroy()
+								end
+								v_u_504 = false
+								v_u_462.Text = p_u_489 .. " set to " .. v_u_534.name
+								v_u_462.TextColor3 = Color3.new(0.5, 1, 0.5)
+								spawn(function()
+									-- upvalues: (ref) v_u_462
+									wait(2)
+									v_u_462.Text = "Ready"
+									v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+								end)
+								if v_u_10 then
+									local v536, v537, v538 = pairs(v_u_22)
+									while true do
+										local v_u_539
+										v538, v_u_539 = v536(v537, v538)
+										if v538 == nil then
+											break
+										end
+										if v_u_539 then
+											pcall(function()
+												-- upvalues: (ref) v_u_539
+												v_u_539:Disconnect()
+											end)
+										end
+									end
+									v_u_22 = {}
+									if v_u_38.isRunning then
+										v_u_304()
+									end
+									task.wait(0.1)
+									if v_u_10 then
+										v_u_441()
+									end
+								end
+							end)
+						end
+						task.defer(function()
+							-- upvalues: (ref) v_u_509, (ref) v_u_510
+							v_u_509.CanvasSize = UDim2.new(0, 0, 0, v_u_510.AbsoluteContentSize.Y)
+						end)
+					end
+					v_u_540()
+					local v_u_541 = false
+					local v542 = v_u_507
+					v_u_507.GetPropertyChangedSignal(v542, "Text"):Connect(function()
+						-- upvalues: (ref) v_u_541, (ref) v_u_540
+						if not v_u_541 then
+							v_u_541 = true
+							task.wait(0.2)
+							v_u_540()
+							v_u_541 = false
+						end
+					end)
+				end
+			end)
+			v_u_502.FocusLost:Connect(function(_)
+				-- upvalues: (ref) v_u_502, (ref) v_u_20, (ref) p_u_488, (ref) v_u_122, (ref) v_u_494, (ref) v_u_462, (ref) p_u_489, (ref) v_u_10, (ref) v_u_22, (ref) v_u_38, (ref) v_u_304, (ref) v_u_441
+				if v_u_502.Text ~= "" then
+					v_u_20[p_u_488] = v_u_502.Text
+					v_u_122()
+					v_u_494.Text = "Custom Keyframes"
+					v_u_462.Text = p_u_489 .. " set to custom keyframes"
+					v_u_462.TextColor3 = Color3.new(0.5, 1, 0.5)
+					spawn(function()
+						-- upvalues: (ref) v_u_462
+						wait(2)
+						v_u_462.Text = "Ready"
+						v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+					end)
+					if v_u_10 then
+						local v543, v544, v545 = pairs(v_u_22)
+						while true do
+							local v_u_546
+							v545, v_u_546 = v543(v544, v545)
+							if v545 == nil then
+								break
+							end
+							if v_u_546 then
+								pcall(function()
+									-- upvalues: (ref) v_u_546
+									v_u_546:Disconnect()
+								end)
+							end
+						end
+						v_u_22 = {}
+						if v_u_38.isRunning then
+							v_u_304()
+						end
+						task.wait(0.1)
+						if v_u_10 then
+							v_u_441()
+						end
+					end
+				end
+			end)
+		end
+		v547("idle", "IDLE Animation", 1)
+		v547("walking", "WALKING Animation", 2)
+		v547("jumping", "JUMPING Animation", 3)
+		spawn(function()
+			-- upvalues: (ref) v_u_486, (ref) v_u_487
+			wait(0.1)
+			v_u_486.CanvasSize = UDim2.new(0, 0, 0, v_u_487.AbsoluteContentSize.Y + 10)
+		end)
+		local v_u_548 = Instance.new("Frame")
+		v_u_548.Size = UDim2.new(1, -16, 1, -175)
+		v_u_548.Position = UDim2.new(0, 8, 0, 105)
+		v_u_548.BackgroundTransparency = 1
+		v_u_548.Visible = false
+		v_u_548.Parent = v_u_444
+		local v_u_549 = Instance.new("TextLabel")
+		v_u_549.Size = UDim2.new(1, 0, 0, 25)
+		v_u_549.Position = UDim2.new(0, 0, 0, 10)
+		v_u_549.BackgroundTransparency = 1
+		v_u_549.Text = "Height: 1.00x"
+		v_u_549.TextColor3 = Color3.new(1, 1, 1)
+		v_u_549.TextSize = 12
+		v_u_549.Font = Enum.Font.GothamBold
+		v_u_549.TextXAlignment = Enum.TextXAlignment.Left
+		v_u_549.Parent = v_u_548
+		local v_u_550 = Instance.new("Frame")
+		v_u_550.Size = UDim2.new(1, -20, 0, 6)
+		v_u_550.Position = UDim2.new(0, 10, 0, 45)
+		v_u_550.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_550.BackgroundTransparency = 0.5
+		v_u_550.BorderSizePixel = 0
+		v_u_550.Parent = v_u_548
+		local v551 = Instance.new("UICorner")
+		v551.CornerRadius = UDim.new(0, 3)
+		v551.Parent = v_u_550
+		local v_u_552 = Instance.new("Frame")
+		v_u_552.Size = UDim2.new(0, 14, 0, 14)
+		v_u_552.Position = UDim2.new(0.5, -7, 0.5, -7)
+		v_u_552.BackgroundColor3 = Color3.new(1, 1, 1)
+		v_u_552.BackgroundTransparency = 0.2
+		v_u_552.BorderSizePixel = 0
+		v_u_552.Parent = v_u_550
+		local v553 = Instance.new("UICorner")
+		v553.CornerRadius = UDim.new(0, 7)
+		v553.Parent = v_u_552
+		local v_u_554 = Instance.new("TextLabel")
+		v_u_554.Size = UDim2.new(1, 0, 0, 25)
+		v_u_554.Position = UDim2.new(0, 0, 0, 80)
+		v_u_554.BackgroundTransparency = 1
+		v_u_554.Text = "Width: 1.00x"
+		v_u_554.TextColor3 = Color3.new(1, 1, 1)
+		v_u_554.TextSize = 12
+		v_u_554.Font = Enum.Font.GothamBold
+		v_u_554.TextXAlignment = Enum.TextXAlignment.Left
+		v_u_554.Parent = v_u_548
+		local v_u_555 = Instance.new("Frame")
+		v_u_555.Size = UDim2.new(1, -20, 0, 6)
+		v_u_555.Position = UDim2.new(0, 10, 0, 115)
+		v_u_555.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_555.BackgroundTransparency = 0.5
+		v_u_555.BorderSizePixel = 0
+		v_u_555.Parent = v_u_548
+		local v556 = Instance.new("UICorner")
+		v556.CornerRadius = UDim.new(0, 3)
+		v556.Parent = v_u_555
+		local v_u_557 = Instance.new("Frame")
+		v_u_557.Size = UDim2.new(0, 14, 0, 14)
+		v_u_557.Position = UDim2.new(0.5, -7, 0.5, -7)
+		v_u_557.BackgroundColor3 = Color3.new(1, 1, 1)
+		v_u_557.BackgroundTransparency = 0.2
+		v_u_557.BorderSizePixel = 0
+		v_u_557.Parent = v_u_555
+		local v558 = Instance.new("UICorner")
+		v558.CornerRadius = UDim.new(0, 7)
+		v558.Parent = v_u_557
+		local v_u_559 = Instance.new("TextButton")
+		v_u_559.Size = UDim2.new(0, 100, 0, 30)
+		v_u_559.Position = UDim2.new(0.5, -50, 0, 160)
+		v_u_559.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_559.BackgroundTransparency = 0.5
+		v_u_559.Text = "Reset Size"
+		v_u_559.TextColor3 = Color3.new(1, 1, 1)
+		v_u_559.TextSize = 11
+		v_u_559.Font = Enum.Font.Gotham
+		v_u_559.BorderSizePixel = 0
+		v_u_559.Parent = v_u_548
+		local v560 = Instance.new("UICorner")
+		v560.CornerRadius = UDim.new(0, 10)
+		v560.Parent = v_u_559
+		local v_u_561 = false
+		local v_u_562 = false
+		local function v_u_565(p563)
+			-- upvalues: (ref) v_u_23, (ref) v_u_552, (ref) v_u_549, (ref) v_u_10, (ref) v_u_246
+			local v564 = 0.1
+			v_u_23.heightScale = v564 * math.pow(100 / v564, p563)
+			v_u_552.Position = UDim2.new(p563, -7, 0.5, -7)
+			v_u_549.Text = string.format("Height: %.2fx", v_u_23.heightScale)
+			if v_u_10 then
+				v_u_246()
+			end
+		end
+		local function v_u_568(p566)
+			-- upvalues: (ref) v_u_23, (ref) v_u_557, (ref) v_u_554, (ref) v_u_10, (ref) v_u_246
+			local v567 = 0.1
+			v_u_23.widthScale = v567 * math.pow(100 / v567, p566)
+			v_u_557.Position = UDim2.new(p566, -7, 0.5, -7)
+			v_u_554.Text = string.format("Width: %.2fx", v_u_23.widthScale)
+			if v_u_10 then
+				v_u_246()
+			end
+		end
+		local function v_u_570(p569)
+			-- upvalues: (ref) v_u_550, (ref) v_u_565
+			v_u_565((math.clamp((p569.Position.X - v_u_550.AbsolutePosition.X) / v_u_550.AbsoluteSize.X, 0, 1)))
+		end
+		local function v_u_572(p571)
+			-- upvalues: (ref) v_u_555, (ref) v_u_568
+			v_u_568((math.clamp((p571.Position.X - v_u_555.AbsolutePosition.X) / v_u_555.AbsoluteSize.X, 0, 1)))
+		end
+		v_u_552.InputBegan:Connect(function(p573)
+			-- upvalues: (ref) v_u_561, (ref) v_u_570
+			if p573.UserInputType == Enum.UserInputType.MouseButton1 or p573.UserInputType == Enum.UserInputType.Touch then
+				v_u_561 = true
+				v_u_570(p573)
+			end
+		end)
+		v_u_557.InputBegan:Connect(function(p574)
+			-- upvalues: (ref) v_u_562, (ref) v_u_572
+			if p574.UserInputType == Enum.UserInputType.MouseButton1 or p574.UserInputType == Enum.UserInputType.Touch then
+				v_u_562 = true
+				v_u_572(p574)
+			end
+		end)
+		v_u_3.InputChanged:Connect(function(p575)
+			-- upvalues: (ref) v_u_561, (ref) v_u_570, (ref) v_u_562, (ref) v_u_572
+			if v_u_561 and (p575.UserInputType == Enum.UserInputType.MouseMovement or p575.UserInputType == Enum.UserInputType.Touch) then
+				v_u_570(p575)
+			end
+			if v_u_562 and (p575.UserInputType == Enum.UserInputType.MouseMovement or p575.UserInputType == Enum.UserInputType.Touch) then
+				v_u_572(p575)
+			end
+		end)
+		v_u_3.InputEnded:Connect(function(p576)
+			-- upvalues: (ref) v_u_561, (ref) v_u_562
+			if p576.UserInputType == Enum.UserInputType.MouseButton1 or p576.UserInputType == Enum.UserInputType.Touch then
+				v_u_561 = false
+				v_u_562 = false
+			end
+		end)
+		v_u_559.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_23, (ref) v_u_552, (ref) v_u_557, (ref) v_u_549, (ref) v_u_554, (ref) v_u_10, (ref) v_u_246
+			v_u_23.heightScale = 1
+			v_u_23.widthScale = 1
+			v_u_552.Position = UDim2.new(0.5, -7, 0.5, -7)
+			v_u_557.Position = UDim2.new(0.5, -7, 0.5, -7)
+			v_u_549.Text = "Height: 1.00x"
+			v_u_554.Text = "Width: 1.00x"
+			if v_u_10 then
+				v_u_246()
+			end
+		end)
+		v_u_559.MouseEnter:Connect(function()
+			-- upvalues: (ref) v_u_559
+			v_u_559.BackgroundTransparency = 0.3
+		end)
+		v_u_559.MouseLeave:Connect(function()
+			-- upvalues: (ref) v_u_559
+			v_u_559.BackgroundTransparency = 0.5
+		end)
+		local v_u_577 = Instance.new("Frame")
+		v_u_577.Size = UDim2.new(1, -16, 1, -175)
+		v_u_577.Position = UDim2.new(0, 8, 0, 105)
+		v_u_577.BackgroundTransparency = 1
+		v_u_577.Visible = false
+		v_u_577.Parent = v_u_444
+		local v578 = Instance.new("TextLabel")
+		v578.Size = UDim2.new(1, 0, 0, 20)
+		v578.Position = UDim2.new(0, 0, 0, 0)
+		v578.BackgroundTransparency = 1
+		v578.Text = "Hide Bodyparts"
+		v578.TextColor3 = Color3.new(1, 1, 1)
+		v578.TextSize = 12
+		v578.Font = Enum.Font.GothamBold
+		v578.TextXAlignment = Enum.TextXAlignment.Left
+		v578.Parent = v_u_577
+		local v_u_579 = Instance.new("TextButton")
+		v_u_579.Size = UDim2.new(1, 0, 0, 28)
+		v_u_579.Position = UDim2.new(0, 0, 0, 25)
+		v_u_579.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_579.BackgroundTransparency = 0.5
+		v_u_579.Text = " Select Body Parts..."
+		v_u_579.TextColor3 = Color3.new(1, 1, 1)
+		v_u_579.TextSize = 10
+		v_u_579.Font = Enum.Font.Gotham
+		v_u_579.TextXAlignment = Enum.TextXAlignment.Left
+		v_u_579.BorderSizePixel = 0
+		v_u_579.Parent = v_u_577
+		local v580 = Instance.new("UICorner")
+		v580.CornerRadius = UDim.new(0, 10)
+		v580.Parent = v_u_579
+		local v581 = Instance.new("UIPadding")
+		v581.PaddingLeft = UDim.new(0, 10)
+		v581.Parent = v_u_579
+		local v_u_582 = {
+			"Head",
+			"UpperTorso",
+			"LowerTorso",
+			"LeftUpperArm",
+			"LeftLowerArm",
+			"LeftHand",
+			"RightUpperArm",
+			"RightLowerArm",
+			"RightHand",
+			"LeftUpperLeg",
+			"LeftLowerLeg",
+			"LeftFoot",
+			"RightUpperLeg",
+			"RightLowerLeg",
+			"RightFoot",
+			"Torso",
+			"Left Arm",
+			"Right Arm",
+			"Left Leg",
+			"Right Leg"
+		}
+		local function v_u_590(p583)
+			-- upvalues: (ref) v_u_10, (ref) v_u_12, (ref) v_u_11
+			if v_u_10 and (v_u_12 and v_u_11) then
+				local v584 = v_u_12:FindFirstChild(p583)
+				local v585 = v_u_11:FindFirstChild(p583)
+				if v584 and v584:IsA("BasePart") then
+					if v585 and v585:IsA("BasePart") then
+						v584.Transparency = 1
+						v584.CanCollide = false
+						if p583 == "Head" then
+							local v586, v587, v588 = ipairs(v584:GetChildren())
+							while true do
+								local v589
+								v588, v589 = v586(v587, v588)
+								if v588 == nil then
+									break
+								end
+								if v589:IsA("Decal") then
+									v589.Transparency = 1
+								end
+							end
+						end
+						_G.hiddenBodyParts[p583] = true
+						print("\226\156\147 Hidden:", p583)
+					end
+				else
+					return
+				end
+			else
+				return
+			end
+		end
+		local function v_u_592(p591)
+			_G.hiddenBodyParts[p591] = nil
+			print("\226\156\147 Shown:", p591)
+		end
+		local v_u_593 = false
+		local v_u_594 = nil
+		v_u_579.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_593, (ref) v_u_594, (ref) v_u_10, (ref) v_u_12, (ref) v_u_462, (ref) v_u_579, (ref) v_u_582, (ref) v_u_592, (ref) v_u_590
+			if v_u_593 then
+				if v_u_594 then
+					v_u_594:Destroy()
+				end
+				v_u_593 = false
+				return
+			elseif v_u_10 and v_u_12 then
+				v_u_593 = true
+				v_u_594 = Instance.new("Frame")
+				v_u_594.Size = UDim2.new(1, 0, 0, 150)
+				v_u_594.Position = UDim2.new(0, 0, 1, 3)
+				v_u_594.BackgroundColor3 = Color3.new(0, 0, 0)
+				v_u_594.BackgroundTransparency = 0.3
+				v_u_594.BorderSizePixel = 0
+				v_u_594.ZIndex = 10
+				v_u_594.Parent = v_u_579
+				local v595 = Instance.new("UICorner")
+				v595.CornerRadius = UDim.new(0, 10)
+				v595.Parent = v_u_594
+				local v_u_596 = Instance.new("ScrollingFrame")
+				v_u_596.Size = UDim2.new(1, -6, 1, -6)
+				v_u_596.Position = UDim2.new(0, 3, 0, 3)
+				v_u_596.BackgroundTransparency = 1
+				v_u_596.ScrollBarThickness = 3
+				v_u_596.ScrollBarImageColor3 = Color3.new(1, 1, 1)
+				v_u_596.ScrollBarImageTransparency = 0.5
+				v_u_596.BorderSizePixel = 0
+				v_u_596.ZIndex = 10
+				v_u_596.Parent = v_u_594
+				local v_u_597 = Instance.new("UIListLayout")
+				v_u_597.Padding = UDim.new(0, 2)
+				v_u_597.SortOrder = Enum.SortOrder.Name
+				v_u_597.Parent = v_u_596
+				local v598, v599, v600 = ipairs(v_u_582)
+				while true do
+					local v_u_601
+					v600, v_u_601 = v598(v599, v600)
+					if v600 == nil then
+						break
+					end
+					if v_u_12:FindFirstChild(v_u_601) ~= nil then
+						local v_u_602 = Instance.new("TextButton")
+						v_u_602.Size = UDim2.new(1, 0, 0, 24)
+						v_u_602.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+						v_u_602.BackgroundTransparency = 0.3
+						v_u_602.Text = (_G.hiddenBodyParts[v_u_601] and "\226\156\147 " or "   ") .. v_u_601
+						v_u_602.TextColor3 = _G.hiddenBodyParts[v_u_601] and Color3.fromRGB(100, 200, 255) or Color3.new(1, 1, 1)
+						v_u_602.TextSize = 9
+						v_u_602.Font = Enum.Font.Gotham
+						v_u_602.TextXAlignment = Enum.TextXAlignment.Left
+						v_u_602.BorderSizePixel = 0
+						v_u_602.ZIndex = 10
+						v_u_602.Parent = v_u_596
+						local v603 = Instance.new("UIPadding")
+						v603.PaddingLeft = UDim.new(0, 5)
+						v603.Parent = v_u_602
+						v_u_602.MouseButton1Click:Connect(function()
+							-- upvalues: (ref) v_u_601, (ref) v_u_592, (ref) v_u_462, (ref) v_u_590, (ref) v_u_602
+							if _G.hiddenBodyParts[v_u_601] then
+								v_u_592(v_u_601)
+								v_u_462.Text = v_u_601 .. " shown"
+								v_u_462.TextColor3 = Color3.new(1, 0.7, 0.3)
+							else
+								v_u_590(v_u_601)
+								v_u_462.Text = v_u_601 .. " hidden"
+								v_u_462.TextColor3 = Color3.new(0.5, 1, 0.5)
+							end
+							spawn(function()
+								-- upvalues: (ref) v_u_462
+								wait(2)
+								v_u_462.Text = "Ready"
+								v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+							end)
+							v_u_602.Text = (_G.hiddenBodyParts[v_u_601] and "\226\156\147 " or "   ") .. v_u_601
+							v_u_602.TextColor3 = _G.hiddenBodyParts[v_u_601] and Color3.fromRGB(100, 200, 255) or Color3.new(1, 1, 1)
+						end)
+					end
+				end
+				spawn(function()
+					-- upvalues: (ref) v_u_596, (ref) v_u_597
+					wait(0.05)
+					v_u_596.CanvasSize = UDim2.new(0, 0, 0, v_u_597.AbsoluteContentSize.Y)
+				end)
+			else
+				v_u_462.Text = "Enable reanimation first!"
+				v_u_462.TextColor3 = Color3.new(1, 0.3, 0.3)
+				spawn(function()
+					-- upvalues: (ref) v_u_462
+					wait(2)
+					v_u_462.Text = "Ready"
+					v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+				end)
+			end
+		end)
+		local v604 = 60
+		local v605 = Instance.new("TextLabel")
+		v605.Size = UDim2.new(1, 0, 0, 20)
+		v605.Position = UDim2.new(0, 0, 0, v604)
+		v605.BackgroundTransparency = 1
+		v605.Text = "Snake Mode"
+		v605.TextColor3 = Color3.new(1, 1, 1)
+		v605.TextSize = 12
+		v605.Font = Enum.Font.GothamBold
+		v605.TextXAlignment = Enum.TextXAlignment.Left
+		v605.Parent = v_u_577
+		local v_u_606 = Instance.new("Frame")
+		v_u_606.Size = UDim2.new(0, 40, 0, 18)
+		v_u_606.Position = UDim2.new(1, -45, 0, v604 + 1)
+		v_u_606.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+		v_u_606.BorderSizePixel = 0
+		v_u_606.Parent = v_u_577
+		local v607 = Instance.new("UICorner")
+		v607.CornerRadius = UDim.new(0, 9)
+		v607.Parent = v_u_606
+		local v_u_608 = Instance.new("Frame")
+		v_u_608.Size = UDim2.new(0, 14, 0, 14)
+		v_u_608.Position = UDim2.new(0, 2, 0, 2)
+		v_u_608.BackgroundColor3 = Color3.new(0.7, 0.7, 0.7)
+		v_u_608.BorderSizePixel = 0
+		v_u_608.Parent = v_u_606
+		local v609 = Instance.new("UICorner")
+		v609.CornerRadius = UDim.new(0, 7)
+		v609.Parent = v_u_608
+		local v610 = Instance.new("TextButton")
+		v610.Size = UDim2.new(1, 0, 1, 0)
+		v610.BackgroundTransparency = 1
+		v610.Text = ""
+		v610.Parent = v_u_606
+		v610.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_10, (ref) v_u_462, (ref) v_u_26, (ref) v_u_33, (ref) v_u_34, (ref) v_u_35, (ref) v_u_6, (ref) v_u_606, (ref) v_u_608
+			if v_u_10 then
+				v_u_26 = not v_u_26
+				v_u_33 = {}
+				v_u_34 = {}
+				v_u_35 = {}
+				local v611 = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+				if v_u_26 then
+					v_u_6:Create(v_u_606, v611, {
+						["BackgroundColor3"] = Color3.fromRGB(0, 150, 255)
+					}):Play()
+					v_u_6:Create(v_u_608, v611, {
+						["Position"] = UDim2.new(1, -16, 0, 2),
+						["BackgroundColor3"] = Color3.new(1, 1, 1)
+					}):Play()
+					v_u_462.Text = "Snake mode enabled"
+					v_u_462.TextColor3 = Color3.new(0.5, 1, 0.5)
+				else
+					v_u_6:Create(v_u_606, v611, {
+						["BackgroundColor3"] = Color3.new(0.2, 0.2, 0.2)
+					}):Play()
+					v_u_6:Create(v_u_608, v611, {
+						["Position"] = UDim2.new(0, 2, 0, 2),
+						["BackgroundColor3"] = Color3.new(0.7, 0.7, 0.7)
+					}):Play()
+					v_u_462.Text = "Snake mode disabled"
+					v_u_462.TextColor3 = Color3.new(1, 0.7, 0.3)
+				end
+				spawn(function()
+					-- upvalues: (ref) v_u_462
+					wait(2)
+					v_u_462.Text = "Ready"
+					v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+				end)
+			else
+				v_u_462.Text = "Enable reanimation first!"
+				v_u_462.TextColor3 = Color3.new(1, 0.3, 0.3)
+				spawn(function()
+					-- upvalues: (ref) v_u_462
+					wait(2)
+					v_u_462.Text = "Ready"
+					v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+				end)
+			end
+		end)
+		local v_u_612 = Instance.new("TextLabel")
+		v_u_612.Size = UDim2.new(1, -60, 0, 18)
+		v_u_612.Position = UDim2.new(0, 0, 0, v604 + 25)
+		v_u_612.BackgroundTransparency = 1
+		v_u_612.Text = "Distance: 1.00"
+		v_u_612.TextColor3 = Color3.new(0.9, 0.9, 0.9)
+		v_u_612.TextSize = 10
+		v_u_612.Font = Enum.Font.Gotham
+		v_u_612.TextXAlignment = Enum.TextXAlignment.Left
+		v_u_612.Parent = v_u_577
+		local v_u_613 = Instance.new("Frame")
+		v_u_613.Size = UDim2.new(1, -10, 0, 4)
+		v_u_613.Position = UDim2.new(0, 5, 0, v604 + 45)
+		v_u_613.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_613.BackgroundTransparency = 0.5
+		v_u_613.BorderSizePixel = 0
+		v_u_613.Parent = v_u_577
+		local v614 = Instance.new("UICorner")
+		v614.CornerRadius = UDim.new(0, 2)
+		v614.Parent = v_u_613
+		local v_u_615 = Instance.new("Frame")
+		v_u_615.Size = UDim2.new(0, 12, 0, 12)
+		v_u_615.Position = UDim2.new(0.18, -6, 0.5, -6)
+		v_u_615.BackgroundColor3 = Color3.new(1, 1, 1)
+		v_u_615.BackgroundTransparency = 0.2
+		v_u_615.BorderSizePixel = 0
+		v_u_615.Parent = v_u_613
+		local v616 = Instance.new("UICorner")
+		v616.CornerRadius = UDim.new(0, 6)
+		v616.Parent = v_u_615
+		local v_u_617 = false
+		local function v_u_619(p618)
+			-- upvalues: (ref) v_u_27, (ref) v_u_615, (ref) v_u_612
+			v_u_27 = 0.2 + p618 * 4.8
+			v_u_615.Position = UDim2.new(p618, -6, 0.5, -6)
+			v_u_612.Text = string.format("Distance: %.2f", v_u_27)
+		end
+		local function v_u_621(p620)
+			-- upvalues: (ref) v_u_613, (ref) v_u_619
+			v_u_619((math.clamp((p620.Position.X - v_u_613.AbsolutePosition.X) / v_u_613.AbsoluteSize.X, 0, 1)))
+		end
+		v_u_615.InputBegan:Connect(function(p622)
+			-- upvalues: (ref) v_u_617, (ref) v_u_621
+			if p622.UserInputType == Enum.UserInputType.MouseButton1 or p622.UserInputType == Enum.UserInputType.Touch then
+				v_u_617 = true
+				v_u_621(p622)
+			end
+		end)
+		v_u_3.InputChanged:Connect(function(p623)
+			-- upvalues: (ref) v_u_617, (ref) v_u_621
+			if v_u_617 and (p623.UserInputType == Enum.UserInputType.MouseMovement or p623.UserInputType == Enum.UserInputType.Touch) then
+				v_u_621(p623)
+			end
+		end)
+		v_u_3.InputEnded:Connect(function(p624)
+			-- upvalues: (ref) v_u_617
+			if p624.UserInputType == Enum.UserInputType.MouseButton1 or p624.UserInputType == Enum.UserInputType.Touch then
+				v_u_617 = false
+			end
+		end)
+		local v625 = 140
+		local v626 = Instance.new("TextLabel")
+		v626.Size = UDim2.new(1, 0, 0, 20)
+		v626.Position = UDim2.new(0, 0, 0, v625)
+		v626.BackgroundTransparency = 1
+		v626.Text = "Cover Sky (need layered clothing)"
+		v626.TextColor3 = Color3.new(1, 1, 1)
+		v626.TextSize = 12
+		v626.Font = Enum.Font.GothamBold
+		v626.TextXAlignment = Enum.TextXAlignment.Left
+		v626.Parent = v_u_577
+		local v_u_627 = Instance.new("Frame")
+		v_u_627.Size = UDim2.new(0, 40, 0, 18)
+		v_u_627.Position = UDim2.new(1, -45, 0, v625 + 1)
+		v_u_627.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+		v_u_627.BorderSizePixel = 0
+		v_u_627.Parent = v_u_577
+		local v628 = Instance.new("UICorner")
+		v628.CornerRadius = UDim.new(0, 9)
+		v628.Parent = v_u_627
+		local v_u_629 = Instance.new("Frame")
+		v_u_629.Size = UDim2.new(0, 14, 0, 14)
+		v_u_629.Position = UDim2.new(0, 2, 0, 2)
+		v_u_629.BackgroundColor3 = Color3.new(0.7, 0.7, 0.7)
+		v_u_629.BorderSizePixel = 0
+		v_u_629.Parent = v_u_627
+		local v630 = Instance.new("UICorner")
+		v630.CornerRadius = UDim.new(0, 7)
+		v630.Parent = v_u_629
+		local v631 = Instance.new("TextButton")
+		v631.Size = UDim2.new(1, 0, 1, 0)
+		v631.BackgroundTransparency = 1
+		v631.Text = ""
+		v631.Parent = v_u_627
+		v631.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_10, (ref) v_u_462, (ref) v_u_30, (ref) v_u_6, (ref) v_u_627, (ref) v_u_629
+			if v_u_10 then
+				v_u_30 = not v_u_30
+				local v632 = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+				if v_u_30 then
+					v_u_6:Create(v_u_627, v632, {
+						["BackgroundColor3"] = Color3.fromRGB(0, 150, 255)
+					}):Play()
+					v_u_6:Create(v_u_629, v632, {
+						["Position"] = UDim2.new(1, -16, 0, 2),
+						["BackgroundColor3"] = Color3.new(1, 1, 1)
+					}):Play()
+					v_u_462.Text = "Cover Sky enabled"
+					v_u_462.TextColor3 = Color3.new(0.5, 1, 0.5)
+				else
+					v_u_6:Create(v_u_627, v632, {
+						["BackgroundColor3"] = Color3.new(0.2, 0.2, 0.2)
+					}):Play()
+					v_u_6:Create(v_u_629, v632, {
+						["Position"] = UDim2.new(0, 2, 0, 2),
+						["BackgroundColor3"] = Color3.new(0.7, 0.7, 0.7)
+					}):Play()
+					v_u_462.Text = "Cover Sky disabled"
+					v_u_462.TextColor3 = Color3.new(1, 0.7, 0.3)
+				end
+				spawn(function()
+					-- upvalues: (ref) v_u_462
+					wait(2)
+					v_u_462.Text = "Ready"
+					v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+				end)
+			else
+				v_u_462.Text = "Enable reanimation first!"
+				v_u_462.TextColor3 = Color3.new(1, 0.3, 0.3)
+				spawn(function()
+					-- upvalues: (ref) v_u_462
+					wait(2)
+					v_u_462.Text = "Ready"
+					v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+				end)
+			end
+		end)
+		local v633 = v625 + 30
+		local v634 = Instance.new("TextLabel")
+		v634.Size = UDim2.new(1, 0, 0, 20)
+		v634.Position = UDim2.new(0, 0, 0, v633)
+		v634.BackgroundTransparency = 1
+		v634.Text = "Cover Ground (need layered clothing)"
+		v634.TextColor3 = Color3.new(1, 1, 1)
+		v634.TextSize = 12
+		v634.Font = Enum.Font.GothamBold
+		v634.TextXAlignment = Enum.TextXAlignment.Left
+		v634.Parent = v_u_577
+		local v_u_635 = Instance.new("Frame")
+		v_u_635.Size = UDim2.new(0, 40, 0, 18)
+		v_u_635.Position = UDim2.new(1, -45, 0, v633 + 1)
+		v_u_635.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+		v_u_635.BorderSizePixel = 0
+		v_u_635.Parent = v_u_577
+		local v636 = Instance.new("UICorner")
+		v636.CornerRadius = UDim.new(0, 9)
+		v636.Parent = v_u_635
+		local v_u_637 = Instance.new("Frame")
+		v_u_637.Size = UDim2.new(0, 14, 0, 14)
+		v_u_637.Position = UDim2.new(0, 2, 0, 2)
+		v_u_637.BackgroundColor3 = Color3.new(0.7, 0.7, 0.7)
+		v_u_637.BorderSizePixel = 0
+		v_u_637.Parent = v_u_635
+		local v638 = Instance.new("UICorner")
+		v638.CornerRadius = UDim.new(0, 7)
+		v638.Parent = v_u_637
+		local v639 = Instance.new("TextButton")
+		v639.Size = UDim2.new(1, 0, 1, 0)
+		v639.BackgroundTransparency = 1
+		v639.Text = ""
+		v639.Parent = v_u_635
+		v639.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_10, (ref) v_u_462, (ref) v_u_6, (ref) v_u_635, (ref) v_u_637
+			if v_u_10 then
+				groundModeEnabled = not groundModeEnabled
+				local v640 = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+				if groundModeEnabled then
+					v_u_6:Create(v_u_635, v640, {
+						["BackgroundColor3"] = Color3.fromRGB(0, 150, 255)
+					}):Play()
+					v_u_6:Create(v_u_637, v640, {
+						["Position"] = UDim2.new(1, -16, 0, 2),
+						["BackgroundColor3"] = Color3.new(1, 1, 1)
+					}):Play()
+					v_u_462.Text = "Cover Ground enabled"
+					v_u_462.TextColor3 = Color3.new(0.5, 1, 0.5)
+				else
+					v_u_6:Create(v_u_635, v640, {
+						["BackgroundColor3"] = Color3.new(0.2, 0.2, 0.2)
+					}):Play()
+					v_u_6:Create(v_u_637, v640, {
+						["Position"] = UDim2.new(0, 2, 0, 2),
+						["BackgroundColor3"] = Color3.new(0.7, 0.7, 0.7)
+					}):Play()
+					v_u_462.Text = "Cover Ground disabled"
+					v_u_462.TextColor3 = Color3.new(1, 0.7, 0.3)
+				end
+				spawn(function()
+					-- upvalues: (ref) v_u_462
+					wait(2)
+					v_u_462.Text = "Ready"
+					v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+				end)
+			else
+				v_u_462.Text = "Enable reanimation first!"
+				v_u_462.TextColor3 = Color3.new(1, 0.3, 0.3)
+				spawn(function()
+					-- upvalues: (ref) v_u_462
+					wait(2)
+					v_u_462.Text = "Ready"
+					v_u_462.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+				end)
+			end
+		end)
+		local v_u_641 = Instance.new("TextButton")
+		v_u_641.Size = UDim2.new(0, 60, 0, 22)
+		v_u_641.Position = UDim2.new(0, 8, 0, 105)
+		v_u_641.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_641.BackgroundTransparency = 0.5
+		v_u_641.Text = "Add"
+		v_u_641.TextColor3 = Color3.new(1, 1, 1)
+		v_u_641.TextSize = 10
+		v_u_641.Font = Enum.Font.Gotham
+		v_u_641.BorderSizePixel = 0
+		v_u_641.Parent = v_u_444
+		local v642 = Instance.new("UICorner")
+		v642.CornerRadius = UDim.new(0, 9)
+		v642.Parent = v_u_641
+		local v_u_643 = "all"
+		local v_u_644 = false
+		local v_u_645 = false
+		local v_u_646 = false
+		local v_u_647 = nil
+		local v_u_648 = false
+		Instance.new("TextButton")
+		local v_u_649 = Instance.new("TextButton")
+		v_u_649.Size = UDim2.new(0, 25, 0, 25)
+		v_u_649.Position = UDim2.new(1, -33, 1, -33)
+		v_u_649.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_649.BackgroundTransparency = 0.5
+		v_u_649.Text = "i"
+		v_u_649.TextColor3 = Color3.new(1, 1, 1)
+		v_u_649.TextSize = 14
+		v_u_649.Font = Enum.Font.GothamBold
+		v_u_649.BorderSizePixel = 0
+		v_u_649.ZIndex = 10
+		v_u_649.Visible = false
+		v_u_649.Parent = v_u_444
+		task.defer(function()
+			-- upvalues: (ref) v_u_649, (ref) v_u_643
+			v_u_649.Visible = v_u_643 == "custom" or v_u_643 == "states"
+		end)
+		local v650 = Instance.new("UICorner")
+		v650.CornerRadius = UDim.new(1, 0)
+		v650.Parent = v_u_649
+		v_u_649.MouseEnter:Connect(function()
+			-- upvalues: (ref) v_u_649
+			v_u_649.BackgroundTransparency = 0.3
+		end)
+		v_u_649.MouseLeave:Connect(function()
+			-- upvalues: (ref) v_u_649
+			v_u_649.BackgroundTransparency = 0.5
+		end)
+		local v_u_651 = nil
+		local function v_u_663()
+			-- upvalues: (ref) v_u_651, (ref) v_u_443
+			if v_u_651 then
+				v_u_651:Destroy()
+			end
+			v_u_651 = Instance.new("Frame")
+			v_u_651.Size = UDim2.new(0, 380, 0, 300)
+			v_u_651.Position = UDim2.new(0.5, -190, 0.5, -150)
+			v_u_651.BackgroundColor3 = Color3.new(0, 0, 0)
+			v_u_651.BackgroundTransparency = 0.6
+			v_u_651.BorderSizePixel = 0
+			v_u_651.ZIndex = 100
+			v_u_651.Parent = v_u_443
+			local v652 = Instance.new("UICorner")
+			v652.CornerRadius = UDim.new(0, 15)
+			v652.Parent = v_u_651
+			local v653 = Instance.new("TextLabel")
+			v653.Size = UDim2.new(1, -40, 0, 30)
+			v653.Position = UDim2.new(0, 10, 0, 5)
+			v653.BackgroundTransparency = 1
+			v653.Text = "How to Convert Animations"
+			v653.TextColor3 = Color3.new(1, 1, 1)
+			v653.TextSize = 14
+			v653.Font = Enum.Font.GothamBold
+			v653.TextXAlignment = Enum.TextXAlignment.Left
+			v653.ZIndex = 101
+			v653.Parent = v_u_651
+			local v654 = Instance.new("TextButton")
+			v654.Size = UDim2.new(0, 25, 0, 25)
+			v654.Position = UDim2.new(1, -30, 0, 5)
+			v654.BackgroundColor3 = Color3.new(0, 0, 0)
+			v654.BackgroundTransparency = 0.7
+			v654.Text = "\195\151"
+			v654.TextColor3 = Color3.new(1, 1, 1)
+			v654.TextSize = 18
+			v654.Font = Enum.Font.Gotham
+			v654.BorderSizePixel = 0
+			v654.ZIndex = 101
+			v654.Parent = v_u_651
+			local v655 = Instance.new("UICorner")
+			v655.CornerRadius = UDim.new(0, 10)
+			v655.Parent = v654
+			v654.MouseButton1Click:Connect(function()
+				-- upvalues: (ref) v_u_651
+				v_u_651:Destroy()
+				v_u_651 = nil
+			end)
+			local v656 = Instance.new("TextLabel")
+			v656.Size = UDim2.new(1, -20, 0, 150)
+			v656.Position = UDim2.new(0, 10, 0, 40)
+			v656.BackgroundTransparency = 1
+			v656.Text = "1. Open Roblox Studio and create a new game\r\n\r\n2. Create a Folder in Workspace named \"Keyframes\"\r\n\r\n3. Put all your KeyframeSequences in the folder\r\n   (Each animation should be named differently)\r\n\r\n4. Publish your game to Roblox\r\n\r\n5. Join the published game with your executor\r\n\r\n6. Execute the converter script below:"
+			v656.TextColor3 = Color3.new(1, 1, 1)
+			v656.TextSize = 11
+			v656.Font = Enum.Font.Gotham
+			v656.TextXAlignment = Enum.TextXAlignment.Left
+			v656.TextYAlignment = Enum.TextYAlignment.Top
+			v656.TextWrapped = true
+			v656.ZIndex = 101
+			v656.Parent = v_u_651
+			local v657 = Instance.new("Frame")
+			v657.Size = UDim2.new(1, -20, 0, 50)
+			v657.Position = UDim2.new(0, 10, 0, 195)
+			v657.BackgroundColor3 = Color3.new(0, 0, 0)
+			v657.BackgroundTransparency = 0.5
+			v657.BorderSizePixel = 0
+			v657.ZIndex = 101
+			v657.Parent = v_u_651
+			local v658 = Instance.new("UICorner")
+			v658.CornerRadius = UDim.new(0, 10)
+			v658.Parent = v657
+			local v_u_659 = Instance.new("TextBox")
+			v_u_659.Size = UDim2.new(1, -10, 1, -10)
+			v_u_659.Position = UDim2.new(0, 10, 0, 5)
+			v_u_659.BackgroundTransparency = 1
+			v_u_659.Text = "loadstring(game:HttpGet(\"https://akadmin-bzk.pages.dev/Converter.lua\"))()"
+			v_u_659.TextColor3 = Color3.new(0.8, 1, 0.8)
+			v_u_659.TextSize = 10
+			v_u_659.Font = Enum.Font.Code
+			v_u_659.TextWrapped = true
+			v_u_659.TextEditable = false
+			v_u_659.TextXAlignment = Enum.TextXAlignment.Left
+			v_u_659.TextYAlignment = Enum.TextYAlignment.Center
+			v_u_659.ClearTextOnFocus = false
+			v_u_659.ZIndex = 102
+			v_u_659.Parent = v657
+			local v_u_660 = Instance.new("TextButton")
+			v_u_660.Size = UDim2.new(0, 60, 0, 25)
+			v_u_660.Position = UDim2.new(0.5, -30, 1, 15)
+			v_u_660.BackgroundColor3 = Color3.new(0, 0, 0)
+			v_u_660.BackgroundTransparency = 0.3
+			v_u_660.Text = "Copy"
+			v_u_660.TextColor3 = Color3.new(1, 1, 1)
+			v_u_660.TextSize = 11
+			v_u_660.Font = Enum.Font.Gotham
+			v_u_660.BorderSizePixel = 0
+			v_u_660.ZIndex = 102
+			v_u_660.Parent = v657
+			local v661 = Instance.new("UICorner")
+			v661.CornerRadius = UDim.new(0, 8)
+			v661.Parent = v_u_660
+			v_u_660.MouseEnter:Connect(function()
+				-- upvalues: (ref) v_u_660
+				v_u_660.BackgroundTransparency = 0.1
+			end)
+			v_u_660.MouseLeave:Connect(function()
+				-- upvalues: (ref) v_u_660
+				v_u_660.BackgroundTransparency = 0.3
+			end)
+			v_u_660.MouseButton1Click:Connect(function()
+				-- upvalues: (ref) v_u_659, (ref) v_u_660
+				setclipboard(v_u_659.Text)
+				v_u_660.Text = "Copied!"
+				spawn(function()
+					-- upvalues: (ref) v_u_660
+					wait(1.5)
+					v_u_660.Text = "Copy"
+				end)
+			end)
+			local v662 = Instance.new("TextLabel")
+			v662.Size = UDim2.new(1, -20, 0, 25)
+			v662.Position = UDim2.new(0, 10, 0, 240)
+			v662.BackgroundTransparency = 1
+			v662.Text = "After converting, find keyframe codes in your executor\'s workspace folder"
+			v662.TextColor3 = Color3.new(0.8, 0.8, 0.8)
+			v662.TextSize = 9
+			v662.Font = Enum.Font.Gotham
+			v662.TextWrapped = true
+			v662.TextXAlignment = Enum.TextXAlignment.Center
+			v662.ZIndex = 101
+			v662.Parent = v_u_651
+		end
+		v_u_649.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_663
+			v_u_663()
+		end)
+		local function v_u_664()
+			-- upvalues: (ref) v_u_643, (ref) v_u_649
+			if v_u_643 == "custom" or v_u_643 == "states" then
+				v_u_649.Visible = true
+			else
+				v_u_649.Visible = false
+			end
+		end
+		local v665 = Instance.new("Frame")
+		v665.Size = UDim2.new(1, -16, 0, 65)
+		v665.Position = UDim2.new(0, 8, 1, -70)
+		v665.BackgroundTransparency = 1
+		v665.Parent = v_u_444
+		local v666 = Instance.new("TextLabel")
+		v666.Size = UDim2.new(0, 40, 0, 18)
+		v666.Position = UDim2.new(0, 0, 0, 0)
+		v666.BackgroundTransparency = 1
+		v666.Text = "Speed:"
+		v666.TextColor3 = Color3.new(1, 1, 1)
+		v666.TextSize = 9
+		v666.Font = Enum.Font.Gotham
+		v666.TextXAlignment = Enum.TextXAlignment.Left
+		v666.Parent = v665
+		local v_u_667 = Instance.new("Frame")
+		v_u_667.Size = UDim2.new(1, -100, 0, 6)
+		v_u_667.Position = UDim2.new(0, 45, 0, 7)
+		v_u_667.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_667.BackgroundTransparency = 0.5
+		v_u_667.BorderSizePixel = 0
+		v_u_667.Parent = v665
+		local v668 = Instance.new("UICorner")
+		v668.CornerRadius = UDim.new(0, 3)
+		v668.Parent = v_u_667
+		local v_u_669 = Instance.new("Frame")
+		v_u_669.Size = UDim2.new(0, 12, 0, 12)
+		v_u_669.Position = UDim2.new(0.5, -6, 0.5, -6)
+		v_u_669.BackgroundColor3 = Color3.new(1, 1, 1)
+		v_u_669.BackgroundTransparency = 0.2
+		v_u_669.BorderSizePixel = 0
+		v_u_669.Parent = v_u_667
+		local v670 = Instance.new("UICorner")
+		v670.CornerRadius = UDim.new(0, 6)
+		v670.Parent = v_u_669
+		local v_u_671 = Instance.new("TextLabel")
+		v_u_671.Size = UDim2.new(0, 40, 0, 18)
+		v_u_671.Position = UDim2.new(0, 215, 0, 0)
+		v_u_671.BackgroundTransparency = 1
+		v_u_671.Text = "5"
+		v_u_671.TextColor3 = Color3.new(1, 1, 1)
+		v_u_671.TextSize = 9
+		v_u_671.Font = Enum.Font.Gotham
+		v_u_671.TextXAlignment = Enum.TextXAlignment.Left
+		v_u_671.Parent = v665
+		local v_u_672 = Instance.new("TextButton")
+		v_u_672.Size = UDim2.new(0, 30, 0, 14)
+		v_u_672.Position = UDim2.new(1, -30, 0, 2)
+		v_u_672.BackgroundColor3 = Color3.new(0, 0, 0)
+		v_u_672.BackgroundTransparency = 0.5
+		v_u_672.Text = "Reset"
+		v_u_672.TextColor3 = Color3.new(1, 1, 1)
+		v_u_672.TextSize = 7
+		v_u_672.Font = Enum.Font.Gotham
+		v_u_672.BorderSizePixel = 0
+		v_u_672.Parent = v665
+		local v673 = Instance.new("UICorner")
+		v673.CornerRadius = UDim.new(0, 8)
+		v673.Parent = v_u_672
+		local v674 = Instance.new("Frame")
+		v674.Size = UDim2.new(1, 0, 0, 38)
+		v674.Position = UDim2.new(0, 0, 0, 22)
+		v674.BackgroundTransparency = 1
+		v674.Parent = v665
+		local v_u_675 = v_u_643
+		local v_u_676 = v_u_649
+		local v_u_677 = v_u_443
+		local v_u_678 = v_u_462
+		local v_u_679 = {}
+		for v680 = 1, 5 do
+			local v_u_681 = v680
+			local v682 = Instance.new("Frame")
+			v682.Size = UDim2.new(0.18, 0, 1, 0)
+			v682.Position = UDim2.new((v_u_681 - 1) * 0.2 + 0.01, 0, 0, 0)
+			v682.BackgroundTransparency = 1
+			v682.Parent = v674
+			local v_u_683 = Instance.new("TextBox")
+			v_u_683.Size = UDim2.new(1, 0, 0, 16)
+			v_u_683.Position = UDim2.new(0, 0, 0, 0)
+			v_u_683.BackgroundColor3 = Color3.new(0, 0, 0)
+			v_u_683.BackgroundTransparency = 0.5
+			v_u_683.Text = v_u_52 and v_u_52[v_u_681] and tostring(v_u_52[v_u_681].speed) or tostring(v_u_681 * 2 - 1)
+			v_u_683.TextColor3 = Color3.new(1, 1, 1)
+			v_u_683.TextSize = 8
+			v_u_683.Font = Enum.Font.Gotham
+			v_u_683.BorderSizePixel = 0
+			v_u_683.Parent = v682
+			local v684 = Instance.new("UICorner")
+			v684.CornerRadius = UDim.new(0, 6)
+			v684.Parent = v_u_683
+			local v_u_685 = Instance.new("TextButton")
+			v_u_685.Size = UDim2.new(1, 0, 0, 16)
+			v_u_685.Position = UDim2.new(0, 0, 0, 20)
+			v_u_685.BackgroundColor3 = Color3.new(0, 0, 0)
+			v_u_685.BackgroundTransparency = 0.5
+			v_u_685.Text = "Key"
+			v_u_685.TextColor3 = Color3.new(0.8, 0.8, 0.8)
+			v_u_685.TextSize = 7
+			v_u_685.Font = Enum.Font.Gotham
+			v_u_685.BorderSizePixel = 0
+			v_u_685.Parent = v682
+			local v686 = Instance.new("UICorner")
+			v686.CornerRadius = UDim.new(0, 6)
+			v686.Parent = v_u_685
+			v_u_679[v_u_681] = {
+				["speedInput"] = v_u_683,
+				["keybindButton"] = v_u_685,
+				["connection"] = nil
+			}
+			v_u_683.FocusLost:Connect(function()
+				-- upvalues: (ref) v_u_52, (ref) v_u_681, (ref) v_u_683, (ref) v_u_111
+				if not v_u_52[v_u_681] then
+					v_u_52[v_u_681] = {
+						["speed"] = v_u_681 * 2 - 1,
+						["key"] = ""
+					}
+				end
+				local v687 = tonumber(v_u_683.Text)
+				if v687 and (0 <= v687 and v687 <= 10) then
+					v_u_52[v_u_681].speed = v687
+					v_u_111()
+				else
+					v_u_683.Text = tostring(v_u_52[v_u_681].speed)
+				end
+			end)
+			v_u_685.MouseButton1Click:Connect(function()
+				-- upvalues: (ref) v_u_52, (ref) v_u_681, (ref) v_u_685, (ref) v_u_111, (ref) v_u_679, (ref) v_u_678, (ref) v_u_3, (ref) v_u_38, (ref) v_u_669, (ref) v_u_671
+				if not v_u_52[v_u_681] then
+					v_u_52[v_u_681] = {
+						["speed"] = v_u_681 * 2 - 1,
+						["key"] = ""
+					}
+				end
+				if v_u_52[v_u_681].key == "" then
+					v_u_685.Text = "..."
+					v_u_678.Text = "Press any key for slot " .. v_u_681 .. "..."
+					v_u_678.TextColor3 = Color3.new(1, 1, 0.5)
+					local v_u_688 = nil
+					v_u_688 = v_u_3.InputBegan:Connect(function(p_u_689, p690)
+						-- upvalues: (ref) v_u_685, (ref) v_u_678, (ref) v_u_688, (ref) v_u_52, (ref) v_u_681, (ref) v_u_111, (ref) v_u_679, (ref) v_u_3, (ref) v_u_38, (ref) v_u_669, (ref) v_u_671
+						if not p690 then
+							if p_u_689.KeyCode == Enum.KeyCode.Escape or p_u_689.KeyCode == Enum.KeyCode.Backspace then
+								v_u_685.Text = "Key"
+								v_u_678.Text = "Cancelled"
+								v_u_678.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+								spawn(function()
+									-- upvalues: (ref) v_u_678
+									wait(2)
+									v_u_678.Text = "Ready"
+								end)
+								v_u_688:Disconnect()
+							elseif p_u_689.KeyCode ~= Enum.KeyCode.Unknown then
+								v_u_52[v_u_681].key = p_u_689.KeyCode.Name
+								v_u_685.Text = p_u_689.KeyCode.Name:sub(1, 3)
+								v_u_685.TextColor3 = Color3.new(1, 1, 1)
+								v_u_111()
+								if v_u_679[v_u_681].connection then
+									v_u_679[v_u_681].connection:Disconnect()
+								end
+								v_u_679[v_u_681].connection = v_u_3.InputBegan:Connect(function(p691, p692)
+									-- upvalues: (ref) p_u_689, (ref) v_u_52, (ref) v_u_681, (ref) v_u_38, (ref) v_u_669, (ref) v_u_671
+									if not p692 then
+										if p691.KeyCode == p_u_689.KeyCode then
+											local v693 = v_u_52[v_u_681].speed / 10
+											v_u_38.speed = v_u_52[v_u_681].speed / 5
+											v_u_669.Position = UDim2.new(v693, -6, 0.5, -6)
+											v_u_671.Text = string.format("%d", v_u_52[v_u_681].speed)
+										end
+									end
+								end)
+								v_u_678.Text = "Bound slot " .. v_u_681 .. " to " .. p_u_689.KeyCode.Name
+								v_u_678.TextColor3 = Color3.new(0.5, 1, 0.5)
+								spawn(function()
+									-- upvalues: (ref) v_u_678
+									wait(2)
+									v_u_678.Text = "Ready"
+									v_u_678.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+								end)
+								v_u_688:Disconnect()
+							end
+						end
+					end)
+				else
+					v_u_52[v_u_681].key = ""
+					v_u_685.Text = "Key"
+					v_u_685.TextColor3 = Color3.new(0.8, 0.8, 0.8)
+					v_u_111()
+					if v_u_679[v_u_681].connection then
+						v_u_679[v_u_681].connection:Disconnect()
+						v_u_679[v_u_681].connection = nil
+					end
+					v_u_678.Text = "Unbound slot " .. v_u_681
+					v_u_678.TextColor3 = Color3.new(1, 0.5, 0.5)
+					spawn(function()
+						-- upvalues: (ref) v_u_678
+						wait(2)
+						v_u_678.Text = "Ready"
+						v_u_678.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+					end)
+				end
+			end)
+		end
+		for v694 = 1, 5 do
+			local v_u_695 = v694
+			if v_u_52[v_u_695] then
+				v_u_679[v_u_695].speedInput.Text = tostring(v_u_52[v_u_695].speed)
+				if v_u_52[v_u_695].key and v_u_52[v_u_695].key ~= "" then
+					v_u_679[v_u_695].keybindButton.Text = v_u_52[v_u_695].key:sub(1, 3)
+					v_u_679[v_u_695].keybindButton.TextColor3 = Color3.new(1, 1, 1)
+					local v_u_696 = Enum.KeyCode[v_u_52[v_u_695].key]
+					if v_u_696 then
+						v_u_679[v_u_695].connection = v_u_3.InputBegan:Connect(function(p697, p698)
+							-- upvalues: (ref) v_u_696, (ref) v_u_52, (ref) v_u_695, (ref) v_u_38, (ref) v_u_669, (ref) v_u_671
+							if not p698 then
+								if p697.KeyCode == v_u_696 then
+									local v699 = v_u_52[v_u_695].speed / 10
+									v_u_38.speed = v_u_52[v_u_695].speed / 5
+									v_u_669.Position = UDim2.new(v699, -6, 0.5, -6)
+									v_u_671.Text = string.format("%d", v_u_52[v_u_695].speed)
+								end
+							end
+						end)
+					end
+				end
+			end
+		end
+		local v_u_700 = {
+			v_u_678,
+			v463,
+			v_u_476,
+			v_u_478,
+			v665,
+			v_u_480,
+			v_u_485,
+			v_u_676,
+			v_u_641,
+			v_u_548,
+			v_u_577
+		}
+		local function v_u_713(p_u_701)
+			-- upvalues: (ref) v_u_478, (ref) v_u_49, (ref) v_u_675, (ref) v_u_47, (ref) v_u_48, (ref) v_u_402, (ref) v_u_39, (ref) v_u_135, (ref) v_u_96, (ref) v_u_79, (ref) v_u_678, (ref) v_u_646, (ref) v_u_647, (ref) v_u_3, (ref) v_u_290
+			local v702 = Instance.new("Frame")
+			v702.Size = UDim2.new(1, 0, 0, 35)
+			v702.BackgroundTransparency = 1
+			v702.Parent = v_u_478
+			local v703 = v_u_49[p_u_701.name] ~= nil
+			local v704 = v703 and (v_u_675 == "custom" and -102 or -70) or -70
+			local v_u_705 = Instance.new("TextButton")
+			v_u_705.Size = UDim2.new(1, v704, 1, 0)
+			v_u_705.Position = UDim2.new(0, 0, 0, 0)
+			v_u_705.BackgroundColor3 = Color3.new(0, 0, 0)
+			v_u_705.BackgroundTransparency = 0.5
+			v_u_705.Text = " " .. p_u_701.name
+			v_u_705.TextColor3 = Color3.new(1, 1, 1)
+			v_u_705.TextSize = 12
+			v_u_705.Font = Enum.Font.Gotham
+			v_u_705.TextXAlignment = Enum.TextXAlignment.Left
+			v_u_705.BorderSizePixel = 0
+			v_u_705.Parent = v702
+			local v706 = Instance.new("UICorner")
+			v706.CornerRadius = UDim.new(0, 12)
+			v706.Parent = v_u_705
+			local v707
+			if v703 and v_u_675 == "custom" then
+				v707 = Instance.new("TextButton")
+				v707.Size = UDim2.new(0, 32, 1, 0)
+				v707.Position = UDim2.new(1, -98, 0, 0)
+				v707.BackgroundTransparency = 1
+				v707.Text = "X"
+				v707.TextColor3 = Color3.new(1, 0.3, 0.3)
+				v707.TextSize = 16
+				v707.BorderSizePixel = 0
+				v707.Parent = v702
+			else
+				v707 = nil
+			end
+			local v_u_708 = Instance.new("TextButton")
+			v_u_708.Size = UDim2.new(0, 32, 1, 0)
+			v_u_708.Position = UDim2.new(1, -66, 0, 0)
+			v_u_708.BackgroundTransparency = 1
+			v_u_708.Text = v_u_47[p_u_701.name] and "\226\152\133" or "\226\152\134"
+			v_u_708.TextColor3 = v_u_47[p_u_701.name] and Color3.new(1, 0.8, 0) or Color3.new(0.7, 0.7, 0.7)
+			v_u_708.TextSize = 16
+			v_u_708.BorderSizePixel = 0
+			v_u_708.Parent = v702
+			local v_u_709 = Instance.new("TextButton")
+			v_u_709.Size = UDim2.new(0, 32, 1, 0)
+			v_u_709.Position = UDim2.new(1, -32, 0, 0)
+			v_u_709.BackgroundTransparency = 1
+			v_u_709.Text = v_u_48[p_u_701.name] and (v_u_48[p_u_701.name].Name:gsub("KeyCode%.", ""):sub(1, 3) or "Bind") or "Bind"
+			v_u_709.TextColor3 = v_u_48[p_u_701.name] and Color3.new(1, 1, 1) or Color3.new(0.8, 0.8, 0.8)
+			v_u_709.TextSize = 8
+			v_u_709.Font = Enum.Font.Gotham
+			v_u_709.BorderSizePixel = 0
+			v_u_709.Parent = v702
+			v_u_705.MouseEnter:Connect(function()
+				-- upvalues: (ref) v_u_705
+				v_u_705.BackgroundTransparency = 0.3
+			end)
+			v_u_705.MouseLeave:Connect(function()
+				-- upvalues: (ref) v_u_705
+				v_u_705.BackgroundTransparency = 0.5
+			end)
+			v_u_705.MouseButton1Click:Connect(function()
+				-- upvalues: (ref) v_u_402, (ref) p_u_701
+				v_u_402(tostring(p_u_701.id))
+			end)
+			if v707 then
+				v707.MouseButton1Click:Connect(function()
+					-- upvalues: (ref) v_u_49, (ref) p_u_701, (ref) v_u_39, (ref) v_u_48, (ref) v_u_47, (ref) v_u_135, (ref) v_u_96, (ref) v_u_79
+					v_u_49[p_u_701.name] = nil
+					v_u_39[p_u_701.name] = nil
+					v_u_48[p_u_701.name] = nil
+					v_u_47[p_u_701.name] = nil
+					v_u_135()
+					v_u_96()
+					v_u_79()
+					loadGUI()
+				end)
+			end
+			v_u_708.MouseButton1Click:Connect(function()
+				-- upvalues: (ref) v_u_47, (ref) p_u_701, (ref) v_u_708, (ref) v_u_79, (ref) v_u_675
+				if v_u_47[p_u_701.name] then
+					v_u_47[p_u_701.name] = nil
+					v_u_708.Text = "\226\152\134"
+					v_u_708.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+				else
+					v_u_47[p_u_701.name] = tostring(p_u_701.id)
+					v_u_708.Text = "\226\152\133"
+					v_u_708.TextColor3 = Color3.new(1, 0.8, 0)
+				end
+				v_u_79()
+				if v_u_675 == "favorites" then
+					spawn(function()
+						wait(0.1)
+						loadGUI()
+					end)
+				end
+			end)
+			v_u_709.MouseButton1Click:Connect(function()
+				-- upvalues: (ref) v_u_48, (ref) p_u_701, (ref) v_u_96, (ref) v_u_709, (ref) v_u_678, (ref) v_u_646, (ref) v_u_647, (ref) v_u_3
+				if v_u_48[p_u_701.name] then
+					v_u_48[p_u_701.name] = nil
+					v_u_96()
+					v_u_709.Text = "Bind"
+					v_u_709.TextColor3 = Color3.new(0.8, 0.8, 0.8)
+					v_u_678.Text = "Unbound " .. p_u_701.name
+					v_u_678.TextColor3 = Color3.new(1, 0.5, 0.5)
+					spawn(function()
+						-- upvalues: (ref) v_u_678
+						wait(2)
+						v_u_678.Text = "Ready"
+						v_u_678.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+					end)
+					return
+				elseif not v_u_646 then
+					v_u_646 = true
+					v_u_647 = p_u_701.name
+					v_u_678.Text = "Press any key to bind..."
+					v_u_678.TextColor3 = Color3.new(1, 1, 0.5)
+					v_u_709.Text = "..."
+					local v_u_710 = nil
+					v_u_710 = v_u_3.InputBegan:Connect(function(p711, p712)
+						-- upvalues: (ref) v_u_646, (ref) v_u_647, (ref) p_u_701, (ref) v_u_710, (ref) v_u_709, (ref) v_u_678, (ref) v_u_48, (ref) v_u_96
+						if p712 then
+							return
+						elseif v_u_646 and v_u_647 == p_u_701.name then
+							if p711.KeyCode == Enum.KeyCode.Escape or p711.KeyCode == Enum.KeyCode.Backspace then
+								v_u_709.Text = "Bind"
+								v_u_709.TextColor3 = Color3.new(0.8, 0.8, 0.8)
+								v_u_678.Text = "Binding cancelled"
+								v_u_678.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+								spawn(function()
+									-- upvalues: (ref) v_u_678
+									wait(2)
+									v_u_678.Text = "Ready"
+								end)
+								v_u_646 = false
+								v_u_647 = nil
+								v_u_710:Disconnect()
+							elseif p711.KeyCode ~= Enum.KeyCode.Unknown then
+								v_u_48[p_u_701.name] = p711.KeyCode
+								v_u_96()
+								v_u_709.Text = p711.KeyCode.Name:gsub("KeyCode%.", ""):sub(1, 3)
+								v_u_709.TextColor3 = Color3.new(1, 1, 1)
+								v_u_678.Text = "Bound to " .. p711.KeyCode.Name:gsub("KeyCode%.", "")
+								v_u_678.TextColor3 = Color3.new(0.5, 1, 0.5)
+								spawn(function()
+									-- upvalues: (ref) v_u_678
+									wait(2)
+									v_u_678.Text = "Ready"
+									v_u_678.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+								end)
+								v_u_646 = false
+								v_u_647 = nil
+								v_u_710:Disconnect()
+							end
+						else
+							v_u_710:Disconnect()
+						end
+					end)
+				end
+			end)
+			v_u_290[p_u_701.name] = {
+				["Container"] = v702,
+				["NameButton"] = v_u_705,
+				["FavoriteButton"] = v_u_708,
+				["KeybindButton"] = v_u_709,
+				["DeleteButton"] = v707
+			}
+		end
+		function loadGUI()
+			-- upvalues: (ref) v_u_478, (ref) v_u_290, (ref) v_u_480, (ref) v_u_675, (ref) v_u_648, (ref) v_u_641, (ref) v_u_485, (ref) v_u_548, (ref) v_u_577, (ref) v_u_476, (ref) v_u_39, (ref) v_u_49, (ref) v_u_47, (ref) v_u_713, (ref) v_u_479
+			local v714 = v_u_478
+			local v715, v716, v717 = pairs(v714:GetChildren())
+			while true do
+				local v718
+				v717, v718 = v715(v716, v717)
+				if v717 == nil then
+					break
+				end
+				if v718:IsA("Frame") then
+					v718:Destroy()
+				end
+			end
+			v_u_290 = {}
+			local v719 = v_u_480
+			local v720
+			if v_u_675 ~= "custom" then
+				v720 = false
+			else
+				v720 = v_u_648
+			end
+			v719.Visible = v720
+			v_u_641.Visible = v_u_675 == "custom"
+			v_u_485.Visible = v_u_675 == "states"
+			v_u_548.Visible = v_u_675 == "size"
+			v_u_577.Visible = v_u_675 == "others"
+			v_u_478.Visible = v_u_675 ~= "states" and (v_u_675 ~= "size" and v_u_675 ~= "others")
+			v_u_476.Visible = v_u_675 ~= "states" and (v_u_675 ~= "size" and v_u_675 ~= "others")
+			if v_u_675 ~= "states" and (v_u_675 ~= "size" and v_u_675 ~= "others") then
+				if v_u_675 ~= "custom" then
+					v_u_478.Size = UDim2.new(1, -16, 1, -175)
+					v_u_478.Position = UDim2.new(0, 8, 0, 105)
+				elseif v_u_648 then
+					v_u_478.Size = UDim2.new(1, -16, 1, -270)
+					v_u_478.Position = UDim2.new(0, 8, 0, 195)
+				else
+					v_u_478.Size = UDim2.new(1, -16, 1, -205)
+					v_u_478.Position = UDim2.new(0, 8, 0, 135)
+				end
+				local v721 = {}
+				local v722 = v_u_476.Text:lower()
+				local v723 = v_u_39
+				if v_u_675 == "custom" then
+					v723 = v_u_49
+				end
+				local v724, v725, v726 = pairs(v723)
+				while true do
+					local v727
+					v726, v727 = v724(v725, v726)
+					if v726 == nil then
+						break
+					end
+					if (v_u_675 ~= "favorites" or v_u_47[v726] ~= nil) and (v722 == "" or v726:lower():find(v722)) then
+						table.insert(v721, {
+							["name"] = v726,
+							["id"] = v727
+						})
+					end
+				end
+				table.sort(v721, function(p728, p729)
+					return p728.name < p729.name
+				end)
+				local v730, v731, v732 = pairs(v721)
+				while true do
+					local v733
+					v732, v733 = v730(v731, v732)
+					if v732 == nil then
+						break
+					end
+					v_u_713(v733)
+				end
+				spawn(function()
+					-- upvalues: (ref) v_u_478, (ref) v_u_479
+					wait(0.1)
+					v_u_478.CanvasSize = UDim2.new(0, 0, 0, v_u_479.AbsoluteContentSize.Y + 10)
+				end)
+			end
+		end
+		local v_u_734 = false
+		local function v_u_737(p735)
+			-- upvalues: (ref) v_u_38, (ref) v_u_669, (ref) v_u_671
+			local v736 = math.floor(p735 * 10 + 0.5)
+			v_u_38.speed = v736 / 5
+			v_u_669.Position = UDim2.new(p735, -6, 0.5, -6)
+			v_u_671.Text = string.format("%d", v736)
+		end
+		local function v_u_739(p738)
+			-- upvalues: (ref) v_u_667, (ref) v_u_737
+			v_u_737((math.clamp((p738.Position.X - v_u_667.AbsolutePosition.X) / v_u_667.AbsoluteSize.X, 0, 1)))
+		end
+		local function v_u_740()
+			-- upvalues: (ref) v_u_38, (ref) v_u_669, (ref) v_u_671
+			v_u_38.speed = 1
+			v_u_669.Position = UDim2.new(0.5, -6, 0.5, -6)
+			v_u_671.Text = "5"
+		end
+		spawn(function()
+			-- upvalues: (ref) v_u_669, (ref) v_u_671
+			wait(0.1)
+			v_u_669.Position = UDim2.new(0.5, -6, 0.5, -6)
+			v_u_671.Text = "5"
+		end)
+		v_u_667.InputBegan:Connect(function(p741)
+			-- upvalues: (ref) v_u_734, (ref) v_u_739
+			if p741.UserInputType == Enum.UserInputType.MouseButton1 or p741.UserInputType == Enum.UserInputType.Touch then
+				v_u_734 = true
+				v_u_739(p741)
+			end
+		end)
+		v_u_3.InputChanged:Connect(function(p742)
+			-- upvalues: (ref) v_u_734, (ref) v_u_739
+			if v_u_734 and (p742.UserInputType == Enum.UserInputType.MouseMovement or p742.UserInputType == Enum.UserInputType.Touch) then
+				v_u_739(p742)
+			end
+		end)
+		v_u_3.InputEnded:Connect(function(p743)
+			-- upvalues: (ref) v_u_734
+			if p743.UserInputType == Enum.UserInputType.MouseButton1 or p743.UserInputType == Enum.UserInputType.Touch then
+				v_u_734 = false
+			end
+		end)
+		v_u_672.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_740
+			v_u_740()
+		end)
+		v_u_672.MouseEnter:Connect(function()
+			-- upvalues: (ref) v_u_672
+			v_u_672.BackgroundTransparency = 0.3
+		end)
+		v_u_672.MouseLeave:Connect(function()
+			-- upvalues: (ref) v_u_672
+			v_u_672.BackgroundTransparency = 0.5
+		end)
+		v460.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_304, (ref) v_u_10, (ref) v_u_289, (ref) v_u_677
+			v_u_304()
+			if v_u_10 then
+				v_u_289(false)
+			end
+			v_u_677:Destroy()
+		end)
+		v_u_458.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_645, (ref) v_u_644, (ref) v_u_700, (ref) v_u_6, (ref) v_u_444, (ref) v_u_458, (ref) v_u_480, (ref) v_u_675, (ref) v_u_648, (ref) v_u_641, (ref) v_u_485, (ref) v_u_548, (ref) v_u_577, (ref) v_u_676, (ref) v_u_478, (ref) v_u_476
+			if not v_u_645 then
+				v_u_645 = true
+				if v_u_644 then
+					local v744 = v_u_6:Create(v_u_444, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						["Size"] = UDim2.new(0, 280, 0, 395)
+					})
+					v_u_458.Text = "\226\136\146"
+					v_u_644 = false
+					v744:Play()
+					v744.Completed:Connect(function()
+						-- upvalues: (ref) v_u_700, (ref) v_u_480, (ref) v_u_675, (ref) v_u_648, (ref) v_u_641, (ref) v_u_485, (ref) v_u_548, (ref) v_u_577, (ref) v_u_676, (ref) v_u_478, (ref) v_u_476, (ref) v_u_645
+						local v745, v746, v747 = pairs(v_u_700)
+						while true do
+							local v748
+							v747, v748 = v745(v746, v747)
+							if v747 == nil then
+								break
+							end
+							if v748 ~= v_u_480 then
+								if v748 ~= v_u_641 then
+									if v748 ~= v_u_485 then
+										if v748 ~= v_u_548 then
+											if v748 ~= v_u_577 then
+												if v748 ~= v_u_676 then
+													if v748 == v_u_478 or v748 == v_u_476 then
+														v748.Visible = v_u_675 ~= "states" and (v_u_675 ~= "size" and v_u_675 ~= "others")
+													else
+														v748.Visible = true
+													end
+												else
+													v748.Visible = v_u_675 == "custom" or v_u_675 == "states"
+												end
+											else
+												v748.Visible = v_u_675 == "others"
+											end
+										else
+											v748.Visible = v_u_675 == "size"
+										end
+									else
+										v748.Visible = v_u_675 == "states"
+									end
+								else
+									v748.Visible = v_u_675 == "custom"
+								end
+							else
+								local v749
+								if v_u_675 ~= "custom" then
+									v749 = false
+								else
+									v749 = v_u_648
+								end
+								v748.Visible = v749
+							end
+						end
+						v_u_645 = false
+					end)
+				else
+					local v750, v751, v752 = pairs(v_u_700)
+					while true do
+						local v753
+						v752, v753 = v750(v751, v752)
+						if v752 == nil then
+							break
+						end
+						v753.Visible = false
+					end
+					local v754 = v_u_6:Create(v_u_444, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						["Size"] = UDim2.new(0, 280, 0, 30)
+					})
+					v_u_458.Text = "+"
+					v_u_644 = true
+					v754:Play()
+					v754.Completed:Connect(function()
+						-- upvalues: (ref) v_u_645
+						v_u_645 = false
+					end)
+				end
+			end
+		end)
+		v_u_476:GetPropertyChangedSignal("Text"):Connect(loadGUI)
+		v_u_464.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_675, (ref) v_u_648, (ref) v_u_464, (ref) v_u_465, (ref) v_u_466, (ref) v_u_467, (ref) v_u_468, (ref) v_u_470, (ref) v_u_664
+			v_u_675 = "all"
+			v_u_648 = false
+			v_u_464.BackgroundTransparency = 0.5
+			v_u_465.BackgroundTransparency = 0.8
+			v_u_466.BackgroundTransparency = 0.8
+			v_u_467.BackgroundTransparency = 0.8
+			v_u_468.BackgroundTransparency = 0.8
+			v_u_470.BackgroundTransparency = 0.8
+			v_u_664()
+			loadGUI()
+		end)
+		v_u_465.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_675, (ref) v_u_465, (ref) v_u_464, (ref) v_u_466, (ref) v_u_467, (ref) v_u_470, (ref) v_u_664
+			v_u_675 = "favorites"
+			v_u_465.BackgroundTransparency = 0.5
+			v_u_464.BackgroundTransparency = 0.8
+			v_u_466.BackgroundTransparency = 0.8
+			v_u_467.BackgroundTransparency = 0.8
+			v_u_470.BackgroundTransparency = 0.8
+			v_u_664()
+			loadGUI()
+		end)
+		v_u_466.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_675, (ref) v_u_466, (ref) v_u_464, (ref) v_u_465, (ref) v_u_467, (ref) v_u_470, (ref) v_u_664
+			v_u_675 = "custom"
+			v_u_466.BackgroundTransparency = 0.5
+			v_u_464.BackgroundTransparency = 0.8
+			v_u_465.BackgroundTransparency = 0.8
+			v_u_467.BackgroundTransparency = 0.8
+			v_u_470.BackgroundTransparency = 0.8
+			v_u_664()
+			loadGUI()
+		end)
+		v_u_467.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_675, (ref) v_u_467, (ref) v_u_464, (ref) v_u_465, (ref) v_u_466, (ref) v_u_468, (ref) v_u_470, (ref) v_u_664
+			v_u_675 = "states"
+			v_u_467.BackgroundTransparency = 0.5
+			v_u_464.BackgroundTransparency = 0.8
+			v_u_465.BackgroundTransparency = 0.8
+			v_u_466.BackgroundTransparency = 0.8
+			v_u_468.BackgroundTransparency = 0.8
+			v_u_470.BackgroundTransparency = 0.8
+			v_u_664()
+			loadGUI()
+		end)
+		v_u_468.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_675, (ref) v_u_468, (ref) v_u_464, (ref) v_u_465, (ref) v_u_466, (ref) v_u_467, (ref) v_u_470, (ref) v_u_664
+			v_u_675 = "size"
+			v_u_468.BackgroundTransparency = 0.5
+			v_u_464.BackgroundTransparency = 0.8
+			v_u_465.BackgroundTransparency = 0.8
+			v_u_466.BackgroundTransparency = 0.8
+			v_u_467.BackgroundTransparency = 0.8
+			v_u_470.BackgroundTransparency = 0.8
+			v_u_470.BackgroundTransparency = 0.8
+			v_u_664()
+			loadGUI()
+		end)
+		v_u_470.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_675, (ref) v_u_470, (ref) v_u_464, (ref) v_u_465, (ref) v_u_466, (ref) v_u_467, (ref) v_u_468, (ref) v_u_664
+			v_u_675 = "others"
+			v_u_470.BackgroundTransparency = 0.5
+			v_u_464.BackgroundTransparency = 0.8
+			v_u_465.BackgroundTransparency = 0.8
+			v_u_466.BackgroundTransparency = 0.8
+			v_u_467.BackgroundTransparency = 0.8
+			v_u_468.BackgroundTransparency = 0.8
+			v_u_664()
+			loadGUI()
+		end)
+		v_u_641.MouseButton1Click:Connect(function()
+			-- upvalues: (ref) v_u_648, (ref) v_u_480, (ref) v_u_641, (ref) v_u_478, (ref) v_u_481, (ref) v_u_483, (ref) v_u_678, (ref) v_u_49, (ref) v_u_39, (ref) v_u_135
+			if v_u_648 then
+				local v755 = v_u_481.Text
+				local v756 = v_u_483.Text
+				if v755 == "" or v756 == "" then
+					v_u_678.Text = "Name and code required!"
+					v_u_678.TextColor3 = Color3.new(1, 0.3, 0.3)
+					spawn(function()
+						-- upvalues: (ref) v_u_678
+						wait(2)
+						v_u_678.Text = "Ready"
+						v_u_678.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+					end)
+					return
+				end
+				v_u_49[v755] = v756
+				v_u_39[v755] = v756
+				v_u_135()
+				v_u_481.Text = ""
+				v_u_483.Text = ""
+				v_u_648 = false
+				v_u_480.Visible = false
+				v_u_641.Text = "Add"
+				v_u_641.BackgroundColor3 = Color3.new(0, 0, 0)
+				v_u_478.Size = UDim2.new(1, -16, 1, -175)
+				v_u_478.Position = UDim2.new(0, 8, 0, 105)
+				v_u_678.Text = "Added: " .. v755
+				v_u_678.TextColor3 = Color3.new(0.5, 1, 0.5)
+				spawn(function()
+					-- upvalues: (ref) v_u_678
+					wait(2)
+					v_u_678.Text = "Ready"
+					v_u_678.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+				end)
+				loadGUI()
+			else
+				v_u_648 = true
+				v_u_480.Visible = true
+				v_u_641.Text = "Save"
+				v_u_641.BackgroundColor3 = Color3.fromRGB(0, 150, 255)
+				v_u_478.Size = UDim2.new(1, -16, 1, -270)
+				v_u_478.Position = UDim2.new(0, 8, 0, 195)
+			end
+		end)
+		v_u_641.MouseEnter:Connect(function()
+			-- upvalues: (ref) v_u_641
+			v_u_641.BackgroundTransparency = 0.3
+		end)
+		v_u_641.MouseLeave:Connect(function()
+			-- upvalues: (ref) v_u_641
+			v_u_641.BackgroundTransparency = 0.5
+		end)
+		local v_u_757 = false
+		local v_u_758 = nil
+		local v_u_759 = nil
+		local function v_u_761(p760)
+			-- upvalues: (ref) v_u_757, (ref) v_u_758, (ref) v_u_759, (ref) v_u_444
+			v_u_757 = true
+			v_u_758 = p760.Position
+			v_u_759 = v_u_444.Position
+		end
+		local function v_u_764(p762)
+			-- upvalues: (ref) v_u_757, (ref) v_u_758, (ref) v_u_444, (ref) v_u_759
+			if v_u_757 then
+				local v763 = p762.Position - v_u_758
+				v_u_444.Position = UDim2.new(v_u_759.X.Scale, v_u_759.X.Offset + v763.X, v_u_759.Y.Scale, v_u_759.Y.Offset + v763.Y)
+			end
+		end
+		local function v_u_765()
+			-- upvalues: (ref) v_u_757
+			v_u_757 = false
+		end
+		v446.InputBegan:Connect(function(p766)
+			-- upvalues: (ref) v_u_761
+			if p766.UserInputType == Enum.UserInputType.MouseButton1 or p766.UserInputType == Enum.UserInputType.Touch then
+				v_u_761(p766)
+			end
+		end)
+		v_u_3.InputChanged:Connect(function(p767)
+			-- upvalues: (ref) v_u_764
+			if p767.UserInputType == Enum.UserInputType.MouseMovement or p767.UserInputType == Enum.UserInputType.Touch then
+				v_u_764(p767)
+			end
+		end)
+		v_u_3.InputEnded:Connect(function(p768)
+			-- upvalues: (ref) v_u_765
+			if p768.UserInputType == Enum.UserInputType.MouseButton1 or p768.UserInputType == Enum.UserInputType.Touch then
+				v_u_765()
+			end
+		end)
+		v_u_678.Text = "Loading animations..."
+		spawn(function()
+			-- upvalues: (ref) v_u_39, (ref) v_u_678
+			wait(1)
+			local v769, v770, v771 = pairs(v_u_39)
+			local v772 = 0
+			while true do
+				v771 = v769(v770, v771)
+				if v771 == nil then
+					break
+				end
+				v772 = v772 + 1
+			end
+			v_u_678.Text = "Loaded " .. v772 .. " animations"
+			v_u_678.TextColor3 = Color3.new(0.5, 1, 0.5)
+			loadGUI()
+			spawn(function()
+				-- upvalues: (ref) v_u_678
+				wait(2)
+				v_u_678.Text = "Ready"
+				v_u_678.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+			end)
+		end)
+	end
+end
+v_u_3.InputBegan:Connect(function(p774, p775)
+	-- upvalues: (ref) v_u_48, (ref) v_u_49, (ref) v_u_39, (ref) v_u_47, (ref) v_u_402
+	if p775 then
+		return
+	end
+	local v776, v777, v778 = pairs(v_u_48)
+	while true do
+		local v779
+		v778, v779 = v776(v777, v778)
+		if v778 == nil then
+			break
+		end
+		if p774.KeyCode == v779 then
+			local v780 = v_u_49[v778] or (v_u_39[v778] or v_u_47[v778])
+			if v780 then
+				v_u_402(tostring(v780))
+			end
+			break
+		end
+	end
+end)
+task.spawn(function()
+	-- upvalues: (ref) v_u_145, (ref) v_u_118, (ref) v_u_773
+	v_u_145()
+	v_u_118()
+	v_u_773()
+end)
+print("AK Reanim loaded!")
