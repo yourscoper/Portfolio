@@ -16,6 +16,10 @@ const whitelistData = {
       "discord": "698726180458725416", //Alex
       "key": "scoper-RonH5cWXjZHxz66KE2WZU1vzkPNM7K"
     },
+    "1d89edc122366888c0e7481e01777993ff599faeb0ae8ac4c09922fc83e42732": { // Madium
+      "discord": "1087223886405443584", //DaMonk
+      "key": "scoper-NWzKo1SxO0xO6z8K0A3omsJsqqzsEm"
+    },
     "c65d154e2c15d2471be103d7468be1642bd79b3405963b832efbad3606f18ccb1a8c2da6f1c03761aaca4a92ddf0503f6a0e90c7e2989c9f3cd2333be259ed3c": { // Potassium
       "discord": "1439964270434717826", //Unicornman
       "key": "scoper-PoV3hnlsy8uzKTwYLkMkkyIaAiXNYv"
