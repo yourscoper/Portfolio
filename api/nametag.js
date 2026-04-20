@@ -20,7 +20,7 @@ async function getFile() {
 async function saveFile(content, sha) {
   const params = {
     owner: OWNER, repo: REPO, path: PATH,
-    message: "Update nametags",
+    message: "Update userdata",
     content: Buffer.from(JSON.stringify(content, null, 2)).toString("base64"),
   };
   if (sha) params.sha = sha;
@@ -29,7 +29,7 @@ async function saveFile(content, sha) {
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "*");
 
   if (req.method === "OPTIONS") return res.status(200).end();
@@ -48,7 +48,6 @@ export default async function handler(req, res) {
     if (method === "GET") {
       const { userId } = req.query;
       const { content } = await getFile();
-      // If no userId, return entire database at once
       if (!userId) return res.json({ nametags: content });
       return res.json({ nametag: content[userId] || null });
     }
@@ -56,26 +55,25 @@ export default async function handler(req, res) {
     if (method === "POST") {
       let body = req.body;
       if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
-      const { userId, displayName, tag } = body || {};
-      if (!userId || !tag) return res.status(400).json({ error: "Missing fields" });
+      const { userId, displayName, tag, executed } = body || {};
+      if (!userId) return res.status(400).json({ error: "Missing userId" });
+
       const { content, sha } = await getFile();
-      content[userId] = { displayName, tag, updatedAt: new Date().toISOString() };
+
+      if (content[userId]) {
+        content[userId].executed = executed !== undefined ? executed : content[userId].executed;
+        content[userId].updatedAt = new Date().toISOString();
+      } else {
+        content[userId] = {
+          displayName: displayName || userId,
+          tag: tag || "SCOPER USER",
+          executed: executed !== undefined ? executed : false,
+          updatedAt: new Date().toISOString()
+        };
+      }
+
       await saveFile(content, sha);
       return res.json({ ok: true });
-    }
-
-    if (method === "DELETE") {
-      let body = req.body;
-      if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
-      const { userId } = body || {};
-      if (!userId) return res.status(400).json({ error: "Missing userId" });
-      const { content, sha } = await getFile();
-      if (content[userId]) {
-        delete content[userId];
-        await saveFile(content, sha);
-        return res.json({ ok: true, removed: userId });
-      }
-      return res.json({ ok: true, removed: null });
     }
 
     return res.status(405).json({ error: "Method not allowed" });
