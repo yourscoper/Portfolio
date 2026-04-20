@@ -6,9 +6,16 @@ const REPO  = "portfolio";
 const PATH  = "userdata.json";
 const SECRET = process.env.ROBLOX_SECRET;
 
+let memoryCache = null;
+const MEMORY_CACHE_TTL_MS = 15000;
+
 async function getFile() {
   try {
-    const { data } = await octokit.repos.getContent({ owner: OWNER, repo: REPO, path: PATH });
+    const { data } = await octokit.repos.getContent({
+      owner: OWNER,
+      repo: REPO,
+      path: PATH,
+    });
     const content = JSON.parse(Buffer.from(data.content, "base64").toString());
     return { content, sha: data.sha };
   } catch (err) {
@@ -19,7 +26,9 @@ async function getFile() {
 
 async function saveFile(content, sha) {
   const params = {
-    owner: OWNER, repo: REPO, path: PATH,
+    owner: OWNER,
+    repo: REPO,
+    path: PATH,
     message: "Update userdata",
     content: Buffer.from(JSON.stringify(content, null, 2)).toString("base64"),
   };
@@ -35,11 +44,10 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(200).end();
 
   try {
-    const clientSecret = req.headers["x-secret"]
-      || req.headers["X-Secret"]
-      || req.query.secret;
+    const clientSecret = req.headers["x-secret"] || req.headers["X-Secret"] || req.query.secret;
 
     if (!clientSecret || clientSecret !== SECRET) {
+      res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
       return res.status(401).json({ error: "Unauthorized", received: clientSecret || "nothing" });
     }
 
@@ -47,16 +55,36 @@ export default async function handler(req, res) {
 
     if (method === "GET") {
       const { userId } = req.query;
-      const { content } = await getFile();
-      if (!userId) return res.json({ nametags: content });
-      return res.json({ nametag: content[userId] || null });
+
+      if (memoryCache && Date.now() - memoryCache.timestamp < MEMORY_CACHE_TTL_MS) {
+        const content = memoryCache.content;
+        const responseData = !userId ? { nametags: content } : { nametag: content[userId] || null };
+
+        res.setHeader("Cache-Control", "public, s-maxage=30, stale-while-revalidate=120");
+        return res.json(responseData);
+      }
+
+      const { content, sha } = await getFile();
+
+      memoryCache = { content, timestamp: Date.now() };
+
+      const responseData = !userId ? { nametags: content } : { nametag: content[userId] || null };
+
+      res.setHeader("Cache-Control", "public, s-maxage=30, stale-while-revalidate=120");
+      return res.json(responseData);
     }
 
     if (method === "POST") {
       let body = req.body;
-      if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
+      if (typeof body === "string") {
+        try { body = JSON.parse(body); } catch(e) {}
+      }
+
       const { userId, displayName, tag, executed } = body || {};
-      if (!userId) return res.status(400).json({ error: "Missing userId" });
+      if (!userId) {
+        res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        return res.status(400).json({ error: "Missing userId" });
+      }
 
       const { content, sha } = await getFile();
 
@@ -73,12 +101,16 @@ export default async function handler(req, res) {
       }
 
       await saveFile(content, sha);
+
+      res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, private");
       return res.json({ ok: true });
     }
 
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
     return res.status(405).json({ error: "Method not allowed" });
 
   } catch (err) {
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
     return res.status(500).json({ error: err.message, stack: err.stack });
   }
 }
