@@ -65,17 +65,21 @@ export default async function handler(req, res) {
     }
 
     if (method === "DELETE") {
-      let body = req.body;
-      if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
-      const { userId } = body || {};
+      const { userId } = req.body;
+    
       if (!userId) return res.status(400).json({ error: "Missing userId" });
+    
       const { content, sha } = await getFile();
-      if (content[userId]) {
-        delete content[userId];
-        await saveFile(content, sha);
-        return res.json({ ok: true, removed: userId });
+    
+      if (!content[userId]) {
+        return res.json({ ok: true, removed: null });
       }
-      return res.json({ ok: true, removed: null });
+    
+      delete content[userId];
+    
+      await saveFile(content, sha);
+    
+      return res.json({ ok: true, removed: userId });
     }
 
     return res.status(405).json({ error: "Method not allowed" });
