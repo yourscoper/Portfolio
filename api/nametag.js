@@ -99,7 +99,7 @@ export default async function handler(req, res) {
 
     if (method === "DELETE") {
       let body = req.body;
-
+    
       if (typeof body === "string") {
         try {
           body = JSON.parse(body);
@@ -107,23 +107,28 @@ export default async function handler(req, res) {
           return res.status(400).json({ error: "Invalid JSON" });
         }
       }
-
+    
       const { userId } = body || {};
-
+    
       if (!userId) {
         return res.status(400).json({ error: "Missing userId" });
       }
-
+    
       const { content, sha } = await getFile();
-
+    
+      return res.json({
+        received: userId,
+        exists: !!content[userId]
+      });
+    
       if (!content[userId]) {
         return res.json({ ok: true, removed: null });
       }
-
+    
       delete content[userId];
-
+    
       await saveFile(content, sha);
-
+    
       return res.json({ ok: true, removed: userId });
     }
 
