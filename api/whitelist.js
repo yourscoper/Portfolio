@@ -40,7 +40,7 @@ const whitelistData = {
 
   "shared": {
     "status": true,
-    "key": "scoper-limited20127889ef1zq19lZkKEIJCXJI"
+    "key": "scoper-WNwzEGr9VAvrVF1KWfveWanA7CEIse"
   }
 };
 
