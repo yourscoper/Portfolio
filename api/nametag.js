@@ -1,10 +1,10 @@
 import { Octokit } from "@octokit/rest";
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-const OWNER = "YOUR_GITHUB_USERNAME";
-const REPO  = "roblox-nametags";
+const OWNER = "yourscoper";
+const REPO  = "portfolio";
 const PATH  = "nametags.json";
-const SECRET = process.env.ROBLOX_SECRET; // a password your script sends
+const SECRET = process.env.ROBLOX_SECRET;
 
 async function getFile() {
   const { data } = await octokit.repos.getContent({ owner: OWNER, repo: REPO, path: PATH });
@@ -22,21 +22,18 @@ async function saveFile(content, sha) {
 }
 
 export default async function handler(req, res) {
-  // Validate secret
-  if (req.headers["x-secret"] !== Secret) {
+  if (req.headers["x-secret"] !== SECRET) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
   const { method } = req;
 
-  // GET /api/nametag?userId=123  → fetch one user's tag
   if (method === "GET") {
     const { userId } = req.query;
     const { content } = await getFile();
     return res.json({ nametag: content[userId] || null });
   }
 
-  // POST /api/nametag  { userId, displayName, tag }  → upsert
   if (method === "POST") {
     const { userId, displayName, tag } = req.body;
     const { content, sha } = await getFile();
