@@ -3,7 +3,7 @@ import { Octokit } from "@octokit/rest";
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 const OWNER = "yourscoper";
 const REPO  = "portfolio";
-const PATH  = "nametag.json";
+const PATH  = "userdata.json";
 const SECRET = process.env.ROBLOX_SECRET;
 
 async function getFile() {
