@@ -30,9 +30,30 @@ async function saveFile(content, sha) {
 }
 
 export default async function handler(req, res) {
+  // Allow all origins
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "*");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   try {
-    if (req.headers["x-secret"] !== SECRET) {
-      return res.status(401).json({ error: "Unauthorized" });
+    // Accept secret from header OR query param so executor can't fail
+    const clientSecret = req.headers["x-secret"] 
+      || req.headers["X-Secret"]
+      || req.query.secret;
+
+    console.log("SECRET FROM ENV:", SECRET);
+    console.log("SECRET FROM CLIENT:", clientSecret);
+
+    if (!clientSecret || clientSecret !== SECRET) {
+      return res.status(401).json({ 
+        error: "Unauthorized",
+        received: clientSecret || "nothing",
+        expected_length: SECRET ? SECRET.length : 0
+      });
     }
 
     const { method } = req;
@@ -45,8 +66,13 @@ export default async function handler(req, res) {
     }
 
     if (method === "POST") {
-      const { userId, displayName, tag } = req.body;
-      if (!userId || !tag) return res.status(400).json({ error: "Missing fields" });
+      let body = req.body;
+      // If body came in as a string (some executors send raw string), parse it
+      if (typeof body === "string") {
+        try { body = JSON.parse(body); } catch(e) {}
+      }
+      const { userId, displayName, tag } = body || {};
+      if (!userId || !tag) return res.status(400).json({ error: "Missing fields", got: body });
       const { content, sha } = await getFile();
       content[userId] = { displayName, tag, updatedAt: new Date().toISOString() };
       await saveFile(content, sha);
