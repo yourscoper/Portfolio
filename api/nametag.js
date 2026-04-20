@@ -30,9 +30,8 @@ async function saveFile(content, sha) {
 }
 
 export default async function handler(req, res) {
-  // Allow all origins
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "*");
 
   if (req.method === "OPTIONS") {
@@ -40,20 +39,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Accept secret from header OR query param so executor can't fail
-    const clientSecret = req.headers["x-secret"] 
+    const clientSecret = req.headers["x-secret"]
       || req.headers["X-Secret"]
       || req.query.secret;
 
-    console.log("SECRET FROM ENV:", SECRET);
-    console.log("SECRET FROM CLIENT:", clientSecret);
-
     if (!clientSecret || clientSecret !== SECRET) {
-      return res.status(401).json({ 
-        error: "Unauthorized",
-        received: clientSecret || "nothing",
-        expected_length: SECRET ? SECRET.length : 0
-      });
+      return res.status(401).json({ error: "Unauthorized", received: clientSecret || "nothing" });
     }
 
     const { method } = req;
@@ -67,7 +58,6 @@ export default async function handler(req, res) {
 
     if (method === "POST") {
       let body = req.body;
-      // If body came in as a string (some executors send raw string), parse it
       if (typeof body === "string") {
         try { body = JSON.parse(body); } catch(e) {}
       }
@@ -77,6 +67,22 @@ export default async function handler(req, res) {
       content[userId] = { displayName, tag, updatedAt: new Date().toISOString() };
       await saveFile(content, sha);
       return res.json({ ok: true });
+    }
+
+    if (method === "DELETE") {
+      let body = req.body;
+      if (typeof body === "string") {
+        try { body = JSON.parse(body); } catch(e) {}
+      }
+      const { userId } = body || {};
+      if (!userId) return res.status(400).json({ error: "Missing userId" });
+      const { content, sha } = await getFile();
+      if (content[userId]) {
+        delete content[userId];
+        await saveFile(content, sha);
+        return res.json({ ok: true, removed: userId });
+      }
+      return res.json({ ok: true, removed: null });
     }
 
     return res.status(405).json({ error: "Method not allowed" });
