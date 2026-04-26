@@ -1,8 +1,8 @@
 return {
     TagOrder = {
         "OWNER",
-        "UNICORN MAN",
         "ADMIN",
+        "UNICORN MAN",
     },
   
     RankData = {
@@ -17,17 +17,6 @@ return {
             image = "http://www.roblox.com/asset/?id=7487018714"
         },
 
-        ["UNICORN MAN"] = {
-            primary = Color3.fromRGB(255, 255, 255),
-            useimage = true,
-            accent = ColorSequence.new{
-                ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 30, 255)),
-                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(135, 22, 135)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
-            },
-            image = "http://www.roblox.com/asset/?id=81949972333091"
-        },
-
         ["ADMIN"] = {
             primary = Color3.fromRGB(255, 255, 255),
             useimage = true,
@@ -37,6 +26,17 @@ return {
                 ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
             },
             image = "http://www.roblox.com/asset/?id=7487018714"
+        },
+
+        ["UNICORN MAN"] = {
+            primary = Color3.fromRGB(255, 255, 255),
+            useimage = true,
+            accent = ColorSequence.new{
+                ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 30, 255)),
+                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(135, 22, 135)),
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
+            },
+            image = "http://www.roblox.com/asset/?id=81949972333091"
         },
     }
 }
