@@ -1,6 +1,6 @@
 return {
     TagOrder = {
-        "OWNER"
+        "OWNER",
         "UNICORN MAN"
     },
   
@@ -25,6 +25,6 @@ return {
                 ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
             },
             image = "http://www.roblox.com/asset/?id=128445732"
-        },
+        }
     }
 }
