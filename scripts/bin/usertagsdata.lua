@@ -10,9 +10,9 @@ return {
             primary = Color3.fromRGB(255, 255, 255),
             useimage = true,
             accent = ColorSequence.new{
-                ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 230, 70)),
-                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(110, 101, 45)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
+                ColorSequenceKeypoint.new(0, Color3.fromRGB(173, 55, 55)),
+                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(252, 183, 119)),
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 230, 70)),
             },
             image = "http://www.roblox.com/asset/?id=7487018714"
         },
