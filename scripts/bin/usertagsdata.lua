@@ -12,7 +12,7 @@ return {
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(75, 255, 125)),
                 ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 255, 255)),
             },
-            image = "http://www.roblox.com/asset/?id=108643155104079"
+            image = "http://www.roblox.com/asset/?id=10885640682"
         },
     }
 }
