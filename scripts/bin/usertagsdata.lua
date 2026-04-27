@@ -26,7 +26,7 @@ return {
                 ColorSequenceKeypoint.new(0.5,  Color3.fromRGB(145, 56, 54)),
                 ColorSequenceKeypoint.new(1,    Color3.fromRGB(0, 0, 0)),
             },
-            image       = "http://www.roblox.com/asset/?id=7487018714"
+            image       = "http://www.roblox.com/asset/?id=18565602368"
         },
 
         ["UNICORN MAN"] = {
