@@ -8,6 +8,10 @@ const whitelistData = {
         "discord": "765706304656113664", //yourscoper
         "key": "scoper-QwUWUeXQHM3Y4p1sO7fmFqQADmLI1e"
     },
+    "44495a762d0a02bcd478977024d77a6ec7ec0cc240c030e75e5b041956ba8037": { // Madium
+      "discord": "1066196545957011476", //Angel
+      "key": "scoper-oXihtcoWppO2L8bgS1enYJ4u0pVKyl"
+    },
     "e468867bb1f1e32befd01431089dd5621dcc69a14e3bc2a404ac0866fff23402": { // Delta-Android
       "discord": "1312924157578711071", //IceGodFTBL
       "key": "scoper-pd8bDG1TgZKTH2svNH3VAogwb9ZKRK"
