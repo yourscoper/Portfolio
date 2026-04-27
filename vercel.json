@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "/scripts/bin/print.lua",
-      "destination": "/",
-      "permanent": true
-    }
-  ]
-}
