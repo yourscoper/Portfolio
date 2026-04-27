@@ -3,6 +3,7 @@ return {
         "OWNER",
         "ADMIN",
         "UNICORN MAN",
+        "papi angel"
     },
   
     RankData = {
