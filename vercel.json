@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/print",
+      "destination": "/api/scoper"
+    }
+  ]
+}
