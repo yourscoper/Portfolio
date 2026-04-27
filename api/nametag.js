@@ -9,7 +9,7 @@ const SECRET = process.env.ROBLOX_SECRET;
 let memoryCache = null;
 let memorySha = null;
 let lastGithubWrite = 0;
-const WRITE_COOLDOWN = 30000; // only write to GitHub max once per 30 seconds
+const WRITE_COOLDOWN = 30000;
 
 async function getFile() {
     if (memoryCache && memorySha) {
