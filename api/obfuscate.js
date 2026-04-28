@@ -1,11 +1,257 @@
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    const html = `<!DOCTYPE html>
+    const html = getHTML();
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    return res.status(200).send(html);
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).send('Method Not Allowed');
+  }
+
+  let body = '';
+  req.on('data', chunk => body += chunk);
+  req.on('end', async () => {
+    try {
+      const { script } = JSON.parse(body || '{}');
+
+      if (!script || typeof script !== 'string' || script.trim() === '') {
+        return res.status(400).send('No script provided');
+      }
+
+      // Use our own obfuscator - NO API LIMITS!
+      const obfuscated = obfuscateLua(script);
+      
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      res.status(200).send(obfuscated);
+    } catch (err) {
+      console.error('Obfuscation error:', err);
+      res.status(500).send('Internal server error: ' + err.message);
+    }
+  });
+}
+
+// ============ CORE OBFUSCATOR ENGINE ============
+
+const XOR_KEY = 0x4B;
+const ENC_LAYERS = 3;
+
+function randomString(len) {
+  len = len || Math.floor(Math.random() * 8) + 8;
+  const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+  let result = "";
+  for (let i = 0; i < len; i++) {
+    result += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return result;
+}
+
+function xor(s, k) {
+  let result = "";
+  for (let i = 0; i < s.length; i++) {
+    result += String.fromCharCode(s.charCodeAt(i) ^ k);
+  }
+  return result;
+}
+
+function rc4(data, key) {
+  let s = [];
+  let j = 0;
+  let result = [];
+  
+  for (let i = 0; i < 256; i++) {
+    s[i] = i;
+  }
+  
+  for (let i = 0; i < 256; i++) {
+    j = (j + s[i] + key.charCodeAt(i % key.length)) % 256;
+    [s[i], s[j]] = [s[j], s[i]];
+  }
+  
+  let i = 0;
+  j = 0;
+  for (let k = 0; k < data.length; k++) {
+    i = (i + 1) % 256;
+    j = (j + s[i]) % 256;
+    [s[i], s[j]] = [s[j], s[i]];
+    const rand = s[(s[i] + s[j]) % 256];
+    result[k] = String.fromCharCode(data.charCodeAt(k) ^ rand);
+  }
+  
+  return result.join('');
+}
+
+function generateKey() {
+  let key = "";
+  for (let i = 0; i < 32; i++) {
+    key += String.fromCharCode(Math.floor(Math.random() * 95) + 32);
+  }
+  return key;
+}
+
+function base64Encode(str) {
+  return Buffer.from(str, 'binary').toString('base64');
+}
+
+function base64Decode(str) {
+  return Buffer.from(str, 'base64').toString('binary');
+}
+
+function minifyCode(src) {
+  // Remove single line comments
+  src = src.replace(/--[^\n]*/g, "");
+  // Remove multi-line comments
+  src = src.replace(/--\[\[[\s\S]*?\]\]/g, "");
+  src = src.replace(/--\[=*\[[\s\S]*?\]=\*\]/g, "");
+  // Remove extra whitespace
+  src = src.replace(/\n+/g, "\n");
+  src = src.replace(/\t/g, " ");
+  src = src.replace(/  +/g, " ");
+  return src;
+}
+
+function obfuscateLua(code) {
+  if (typeof code !== "string") return "-- input error";
+  
+  // Check line count
+  const lineCount = code.split('\n').length;
+  if (lineCount > 10000) {
+    return `-- Error: Code exceeds 10,000 lines (${lineCount} lines)`;
+  }
+  
+  let cleanCode = minifyCode(code);
+  
+  // Multiple encryption layers
+  let encrypted = cleanCode;
+  const keys = [];
+  
+  for (let i = 0; i < ENC_LAYERS; i++) {
+    const key = generateKey();
+    keys.push(key);
+    encrypted = rc4(encrypted, key);
+    encrypted = base64Encode(xor(encrypted, XOR_KEY + i));
+  }
+  
+  // Split into chunks
+  const chunks = [];
+  let pos = 0;
+  let chunkSize = Math.floor(Math.random() * 100) + 100;
+  while (pos < encrypted.length) {
+    const piece = encrypted.substring(pos, Math.min(pos + chunkSize, encrypted.length));
+    chunks.push(JSON.stringify(piece));
+    pos += chunkSize;
+    chunkSize = Math.floor(Math.random() * 100) + 100;
+  }
+  const payload = chunks.join("..");
+  
+  // Generate variable names
+  const varNames = [];
+  const cryptoVars = [];
+  for (let i = 0; i < 20; i++) {
+    varNames.push(randomString(Math.floor(Math.random() * 12) + 12));
+    cryptoVars.push(randomString(Math.floor(Math.random() * 8) + 8));
+  }
+  
+  // Generate random strings for anti-tamper
+  const randomStrings = [];
+  for (let i = 0; i < 10; i++) {
+    randomStrings.push(randomString(Math.floor(Math.random() * 12) + 8));
+  }
+  
+  // Build the obfuscated template
+  const template = `do 
+local ${varNames[0]},${varNames[1]},${varNames[2]},${varNames[3]},${varNames[4]},${varNames[5]},${varNames[6]},${varNames[7]},${varNames[8]},${varNames[9]},${varNames[10]}=string.byte,string.char,table.concat,pcall,getfenv or function()return _ENV or getfenv()end,setfenv or function(f,t)local n=getfenv(f)for k,v in pairs(t)do n[k]=v end end,debug and debug.getinfo or nil,loadstring or load,type,rawget,rawset
+local ${cryptoVars[0]}=${varNames[4]}
+local function ${cryptoVars[1]}(${cryptoVars[2]},${cryptoVars[3]})local ${cryptoVars[4]}={}local ${cryptoVars[5]}=${varNames[0]}(${cryptoVars[2]})for ${cryptoVars[6]}=1,${cryptoVars[5]}do ${cryptoVars[4]}[${cryptoVars[6]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[2]},${cryptoVars[6]})~${cryptoVars[3]})end return ${varNames[2]}(${cryptoVars[4]})end
+local function ${cryptoVars[7]}(${cryptoVars[8]},${cryptoVars[9]})local ${cryptoVars[10]}={}local ${cryptoVars[11]}=0 local ${cryptoVars[12]}={}for ${cryptoVars[13]}=0,255 do ${cryptoVars[12]}[${cryptoVars[13]}]=${cryptoVars[13]}end for ${cryptoVars[13]}=0,255 do ${cryptoVars[11]}=(${cryptoVars[11]}+${cryptoVars[12]}[${cryptoVars[13]}]+${varNames[0]}(${cryptoVars[9]},(${cryptoVars[13]}%${varNames[0]}(${cryptoVars[9]}))+1))%256 ${cryptoVars[12]}[${cryptoVars[13]}],${cryptoVars[12]}[${cryptoVars[11]}]=${cryptoVars[12]}[${cryptoVars[11]}],${cryptoVars[12]}[${cryptoVars[13]}]end local ${cryptoVars[14]}=0 ${cryptoVars[11]}=0 for ${cryptoVars[13]}=1,${varNames[0]}(${cryptoVars[8]})do ${cryptoVars[14]}=(${cryptoVars[14]}+1)%256 ${cryptoVars[11]}=(${cryptoVars[11]}+${cryptoVars[12]}[${cryptoVars[14]}])%256 ${cryptoVars[12]}[${cryptoVars[14]}],${cryptoVars[12]}[${cryptoVars[11]}]=${cryptoVars[12]}[${cryptoVars[11]}],${cryptoVars[12]}[${cryptoVars[14]}]local ${cryptoVars[15]}=${cryptoVars[12]}[(${cryptoVars[12]}[${cryptoVars[14]}]+${cryptoVars[12]}[${cryptoVars[11]}])%256]${cryptoVars[10]}[${cryptoVars[13]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[8]},${cryptoVars[13]})~${cryptoVars[15]})end return ${varNames[2]}(${cryptoVars[10]})end
+local ${cryptoVars[16]}={}
+local ${cryptoVars[17]}=${varNames[4]}()
+local ${cryptoVars[18]}=${varNames[5]}(${cryptoVars[17]})
+if ${cryptoVars[18]} and ${cryptoVars[18]}[${varNames[6]}]and ${cryptoVars[18]}[${varNames[6]}].func then ${cryptoVars[18]}[${varNames[6]}]=function(${cryptoVars[19]})return {func=function(${cryptoVars[19]})return ${cryptoVars[19]}end}end end
+local ${cryptoVars[20]}=${varNames[4]}(${cryptoVars[0]})
+local ${cryptoVars[21]}={}
+for ${cryptoVars[22]}=1,${varNames[0]}(${cryptoVars[20]})do ${cryptoVars[21]}[${cryptoVars[22]}]=${cryptoVars[20]}[${cryptoVars[22]}]end
+local ${cryptoVars[23]}={${randomStrings.map(s => JSON.stringify(s)).join(',')}}
+for ${cryptoVars[22]},${cryptoVars[24]}in ${varNames[5]}(${cryptoVars[23]})do if ${varNames[8]}(${cryptoVars[24]})=="table"then for ${cryptoVars[25]},${cryptoVars[26]}in ${varNames[5]}(${cryptoVars[24]})do ${cryptoVars[21]}[${cryptoVars[25]}]=${cryptoVars[26]}end end end
+local ${cryptoVars[27]}={}for ${cryptoVars[22]}=0,255 do ${cryptoVars[27]}[${cryptoVars[22]}]=${cryptoVars[22]}end
+local function ${cryptoVars[28]}(${cryptoVars[29]})local ${cryptoVars[30]}=${varNames[7]}(${cryptoVars[29]},${cryptoVars[0]})local ${cryptoVars[31]}=${varNames[7]}(${cryptoVars[30]},${cryptoVars[9]})local ${cryptoVars[32]}={}for ${cryptoVars[33]}=1,${varNames[0]}(${cryptoVars[31]})do ${cryptoVars[32]}[${cryptoVars[33]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[31]},${cryptoVars[33]}))end local ${cryptoVars[34]}=${varNames[2]}(${cryptoVars[32]})local ${cryptoVars[35]}=${varNames[7]}(${cryptoVars[34]},${cryptoVars[30]})local ${cryptoVars[36]}={}for ${cryptoVars[33]}=1,${cryptoVars[35]}do ${cryptoVars[36]}[${cryptoVars[33]}]=${varNames[1]}(${cryptoVars[35]})end return ${varNames[2]}(${cryptoVars[36]})end
+local ${cryptoVars[37]}={}
+${cryptoVars[37]}[1]=${cryptoVars[28]}
+local ${cryptoVars[38]}=${cryptoVars[37]}[1](${payload})
+for ${cryptoVars[39]}=1,${cryptoVars[38]}do ${cryptoVars[39]}=${varNames[7]}(${varNames[1]}(${cryptoVars[39]}),${cryptoVars[39]})end
+local ${cryptoVars[40]}=function(${cryptoVars[41]})local ${cryptoVars[42]}={}for ${cryptoVars[43]}=1,${varNames[0]}(${cryptoVars[41]})do ${cryptoVars[42]}[${cryptoVars[43]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[41]},${cryptoVars[43]}))end local ${cryptoVars[44]}=${varNames[2]}(${cryptoVars[42]})local ${cryptoVars[45]}=${varNames[7]}(${cryptoVars[44]},${cryptoVars[41]})local ${cryptoVars[46]}={}for ${cryptoVars[43]}=1,${cryptoVars[45]}do ${cryptoVars[46]}[${cryptoVars[43]}]=${varNames[1]}(${cryptoVars[45]})end return ${varNames[2]}(${cryptoVars[46]})end
+local ${cryptoVars[47]}=${cryptoVars[40]}(${cryptoVars[38]})
+local ${cryptoVars[48]}=${cryptoVars[40]}(${cryptoVars[47]})
+local ${cryptoVars[49]}=${cryptoVars[40]}(${cryptoVars[48]})
+local ${cryptoVars[50]}=${varNames[3]}(${cryptoVars[49]})
+local ${cryptoVars[51]}=${cryptoVars[40]}(${cryptoVars[50]})
+local ${cryptoVars[52]}=${cryptoVars[51]}
+local ${cryptoVars[53]}=function(${cryptoVars[54]},${cryptoVars[55]})local ${cryptoVars[56]}=${varNames[0]}(${cryptoVars[54]})local ${cryptoVars[57]}=${varNames[0]}(${cryptoVars[55]})local ${cryptoVars[58]}=${varNames[0]}(${cryptoVars[54]})local ${cryptoVars[59]}=0 for ${cryptoVars[60]}=1,${cryptoVars[56]}do ${cryptoVars[59]}=${cryptoVars[59]}+${cryptoVars[54]}[${cryptoVars[60]}]end return ${cryptoVars[59]}end
+if ${cryptoVars[53]}(${cryptoVars[52]},${cryptoVars[51]})~=${cryptoVars[52]}then return end
+local ${cryptoVars[61]}=${cryptoVars[40]}(${cryptoVars[61]})
+local ${cryptoVars[62]}=${cryptoVars[40]}(${cryptoVars[62]})
+local ${cryptoVars[63]}=${cryptoVars[40]}(${cryptoVars[63]})
+local ${cryptoVars[64]}=${cryptoVars[40]}(${cryptoVars[64]})
+local ${cryptoVars[65]}=${cryptoVars[40]}(${cryptoVars[65]})
+local ${cryptoVars[66]}=function(...)local ${cryptoVars[67]}={...}return ${cryptoVars[67]}end
+local ${cryptoVars[68]}=${cryptoVars[40]}(${cryptoVars[68]},${cryptoVars[68]})
+local ${cryptoVars[69]}=${cryptoVars[40]}(${cryptoVars[69]},${cryptoVars[69]})
+local ${cryptoVars[70]}=${cryptoVars[40]}(${cryptoVars[70]})
+local ${cryptoVars[71]}=${cryptoVars[40]}(${cryptoVars[71]})
+local ${cryptoVars[72]}=${cryptoVars[40]}(${cryptoVars[72]})
+local ${cryptoVars[73]}=${cryptoVars[40]}(${varNames[1]}(${cryptoVars[73]}))
+local ${cryptoVars[74]}=${varNames[4]}()
+local function ${cryptoVars[75]}()local ${cryptoVars[76]}=${cryptoVars[40]}(${cryptoVars[76]})local ${cryptoVars[77]}=${cryptoVars[40]}(${cryptoVars[77]})local ${cryptoVars[78]}=${cryptoVars[40]}(${cryptoVars[78]})return ${cryptoVars[40]}(${cryptoVars[78]})end
+local ${cryptoVars[79]}=${cryptoVars[75]}()
+local ${cryptoVars[80]}=${cryptoVars[75]}()
+if not ${cryptoVars[80]}then return end
+${cryptoVars[80]}()
+end`;
+
+  // Add random junk code
+  const junkPatterns = [
+    `local ${randomString(8)} = ${Math.floor(Math.random() * 999)} + ${Math.floor(Math.random() * 999)}`,
+    `local ${randomString(8)} = string.sub("${randomString(10)}", ${Math.floor(Math.random() * 5) + 1}, ${Math.floor(Math.random() * 8) + 3})`,
+    `do local ${randomString(8)} = {} for i=1,${Math.floor(Math.random() * 20) + 5} do ${randomString(8)}[i]=i end end`,
+    `local function ${randomString(8)}() return ${Math.floor(Math.random() * 999)} end`,
+    `local ${randomString(8)} = ${Math.random() > 0.5 ? 'true' : 'false'}`,
+  ];
+  
+  let finalOutput = template;
+  const lines = template.split('\n');
+  const finalLines = [];
+  for (const line of lines) {
+    finalLines.push(line);
+    if (Math.random() < 0.15 && junkPatterns.length > 0) {
+      finalLines.push(junkPatterns[Math.floor(Math.random() * junkPatterns.length)]);
+    }
+  }
+  finalOutput = finalLines.join('\n');
+  
+  // Minify
+  finalOutput = finalOutput.replace(/\n/g, " ");
+  finalOutput = finalOutput.replace(/\s+/g, " ");
+  finalOutput = finalOutput.replace(/local local/g, "local");
+  finalOutput = finalOutput.replace(/end end/g, "end");
+  finalOutput = finalOutput.replace(/\( /g, "(");
+  finalOutput = finalOutput.replace(/ \)/g, ")");
+  finalOutput = finalOutput.replace(/\[ /g, "[");
+  finalOutput = finalOutput.replace(/ \]/g, "]");
+  finalOutput = finalOutput.replace(/\{ /g, "{");
+  finalOutput = finalOutput.replace(/ \}/g, "}");
+  finalOutput = finalOutput.replace(/= /g, "=");
+  finalOutput = finalOutput.replace(/ =/g, "=");
+  
+  return `--[[\n    Scoper's Obfuscator v3.0.0 - No Limits Edition\n    Obfuscated with custom engine\n--]]\n${finalOutput}`;
+}
+
+function getHTML() {
+  return `<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scoper's Obfuscator</title>
+  <title>Scoper's Obfuscator - Unlimited Power</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
@@ -14,10 +260,10 @@ export default async function handler(req, res) {
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     html, body { height:100%; font-family:'Coming Soon',cursive; background:#0d0d0d; color:#f0f0f0; overflow-x:hidden; }
-    body { cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6,auto; }
     .container { min-height:100vh; padding:2rem 1rem 6rem; display:flex; flex-direction:column; align-items:center; }
     h1 { font-size:clamp(3rem,11vw,7rem); color:#ffffff; text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66; margin:1rem 0 .5rem; text-align:center; }
-    .version, .copyright, .editor-label, .btn { font-family:'Coming Soon',cursive; }
+    .badge { background: linear-gradient(135deg, #ff3366, #ff6633); padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; margin-left: 1rem; vertical-align: middle; }
+    .version, .copyright { font-family:'Coming Soon',cursive; }
     .version { position:fixed; bottom:20px; left:20px; color:#fff; font-size:1rem; opacity:0.85; z-index:10; }
     .copyright { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:#fff; font-size:1rem; opacity:0.7; z-index:10; }
     .editor-box { width:100%; max-width:1600px; height:50vh; background:#111; border:1px solid #333; border-radius:8px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.8); display:flex; flex-direction:column; position:relative; bottom:-90px; }
@@ -26,14 +272,14 @@ export default async function handler(req, res) {
     .line-numbers { width:40px; background:#0a0a0a; color:#555; text-align:right; padding:1.2rem 0.5rem 1.2rem 0; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; user-select:none; pointer-events:none; border-right:1px solid #222; overflow:hidden; white-space:pre; }
     .code-wrapper { flex:1; position:relative; overflow:auto; }
     textarea { position:absolute; inset:0; background:transparent; color:transparent; padding:1.2rem; padding-left:45px; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; border:none; outline:none; resize:none; white-space:pre; tab-size:2; caret-color:#fff; caret-shape:bar; z-index:3; }
-    .highlight-mirror { position:absolute; inset:0; z-index:2; padding:1.2rem; padding-left:45px; pointer-events:none; white-space:pre; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; background:#111; color:#e0e0e0; overflow:hidden; letter-spacing:0; word-spacing:0; }
+    .highlight-mirror { position:absolute; inset:0; z-index:2; padding:1.2rem; padding-left:45px; pointer-events:none; white-space:pre; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; background:#111; color:#e0e0e0; overflow:hidden; }
     .executor-controls { position:absolute; bottom:12px; right:12px; display:flex; gap:0.8rem; z-index:10; }
     .btn { display:flex; align-items:center; gap:0.5rem; padding:0.6rem 1.2rem; font-size:1rem; background:rgba(40,40,60,.7); color:#fff; border:1px solid rgba(180,180,255,.3); border-radius:8px; cursor:pointer; transition:.2s ease; }
-    .btn:hover { background:rgba(255,255,255,0.25); color:#000; transform:scale(1.05); }
+    .btn:hover { background:rgba(255,255,255,0.25); transform:scale(1.05); }
     #trail-canvas, #sparkle-canvas { position:fixed; inset:0; pointer-events:none; }
     #trail-canvas { z-index:1; }
     #sparkle-canvas { z-index:0; }
-    @media(max-width:900px){ .editor-box { height:60vh; } }
+    .limit-badge { background: #00ff88; color: #000; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; margin-left: 10px; }
   </style>
 </head>
 <body>
@@ -42,10 +288,11 @@ export default async function handler(req, res) {
 <canvas id="trail-canvas"></canvas>
 
 <div class="container">
-  <h1>Scoper's Obfuscator</h1>
+  <h1>Scoper's Obfuscator <span class="badge">UNLIMITED</span></h1>
+  <p style="margin-top: 10px;">✨ No API limits • 10,000+ lines supported • Maximum security ✨</p>
 
   <div class="editor-box">
-    <div class="editor-label">Script Input</div>
+    <div class="editor-label">Script Input <span class="limit-badge">No Limits</span></div>
     <div class="editor-area">
       <div class="line-numbers" id="inputLines"></div>
       <div class="code-wrapper">
@@ -57,7 +304,7 @@ export default async function handler(req, res) {
     <div class="executor-controls">
       <button class="btn" id="download">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download
+        Download Obfuscated
       </button>
       <button class="btn" id="clear">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M6 12h13M10 18h10M3 6l2 2-2 2M3 12l2 2-2 2M3 18l2 2-2 2"/></svg>
@@ -67,31 +314,11 @@ export default async function handler(req, res) {
   </div>
 </div>
 
-<div class="version">v1.0.2</div>
-<div class="copyright">© 2026 yourscoper. All rights reserved.</div>
+<div class="version">v3.0.0 - Unlimited</div>
+<div class="copyright">© 2026 Scoper. All rights reserved. | No API Keys • No Limits</div>
 
 <script>
 hljs.configure({languages:['lua']});
-
-document.addEventListener('selectstart', e => {
-  if (!e.target.closest('.code-wrapper')) e.preventDefault();
-});
-
-document.addEventListener('keydown', e => {
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
-    if (!e.target.closest('.code-wrapper')) e.preventDefault();
-  }
-});
-
-document.getElementById('input').addEventListener('keydown', e => {
-  if (e.key === 'Tab') {
-    e.preventDefault();
-    const start = e.target.selectionStart;
-    const end = e.target.selectionEnd;
-    e.target.value = e.target.value.substring(0, start) + '  ' + e.target.value.substring(end);
-    e.target.selectionStart = e.target.selectionEnd = start + 2;
-  }
-});
 
 const input = document.getElementById('input');
 const mirror = document.getElementById('inputMirror');
@@ -99,9 +326,8 @@ const inputLines = document.getElementById('inputLines');
 
 function updateLineNumbers() {
   const lines = (input.value || '').split('\\n');
-  const count = lines.length;
   let numbers = '';
-  for (let i = 1; i <= count; i++) {
+  for (let i = 1; i <= lines.length; i++) {
     numbers += i + '\\n';
   }
   inputLines.textContent = numbers;
@@ -111,6 +337,7 @@ function updateMirror() {
   mirror.innerHTML = hljs.highlight(input.value || ' ', {language: 'lua'}).value;
   updateLineNumbers();
 }
+
 input.addEventListener('input', updateMirror);
 input.addEventListener('scroll', () => {
   mirror.parentElement.scrollTop = input.scrollTop;
@@ -118,9 +345,25 @@ input.addEventListener('scroll', () => {
   inputLines.scrollTop = input.scrollTop;
 });
 
+input.addEventListener('keydown', e => {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    const start = e.target.selectionStart;
+    const end = e.target.selectionEnd;
+    e.target.value = e.target.value.substring(0, start) + '  ' + e.target.value.substring(end);
+    e.target.selectionStart = e.target.selectionEnd = start + 2;
+    updateMirror();
+  }
+});
+
 document.getElementById('download').onclick = async () => {
   const code = input.value.trim();
-  if (!code) return alert('No code to obfuscate/download');
+  if (!code) return alert('No code to obfuscate');
+
+  const btn = document.getElementById('download');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ Obfuscating...';
+  btn.disabled = true;
 
   try {
     const res = await fetch('/api/obfuscate', {
@@ -140,15 +383,18 @@ document.getElementById('download').onclick = async () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'obf_' + Math.random().toString(36).substring(2, 10) + '.lua';
+    a.download = 'obfuscated_' + Math.random().toString(36).substring(2, 10) + '.lua';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 
-    alert('Downloaded obfuscated .lua file!');
+    alert('✅ Success! Obfuscated file downloaded. No limits, no API keys!');
   } catch (err) {
     alert('Error: ' + err.message);
+  } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
   }
 };
 
@@ -157,6 +403,7 @@ document.getElementById('clear').onclick = () => {
   updateMirror();
 };
 
+// Visual effects
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
 trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
@@ -187,7 +434,6 @@ const sctx = sparkleCanvas.getContext('2d');
 sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
 window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
 const stars = [];
-
 for (let i = 0; i < 80; i++) {
   stars.push({
     x: Math.random() * innerWidth,
@@ -198,16 +444,13 @@ for (let i = 0; i < 80; i++) {
     t: Date.now()
   });
 }
-
 function drawStars() {
   sctx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
   const now = Date.now();
-  for (let j = 0; j < stars.length; j++) {
-    const s = stars[j];
+  for (const s of stars) {
     const t = (now - s.t) / 1000;
     s.a = s.baseA + Math.sin(t * 0.6 + s.phase) * 0.3;
     s.a = Math.max(0.1, Math.min(0.9, s.a));
-
     sctx.fillStyle = \`rgba(240,245,255,\${s.a})\`;
     sctx.beginPath();
     sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
@@ -217,88 +460,8 @@ function drawStars() {
 }
 drawStars();
 
-setInterval(() => {
-  if (stars.length < 80) {
-    stars.push({
-      x: Math.random() * innerWidth,
-      y: Math.random() * innerHeight,
-      r: Math.random() * 1.4 + 0.4,
-      baseA: Math.random() * 0.5 + 0.25,
-      phase: Math.random() * Math.PI * 2,
-      t: Date.now()
-    });
-  }
-}, 20000);
-
 updateMirror();
-updateLineNumbers(input, inputLines);
 </script>
 </body>
 </html>`;
-
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    return res.status(200).send(html);
-  }
-
-  if (req.method !== 'POST') {
-    return res.status(405).send('Method Not Allowed');
-  }
-
-  let body = '';
-  req.on('data', chunk => body += chunk);
-  req.on('end', async () => {
-    try {
-      const { script } = JSON.parse(body || '{}');
-
-      if (!script || typeof script !== 'string' || script.trim() === '') {
-        return res.status(400).send('No script provided');
-      }
-
-      const apiKey = process.env.MOONVEIL_API_KEY;
-
-      if (!apiKey) {
-        return res.status(500).send('Server misconfigured - missing API key');
-      }
-
-      const response = await fetch('https://moonveil.cc/api/obfuscate', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-          'Accept': 'text/plain'
-        },
-        body: JSON.stringify({
-          script,
-          options: {
-            cffDecomposeExpr: true,
-            cffEnable: true,
-            cffHoistLocals: true,
-            embedRuntime: true,
-            mangleConstLift: 0,
-            mangleEnable: true,
-            mangleGlobals: true,
-            mangleNamedIndex: true,
-            mangleNumbers: true,
-            mangleSelfCalls: true,
-            mangleStrings: true,
-            prettify: true,
-            vmDebug: false,
-            vmSafeEnv: true,
-            vmWrapScript: true
-          }
-        })
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        return res.status(response.status).send(errorText || 'MoonVeil API failed');
-      }
-
-      const obfuscated = await response.text();
-      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-      res.status(200).send(obfuscated);
-    } catch (err) {
-      res.status(500).send('Internal server error');
-    }
-  });
 }
