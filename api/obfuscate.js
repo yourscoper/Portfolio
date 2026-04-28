@@ -300,7 +300,7 @@ function getHTML() {
   </div>
 </div>
 
-<div class="version">v3.0.0 - Unlimited</div>
+<div class="version">v1.0.3 - Unlimited</div>
 <div class="copyright">© 2026 Scoper. All rights reserved. | No API Keys • No Limits</div>
 
 <script>
