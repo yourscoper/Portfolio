@@ -19,7 +19,6 @@ export default async function handler(req, res) {
         return res.status(400).send('No script provided');
       }
 
-      // Use our own obfuscator - NO API LIMITS!
       const obfuscated = obfuscateLua(script);
       
       res.setHeader('Content-Type', 'text/plain; charset=utf-8');
@@ -30,8 +29,6 @@ export default async function handler(req, res) {
     }
   });
 }
-
-// ============ CORE OBFUSCATOR ENGINE ============
 
 const XOR_KEY = 0x4B;
 const ENC_LAYERS = 3;
@@ -98,12 +95,9 @@ function base64Decode(str) {
 }
 
 function minifyCode(src) {
-  // Remove single line comments
   src = src.replace(/--[^\n]*/g, "");
-  // Remove multi-line comments
   src = src.replace(/--\[\[[\s\S]*?\]\]/g, "");
   src = src.replace(/--\[=*\[[\s\S]*?\]=\*\]/g, "");
-  // Remove extra whitespace
   src = src.replace(/\n+/g, "\n");
   src = src.replace(/\t/g, " ");
   src = src.replace(/  +/g, " ");
@@ -113,7 +107,6 @@ function minifyCode(src) {
 function obfuscateLua(code) {
   if (typeof code !== "string") return "-- input error";
   
-  // Check line count
   const lineCount = code.split('\n').length;
   if (lineCount > 10000) {
     return `-- Error: Code exceeds 10,000 lines (${lineCount} lines)`;
@@ -121,7 +114,6 @@ function obfuscateLua(code) {
   
   let cleanCode = minifyCode(code);
   
-  // Multiple encryption layers
   let encrypted = cleanCode;
   const keys = [];
   
@@ -132,7 +124,6 @@ function obfuscateLua(code) {
     encrypted = base64Encode(xor(encrypted, XOR_KEY + i));
   }
   
-  // Split into chunks
   const chunks = [];
   let pos = 0;
   let chunkSize = Math.floor(Math.random() * 100) + 100;
@@ -144,7 +135,6 @@ function obfuscateLua(code) {
   }
   const payload = chunks.join("..");
   
-  // Generate variable names
   const varNames = [];
   const cryptoVars = [];
   for (let i = 0; i < 20; i++) {
@@ -152,13 +142,11 @@ function obfuscateLua(code) {
     cryptoVars.push(randomString(Math.floor(Math.random() * 8) + 8));
   }
   
-  // Generate random strings for anti-tamper
   const randomStrings = [];
   for (let i = 0; i < 10; i++) {
     randomStrings.push(randomString(Math.floor(Math.random() * 12) + 8));
   }
   
-  // Build the obfuscated template
   const template = `do 
 local ${varNames[0]},${varNames[1]},${varNames[2]},${varNames[3]},${varNames[4]},${varNames[5]},${varNames[6]},${varNames[7]},${varNames[8]},${varNames[9]},${varNames[10]}=string.byte,string.char,table.concat,pcall,getfenv or function()return _ENV or getfenv()end,setfenv or function(f,t)local n=getfenv(f)for k,v in pairs(t)do n[k]=v end end,debug and debug.getinfo or nil,loadstring or load,type,rawget,rawset
 local ${cryptoVars[0]}=${varNames[4]}
@@ -208,7 +196,6 @@ if not ${cryptoVars[80]}then return end
 ${cryptoVars[80]}()
 end`;
 
-  // Add random junk code
   const junkPatterns = [
     `local ${randomString(8)} = ${Math.floor(Math.random() * 999)} + ${Math.floor(Math.random() * 999)}`,
     `local ${randomString(8)} = string.sub("${randomString(10)}", ${Math.floor(Math.random() * 5) + 1}, ${Math.floor(Math.random() * 8) + 3})`,
@@ -228,7 +215,6 @@ end`;
   }
   finalOutput = finalLines.join('\n');
   
-  // Minify
   finalOutput = finalOutput.replace(/\n/g, " ");
   finalOutput = finalOutput.replace(/\s+/g, " ");
   finalOutput = finalOutput.replace(/local local/g, "local");
@@ -403,7 +389,6 @@ document.getElementById('clear').onclick = () => {
   updateMirror();
 };
 
-// Visual effects
 const trailCanvas = document.getElementById('trail-canvas');
 const tctx = trailCanvas.getContext('2d');
 trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
