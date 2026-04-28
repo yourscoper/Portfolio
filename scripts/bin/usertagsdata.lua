@@ -61,6 +61,6 @@ return {
                 ColorSequenceKeypoint.new(1,    Color3.fromRGB(97, 91, 97)),
             },
             image       = "http://www.roblox.com/asset/?id=132854398900146"
-        },
+        }
     }
 }
