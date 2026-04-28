@@ -114,58 +114,56 @@ function obfuscateLua(code) {
     
   let cleanCode = minifyCode(code);  
     
-  let encrypted = cleanCode;  
-  const keys = [];  
-    
-  for (let i = 0; i < ENC_LAYERS; i++) {  
-    const key = generateKey();  
-    keys.push(key);  
-    encrypted = rc4(encrypted, key);  
-    encrypted = base64Encode(xor(encrypted, XOR_KEY + i));  
+  // Simple XOR encryption  
+  function xorEncrypt(str, key) {  
+    let result = "";  
+    for (let i = 0; i < str.length; i++) {  
+      result += String.fromCharCode(str.charCodeAt(i) ^ key.charCodeAt(i % key.length));  
+    }  
+    return result;  
   }  
     
-  // Fix: Properly escape the encrypted string for Lua  
-  const escapedPayload = encrypted.replace(/\\/g, '\\\\').replace(/"/g, '\\"');  
+  const encKey = randomString(16);  
+  let encrypted = xorEncrypt(cleanCode, encKey);  
+  let b64Encrypted = base64Encode(encrypted);  
     
-  const varNames = [];  
-  const cryptoVars = [];  
-  for (let i = 0; i < 20; i++) {  
-    varNames.push(randomString(Math.floor(Math.random() * 12) + 12));  
-    cryptoVars.push(randomString(Math.floor(Math.random() * 8) + 8));  
-  }  
+  // Properly escape for Lua string  
+  const escapedPayload = b64Encrypted.replace(/[\\"']/g, '\\$&').replace(/\n/g, '\\n');  
+  const escapedKey = encKey.replace(/[\\"']/g, '\\$&');  
     
-  const randomStrings = [];  
-  for (let i = 0; i < 10; i++) {  
-    randomStrings.push(randomString(Math.floor(Math.random() * 12) + 8));  
-  }  
-    
-  const template = `do   
-local ${varNames[0]},${varNames[1]},${varNames[2]},${varNames[3]},${varNames[4]},${varNames[5]},${varNames[6]},${varNames[7]},${varNames[8]},${varNames[9]},${varNames[10]}=string.byte,string.char,table.concat,pcall,getfenv or function()return _ENV or getfenv()end,setfenv or function(f,t)local n=getfenv(f)for k,v in pairs(t)do n[k]=v end end,debug and debug.getinfo or nil,loadstring or load,type,rawget,rawset  
-local ${cryptoVars[0]}=${varNames[4]}  
-local function ${cryptoVars[1]}(${cryptoVars[2]},${cryptoVars[3]})local ${cryptoVars[4]}={}local ${cryptoVars[5]}=${varNames[0]}(${cryptoVars[2]})for ${cryptoVars[6]}=1,${cryptoVars[5]}do ${cryptoVars[4]}[${cryptoVars[6]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[2]},${cryptoVars[6]})~${cryptoVars[3]})end return ${varNames[2]}(${cryptoVars[4]})end  
-local function ${cryptoVars[7]}(${cryptoVars[8]},${cryptoVars[9]})local ${cryptoVars[10]}={}local ${cryptoVars[11]}=0 local ${cryptoVars[12]}={}for ${cryptoVars[13]}=0,255 do ${cryptoVars[12]}[${cryptoVars[13]}]=${cryptoVars[13]}end for ${cryptoVars[13]}=0,255 do ${cryptoVars[11]}=(${cryptoVars[11]}+${cryptoVars[12]}[${cryptoVars[13]}]+${varNames[0]}(${cryptoVars[9]},(${cryptoVars[13]}%${varNames[0]}(${cryptoVars[9]}))+1))%256 ${cryptoVars[12]}[${cryptoVars[13]}],${cryptoVars[12]}[${cryptoVars[11]}]=${cryptoVars[12]}[${cryptoVars[11]}],${cryptoVars[12]}[${cryptoVars[13]}]end local ${cryptoVars[14]}=0 ${cryptoVars[11]}=0 for ${cryptoVars[13]}=1,${varNames[0]}(${cryptoVars[8]})do ${cryptoVars[14]}=(${cryptoVars[14]}+1)%256 ${cryptoVars[11]}=(${cryptoVars[11]}+${cryptoVars[12]}[${cryptoVars[14]}])%256 ${cryptoVars[12]}[${cryptoVars[14]}],${cryptoVars[12]}[${cryptoVars[11]}]=${cryptoVars[12]}[${cryptoVars[11]}],${cryptoVars[12]}[${cryptoVars[14]}]local ${cryptoVars[15]}=${cryptoVars[12]}[(${cryptoVars[12]}[${cryptoVars[14]}]+${cryptoVars[12]}[${cryptoVars[11]}])%256]${cryptoVars[10]}[${cryptoVars[13]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[8]},${cryptoVars[13]})~${cryptoVars[15]})end return ${varNames[2]}(${cryptoVars[10]})end  
-local ${cryptoVars[16]}={}  
-local ${cryptoVars[17]}=${varNames[4]}()  
-local ${cryptoVars[18]}=${varNames[5]}(${cryptoVars[17]})  
-if ${cryptoVars[18]} and ${cryptoVars[18]}[${varNames[6]}]and ${cryptoVars[18]}[${varNames[6]}].func then ${cryptoVars[18]}[${varNames[6]}]=function(${cryptoVars[19]})return {func=function(${cryptoVars[19]})return ${cryptoVars[19]}end}end end  
-local ${cryptoVars[20]}=${varNames[4]}(${cryptoVars[0]})  
-local ${cryptoVars[21]}={}  
-for ${cryptoVars[22]}=1,${varNames[0]}(${cryptoVars[20]})do ${cryptoVars[21]}[${cryptoVars[22]}]=${cryptoVars[20]}[${cryptoVars[22]}]end  
-local ${cryptoVars[23]}={${randomStrings.map(s => '"' + s + '"').join(',')}}  
-for ${cryptoVars[22]},${cryptoVars[24]}in ${varNames[5]}(${cryptoVars[23]})do if ${varNames[8]}(${cryptoVars[24]})=="table"then for ${cryptoVars[25]},${cryptoVars[26]}in ${varNames[5]}(${cryptoVars[24]})do ${cryptoVars[21]}[${cryptoVars[25]}]=${cryptoVars[26]}end end end  
-local ${cryptoVars[27]}={}for ${cryptoVars[22]}=0,255 do ${cryptoVars[27]}[${cryptoVars[22]}]=${cryptoVars[22]}end  
-local function ${cryptoVars[28]}(${cryptoVars[29]})local ${cryptoVars[30]}=${varNames[7]}(${cryptoVars[29]},${cryptoVars[0]})local ${cryptoVars[31]}=${varNames[7]}(${cryptoVars[30]},${cryptoVars[9]})local ${cryptoVars[32]}={}for ${cryptoVars[33]}=1,${varNames[0]}(${cryptoVars[31]})do ${cryptoVars[32]}[${cryptoVars[33]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[31]},${cryptoVars[33]}))end local ${cryptoVars[34]}=${varNames[2]}(${cryptoVars[32]})local ${cryptoVars[35]}=${varNames[7]}(${cryptoVars[34]},${cryptoVars[30]})local ${cryptoVars[36]}={}for ${cryptoVars[33]}=1,${cryptoVars[35]}do ${cryptoVars[36]}[${cryptoVars[33]}]=${varNames[1]}(${cryptoVars[35]})end return ${varNames[2]}(${cryptoVars[36]})end  
-local ${cryptoVars[37]}={}  
-${cryptoVars[37]}[1]=${cryptoVars[28]}  
-local ${cryptoVars[38]}="${escapedPayload}"  
-local ${cryptoVars[39]}=${cryptoVars[37]}[1](${cryptoVars[38]})  
-local ${cryptoVars[40]}=${cryptoVars[39]}  
-${varNames[3]}(${cryptoVars[40]})  
+  const template = `do  
+local b64='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'  
+local function dec(data)  
+  data = string.gsub(data, '[^'..b64..'=]', '')  
+  return (data:gsub('.', function(x)  
+    if x == '=' then return '' end  
+    local r,f='',(b64:find(x)-1)  
+    for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end  
+    return r  
+  end):gsub('%d%d%d?%d?%d?%d?%d?%d?', function(x)  
+    if #x < 8 then return '' end  
+    local c=0  
+    for i=1,8 do c=c*2+tonumber(x:sub(i,i)) end  
+    return string.char(c)  
+  end))  
+end  
+local function xor(s,k)  
+  local r=''  
+  for i=1,#s do  
+    r=r..string.char(string.byte(s,i)~string.byte(k,(i-1)%#k+1))  
+  end  
+  return r  
+end  
+local e="${escapedPayload}"  
+local k="${escapedKey}"  
+local d=dec(e)  
+local c=xor(d,k)  
+local f=loadstring or load  
+f(c)()  
 end`;  
   
   return `--[[  
-    Scoper's Obfuscator v3.0.0 - No Limits Edition  
-    Obfuscated with custom engine  
+    Scoper's Obfuscator - Base64 Version  
 --]]  
 ${template}`;  
 }  
