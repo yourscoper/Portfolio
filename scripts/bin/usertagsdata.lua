@@ -3,7 +3,8 @@ return {
         "OWNER",
         "ADMIN",
         "UNICORN MAN",
-        "papi angel"
+        "papi angel",
+        "that nigger gon"
     },
   
     RankData = {
@@ -49,6 +50,17 @@ return {
                 ColorSequenceKeypoint.new(1,    Color3.fromRGB(29, 207, 195)),
             },
             image       = "http://www.roblox.com/asset/?id=139614150813149"
+        },
+
+        ["that nigger gon"] = {
+            primary     = Color3.fromRGB(255, 255, 255),
+            useimage    = true,
+            accent      = ColorSequence.new{
+                ColorSequenceKeypoint.new(0,    Color3.fromRGB(58, 2, 61)),
+                ColorSequenceKeypoint.new(0.5,  Color3.fromRGB(68, 43, 69)),
+                ColorSequenceKeypoint.new(1,    Color3.fromRGB(97, 91, 97)),
+            },
+            image       = "http://www.roblox.com/asset/?id=132854398900146"
         },
     }
 }
