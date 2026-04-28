@@ -104,69 +104,59 @@ function minifyCode(src) {
   return src;
 }
 
-function obfuscateLua(code) {  
-  if (typeof code !== "string") return "-- input error";  
-    
-  const lineCount = code.split('\n').length;  
-  if (lineCount > 10000) {  
-    return `-- Error: Code exceeds 10,000 lines (${lineCount} lines)`;  
-  }  
-    
-  let cleanCode = minifyCode(code);  
-    
-  // Simple XOR encryption  
-  function xorEncrypt(str, key) {  
-    let result = "";  
-    for (let i = 0; i < str.length; i++) {  
-      result += String.fromCharCode(str.charCodeAt(i) ^ key.charCodeAt(i % key.length));  
-    }  
-    return result;  
-  }  
-    
-  const encKey = randomString(16);  
-  let encrypted = xorEncrypt(cleanCode, encKey);  
-  let b64Encrypted = base64Encode(encrypted);  
-    
-  // Properly escape for Lua string  
-  const escapedPayload = b64Encrypted.replace(/[\\"']/g, '\\$&').replace(/\n/g, '\\n');  
-  const escapedKey = encKey.replace(/[\\"']/g, '\\$&');  
-    
-  const template = `do  
-local b64='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'  
-local function dec(data)  
-  data = string.gsub(data, '[^'..b64..'=]', '')  
-  return (data:gsub('.', function(x)  
-    if x == '=' then return '' end  
-    local r,f='',(b64:find(x)-1)  
-    for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end  
-    return r  
-  end):gsub('%d%d%d?%d?%d?%d?%d?%d?', function(x)  
-    if #x < 8 then return '' end  
-    local c=0  
-    for i=1,8 do c=c*2+tonumber(x:sub(i,i)) end  
-    return string.char(c)  
-  end))  
-end  
-local function xor(s,k)  
-  local r=''  
-  for i=1,#s do  
-    r=r..string.char(string.byte(s,i)~string.byte(k,(i-1)%#k+1))  
-  end  
-  return r  
-end  
-local e="${escapedPayload}"  
-local k="${escapedKey}"  
-local d=dec(e)  
-local c=xor(d,k)  
-local f=loadstring or load  
-f(c)()  
-end`;  
+function obfuscateLua(code) {
+  if (typeof code !== "string") return "-- input error";
   
-  return `--[[  
-    Scoper's Obfuscator - Base64 Version  
---]]  
-${template}`;  
-}  
+  const lineCount = code.split('\n').length;
+  if (lineCount > 10000) {
+    return `-- Error: Code exceeds 10,000 lines (${lineCount} lines)`;
+  }
+  
+  let cleanCode = minifyCode(code);
+  
+  // Simple XOR encryption
+  function xorEncrypt(str, key) {
+    let result = "";
+    for (let i = 0; i < str.length; i++) {
+      result += String.fromCharCode(str.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+    }
+    return result;
+  }
+  
+  const encKey = randomString(16);
+  let encrypted = xorEncrypt(cleanCode, encKey);
+  
+  // Convert to byte arrays (numbers)
+  const payloadBytes = Array.from(encrypted).map(c => c.charCodeAt(0));
+  const keyBytes = Array.from(encKey).map(c => c.charCodeAt(0));
+  
+  // Create Lua table literals
+  const payloadTable = "{" + payloadBytes.join(",") + "}";
+  const keyTable = "{" + keyBytes.join(",") + "}";
+  
+  const template = `do
+local function byte_xor(payload_bytes, key_bytes)
+  local result_chars = {}
+  for i = 1, #payload_bytes do
+    local key_idx = ((i - 1) % #key_bytes) + 1
+    local decrypted_byte = payload_bytes[i] ~ key_bytes[key_idx]
+    result_chars[i] = string.char(decrypted_byte)
+  end
+  return table.concat(result_chars)
+end
+
+local encrypted_bytes = ${payloadTable}
+local key_bytes = ${keyTable}
+local decrypted_code = byte_xor(encrypted_bytes, key_bytes)
+local load_func = loadstring or load
+load_func(decrypted_code)()
+end`;
+
+  return `--[[
+    Scoper's Obfuscator - Working Version
+--]]
+${template}`;
+}
 
 function getHTML() {
   return `<!DOCTYPE html>
@@ -237,7 +227,7 @@ function getHTML() {
   </div>
 </div>
 
-<div class="version">v1.0.3 - Unlimited</div>
+<div class="version">v1.0.4 - Unlimited</div>
 <div class="copyright">© 2026 Scoper. All rights reserved. | No API Keys • No Limits</div>
 
 <script>
