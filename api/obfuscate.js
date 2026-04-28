@@ -135,11 +135,25 @@ function obfuscateLua(code) {
   const keyTable = "{" + keyBytes.join(",") + "}";
   
   const template = `do
+local function xor_bytes(a, b)
+  local result = 0
+  for i = 0, 7 do
+    local a_bit = a % 2
+    local b_bit = b % 2
+    if a_bit ~= b_bit then
+      result = result + (2 ^ i)
+    end
+    a = math.floor(a / 2)
+    b = math.floor(b / 2)
+  end
+  return result
+end
+
 local function byte_xor(payload_bytes, key_bytes)
   local result_chars = {}
   for i = 1, #payload_bytes do
     local key_idx = ((i - 1) % #key_bytes) + 1
-    local decrypted_byte = payload_bytes[i] ~ key_bytes[key_idx]
+    local decrypted_byte = xor_bytes(payload_bytes[i], key_bytes[key_idx])
     result_chars[i] = string.char(decrypted_byte)
   end
   return table.concat(result_chars)
@@ -153,7 +167,7 @@ load_func(decrypted_code)()
 end`;
 
   return `--[[
-    Scoper's Obfuscator - Working Version
+    Scoper's Obfuscator - Working XOR Version
 --]]
 ${template}`;
 }
