@@ -104,132 +104,71 @@ function minifyCode(src) {
   return src;
 }
 
-function obfuscateLua(code) {
-  if (typeof code !== "string") return "-- input error";
+function obfuscateLua(code) {  
+  if (typeof code !== "string") return "-- input error";  
+    
+  const lineCount = code.split('\n').length;  
+  if (lineCount > 10000) {  
+    return `-- Error: Code exceeds 10,000 lines (${lineCount} lines)`;  
+  }  
+    
+  let cleanCode = minifyCode(code);  
+    
+  let encrypted = cleanCode;  
+  const keys = [];  
+    
+  for (let i = 0; i < ENC_LAYERS; i++) {  
+    const key = generateKey();  
+    keys.push(key);  
+    encrypted = rc4(encrypted, key);  
+    encrypted = base64Encode(xor(encrypted, XOR_KEY + i));  
+  }  
+    
+  // Fix: Properly escape the encrypted string for Lua  
+  const escapedPayload = encrypted.replace(/\\/g, '\\\\').replace(/"/g, '\\"');  
+    
+  const varNames = [];  
+  const cryptoVars = [];  
+  for (let i = 0; i < 20; i++) {  
+    varNames.push(randomString(Math.floor(Math.random() * 12) + 12));  
+    cryptoVars.push(randomString(Math.floor(Math.random() * 8) + 8));  
+  }  
+    
+  const randomStrings = [];  
+  for (let i = 0; i < 10; i++) {  
+    randomStrings.push(randomString(Math.floor(Math.random() * 12) + 8));  
+  }  
+    
+  const template = `do   
+local ${varNames[0]},${varNames[1]},${varNames[2]},${varNames[3]},${varNames[4]},${varNames[5]},${varNames[6]},${varNames[7]},${varNames[8]},${varNames[9]},${varNames[10]}=string.byte,string.char,table.concat,pcall,getfenv or function()return _ENV or getfenv()end,setfenv or function(f,t)local n=getfenv(f)for k,v in pairs(t)do n[k]=v end end,debug and debug.getinfo or nil,loadstring or load,type,rawget,rawset  
+local ${cryptoVars[0]}=${varNames[4]}  
+local function ${cryptoVars[1]}(${cryptoVars[2]},${cryptoVars[3]})local ${cryptoVars[4]}={}local ${cryptoVars[5]}=${varNames[0]}(${cryptoVars[2]})for ${cryptoVars[6]}=1,${cryptoVars[5]}do ${cryptoVars[4]}[${cryptoVars[6]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[2]},${cryptoVars[6]})~${cryptoVars[3]})end return ${varNames[2]}(${cryptoVars[4]})end  
+local function ${cryptoVars[7]}(${cryptoVars[8]},${cryptoVars[9]})local ${cryptoVars[10]}={}local ${cryptoVars[11]}=0 local ${cryptoVars[12]}={}for ${cryptoVars[13]}=0,255 do ${cryptoVars[12]}[${cryptoVars[13]}]=${cryptoVars[13]}end for ${cryptoVars[13]}=0,255 do ${cryptoVars[11]}=(${cryptoVars[11]}+${cryptoVars[12]}[${cryptoVars[13]}]+${varNames[0]}(${cryptoVars[9]},(${cryptoVars[13]}%${varNames[0]}(${cryptoVars[9]}))+1))%256 ${cryptoVars[12]}[${cryptoVars[13]}],${cryptoVars[12]}[${cryptoVars[11]}]=${cryptoVars[12]}[${cryptoVars[11]}],${cryptoVars[12]}[${cryptoVars[13]}]end local ${cryptoVars[14]}=0 ${cryptoVars[11]}=0 for ${cryptoVars[13]}=1,${varNames[0]}(${cryptoVars[8]})do ${cryptoVars[14]}=(${cryptoVars[14]}+1)%256 ${cryptoVars[11]}=(${cryptoVars[11]}+${cryptoVars[12]}[${cryptoVars[14]}])%256 ${cryptoVars[12]}[${cryptoVars[14]}],${cryptoVars[12]}[${cryptoVars[11]}]=${cryptoVars[12]}[${cryptoVars[11]}],${cryptoVars[12]}[${cryptoVars[14]}]local ${cryptoVars[15]}=${cryptoVars[12]}[(${cryptoVars[12]}[${cryptoVars[14]}]+${cryptoVars[12]}[${cryptoVars[11]}])%256]${cryptoVars[10]}[${cryptoVars[13]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[8]},${cryptoVars[13]})~${cryptoVars[15]})end return ${varNames[2]}(${cryptoVars[10]})end  
+local ${cryptoVars[16]}={}  
+local ${cryptoVars[17]}=${varNames[4]}()  
+local ${cryptoVars[18]}=${varNames[5]}(${cryptoVars[17]})  
+if ${cryptoVars[18]} and ${cryptoVars[18]}[${varNames[6]}]and ${cryptoVars[18]}[${varNames[6]}].func then ${cryptoVars[18]}[${varNames[6]}]=function(${cryptoVars[19]})return {func=function(${cryptoVars[19]})return ${cryptoVars[19]}end}end end  
+local ${cryptoVars[20]}=${varNames[4]}(${cryptoVars[0]})  
+local ${cryptoVars[21]}={}  
+for ${cryptoVars[22]}=1,${varNames[0]}(${cryptoVars[20]})do ${cryptoVars[21]}[${cryptoVars[22]}]=${cryptoVars[20]}[${cryptoVars[22]}]end  
+local ${cryptoVars[23]}={${randomStrings.map(s => '"' + s + '"').join(',')}}  
+for ${cryptoVars[22]},${cryptoVars[24]}in ${varNames[5]}(${cryptoVars[23]})do if ${varNames[8]}(${cryptoVars[24]})=="table"then for ${cryptoVars[25]},${cryptoVars[26]}in ${varNames[5]}(${cryptoVars[24]})do ${cryptoVars[21]}[${cryptoVars[25]}]=${cryptoVars[26]}end end end  
+local ${cryptoVars[27]}={}for ${cryptoVars[22]}=0,255 do ${cryptoVars[27]}[${cryptoVars[22]}]=${cryptoVars[22]}end  
+local function ${cryptoVars[28]}(${cryptoVars[29]})local ${cryptoVars[30]}=${varNames[7]}(${cryptoVars[29]},${cryptoVars[0]})local ${cryptoVars[31]}=${varNames[7]}(${cryptoVars[30]},${cryptoVars[9]})local ${cryptoVars[32]}={}for ${cryptoVars[33]}=1,${varNames[0]}(${cryptoVars[31]})do ${cryptoVars[32]}[${cryptoVars[33]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[31]},${cryptoVars[33]}))end local ${cryptoVars[34]}=${varNames[2]}(${cryptoVars[32]})local ${cryptoVars[35]}=${varNames[7]}(${cryptoVars[34]},${cryptoVars[30]})local ${cryptoVars[36]}={}for ${cryptoVars[33]}=1,${cryptoVars[35]}do ${cryptoVars[36]}[${cryptoVars[33]}]=${varNames[1]}(${cryptoVars[35]})end return ${varNames[2]}(${cryptoVars[36]})end  
+local ${cryptoVars[37]}={}  
+${cryptoVars[37]}[1]=${cryptoVars[28]}  
+local ${cryptoVars[38]}="${escapedPayload}"  
+local ${cryptoVars[39]}=${cryptoVars[37]}[1](${cryptoVars[38]})  
+local ${cryptoVars[40]}=${cryptoVars[39]}  
+${varNames[3]}(${cryptoVars[40]})  
+end`;  
   
-  const lineCount = code.split('\n').length;
-  if (lineCount > 10000) {
-    return `-- Error: Code exceeds 10,000 lines (${lineCount} lines)`;
-  }
-  
-  let cleanCode = minifyCode(code);
-  
-  let encrypted = cleanCode;
-  const keys = [];
-  
-  for (let i = 0; i < ENC_LAYERS; i++) {
-    const key = generateKey();
-    keys.push(key);
-    encrypted = rc4(encrypted, key);
-    encrypted = base64Encode(xor(encrypted, XOR_KEY + i));
-  }
-  
-  const chunks = [];
-  let pos = 0;
-  let chunkSize = Math.floor(Math.random() * 100) + 100;
-  while (pos < encrypted.length) {
-    const piece = encrypted.substring(pos, Math.min(pos + chunkSize, encrypted.length));
-    chunks.push(JSON.stringify(piece));
-    pos += chunkSize;
-    chunkSize = Math.floor(Math.random() * 100) + 100;
-  }
-  const payload = chunks.join("..");
-  
-  const varNames = [];
-  const cryptoVars = [];
-  for (let i = 0; i < 20; i++) {
-    varNames.push(randomString(Math.floor(Math.random() * 12) + 12));
-    cryptoVars.push(randomString(Math.floor(Math.random() * 8) + 8));
-  }
-  
-  const randomStrings = [];
-  for (let i = 0; i < 10; i++) {
-    randomStrings.push(randomString(Math.floor(Math.random() * 12) + 8));
-  }
-  
-  const template = `do 
-local ${varNames[0]},${varNames[1]},${varNames[2]},${varNames[3]},${varNames[4]},${varNames[5]},${varNames[6]},${varNames[7]},${varNames[8]},${varNames[9]},${varNames[10]}=string.byte,string.char,table.concat,pcall,getfenv or function()return _ENV or getfenv()end,setfenv or function(f,t)local n=getfenv(f)for k,v in pairs(t)do n[k]=v end end,debug and debug.getinfo or nil,loadstring or load,type,rawget,rawset
-local ${cryptoVars[0]}=${varNames[4]}
-local function ${cryptoVars[1]}(${cryptoVars[2]},${cryptoVars[3]})local ${cryptoVars[4]}={}local ${cryptoVars[5]}=${varNames[0]}(${cryptoVars[2]})for ${cryptoVars[6]}=1,${cryptoVars[5]}do ${cryptoVars[4]}[${cryptoVars[6]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[2]},${cryptoVars[6]})~${cryptoVars[3]})end return ${varNames[2]}(${cryptoVars[4]})end
-local function ${cryptoVars[7]}(${cryptoVars[8]},${cryptoVars[9]})local ${cryptoVars[10]}={}local ${cryptoVars[11]}=0 local ${cryptoVars[12]}={}for ${cryptoVars[13]}=0,255 do ${cryptoVars[12]}[${cryptoVars[13]}]=${cryptoVars[13]}end for ${cryptoVars[13]}=0,255 do ${cryptoVars[11]}=(${cryptoVars[11]}+${cryptoVars[12]}[${cryptoVars[13]}]+${varNames[0]}(${cryptoVars[9]},(${cryptoVars[13]}%${varNames[0]}(${cryptoVars[9]}))+1))%256 ${cryptoVars[12]}[${cryptoVars[13]}],${cryptoVars[12]}[${cryptoVars[11]}]=${cryptoVars[12]}[${cryptoVars[11]}],${cryptoVars[12]}[${cryptoVars[13]}]end local ${cryptoVars[14]}=0 ${cryptoVars[11]}=0 for ${cryptoVars[13]}=1,${varNames[0]}(${cryptoVars[8]})do ${cryptoVars[14]}=(${cryptoVars[14]}+1)%256 ${cryptoVars[11]}=(${cryptoVars[11]}+${cryptoVars[12]}[${cryptoVars[14]}])%256 ${cryptoVars[12]}[${cryptoVars[14]}],${cryptoVars[12]}[${cryptoVars[11]}]=${cryptoVars[12]}[${cryptoVars[11]}],${cryptoVars[12]}[${cryptoVars[14]}]local ${cryptoVars[15]}=${cryptoVars[12]}[(${cryptoVars[12]}[${cryptoVars[14]}]+${cryptoVars[12]}[${cryptoVars[11]}])%256]${cryptoVars[10]}[${cryptoVars[13]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[8]},${cryptoVars[13]})~${cryptoVars[15]})end return ${varNames[2]}(${cryptoVars[10]})end
-local ${cryptoVars[16]}={}
-local ${cryptoVars[17]}=${varNames[4]}()
-local ${cryptoVars[18]}=${varNames[5]}(${cryptoVars[17]})
-if ${cryptoVars[18]} and ${cryptoVars[18]}[${varNames[6]}]and ${cryptoVars[18]}[${varNames[6]}].func then ${cryptoVars[18]}[${varNames[6]}]=function(${cryptoVars[19]})return {func=function(${cryptoVars[19]})return ${cryptoVars[19]}end}end end
-local ${cryptoVars[20]}=${varNames[4]}(${cryptoVars[0]})
-local ${cryptoVars[21]}={}
-for ${cryptoVars[22]}=1,${varNames[0]}(${cryptoVars[20]})do ${cryptoVars[21]}[${cryptoVars[22]}]=${cryptoVars[20]}[${cryptoVars[22]}]end
-local ${cryptoVars[23]}={${randomStrings.map(s => JSON.stringify(s)).join(',')}}
-for ${cryptoVars[22]},${cryptoVars[24]}in ${varNames[5]}(${cryptoVars[23]})do if ${varNames[8]}(${cryptoVars[24]})=="table"then for ${cryptoVars[25]},${cryptoVars[26]}in ${varNames[5]}(${cryptoVars[24]})do ${cryptoVars[21]}[${cryptoVars[25]}]=${cryptoVars[26]}end end end
-local ${cryptoVars[27]}={}for ${cryptoVars[22]}=0,255 do ${cryptoVars[27]}[${cryptoVars[22]}]=${cryptoVars[22]}end
-local function ${cryptoVars[28]}(${cryptoVars[29]})local ${cryptoVars[30]}=${varNames[7]}(${cryptoVars[29]},${cryptoVars[0]})local ${cryptoVars[31]}=${varNames[7]}(${cryptoVars[30]},${cryptoVars[9]})local ${cryptoVars[32]}={}for ${cryptoVars[33]}=1,${varNames[0]}(${cryptoVars[31]})do ${cryptoVars[32]}[${cryptoVars[33]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[31]},${cryptoVars[33]}))end local ${cryptoVars[34]}=${varNames[2]}(${cryptoVars[32]})local ${cryptoVars[35]}=${varNames[7]}(${cryptoVars[34]},${cryptoVars[30]})local ${cryptoVars[36]}={}for ${cryptoVars[33]}=1,${cryptoVars[35]}do ${cryptoVars[36]}[${cryptoVars[33]}]=${varNames[1]}(${cryptoVars[35]})end return ${varNames[2]}(${cryptoVars[36]})end
-local ${cryptoVars[37]}={}
-${cryptoVars[37]}[1]=${cryptoVars[28]}
-local ${cryptoVars[38]}=${cryptoVars[37]}[1](${payload})
-for ${cryptoVars[39]}=1,${cryptoVars[38]}do ${cryptoVars[39]}=${varNames[7]}(${varNames[1]}(${cryptoVars[39]}),${cryptoVars[39]})end
-local ${cryptoVars[40]}=function(${cryptoVars[41]})local ${cryptoVars[42]}={}for ${cryptoVars[43]}=1,${varNames[0]}(${cryptoVars[41]})do ${cryptoVars[42]}[${cryptoVars[43]}]=${varNames[1]}(${varNames[0]}(${cryptoVars[41]},${cryptoVars[43]}))end local ${cryptoVars[44]}=${varNames[2]}(${cryptoVars[42]})local ${cryptoVars[45]}=${varNames[7]}(${cryptoVars[44]},${cryptoVars[41]})local ${cryptoVars[46]}={}for ${cryptoVars[43]}=1,${cryptoVars[45]}do ${cryptoVars[46]}[${cryptoVars[43]}]=${varNames[1]}(${cryptoVars[45]})end return ${varNames[2]}(${cryptoVars[46]})end
-local ${cryptoVars[47]}=${cryptoVars[40]}(${cryptoVars[38]})
-local ${cryptoVars[48]}=${cryptoVars[40]}(${cryptoVars[47]})
-local ${cryptoVars[49]}=${cryptoVars[40]}(${cryptoVars[48]})
-local ${cryptoVars[50]}=${varNames[3]}(${cryptoVars[49]})
-local ${cryptoVars[51]}=${cryptoVars[40]}(${cryptoVars[50]})
-local ${cryptoVars[52]}=${cryptoVars[51]}
-local ${cryptoVars[53]}=function(${cryptoVars[54]},${cryptoVars[55]})local ${cryptoVars[56]}=${varNames[0]}(${cryptoVars[54]})local ${cryptoVars[57]}=${varNames[0]}(${cryptoVars[55]})local ${cryptoVars[58]}=${varNames[0]}(${cryptoVars[54]})local ${cryptoVars[59]}=0 for ${cryptoVars[60]}=1,${cryptoVars[56]}do ${cryptoVars[59]}=${cryptoVars[59]}+${cryptoVars[54]}[${cryptoVars[60]}]end return ${cryptoVars[59]}end
-if ${cryptoVars[53]}(${cryptoVars[52]},${cryptoVars[51]})~=${cryptoVars[52]}then return end
-local ${cryptoVars[61]}=${cryptoVars[40]}(${cryptoVars[61]})
-local ${cryptoVars[62]}=${cryptoVars[40]}(${cryptoVars[62]})
-local ${cryptoVars[63]}=${cryptoVars[40]}(${cryptoVars[63]})
-local ${cryptoVars[64]}=${cryptoVars[40]}(${cryptoVars[64]})
-local ${cryptoVars[65]}=${cryptoVars[40]}(${cryptoVars[65]})
-local ${cryptoVars[66]}=function(...)local ${cryptoVars[67]}={...}return ${cryptoVars[67]}end
-local ${cryptoVars[68]}=${cryptoVars[40]}(${cryptoVars[68]},${cryptoVars[68]})
-local ${cryptoVars[69]}=${cryptoVars[40]}(${cryptoVars[69]},${cryptoVars[69]})
-local ${cryptoVars[70]}=${cryptoVars[40]}(${cryptoVars[70]})
-local ${cryptoVars[71]}=${cryptoVars[40]}(${cryptoVars[71]})
-local ${cryptoVars[72]}=${cryptoVars[40]}(${cryptoVars[72]})
-local ${cryptoVars[73]}=${cryptoVars[40]}(${varNames[1]}(${cryptoVars[73]}))
-local ${cryptoVars[74]}=${varNames[4]}()
-local function ${cryptoVars[75]}()local ${cryptoVars[76]}=${cryptoVars[40]}(${cryptoVars[76]})local ${cryptoVars[77]}=${cryptoVars[40]}(${cryptoVars[77]})local ${cryptoVars[78]}=${cryptoVars[40]}(${cryptoVars[78]})return ${cryptoVars[40]}(${cryptoVars[78]})end
-local ${cryptoVars[79]}=${cryptoVars[75]}()
-local ${cryptoVars[80]}=${cryptoVars[75]}()
-if not ${cryptoVars[80]}then return end
-${cryptoVars[80]}()
-end`;
-
-  const junkPatterns = [
-    `local ${randomString(8)} = ${Math.floor(Math.random() * 999)} + ${Math.floor(Math.random() * 999)}`,
-    `local ${randomString(8)} = string.sub("${randomString(10)}", ${Math.floor(Math.random() * 5) + 1}, ${Math.floor(Math.random() * 8) + 3})`,
-    `do local ${randomString(8)} = {} for i=1,${Math.floor(Math.random() * 20) + 5} do ${randomString(8)}[i]=i end end`,
-    `local function ${randomString(8)}() return ${Math.floor(Math.random() * 999)} end`,
-    `local ${randomString(8)} = ${Math.random() > 0.5 ? 'true' : 'false'}`,
-  ];
-  
-  let finalOutput = template;
-  const lines = template.split('\n');
-  const finalLines = [];
-  for (const line of lines) {
-    finalLines.push(line);
-    if (Math.random() < 0.15 && junkPatterns.length > 0) {
-      finalLines.push(junkPatterns[Math.floor(Math.random() * junkPatterns.length)]);
-    }
-  }
-  finalOutput = finalLines.join('\n');
-  
-  finalOutput = finalOutput.replace(/\n/g, " ");
-  finalOutput = finalOutput.replace(/\s+/g, " ");
-  finalOutput = finalOutput.replace(/local local/g, "local");
-  finalOutput = finalOutput.replace(/end end/g, "end");
-  finalOutput = finalOutput.replace(/\( /g, "(");
-  finalOutput = finalOutput.replace(/ \)/g, ")");
-  finalOutput = finalOutput.replace(/\[ /g, "[");
-  finalOutput = finalOutput.replace(/ \]/g, "]");
-  finalOutput = finalOutput.replace(/\{ /g, "{");
-  finalOutput = finalOutput.replace(/ \}/g, "}");
-  finalOutput = finalOutput.replace(/= /g, "=");
-  finalOutput = finalOutput.replace(/ =/g, "=");
-  
-  return `--[[\n    Scoper's Obfuscator v3.0.0 - No Limits Edition\n    Obfuscated with custom engine\n--]]\n${finalOutput}`;
-}
+  return `--[[  
+    Scoper's Obfuscator v3.0.0 - No Limits Edition  
+    Obfuscated with custom engine  
+--]]  
+${template}`;  
+}  
 
 function getHTML() {
   return `<!DOCTYPE html>
