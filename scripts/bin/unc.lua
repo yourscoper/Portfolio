@@ -1,6 +1,8 @@
 local passes, fails, undefined = 0, 0, 0
 local running = 0
 
+local NotifyLibrary = loadstring(game:HttpGet("https://pastebin.com/raw/9mdbEtwU"))()
+
 local function getGlobal(path)
 	local value = getfenv(0)
 
@@ -70,6 +72,8 @@ task.defer(function()
 	print("✅ Tested with a " .. rate .. "% success rate (" .. outOf .. ")")
 	print("⛔ " .. fails .. " tests failed")
 	print("⚠️ " .. undefined .. " globals are missing aliases")
+
+    NotifyLibrary:Notify("✅ Tested with a " .. rate .. "% success rate (" .. outOf .. ")", 10)
 end)
 
 -- Cache
