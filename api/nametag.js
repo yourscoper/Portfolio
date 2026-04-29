@@ -30,7 +30,6 @@ async function getFile() {
 async function saveFile(content, sha) {
     const now = Date.now();
     if (now - lastGithubWrite < WRITE_COOLDOWN) {
-        // Update memory cache only, skip GitHub write
         memoryCache = content;
         return;
     }
