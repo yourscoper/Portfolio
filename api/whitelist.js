@@ -16,10 +16,6 @@ const whitelistData = {
       "discord": "1476842427355758613", //Hashbrown
       "key": "scoper-kjYGYRjkcx61gDrszy9Yxk2epkCUrj"
     },
-    "e468867bb1f1e32befd01431089dd5621dcc69a14e3bc2a404ac0866fff23402": { // Delta-Android
-      "discord": "1312924157578711071", //IceGodFTBL
-      "key": "scoper-pd8bDG1TgZKTH2svNH3VAogwb9ZKRK"
-    },
     "62584A29F26BEA55FE8F7952BE6125": { // Velocity
       "discord": "698726180458725416", //Alex
       "key": "scoper-RonH5cWXjZHxz66KE2WZU1vzkPNM7K"
