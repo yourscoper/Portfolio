@@ -1,3 +1,6 @@
+export default function handler(req, res) {
+  res.setHeader('Content-Type', 'text/html');
+  res.send(`
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1061,3 +1064,5 @@ applyThemeToCSSVars();
 </script>
 </body>
 </html>
+  `);
+}
