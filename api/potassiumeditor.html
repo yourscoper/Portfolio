@@ -222,26 +222,21 @@ body{background:#111;font-family:'JetBrains Mono',monospace;display:flex;height:
       <div id="pw-tabs">
         <div class="pw-tab active">
           <span class="pw-ti">❝❝</span>
-          Untitled Tab
+          Scoper.lua
           <span class="pw-tx">✕</span>
         </div>
         <div class="pw-addtab">+</div>
       </div>
 
       <!-- EDITOR -->
-      <div id="pw-ed">
+        <div id="pw-ed">
         <div id="pw-ed-bg"></div>
-        <div class="pw-line hl"><span class="pw-ln">1</span><span class="pw-co"><span class="fn">print</span>(<span class="st">"Hello, world!"</span>);<span class="cur"></span></span></div>
-        <div class="pw-line"><span class="pw-ln">2</span><span class="pw-co"></span></div>
-        <div class="pw-line"><span class="pw-ln">3</span><span class="pw-co"><span class="cm">-- write your script here</span></span></div>
+        <div class="pw-line hl"><span class="pw-ln">1</span><span class="pw-co"><span class="kw">local</span> Scoper = <span class="kw">function</span>(<span class="va">_</span>)</span></div>
+        <div class="pw-line"><span class="pw-ln">2</span><span class="pw-co">&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="fn">loadstring</span>(<span class="fn">game</span>:<span class="fn">HttpGet</span>(<span class="va">_</span>))()</span></div>
+        <div class="pw-line"><span class="pw-ln">3</span><span class="pw-co"><span class="kw">end</span></span></div>
         <div class="pw-line"><span class="pw-ln">4</span><span class="pw-co"></span></div>
-        <div class="pw-line"><span class="pw-ln">5</span><span class="pw-co"><span class="kw">local</span> Players = game:<span class="fn">GetService</span>(<span class="st">"Players"</span>)</span></div>
-        <div class="pw-line"><span class="pw-ln">6</span><span class="pw-co"><span class="kw">local</span> plr = Players.LocalPlayer</span></div>
-        <div class="pw-line"><span class="pw-ln">7</span><span class="pw-co"></span></div>
-        <div class="pw-line"><span class="pw-ln">8</span><span class="pw-co"><span class="kw">local function</span> <span class="fn">onDied</span>()</span></div>
-        <div class="pw-line"><span class="pw-ln">9</span><span class="pw-co">&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">print</span>(<span class="st">"died: "</span> .. plr.Name)</span></div>
-        <div class="pw-line"><span class="pw-ln">10</span><span class="pw-co"><span class="kw">end</span></span></div>
-      </div>
+        <div class="pw-line"><span class="pw-ln">5</span><span class="pw-co">Scoper(<span class="st">"https://yourscoper.vercel.app/scoper.lua"</span>)</span></div>
+        </div>
 
       <!-- STATUSBAR -->
       <div id="pw-sb">
