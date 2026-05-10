@@ -58,7 +58,7 @@ return {
             accent      = ColorSequence.new{
                 ColorSequenceKeypoint.new(0,    Color3.fromRGB(58, 2, 61)),
                 ColorSequenceKeypoint.new(0.5,  Color3.fromRGB(68, 43, 69)),
-                ColorSequenceKeypoint.new(1,    Color3.fromRGB(97, 91, 97)),
+                ColorSequenceKeypoint.new(1,    Color3.fromRGB(130, 121, 130)),
             },
             image       = "http://www.roblox.com/asset/?id=132854398900146"
         }
