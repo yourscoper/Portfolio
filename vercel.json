@@ -3,6 +3,10 @@
     {
       "source": "/scoper.lua",
       "destination": "/api/scoper"
+    },
+    {
+      "source": "/cracked.lua",
+      "destination": "/api/cracked"
     }
   ]
 }
