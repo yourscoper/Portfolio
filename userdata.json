@@ -100,5 +100,11 @@
     "tag": "SCOPER USER",
     "executed": false,
     "updatedAt": "2026-05-13T08:23:48.644Z"
+  },
+  "10632683365": {
+    "displayName": "AvoidingVoiceChat",
+    "tag": "SCOPER USER",
+    "executed": true,
+    "updatedAt": "2026-05-17T03:47:09.693Z"
   }
 }
