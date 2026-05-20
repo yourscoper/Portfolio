@@ -73,7 +73,7 @@ export default async function handler(req, res) {
         if (method === "POST") {
             let body = req.body;
             if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
-            const { userId, displayName, tag, executed, forceTag, jobId } = body || {};
+            const { userId, tag, executed, forceTag, jobId, placeId, updatedAt } = body || {};
             if (!userId) return res.status(400).json({ error: "Missing userId" });
 
             const { content, sha } = await getFile();
@@ -81,35 +81,26 @@ export default async function handler(req, res) {
 
             const newExecuted = executed !== undefined ? executed : (existing?.executed || false);
             const newTag = (forceTag && tag) ? tag : (existing ? existing.tag : (tag || "SCOPER USER"));
-            const newDisplayName = existing?.displayName || displayName || userId;
             const newJobId = jobId || existing?.jobId || null;
+            const newPlaceId = placeId || existing?.placeId || null;
+            const newUpdatedAt = updatedAt || existing?.updatedAt || null;
 
             const nothingChanged = existing
                 && existing.executed === newExecuted
                 && existing.tag === newTag
-                && existing.displayName === newDisplayName
-                && existing.jobId === newJobId;
+                && existing.jobId === newJobId
+                && existing.placeId === newPlaceId;
 
             if (nothingChanged) {
                 return res.json({ ok: true, skipped: true });
             }
 
-            const now = new Date();
-            const formattedTime =
-                now.toLocaleTimeString("en-US", {
-                    hour: "numeric",
-                    minute: "2-digit",
-                    hour12: true
-                }) +
-                " " +
-                now.toLocaleDateString("en-US");
-
             content[userId] = {
-                displayName: newDisplayName,
                 tag: newTag,
                 executed: newExecuted,
-                updatedAt: formattedTime,
-                jobId: newJobId
+                updatedAt: newUpdatedAt,
+                jobId: newJobId,
+                placeId: newPlaceId
             };
 
             await saveFile(content, sha);
