@@ -92,11 +92,23 @@ export default async function handler(req, res) {
                 return res.json({ ok: true, skipped: true });
             }
 
+            const now = new Date();
+
+            const formattedTime =
+                now.toLocaleTimeString("en-US", {
+                    hour: "numeric",
+                    minute: "2-digit",
+                    hour12: true
+                }) +
+                " " +
+                now.toLocaleDateString("en-US");
+
             content[userId] = {
                 displayName: newDisplayName,
                 tag: newTag,
                 executed: newExecuted,
-                updatedAt: new Date().toISOString()
+                updatedAt: formattedTime,
+                jobId: jobId || existing?.jobId || null
             };
 
             await saveFile(content, sha);
