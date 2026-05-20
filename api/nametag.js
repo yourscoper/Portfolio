@@ -81,19 +81,20 @@ export default async function handler(req, res) {
 
             const newExecuted = executed !== undefined ? executed : (existing?.executed || false);
             const newTag = (forceTag && tag) ? tag : (existing ? existing.tag : (tag || "SCOPER USER"));
-            const newDisplayName = existing ? existing.displayName : (displayName || userId);
+            const newDisplayName = existing?.displayName || displayName || userId;
+            const newJobId = jobId || existing?.jobId || null;
 
             const nothingChanged = existing
                 && existing.executed === newExecuted
                 && existing.tag === newTag
-                && existing.displayName === newDisplayName;
+                && existing.displayName === newDisplayName
+                && existing.jobId === newJobId;
 
             if (nothingChanged) {
                 return res.json({ ok: true, skipped: true });
             }
 
             const now = new Date();
-
             const formattedTime =
                 now.toLocaleTimeString("en-US", {
                     hour: "numeric",
@@ -108,7 +109,7 @@ export default async function handler(req, res) {
                 tag: newTag,
                 executed: newExecuted,
                 updatedAt: formattedTime,
-                jobId: jobId || existing?.jobId || null
+                jobId: newJobId
             };
 
             await saveFile(content, sha);
