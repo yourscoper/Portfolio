@@ -73,7 +73,7 @@ export default async function handler(req, res) {
         if (method === "POST") {
             let body = req.body;
             if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
-            const { userId, displayName, tag, executed, forceTag } = body || {};
+            const { userId, displayName, tag, executed, forceTag, jobId } = body || {};
             if (!userId) return res.status(400).json({ error: "Missing userId" });
 
             const { content, sha } = await getFile();
