@@ -45,7 +45,7 @@ local ScopersUILibrary = {
     }
 }
 
-local ScopersCommands = CoreGui and CoreGui:WaitForChild("ScopersCommands", 5);
+local ScopersCommands = CoreGui and CoreGui:FindFirstChild("ScopersCommands");
 
 local function ScopersUILibraryTween(obj, props, t, style, dir)
 	TweenService:Create(obj, TweenInfo.new(t or 0.18, style or Enum.EasingStyle.Quart, dir or Enum.EasingDirection.Out), props):Play()
