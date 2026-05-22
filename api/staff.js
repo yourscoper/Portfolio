@@ -174,24 +174,39 @@ export default async function handler(req, res) {
         if (method === "DELETE") {
             let body = req.body;
             if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
+
             const { commandId, userId } = body || {};
-            if (!commandId || !userId) return res.status(400).json({ error: "Missing commandId or userId" });
 
-            if (!isUserSecret) return res.status(403).json({ error: "Forbidden" });
+            if (!commandId || !userId) {
+                return res.status(400).json({ error: "Missing commandId or userId" });
+            }
 
-            const staffCheck = await isStaff(userId);
-            if (!staffCheck) return res.status(403).json({ error: "Forbidden" });
+            commandsCache = null;
+            commandsSha = null;
 
             const { content, sha } = await getCommands();
-            const before = (content.commands || []).length;
-            content.commands = (content.commands || []).filter(c => {
-                if (c.id !== commandId) return true;
-                if (c.targetId === "ALL") return false;
-                return c.targetId !== userId;
+
+            const before = content.commands.length;
+
+            content.commands = (content.commands || []).filter(cmd => {
+                if (cmd.id !== commandId) return true;
+                if (cmd.targetId === "ALL" || cmd.targetId === userId) return false;
+                return true;
             });
-            if (content.commands.length === before) return res.json({ ok: true, skipped: true });
+
+            const after = content.commands.length;
+
+            if (before === after) {
+                return res.status(404).json({ error: "Command not found" });
+            }
+
+            lastCommandsWrite = 0;
             await saveCommands(content, sha);
-            return res.json({ ok: true });
+
+            commandsCache = null;
+            commandsSha = null;
+
+            return res.status(200).json({ success: true, removed: before - after });
         }
 
         return res.status(405).json({ error: "Method not allowed" });
