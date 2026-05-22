@@ -127,6 +127,17 @@
       "command": "kill",
       "params": [],
       "issuedAt": "2026-05-22T05:42:56.942Z"
+    },
+    {
+      "id": "1779428684453",
+      "targetId": "9934519400",
+      "issuerId": "10766660977",
+      "command": "message",
+      "params": {
+        "message": "test",
+        "duration": 5
+      },
+      "issuedAt": "2026-05-22T05:44:44.453Z"
     }
   ]
 }
