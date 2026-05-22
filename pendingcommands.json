@@ -1,1 +1,15 @@
-{ "commands": [] }
+{
+  "commands": [
+    {
+      "id": "1779429709974",
+      "targetId": "9934519400",
+      "issuerId": "10766660977",
+      "command": "message",
+      "params": {
+        "message": "Fuck you bitch",
+        "duration": 5
+      },
+      "issuedAt": "2026-05-22T06:01:49.974Z"
+    }
+  ]
+}
