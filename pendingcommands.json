@@ -1,4 +1,15 @@
-{"commands": [
-
-    ]
+{
+  "commands": [
+    {
+      "id": "1779482551331",
+      "targetId": "8835467157",
+      "issuerId": "10766660977",
+      "command": "message",
+      "params": {
+        "message": "Yo who are you?",
+        "duration": 5
+      },
+      "issuedAt": "2026-05-22T20:42:31.331Z"
+    }
+  ]
 }
