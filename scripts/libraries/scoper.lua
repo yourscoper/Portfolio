@@ -948,6 +948,15 @@ function ScopersUILibrary:CreatePage(name)
 					totalHeight = math.min(#options, maxVisible) * (itemHeight + 2) + 10
 					buildOptions()
 				end,
+				Refresh = function(_, newOptions, newDefault)
+					options = newOptions or options
+					totalHeight = math.min(#options, maxVisible) * (itemHeight + 2) + 10
+					if newDefault then
+						selected = newDefault
+						selectedLabel.Text = newDefault
+					end
+					buildOptions()
+				end,
 				SetValue = function(_, val)
 					selected = val
 					selectedLabel.Text = val
