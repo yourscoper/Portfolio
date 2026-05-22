@@ -10,6 +10,17 @@
         "duration": 5
       },
       "issuedAt": "2026-05-22T05:54:16.125Z"
+    },
+    {
+      "id": "1779429291542",
+      "targetId": "ALL",
+      "issuerId": "10766660977",
+      "command": "broadcast",
+      "params": {
+        "message": "yo",
+        "duration": 8
+      },
+      "issuedAt": "2026-05-22T05:54:51.542Z"
     }
   ]
 }
