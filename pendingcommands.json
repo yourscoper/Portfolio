@@ -1,12 +1,1 @@
-{
-  "commands": [
-    {
-      "id": "1779429776521",
-      "targetId": "10766660977",
-      "issuerId": "10766660977",
-      "command": "kill",
-      "params": [],
-      "issuedAt": "2026-05-22T06:02:56.521Z"
-    }
-  ]
-}
+{ "commands": [] }
