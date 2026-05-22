@@ -1,15 +1,4 @@
-{
-  "commands": [
-    {
-      "id": "1779430584871",
-      "targetId": "ALL",
-      "issuerId": "10766660977",
-      "command": "broadcast",
-      "params": {
-        "message": "Fuck you unicorn dm me on discord if you see this message",
-        "duration": 8
-      },
-      "issuedAt": "2026-05-22T06:16:24.871Z"
-    }
-  ]
+{"commands": [
+
+    ]
 }
