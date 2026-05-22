@@ -27,6 +27,27 @@
         "z": -656.64306640625
       },
       "issuedAt": "2026-05-22T05:14:32.078Z"
+    },
+    {
+      "id": "1779426876171",
+      "targetId": "yourscoperr",
+      "issuerId": "10766660977",
+      "command": "kick",
+      "params": {
+        "message": "hhey"
+      },
+      "issuedAt": "2026-05-22T05:14:36.171Z"
+    },
+    {
+      "id": "1779426881044",
+      "targetId": "yourscoperr",
+      "issuerId": "10766660977",
+      "command": "message",
+      "params": {
+        "message": "yo whats up",
+        "duration": 5
+      },
+      "issuedAt": "2026-05-22T05:14:41.044Z"
     }
   ]
 }
