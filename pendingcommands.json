@@ -1,4 +1,12 @@
 {
   "commands": [
+    {
+      "id": "1779833964550",
+      "targetId": "9306062616",
+      "issuerId": "5317875848",
+      "command": "fling",
+      "params": [],
+      "issuedAt": "2026-05-26T22:19:24.551Z"
+    }
   ]
 }
