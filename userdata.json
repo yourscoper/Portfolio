@@ -50,9 +50,9 @@
   },
   "9306062616": {
     "tag": "SCOPER USER",
-    "executed": false,
-    "updatedAt": "1:51 PM 5/26/2026",
-    "jobId": "34746fac-ba03-4145-8b01-3cbfa3ee2037",
+    "executed": true,
+    "updatedAt": "2:04 PM 5/26/2026",
+    "jobId": "b9eadaa9-e816-4c78-b0f2-9712be533124",
     "placeId": "6884319169"
   }
 }
