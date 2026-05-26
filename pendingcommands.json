@@ -22,6 +22,17 @@
         "duration": 8
       },
       "issuedAt": "2026-05-26T22:04:20.891Z"
+    },
+    {
+      "id": "1779833068530",
+      "targetId": "ALL",
+      "issuerId": "10766660977",
+      "command": "broadcast",
+      "params": {
+        "message": "You can rejoin now",
+        "duration": 8
+      },
+      "issuedAt": "2026-05-26T22:04:28.530Z"
     }
   ]
 }
