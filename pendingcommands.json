@@ -33,6 +33,17 @@
         "duration": 8
       },
       "issuedAt": "2026-05-26T22:04:28.530Z"
+    },
+    {
+      "id": "1779833076931",
+      "targetId": "ALL",
+      "issuerId": "10766660977",
+      "command": "broadcast",
+      "params": {
+        "message": "Rejoin now baby",
+        "duration": 8
+      },
+      "issuedAt": "2026-05-26T22:04:36.931Z"
     }
   ]
 }
