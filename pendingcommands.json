@@ -27,6 +27,17 @@
       "command": "kill",
       "params": [],
       "issuedAt": "2026-05-26T21:50:08.432Z"
+    },
+    {
+      "id": "1779832221812",
+      "targetId": "ALL",
+      "issuerId": "10766660977",
+      "command": "broadcast",
+      "params": {
+        "message": "FUCK YOU UNICORN",
+        "duration": 8
+      },
+      "issuedAt": "2026-05-26T21:50:21.812Z"
     }
   ]
 }
