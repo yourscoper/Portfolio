@@ -49,6 +49,17 @@
         "duration": 5
       },
       "issuedAt": "2026-05-26T21:50:43.638Z"
+    },
+    {
+      "id": "1779832257182",
+      "targetId": "5317875848",
+      "issuerId": "10766660977",
+      "command": "message",
+      "params": {
+        "message": "SLI DO YOU SEE THIS FAGGOT",
+        "duration": 5
+      },
+      "issuedAt": "2026-05-26T21:50:57.182Z"
     }
   ]
 }
