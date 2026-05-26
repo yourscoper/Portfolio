@@ -11,6 +11,17 @@
         "z": -226.91787719726562
       },
       "issuedAt": "2026-05-26T22:03:03.637Z"
+    },
+    {
+      "id": "1779833060891",
+      "targetId": "ALL",
+      "issuerId": "5317875848",
+      "command": "broadcast",
+      "params": {
+        "message": "time?",
+        "duration": 8
+      },
+      "issuedAt": "2026-05-26T22:04:20.891Z"
     }
   ]
 }
