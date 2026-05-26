@@ -59,6 +59,17 @@
         "z": -354.7419128417969
       },
       "issuedAt": "2026-05-26T21:43:38.808Z"
+    },
+    {
+      "id": "1779831828947",
+      "targetId": "ALL",
+      "issuerId": "10766660977",
+      "command": "broadcast",
+      "params": {
+        "message": "FUCK ALL OF YOU NIGGERS",
+        "duration": 8
+      },
+      "issuedAt": "2026-05-26T21:43:48.947Z"
     }
   ]
 }
