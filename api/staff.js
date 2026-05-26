@@ -173,7 +173,7 @@ export default async function handler(req, res) {
             let body = req.body;
             if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
         
-            const { commandId, userId } = body || {};
+            const { commandId } = body || {};
         
             if (!commandId) {
                 return res.status(400).json({ error: "Missing commandId" });
@@ -185,16 +185,23 @@ export default async function handler(req, res) {
             const { content, sha } = await getCommands();
         
             const before = (content.commands || []).length;
-        
             content.commands = (content.commands || []).filter(cmd => cmd.id !== commandId);
-        
             const after = content.commands.length;
         
-            lastCommandsWrite = 0;
-            await saveCommands(content, sha);
+            const params = {
+                owner: OWNER,
+                repo: REPO,
+                path: COMMANDS_PATH,
+                message: "Remove executed command",
+                content: Buffer.from(JSON.stringify(content, null, 2)).toString("base64"),
+            };
+            if (sha) params.sha = sha;
         
-            commandsCache = null;
-            commandsSha = null;
+            const result = await octokit.repos.createOrUpdateFileContents(params);
+        
+            commandsCache = content;
+            commandsSha = result.data.content.sha;
+            lastCommandsWrite = Date.now();
         
             return res.status(200).json({ success: true, removed: before - after });
         }
