@@ -123,8 +123,6 @@ export default async function handler(req, res) {
 
             if (type === "commands") {
                 if (!isUserSecret || !userId) return res.status(403).json({ error: "Forbidden" });
-                const staffCheck = await isStaff(userId);
-                if (!staffCheck) return res.status(403).json({ error: "Forbidden" });
                 const { content } = await getCommands();
                 const mine = (content.commands || []).filter(c => c.targetId === userId || c.targetId === "ALL");
                 return res.json({ commands: mine });
