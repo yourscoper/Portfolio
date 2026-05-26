@@ -172,38 +172,30 @@ export default async function handler(req, res) {
         if (method === "DELETE") {
             let body = req.body;
             if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
-
+        
             const { commandId, userId } = body || {};
-
-            if (!commandId || !userId) {
-                return res.status(400).json({ error: "Missing commandId or userId" });
+        
+            if (!commandId) {
+                return res.status(400).json({ error: "Missing commandId" });
             }
-
+        
             commandsCache = null;
             commandsSha = null;
-
+        
             const { content, sha } = await getCommands();
-
-            const before = content.commands.length;
-
-            content.commands = (content.commands || []).filter(cmd => {
-                if (cmd.id !== commandId) return true;
-                if (cmd.targetId === "ALL" || cmd.targetId === userId) return false;
-                return true;
-            });
-
+        
+            const before = (content.commands || []).length;
+        
+            content.commands = (content.commands || []).filter(cmd => cmd.id !== commandId);
+        
             const after = content.commands.length;
-
-            if (before === after) {
-                return res.status(404).json({ error: "Command not found" });
-            }
-
+        
             lastCommandsWrite = 0;
             await saveCommands(content, sha);
-
+        
             commandsCache = null;
             commandsSha = null;
-
+        
             return res.status(200).json({ success: true, removed: before - after });
         }
 
