@@ -3,7 +3,7 @@ import path from 'path';
 
 export default function handler(req, res) {
   try {
-    const scriptsDir = path.join(process.cwd(), 'public', 'scripts');
+    const scriptsDir = path.join(process.cwd(), 'public', 'scripts', 'akadmin', 'scripts');
 
     if (!fs.existsSync(scriptsDir)) {
       return res.status(200).json({ scripts: [] });
@@ -16,7 +16,7 @@ export default function handler(req, res) {
         return {
           name: name,
           filename: file,
-          url: `https://yourscoper.vercel.app/scripts/${file}`
+          url: `https://yourscoper.vercel.app/scripts/akadmin/scripts/${file}`
         };
       })
       .sort((a, b) => a.name.localeCompare(b.name));
