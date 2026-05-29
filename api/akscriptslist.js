@@ -3,16 +3,25 @@ import path from 'path';
 
 export default function handler(req, res) {
   try {
-    const scriptsDir = path.join(process.cwd(), 'public', 'scripts', 'akadmin', 'scripts');
+    const baseDir = process.cwd();
+    const scriptsDir = path.join(baseDir, 'public', 'scripts', 'akadmin', 'scripts');
 
+    console.log("Current working directory:", baseDir);
     console.log("Looking for scripts in:", scriptsDir);
 
     if (!fs.existsSync(scriptsDir)) {
-      console.log("Directory not found!");
-      return res.status(200).json({ scripts: [] });
+      console.log("❌ Directory NOT found");
+      return res.status(200).json({ 
+        scripts: [], 
+        error: "Directory not found",
+        path: scriptsDir 
+      });
     }
 
-    const files = fs.readdirSync(scriptsDir)
+    const allFiles = fs.readdirSync(scriptsDir);
+    console.log("All files in folder:", allFiles);
+
+    const luaFiles = allFiles
       .filter(file => file.toLowerCase().endsWith('.lua'))
       .map(file => {
         const name = file.replace(/\.lua$/i, '');
@@ -23,11 +32,15 @@ export default function handler(req, res) {
         };
       });
 
-    console.log(`Found ${files.length} scripts`);
-    res.setHeader('Cache-Control', 'public, s-maxage=60');
-    res.status(200).json({ scripts: files });
+    console.log(`✅ Found ${luaFiles.length} .lua files`);
+
+    res.status(200).json({ 
+      scripts: luaFiles,
+      total: luaFiles.length,
+      path: scriptsDir
+    });
   } catch (error) {
-    console.error('Script list error:', error);
-    res.status(500).json({ error: 'Internal server error', details: error.message });
+    console.error('Error:', error);
+    res.status(500).json({ error: error.message });
   }
 }
