@@ -10,7 +10,7 @@
     },
     {
       "source": "/scripts/list",
-      "destination": "/api/scripts/list"
-    }
+      "destination": "/api/akscriptslist"
+     }
   ]
 }
