@@ -7,6 +7,10 @@
     {
       "source": "/cracked.lua",
       "destination": "/api/cracked"
+    },
+    {
+      "source": "/scripts/list",
+      "destination": "/api/scripts/list"
     }
   ]
 }
