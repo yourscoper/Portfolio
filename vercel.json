@@ -9,7 +9,7 @@
       "destination": "/api/cracked"
     },
     {
-      "source": "/scripts/list",
+      "source": "/scripts/list.json",
       "destination": "/api/akscriptslist"
     }
   ]
