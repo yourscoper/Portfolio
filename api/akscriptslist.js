@@ -5,7 +5,6 @@ export default function handler(req, res) {
   try {
     const scriptsDir = path.join(process.cwd(), 'public', 'scripts');
     
-    // Ensure directory exists
     if (!fs.existsSync(scriptsDir)) {
       return res.status(200).json({ scripts: [] });
     }
