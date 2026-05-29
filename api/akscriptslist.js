@@ -3,14 +3,12 @@ import path from 'path';
 
 export default function handler(req, res) {
   try {
-    const baseDir = process.cwd();
-    const scriptsDir = path.join(baseDir, 'public', 'scripts', 'akadmin', 'scripts');
+    const scriptsDir = path.join(process.cwd(), 'scripts', 'akadmin', 'scripts');
 
-    console.log("Current working directory:", baseDir);
     console.log("Looking for scripts in:", scriptsDir);
 
     if (!fs.existsSync(scriptsDir)) {
-      console.log("❌ Directory NOT found");
+      console.log("Directory NOT found");
       return res.status(200).json({ 
         scripts: [], 
         error: "Directory not found",
@@ -18,10 +16,7 @@ export default function handler(req, res) {
       });
     }
 
-    const allFiles = fs.readdirSync(scriptsDir);
-    console.log("All files in folder:", allFiles);
-
-    const luaFiles = allFiles
+    const files = fs.readdirSync(scriptsDir)
       .filter(file => file.toLowerCase().endsWith('.lua'))
       .map(file => {
         const name = file.replace(/\.lua$/i, '');
@@ -32,13 +27,9 @@ export default function handler(req, res) {
         };
       });
 
-    console.log(`✅ Found ${luaFiles.length} .lua files`);
-
-    res.status(200).json({ 
-      scripts: luaFiles,
-      total: luaFiles.length,
-      path: scriptsDir
-    });
+    console.log(`Found ${files.length} scripts`);
+    
+    res.status(200).json({ scripts: files });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: error.message });
