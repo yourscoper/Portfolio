@@ -5,7 +5,10 @@ export default function handler(req, res) {
   try {
     const scriptsDir = path.join(process.cwd(), 'public', 'scripts', 'akadmin', 'scripts');
 
+    console.log("Looking for scripts in:", scriptsDir);
+
     if (!fs.existsSync(scriptsDir)) {
+      console.log("Directory not found!");
       return res.status(200).json({ scripts: [] });
     }
 
@@ -18,13 +21,13 @@ export default function handler(req, res) {
           filename: file,
           url: `https://yourscoper.vercel.app/scripts/akadmin/scripts/${file}`
         };
-      })
-      .sort((a, b) => a.name.localeCompare(b.name));
+      });
 
-    res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+    console.log(`Found ${files.length} scripts`);
+    res.setHeader('Cache-Control', 'public, s-maxage=60');
     res.status(200).json({ scripts: files });
   } catch (error) {
     console.error('Script list error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error', details: error.message });
   }
 }
