@@ -1,4 +1,5 @@
 return {
+    ["astro typical gamer idle"]                      = "https://yourscoper.vercel.app/scripts/reanimation/animations/astro%20typical%20gamer%20idle.lua",
     ["Backflip"]                                      = "https://yourscoper.vercel.app/scripts/reanimation/animations/Backflip.lua",
     ["Envy Fat Ass"]                                  = "https://yourscoper.vercel.app/scripts/reanimation/animations/envyfatass.lua",
     ["Envy Self Head"]                                = "https://yourscoper.vercel.app/scripts/reanimation/animations/envyheadself.lua",
