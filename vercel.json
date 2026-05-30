@@ -11,6 +11,10 @@
     {
       "source": "/scripts/list.json",
       "destination": "/api/akscriptslist"
+    },
+    {
+      "source": "/commandlibrary.lua",
+      "destination": "/api/commandlibrary"
     }
   ]
 }
