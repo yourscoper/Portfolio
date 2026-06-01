@@ -13,6 +13,158 @@
   <meta property="og:image" content="https://raw.githubusercontent.com/yourscoper/Portfolio/main/preview.jpg" />
   <meta name="theme-color" content="#FFFFFF" />
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
+
+  <!-- ============================================================
+       DEVTOOLS PROTECTION & RIGHT-CLICK DISABLE
+       ============================================================
+       CONFIGURATION OPTIONS:
+         REDIRECT_URL     — Where to send the user when DevTools is detected.
+                            'about:blank' works universally. You can use any URL.
+         WARN_MESSAGE     — Invisible console trap message (seen only in DevTools).
+         DIMENSION_DELTA  — Pixel threshold for window-resize detection (default 160).
+         POLL_INTERVAL_MS — How often (ms) to run the dimension check (default 500).
+       ============================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── CONFIGURATION ─────────────────────────────────────── */
+      var CFG = {
+        REDIRECT_URL:     'about:blank',   // change to any URL you want
+        WARN_MESSAGE:     '🚫 DevTools detected. Access denied.',
+        DIMENSION_DELTA:  160,             // px threshold for resize detection
+        POLL_INTERVAL_MS: 500              // ms between dimension checks
+      };
+      /* ────────────────────────────────────────────────────────── */
+
+      var _triggered = false;
+
+      // Central trigger — runs once, redirects the tab
+      function _trigger() {
+        if (_triggered) return;
+        _triggered = true;
+        try {
+          // Show an invisible "bait" div with a getter trap (see below)
+          // then redirect
+          document.body.style.display = 'none';
+          window.location.replace(CFG.REDIRECT_URL);
+        } catch (e) {
+          window.location.href = CFG.REDIRECT_URL;
+        }
+      }
+
+      /* ── 1. KEYBOARD SHORTCUT BLOCKING ──────────────────────── */
+      document.addEventListener('keydown', function (e) {
+        var k = e.key ? e.key.toUpperCase() : '';
+        var code = e.code ? e.code.toUpperCase() : '';
+
+        // F12
+        if (e.key === 'F12' || e.code === 'F12') {
+          e.preventDefault(); e.stopPropagation(); _trigger(); return;
+        }
+
+        var ctrl  = e.ctrlKey  || e.metaKey;  // Ctrl on Win/Linux, Cmd on Mac
+        var shift = e.shiftKey;
+
+        // Ctrl+Shift+I / Cmd+Shift+I  (Inspector)
+        if (ctrl && shift && (k === 'I' || code === 'KEYI')) {
+          e.preventDefault(); e.stopPropagation(); _trigger(); return;
+        }
+        // Ctrl+Shift+J / Cmd+Shift+J  (Console)
+        if (ctrl && shift && (k === 'J' || code === 'KEYJ')) {
+          e.preventDefault(); e.stopPropagation(); _trigger(); return;
+        }
+        // Ctrl+Shift+C / Cmd+Shift+C  (Element picker)
+        if (ctrl && shift && (k === 'C' || code === 'KEYC')) {
+          e.preventDefault(); e.stopPropagation(); _trigger(); return;
+        }
+        // Ctrl+U / Cmd+U  (View Source)
+        if (ctrl && !shift && (k === 'U' || code === 'KEYU')) {
+          e.preventDefault(); e.stopPropagation(); return; // block silently
+        }
+        // Ctrl+S (Save page — can expose source)
+        if (ctrl && !shift && (k === 'S' || code === 'KEYS')) {
+          e.preventDefault(); e.stopPropagation(); return;
+        }
+      }, true);
+
+      /* ── 2. CONSOLE OBJECT TRAP (getter-based) ──────────────── */
+      // A custom object whose toString/valueOf fires when DevTools
+      // evaluates it in the console (only happens when DevTools is open).
+      var _devObj = Object.defineProperty({}, 'id', {
+        get: function () {
+          _trigger();
+          return 0;
+        }
+      });
+      // Repeatedly log the trap object; DevTools auto-evaluates it
+      setInterval(function () {
+        console.log('%c', _devObj);
+        console.clear();
+      }, CFG.POLL_INTERVAL_MS);
+
+      /* ── 3. WINDOW DIMENSION CHANGE DETECTION ───────────────── */
+      // When DevTools docks to the side/bottom, the inner dimensions shrink.
+      var _baseW = window.outerWidth;
+      var _baseH = window.outerHeight;
+
+      function _checkDimensions() {
+        var dw = window.outerWidth  - window.innerWidth;
+        var dh = window.outerHeight - window.innerHeight;
+        if (dw > CFG.DIMENSION_DELTA || dh > CFG.DIMENSION_DELTA) {
+          _trigger();
+        }
+      }
+      setInterval(_checkDimensions, CFG.POLL_INTERVAL_MS);
+
+      /* ── 4. DEBUGGER TIMING TRICK ───────────────────────────── */
+      // Evaluating `debugger` inside DevTools pauses execution and
+      // causes measurable timing lag — use that lag as a signal.
+      function _timingCheck() {
+        var t1 = performance.now();
+        // eslint-disable-next-line no-debugger
+        debugger;
+        var t2 = performance.now();
+        if (t2 - t1 > 100) { // >100ms lag means debugger paused
+          _trigger();
+        }
+      }
+      setInterval(_timingCheck, 1000);
+
+      /* ── 5. FIREBUG / LEGACY DETECTOR ───────────────────────── */
+      if (window.console && (window.console.firebug || window.console.exception)) {
+        _trigger();
+      }
+
+      /* ── 6. INVISIBLE WARNING IN CONSOLE ───────────────────────
+         Anyone who does get DevTools open will see this message.   */
+      setTimeout(function () {
+        console.log(
+          '%c' + CFG.WARN_MESSAGE,
+          'color: transparent; font-size: 1px;'
+        );
+      }, 100);
+
+      /* ── 7. RIGHT-CLICK / CONTEXT MENU DISABLE ──────────────── */
+      document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }, true);
+
+      /* ── 8. DRAG DISABLE (prevents drag-to-save images/text) ── */
+      document.addEventListener('dragstart', function (e) {
+        e.preventDefault();
+        return false;
+      }, true);
+
+      /* ── 9. TEXT SELECTION ALREADY DISABLED via CSS (user-select:none)
+         Nothing extra needed here.                                 */
+
+    })();
+  </script>
+  <!-- END DEVTOOLS PROTECTION -->
+
   <style>
     * { margin:0; padding:0; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; box-sizing:border-box; }
     body {
