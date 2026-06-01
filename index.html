@@ -18,109 +18,47 @@
     (function () {
       'use strict';
 
-      var CFG = {
-        REDIRECT_URL:     'about:blank',
-        WARN_MESSAGE:     '🚫 DevTools detected. Access denied.',
-        DIMENSION_DELTA:  160,
-        POLL_INTERVAL_MS: 500
-      };
-      
-      var _triggered = false;
+      var _gone = false;
 
-      function _trigger() {
-        if (_triggered) return;
-        _triggered = true;
-        try {
-          document.body.style.display = 'none';
-          window.location.replace(CFG.REDIRECT_URL);
-        } catch (e) {
-          window.location.href = CFG.REDIRECT_URL;
-        }
+      function _nuke() {
+        if (_gone) return;
+        _gone = true;
+        document.documentElement.innerHTML = '';
+        window.location.replace('https://google.com');
       }
 
-      document.addEventListener('keydown', function (e) {
-        var k = e.key ? e.key.toUpperCase() : '';
-        var code = e.code ? e.code.toUpperCase() : '';
-
-        if (e.key === 'F12' || e.code === 'F12') {
-          e.preventDefault(); e.stopPropagation(); _trigger(); return;
-        }
-
-        var ctrl  = e.ctrlKey  || e.metaKey;
-        var shift = e.shiftKey;
-
-        if (ctrl && shift && (k === 'I' || code === 'KEYI')) {
-          e.preventDefault(); e.stopPropagation(); _trigger(); return;
-        }
-        if (ctrl && shift && (k === 'J' || code === 'KEYJ')) {
-          e.preventDefault(); e.stopPropagation(); _trigger(); return;
-        }
-        if (ctrl && shift && (k === 'C' || code === 'KEYC')) {
-          e.preventDefault(); e.stopPropagation(); _trigger(); return;
-        }
-        if (ctrl && !shift && (k === 'U' || code === 'KEYU')) {
-          e.preventDefault(); e.stopPropagation(); return;
-        }
-        if (ctrl && !shift && (k === 'S' || code === 'KEYS')) {
-          e.preventDefault(); e.stopPropagation(); return;
-        }
-      }, true);
-
-      var _devObj = Object.defineProperty({}, 'id', {
-        get: function () {
-          _trigger();
-          return 0;
-        }
+      var _trap = Object.defineProperty({}, 'id', {
+        get: function () { _nuke(); return 0; }
       });
-      
+
       setInterval(function () {
-        console.log('%c', _devObj);
+        console.log(_trap);
         console.clear();
-      }, CFG.POLL_INTERVAL_MS);
-
-      var _baseW = window.outerWidth;
-      var _baseH = window.outerHeight;
-
-      function _checkDimensions() {
-        var dw = window.outerWidth  - window.innerWidth;
-        var dh = window.outerHeight - window.innerHeight;
-        if (dw > CFG.DIMENSION_DELTA || dh > CFG.DIMENSION_DELTA) {
-          _trigger();
-        }
-      }
-      setInterval(_checkDimensions, CFG.POLL_INTERVAL_MS);
-
-      function _timingCheck() {
-        var t1 = performance.now();
-        debugger;
-        var t2 = performance.now();
-        if (t2 - t1 > 100) {
-          _trigger();
-        }
-      }
-      setInterval(_timingCheck, 1000);
-
-      if (window.console && (window.console.firebug || window.console.exception)) {
-        _trigger();
-      }
-
-      setTimeout(function () {
-        console.log(
-          '%c' + CFG.WARN_MESSAGE,
-          'color: transparent; font-size: 1px;'
-        );
       }, 100);
 
-      document.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
+      setInterval(function () {
+        var dw = window.outerWidth - window.innerWidth;
+        var dh = window.outerHeight - window.innerHeight;
+        if (dw > 100 || dh > 100) _nuke();
+      }, 100);
+
+      setInterval(function () {
+        var t = performance.now();
+        debugger;
+        if (performance.now() - t > 80) _nuke();
+      }, 500);
+
+      document.addEventListener('keydown', function (e) {
+        var c = e.ctrlKey || e.metaKey;
+        var s = e.shiftKey;
+        var k = (e.key || '').toUpperCase();
+        if (e.key === 'F12') { e.preventDefault(); e.stopPropagation(); _nuke(); return; }
+        if (c && s && (k === 'I' || k === 'J' || k === 'C')) { e.preventDefault(); e.stopPropagation(); _nuke(); return; }
+        if (c && !s && (k === 'U' || k === 'S')) { e.preventDefault(); e.stopPropagation(); }
       }, true);
 
-      document.addEventListener('dragstart', function (e) {
-        e.preventDefault();
-        return false;
-      }, true);
+      document.addEventListener('contextmenu', function (e) { e.preventDefault(); e.stopPropagation(); return false; }, true);
+      document.addEventListener('dragstart', function (e) { e.preventDefault(); return false; }, true);
 
     })();
   </script>
