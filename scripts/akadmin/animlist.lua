@@ -48,7 +48,6 @@ return {
     ["poodle suck own dick"]                          = "https://yourscoper.vercel.app/scripts/reanimation/animations/poodle%20suck%20own%20dick.lua",
     ["poodle there goes my baby fall"]                = "https://yourscoper.vercel.app/scripts/reanimation/animations/poodle%20there%20goes%20my%20baby%20fall.lua",
     ["poodle twerk thingy"]                           = "https://yourscoper.vercel.app/scripts/reanimation/animations/poodle%20twerk%20thingy.lua",
-    ["poodle needy twerk"]                            = "https://yourscoper.vercel.app/scripts/reanimation/animations/poodle%20needy%20twerk.lua",
     ["scoper hide"]                                   = "https://yourscoper.vercel.app/scripts/reanimation/animations/scoper%20hide.lua",
     ["sharp OG sex sleep"]                            = "https://yourscoper.vercel.app/scripts/reanimation/animations/sharp%20OG%20sex%20sleep.lua",
     ["sharp a thrust"]                                = "https://yourscoper.vercel.app/scripts/reanimation/animations/sharp%20a%20thrust.lua",
