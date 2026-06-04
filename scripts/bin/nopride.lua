@@ -150,6 +150,8 @@ for _, v in ipairs(map.happy_home:GetDescendants()) do
 			v.Color = Color3.fromRGB(25, 25, 25)
 		elseif v.Size == Vector3.new(7, 5, -1) then
 			v.Color = Color3.fromRGB(255, 255, 255)
+		elseif v.Size == Vector3.new(10, 3, 3) then
+			v.Color = Color3.fromRGB(75, 75, 75)
 		else
 			v.Color = (v.Size.X == 51)
 				and Color3.fromRGB(255, 56, 56)
