@@ -8,7 +8,7 @@ const whitelistData = {
         "discord": "765706304656113664", //yourscoper
         "key": "scoper-QwUWUeXQHM3Y4p1sO7fmFqQADmLI1e"
     },
-    "44495a762d0a02bcd478977024d77a6ec7ec0cc240c030e75e5b041956ba8037": { // Madium
+    "03ac565cfba5b2444a0c8d558edd3148bdb00b9ffb0153730b30ba00ce282266558314186c8ecfabd9dad3fba8c258f0dd723ba7e304c3316887031fed622250": { // Potassium
       "discord": "1066196545957011476", //Angel
       "key": "scoper-oXihtcoWppO2L8bgS1enYJ4u0pVKyl"
     },
