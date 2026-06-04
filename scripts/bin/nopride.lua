@@ -31,6 +31,30 @@ for _, v in ipairs(map:GetDescendants()) do
 	end
 end
 
+for _, v in ipairs(map.obby:GetDescendants()) do
+	if v:IsA("BasePart") then
+		local n, m = v.Name, v.Material
+	
+		if m == Enum.Material.Foil then
+			v.Color = Color3.fromRGB(125, 125, 125)
+		elseif m == Enum.Material.Sand then
+			v.Color = Color3.fromRGB(200, 200, 200)
+		elseif m == Enum.Material.Wood then
+			v.Color = Color3.fromRGB(200, 200, 200)
+		end
+	end
+end
+
+for _, v in ipairs(map.spawn:GetDescendants()) do
+	if v:IsA("BasePart") then
+		local n, m = v.Name, v.Material
+
+		if n == "Union" and m == Enum.Material.Wood then
+			v.Color = Color3.fromRGB(255, 255, 255)
+		end
+	end
+end
+
 for _, v in ipairs(map.runway:GetDescendants()) do
 	if v:IsA("BasePart") and v.Name == "Union" and v.Material == Enum.Material.CeramicTiles then
 		v.Color = Color3.fromRGB(150, 150, 150)
@@ -100,17 +124,32 @@ end
 
 for _, v in ipairs(map.happy_home:GetDescendants()) do
 	if v:IsA("BasePart") and v.Name == "no" then
-		local parent = v.Parent
-
 		if v.Material == Enum.Material.Foil then
 			v.Color = Color3.fromRGB(115, 157, 240)
 
-			for _, p in ipairs(parent:GetChildren()) do
-				if p:IsA("BasePart") and p.Material ~= Enum.Material.Foil then
-					p.Color = Color3.fromRGB(255, 255, 255)
+			for _, tub in next, v.Parent:GetChildren() do
+				if tub.Material ~= Enum.Material.Foil then
+					tub.Color = Color3.fromRGB(255, 255, 255)
 				end
 			end
-
+		elseif v.Size == Vector3.new(57, 1, 57) then
+			v.Color = Color3.fromRGB(74, 186, 101)
+		elseif v.Size == Vector3.new(1, 3, 5) then
+			v.Color = Color3.fromRGB(255, 255, 255)
+		elseif v.Size == Vector3.new(1, 1, 5) then
+			v.Color = Color3.fromRGB(255, 255, 255)
+		elseif v.Size == Vector3.new(1, 5, 5) then
+			v.Color = Color3.fromRGB(255, 255, 255)
+		elseif v.Size == Vector3.new(1, 5, 7) then
+			v.Color = Color3.fromRGB(35, 35, 35)
+		elseif v.Size == Vector3.new(0.25, 1.5, 1.5) then
+			v.Color = Color3.fromRGB(125, 5, 5)
+		elseif v.Size == Vector3.new(7, 5, 1) then
+			v.Color = Color3.fromRGB(255, 255, 255)
+		elseif v.Size == Vector3.new(0.25, 0.75, 0.75) then
+			v.Color = Color3.fromRGB(25, 25, 25)
+		elseif v.Size == Vector3.new(7, 5, -1) then
+			v.Color = Color3.fromRGB(255, 255, 255)
 		else
 			v.Color = (v.Size.X == 51)
 				and Color3.fromRGB(255, 56, 56)
