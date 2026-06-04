@@ -300,4 +300,12 @@ return {
     ["Uni's Long Legs 2"]                             = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni's%20Long%20Legs%202.lua",
     ["Uni's Back Rise Up"]                            = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni's%20Back%20Rise%20Up.lua",
     ["Uni's Fast Squats"]                             = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni's%20Fast%20Squats.lua",
+    ["Uni's scissor"]                                 = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni%27s%20Scissor.lua",
+    ["Uni's rock"]                                    = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni%27s%20Rock.lua",
+    ["Uni's fingering"]                               = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni%27s%20Fingering.lua",
+    ["Uni's point"]                                   = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni%27s%20Point.lua",
+    ["Uni's deep thrust"]                             = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni%27s%20Deep%20Thrust.lua",
+    ["Uni's point 2"]                                 = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni%27s%20Point%202.lua",
+    ["Uni's point 3"]                                 = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni%27s%20Point%203.lua",
+    ["Uni's paper"]                                   = "https://yourscoper.vercel.app/scripts/reanimation/animations/Uni%27s%20Paper.lua",
 }
