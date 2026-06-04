@@ -1,5 +1,11 @@
-if not game:IsLoaded() then
-    game.Loaded:Wait()
+if type(getgenv().ScopersNoPride) == "boolean" and getgenv().ScopersNoPride then
+    return
+end
+
+getgenv().ScopersNoPride = true
+
+if not Game:IsLoaded() then
+    Game.Loaded:Wait()
 end
 
 local QueueTeleport = queue_on_teleport or queueonteleport
