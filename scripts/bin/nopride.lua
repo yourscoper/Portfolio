@@ -10,18 +10,20 @@ for _, v in ipairs(map:GetDescendants()) do
 
 		if n == "platform" then
 			v.Color = Color3.fromRGB(94, 255, 129)
-
 		elseif n == "No" and v:IsA("MeshPart") and v.MeshId == "rbxassetid://139829181741741" then
 			v.Color = Color3.fromRGB(94, 255, 129)
-
 		elseif n == "No" and m == Enum.Material.WoodPlanks then
 			v.Color = Color3.fromRGB(158, 109, 82)
-
 		elseif n == "picnic" and m == Enum.Material.WoodPlanks then
 			v.Color = Color3.fromRGB(158, 109, 82)
-
 		elseif m == Enum.Material.Foil then
 			v.Color = Color3.fromRGB(115, 157, 240)
+		elseif m == Enum.Material.Sand then
+			v.Color = Color3.fromRGB(252, 243, 144)
+		elseif m == Enum.Material.Wood then
+			v.Color = Color3.fromRGB(128, 101, 80)
+		elseif n == "Union" then
+			v.Color = Color3.fromRGB(67, 145, 68)
 		end
 	elseif v:IsA("BasePart") and v:IsDescendantOf(map.booth)
 		and v.Size == Vector3.new(27, 0.25, 27) then
@@ -37,8 +39,8 @@ end
 
 for _, v in ipairs(map.middle.performance.Model:GetDescendants()) do
 	if v:IsA("BasePart") then
-		v.Color = (v.Name == "Speaker" and Color3.fromRGB(26,56,20))
-			or ((v.Name == "Base" or v.Name == "Part") and Color3.fromRGB(0,0,0))
+		v.Color = (v.Name == "Speaker" and Color3.fromRGB(26, 56, 20))
+			or ((v.Name == "Base" or v.Name == "Part") and Color3.fromRGB(0, 0, 0))
 			or v.Color
 	end
 end
@@ -103,13 +105,13 @@ end
 
 for _, v in ipairs(workspace:GetDescendants()) do
 	if v:IsA("Decal") and v.Parent:IsA("BasePart")
-		and v.Parent ~= map.conveyer and not v:IsDescendantOf(map.happy_home) then
+		and not v:IsDescendantOf(map.conveyer) and not v:IsDescendantOf(map.happy_home) then
 		v:Destroy()
 	end
 end
 
 for _, v in ipairs(map.conveyer:GetDescendants()) do
 	if v:IsA("BasePart") and v:FindFirstChild("Texture") then
-		v.Texture.Color3 = Color3.fromRGB(255,255,255)
+		v.Texture.Color3 = Color3.fromRGB(255, 255, 255)
 	end
 end
