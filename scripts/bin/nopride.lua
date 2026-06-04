@@ -31,6 +31,14 @@ for _, v in ipairs(map:GetDescendants()) do
 	end
 end
 
+for _, v in ipairs(map.runway:GetDescendants()) do
+	if v:IsA("BasePart") and v.Name == "Union" and v.Material == Enum.Material.CeramicTiles then
+		v.Color = Color3.fromRGB(150, 150, 150)
+	elseif v:IsA("BasePart") and v.Name == "No" and v.Material == Enum.Material.Sand then
+		v.Color = Color3.fromRGB(125, 125, 125)
+	end
+end
+
 for _, v in ipairs(map.middle.picnic:GetDescendants()) do
 	if v:IsA("BasePart") and v.Name == "No" and v.Material == Enum.Material.Grass then
 		v.Color = Color3.fromRGB(90, 237, 124)
