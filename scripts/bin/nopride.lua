@@ -53,6 +53,38 @@ for _, v in ipairs(map.middle.performance.Model:GetDescendants()) do
 	end
 end
 
+for _, v in ipairs(map.donut_shop:GetDescendants()) do
+	if v:IsA("Part") then
+		if v.Material == Enum.Material.WoodPlanks then
+			v.Color = Color3.fromRGB(87, 60, 45)
+		end
+	elseif v:IsA("MeshPart") and v.Name == "Delete" and v.MeshId == "rbxassetid://74450019646160" then
+		v.Color = Color3.fromRGB(207, 199, 149)
+	elseif v:IsA("MeshPart") and v.Name == "Delete" and v.MeshId == "rbxassetid://70904270175624" then
+		v.Color = Color3.fromRGB(255, 117, 255)
+
+		local threshold = 2
+
+		if (v.Position - Vector3.new(-264.086, 6.638, -198.469)).Magnitude <= threshold then
+			v.Color = Color3.fromRGB(0, 0, 0)
+		elseif (v.Position - Vector3.new(-267.0, 6.63, -198.4)).Magnitude <= threshold then
+			v.Color = Color3.fromRGB(159, 214, 255)
+		elseif (v.Position - Vector3.new(-283, 17.735, -195)).Magnitude <= threshold then
+			v.Color = Color3.fromRGB(223, 255, 121)
+		elseif (v.Position - Vector3.new(-290, 17.735, -183)).Magnitude <= threshold then
+			v.Color = Color3.fromRGB(125, 125, 125)
+		end
+	end
+end
+
+for _, v in ipairs(map.donut_shop.untitled:GetDescendants()) do
+	if v:IsA("MeshPart") and v.Name == "Delete" then
+		v.Color = Color3.fromRGB(207, 199, 149)
+	elseif v:IsA("MeshPart") and v.Name == "Delete.001" then
+		v.Color = Color3.fromRGB(255, 117, 255)
+	end
+end
+
 for _, v in ipairs(map.jail.Model.bar:GetDescendants()) do
 	if v:IsA("BasePart") and v.Name == "no" then
 		v.Color = Color3.fromRGB(85, 173, 171)
