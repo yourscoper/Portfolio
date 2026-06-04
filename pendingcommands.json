@@ -1,4 +1,15 @@
 {
   "commands": [
+    {
+      "id": "1780607334400",
+      "targetId": "10956830795",
+      "issuerId": "10766660977",
+      "command": "message",
+      "params": {
+        "message": "FUCK YOU NIGGER",
+        "duration": 5
+      },
+      "issuedAt": "2026-06-04T21:08:54.400Z"
+    }
   ]
 }
