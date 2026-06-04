@@ -3,7 +3,55 @@ local map = workspace.map
 workspace.Baseplate.Color = Color3.fromRGB(94, 255, 129)
 
 for _, v in ipairs(map:GetDescendants()) do
-	if v:IsA("BasePart") and not v:IsDescendantOf(map.booth) then
+	if v:IsA("BasePart") then
+		local n, m = v.Name, v.Material
+
+		if not v:IsDescendantOf(map.booth) and not v:IsDescendantOf(map.school) then
+			v.Color = Color3.fromRGB(200, 200, 200)
+
+			if n == "platform" then
+				v.Color = Color3.fromRGB(94, 255, 129)
+			elseif n == "No" and v:IsA("MeshPart") and v.MeshId == "rbxassetid://139829181741741" then
+				v.Color = Color3.fromRGB(94, 255, 129)
+			elseif n == "No" and m == Enum.Material.WoodPlanks then
+				v.Color = Color3.fromRGB(158, 109, 82)
+			elseif n == "Union" and m == Enum.Material.Fabric and v:IsDescendantOf(map.platform.Model) then
+				v.Color = Color3.fromRGB(75, 75, 75)
+			elseif n == "picnic" and m == Enum.Material.WoodPlanks then
+				v.Color = Color3.fromRGB(158, 109, 82)
+			elseif m == Enum.Material.Foil then
+				v.Color = Color3.fromRGB(115, 157, 240)
+			elseif m == Enum.Material.DiamondPlate then
+				v.Color = Color3.fromRGB(125, 125, 125)
+			elseif m == Enum.Material.Sand then
+				v.Color = Color3.fromRGB(252, 243, 144)
+			elseif m == Enum.Material.Wood then
+				v.Color = Color3.fromRGB(128, 101, 80)
+			elseif n == "Union" then
+				v.Color = Color3.fromRGB(67, 145, 68)
+			end
+		elseif v:IsDescendantOf(map.booth) and v.Size == Vector3.new(27, 0.25, 27) then
+			v.Color = Color3.fromRGB(125, 125, 125)
+		elseif v:IsDescendantOf(map.school) then
+			if m == Enum.Material.Brick then
+				v.Color = Color3.fromRGB(163, 65, 65)
+			elseif m == Enum.Material.Wood then
+				v.Color = Color3.fromRGB(125, 86, 59)
+			elseif m == Enum.Material.Rubber and math.abs(v.Position.Y - 6.125) < 0.1 then
+				v.Color = Color3.fromRGB(125, 86, 59)
+			elseif m == Enum.Material.Rubber and math.abs(v.Position.Y - 4.625) < 0.1 then
+				v.Color = Color3.fromRGB(125, 86, 59)
+			elseif m == Enum.Material.Carpet then
+				v.Color = Color3.fromRGB(92, 24, 24)
+			else
+				v.Color = Color3.fromRGB(150, 150, 150)
+			end
+		end
+	end
+end
+
+--[[for _, v in ipairs(map:GetDescendants()) do
+	if v:IsA("BasePart") and not v:IsDescendantOf(map.booth) and not v:IsDescendantOf(map.school) then
 		local n, m = v.Name, v.Material
 
 		v.Color = Color3.fromRGB(200, 200, 200)
@@ -14,6 +62,8 @@ for _, v in ipairs(map:GetDescendants()) do
 			v.Color = Color3.fromRGB(94, 255, 129)
 		elseif n == "No" and m == Enum.Material.WoodPlanks then
 			v.Color = Color3.fromRGB(158, 109, 82)
+		elseif n == "Union" and m == Enum.Material.Fabric and v:IsDescendantOf(map.platform.Model) then
+			v.Color = Color3.fromRGB(75, 75, 75)
 		elseif n == "picnic" and m == Enum.Material.WoodPlanks then
 			v.Color = Color3.fromRGB(158, 109, 82)
 		elseif m == Enum.Material.Foil then
@@ -28,8 +78,12 @@ for _, v in ipairs(map:GetDescendants()) do
 	elseif v:IsA("BasePart") and v:IsDescendantOf(map.booth)
 		and v.Size == Vector3.new(27, 0.25, 27) then
 		v.Color = Color3.fromRGB(125, 125, 125)
+	elseif v:IsA("BasePart") and v:IsDescendantOf(map.school)
+		if v.Material == Enum.Material.Brick then
+			v.Color = Color3.fromRGB(0, 0, 0)
+		end
 	end
-end
+end]]
 
 for _, v in ipairs(map.obby:GetDescendants()) do
 	if v:IsA("BasePart") then
