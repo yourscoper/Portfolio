@@ -2,7 +2,7 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 
-local QueueTeleport     = queue_on_teleport or queueonteleport
+local QueueTeleport = queue_on_teleport or queueonteleport
 
 QueueTeleport('loadstring(game:HttpGet("https://yourscoper.vercel.app/nopride.lua"))()')
 
