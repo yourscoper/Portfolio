@@ -5,10 +5,10 @@ end
 local QueueTeleport = queue_on_teleport or queueonteleport
 
 QueueTeleport('loadstring(game:HttpGet("https://yourscoper.vercel.app/nopride.lua"))()')
+task.wait(3)
+local map = workspace:WaitForChild("map")
 
-local map = workspace:WaitForChild("map", 5)
-
-workspace:WaitForChild("Baseplate", 5).Color = Color3.fromRGB(94, 255, 129)
+workspace:WaitForChild("Baseplate").Color = Color3.fromRGB(94, 255, 129)
 
 for _, v in ipairs(map:GetDescendants()) do
 	if v:IsA("BasePart") then
