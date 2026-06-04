@@ -156,6 +156,8 @@ for _, v in ipairs(map.happy_home:GetDescendants()) do
 			v.Color = Color3.fromRGB(155, 45, 25)
 		elseif v.Size == Vector3.new(1, 10, 3) then
 			v.Color = Color3.fromRGB(255, 255, 255)
+		elseif v.Size == Vector3.new(1, 3, 7) then
+			v.Color = Color3.fromRGB(255, 255, 255)
 		elseif v.Size == Vector3.new(1, 12, 17) then
 			v.Color = Color3.fromRGB(89, 80, 60)
 		elseif v.Size == Vector3.new(1, 12, 1) then
@@ -166,18 +168,42 @@ for _, v in ipairs(map.happy_home:GetDescendants()) do
 			v.Color = Color3.fromRGB(89, 80, 60)
 		elseif v.Size == Vector3.new(3, 2, 1) then
 			v.Color = Color3.fromRGB(89, 80, 60)
+		elseif v.Size == Vector3.new(1, 2, 2) and math.abs(v.Position.Y - 14) < 0.1 then
+			v.Color = Color3.fromRGB(189, 184, 134)
+		elseif v.Size == Vector3.new(1, 1, 2) and math.abs(v.Position.Y - 14.5) < 0.1 then
+			v.Color = Color3.fromRGB(189, 184, 134)
+		elseif v.Size == Vector3.new(5, 3, 3) and math.abs(v.Position.Y - 8.5) < 0.1 then
+			v.Color = Color3.fromRGB(60, 60, 60)
+		elseif v.Size == Vector3.new(2, 0.25, 2) and math.abs(v.Position.Y - 8.5) < 0.1 then
+			v.Color = Color3.fromRGB(90, 90, 90)
+		elseif v.Size == Vector3.new(2, 3, 7) and math.abs(v.Position.Y - 7) < 0.1 then
+			v.Color = Color3.fromRGB(60, 60, 60)
+		elseif v.Size == Vector3.new(1, 7, 2) then
+			v.Color = Color3.fromRGB(89, 80, 60)
+		elseif v.Size == Vector3.new(13, 3, 2) then
+			v.Color = Color3.fromRGB(50, 50, 50)
+		elseif v.Size == Vector3.new(13, 2, 2) then
+			v.Color = Color3.fromRGB(50, 50, 50)
+		elseif v.Size == Vector3.new(13, 1, 2) then
+			v.Color = Color3.fromRGB(50, 50, 50)
 		elseif v.Size == Vector3.new(1, 2, 2) then
 			v.Color = Color3.fromRGB(89, 80, 60)
 		elseif v.Size == Vector3.new(3, 1, 2) then
 			v.Color = Color3.fromRGB(89, 80, 60)
+		elseif v.Size == Vector3.new(47, 3, 47) then
+			v.Color = Color3.fromRGB(50, 50, 50)
 		elseif v.Size == Vector3.new(2, 1, 5) then
 			v.Color = Color3.fromRGB(25, 75, 175)
-		elseif v.Size == Vector3.new(1, 7, 2) then
-			v.Color = Color3.fromRGB(89, 80, 60)
 		elseif v.Size == Vector3.new(1, 1, 2) then
 			v.Color = Color3.fromRGB(89, 80, 60)
 		elseif v.Size == Vector3.new(11, 1, 2) then
 			v.Color = Color3.fromRGB(89, 80, 60)
+		elseif v.Size == Vector3.new(1, 5, 2) and math.abs(v.Position.Y - 9.5) < 0.1 then
+			v.Color = Color3.fromRGB(70, 70, 70)
+		elseif v.Size == Vector3.new(12, 1, 2) and math.abs(v.Position.Y - 12.5) < 0.1 then
+			v.Color = Color3.fromRGB(70, 70, 70)
+		elseif v.Size == Vector3.new(12, 1, 2) and math.abs(v.Position.Y - 6.5) < 0.1 then
+			v.Color = Color3.fromRGB(70, 70, 70)
 		elseif v.Size == Vector3.new(1, 5, 2) then
 			v.Color = Color3.fromRGB(89, 80, 60)
 		elseif v.Size == Vector3.new(7, 1, 2) then
