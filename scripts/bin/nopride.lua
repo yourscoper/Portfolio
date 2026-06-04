@@ -65,7 +65,7 @@ for _, v in ipairs(map.happy_home:GetDescendants()) do
 
 			for _, p in ipairs(parent:GetChildren()) do
 				if p:IsA("BasePart") and p.Material ~= Enum.Material.Foil then
-					p.Color = Color3.fromRGB(255,255,255)
+					p.Color = Color3.fromRGB(255, 255, 255)
 				end
 			end
 
@@ -103,7 +103,7 @@ end
 
 for _, v in ipairs(workspace:GetDescendants()) do
 	if v:IsA("Decal") and v.Parent:IsA("BasePart")
-		and v.Parent ~= map.conveyer then
+		and v.Parent ~= map.conveyer and not v:IsDescendantOf(map.happy_home) then
 		v:Destroy()
 	end
 end
