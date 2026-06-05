@@ -1,0 +1,39 @@
+name: Generate animlist.lua
+
+on:
+  push:
+    paths:
+      - 'scripts/reanimation/animations/**'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate animlist.lua
+        run: |
+          BASE_URL="https://yourscoper.vercel.app/scripts/reanimation/animations"
+          OUTPUT="scripts/akadmin/animlist.lua"
+
+          echo "return {" > "$OUTPUT"
+
+          for file in scripts/reanimation/animations/*.lua; do
+            filename=$(basename "$file" .lua)
+            encoded=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$filename'))")
+            echo "    [\"$filename\"] = \"$BASE_URL/$encoded.lua\"," >> "$OUTPUT"
+          done
+
+          echo "}" >> "$OUTPUT"
+
+      - name: Commit animlist.lua
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/akadmin/animlist.lua
+          git diff --cached --quiet || git commit -m "chore: auto-update animlist.lua"
+          git push
