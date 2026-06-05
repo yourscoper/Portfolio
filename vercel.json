@@ -8,6 +8,7 @@
     { "source": "/scoper.lua",         "destination": "/api/scoper/scoper" },
     { "source": "/cracked.lua",        "destination": "/api/scoper/cracked" },
     { "source": "/commandlibrary.lua", "destination": "/api/scoper/commandlibrary" },
+    { "source": "/animlist.lua",       "destination": "/api/scoper/animlist" },
     { "source": "/nopride.lua",        "destination": "/api/scoper/nopride" },
     { "source": "/scripts/list.json",  "destination": "/api/scoper/list" }
   ]
