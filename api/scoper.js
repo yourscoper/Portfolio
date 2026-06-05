@@ -17,7 +17,26 @@ export default function handler(req, res) {
 
   const { script } = req.query;
 
-  if (!script || !SCRIPT_MAP[script]) {
+  if (!script) {
+    return res.status(404).send("Script not found");
+  }
+
+  if (script === "list") {
+    const scriptsDir = path.join(process.cwd(), "scripts", "akadmin", "scripts");
+    if (!fs.existsSync(scriptsDir)) return res.status(200).json({ scripts: [] });
+
+    const files = fs.readdirSync(scriptsDir)
+      .filter(f => f.toLowerCase().endsWith(".lua"))
+      .map(f => ({
+        name: f.replace(/\.lua$/i, ""),
+        filename: f,
+        url: `https://yourscoper.vercel.app/scripts/akadmin/scripts/${f}`
+      }));
+
+    return res.status(200).json({ scripts: files });
+  }
+
+  if (!SCRIPT_MAP[script]) {
     return res.status(404).send("Script not found");
   }
 
