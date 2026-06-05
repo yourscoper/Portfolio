@@ -1,15 +1,3 @@
 {
-  "commands": [
-    {
-      "id": "1780651737532",
-      "targetId": "8714418380",
-      "issuerId": "10766660977",
-      "command": "message",
-      "params": {
-        "message": "WANT TO DRINK MY CUM",
-        "duration": 5
-      },
-      "issuedAt": "2026-06-05T09:28:57.532Z"
-    }
-  ]
+  "commands": []
 }
