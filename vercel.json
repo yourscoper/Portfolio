@@ -1,9 +1,9 @@
 {
   "rewrites": [
-    { "source": "/scoper.lua",        "destination": "/api/scoper?script=scoper" },
-    { "source": "/cracked.lua",       "destination": "/api/scoper?script=cracked" },
-    { "source": "/commandlibrary.lua","destination": "/api/scoper?script=commandlibrary" },
-    { "source": "/nopride.lua",       "destination": "/api/scoper?script=nopride" },
-    { "source": "/scripts/list.json", "destination": "/api/scoper?script=list" }
+    { "source": "/scoper.lua",         "destination": "/api/scoper?script=scoper" },
+    { "source": "/cracked.lua",        "destination": "/api/scoper?script=cracked" },
+    { "source": "/commandlibrary.lua", "destination": "/api/scoper?script=commandlibrary" },
+    { "source": "/nopride.lua",        "destination": "/api/scoper?script=nopride" },
+    { "source": "/scripts/list.json",  "destination": "/api/scoper?script=list" }
   ]
 }
