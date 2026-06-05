@@ -17,18 +17,29 @@ jobs:
 
       - name: Generate animlist.lua
         run: |
-          BASE_URL="https://yourscoper.vercel.app/scripts/reanimation/animations"
-          OUTPUT="scripts/akadmin/animlist.lua"
+          python3 << 'EOF'
+          import os
+          import urllib.parse
 
-          echo "return {" > "$OUTPUT"
+          base_url = "https://yourscoper.vercel.app/scripts/reanimation/animations"
+          output_path = "scripts/akadmin/animlist.lua"
+          anim_dir = "scripts/reanimation/animations"
 
-          for file in scripts/reanimation/animations/*.lua; do
-            filename=$(basename "$file" .lua)
-            encoded=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$filename'))")
-            echo "    [\"$filename\"] = \"$BASE_URL/$encoded.lua\"," >> "$OUTPUT"
-          done
+          lines = ["return {\n"]
 
-          echo "}" >> "$OUTPUT"
+          for fname in sorted(os.listdir(anim_dir)):
+              if fname.endswith(".lua"):
+                  name = fname[:-4]
+                  encoded = urllib.parse.quote(name)
+                  lines.append(f'    ["{name}"] = "{base_url}/{encoded}.lua",\n')
+
+          lines.append("}\n")
+
+          with open(output_path, "w") as f:
+              f.writelines(lines)
+
+          print(f"Generated {len(lines)-2} animations.")
+          EOF
 
       - name: Commit animlist.lua
         run: |
