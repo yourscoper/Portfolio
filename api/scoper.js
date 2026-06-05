@@ -16,7 +16,7 @@ export default function handler(req, res) {
   }
 
   const { script } = req.query;
-
+  
   if (!script) {
     return res.status(404).send("Script not found");
   }
