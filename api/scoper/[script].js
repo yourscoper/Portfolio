@@ -5,6 +5,7 @@ const SCRIPT_MAP = {
   scoper:         "scripts/scoper.lua",
   cracked:        "scripts/akadmin/cracked.lua",
   commandlibrary: "scripts/akadmin/commandlibrary.lua",
+  animlist:       "scripts/akadmin/animlist.lua",
   nopride:        "scripts/bin/nopride.lua",
 };
 
