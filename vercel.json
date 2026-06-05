@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/scoper/[script].js": {
+      "includeFiles": "scripts/**"
+    }
+  },
   "rewrites": [
     { "source": "/scoper.lua",         "destination": "/api/scoper/scoper" },
     { "source": "/cracked.lua",        "destination": "/api/scoper/cracked" },
