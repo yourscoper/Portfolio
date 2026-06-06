@@ -7,6 +7,7 @@ const SCRIPT_MAP = {
   commandlibrary: "scripts/akadmin/commandlibrary.lua",
   animlist:       "scripts/akadmin/animlist.lua",
   nopride:        "scripts/bin/nopride.lua",
+  nopride2:       "scripts/bin/nopride2.lua",
   adonisbypass:   "scripts/bin/adonisbypass.lua",
 };
 
