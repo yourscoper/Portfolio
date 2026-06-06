@@ -45,11 +45,11 @@ return {
             primary     = Color3.fromRGB(255, 255, 255),
             useimage    = true,
             accent      = ColorSequence.new{
-                ColorSequenceKeypoint.new(0,    Color3.fromRGB(207, 29, 70)),
-                ColorSequenceKeypoint.new(0.5,  Color3.fromRGB(112, 29, 207)),
-                ColorSequenceKeypoint.new(1,    Color3.fromRGB(29, 207, 195)),
+                ColorSequenceKeypoint.new(0,    Color3.fromRGB(0, 0, 0)),
+                ColorSequenceKeypoint.new(0.5,  Color3.fromRGB(255, 255, 255)),
+                ColorSequenceKeypoint.new(1,    Color3.fromRGB(0, 0, 0)),
             },
-            image       = "http://www.roblox.com/asset/?id=139614150813149"
+            image       = "http://www.roblox.com/asset/?id=115020167372123"
         },
 
         ["that nigger gon"] = {
