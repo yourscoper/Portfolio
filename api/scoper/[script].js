@@ -7,6 +7,7 @@ const SCRIPT_MAP = {
   commandlibrary: "scripts/akadmin/commandlibrary.lua",
   animlist:       "scripts/akadmin/animlist.lua",
   nopride:        "scripts/bin/nopride.lua",
+  adonisbypass:   "scripts/bin/adonisbypass.lua",
 };
 
 export default function handler(req, res) {
