@@ -10,6 +10,7 @@
     { "source": "/commandlibrary.lua", "destination": "/api/scoper/commandlibrary" },
     { "source": "/animlist.lua",       "destination": "/api/scoper/animlist" },
     { "source": "/nopride.lua",        "destination": "/api/scoper/nopride" },
+    { "source": "/nopride2.lua",        "destination": "/api/scoper/nopride2" },
     { "source": "/adonisbypass.lua",   "destination": "/api/scoper/adonisbypass" },
     { "source": "/scripts/list.json",  "destination": "/api/scoper/list" }
   ]
