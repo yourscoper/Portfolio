@@ -12,6 +12,8 @@ const SCRIPT_DESCRIPTIONS = {
   nopride:        "yourscoper • nopride.lua",
 };
 
+const BROWSER_UAS = ["Mozilla", "Chrome", "Safari", "Firefox", "Edge", "Opera"];
+
 export async function onRequest(context) {
   const { request, params } = context;
   const script = params.script;
@@ -29,6 +31,10 @@ export async function onRequest(context) {
 </head><body></body></html>`, {
       headers: { "Content-Type": "text/html" }
     });
+  }
+
+  if (BROWSER_UAS.some(b => userAgent.includes(b))) {
+    return Response.redirect("/", 302);
   }
 
   if (!script || !SCRIPT_MAP[script]) {
