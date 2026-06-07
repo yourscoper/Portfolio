@@ -5,20 +5,43 @@ const SCRIPT_MAP = {
   scoper:         "scripts/scoper.lua",
   cracked:        "scripts/akadmin/cracked.lua",
   commandlibrary: "scripts/akadmin/commandlibrary.lua",
-  animlist:       "scripts/akadmin/animlist.lua",
   nopride:        "scripts/bin/nopride.lua",
-  nopride2:       "scripts/bin/nopride2.lua",
-  adonisbypass:   "scripts/bin/adonisbypass.lua",
+};
+
+const SCRIPT_DESCRIPTIONS = {
+  scoper:         "yourscoper • scoper.lua",
+  cracked:        "yourscoper • cracked.lua",
+  commandlibrary: "yourscoper • commandlibrary.lua",
+  nopride:        "yourscoper • nopride.lua",
 };
 
 export default function handler(req, res) {
   const accept = req.headers.accept || "";
+  const userAgent = req.headers["user-agent"] || "";
+  const { script } = req.query;
+
+  if (userAgent.includes("Discordbot") || userAgent.includes("Twitterbot")) {
+    const description = SCRIPT_DESCRIPTIONS[script] || "yourscoper • Script";
+    res.setHeader("Content-Type", "text/html");
+    return res.send(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta property="og:title" content="yourscoper • Script" />
+          <meta property="og:description" content="${description}" />
+          <meta property="og:site_name" content="yourscoper" />
+          <meta property="og:color" content="#5865F2" />
+          <meta name="theme-color" content="#5865F2" />
+        </head>
+        <body></body>
+      </html>
+    `);
+  }
+
   if (accept.includes("text/html")) {
     res.writeHead(302, { Location: "/" });
     return res.end();
   }
-
-  const { script } = req.query;
 
   if (!script) {
     return res.status(404).send("Script not found");
