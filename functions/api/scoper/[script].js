@@ -1,6 +1,3 @@
-import fs from "fs";
-import path from "path";
-
 const SCRIPT_MAP = {
   scoper:         "scripts/scoper.lua",
   cracked:        "scripts/akadmin/cracked.lua",
@@ -15,64 +12,34 @@ const SCRIPT_DESCRIPTIONS = {
   nopride:        "yourscoper • nopride.lua",
 };
 
-export default function handler(req, res) {
-  const accept = req.headers.accept || "";
-  const userAgent = req.headers["user-agent"] || "";
-  const { script } = req.query;
+export async function onRequest(context) {
+  const { request, params } = context;
+  const script = params.script;
+  const userAgent = request.headers.get("user-agent") || "";
+  const accept = request.headers.get("accept") || "";
 
   if (userAgent.includes("Discordbot") || userAgent.includes("Twitterbot")) {
     const description = SCRIPT_DESCRIPTIONS[script] || "yourscoper • Script";
-    res.setHeader("Content-Type", "text/html");
-    return res.send(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <meta property="og:title" content="yourscoper • Script" />
-          <meta property="og:description" content="${description}" />
-          <meta property="og:site_name" content="yourscoper" />
-          <meta property="og:color" content="#5865F2" />
-          <meta name="theme-color" content="#5865F2" />
-        </head>
-        <body></body>
-      </html>
-    `);
+    return new Response(`<!DOCTYPE html>
+<html><head>
+<meta property="og:title" content="yourscoper • Script" />
+<meta property="og:description" content="${description}" />
+<meta property="og:site_name" content="yourscoper" />
+<meta property="og:color" content="#5865F2" />
+<meta name="theme-color" content="#5865F2" />
+</head><body></body></html>`, {
+      headers: { "Content-Type": "text/html" }
+    });
   }
 
   if (accept.includes("text/html")) {
-    res.writeHead(302, { Location: "/" });
-    return res.end();
+    return Response.redirect("/", 302);
   }
 
-  if (!script) {
-    return res.status(404).send("Script not found");
+  if (!script || !SCRIPT_MAP[script]) {
+    return new Response("Script not found", { status: 404 });
   }
 
-  if (script === "list") {
-    const scriptsDir = path.join(process.cwd(), "scripts", "akadmin", "scripts");
-    if (!fs.existsSync(scriptsDir)) return res.status(200).json({ scripts: [] });
-
-    const files = fs.readdirSync(scriptsDir)
-      .filter(f => f.toLowerCase().endsWith(".lua"))
-      .map(f => ({
-        name: f.replace(/\.lua$/i, ""),
-        filename: f,
-        url: `https://yourscoper.vercel.app/scripts/akadmin/scripts/${f}`
-      }));
-
-    return res.status(200).json({ scripts: files });
-  }
-
-  if (!SCRIPT_MAP[script]) {
-    return res.status(404).send("Script not found");
-  }
-
-  const filePath = path.join(process.cwd(), SCRIPT_MAP[script]);
-
-  if (!fs.existsSync(filePath)) {
-    return res.status(404).send("File not found");
-  }
-
-  const content = fs.readFileSync(filePath, "utf8");
-  res.setHeader("Content-Type", "text/plain");
-  res.send(content);
+  const baseUrl = new URL(request.url).origin;
+  return fetch(`${baseUrl}/${SCRIPT_MAP[script]}`);
 }
