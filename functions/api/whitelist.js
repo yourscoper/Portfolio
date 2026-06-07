@@ -1,0 +1,61 @@
+const whitelistData = {
+  "whitelist": {
+    "f0a9890c96a38a70555322fad30a7582071c953dc3f4f8a93f5c05377e8d3daf7e3feac042caada1e5595b91c54e86d1378ef2ece37598278298d90eaaacff44": {
+      "discord": "765706304656113664",
+      "key": "scoper-QwUWUeXQHM3Y4p1sO7fmFqQADmLI1e"
+    },
+    "877b06591447bf17336a645ffd0709bd65f559e0b7b494a51fe27f8d337a5517": {
+      "discord": "765706304656113664",
+      "key": "scoper-QwUWUeXQHM3Y4p1sO7fmFqQADmLI1e"
+    },
+    "03ac565cfba5b2444a0c8d558edd3148bdb00b9ffb0153730b30ba00ce282266558314186c8ecfabd9dad3fba8c258f0dd723ba7e304c3316887031fed622250": {
+      "discord": "1066196545957011476",
+      "key": "scoper-oXihtcoWppO2L8bgS1enYJ4u0pVKyl"
+    },
+    "046d769d1534bbbd15088e40a29fe0c0bbec9c3bef62f130ed44a8246ee18dd36069be321c545c444aae1bb1e1ca81868c270cf7485615eb92bc24e1ca5f4f85": {
+      "discord": "1476842427355758613",
+      "key": "scoper-kjYGYRjkcx61gDrszy9Yxk2epkCUrj"
+    },
+    "62584A29F26BEA55FE8F7952BE6125": {
+      "discord": "698726180458725416",
+      "key": "scoper-RonH5cWXjZHxz66KE2WZU1vzkPNM7K"
+    },
+    "1d89edc122366888c0e7481e01777993ff599faeb0ae8ac4c09922fc83e42732": {
+      "discord": "1087223886405443584",
+      "key": "scoper-NWzKo1SxO0xO6z8K0A3omsJsqqzsEm"
+    },
+    "c65d154e2c15d2471be103d7468be1642bd79b3405963b832efbad3606f18ccb1a8c2da6f1c03761aaca4a92ddf0503f6a0e90c7e2989c9f3cd2333be259ed3c": {
+      "discord": "1439964270434717826",
+      "key": "scoper-PoV3hnlsy8uzKTwYLkMkkyIaAiXNYv"
+    },
+    "6470FA296EEFA29ECED18DFE1C328D": {
+      "discord": "1439964270434717826",
+      "key": "scoper-PoV3hnlsy8uzKTwYLkMkkyIaAiXNYv"
+    },
+    "49A3A94CC0B46B95ABEDFFEFDC427277F04B19D9DF0D90DF6DF637FADD1C87AD": {
+      "discord": "1439964270434717826",
+      "key": "scoper-PoV3hnlsy8uzKTwYLkMkkyIaAiXNYv"
+    },
+    "34e9c95c-0b0d-11f1-b000-806e6f6e6963": {
+      "discord": "1439964270434717826",
+      "key": "scoper-PoV3hnlsy8uzKTwYLkMkkyIaAiXNYv"
+    },
+    "295b846a-b8ca-11f0-92f3-806e6f6e6963": {
+      "discord": "1140785097684037745",
+      "key": "scoper-ruS3MHWL6VDklQNR2q1CUX3U01SY8Z"
+    }
+  },
+  "shared": {
+    "status": true,
+    "key": "scoper-WNwzEGr9VAvrVF1KWfveWanA7CEIse"
+  }
+};
+
+export async function onRequest(context) {
+  if (context.request.method !== "GET") {
+    return new Response(JSON.stringify({ error: "Method Not Allowed" }), { status: 405 });
+  }
+  return new Response(JSON.stringify(whitelistData, null, 2), {
+    headers: { "Content-Type": "application/json" }
+  });
+}
