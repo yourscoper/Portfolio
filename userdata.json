@@ -22,7 +22,7 @@
   },
   "10766660977": {
     "tag": "OWNER",
-    "executed": false,
+    "executed": true,
     "updatedAt": "9:38 PM 6/6/2026",
     "jobId": "2f0f0df3-f84a-463d-adfe-4fdef27bc0e2",
     "placeId": "6884319169"
@@ -71,9 +71,9 @@
   },
   "9306062616": {
     "tag": "UNICORN MAN",
-    "executed": false,
-    "updatedAt": "2:35 PM 6/7/2026",
-    "jobId": "f34cfcb8-dfd4-4e22-bc81-001bbd0dcff7",
+    "executed": true,
+    "updatedAt": "2:52 PM 6/7/2026",
+    "jobId": "0935b836-5421-4df8-a35d-3642a7f42787",
     "placeId": "6884319169"
   },
   "11042314093": {
