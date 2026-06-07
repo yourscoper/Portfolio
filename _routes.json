@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "include": [
+    "/scoper.lua",
+    "/cracked.lua",
+    "/commandlibrary.lua",
+    "/animlist.lua",
+    "/nopride.lua",
+    "/nopride2.lua",
+    "/adonisbypass.lua",
+    "/scripts/list.json",
+    "/scripts/*"
+  ],
+  "exclude": []
+}
