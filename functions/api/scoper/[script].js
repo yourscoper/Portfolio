@@ -22,6 +22,8 @@ export async function onRequest(context) {
   const { request, params } = context;
   const script = params.script;
   const userAgent = request.headers.get("user-agent") || "";
+  const referer = request.headers.get("referer") || "";
+  const acceptHeader = request.headers.get("accept") || "";
 
   if (userAgent.includes("Discordbot") || userAgent.includes("Twitterbot")) {
     const description = SCRIPT_DESCRIPTIONS[script] || "yourscoper • Script";
@@ -38,8 +40,9 @@ export async function onRequest(context) {
   }
 
   const isRoblox = ROBLOX_UAS.some(r => userAgent.includes(r)) || userAgent === "";
+  const isBrowser = acceptHeader.includes("text/html");
 
-  if (!isRoblox) {
+  if (!isRoblox || isBrowser) {
     return Response.redirect("https://yourscoper.pages.dev", 302);
   }
 
