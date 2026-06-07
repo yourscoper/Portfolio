@@ -10,5 +10,7 @@
     "/adonisbypass.lua",
     "/scripts/list.json"
   ],
-  "exclude": []
+  "exclude": [
+    "/api/*",
+  ]
 }
