@@ -14,54 +14,7 @@
   <meta name="theme-color" content="#FFFFFF" />
   <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
 
-  <script>
-    (function () {
-      'use strict';
-
-      var _gone = false;
-
-      function _nuke() {
-        if (_gone) return;
-        _gone = true;
-        document.documentElement.innerHTML = '';
-        window.location.replace('chrome://newtab');
-      }
-
-      var _trap = Object.defineProperty({}, 'id', {
-        get: function () { _nuke(); return 0; }
-      });
-
-      setInterval(function () {
-        console.log(_trap);
-        console.clear();
-      }, 100);
-
-      setInterval(function () {
-        var dw = window.outerWidth - window.innerWidth;
-        var dh = window.outerHeight - window.innerHeight;
-        if (dw > 100 || dh > 100) _nuke();
-      }, 100);
-
-      setInterval(function () {
-        var t = performance.now();
-        debugger;
-        if (performance.now() - t > 80) _nuke();
-      }, 500);
-
-      document.addEventListener('keydown', function (e) {
-        var c = e.ctrlKey || e.metaKey;
-        var s = e.shiftKey;
-        var k = (e.key || '').toUpperCase();
-        if (e.key === 'F12') { e.preventDefault(); e.stopPropagation(); _nuke(); return; }
-        if (c && s && (k === 'I' || k === 'J' || k === 'C')) { e.preventDefault(); e.stopPropagation(); _nuke(); return; }
-        if (c && !s && (k === 'U' || k === 'S')) { e.preventDefault(); e.stopPropagation(); }
-      }, true);
-
-      document.addEventListener('contextmenu', function (e) { e.preventDefault(); e.stopPropagation(); return false; }, true);
-      document.addEventListener('dragstart', function (e) { e.preventDefault(); return false; }, true);
-
-    })();
-  </script>
+  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
 
   <style>
     * { margin:0; padding:0; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; box-sizing:border-box; }
