@@ -5,12 +5,12 @@ const PATH = "userdata.json";
 let memoryCache = null;
 let memorySha = null;
 let lastGithubWrite = 0;
-const WRITE_COOLDOWN = 30000;
+const WRITE_COOLDOWN = 10000;
 
 async function getFile(token) {
-  if (memoryCache && memorySha) return { content: memoryCache, sha: memorySha };
   const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${PATH}`, {
-    headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json" }
+    headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json" },
+    cache: "no-store"
   });
   if (res.status === 404) return { content: {}, sha: null };
   const data = await res.json();
@@ -22,7 +22,6 @@ async function getFile(token) {
 
 async function saveFile(content, sha, token) {
   const now = Date.now();
-  if (now - lastGithubWrite < WRITE_COOLDOWN) { memoryCache = content; return; }
   const body = {
     message: "Update userdata",
     content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))),
@@ -38,9 +37,12 @@ async function saveFile(content, sha, token) {
     body: JSON.stringify(body)
   });
   const data = await res.json();
-  memoryCache = content;
-  memorySha = data.content.sha;
-  lastGithubWrite = now;
+  if (data.content?.sha) {
+    memoryCache = content;
+    memorySha = data.content.sha;
+    lastGithubWrite = now;
+  }
+  return data;
 }
 
 export async function onRequest(context) {
@@ -84,15 +86,7 @@ export async function onRequest(context) {
       const newTag = (forceTag && tag) ? tag : (existing ? existing.tag : (tag || "SCOPER USER"));
       const newJobId = jobId || existing?.jobId || null;
       const newPlaceId = placeId || existing?.placeId || null;
-      const newUpdatedAt = updatedAt || existing?.updatedAt || null;
-
-      const nothingChanged = existing
-        && existing.executed === newExecuted
-        && existing.tag === newTag
-        && existing.jobId === newJobId
-        && existing.placeId === newPlaceId;
-
-      if (nothingChanged) return new Response(JSON.stringify({ ok: true, skipped: true }), { headers });
+      const newUpdatedAt = updatedAt || null;
 
       content[userId] = { tag: newTag, executed: newExecuted, updatedAt: newUpdatedAt, jobId: newJobId, placeId: newPlaceId };
       await saveFile(content, sha, GITHUB_TOKEN);
