@@ -15,40 +15,43 @@ export async function onRequest(context) {
     return String.fromCodePoint(...codePoints);
   }
 
-  const countryMap = {
-    AF:"Afghanistan",AL:"Albania",DZ:"Algeria",AS:"American Samoa",AD:"Andorra",AO:"Angola",
-    AI:"Anguilla",AQ:"Antarctica",AG:"Antigua and Barbuda",AR:"Argentina",AM:"Armenia",
-    AU:"Australia",AT:"Austria",AZ:"Azerbaijan",BE:"Belgium",BR:"Brazil",CA:"Canada",
-    CN:"China",FR:"France",DE:"Germany",IN:"India",IT:"Italy",JP:"Japan",MX:"Mexico",
-    NL:"Netherlands",RU:"Russia",ES:"Spain",SE:"Sweden",CH:"Switzerland",
-    GB:"United Kingdom",US:"United States",VN:"Vietnam"
-  };
-
-  const regionMap = {
-    AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",
-    CT:"Connecticut",FL:"Florida",GA:"Georgia",HI:"Hawaii",IL:"Illinois",
-    NY:"New York",NV:"Nevada",TX:"Texas",WA:"Washington",DC:"District of Columbia"
-  };
-
   const continentMap = {
     NA:"North America",SA:"South America",EU:"Europe",AS:"Asia",AF:"Africa",OC:"Oceania",AT:"Australia"
   };
 
-  const countryCode = request.headers.get("cf-ipcountry") || "";
   const ip = request.headers.get("cf-connecting-ip") || request.headers.get("x-real-ip") || "";
 
-  const location = {
+  let location = {
     ip,
-    city: request.headers.get("cf-ipcity") || "",
-    region: regionMap[request.headers.get("cf-region-code")] || request.headers.get("cf-region-code") || "",
-    postal: request.headers.get("cf-postal-code") || "",
-    countryCode,
-    countryName: countryMap[countryCode] || countryCode || "Unknown",
-    country: countryCode ? getFlagEmoji(countryCode) : "🏳️",
-    continent: continentMap[request.headers.get("cf-ipcontinent")] || request.headers.get("cf-ipcontinent") || "",
-    latitude: request.headers.get("cf-iplatitude") || "",
-    longitude: request.headers.get("cf-iplongitude") || ""
+    city: "",
+    region: "",
+    postal: "",
+    countryCode: "",
+    countryName: "",
+    country: "🏳️",
+    continent: "",
+    latitude: "",
+    longitude: ""
   };
+
+  try {
+    const geoRes = await fetch(`http://ip-api.com/json/${ip}?fields=status,country,countryCode,region,regionName,city,zip,lat,lon,continent,continentCode`);
+    const geo = await geoRes.json();
+    if (geo.status === "success") {
+      location = {
+        ip,
+        city: geo.city || "",
+        region: geo.regionName || "",
+        postal: geo.zip || "",
+        countryCode: geo.countryCode || "",
+        countryName: geo.country || "",
+        country: geo.countryCode ? getFlagEmoji(geo.countryCode) : "🏳️",
+        continent: continentMap[geo.continentCode] || geo.continent || "",
+        latitude: geo.lat ? String(geo.lat) : "",
+        longitude: geo.lon ? String(geo.lon) : ""
+      };
+    }
+  } catch (_) {}
 
   const url = new URL(request.url);
   const args = {};
@@ -66,7 +69,6 @@ export async function onRequest(context) {
 
   for (const [key, value] of request.headers.entries()) {
     const lower = key.toLowerCase();
-
     if (lower.startsWith("cf-") || lower.startsWith("roblox-session-id")) continue;
     if (lower.startsWith("x-real-ip") || lower.startsWith("x-forwarded")) continue;
     if (
@@ -77,7 +79,6 @@ export async function onRequest(context) {
       lower === "x-invocation-id" ||
       lower.startsWith("sec-")
     ) continue;
-
     const normalizedKey = key.split("-").map(k => k.charAt(0).toUpperCase() + k.slice(1)).join("-");
     if (!(normalizedKey in outputHeaders)) outputHeaders[normalizedKey] = value;
   }
