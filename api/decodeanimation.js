@@ -22,11 +22,9 @@ export default async function handler(req, res) {
       if (!animData) return res.status(400).send("No 'animData' found in JSON.");
 
       const lines = ['return {'];
-
       for (const [clipName, keyframes] of Object.entries(animData)) {
         lines.push(`  ["${clipName}"] = {`);
         keyframes.sort((a, b) => a.Time - b.Time);
-
         for (const kf of keyframes) {
           lines.push(`    {Time = ${kf.Time.toFixed(3)}, Data = {`);
           if (kf.Data) {
@@ -47,10 +45,8 @@ export default async function handler(req, res) {
       lines.push('}');
 
       const base = (filename || 'animation').replace(/\.lua$/i, '').replace(/[^a-zA-Z0-9_\-. ]/g, '');
-      const outName = `${base}_decoded.lua`;
-
       res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-      res.setHeader('X-Filename', outName);
+      res.setHeader('X-Filename', `${base}_decoded.lua`);
       return res.status(200).send(lines.join('\n'));
     } catch (err) {
       return res.status(500).send('Internal server error: ' + err.message);
@@ -60,20 +56,15 @@ export default async function handler(req, res) {
 
 function toCFrameString(d) {
   if (d.length === 7) {
-    // pos + quaternion — convert to full 12-component matrix server-side
     const [px, py, pz, qx, qy, qz, qw] = d;
-    // quaternion to rotation matrix
     const x2=qx*2,y2=qy*2,z2=qz*2;
     const xx=qx*x2,xy=qx*y2,xz=qx*z2;
     const yy=qy*y2,yz=qy*z2,zz=qz*z2;
     const wx=qw*x2,wy=qw*y2,wz=qw*z2;
-    const r00=1-(yy+zz), r01=xy-wz,    r02=xz+wy;
-    const r10=xy+wz,     r11=1-(xx+zz),r12=yz-wx;
-    const r20=xz-wy,     r21=yz+wx,    r22=1-(xx+yy);
-    return fmt(px,py,pz, r00,r01,r02, r10,r11,r12, r20,r21,r22);
+    return fmt(px,py,pz, 1-(yy+zz),xy-wz,xz+wy, xy+wz,1-(xx+zz),yz-wx, xz-wy,yz+wx,1-(xx+yy));
   }
   if (d.length === 12) return fmt(...d);
-  if (d.length === 3)  return `CFrame.new(${d.map(n=>n.toFixed(6)).join(', ')})`;
+  if (d.length === 3) return `CFrame.new(${d.map(n=>n.toFixed(6)).join(', ')})`;
   return null;
 }
 
@@ -87,49 +78,42 @@ function getHTML() {
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scoper's Anim Decoder</title>
+  <title>Scoper's Animation Decoder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     html,body{height:100%;font-family:'Coming Soon',cursive;background:#0d0d0d;color:#f0f0f0;overflow-x:hidden;}
-
     #sparkle-canvas,#trail-canvas{position:fixed;inset:0;pointer-events:none;}
     #sparkle-canvas{z-index:0;}
     #trail-canvas{z-index:1;}
-
     .container{position:relative;z-index:2;min-height:100vh;padding:2.5rem 1rem 5rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;}
-
     h1{font-size:clamp(2.2rem,8vw,5rem);color:#fff;text-shadow:0 0 30px rgba(100,180,255,.4),0 0 70px rgba(80,140,255,.2);text-align:center;line-height:1.1;}
     .sub{color:#888;font-size:1rem;text-align:center;}
-
     .drop-zone{width:100%;max-width:860px;border:2px dashed #333;border-radius:12px;padding:2.5rem 2rem;display:flex;flex-direction:column;align-items:center;gap:.8rem;cursor:pointer;transition:border-color .2s,background .2s;}
     .drop-zone.dragover{border-color:#6af;background:rgba(100,170,255,.05);}
     .drop-zone svg{opacity:.4;}
     .drop-zone p{color:#666;font-size:.95rem;}
     .drop-zone .fname{color:#adf;font-size:.9rem;margin-top:.3rem;}
-
     .divider{width:100%;max-width:860px;display:flex;align-items:center;gap:1rem;color:#444;}
     .divider::before,.divider::after{content:'';flex:1;height:1px;background:#222;}
-
     .textarea-wrap{width:100%;max-width:860px;background:#111;border:1px solid #2a2a2a;border-radius:12px;overflow:hidden;}
-    .textarea-label{padding:.6rem 1rem;background:#161616;border-bottom:1px solid #222;color:#666;font-size:.85rem;}
+    .textarea-header{padding:.6rem 1rem;background:#161616;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;}
+    .textarea-label{color:#666;font-size:.85rem;}
+    .auto-decoded{color:#4ade80;font-size:.85rem;opacity:0;transition:opacity .3s;}
+    .auto-decoded.show{opacity:1;}
     textarea{width:100%;height:220px;background:#111;color:#c8f5b0;border:none;outline:none;resize:vertical;padding:1rem;font-family:Consolas,monospace;font-size:.9rem;line-height:1.6;tab-size:2;}
     textarea::placeholder{color:#333;}
-
     .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.75rem 2rem;font-family:'Coming Soon',cursive;font-size:1rem;background:#fff;color:#000;border:none;border-radius:8px;cursor:pointer;transition:opacity .2s,transform .15s;}
     .btn:hover{opacity:.88;transform:scale(1.03);}
     .btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
     .btn.secondary{background:transparent;color:#666;border:1px solid #2a2a2a;}
     .btn.secondary:hover{color:#fff;border-color:#555;}
-
     .actions{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;}
-
     .status{font-size:.9rem;color:#888;min-height:1.4em;text-align:center;}
     .status.ok{color:#6dfc9a;}
     .status.err{color:#fc6d6d;}
-
     .version{position:fixed;bottom:18px;left:20px;color:#fff;font-size:.85rem;opacity:.5;z-index:10;}
     .copyright{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);color:#fff;font-size:.85rem;opacity:.4;z-index:10;white-space:nowrap;}
   </style>
@@ -139,7 +123,7 @@ function getHTML() {
 <canvas id="trail-canvas"></canvas>
 
 <div class="container">
-  <h1>Anim Decoder</h1>
+  <h1>Animation Decoder</h1>
   <p class="sub">Drop a Moon Animator JSON file or paste the code — get a decoded <code>.lua</code> KeyframeSequence</p>
 
   <div class="drop-zone" id="dropZone">
@@ -156,7 +140,10 @@ function getHTML() {
   <div class="divider">or paste JSON</div>
 
   <div class="textarea-wrap">
-    <div class="textarea-label">Animation JSON</div>
+    <div class="textarea-header">
+      <span class="textarea-label">Animation JSON</span>
+      <span class="auto-decoded" id="autoDecodedTag">✦ Auto-Decoded Successfully</span>
+    </div>
     <textarea id="jsonInput" spellcheck="false" placeholder='{"raw":true,"name":"my anim","format":2,"animData":{...}}'></textarea>
   </div>
 
@@ -169,6 +156,13 @@ function getHTML() {
       </svg>
       Decode &amp; Download
     </button>
+    <button class="btn secondary" id="copyBtn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+      Copy Output
+    </button>
     <button class="btn secondary" id="clearBtn">Clear</button>
   </div>
 
@@ -176,15 +170,19 @@ function getHTML() {
 </div>
 
 <div class="version">v1.0.0</div>
-<div class="copyright">© 2026 Scoper. All rights reserved.</div>
+<div class="copyright">© 2026 yourscoper. All rights reserved.</div>
 
 <script>
-  // ── File drop ──
   let droppedFilename = null;
+  let decodedOutput = null;
+  let autoDecodeTimer = null;
+
   const dropZone = document.getElementById('dropZone');
   const fileInput = document.getElementById('fileInput');
   const dropName  = document.getElementById('dropName');
   const jsonInput = document.getElementById('jsonInput');
+  const autoDecodedTag = document.getElementById('autoDecodedTag');
+  const status = document.getElementById('status');
 
   dropZone.addEventListener('click', () => fileInput.click());
   dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
@@ -198,16 +196,53 @@ function getHTML() {
   fileInput.addEventListener('change', () => { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
 
   function loadFile(file) {
-    droppedFilename = file.name.replace(/\.(json|lua|txt)$/i, '');
+    droppedFilename = file.name.replace(/\\.(json|lua|txt)$/i, '');
     dropName.textContent = '📄 ' + file.name;
     dropName.style.display = 'block';
     const reader = new FileReader();
-    reader.onload = e => { jsonInput.value = e.target.result; };
+    reader.onload = e => {
+      jsonInput.value = e.target.result;
+      triggerAutoDecode();
+    };
     reader.readAsText(file);
   }
 
-  // ── Decode ──
-  const status = document.getElementById('status');
+  jsonInput.addEventListener('input', () => {
+    autoDecodedTag.classList.remove('show');
+    decodedOutput = null;
+    clearTimeout(autoDecodeTimer);
+    autoDecodeTimer = setTimeout(triggerAutoDecode, 600);
+  });
+
+  async function triggerAutoDecode() {
+    const json = jsonInput.value.trim();
+    if (!json) return;
+    try { JSON.parse(json); } catch(e) { return; }
+
+    try {
+      const result = await callAPI(json, droppedFilename || 'animation');
+      if (!result) return;
+      decodedOutput = result.text;
+      jsonInput.value = decodedOutput;
+      autoDecodedTag.classList.add('show');
+      setStatus('');
+    } catch(e) {}
+  }
+
+  async function callAPI(json, filename) {
+    const res = await fetch('/api/decodeanimation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ json, filename })
+    });
+    if (!res.ok) {
+      setStatus('Error: ' + await res.text(), 'err');
+      return null;
+    }
+    const text = await res.text();
+    const outName = res.headers.get('X-Filename') || ((filename || 'animation') + '_decoded.lua');
+    return { text, outName };
+  }
 
   document.getElementById('decodeBtn').addEventListener('click', async () => {
     const json = jsonInput.value.trim();
@@ -219,25 +254,20 @@ function getHTML() {
     setStatus('');
 
     try {
-      const res = await fetch('/api/decodeanimation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ json, filename: droppedFilename || 'animation' })
-      });
+      const result = await callAPI(json, droppedFilename || 'animation');
+      if (!result) return;
+      decodedOutput = result.text;
+      jsonInput.value = decodedOutput;
+      autoDecodedTag.classList.add('show');
 
-      if (!res.ok) { setStatus('Error: ' + await res.text(), 'err'); return; }
-
-      const text = await res.text();
-      const outName = res.headers.get('X-Filename') || ((droppedFilename || 'animation') + '_decoded.lua');
-
-      const blob = new Blob([text], { type: 'text/plain' });
-      const url  = URL.createObjectURL(blob);
-      const a    = document.createElement('a');
-      a.href = url; a.download = outName;
+      const blob = new Blob([result.text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = result.outName;
       document.body.appendChild(a); a.click();
       document.body.removeChild(a); URL.revokeObjectURL(url);
 
-      setStatus('✅ Downloaded ' + outName, 'ok');
+      setStatus('✅ Downloaded ' + result.outName, 'ok');
     } catch (err) {
       setStatus('Error: ' + err.message, 'err');
     } finally {
@@ -246,12 +276,25 @@ function getHTML() {
     }
   });
 
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    const text = jsonInput.value.trim();
+    if (!text) { setStatus('Nothing to copy.', 'err'); return; }
+    try {
+      await navigator.clipboard.writeText(text);
+      setStatus('✅ Copied to clipboard!', 'ok');
+    } catch(e) {
+      setStatus('Copy failed: ' + e.message, 'err');
+    }
+  });
+
   document.getElementById('clearBtn').addEventListener('click', () => {
     jsonInput.value = '';
     droppedFilename = null;
+    decodedOutput = null;
     dropName.style.display = 'none';
     dropName.textContent = '';
     fileInput.value = '';
+    autoDecodedTag.classList.remove('show');
     setStatus('');
   });
 
@@ -260,7 +303,6 @@ function getHTML() {
     status.className = 'status' + (type ? ' ' + type : '');
   }
 
-  // ── Sparkles ──
   const sc = document.getElementById('sparkle-canvas');
   const sx = sc.getContext('2d');
   function resizeSC() { sc.width = innerWidth; sc.height = innerHeight; }
@@ -282,7 +324,6 @@ function getHTML() {
     requestAnimationFrame(drawS);
   })();
 
-  // ── Mouse trail ──
   const tc = document.getElementById('trail-canvas');
   const tx = tc.getContext('2d');
   function resizeTC() { tc.width = innerWidth; tc.height = innerHeight; }
