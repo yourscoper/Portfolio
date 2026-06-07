@@ -16,7 +16,6 @@ export async function onRequest(context) {
   const { request, params } = context;
   const script = params.script;
   const userAgent = request.headers.get("user-agent") || "";
-  const accept = request.headers.get("accept") || "";
 
   if (userAgent.includes("Discordbot") || userAgent.includes("Twitterbot")) {
     const description = SCRIPT_DESCRIPTIONS[script] || "yourscoper • Script";
@@ -30,10 +29,6 @@ export async function onRequest(context) {
 </head><body></body></html>`, {
       headers: { "Content-Type": "text/html" }
     });
-  }
-
-  if (accept.includes("text/html")) {
-    return Response.redirect("/", 302);
   }
 
   if (!script || !SCRIPT_MAP[script]) {
