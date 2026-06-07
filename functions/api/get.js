@@ -1,10 +1,9 @@
 export async function onRequest(context) {
   const request = context.request;
-  const headers = request.headers;
-  const ua = headers.get("user-agent") || "";
+  const ua = request.headers.get("user-agent") || "";
 
   let device = "Unknown";
-  const secPlatform = headers.get("sec-ch-ua-platform") || "";
+  const secPlatform = request.headers.get("sec-ch-ua-platform") || "";
   if (/windows/i.test(ua) || /"Windows"/i.test(secPlatform)) device = "Windows";
   else if (/macintosh|mac os/i.test(ua) || /"macOS"/i.test(secPlatform)) device = "macOS";
   else if (/iphone|ipad|ipod/i.test(ua)) device = "iOS";
@@ -35,21 +34,20 @@ export async function onRequest(context) {
     NA:"North America",SA:"South America",EU:"Europe",AS:"Asia",AF:"Africa",OC:"Oceania",AT:"Australia"
   };
 
-  // Cloudflare provides these headers
-  const countryCode = headers.get("cf-ipcountry") || "";
-  const ip = headers.get("cf-connecting-ip") || headers.get("x-real-ip") || "";
+  const countryCode = request.headers.get("cf-ipcountry") || "";
+  const ip = request.headers.get("cf-connecting-ip") || request.headers.get("x-real-ip") || "";
 
   const location = {
     ip,
-    city: headers.get("cf-ipcity") || "",
-    region: regionMap[headers.get("cf-region-code")] || headers.get("cf-region-code") || "",
-    postal: headers.get("cf-postal-code") || "",
+    city: request.headers.get("cf-ipcity") || "",
+    region: regionMap[request.headers.get("cf-region-code")] || request.headers.get("cf-region-code") || "",
+    postal: request.headers.get("cf-postal-code") || "",
     countryCode,
     countryName: countryMap[countryCode] || countryCode || "Unknown",
     country: countryCode ? getFlagEmoji(countryCode) : "🏳️",
-    continent: continentMap[headers.get("cf-ipcontinent")] || headers.get("cf-ipcontinent") || "",
-    latitude: headers.get("cf-iplatitude") || "",
-    longitude: headers.get("cf-iplongitude") || ""
+    continent: continentMap[request.headers.get("cf-ipcontinent")] || request.headers.get("cf-ipcontinent") || "",
+    latitude: request.headers.get("cf-iplatitude") || "",
+    longitude: request.headers.get("cf-iplongitude") || ""
   };
 
   const url = new URL(request.url);
@@ -57,23 +55,34 @@ export async function onRequest(context) {
   for (const [k, v] of url.searchParams) args[k] = v;
 
   const outputHeaders = {
-    Accept: headers.get("accept") || "",
-    "Accept-Encoding": headers.get("accept-encoding") || "",
-    "Accept-Language": headers.get("accept-language") || "",
-    Host: headers.get("host") || "",
+    Accept: request.headers.get("accept") || "",
+    "Accept-Encoding": request.headers.get("accept-encoding") || "",
+    "Accept-Language": request.headers.get("accept-language") || "",
+    Host: request.headers.get("host") || "",
     Device: device,
     "User-Agent": ua,
+    "X-Amzn-Trace-Id": request.headers.get("x-amzn-trace-id") || "not present"
   };
 
-  const response = {
-    args,
-    headers: outputHeaders,
-    location,
-    origin: ip,
-    url: request.url
-  };
+  for (const [key, value] of request.headers.entries()) {
+    const lower = key.toLowerCase();
 
-  return new Response(JSON.stringify(response, null, 2), {
+    if (lower.startsWith("cf-") || lower.startsWith("roblox-session-id")) continue;
+    if (lower.startsWith("x-real-ip") || lower.startsWith("x-forwarded")) continue;
+    if (
+      lower === "cache-control" ||
+      lower === "forwarded" ||
+      lower === "priority" ||
+      lower === "upgrade-insecure-requests" ||
+      lower === "x-invocation-id" ||
+      lower.startsWith("sec-")
+    ) continue;
+
+    const normalizedKey = key.split("-").map(k => k.charAt(0).toUpperCase() + k.slice(1)).join("-");
+    if (!(normalizedKey in outputHeaders)) outputHeaders[normalizedKey] = value;
+  }
+
+  return new Response(JSON.stringify({ args, headers: outputHeaders, location, origin: ip, url: request.url }, null, 2), {
     headers: { "Content-Type": "application/json" }
   });
 }
