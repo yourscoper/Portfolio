@@ -8,8 +8,7 @@
     "/nopride.lua",
     "/nopride2.lua",
     "/adonisbypass.lua",
-    "/scripts/list.json",
-    "/scripts/*"
+    "/scripts/list.json"
   ],
   "exclude": []
 }
