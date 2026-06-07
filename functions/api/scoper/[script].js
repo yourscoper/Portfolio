@@ -2,7 +2,11 @@ const SCRIPT_MAP = {
   scoper:         "scripts/scoper.lua",
   cracked:        "scripts/akadmin/cracked.lua",
   commandlibrary: "scripts/akadmin/commandlibrary.lua",
+  animlist:       "scripts/akadmin/animlist.lua",
   nopride:        "scripts/bin/nopride.lua",
+  nopride2:       "scripts/bin/nopride2.lua",
+  adonisbypass:   "scripts/bin/adonisbypass.lua",
+  list:           "scripts/list.json",
 };
 
 const SCRIPT_DESCRIPTIONS = {
@@ -12,7 +16,7 @@ const SCRIPT_DESCRIPTIONS = {
   nopride:        "yourscoper • nopride.lua",
 };
 
-const BROWSER_UAS = ["Mozilla", "Chrome", "Safari", "Firefox", "Edge", "Opera"];
+const ROBLOX_UAS = ["Roblox", "RobloxStudio", "HttpGet"];
 
 export async function onRequest(context) {
   const { request, params } = context;
@@ -33,8 +37,10 @@ export async function onRequest(context) {
     });
   }
 
-  if (BROWSER_UAS.some(b => userAgent.includes(b))) {
-    return Response.redirect("/", 302);
+  const isRoblox = ROBLOX_UAS.some(r => userAgent.includes(r)) || userAgent === "";
+
+  if (!isRoblox) {
+    return Response.redirect("https://yourscoper.pages.dev", 302);
   }
 
   if (!script || !SCRIPT_MAP[script]) {
