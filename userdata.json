@@ -15,16 +15,16 @@
   },
   "3808691682": {
     "tag": "papi angel",
-    "executed": true,
+    "executed": false,
     "updatedAt": "2:39 PM 6/7/2026",
     "jobId": "0ed36cda-6cb3-4429-a816-97295c6d1e47",
     "placeId": "126042865144779"
   },
   "10766660977": {
     "tag": "OWNER",
-    "executed": false,
-    "updatedAt": "3:02 AM 6/7/2026",
-    "jobId": "76acf33b-93c5-4913-acdd-658b879025fa",
+    "executed": true,
+    "updatedAt": "11:49 AM 6/7/2026",
+    "jobId": "0da4b091-7771-407d-9f94-16a67bdb1da0",
     "placeId": "6884319169"
   },
   "8798325211": {
