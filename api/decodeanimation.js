@@ -14,36 +14,55 @@ export default async function handler(req, res) {
       if (!json || typeof json !== 'string' || !json.trim())
         return res.status(400).send('No JSON provided');
 
-      let decoded;
-      try { decoded = JSON.parse(json); }
+      let raw;
+      try { raw = JSON.parse(json); }
       catch (e) { return res.status(400).send('Invalid JSON: ' + e.message); }
 
-      const animData = decoded.animData;
-      if (!animData) return res.status(400).send("No 'animData' found in JSON.");
-
       const lines = ['return {'];
-      for (const [clipName, keyframes] of Object.entries(animData)) {
-        lines.push(`  ["${clipName}"] = {`);
-        keyframes.sort((a, b) => a.Time - b.Time);
-        for (const kf of keyframes) {
+
+      if (raw.animData) {
+        for (const [clipName, keyframes] of Object.entries(raw.animData)) {
+          lines.push(`  ["${clipName}"] = {`);
+          keyframes.sort((a, b) => a.Time - b.Time);
+          for (const kf of keyframes) {
+            lines.push(`    {Time = ${kf.Time.toFixed(3)}, Data = {`);
+            if (kf.Data) {
+              for (const bone of Object.keys(kf.Data).sort()) {
+                const r = kf.Data[bone];
+                const arr = (typeof r[0] === 'number') ? r : (r[0] || r.CFrame || r.Data);
+                if (arr) { const cf = toCFrameString(arr); if (cf) lines.push(`      ["${bone}"] = ${cf},`); }
+              }
+            }
+            lines.push('    }},');
+          }
+          lines.push('  }');
+        }
+      } else if (Array.isArray(raw) && raw[0] && raw[0].Time != null && raw[0].Poses) {
+        lines.push('  ["Animation"] = {');
+        raw.sort((a, b) => a.Time - b.Time);
+        for (const kf of raw) {
           lines.push(`    {Time = ${kf.Time.toFixed(3)}, Data = {`);
-          if (kf.Data) {
-            const bones = Object.keys(kf.Data).sort();
-            for (const bone of bones) {
-              const raw = kf.Data[bone];
-              const arr = (typeof raw[0] === 'number') ? raw : (raw[0] || raw.CFrame || raw.Data);
-              if (arr) {
-                const cf = toCFrameString(arr);
-                if (cf) lines.push(`      ["${bone}"] = ${cf},`);
+          if (kf.Poses) {
+            for (const bone of Object.keys(kf.Poses).sort()) {
+              const pd = kf.Poses[bone];
+              if (pd.CFrame) {
+                const pos = pd.CFrame.Position || [0,0,0];
+                const ori = pd.CFrame.Orientation || [0,0,0];
+                const px = pos[0]??pos.X??0, py = pos[1]??pos.Y??0, pz = pos[2]??pos.Z??0;
+                const ox = ori[0]??ori.X??0, oy = ori[1]??ori.Y??0, oz = ori[2]??ori.Z??0;
+                const cf = orientationFmt(px, py, pz, ox, oy, oz);
+                lines.push(`      ["${bone}"] = ${cf},`);
               }
             }
           }
           lines.push('    }},');
         }
         lines.push('  }');
+      } else {
+        return res.status(400).send('Unknown animation format');
       }
-      lines.push('}');
 
+      lines.push('}');
       const base = (filename || 'animation').replace(/\.lua$/i, '').replace(/[^a-zA-Z0-9_\-. ]/g, '');
       res.setHeader('Content-Type', 'text/plain; charset=utf-8');
       res.setHeader('X-Filename', `${base}_decoded.lua`);
@@ -56,20 +75,24 @@ export default async function handler(req, res) {
 
 function toCFrameString(d) {
   if (d.length === 7) {
-    const [px, py, pz, qx, qy, qz, qw] = d;
+    const [px,py,pz,qx,qy,qz,qw] = d;
     const x2=qx*2,y2=qy*2,z2=qz*2;
-    const xx=qx*x2,xy=qx*y2,xz=qx*z2;
-    const yy=qy*y2,yz=qy*z2,zz=qz*z2;
-    const wx=qw*x2,wy=qw*y2,wz=qw*z2;
-    return fmt(px,py,pz, 1-(yy+zz),xy-wz,xz+wy, xy+wz,1-(xx+zz),yz-wx, xz-wy,yz+wx,1-(xx+yy));
+    const xx=qx*x2,xy=qx*y2,xz=qx*z2,yy=qy*y2,yz=qy*z2,zz=qz*z2,wx=qw*x2,wy=qw*y2,wz=qw*z2;
+    return fmt(px,py,pz,1-(yy+zz),xy-wz,xz+wy,xy+wz,1-(xx+zz),yz-wx,xz-wy,yz+wx,1-(xx+yy));
   }
   if (d.length === 12) return fmt(...d);
   if (d.length === 3) return `CFrame.new(${d.map(n=>n.toFixed(6)).join(', ')})`;
   return null;
 }
 
+function orientationFmt(px, py, pz, ox, oy, oz) {
+  const rx=ox*Math.PI/180, ry=oy*Math.PI/180, rz=oz*Math.PI/180;
+  const cx=Math.cos(rx),sx=Math.sin(rx),cy=Math.cos(ry),sy=Math.sin(ry),cz=Math.cos(rz),sz=Math.sin(rz);
+  return fmt(px,py,pz, cy*cz,cy*-sz,sy, sx*sy*cz+cx*sz,sx*sy*-sz+cx*cz,-sx*cy, cx*sy*cz-sx*sz,cx*sy*-sz+sx*cz,cx*cy);
+}
+
 function fmt(...n) {
-  return `CFrame.new(${n.map(v => v.toFixed(6)).join(', ')})`;
+  return `CFrame.new(${n.map(v=>v.toFixed(6)).join(', ')})`;
 }
 
 function getHTML() {
@@ -121,11 +144,9 @@ function getHTML() {
 <body>
 <canvas id="sparkle-canvas"></canvas>
 <canvas id="trail-canvas"></canvas>
-
 <div class="container">
   <h1>Animation Decoder</h1>
   <p class="sub">Drop a Moon Animator JSON file or paste the code — get a decoded <code>.lua</code> KeyframeSequence</p>
-
   <div class="drop-zone" id="dropZone">
     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -136,9 +157,7 @@ function getHTML() {
     <p class="fname" id="dropName" style="display:none"></p>
     <input type="file" id="fileInput" accept=".json,.lua,.txt" style="display:none"/>
   </div>
-
   <div class="divider">or paste JSON</div>
-
   <div class="textarea-wrap">
     <div class="textarea-header">
       <span class="textarea-label">Animation JSON</span>
@@ -146,7 +165,6 @@ function getHTML() {
     </div>
     <textarea id="jsonInput" spellcheck="false" placeholder='{"raw":true,"name":"my anim","format":2,"animData":{...}}'></textarea>
   </div>
-
   <div class="actions">
     <button class="btn" id="decodeBtn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -165,13 +183,10 @@ function getHTML() {
     </button>
     <button class="btn secondary" id="clearBtn">Clear</button>
   </div>
-
   <p class="status" id="status"></p>
 </div>
-
 <div class="version">v1.0.0</div>
 <div class="copyright">© 2026 yourscoper. All rights reserved.</div>
-
 <script>
   let droppedFilename = null;
   let decodedOutput = null;
@@ -179,7 +194,7 @@ function getHTML() {
 
   const dropZone = document.getElementById('dropZone');
   const fileInput = document.getElementById('fileInput');
-  const dropName  = document.getElementById('dropName');
+  const dropName = document.getElementById('dropName');
   const jsonInput = document.getElementById('jsonInput');
   const autoDecodedTag = document.getElementById('autoDecodedTag');
   const status = document.getElementById('status');
@@ -200,10 +215,7 @@ function getHTML() {
     dropName.textContent = '📄 ' + file.name;
     dropName.style.display = 'block';
     const reader = new FileReader();
-    reader.onload = e => {
-      jsonInput.value = e.target.result;
-      triggerAutoDecode();
-    };
+    reader.onload = e => { jsonInput.value = e.target.result; triggerAutoDecode(0); };
     reader.readAsText(file);
   }
 
@@ -211,14 +223,13 @@ function getHTML() {
     autoDecodedTag.classList.remove('show');
     decodedOutput = null;
     clearTimeout(autoDecodeTimer);
-    autoDecodeTimer = setTimeout(triggerAutoDecode, 600);
+    autoDecodeTimer = setTimeout(() => triggerAutoDecode(0), 300);
   });
 
-  async function triggerAutoDecode() {
+  async function triggerAutoDecode(delay) {
     const json = jsonInput.value.trim();
     if (!json) return;
     try { JSON.parse(json); } catch(e) { return; }
-
     try {
       const result = await callAPI(json, droppedFilename || 'animation');
       if (!result) return;
@@ -235,10 +246,7 @@ function getHTML() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ json, filename })
     });
-    if (!res.ok) {
-      setStatus('Error: ' + await res.text(), 'err');
-      return null;
-    }
+    if (!res.ok) { setStatus('Error: ' + await res.text(), 'err'); return null; }
     const text = await res.text();
     const outName = res.headers.get('X-Filename') || ((filename || 'animation') + '_decoded.lua');
     return { text, outName };
@@ -247,26 +255,22 @@ function getHTML() {
   document.getElementById('decodeBtn').addEventListener('click', async () => {
     const json = jsonInput.value.trim();
     if (!json) { setStatus('Paste some JSON or drop a file first.', 'err'); return; }
-
     const btn = document.getElementById('decodeBtn');
     btn.disabled = true;
     btn.textContent = '⏳ Decoding...';
     setStatus('');
-
     try {
       const result = await callAPI(json, droppedFilename || 'animation');
       if (!result) return;
       decodedOutput = result.text;
       jsonInput.value = decodedOutput;
       autoDecodedTag.classList.add('show');
-
       const blob = new Blob([result.text], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url; a.download = result.outName;
       document.body.appendChild(a); a.click();
       document.body.removeChild(a); URL.revokeObjectURL(url);
-
       setStatus('✅ Downloaded ' + result.outName, 'ok');
     } catch (err) {
       setStatus('Error: ' + err.message, 'err');
@@ -279,12 +283,8 @@ function getHTML() {
   document.getElementById('copyBtn').addEventListener('click', async () => {
     const text = jsonInput.value.trim();
     if (!text) { setStatus('Nothing to copy.', 'err'); return; }
-    try {
-      await navigator.clipboard.writeText(text);
-      setStatus('✅ Copied to clipboard!', 'ok');
-    } catch(e) {
-      setStatus('Copy failed: ' + e.message, 'err');
-    }
+    try { await navigator.clipboard.writeText(text); setStatus('✅ Copied to clipboard!', 'ok'); }
+    catch(e) { setStatus('Copy failed: ' + e.message, 'err'); }
   });
 
   document.getElementById('clearBtn').addEventListener('click', () => {
@@ -309,8 +309,7 @@ function getHTML() {
   resizeSC(); window.addEventListener('resize', resizeSC);
   const stars = Array.from({length: 120}, () => ({
     x: Math.random() * innerWidth, y: Math.random() * innerHeight,
-    r: Math.random() * 1.2 + 0.3,
-    base: Math.random() * 0.5 + 0.15,
+    r: Math.random() * 1.2 + 0.3, base: Math.random() * 0.5 + 0.15,
     phase: Math.random() * Math.PI * 2
   }));
   (function drawS() {
@@ -342,9 +341,7 @@ function getHTML() {
       tx.moveTo(pts[i-1].x, pts[i-1].y);
       tx.lineTo(pts[i].x, pts[i].y);
       tx.strokeStyle = \`rgba(255,255,255,\${(1-age)*0.85})\`;
-      tx.lineWidth = 2;
-      tx.lineCap = 'round';
-      tx.stroke();
+      tx.lineWidth = 2; tx.lineCap = 'round'; tx.stroke();
     }
     requestAnimationFrame(drawT);
   })();
