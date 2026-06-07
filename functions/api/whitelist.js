@@ -1,4 +1,4 @@
-const whitelistData = {
+aconst whitelistData = {
   "whitelist": {
     "f0a9890c96a38a70555322fad30a7582071c953dc3f4f8a93f5c05377e8d3daf7e3feac042caada1e5595b91c54e86d1378ef2ece37598278298d90eaaacff44": { // Potassium
       "discord": "765706304656113664", //yourscoper
@@ -45,18 +45,18 @@ const whitelistData = {
       "key": "scoper-ruS3MHWL6VDklQNR2q1CUX3U01SY8Z"
     }
   },
-
   "shared": {
     "status": true,
     "key": "scoper-WNwzEGr9VAvrVF1KWfveWanA7CEIse"
   }
 };
 
-export default function handler(req, res) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+export async function onRequest(context) {
+  if (context.request.method !== "GET") {
+    return new Response(JSON.stringify({ error: "Method Not Allowed" }), { status: 405 });
   }
 
-  res.setHeader('Content-Type', 'application/json');
-  res.status(200).send(JSON.stringify(whitelistData, null, 2));
+  return new Response(JSON.stringify(whitelistData, null, 2), {
+    headers: { "Content-Type": "application/json" }
+  });
 }
