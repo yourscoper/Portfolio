@@ -1,12 +1,12 @@
 const SCRIPT_MAP = {
-  scoper:         "_lua/scoper.lua",
-  cracked:        "_lua/akadmin/cracked.lua",
-  commandlibrary: "_lua/akadmin/commandlibrary.lua",
-  animlist:       "_lua/akadmin/animlist.lua",
-  nopride:        "_lua/bin/nopride.lua",
-  nopride2:       "_lua/bin/nopride2.lua",
-  adonisbypass:   "_lua/bin/adonisbypass.lua",
-  list:           "_lua/list.json",
+  scoper:         "scripts/scoper.lua",
+  cracked:        "scripts/akadmin/cracked.lua",
+  commandlibrary: "scripts/akadmin/commandlibrary.lua",
+  animlist:       "scripts/akadmin/animlist.lua",
+  nopride:        "scripts/bin/nopride.lua",
+  nopride2:       "scripts/bin/nopride2.lua",
+  adonisbypass:   "scripts/bin/adonisbypass.lua",
+  list:           "scripts/list.json",
 };
 
 const SCRIPT_DESCRIPTIONS = {
