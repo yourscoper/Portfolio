@@ -10,8 +10,14 @@ async function getFile(token) {
       "Cache-Control": "no-cache"
     }
   });
-  if (res.status === 404) return { content: {}, sha: null };
-  const data = await res.json();
+  const text = await res.text();
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch(e) {
+    throw new Error("GitHub raw response: " + text);
+  }
+  if (!data.content) throw new Error("No content field: " + JSON.stringify(data));
   const content = JSON.parse(atob(data.content.replace(/\n/g, "")));
   return { content, sha: data.sha };
 }
