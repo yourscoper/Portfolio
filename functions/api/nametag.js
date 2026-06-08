@@ -101,8 +101,11 @@ export async function onRequest(context) {
       };
 
       await saveFile(content, sha, GITHUB_TOKEN);
-      
-      return new Response("", { status: 200, headers });
+
+      return new Response(null, { 
+        status: 204, 
+        headers: { ...headers, "Content-Type": "text/plain" } 
+      });
     }
 
     if (request.method === "DELETE") {
