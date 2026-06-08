@@ -103,5 +103,12 @@
     "updatedAt": "8:08 AM 6/9/2026",
     "jobId": "ecf803b9-255b-4d7c-aeca-0161cfe472a1",
     "placeId": "13204204170"
+  },
+  "11074122928": {
+    "tag": "SCOPER USER",
+    "executed": true,
+    "updatedAt": "8:34 AM 6/9/2026",
+    "jobId": "553cdd15-8c97-4ecb-b375-eb7257493778",
+    "placeId": "18794863104"
   }
 }
