@@ -1,4 +1,5 @@
 return {
+local Animations = {
 
   ["poodle laying twerk 3"] = {
 
@@ -2078,4 +2079,9 @@ return {
 
   }
 
+}
+
+
+
+return Animations
 }

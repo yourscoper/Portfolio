@@ -1,4 +1,5 @@
 return {
+local Animations = {
 
   ["poodle female rest"] = {
 
@@ -6838,4 +6839,9 @@ return {
 
   }
 
+}
+
+
+
+return Animations
 }

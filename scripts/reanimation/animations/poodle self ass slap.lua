@@ -1,4 +1,5 @@
 return {
+local Animations = {
 
   ["poodle self ass slap"] = {
 
@@ -2758,4 +2759,9 @@ return {
 
   }
 
+}
+
+
+
+return Animations
 }
