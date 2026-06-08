@@ -59,7 +59,9 @@ export async function onRequest(context) {
     "Content-Type": "application/json"
   };
 
-  if (request.method === "OPTIONS") return new Response(null, { status: 200, headers });
+  if (request.method === "OPTIONS") {
+    return new Response(null, { status: 200, headers });
+  }
 
   try {
     const url = new URL(request.url);
@@ -72,17 +74,25 @@ export async function onRequest(context) {
     if (request.method === "GET") {
       const userId = url.searchParams.get("userId");
       const { content } = await getFile(GITHUB_TOKEN);
-      if (!userId) return new Response(JSON.stringify({ nametags: content }), { headers });
-      return new Response(JSON.stringify({ nametag: content[userId] || null }), { headers });
+      
+      if (!userId) {
+        return new Response(JSON.stringify({ nametags: content }), { headers });
+      }
+      return new Response(null, { status: 204, headers: { ...headers, "Content-Type": "text/plain" } });
     }
 
     if (request.method === "POST") {
       const body = await request.json();
       const { userId, tag, executed, forceTag, jobId, placeId, updatedAt } = body || {};
-      if (!userId) return new Response(JSON.stringify({ error: "Missing userId" }), { status: 400, headers });
+
+      if (!userId) {
+        return new Response(JSON.stringify({ error: "Missing userId" }), { status: 400, headers });
+      }
 
       const { content, sha } = await getFile(GITHUB_TOKEN);
-      if (!sha) return new Response(JSON.stringify({ error: "SHA missing" }), { status: 500, headers });
+      if (!sha) {
+        return new Response(JSON.stringify({ error: "SHA missing" }), { status: 500, headers });
+      }
 
       const existing = content[userId];
 
