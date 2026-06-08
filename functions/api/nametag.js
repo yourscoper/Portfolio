@@ -7,7 +7,8 @@ async function getFile(token) {
     headers: {
       Authorization: `token ${token}`,
       Accept: "application/vnd.github.v3+json",
-      "Cache-Control": "no-cache"
+      "Cache-Control": "no-cache",
+      "User-Agent": "yourscoper-app"
     }
   });
   const text = await res.text();
@@ -33,7 +34,8 @@ async function saveFile(content, sha, token) {
     headers: {
       Authorization: `token ${token}`,
       Accept: "application/vnd.github.v3+json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "User-Agent": "yourscoper-app"
     },
     body: JSON.stringify(body)
   });
