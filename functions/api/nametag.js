@@ -16,9 +16,9 @@ async function getFile(token) {
   try {
     data = JSON.parse(text);
   } catch(e) {
-    throw new Error("GitHub raw response: " + text);
+    throw new Error("GitHub error: " + text);
   }
-  if (!data.content) throw new Error("No content field: " + JSON.stringify(data));
+  if (!data.content) throw new Error(JSON.stringify(data));
   const content = JSON.parse(atob(data.content.replace(/\n/g, "")));
   return { content, sha: data.sha };
 }
@@ -43,7 +43,7 @@ async function saveFile(content, sha, token) {
   try {
     return JSON.parse(text);
   } catch(e) {
-    throw new Error("SaveFile raw response: " + text);
+    throw new Error("Save error: " + text);
   }
 }
 
@@ -82,10 +82,7 @@ export async function onRequest(context) {
       if (!userId) return new Response(JSON.stringify({ error: "Missing userId" }), { status: 400, headers });
 
       const { content, sha } = await getFile(GITHUB_TOKEN);
-
-      if (!sha) {
-        return new Response(JSON.stringify({ error: "SHA is null", debug: true }), { status: 500, headers });
-      }
+      if (!sha) return new Response(JSON.stringify({ error: "SHA missing" }), { status: 500, headers });
 
       const existing = content[userId];
 
@@ -108,7 +105,7 @@ export async function onRequest(context) {
       if (saveResult.content?.sha) {
         return new Response(JSON.stringify({ ok: true }), { headers });
       } else {
-        return new Response(JSON.stringify({ ok: false, error: saveResult.message || "Write failed", raw: saveResult }), { status: 500, headers });
+        return new Response(JSON.stringify({ ok: false, error: saveResult.message || "Write failed" }), { status: 500, headers });
       }
     }
 
