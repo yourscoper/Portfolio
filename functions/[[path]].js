@@ -1,14 +1,14 @@
 const GITHUB_BASE = "https://raw.githubusercontent.com/yourscoper/Portfolio/main";
 
 const SCRIPT_MAP = {
-  "scoper.lua":                      "scripts/scoper.lua",
-  "cracked.lua":                     "scripts/akadmin/cracked.lua",
-  "commandlibrary.lua":              "scripts/akadmin/commandlibrary.lua",
-  "animlist.lua":                    "scripts/akadmin/animlist.lua",
-  "nopride.lua":                     "scripts/bin/nopride.lua",
-  "nopride2.lua":                    "scripts/bin/nopride2.lua",
-  "adonisbypass.lua":                "scripts/bin/adonisbypass.lua",
-  "scripts/list.json":               "scripts/list.json",
+  "scoper.lua":         "scripts/scoper.lua",
+  "cracked.lua":        "scripts/akadmin/cracked.lua",
+  "commandlibrary.lua": "scripts/akadmin/commandlibrary.lua",
+  "animlist.lua":       "scripts/akadmin/animlist.lua",
+  "nopride.lua":        "scripts/bin/nopride.lua",
+  "nopride2.lua":       "scripts/bin/nopride2.lua",
+  "adonisbypass.lua":   "scripts/bin/adonisbypass.lua",
+  "scripts/list.json":  "scripts/list.json",
 };
 
 const SCRIPT_DESCRIPTIONS = {
@@ -29,10 +29,14 @@ export async function onRequest(context) {
   const userAgent = request.headers.get("user-agent") || "";
   const acceptHeader = request.headers.get("accept") || "";
 
+  if (!pathKey.endsWith(".lua") && pathKey !== "scripts/list.json") {
+    return context.next();
+  }
+
   if (pathKey.startsWith("api/")) {
     return context.next();
   }
-  
+
   if (!SCRIPT_MAP[pathKey]) return context.next();
 
   if (userAgent.includes("Discordbot") || userAgent.includes("Twitterbot")) {
