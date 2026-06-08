@@ -103,14 +103,15 @@ export async function onRequest(context) {
       const saveResult = await saveFile(content, sha, GITHUB_TOKEN);
 
       if (saveResult.content?.sha) {
-        return new Response(JSON.stringify({ ok: true }), { headers });
+        // Changed: Silent success (no body) → less spam when printed in Roblox
+        return new Response(null, { status: 204, headers: { ...headers, "Content-Type": "text/plain" } });
       } else {
-        return new Response(JSON.stringify({ ok: false, error: saveResult.message || "Write failed" }), { status: 500, headers });
+        return new Response(JSON.stringify({ ok: false, error: "Write failed" }), { status: 500, headers });
       }
     }
 
     if (request.method === "DELETE") {
-      return new Response(JSON.stringify({ ok: true }), { headers });
+      return new Response(null, { status: 204, headers: { ...headers, "Content-Type": "text/plain" } });
     }
 
     return new Response(JSON.stringify({ error: "Method not allowed" }), { status: 405, headers });
