@@ -21,7 +21,7 @@ jobs:
           import os
           import urllib.parse
 
-          base_url = "https://yourscoper.vercel.app/scripts/reanimation/animations"
+          base_url = "https://yourscoper.pages.dev/scripts/reanimation/animations"
           output_path = "scripts/akadmin/animlist.lua"
           anim_dir = "scripts/reanimation/animations"
 
