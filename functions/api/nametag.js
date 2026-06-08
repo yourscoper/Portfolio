@@ -1,115 +1,106 @@
-import { Octokit } from "@octokit/rest";
-
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 const OWNER = "yourscoper";
-const REPO  = "Portfolio";
-const PATH  = "userdata.json";
-const SECRET = process.env.ROBLOX_SECRET;
+const REPO = "Portfolio";
+const PATH = "userdata.json";
 
-let memoryCache = null;
-let memorySha = null;
-let lastGithubWrite = 0;
-const WRITE_COOLDOWN = 30000;
-
-async function getFile() {
-    if (memoryCache && memorySha) {
-        return { content: memoryCache, sha: memorySha };
+async function getFile(token) {
+  const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${PATH}`, {
+    headers: {
+      Authorization: `token ${token}`,
+      Accept: "application/vnd.github.v3+json",
+      "Cache-Control": "no-cache"
     }
-    try {
-        const { data } = await octokit.repos.getContent({ owner: OWNER, repo: REPO, path: PATH });
-        const content = JSON.parse(Buffer.from(data.content, "base64").toString());
-        memoryCache = content;
-        memorySha = data.sha;
-        return { content, sha: data.sha };
-    } catch (err) {
-        if (err.status === 404) return { content: {}, sha: null };
-        throw err;
-    }
+  });
+  if (res.status === 404) return { content: {}, sha: null };
+  const data = await res.json();
+  const content = JSON.parse(atob(data.content.replace(/\n/g, "")));
+  return { content, sha: data.sha };
 }
 
-async function saveFile(content, sha) {
-    const now = Date.now();
-    if (now - lastGithubWrite < WRITE_COOLDOWN) {
-        memoryCache = content;
-        return;
-    }
-    const params = {
-        owner: OWNER, repo: REPO, path: PATH,
-        message: "Update userdata",
-        content: Buffer.from(JSON.stringify(content, null, 2)).toString("base64"),
-    };
-    if (sha) params.sha = sha;
-    const result = await octokit.repos.createOrUpdateFileContents(params);
-    memoryCache = content;
-    memorySha = result.data.content.sha;
-    lastGithubWrite = now;
+async function saveFile(content, sha, token) {
+  const body = {
+    message: "Update userdata",
+    content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))),
+  };
+  if (sha) body.sha = sha;
+  const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${PATH}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `token ${token}`,
+      Accept: "application/vnd.github.v3+json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
+  return await res.json();
 }
 
-export default async function handler(req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "*");
+export async function onRequest(context) {
+  const { request, env } = context;
+  const SECRET = env.ROBLOX_SECRET;
+  const GITHUB_TOKEN = env.GITHUB_TOKEN;
 
-    if (req.method === "OPTIONS") return res.status(200).end();
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers": "*",
+    "Content-Type": "application/json"
+  };
 
-    try {
-        const clientSecret = req.headers["x-secret"]
-            || req.headers["X-Secret"]
-            || req.query.secret;
+  if (request.method === "OPTIONS") return new Response(null, { status: 200, headers });
 
-        if (!clientSecret || clientSecret !== SECRET) {
-            return res.status(401).json({ error: "Unauthorized" });
-        }
+  try {
+    const url = new URL(request.url);
+    const clientSecret = request.headers.get("x-secret") || request.headers.get("X-Secret") || url.searchParams.get("secret");
 
-        const { method } = req;
-
-        if (method === "GET") {
-            const { userId } = req.query;
-            const { content } = await getFile();
-            if (!userId) return res.json({ nametags: content });
-            return res.json({ nametag: content[userId] || null });
-        }
-
-        if (method === "POST") {
-            let body = req.body;
-            if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
-            const { userId, tag, executed, forceTag, jobId, placeId, updatedAt } = body || {};
-            if (!userId) return res.status(400).json({ error: "Missing userId" });
-
-            const { content, sha } = await getFile();
-            const existing = content[userId];
-
-            const newExecuted = executed !== undefined ? executed : (existing?.executed || false);
-            const newTag = (forceTag && tag) ? tag : (existing ? existing.tag : (tag || "SCOPER USER"));
-            const newJobId = jobId || existing?.jobId || null;
-            const newPlaceId = placeId || existing?.placeId || null;
-            const newUpdatedAt = updatedAt || existing?.updatedAt || null;
-
-            const nothingChanged = existing
-                && existing.executed === newExecuted
-                && existing.tag === newTag
-                && existing.jobId === newJobId
-                && existing.placeId === newPlaceId;
-
-            if (nothingChanged) {
-                return res.json({ ok: true, skipped: true });
-            }
-
-            content[userId] = {
-                tag: newTag,
-                executed: newExecuted,
-                updatedAt: newUpdatedAt,
-                jobId: newJobId,
-                placeId: newPlaceId
-            };
-
-            await saveFile(content, sha);
-            return res.json({ ok: true });
-        }
-
-        return res.status(405).json({ error: "Method not allowed" });
-
-    } catch (err) {
-        return res.status(500).json({ error: err.message });
+    if (!clientSecret || clientSecret !== SECRET) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers });
     }
+
+    if (request.method === "GET") {
+      const userId = url.searchParams.get("userId");
+      const { content } = await getFile(GITHUB_TOKEN);
+      if (!userId) return new Response(JSON.stringify({ nametags: content }), { headers });
+      return new Response(JSON.stringify({ nametag: content[userId] || null }), { headers });
+    }
+
+    if (request.method === "POST") {
+      const body = await request.json();
+      const { userId, tag, executed, forceTag, jobId, placeId, updatedAt } = body || {};
+      if (!userId) return new Response(JSON.stringify({ error: "Missing userId" }), { status: 400, headers });
+
+      const { content, sha } = await getFile(GITHUB_TOKEN);
+      const existing = content[userId];
+
+      const newExecuted = executed !== undefined ? executed : (existing?.executed || false);
+      const newTag = (forceTag && tag) ? tag : (existing?.tag || tag || "SCOPER USER");
+      const newJobId = jobId || existing?.jobId || null;
+      const newPlaceId = placeId || existing?.placeId || null;
+      const newUpdatedAt = updatedAt || null;
+
+      content[userId] = {
+        tag: newTag,
+        executed: newExecuted,
+        updatedAt: newUpdatedAt,
+        jobId: newJobId,
+        placeId: newPlaceId
+      };
+
+      const saveResult = await saveFile(content, sha, GITHUB_TOKEN);
+
+      if (saveResult.content?.sha) {
+        return new Response(JSON.stringify({ ok: true }), { headers });
+      } else {
+        return new Response(JSON.stringify({ ok: false, error: saveResult.message || "Write failed" }), { status: 500, headers });
+      }
+    }
+
+    if (request.method === "DELETE") {
+      return new Response(JSON.stringify({ ok: true }), { headers });
+    }
+
+    return new Response(JSON.stringify({ error: "Method not allowed" }), { status: 405, headers });
+
+  } catch (err) {
+    return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+  }
 }
