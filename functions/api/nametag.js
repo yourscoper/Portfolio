@@ -9,8 +9,11 @@ const WRITE_COOLDOWN = 10000;
 
 async function getFile(token) {
   const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${PATH}`, {
-    headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json" },
-    cache: "no-store"
+    headers: { 
+      Authorization: `token ${token}`, 
+      Accept: "application/vnd.github.v3+json",
+      "Cache-Control": "no-cache"
+    }
   });
   if (res.status === 404) return { content: {}, sha: null };
   const data = await res.json();
