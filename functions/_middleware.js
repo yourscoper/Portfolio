@@ -8,7 +8,6 @@ const SCRIPT_MAP = {
   "nopride.lua":        "scripts/bin/nopride.lua",
   "nopride2.lua":       "scripts/bin/nopride2.lua",
   "adonisbypass.lua":   "scripts/bin/adonisbypass.lua",
-  "scripts/list.json":  "scripts/list.json",
 };
 
 const SCRIPT_DESCRIPTIONS = {
@@ -24,44 +23,30 @@ const SCRIPT_DESCRIPTIONS = {
 const ROBLOX_UAS = ["Roblox", "RobloxStudio", "HttpGet"];
 
 export async function onRequest(context) {
-  const { request, params } = context;
-  const pathKey = Array.isArray(params.path) ? params.path.join("/") : params.path;
+  const { request } = context;
+  const url = new URL(request.url);
+  const pathKey = url.pathname.replace(/^\//, "");
   const userAgent = request.headers.get("user-agent") || "";
   const acceptHeader = request.headers.get("accept") || "";
-
-  if (!pathKey.endsWith(".lua") && pathKey !== "scripts/list.json") {
-    return context.next();
-  }
-
-  if (pathKey.startsWith("api/")) {
-    return context.next();
-  }
 
   if (!SCRIPT_MAP[pathKey]) return context.next();
 
   if (userAgent.includes("Discordbot") || userAgent.includes("Twitterbot")) {
     const description = SCRIPT_DESCRIPTIONS[pathKey] || "yourscoper • Script";
-    return new Response(`<!DOCTYPE html>
-<html><head>
+    return new Response(`<!DOCTYPE html><html><head>
 <meta property="og:title" content="yourscoper • Script" />
 <meta property="og:description" content="${description}" />
 <meta property="og:site_name" content="yourscoper" />
 <meta name="theme-color" content="#5865F2" />
-</head><body></body></html>`, {
-      headers: { "Content-Type": "text/html" }
-    });
+</head><body></body></html>`, { headers: { "Content-Type": "text/html" } });
   }
 
   const isRoblox = ROBLOX_UAS.some(r => userAgent.includes(r)) || userAgent === "";
   const isBrowser = acceptHeader.includes("text/html");
 
-  if (!isRoblox || isBrowser) {
-    return Response.redirect("https://yourscoper.pages.dev", 302);
-  }
+  if (!isRoblox || isBrowser) return Response.redirect("https://yourscoper.pages.dev", 302);
 
   const res = await fetch(`${GITHUB_BASE}/${SCRIPT_MAP[pathKey]}`);
   if (!res.ok) return new Response("Script not found", { status: 404 });
-
-  const code = await res.text();
-  return new Response(code, { headers: { "Content-Type": "text/plain" } });
+  return new Response(await res.text(), { headers: { "Content-Type": "text/plain" } });
 }
