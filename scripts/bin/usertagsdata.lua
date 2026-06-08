@@ -10,11 +10,10 @@ return {
     RankData = {
 
         ["OWNER"] = {
-            -- core
             primary            = Color3.fromRGB(255, 255, 255),
             useimage           = true,
             image              = "http://www.roblox.com/asset/?id=10086464520",
-            -- gradients
+            
             accent             = ColorSequence.new{
                 ColorSequenceKeypoint.new(0,   Color3.fromRGB(0,   0,   0  )),
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(145, 138, 102)),
@@ -44,23 +43,19 @@ return {
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(26, 22, 8 )),
                 ColorSequenceKeypoint.new(1,   Color3.fromRGB(12, 10, 2 )),
             },
-            -- effects
             tageffects         = true,
             nameeffects        = false,
             glitchedname       = true,
             typewritename      = false,
-            -- label extras
             tagcolor           = Color3.fromRGB(255, 215, 60),
             crownicon          = true,
             showuserid         = false,
         },
 
         ["ADMIN"] = {
-            -- core
             primary            = Color3.fromRGB(255, 255, 255),
             useimage           = true,
             image              = "http://www.roblox.com/asset/?id=18565602368",
-            -- gradients
             accent             = ColorSequence.new{
                 ColorSequenceKeypoint.new(0,   Color3.fromRGB(250, 95,  92 )),
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(145, 56,  54 )),
@@ -90,12 +85,10 @@ return {
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(26, 12, 12)),
                 ColorSequenceKeypoint.new(1,   Color3.fromRGB(12, 4,  4 )),
             },
-            -- effects
             tageffects         = true,
             nameeffects        = true,
             glitchedname       = false,
             typewritename      = false,
-            -- label extras
             tagcolor           = Color3.fromRGB(255, 100, 100),
             crownicon          = false,
             showuserid         = false,
@@ -106,7 +99,6 @@ return {
             primary            = Color3.fromRGB(255, 255, 255),
             useimage           = true,
             image              = "http://www.roblox.com/asset/?id=90144296400082",
-            -- gradients
             accent             = ColorSequence.new{
                 ColorSequenceKeypoint.new(0,   Color3.fromRGB(255, 30,  255)),
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(135, 22,  135)),
@@ -136,12 +128,10 @@ return {
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(20, 8,  28)),
                 ColorSequenceKeypoint.new(1,   Color3.fromRGB(10, 2,  14)),
             },
-            -- effects
             tageffects         = true,
             nameeffects        = true,
             glitchedname       = false,
             typewritename      = true,
-            -- label extras
             tagcolor           = Color3.fromRGB(255, 100, 255),
             crownicon          = false,
             showuserid         = false,
@@ -152,7 +142,6 @@ return {
             primary            = Color3.fromRGB(255, 255, 255),
             useimage           = true,
             image              = "http://www.roblox.com/asset/?id=115020167372123",
-            -- gradients
             accent             = ColorSequence.new{
                 ColorSequenceKeypoint.new(0,   Color3.fromRGB(0,   0,   0  )),
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 255)),
@@ -182,12 +171,10 @@ return {
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(22, 22, 35)),
                 ColorSequenceKeypoint.new(1,   Color3.fromRGB(10, 10, 18)),
             },
-            -- effects
             tageffects         = false,
             nameeffects        = false,
             glitchedname       = false,
             typewritename      = true,
-            -- label extras
             tagcolor           = Color3.fromRGB(255, 255, 255),
             crownicon          = false,
             showuserid         = false,
@@ -197,7 +184,6 @@ return {
             primary            = Color3.fromRGB(255, 255, 255),
             useimage           = true,
             image              = "http://www.roblox.com/asset/?id=132854398900146"
-            -- gradients
             accent      = ColorSequence.new{
                 ColorSequenceKeypoint.new(0,    Color3.fromRGB(58, 2, 61)),
                 ColorSequenceKeypoint.new(0.5,  Color3.fromRGB(68, 43, 69)),
@@ -227,12 +213,10 @@ return {
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(22, 22, 35)),
                 ColorSequenceKeypoint.new(1,   Color3.fromRGB(10, 10, 18)),
             },
-            -- effects
             tageffects         = false,
             nameeffects        = false,
             glitchedname       = false,
             typewritename      = true,
-            -- label extras
             tagcolor           = Color3.fromRGB(255, 255, 255),
             crownicon          = false,
             showuserid         = false,
