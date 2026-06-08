@@ -1,5 +1,4 @@
 return {
-local Animations = {
 
   ["poodle gomen nasai break dance"] = {
 
@@ -17037,9 +17036,4 @@ local Animations = {
 
   }
 
-}
-
-
-
-return Animations
 }

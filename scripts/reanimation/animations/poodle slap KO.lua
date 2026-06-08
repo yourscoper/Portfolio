@@ -1,5 +1,4 @@
 return {
-local Animations = {
 
   ["poodle slap KO"] = {
 
@@ -13639,9 +13638,4 @@ local Animations = {
 
   }
 
-}
-
-
-
-return Animations
 }
