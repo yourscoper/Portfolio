@@ -39,7 +39,12 @@ async function saveFile(content, sha, token) {
     },
     body: JSON.stringify(body)
   });
-  return await res.json();
+  const text = await res.text();
+  try {
+    return JSON.parse(text);
+  } catch(e) {
+    throw new Error("SaveFile raw response: " + text);
+  }
 }
 
 export async function onRequest(context) {
