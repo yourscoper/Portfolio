@@ -103,7 +103,6 @@ export async function onRequest(context) {
       const saveResult = await saveFile(content, sha, GITHUB_TOKEN);
 
       if (saveResult.content?.sha) {
-        // Changed: Silent success (no body) → less spam when printed in Roblox
         return new Response(null, { status: 204, headers: { ...headers, "Content-Type": "text/plain" } });
       } else {
         return new Response(JSON.stringify({ ok: false, error: "Write failed" }), { status: 500, headers });
