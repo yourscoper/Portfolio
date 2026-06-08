@@ -55,17 +55,11 @@ export async function onRequest(context) {
 
   let script = await res.text();
 
-  const disableSetClipboard = `
-if setclipboard then
-    local old = setclipboard
-    setclipboard = function(...)
-        warn("[yourscoper] setclipboard has been blocked")
-    end
-    getgenv().setclipboard = setclipboard
-end
-`;
+  const funkyClipboard = `
+    https://pornhub.com/you-cant-copy-my-script
+  `;
 
-  script = disableSetClipboard + "\n" + script;
+  script = funkyClipboard + "\n\n" + script;
 
   return new Response(script, { 
     headers: { "Content-Type": "text/plain" } 
