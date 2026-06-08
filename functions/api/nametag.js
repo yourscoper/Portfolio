@@ -76,27 +76,37 @@ export async function onRequest(context) {
       return new Response(JSON.stringify({ nametag: content[userId] || null }), { headers });
     }
 
-    if (request.method === "POST") {
-      const body = await request.json();
-      const { userId, tag, executed, forceTag, jobId, placeId, updatedAt } = body || {};
-      if (!userId) return new Response(JSON.stringify({ error: "Missing userId" }), { status: 400, headers });
-
-      const { content, sha } = await getFile(GITHUB_TOKEN);
-      const existing = content[userId];
-
-      const newExecuted = executed !== undefined ? executed : (existing?.executed || false);
-      const newTag = (forceTag && tag) ? tag : (existing?.tag || tag || "SCOPER USER");
-      const newJobId = jobId || existing?.jobId || null;
-      const newPlaceId = placeId || existing?.placeId || null;
-      const newUpdatedAt = updatedAt || null;
-
-      content[userId] = {
-        tag: newTag,
-        executed: newExecuted,
-        updatedAt: newUpdatedAt,
-        jobId: newJobId,
-        placeId: newPlaceId
-      };
+      if (request.method === "POST") {
+        const body = await request.json();
+        const { userId, tag, executed, forceTag, jobId, placeId, updatedAt } = body || {};
+        if (!userId) return new Response(JSON.stringify({ error: "Missing userId" }), { status: 400, headers });
+      
+        const { content, sha } = await getFile(GITHUB_TOKEN);
+        
+        if (!sha) {
+          return new Response(JSON.stringify({ error: "SHA is null or undefined", debug: true }), { status: 500, headers });
+        }
+      
+        const existing = content[userId];
+      
+        const newExecuted = executed !== undefined ? executed : (existing?.executed || false);
+        const newTag = (forceTag && tag) ? tag : (existing?.tag || tag || "SCOPER USER");
+        const newJobId = jobId || existing?.jobId || null;
+        const newPlaceId = placeId || existing?.placeId || null;
+        const newUpdatedAt = updatedAt || null;
+      
+        content[userId] = {
+          tag: newTag,
+          executed: newExecuted,
+          updatedAt: newUpdatedAt,
+          jobId: newJobId,
+          placeId: newPlaceId
+        };
+      
+        const saveResult = await saveFile(content, sha, GITHUB_TOKEN);
+      
+        return new Response(JSON.stringify({ ok: saveResult.content?.sha ? true : false, error: saveResult.message, raw: saveResult }), { headers });
+      }
 
       const saveResult = await saveFile(content, sha, GITHUB_TOKEN);
 
