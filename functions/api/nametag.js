@@ -2,15 +2,10 @@ const OWNER = "yourscoper";
 const REPO = "Portfolio";
 const PATH = "userdata.json";
 
-let memoryCache = null;
-let memorySha = null;
-let lastGithubWrite = 0;
-const WRITE_COOLDOWN = 10000;
-
 async function getFile(token) {
   const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${PATH}`, {
-    headers: { 
-      Authorization: `token ${token}`, 
+    headers: {
+      Authorization: `token ${token}`,
       Accept: "application/vnd.github.v3+json",
       "Cache-Control": "no-cache"
     }
@@ -18,8 +13,6 @@ async function getFile(token) {
   if (res.status === 404) return { content: {}, sha: null };
   const data = await res.json();
   const content = JSON.parse(atob(data.content.replace(/\n/g, "")));
-  memoryCache = content;
-  memorySha = data.sha;
   return { content, sha: data.sha };
 }
 
@@ -38,12 +31,7 @@ async function saveFile(content, sha, token) {
     },
     body: JSON.stringify(body)
   });
-  const data = await res.json();
-  if (data.content?.sha) {
-    memoryCache = content;
-    memorySha = data.content.sha;
-  }
-  return data;
+  return await res.json();
 }
 
 export async function onRequest(context) {
@@ -53,7 +41,7 @@ export async function onRequest(context) {
 
   const headers = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
     "Access-Control-Allow-Headers": "*",
     "Content-Type": "application/json"
   };
@@ -84,17 +72,36 @@ export async function onRequest(context) {
       const existing = content[userId];
 
       const newExecuted = executed !== undefined ? executed : (existing?.executed || false);
-      const newTag = (forceTag && tag) ? tag : (existing ? existing.tag : (tag || "SCOPER USER"));
+      const newTag = (forceTag && tag) ? tag : (existing?.tag || tag || "SCOPER USER");
       const newJobId = jobId || existing?.jobId || null;
       const newPlaceId = placeId || existing?.placeId || null;
       const newUpdatedAt = updatedAt || null;
 
-      content[userId] = { tag: newTag, executed: newExecuted, updatedAt: newUpdatedAt, jobId: newJobId, placeId: newPlaceId };
-      await saveFile(content, sha, GITHUB_TOKEN);
+      content[userId] = {
+        tag: newTag,
+        executed: newExecuted,
+        updatedAt: newUpdatedAt,
+        jobId: newJobId,
+        placeId: newPlaceId
+      };
+
+      const saveResult = await saveFile(content, sha, GITHUB_TOKEN);
+
+      if (saveResult.content?.sha) {
+        return new Response(JSON.stringify({ ok: true }), { headers });
+      } else {
+        return new Response(JSON.stringify({ ok: false, error: saveResult.message || "Write failed" }), { status: 500, headers });
+      }
+    }
+
+    if (request.method === "DELETE") {
+      const body = await request.json();
+      const { commandId, userId } = body || {};
       return new Response(JSON.stringify({ ok: true }), { headers });
     }
 
     return new Response(JSON.stringify({ error: "Method not allowed" }), { status: 405, headers });
+
   } catch (err) {
     return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
   }
