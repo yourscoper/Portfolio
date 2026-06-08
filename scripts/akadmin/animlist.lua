@@ -164,7 +164,6 @@ return {
     ["Rocky Road"] = "https://yourscoper.pages.dev/scripts/reanimation/animations/Rocky%20Road.lua",
     ["Rodeo"] = "https://yourscoper.pages.dev/scripts/reanimation/animations/Rodeo.lua",
     ["Rogue-quette"] = "https://yourscoper.pages.dev/scripts/reanimation/animations/Rogue-quette.lua",
-    ["Roki"] = "https://yourscoper.pages.dev/scripts/reanimation/animations/Roki.lua",
     ["Roll 'N Rock"] = "https://yourscoper.pages.dev/scripts/reanimation/animations/Roll%20%27N%20Rock.lua",
     ["Roll Call"] = "https://yourscoper.pages.dev/scripts/reanimation/animations/Roll%20Call.lua",
     ["Roll It Up"] = "https://yourscoper.pages.dev/scripts/reanimation/animations/Roll%20It%20Up.lua",
