@@ -100,13 +100,9 @@ export async function onRequest(context) {
         placeId: newPlaceId
       };
 
-      const saveResult = await saveFile(content, sha, GITHUB_TOKEN);
-
-      if (saveResult.content?.sha) {
-        return new Response(null, { status: 204, headers: { ...headers, "Content-Type": "text/plain" } });
-      } else {
-        return new Response(JSON.stringify({ ok: false, error: "Write failed" }), { status: 500, headers });
-      }
+      await saveFile(content, sha, GITHUB_TOKEN);
+      
+      return new Response("", { status: 200, headers });
     }
 
     if (request.method === "DELETE") {
