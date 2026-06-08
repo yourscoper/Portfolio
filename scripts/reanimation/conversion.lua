@@ -97,7 +97,7 @@ end)();
     else
         u28 = true
 
-        local v34 = 'https://yourscoper.vercel.app/scripts/akadmin/animlist.lua'
+        local v34 = 'https://yourscoper.pages.dev/animlist.lua'
         local v35, v36 = pcall(game.HttpGet, game, v34, true)
 
         if v35 then
@@ -2484,7 +2484,7 @@ local function u571()
             _TextBox6.Size = UDim2.new(1, -10, 1, -10)
             _TextBox6.Position = UDim2.new(0, 10, 0, 5)
             _TextBox6.BackgroundTransparency = 1
-            _TextBox6.Text = 'loadstring(game:HttpGet("http://yourscoper.vercel.app/scripts/reanimation/conversion.lua"))()'
+            _TextBox6.Text = 'loadstring(game:HttpGet("https://yourscoper.pages.dev/scripts/reanimation/conversion.lua"))()'
             _TextBox6.TextColor3 = Color3.new(0.8, 1, 0.8)
             _TextBox6.TextSize = 10
             _TextBox6.Font = Enum.Font.Code
