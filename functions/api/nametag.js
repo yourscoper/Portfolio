@@ -21,7 +21,6 @@ async function getFile(token) {
 }
 
 async function saveFile(content, sha, token) {
-  const now = Date.now();
   const body = {
     message: "Update userdata",
     content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))),
@@ -40,7 +39,6 @@ async function saveFile(content, sha, token) {
   if (data.content?.sha) {
     memoryCache = content;
     memorySha = data.content.sha;
-    lastGithubWrite = now;
   }
   return data;
 }
