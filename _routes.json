@@ -11,6 +11,6 @@
     "/scripts/list.json"
   ],
   "exclude": [
-    "/api/*",
+    "/api/*"
   ]
 }
