@@ -29,6 +29,10 @@ export async function onRequest(context) {
   const userAgent = request.headers.get("user-agent") || "";
   const acceptHeader = request.headers.get("accept") || "";
 
+  if (pathKey.startsWith("api/")) {
+    return context.next();
+  }
+  
   if (!SCRIPT_MAP[pathKey]) return context.next();
 
   if (userAgent.includes("Discordbot") || userAgent.includes("Twitterbot")) {
