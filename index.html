@@ -437,7 +437,7 @@
 
     const copyBtn = document.getElementById('copyBtn');
     const toast = document.getElementById('toast');
-    const scriptText = `loadstring(game:HttpGet("https://yourscoper.pages.dev/scoper.lua"))()`;
+    const scriptText = `loadstring(game:HttpGet("https://yourscoper.pages.dev/scoper.lua"))();`;
 
     copyBtn.addEventListener('click', () => {
       navigator.clipboard.writeText(scriptText).then(() => {
