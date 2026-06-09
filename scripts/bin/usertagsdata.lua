@@ -45,7 +45,7 @@ return {
             tageffects         = true,
             nameeffects        = false,
             glitchedname       = true,
-            typewritename      = false,
+            typewritename      = true,
             tagcolor           = Color3.fromRGB(255, 215, 60),
             crownicon          = true,
             showuserid         = false,
