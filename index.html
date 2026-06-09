@@ -3,857 +3,433 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>yourscoper</title>
-  <meta name="description" content="I indulge scripting." />
-  <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
-  <meta property="og:title" content="yourscoper" />
-  <meta property="og:description" content="I indulge scripting." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourscoper.github.io/Portfolio/" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/yourscoper/Portfolio/main/preview.jpg" />
-  <meta name="theme-color" content="#FFFFFF" />
-  <link rel="icon" href="https://cdn.discordapp.com/avatars/765706304656113664/a_27b7612e14a727540974d62b4e8ffdd9.gif?size=1024&animated=true" />
+  <title>scoper</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <script 
-  disable-devtool-auto 
-  src="https://cdn.jsdelivr.net/npm/disable-devtool"
-  url="https://theajack.github.io/disable-devtool/404.html?h=yourscoper.pages.dev">
+    disable-devtool-auto 
+    src="https://cdn.jsdelivr.net/npm/disable-devtool"
+    url="https://theajack.github.io/disable-devtool/404.html?h=yourscoper.pages.dev">
   </script>
 
   <style>
-    * { margin:0; padding:0; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; box-sizing:border-box; }
-    body {
-      background:#000 url('https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/theweeknd.gif') no-repeat center center fixed;
-      background-size:cover;
-      color:#fff;
-      font-family:'Coming Soon',cursive;
-      height:100vh;
-      overflow:hidden;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-      cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="white"/></svg>') 6 6,auto;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #050505;
+      --surface: #0d0d0d;
+      --border: rgba(255,255,255,0.07);
+      --accent: #a78bfa;
+      --accent2: #38bdf8;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --code-bg: #0a0a0f;
     }
-    #blur-overlay {
-      position:fixed;inset:0;
-      backdrop-filter:blur(8px);
-      background:rgba(0,0,0,0.8);
-      display:flex;flex-direction:column;justify-content:center;align-items:center;
-      z-index:1000;
-      color:#fff;font-size:2.5em;text-shadow:0 0 6px #000, 0 0 12px #000;
-      transition:opacity 0.8s ease-out;
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
     }
-    #blur-overlay.hidden { opacity:0;pointer-events:none; }
-    #blur-overlay span {
-      font-size:0.5em;
-      margin-top:-12px;
-      opacity:0.8;
-      color:#a3a3a3;
-    }
-    #trail-canvas,#sparkle-canvas { position:absolute;inset:0;pointer-events:none; }
-    #trail-canvas { z-index:4; }
-    #sparkle-canvas { z-index:2; }
-    #version,#copyright { position:fixed;bottom:20px;color:#fff;font-size:0.9em;text-shadow:0 0 6px #fff;z-index:10; }
-    #version { left:20px; }
-    #copyright { left:50%;transform:translateX(-50%); }
-    #main-content {
-      display:none;
-      opacity:0;
-      transition:opacity 0.5s ease 0.1s;
-      z-index:5;
-      width:90%;
-      max-width:420px;
-      position: relative;
-    }
-    #main-content.visible { display:block;opacity:1; }
-    .player-card {
-      background:rgba(255,255,255,0.03);
-      backdrop-filter:blur(25px) saturate(180%);
-      border:2px solid rgba(255,255,255,0.25);
-      border-radius:20px;
-      padding:24px;
-      box-shadow:0 12px 40px rgba(0,0,0,0.6),0 0 80px rgba(255,255,255,0.12);
-      animation:spinGradient 6s linear infinite;
-      border-image:linear-gradient(90deg,#fff,#333,#000,#333,#fff) 1;
-      border-image-slice:1;
-      position: relative;
-    }
-    @keyframes spinGradient {
-      0%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
-      25%{border-image-source:linear-gradient(180deg,#fff,#aaa,#000,#aaa,#fff)}
-      50%{border-image-source:linear-gradient(270deg,#fff,#aaa,#000,#aaa,#fff)}
-      75%{border-image-source:linear-gradient(0deg,#fff,#aaa,#000,#aaa,#fff)}
-      100%{border-image-source:linear-gradient(90deg,#fff,#aaa,#000,#aaa,#fff)}
-    }
-    .profile-top {
-      display:flex;
-      align-items:flex-start;
-      gap:16px;
-      margin-bottom:12px;
-      position: relative;
-    }
-    .avatar-wrapper {
-      position:relative;
-      width:80px;
-      height:80px;
-      border-radius:50%;
-      overflow:hidden;
-      flex-shrink:0;
-    }
-    .avatar,.decoration {
-      width:100%;height:100%;
-      object-fit:cover;
-      border-radius:50%;
-      position:absolute;inset:0;
-    }
-    .avatar { z-index:1; }
-    .decoration { z-index:2; display:block; }
-    .platform-indicator {
-      position: absolute;
-      bottom: 40px;
-      right: 291px;
-      width: 28px;
-      height: 28px;
-      z-index: 20;
-      pointer-events: auto;
-      transition: transform 0.2s ease;
-    }
-    .platform-indicator:hover {
-      transform: scale(1.12);
-    }
-    .platform-indicator::before {
-      content: "";
-      position: absolute;
+
+    #bg-canvas {
+      position: fixed;
       inset: 0;
-      background: #000;
-      border: 4px solid #000;
-      border-radius: 50%;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.8);
-      z-index: 1;
+      z-index: 0;
+      pointer-events: none;
     }
-    .platform-indicator svg {
+
+    .page {
       position: relative;
-      z-index: 2;
-      width: 18px;
-      height: 18px;
-      top: 5px;
-      left: 5px;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
     }
-    .username-container { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
-    .username { font-size:28px;font-weight:bold;text-shadow:0 0 12px rgba(255,255,255,0.6); }
-    .guild-tag {
-      display:inline-flex;align-items:center;
-      background:rgba(255,255,255,0.08);
-      border-radius:8px;
-      padding:4px 8px;
-      font-size:13px;
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
     }
-    .guild-tag img { width:16px;height:16px;margin-right:4px; }
-    .badges-and-quote {
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:6px;
+
+    h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.35s forwards;
     }
-    .badges { display:flex;gap:6px; }
-    .badges img { width:20px;height:20px; }
-    .quote-wrapper {
-      background:rgba(0,0,0,0.5);
-      border-radius:10px;
-      padding:8px 14px;
-      width:180px;
-      height:36px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
+
+    h1 .grad {
+      background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .quote {
-      font-size:15px;
-      font-style:italic;
-      color:rgba(255,255,255,0.9);
-      text-shadow:0 0 6px rgba(255,255,255,0.3);
-      text-align:center;
-      white-space:nowrap;
+
+    .sub {
+      font-size: 16px;
+      color: var(--muted);
+      text-align: center;
+      max-width: 460px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.5s forwards;
     }
-    #waveform { 
-      width:100%; 
-      height:80px; 
-      margin:16px 0; 
-      border-radius:12px; 
-      overflow:hidden; 
-      background: rgba(0,0,0,0.5); 
+
+    .script-card {
+      width: 100%;
+      max-width: 700px;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(167,139,250,0.08), 0 40px 80px rgba(0,0,0,0.6);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.65s forwards;
+      position: relative;
     }
-    .controls { display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;justify-content:center; }
-    .btn, .vb { 
-      width:40px;
-      height:40px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.2);
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      transition:all 0.2s;
-    }
-    .btn:hover, .vb:hover { 
-      background:rgba(255,255,255,0.15);
-      transform:scale(1.08); 
-    }
-    .btn.play-pause { width:48px;height:48px; }
-    .vb svg, .btn svg { width:24px; height:24px; fill:white; }
-    .track-info { flex:1;min-width:140px;text-align:center; }
-    .track-name { font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px; }
-    .track-artist { font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:20px; }
-    .progress-container {
-      position:relative;
-      margin-top:8px;
-      height:4px;
-      cursor:grab;
-      user-select:none;
-      -webkit-user-select:none;
-      flex:1;
-      max-width:300px;
-    }
-    .progress-container:active { cursor:grabbing; }
-    .progress-time {
-      font-size:12px;
-      color:rgba(255,255,255,0.8);
-      position:absolute;
-      top:-22px;
-      left:50%;
-      transform:translateX(-50%);
-      white-space:nowrap;
-      pointer-events:none;
-    }
-    .progress-bar {
-      height:4px;
-      background:rgba(255,255,255,0.15);
-      border-radius:2px;
-      position:absolute;
-      left:0; right:0;
-      top:0;
-    }
-    .progress-fill {
-      position:absolute;
-      top:0; left:0; height:100%;
-      width:0%;
-      background:linear-gradient(90deg,#fff,#ccc);
-      border-radius:2px;
-      pointer-events:none;
-    }
-    .progress-knob {
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      background: #fff;
-      border-radius: 50%;
-      top: -10px;
-      transform: translateX(-50%);
-      box-shadow: 0 0 10px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
-      pointer-events: auto;
-      cursor: grab;
-      z-index: 3;
-    }
-    .progress-knob:active { cursor: grabbing; }
-    .volume-area {
+
+    .card-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: nowrap;
-      width: 220px;
-      touch-action: pan-x;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
     }
-    .volume-container {
+
+    .dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dots span:nth-child(1) { background: #ff5f57; }
+    .dots span:nth-child(2) { background: #febc2e; }
+    .dots span:nth-child(3) { background: #28c840; }
+
+    .card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .copy-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(167,139,250,0.1);
+      border: 1px solid rgba(167,139,250,0.25);
+      border-radius: 8px;
+      padding: 6px 14px;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: rgba(167,139,250,0.2);
+      transform: scale(1.03);
+    }
+
+    .copy-btn.copied {
+      background: rgba(56,189,248,0.15);
+      border-color: rgba(56,189,248,0.3);
+      color: var(--accent2);
+    }
+
+    .copy-btn svg { width: 14px; height: 14px; fill: currentColor; }
+
+    .code-block {
+      padding: 28px 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      line-height: 1.8;
+      overflow-x: auto;
       position: relative;
-      height: 4px;
-      flex: 1;
-      max-width: 140px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 2px;
-      cursor: pointer;
     }
-    #volumeSlider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 4px;
-      background: transparent;
-      outline: none;
-      margin: 0;
-      cursor: pointer;
+
+    .line-glow {
+      display: block;
+      white-space: pre;
+    }
+
+    .kw { color: #c792ea; }
+    .fn { color: #82aaff; }
+    .str { color: #c3e88d; }
+    .call { color: var(--accent2); }
+    .punc { color: var(--muted); }
+
+    .glow-line {
+      position: relative;
+    }
+
+    .glow-line::after {
+      content: '';
       position: absolute;
-      top: 4px;
-      left: 0;
-      z-index: 2;
-    }
-    #volumeSlider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 24px;
-      height: 24px;
-      background: #fff;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
-      margin-top: -8px;
-      z-index: 3;
-    }
-    #volumeSlider::-moz-range-thumb {
-      width: 24px;
-      height: 24px;
-      background: #fff;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
-      margin-top: -8px;
-    }
-    .volume-fill {
-      position: absolute;
-      top: 0; left: 0; height: 100%;
-      width: 100%;
-      background: linear-gradient(90deg,#fff,#ccc);
-      border-radius: 2px;
+      left: -28px;
+      right: -28px;
+      top: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(167,139,250,0.04), transparent);
       pointer-events: none;
-      z-index: 1;
+      opacity: 0;
+      animation: scanline 4s ease-in-out infinite;
     }
-    .socials { display:flex;justify-content:center;gap:16px;margin-top:20px; }
-    .socials a { width:44px;height:44px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;transition:all 0.3s; }
-    .socials a:hover { transform:translateY(-4px);box-shadow:0 8px 20px rgba(255,255,255,0.15); }
-    .socials img { width:24px;height:24px;filter:brightness(0) invert(1) drop-shadow(0 0 4px #fff); }
-    @media (max-width:500px) {
-      .player-card { padding:16px; }
-      .avatar-wrapper { width:64px;height:64px; }
-      .username { font-size:24px; }
-      .quote-wrapper { width:160px;padding:6px 10px; }
-      .quote { font-size:14px; }
-      .platform-indicator {
-        bottom: 320px;
-        right: 260px;
-        width: 26px;
-        height: 26px;
-      }
-      .platform-indicator svg {
-        width: 16px;
-        height: 16px;
-        top: 5px;
-        left: 5px;
-      }
-      .volume-area { width: 180px; gap: 8px; }
-      #volumeSlider::-webkit-slider-thumb {
-        width: 28px;
-        height: 28px;
-        margin-top: -10px;
-      }
+
+    @keyframes scanline {
+      0%, 100% { opacity: 0; transform: translateY(0); }
+      50% { opacity: 1; }
+    }
+
+    .features {
+      display: flex;
+      gap: 16px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.8s forwards;
+    }
+
+    .feat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .feat .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      flex-shrink: 0;
+    }
+
+    .portfolio-link {
+      margin-top: 48px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 1s forwards;
+    }
+
+    .portfolio-link:hover { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: rgba(167,139,250,0.15);
+      border: 1px solid rgba(167,139,250,0.3);
+      backdrop-filter: blur(12px);
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
+      z-index: 100;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
     }
   </style>
 </head>
 <body>
-  <div id="blur-overlay">
-    Click to Enter
-    <span>Warning! Site contains audio content</span>
-  </div>
-  <canvas id="sparkle-canvas"></canvas>
-  <canvas id="trail-canvas"></canvas>
-  <div id="main-content">
-    <div class="player-card">
-      <div class="profile-top">
-        <div class="avatar-wrapper">
-          <img class="avatar" id="userAvatar" src="" alt="yourscoper" />
-          <img class="decoration" id="userDecoration" src="https://cdn.discordapp.com/avatar-decoration-presets/a_95ba9ea95b05884a963c7a0a5f23c806.png?size=160&amp;passthrough=false" alt="decoration" />
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="page">
+    <div class="eyebrow">— roblox executor script —</div>
+    <h1><span class="grad">scoper's</span><br>commands</h1>
+    <p class="sub">A powerful Roblox script. Paste the loadstring into your executor and run.</p>
+
+    <div class="script-card">
+      <div class="card-header">
+        <div class="dots">
+          <span></span><span></span><span></span>
         </div>
-        <div>
-          <div class="username-container">
-            <div class="username">yourscoper</div>
-            <div class="guild-tag">
-              <img src="https://cdn.discordapp.com/clan-badges/547906569489350657/3858554c542da4e8e4b52ff00a558ced.png?size=16" alt="CODE badge" />
-              <span>CODE</span>
-            </div>
-          </div>
-          <div class="badges-and-quote">
-            <div class="badges">
-              <img src="https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" alt="Nitro" />
-              <img src="https://cdn.discordapp.com/badge-icons/3aa41de486fa12454c3761e8e223442e.png" alt="HypeSquad" />
-              <img src="https://cdn.discordapp.com/badge-icons/51040c70d4f20a921ad6674ff86fc95c.png" alt="Booster" />
-              <img src="https://cdn.discordapp.com/badge-icons/6de6d34650760ba5551a79732e98ed60.png" alt="Legacy" />
-              <img src="https://cdn.discordapp.com/badge-icons/7d9ae358c8c5e118768335dbe68b4fb8.png" alt="Quest" />
-              <img src="https://cdn.discordapp.com/badge-icons/83d8a1eb09a8d64e59233eec5d4d5c2d.png" alt="Orbs" />
-            </div>
-            <div class="quote-wrapper">
-              <div class="quote" id="quote"></div>
-            </div>
-          </div>
-        </div>
-        <div class="platform-indicator" id="platformIndicator" title="Offline • Desktop"></div>
+        <div class="card-label">loadstring.lua</div>
+        <button class="copy-btn" id="copyBtn">
+          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          copy
+        </button>
       </div>
-      <canvas id="waveform"></canvas>
-      <div class="controls">
-        <div class="btn" id="prev"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></div>
-        <div class="btn play-pause" id="playPause"><svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="btn" id="next"><svg viewBox="0 0 24 24" width="20" fill="white"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></div>
-        <div class="track-info">
-          <div class="track-name" id="trackName">Baptized In Fear (Lyrics)</div>
-          <div class="track-artist" id="trackArtist">The Weeknd</div>
-          <div class="progress-container" id="progressContainer">
-            <div class="progress-time" id="progressTime">0:00 / 0:00</div>
-            <div class="progress-bar" id="progressBar">
-              <div class="progress-fill" id="progressFill"></div>
-              <div class="progress-knob" id="progressKnob"></div>
-            </div>
-          </div>
-        </div>
-        <div class="volume-area">
-          <div class="vb" id="vlb">
-            <svg viewBox="0 0 24 24">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
-            </svg>
-          </div>
-          <div class="volume-container" id="volumeContainer">
-            <div class="volume-fill" id="volumeFill"></div>
-            <input type="range" id="volumeSlider" min="0" max="100" value="100" step="any" />
-          </div>
-        </div>
-      </div>
-      <div class="socials">
-        <a href="https://www.roblox.com/users/8904921777/profile" target="_blank"><img src="https://www.roblox.com/favicon.ico" alt="Roblox"></a>
-        <a href="https://github.com/yourscoper" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub"></a>
-        <a href="https://discord.com/users/765706304656113664" target="_blank"><img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg" alt="Discord"></a>
-        <a href="https://open.spotify.com/user/chriscrafter102" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/spotify.png" alt="Spotify"></a>
-        <a href="https://www.tiktok.com/@yourscoper" target="_blank"><img src="https://raw.githubusercontent.com/yourscoper/Portfolio/main/tiktok.png" alt="TikTok"></a>
+      <div class="code-block glow-line">
+        <span class="line-glow"><span class="fn">loadstring</span><span class="punc">(</span><span class="fn">game</span><span class="punc">:</span><span class="call">HttpGet</span><span class="punc">(</span><span class="str">"https://yourscoper.pages.dev/scoper.lua"</span><span class="punc">))()</span></span>
       </div>
     </div>
+
+    <div class="features">
+      <div class="feat"><span class="dot"></span>nametag system</div>
+      <div class="feat"><span class="dot"></span>command gui</div>
+      <div class="feat"><span class="dot"></span>animation library</div>
+      <div class="feat"><span class="dot"></span>reanimation</div>
+    </div>
+
+    <a class="portfolio-link" href="/portfolio">view portfolio →</a>
   </div>
-  <div id="version">v1.0.8</div>
-  <div id="copyright">© 2026 yourscoper. All rights reserved.</div>
-  <audio id="playerAudio" preload="auto" crossorigin="anonymous"></audio>
+
+  <div class="toast" id="toast">copied to clipboard</div>
 
   <script>
-    const userId = '765706304656113664';
-    const platformIndicator = document.getElementById('platformIndicator');
-    const statusColors = { online: '#43b581', idle: '#faa61a', dnd: '#f04747', offline: '#747f8d' };
-    const statusDisplayNames = { online: 'Online', idle: 'Idle', dnd: 'Do Not Disturb', offline: 'Offline' };
-    const platformSVGs = {
-      desktop: `<svg aria-label="Desktop" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.5c-1.103 0-2 .897-2 2v11c0 1.104.897 2 2 2h7v2H7v2h10v-2h-4v-2h7c1.103 0 2-.896 2-2v-11c0-1.103-.897-2-2-2H4Zm16 2v9H4v-9h16Z"></path></svg>`,
-      mobile: `<svg aria-label="Mobile" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1Zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 .67 1.5 1.5-.67 1.5-1.5 1.5Zm5-3h-10V4h10v15Z"></path></svg>`,
-      web: `<svg aria-label="Web" height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8Zm-1-13h2v6h-2Zm0 8h2v2h-2Z"></path></svg>`
-    };
-    async function updateDiscordPresence() {
-      try {
-        const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
-        const json = await res.json();
-        if (json.success && json.data) {
-          const data = json.data;
-          const rawStatus = data.discord_status || 'offline';
-          const displayStatus = statusDisplayNames[rawStatus] || 'Offline';
-          const color = statusColors[rawStatus] || statusColors.offline;
-          let platform = 'desktop';
-          if (data.active_on_discord_mobile) platform = 'mobile';
-          else if (data.active_on_discord_desktop) platform = 'desktop';
-          else if (data.active_on_discord_web) platform = 'web';
-          platformIndicator.innerHTML = platformSVGs[platform] || platformSVGs.desktop;
-          platformIndicator.style.color = color;
-          platformIndicator.style.display = 'block';
-          platformIndicator.title = `${displayStatus} • ${platform.charAt(0).toUpperCase() + platform.slice(1)}`;
-          const avatarHash = data.discord_user.avatar;
-          const isAnimated = avatarHash?.startsWith('a_');
-          const avatarExt = isAnimated ? 'gif' : 'png';
-          document.getElementById('userAvatar').src = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.${avatarExt}?size=1024`;
-        } else {
-          platformIndicator.innerHTML = platformSVGs.desktop;
-          platformIndicator.style.color = statusColors.offline;
-          platformIndicator.style.display = 'block';
-          platformIndicator.title = 'Offline • Desktop';
-        }
-      } catch (err) {
-        console.error('Lanyard fetch failed:', err);
-        platformIndicator.innerHTML = platformSVGs.desktop;
-        platformIndicator.style.color = statusColors.offline;
-        platformIndicator.style.display = 'block';
-        platformIndicator.title = 'Offline • Desktop';
-      }
-    }
-    updateDiscordPresence();
-    setInterval(updateDiscordPresence, 15000);
-    const fullTitle = 'yourscoper';
-    let titleIndex = 0;
-    let titleDeleting = false;
-    function typeTitle() {
-      if (!titleDeleting) {
-        document.title = fullTitle.substring(0, titleIndex + 1);
-        titleIndex++;
-        if (titleIndex === fullTitle.length) setTimeout(() => titleDeleting = true, 1800);
-      } else {
-        document.title = fullTitle.substring(0, titleIndex);
-        titleIndex--;
-        if (titleIndex === 0) titleDeleting = false;
-      }
-      setTimeout(typeTitle, titleDeleting ? 60 : 120);
-    }
-    typeTitle();
-    const quoteEl = document.getElementById('quote');
-    const quoteText = "I indulge scripting.";
-    let quoteIndex = 0;
-    let quoteDeleting = false;
-    function typeQuote() {
-      if (!quoteDeleting) {
-        quoteEl.textContent = quoteText.substring(0, quoteIndex + 1);
-        quoteIndex++;
-        if (quoteIndex === quoteText.length) setTimeout(() => quoteDeleting = true, 2000);
-      } else {
-        quoteEl.textContent = quoteText.substring(0, quoteIndex);
-        quoteIndex--;
-        if (quoteIndex === 0) quoteDeleting = false;
-      }
-      setTimeout(typeQuote, quoteDeleting ? 40 : 80);
-    }
-    typeQuote();
-    const trailCanvas = document.getElementById('trail-canvas');
-    const tctx = trailCanvas.getContext('2d');
-    trailCanvas.width = innerWidth; trailCanvas.height = innerHeight;
-    window.addEventListener('resize', () => { trailCanvas.width = innerWidth; trailCanvas.height = innerHeight; });
-    const points = [];
-    document.addEventListener('mousemove', e => points.push({x: e.clientX, y: e.clientY, t: Date.now()}));
-    function drawTrail() {
-      tctx.clearRect(0,0,trailCanvas.width,trailCanvas.height);
-      const now = Date.now();
-      for (let j = points.length - 1; j >= 0; j--) {
-        if (now - points[j].t > 1000) { points.splice(j, 1); continue; }
-        const age = (now - points[j].t) / 1000;
-        if (j > 0) {
-          tctx.beginPath();
-          tctx.moveTo(points[j-1].x, points[j-1].y);
-          tctx.lineTo(points[j].x, points[j].y);
-          tctx.strokeStyle = `rgba(255,255,255,${1-age})`;
-          tctx.lineWidth = 2;
-          tctx.stroke();
-        }
-      }
-      requestAnimationFrame(drawTrail);
-    }
-    drawTrail();
-    const sparkleCanvas = document.getElementById('sparkle-canvas');
-    const sctx = sparkleCanvas.getContext('2d');
-    sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight;
-    window.addEventListener('resize', () => { sparkleCanvas.width = innerWidth; sparkleCanvas.height = innerHeight; });
-    const sparkles = [];
-    function createSparkle() {
-      sparkles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight * 0.6, r: Math.random() * 2.5 + 1, a: 1, t: Date.now() });
-    }
-    function drawSparkles() {
-      sctx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
-      const now = Date.now();
-      for (let j = sparkles.length - 1; j >= 0; j--) {
-        const s = sparkles[j];
-        const age = (now - s.t) / 1000;
-        s.a = 1 - age / 1.5;
-        if (s.a <= 0) { sparkles.splice(j,1); continue; }
-        sctx.fillStyle = `rgba(255,255,255,${s.a})`;
-        sctx.beginPath();
-        sctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-        sctx.fill();
-      }
-      requestAnimationFrame(drawSparkles);
-    }
-    drawSparkles();
-    setInterval(createSparkle, 400);
-    const audio = document.getElementById('playerAudio');
-    audio.volume = 1.0;
-    const playPause = document.getElementById('playPause');
-    const trackName = document.getElementById('trackName');
-    const trackArtist = document.getElementById('trackArtist');
-    const progressTime = document.getElementById('progressTime');
-    const progressFill = document.getElementById('progressFill');
-    const progressKnob = document.getElementById('progressKnob');
-    const progressContainer = document.getElementById('progressContainer');
-    const volumeSlider = document.getElementById('volumeSlider');
-    const volumeFill = document.getElementById('volumeFill');
-    const vlb = document.getElementById('vlb');
-    const unmuteSVG = '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>';
-    const muteSVG = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>';
-    vlb.innerHTML = unmuteSVG;
-    const tracks = [
-      { name: 'High For This', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/High%20For%20This%20(Lyrics).mp3' },
-      { name: 'The Morning', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/The%20Morning%20(Lyrics).mp3' },
-      { name: 'Baptized In Fear', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/Baptized%20In%20Fear%20(Lyrics).mp3' },
-      { name: 'São Paulo (feat. Anitta)', artist: 'The Weeknd', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/S%C3%A3o%20Paulo%20(feat.%20Anitta)%20(Lyrics).mp3' },
-      { name: 'sdp interlude', artist: 'Travis Scott', src: 'https://raw.githubusercontent.com/yourscoper/Portfolio/refs/heads/main/songs/sdp%20interlude%20-%20Travis%20Scott%20(Lyrics).mp3' },
-    ];
-    let currentTrack = 0;
-    let isPlaying = false;
-    let isScrubbing = false;
-    let fadeInterval = null;
-    const FADE_DURATION = 400;
-    const FADE_STEPS = 20;
-    function fadeIn(callback = () => {}) {
-      clearInterval(fadeInterval);
-      let step = 0;
-      const targetVol = audio.muted ? 0 : (volumeSlider.value / 100);
-      const stepSize = targetVol / FADE_STEPS;
-      fadeInterval = setInterval(() => {
-        step++;
-        audio.volume = Math.min(targetVol, step * stepSize);
-        if (step >= FADE_STEPS) {
-          clearInterval(fadeInterval);
-          audio.volume = targetVol;
-          callback();
-        }
-      }, FADE_DURATION / FADE_STEPS);
-    }
-    function fadeOut(callback = () => {}) {
-      clearInterval(fadeInterval);
-      let step = 0;
-      const startVol = audio.volume;
-      const stepSize = startVol / FADE_STEPS;
-      fadeInterval = setInterval(() => {
-        step++;
-        audio.volume = Math.max(0, startVol - step * stepSize);
-        if (step >= FADE_STEPS) {
-          clearInterval(fadeInterval);
-          audio.volume = 0;
-          callback();
-        }
-      }, FADE_DURATION / FADE_STEPS);
-    }
-    function loadTrack(idx) {
-      audio.src = tracks[idx].src;
-      trackName.textContent = tracks[idx].name;
-      trackArtist.textContent = tracks[idx].artist;
-      audio.load();
-      audio.volume = volumeSlider.value / 100;
-      updateVolumeUI();
-    }
-    loadTrack(currentTrack);
-    playPause.onclick = () => {
-      if (isPlaying) {
-        fadeOut(() => {
-          audio.pause();
-          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M8 5v14l11-7z"/></svg>';
-          isPlaying = false;
-        });
-      } else {
-        audio.play().catch(e => console.error('Play failed:', e));
-        fadeIn(() => {
-          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
-          isPlaying = true;
-        });
-      }
-    };
-    document.getElementById('prev').onclick = () => {
-      if (audio.currentTime <= 3) {
-        currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-      } else {
-        audio.currentTime = 0;
-      }
-      fadeOut(() => {
-        loadTrack(currentTrack);
-        if (isPlaying) {
-          audio.currentTime = 0;
-          audio.play().catch(e => console.error('Play error:', e));
-          fadeIn();
-        }
-      });
-    };
-    document.getElementById('next').onclick = () => {
-      currentTrack = (currentTrack + 1) % tracks.length;
-      fadeOut(() => {
-        loadTrack(currentTrack);
-        if (isPlaying) {
-          audio.currentTime = 0;
-          audio.play().catch(e => console.error('Play error:', e));
-          fadeIn();
-        }
-      });
-    };
-    function updateProgressUI() {
-      if (isScrubbing) return;
-      if (!audio.duration) return;
-      const percent = (audio.currentTime / audio.duration) * 100;
-      progressFill.style.width = percent + '%';
-      progressKnob.style.left = percent + '%';
-      progressTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
-    }
-    function updateVolumeUI() {
-      const percent = (audio.volume * 100);
-      volumeFill.style.width = percent + '%';
-    }
-    function previewSeek(percent) {
-      progressFill.style.width = percent + '%';
-      progressKnob.style.left = percent + '%';
-      const previewSec = (percent / 100) * audio.duration;
-      progressTime.textContent = `${formatTime(previewSec)} / ${formatTime(audio.duration)}`;
-    }
-    function commitSeek(percent) {
-      if (!audio.duration) return;
-      audio.currentTime = (percent / 100) * audio.duration;
-      updateProgressUI();
-    }
-    function formatTime(seconds) {
-      const min = Math.floor(seconds / 60);
-      const sec = Math.floor(seconds % 60);
-      return `${min}:${sec.toString().padStart(2, '0')}`;
-    }
-    progressContainer.addEventListener('mousedown', e => {
-      if (e.button !== 0) return;
-      isScrubbing = true;
-      const rect = progressContainer.getBoundingClientRect();
-      let percent = ((e.clientX - rect.left) / rect.width) * 100;
-      percent = Math.max(0, Math.min(100, percent));
-      previewSeek(percent);
-      e.preventDefault();
-    });
-    progressContainer.addEventListener('touchstart', e => {
-      isScrubbing = true;
-      const rect = progressContainer.getBoundingClientRect();
-      let percent = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
-      percent = Math.max(0, Math.min(100, percent));
-      previewSeek(percent);
-      e.preventDefault();
-    });
-    document.addEventListener('mousemove', e => {
-      if (!isScrubbing) return;
-      const rect = progressContainer.getBoundingClientRect();
-      let percent = ((e.clientX - rect.left) / rect.width) * 100;
-      percent = Math.max(0, Math.min(100, percent));
-      previewSeek(percent);
-    });
-    document.addEventListener('touchmove', e => {
-      if (!isScrubbing) return;
-      if (e.touches.length === 0) return;
-      const rect = progressContainer.getBoundingClientRect();
-      let percent = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
-      percent = Math.max(0, Math.min(100, percent));
-      previewSeek(percent);
-      e.preventDefault();
-    });
-    document.addEventListener('mouseup', e => {
-      if (!isScrubbing) return;
-      isScrubbing = false;
-      const rect = progressContainer.getBoundingClientRect();
-      let percent = ((e.clientX - rect.left) / rect.width) * 100;
-      percent = Math.max(0, Math.min(100, percent));
-      commitSeek(percent);
-    });
-    document.addEventListener('touchend', e => {
-      if (!isScrubbing) return;
-      isScrubbing = false;
-      if (e.changedTouches.length === 0) return;
-      const rect = progressContainer.getBoundingClientRect();
-      let percent = ((e.changedTouches[0].clientX - rect.left) / rect.width) * 100;
-      percent = Math.max(0, Math.min(100, percent));
-      commitSeek(percent);
-    });
-    audio.ontimeupdate = updateProgressUI;
-    volumeSlider.addEventListener('input', () => {
-      audio.volume = volumeSlider.value / 100;
-      volumeFill.style.width = volumeSlider.value + '%';
-    });
-    let isVolumeDragging = false;
-    const volumeContainer = document.getElementById('volumeContainer');
-    volumeContainer.addEventListener('touchstart', e => {
-      e.preventDefault();
-      isVolumeDragging = true;
-      updateVolumeFromTouch(e.touches[0]);
-    }, { passive: false });
-    document.addEventListener('touchmove', e => {
-      if (!isVolumeDragging) return;
-      e.preventDefault();
-      if (e.touches && e.touches.length > 0) {
-        updateVolumeFromTouch(e.touches[0]);
-      }
-    }, { passive: false });
-    document.addEventListener('touchend', () => {
-      isVolumeDragging = false;
-    });
-    function updateVolumeFromTouch(touch) {
-      const rect = volumeContainer.getBoundingClientRect();
-      let pos = (touch.clientX - rect.left) / rect.width;
-      pos = Math.max(0, Math.min(1, pos));
-      const percent = pos * 100;
-      volumeFill.style.width = percent + '%';
-      audio.volume = pos;
-      volumeSlider.value = percent;
-    }
-    vlb.onclick = () => {
-      audio.muted = !audio.muted;
-      vlb.innerHTML = audio.muted ? muteSVG : unmuteSVG;
-      if (!audio.muted) audio.volume = volumeSlider.value / 100;
-      volumeFill.style.width = volumeSlider.value + '%';
-    };
-    audio.onended = () => {
-      currentTrack = (currentTrack + 1) % tracks.length;
-      fadeOut(() => {
-        loadTrack(currentTrack);
-        if (isPlaying) {
-          audio.currentTime = 0;
-          audio.play().catch(e => console.error('Play error:', e));
-          fadeIn();
-        }
-      });
-    };
-    audio.onerror = e => console.error('Audio error:', e);
-    const canvas = document.getElementById('waveform');
+    const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
-    let audioCtx, analyser, source;
-    function initVis() {
-      try {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 512;
-        source = audioCtx.createMediaElementSource(audio);
-        source.connect(analyser);
-        analyser.connect(audioCtx.destination);
-      } catch (e) {
-        console.log('Visualizer skipped:', e);
+    let W, H, particles = [];
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function randBetween(a, b) { return a + Math.random() * (b - a); }
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * W;
+        this.y = Math.random() * H;
+        this.vx = randBetween(-0.15, 0.15);
+        this.vy = randBetween(-0.3, -0.05);
+        this.size = randBetween(1, 2.5);
+        this.alpha = randBetween(0.1, 0.5);
+        this.life = 0;
+        this.maxLife = randBetween(200, 400);
+        this.color = Math.random() > 0.5 ? '167,139,250' : '56,189,248';
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.life++;
+        if (this.life > this.maxLife || this.y < -10) this.reset();
+      }
+      draw() {
+        const progress = this.life / this.maxLife;
+        const a = this.alpha * Math.sin(progress * Math.PI);
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color},${a})`;
+        ctx.fill();
       }
     }
-    function draw() {
-      requestAnimationFrame(draw);
-      if (!analyser) return;
-      const buffer = analyser.frequencyBinCount;
-      const data = new Uint8Array(buffer);
-      analyser.getByteFrequencyData(data);
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      const barWidth = (canvas.width / buffer) * 1.8;
-      let x = 0;
-      for (let k = 0; k < buffer; k++) {
-        const barHeight = (data[k] / 255) * canvas.height * 0.85;
-        const gradient = ctx.createLinearGradient(0, canvas.height - barHeight, 0, canvas.height);
-        gradient.addColorStop(0, '#ffffff');
-        gradient.addColorStop(0.4, '#cccccc');
-        gradient.addColorStop(1, '#000000');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(x, canvas.height - barHeight, barWidth, 2);
-        x += barWidth + 1;
+
+    for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+    const connections = [];
+    function drawConnections() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 100) {
+            const a = (1 - dist/100) * 0.06;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(167,139,250,${a})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
       }
     }
-    document.getElementById('blur-overlay').addEventListener('click', () => {
-      const overlay = document.getElementById('blur-overlay');
-      const content = document.getElementById('main-content');
-      overlay.style.opacity = '0';
-      setTimeout(() => {
-        overlay.classList.add('hidden');
-        content.style.display = 'block';
+
+    let mouseX = -1000, mouseY = -1000;
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+    function drawOrb(x, y, r, color) {
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, `rgba(${color},0.12)`);
+      g.addColorStop(1, `rgba(${color},0)`);
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+    }
+
+    let frame = 0;
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      frame++;
+
+      const ox1 = W * 0.2 + Math.sin(frame * 0.003) * 80;
+      const oy1 = H * 0.3 + Math.cos(frame * 0.004) * 60;
+      const ox2 = W * 0.8 + Math.sin(frame * 0.005 + 1) * 60;
+      const oy2 = H * 0.7 + Math.cos(frame * 0.003 + 2) * 80;
+
+      drawOrb(ox1, oy1, 340, '167,139,250');
+      drawOrb(ox2, oy2, 300, '56,189,248');
+
+      if (mouseX > 0) drawOrb(mouseX, mouseY, 180, '167,139,250');
+
+      drawConnections();
+      particles.forEach(p => { p.update(); p.draw(); });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    const copyBtn = document.getElementById('copyBtn');
+    const toast = document.getElementById('toast');
+    const scriptText = `loadstring(game:HttpGet("https://yourscoper.pages.dev/scoper.lua"))()`;
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(scriptText).then(() => {
+        copyBtn.classList.add('copied');
+        copyBtn.innerHTML = `<svg viewBox="0 0 24 24" style="fill:currentColor;width:14px;height:14px"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> copied`;
+        toast.classList.add('show');
         setTimeout(() => {
-          content.classList.add('visible');
-          audio.volume = volumeSlider.value / 100;
-          audio.muted = false;
-          vlb.innerHTML = unmuteSVG;
-          audio.play().catch(e => console.error('Autoplay failed:', e));
-          isPlaying = true;
-          playPause.innerHTML = '<svg viewBox="0 0 24 24" width="24" fill="white"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
-          initVis();
-          draw();
-          updateVolumeUI();
-        }, 200);
-      }, 800);
+          copyBtn.classList.remove('copied');
+          copyBtn.innerHTML = `<svg viewBox="0 0 24 24" style="fill:currentColor;width:14px;height:14px"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> copy`;
+          toast.classList.remove('show');
+        }, 2000);
+      });
     });
   </script>
 </body>
