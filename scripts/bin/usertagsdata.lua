@@ -13,7 +13,6 @@ return {
             primary            = Color3.fromRGB(255, 255, 255),
             useimage           = true,
             image              = "http://www.roblox.com/asset/?id=10086464520",
-            
             accent             = ColorSequence.new{
                 ColorSequenceKeypoint.new(0,   Color3.fromRGB(0,   0,   0  )),
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(145, 138, 102)),
@@ -32,21 +31,18 @@ return {
                 ColorSequenceKeypoint.new(1,    Color3.fromRGB(240, 200, 0  )),
             },
             avatargradient     = ColorSequence.new{
-                ColorSequenceKeypoint.new(0,   Color3.fromRGB(0,   0,   0  )),
-                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(145, 138, 102)),
-                ColorSequenceKeypoint.new(1,   Color3.fromRGB(240, 210, 60 )),
-
-                ColorSequenceKeypoint.new(0,    Color3.fromRGB(0,  0,   0  )),
+                ColorSequenceKeypoint.new(0,    Color3.fromRGB(0,   0,   0  )),
                 ColorSequenceKeypoint.new(0.33, Color3.fromRGB(145, 138, 102)),
-                ColorSequenceKeypoint.new(0.66, Color3.fromRGB(240, 210, 60)),
-                ColorSequenceKeypoint.new(1,    Color3.fromRGB(0,  0,   0  )),
+                ColorSequenceKeypoint.new(0.66, Color3.fromRGB(240, 210, 60 )),
+                ColorSequenceKeypoint.new(1,    Color3.fromRGB(0,   0,   0  )),
             },
             avatarglowcolor    = Color3.fromRGB(220, 180, 0),
             bgGradient         = ColorSequence.new{
-                ColorSequenceKeypoint.new(0,   Color3.fromRGB(0,   0,   0 )),
+                ColorSequenceKeypoint.new(0,   Color3.fromRGB(0,   0,   0  )),
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 255)),
-                ColorSequenceKeypoint.new(1,   Color3.fromRGB(0,   0,   0 )),
+                ColorSequenceKeypoint.new(1,   Color3.fromRGB(0,   0,   0  )),
             },
+            tageffects         = true,
             nameeffects        = false,
             glitchedname       = true,
             typewritename      = false,
@@ -88,6 +84,7 @@ return {
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(26, 12, 12)),
                 ColorSequenceKeypoint.new(1,   Color3.fromRGB(12, 4,  4 )),
             },
+            tageffects         = true,
             nameeffects        = true,
             glitchedname       = false,
             typewritename      = false,
@@ -97,7 +94,6 @@ return {
         },
 
         ["UNICORN MAN"] = {
-            -- core
             primary            = Color3.fromRGB(255, 255, 255),
             useimage           = true,
             image              = "http://www.roblox.com/asset/?id=90144296400082",
@@ -130,6 +126,7 @@ return {
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(20, 8,  28)),
                 ColorSequenceKeypoint.new(1,   Color3.fromRGB(10, 2,  14)),
             },
+            tageffects         = true,
             nameeffects        = true,
             glitchedname       = false,
             typewritename      = true,
@@ -139,7 +136,6 @@ return {
         },
 
         ["papi angel"] = {
-            -- core
             primary            = Color3.fromRGB(255, 255, 255),
             useimage           = true,
             image              = "http://www.roblox.com/asset/?id=115020167372123",
@@ -172,6 +168,7 @@ return {
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(22, 22, 35)),
                 ColorSequenceKeypoint.new(1,   Color3.fromRGB(10, 10, 18)),
             },
+            tageffects         = false,
             nameeffects        = false,
             glitchedname       = false,
             typewritename      = true,
@@ -183,7 +180,7 @@ return {
         ["that nigger gon"] = {
             primary            = Color3.fromRGB(255, 255, 255),
             useimage           = true,
-            image              = "http://www.roblox.com/asset/?id=132854398900146"
+            image              = "http://www.roblox.com/asset/?id=132854398900146",
             accent      = ColorSequence.new{
                 ColorSequenceKeypoint.new(0,    Color3.fromRGB(58, 2, 61)),
                 ColorSequenceKeypoint.new(0.5,  Color3.fromRGB(68, 43, 69)),
