@@ -1,1 +1,16 @@
+# Songs folder
+songs/
+
+# Misc files CF doesn't need
+
+README.md
+ScoperCMDs.png
+package.json
+wrangler.toml
+userdata.json
+pendingcommands.json
+.cfignore
+
+
+
 scripts/reanimation/animations/
