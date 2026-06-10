@@ -127,9 +127,9 @@
   },
   "10986159902": {
     "tag": "SCOPER USER",
-    "executed": false,
-    "updatedAt": "7:48 PM 6/10/2026",
-    "jobId": "adf5d607-8714-4162-8f9a-422fb7a3c5c5",
+    "executed": true,
+    "updatedAt": "8:20 PM 6/10/2026",
+    "jobId": "7650a569-7fb4-4744-a308-265a3c3404c8",
     "placeId": "6884319169"
   }
 }
