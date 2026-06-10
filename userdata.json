@@ -71,7 +71,7 @@
   },
   "9306062616": {
     "tag": "UNICORN MAN",
-    "executed": true,
+    "executed": false,
     "updatedAt": "5:55 PM 6/10/2026",
     "jobId": "dec547d8-7b68-4635-8c67-9c0d8226a149",
     "placeId": "6884319169"
@@ -85,7 +85,7 @@
   },
   "10956830795": {
     "tag": "SCOPER USER",
-    "executed": true,
+    "executed": false,
     "updatedAt": "6:24 PM 6/3/2026",
     "jobId": "9abf98b8-6a8f-4f54-91cb-8728574e5384",
     "placeId": "6884319169"
@@ -99,7 +99,7 @@
   },
   "11074032141": {
     "tag": "SCOPER USER",
-    "executed": true,
+    "executed": false,
     "updatedAt": "10:28 AM 6/9/2026",
     "jobId": "b9ebc16a-24ce-4769-aecf-95303ee4d2ba",
     "placeId": "6884319169"
