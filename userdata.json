@@ -22,10 +22,10 @@
   },
   "10766660977": {
     "tag": "OWNER",
-    "executed": false,
+    "executed": true,
     "updatedAt": "1:37 PM 6/12/2026",
-    "jobId": "c1c829cb-d086-4452-bb1e-fc27d24db381",
-    "placeId": "16641043643"
+    "jobId": "35a733b6-55d2-4d85-a090-bc6b747e1957",
+    "placeId": "16815772367"
   },
   "8798325211": {
     "tag": "ADMIN",
