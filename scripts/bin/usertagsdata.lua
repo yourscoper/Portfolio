@@ -12,7 +12,7 @@ return {
         ["OWNER"] = {
             primary            = Color3.fromRGB(255, 255, 255),
             useimage           = true,
-            image              = "http://www.roblox.com/asset/?id=10086464520",
+            image              = "http://www.roblox.com/asset/?id=10819887907",
             accent             = ColorSequence.new{
                 ColorSequenceKeypoint.new(0,   Color3.fromRGB(0,   0,   0  )),
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(120, 35, 35 )),
