@@ -22,7 +22,7 @@
   },
   "10766660977": {
     "tag": "OWNER",
-    "executed": false,
+    "executed": true,
     "updatedAt": "11:12 AM 6/12/2026",
     "jobId": "aef00772-2294-4dec-8ff7-59a278985084",
     "placeId": "14086581572"
