@@ -162,7 +162,7 @@ return {
                 ColorSequenceKeypoint.new(0.66, Color3.fromRGB(0,  0,   0  )),
                 ColorSequenceKeypoint.new(1,    Color3.fromRGB(255, 180, 255)),
             },
-            avatarglowcolor    = Color3.fromRGB(180, 180, 255),
+            avatarglowcolor    = Color3.fromRGB(255, 255, 255),
             bgGradient         = ColorSequence.new{
                 ColorSequenceKeypoint.new(0,   Color3.fromRGB(255, 255, 255)),
                 ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0,   0,   0  )),
