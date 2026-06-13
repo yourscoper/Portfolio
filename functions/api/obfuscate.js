@@ -8,65 +8,218 @@ function randomString(len) {
   return result;
 }
 
+const NAME_POOL = [
+  "data","info","node","list","temp","flag","size","base","core","init",
+  "load","save","read","send","recv","pack","wrap","bind","hook","call",
+  "iter","step","slot","pool","pipe","grid","mesh","blob","heap","tree",
+  "hash","bits","mask","seed","salt","rand","tick","time","rate","mode",
+  "type","kind","role","name","path","root","head","tail","next","prev",
+  "curr","last","best","fast","slow","raw","key","val","ref","idx","off",
+  "buf","cap","len","cnt","num","sum","max","min","avg","res","out","err",
+  "ctx","env","cfg","opt","arg","src","dst","tag","map","set","seq","row",
+  "col","pos","vec","dir","rot","mat","cam","obj","ent","sys","srv","cli",
+  "req","rsp","msg","evt","job","run","exe","lib","mod","pkg","sub","pub",
+  "mgr","hdl","drv","dev","net","io","db","fs","ui","fx",
+  "Handler","Manager","Builder","Factory","Parser","Loader","Writer",
+  "Reader","Buffer","Stream","Queue","Stack","Cache","Store","Index",
+  "Table","Block","Frame","Chunk","Packet","Token","Cursor","Scope",
+  "State","Event","Signal","Hook","Proxy","Guard","Filter","Mapper",
+  "Codec","Cipher","Digest","Hasher","Signer","Packer","Encoder"
+];
+
+function makeNameGen() {
+  const used = new Set();
+  function word() { return NAME_POOL[Math.floor(Math.random() * NAME_POOL.length)]; }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function rn() {
+    const abbrevs = ["buf","len","src","dst","tmp","key","val","ref","idx","ptr","cnt","sz","cap","res","err","ok"];
+    let candidate;
+    const strategy = Math.floor(Math.random() * 5);
+    if (strategy === 0) {
+      candidate = word();
+      if (Math.random() < 0.5) candidate += Math.floor(Math.random() * 99) + 1;
+    } else if (strategy === 1) {
+      candidate = word() + cap(word());
+      if (Math.random() < 0.33) candidate += Math.floor(Math.random() * 9) + 1;
+    } else if (strategy === 2) {
+      candidate = word() + "_" + word();
+      if (Math.random() < 0.33) candidate += Math.floor(Math.random() * 90) + 10;
+    } else if (strategy === 3) {
+      candidate = word() + cap(word()) + cap(word());
+    } else {
+      candidate = abbrevs[Math.floor(Math.random() * abbrevs.length)] + cap(abbrevs[Math.floor(Math.random() * abbrevs.length)]);
+      if (Math.random() < 0.5) candidate += Math.floor(Math.random() * 99) + 1;
+    }
+    if (/^[^a-zA-Z_]/.test(candidate)) candidate = "v" + candidate;
+    let tries = 0;
+    while (used.has(candidate)) {
+      candidate += Math.floor(Math.random() * 9) + 1;
+      if (++tries > 30) { candidate += "_" + (Math.floor(Math.random() * 900) + 100); break; }
+    }
+    used.add(candidate);
+    return candidate;
+  }
+  return rn;
+}
+
 function minifyCode(src) {
-  src = src.replace(/--[^\n]*/g, "");
   src = src.replace(/--\[\[[\s\S]*?\]\]/g, "");
+  src = src.replace(/--[^\n]*/g, "");
   src = src.replace(/\n+/g, "\n");
   src = src.replace(/\t/g, " ");
-  src = src.replace(/  +/g, " ");
-  return src;
+  src = src.replace(/ {2,}/g, " ");
+  return src.trim();
 }
+
+function xorBytes(str, key) {
+  let result = "";
+  for (let i = 0; i < str.length; i++)
+    result += String.fromCharCode(str.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+  return result;
+}
+
+function xorByteNum(str, key) {
+  let result = "";
+  for (let i = 0; i < str.length; i++)
+    result += String.fromCharCode(str.charCodeAt(i) ^ key);
+  return result;
+}
+
+function toBase64(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
+
+function bytesLiteral(s) {
+  const parts = [];
+  for (let i = 0; i < s.length; i++) parts.push(s.charCodeAt(i));
+  return "string.char(" + parts.join(",") + ")";
+}
+
+function obfNum(n) {
+  const a = Math.floor(Math.random() * 500) + 1;
+  const b = n - a;
+  const c = Math.floor(Math.random() * 100) + 1;
+  const d = c * 13;
+  return `bit32.bxor(bit32.bxor(${a}+${b},0x${d.toString(16).toUpperCase()}),0x${d.toString(16).toUpperCase()})`;
+}
+
+function junkStatement(rn) {
+  const v1 = rn(), v2 = rn();
+  const n1 = Math.floor(Math.random() * 99) + 1;
+  const n2 = Math.floor(Math.random() * 99) + 1;
+  const n3 = Math.floor(Math.random() * 8) + 2;
+  const t = Math.floor(Math.random() * 4);
+  if (t === 0) {
+    return `do local ${v1}=${n1}+${n2} local ${v2}=${v1}*${n3} if ${v2}>${n1} then ${v2}=${v2}-${n2} end end`;
+  } else if (t === 1) {
+    return `do local ${v1}={} for i=1,${n1} do ${v1}[i]=i*${n3} end end`;
+  } else if (t === 2) {
+    return `do local ${v1}=math.floor(${n1}*${n3}+${n2}) local ${v2}=${v1}+${n1} end`;
+  } else {
+    const tv = rn();
+    const keys = ["width","height","depth","alpha","beta","gamma","delta","epsilon"];
+    const k1 = keys[Math.floor(Math.random() * keys.length)];
+    const k2 = keys[Math.floor(Math.random() * keys.length)];
+    return `do local ${tv}={${k1}=${n1},${k2}=${n2}} ${tv}.${k1}=${tv}.${k2}+${n3} end`;
+  }
+}
+
+const WATERMARK = `--[[
+    .----. .---.  .----. .----. .----..----.  .----.    .----. .----. .----..-. .-. .----. .---.   .--.  .---.  .----. .----. 
+    Scoper's Obfuscator v3
+--]]
+`;
 
 function obfuscateLua(code) {
   if (typeof code !== "string") return "-- input error";
   const lineCount = code.split('\n').length;
   if (lineCount > 10000) return `-- Error: Code exceeds 10,000 lines (${lineCount} lines)`;
 
-  let cleanCode = minifyCode(code);
+  const rn = makeNameGen();
+  const cleanCode = minifyCode(code);
 
-  function xorEncrypt(str, key) {
-    let result = "";
-    for (let i = 0; i < str.length; i++)
-      result += String.fromCharCode(str.charCodeAt(i) ^ key.charCodeAt(i % key.length));
-    return result;
+  // Layer 1: XOR with fixed key
+  const xored = xorByteNum(cleanCode, XOR_KEY);
+
+  // Layer 2: base64
+  let b64;
+  try { b64 = toBase64(xored); } catch(e) { b64 = btoa(xored.split('').map(c => c.charCodeAt(0) > 127 ? '?' : c).join('')); }
+
+  // Layer 3: second XOR with random key
+  const key2 = Math.floor(Math.random() * (0xFE - 0x10 + 1)) + 0x10;
+  const doubled = xorByteNum(b64, key2);
+
+  // Split into shuffled chunks
+  const chunkExprs = [];
+  let pos = 0;
+  while (pos < doubled.length) {
+    const step = Math.floor(Math.random() * 121) + 60;
+    const piece = doubled.slice(pos, pos + step);
+    const bytes = [];
+    for (let i = 0; i < piece.length; i++) bytes.push(piece.charCodeAt(i));
+    chunkExprs.push("string.char(" + bytes.join(",") + ")");
+    pos += step;
   }
 
-  const encKey = randomString(16);
-  let encrypted = xorEncrypt(cleanCode, encKey);
-  const payloadBytes = Array.from(encrypted).map(c => c.charCodeAt(0));
-  const keyBytes = Array.from(encKey).map(c => c.charCodeAt(0));
-  const payloadTable = "{" + payloadBytes.join(",") + "}";
-  const keyTable = "{" + keyBytes.join(",") + "}";
+  // Fisher-Yates shuffle
+  const order = chunkExprs.map((_, i) => i);
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+  const shuffled = order.map(origIdx => chunkExprs[origIdx]);
+  const permutation = new Array(chunkExprs.length);
+  order.forEach((origIdx, newPos) => { permutation[origIdx] = newPos + 1; });
 
-  return `--[[
-    Scoper's Obfuscator - Working XOR Version
---]]
-do
-local function xor_bytes(a, b)
-  local result = 0
-  for i = 0, 7 do
-    local a_bit = a % 2
-    local b_bit = b % 2
-    if a_bit ~= b_bit then result = result + (2 ^ i) end
-    a = math.floor(a / 2)
-    b = math.floor(b / 2)
-  end
-  return result
-end
-local function byte_xor(payload_bytes, key_bytes)
-  local result_chars = {}
-  for i = 1, #payload_bytes do
-    local key_idx = ((i - 1) % #key_bytes) + 1
-    result_chars[i] = string.char(xor_bytes(payload_bytes[i], key_bytes[key_idx]))
-  end
-  return table.concat(result_chars)
-end
-local encrypted_bytes = ${payloadTable}
-local key_bytes = ${keyTable}
-local decrypted_code = byte_xor(encrypted_bytes, key_bytes)
-local load_func = loadstring or load
-load_func(decrypted_code)()
-end`;
+  // Build chunk table assignments
+  const tableVar = rn();
+  const chunkLines = [`local ${tableVar}={}`];
+  shuffled.forEach((expr, i) => chunkLines.push(`${tableVar}[${i+1}]=${expr}`));
+
+  // Build permutation table
+  const permVar = rn();
+  const permDecl = `local ${permVar}={${permutation.join(",")}}`;
+
+  // Reassembly loop
+  const reassembleVar = rn();
+  const loopVar = rn();
+  const reassembleBlock = `local ${reassembleVar}='' for ${loopVar}=1,#${permVar} do ${reassembleVar}=${reassembleVar}..${tableVar}[${permVar}[${loopVar}]] end`;
+
+  // XOR function in Lua (using bit32)
+  const xf = rn(), xt = rn();
+  const xorFuncDef = `local function ${xf}(s,k) local ${xt}={} for i=1,#s do ${xt}[i]=string.char(bit32.bxor(string.byte(s,i),k)) end return table.concat(${xt}) end`;
+
+  // Decode expression
+  const decVar = rn();
+  const dec2Var = rn();
+  const key2Expr = obfNum(key2);
+  const XORExpr = obfNum(XOR_KEY);
+
+  // base64decode accessor via getgenv
+  const bsfVar = rn(), kVar = rn(), eVar = rn(), dVar = rn();
+  const bsfBlock = `local ${bsfVar}=setmetatable({},{__index=function(_,${kVar}) local ${eVar}=${bytesLiteral("bENCO")} local ${dVar}=${bytesLiteral("bDECO")} if ${kVar}==${eVar} then return getgenv()[${bytesLiteral("base64encode")}] elseif ${kVar}==${dVar} then return getgenv()[${bytesLiteral("base64decode")}] end end})`;
+
+  const junk = [junkStatement(rn), junkStatement(rn), junkStatement(rn), junkStatement(rn)];
+
+  const parts = [
+    "return(function()",
+      bsfBlock,
+      junk[0],
+      chunkLines.join(" "),
+      permDecl,
+      junk[1],
+      reassembleBlock,
+      junk[2],
+      xorFuncDef,
+      `local ${decVar}=${bsfVar}.bDECO(${xf}(${reassembleVar},${key2Expr}))`,
+      `local ${dec2Var}=${xf}(${decVar},${XORExpr})`,
+      junk[3],
+      `return(loadstring or load)(${dec2Var})()`,
+    "end)()"
+  ];
+
+  let output = parts.join(" ").replace(/ {2,}/g, " ").trim();
+  return WATERMARK + "\n" + output;
 }
 
 function getHTML() {
@@ -98,15 +251,17 @@ function getHTML() {
     textarea { position:absolute; inset:0; background:transparent; color:transparent; padding:1.2rem; padding-left:45px; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; border:none; outline:none; resize:none; white-space:pre; tab-size:2; caret-color:#fff; z-index:3; }
     .highlight-mirror { position:absolute; inset:0; z-index:2; padding:1.2rem; padding-left:45px; pointer-events:none; white-space:pre; font-family:Consolas,monospace; font-size:1.05rem; line-height:1.55; background:#111; color:#e0e0e0; overflow:hidden; }
     .executor-controls { position:absolute; bottom:12px; right:12px; display:flex; gap:0.8rem; z-index:10; }
-    .btn { display:flex; align-items:center; gap:0.5rem; padding:0.6rem 1.2rem; font-size:1rem; background:rgba(40,40,60,.7); color:#fff; border:1px solid rgba(180,180,255,.3); border-radius:8px; cursor:pointer; transition:.2s ease; }
+    .btn { display:flex; align-items:center; gap:0.5rem; padding:0.6rem 1.2rem; font-size:1rem; background:rgba(40,40,60,.7); color:#fff; border:1px solid rgba(180,180,255,.3); border-radius:8px; cursor:pointer; transition:.2s ease; font-family:'Coming Soon',cursive; }
     .btn:hover { background:rgba(255,255,255,0.25); transform:scale(1.05); }
+    .btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+    .btn.copied { background:rgba(0,200,100,0.3); border-color:rgba(0,200,100,0.6); }
     .limit-badge { background: #00ff88; color: #000; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; margin-left: 10px; }
   </style>
 </head>
 <body>
 <div class="container">
   <h1>Scoper's Obfuscator <span class="badge">UNLIMITED</span></h1>
-  <p style="margin-top: 10px;">No API limits • 10,000+ lines supported • Maximum security</p>
+  <p style="margin-top: 10px;">No API limits &bull; 10,000+ lines supported &bull; Maximum security</p>
   <div class="editor-box">
     <div class="editor-label">Script Input <span class="limit-badge">No Limits</span></div>
     <div class="editor-area">
@@ -117,18 +272,20 @@ function getHTML() {
       </div>
     </div>
     <div class="executor-controls">
+      <button class="btn" id="copyBtn">Copy Obfuscated</button>
       <button class="btn" id="download">Download Obfuscated</button>
       <button class="btn" id="clear">Clear</button>
     </div>
   </div>
 </div>
-<div class="version">v1.0.4 - Unlimited</div>
-<div class="copyright">© 2026 Scoper. All rights reserved.</div>
+<div class="version">v2.0.0 - Unlimited</div>
+<div class="copyright">&copy; 2026 Scoper. All rights reserved.</div>
 <script>
 hljs.configure({languages:['lua']});
 const input = document.getElementById('input');
 const mirror = document.getElementById('inputMirror');
 const inputLines = document.getElementById('inputLines');
+
 function updateLineNumbers() {
   const lines = (input.value || '').split('\\n');
   let numbers = '';
@@ -153,30 +310,56 @@ input.addEventListener('keydown', e => {
     updateMirror();
   }
 });
-document.getElementById('download').onclick = async () => {
+
+async function getObfuscated() {
   const code = input.value.trim();
-  if (!code) return alert('No code to obfuscate');
+  if (!code) { alert('No code to obfuscate'); return null; }
+  const res = await fetch('/api/obfuscate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ script: code })
+  });
+  if (!res.ok) { alert('Obfuscation failed: ' + await res.text()); return null; }
+  return await res.text();
+}
+
+document.getElementById('download').onclick = async () => {
   const btn = document.getElementById('download');
   btn.textContent = 'Obfuscating...';
   btn.disabled = true;
   try {
-    const res = await fetch('/api/obfuscate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ script: code })
-    });
-    if (!res.ok) { alert('Obfuscation failed: ' + await res.text()); return; }
-    const obfuscated = await res.text();
+    const obfuscated = await getObfuscated();
+    if (!obfuscated) return;
     const blob = new Blob([obfuscated], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = 'obfuscated_' + Math.random().toString(36).substring(2,10) + '.lua';
+    a.href = url;
+    a.download = 'obfuscated_' + Math.random().toString(36).substring(2,10) + '.lua';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     URL.revokeObjectURL(url);
     alert('Success! Obfuscated file downloaded.');
   } catch (err) { alert('Error: ' + err.message); }
   finally { btn.textContent = 'Download Obfuscated'; btn.disabled = false; }
 };
+
+document.getElementById('copyBtn').onclick = async () => {
+  const btn = document.getElementById('copyBtn');
+  btn.textContent = 'Obfuscating...';
+  btn.disabled = true;
+  try {
+    const obfuscated = await getObfuscated();
+    if (!obfuscated) return;
+    await navigator.clipboard.writeText(obfuscated);
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy Obfuscated';
+      btn.classList.remove('copied');
+    }, 2000);
+  } catch (err) { alert('Error: ' + err.message); }
+  finally { btn.disabled = false; }
+};
+
 document.getElementById('clear').onclick = () => { input.value = ''; updateMirror(); };
 updateMirror();
 </script>
