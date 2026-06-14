@@ -71,22 +71,42 @@ function minifyCode(src) {
   return src.trim();
 }
 
-function xorBytes(str, key) {
+function strToBytes(str) {
+  const bytes = [];
+  for (let i = 0; i < str.length; i++) {
+    const c = str.charCodeAt(i);
+    if (c < 128) {
+      bytes.push(c);
+    } else if (c < 2048) {
+      bytes.push((c >> 6) | 192, (c & 63) | 128);
+    } else {
+      bytes.push((c >> 12) | 224, ((c >> 6) & 63) | 128, (c & 63) | 128);
+    }
+  }
+  return bytes;
+}
+
+function bytesToBase64(bytes) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
   let result = "";
-  for (let i = 0; i < str.length; i++)
-    result += String.fromCharCode(str.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+  let i = 0;
+  while (i < bytes.length) {
+    const b0 = bytes[i++];
+    const b1 = i < bytes.length ? bytes[i++] : 0;
+    const b2 = i < bytes.length ? bytes[i++] : 0;
+    result += chars[b0 >> 2];
+    result += chars[((b0 & 3) << 4) | (b1 >> 4)];
+    result += chars[((b1 & 15) << 2) | (b2 >> 6)];
+    result += chars[b2 & 63];
+  }
+  const pad = bytes.length % 3;
+  if (pad === 1) result = result.slice(0, -2) + "==";
+  else if (pad === 2) result = result.slice(0, -1) + "=";
   return result;
 }
 
-function xorByteNum(str, key) {
-  let result = "";
-  for (let i = 0; i < str.length; i++)
-    result += String.fromCharCode(str.charCodeAt(i) ^ key);
-  return result;
-}
-
-function toBase64(str) {
-  return btoa(unescape(encodeURIComponent(str)));
+function xorBytesArr(bytes, key) {
+  return bytes.map(b => b ^ key);
 }
 
 function bytesLiteral(s) {
@@ -126,9 +146,7 @@ function junkStatement(rn) {
 
 const WATERMARK = `--[[
     .----. .---.  .----. .----. .----..----.  .----.    .----. .----. .----..-. .-. .----. .---.   .--.  .---.  .----. .----.
-    { {__  /  ___}/  {}  \\| {}  }| {_  | {}  }{ {__     /  {}  \\| {}  }| {_  | { } |{ {__  /  ___} / {} \\{_   _}/  {}  \\| {}  }
-    .-._} }\\     }\\      /| .--' | {__ | .-. \\.-._} }   \\      /| {}  }| |   | {_} |.-._} }\\     }/  /\\  \\ | |  \\      /| .-. \\
-    \`----'  \`---'  \`----' \`-'    \`----'\`-' \`-'\`----'     \`----' \`----' \`-'   \`-----'\`----'  \`---' \`-'  \`-' \`-'   \`----' \`-' \`-'
+    Scoper's Obfuscator v3
 --]]
 `;
 
@@ -140,29 +158,25 @@ function obfuscateLua(code) {
   const rn = makeNameGen();
   const cleanCode = minifyCode(code);
 
+  const srcBytes = strToBytes(cleanCode);
 
-  const xored = xorByteNum(cleanCode, XOR_KEY);
+  const xoredBytes = xorBytesArr(srcBytes, XOR_KEY);
 
-
-  let b64;
-  try { b64 = toBase64(xored); } catch(e) { b64 = btoa(xored.split('').map(c => c.charCodeAt(0) > 127 ? '?' : c).join('')); }
-
+  const b64 = bytesToBase64(xoredBytes);
 
   const key2 = Math.floor(Math.random() * (0xFE - 0x10 + 1)) + 0x10;
-  const doubled = xorByteNum(b64, key2);
-
+  const b64Bytes = [];
+  for (let i = 0; i < b64.length; i++) b64Bytes.push(b64.charCodeAt(i));
+  const doubledBytes = xorBytesArr(b64Bytes, key2);
 
   const chunkExprs = [];
   let pos = 0;
-  while (pos < doubled.length) {
+  while (pos < doubledBytes.length) {
     const step = Math.floor(Math.random() * 121) + 60;
-    const piece = doubled.slice(pos, pos + step);
-    const bytes = [];
-    for (let i = 0; i < piece.length; i++) bytes.push(piece.charCodeAt(i));
-    chunkExprs.push("string.char(" + bytes.join(",") + ")");
+    const piece = doubledBytes.slice(pos, pos + step);
+    chunkExprs.push("string.char(" + piece.join(",") + ")");
     pos += step;
   }
-
 
   const order = chunkExprs.map((_, i) => i);
   for (let i = order.length - 1; i > 0; i--) {
@@ -173,39 +187,35 @@ function obfuscateLua(code) {
   const permutation = new Array(chunkExprs.length);
   order.forEach((origIdx, newPos) => { permutation[origIdx] = newPos + 1; });
 
-
   const tableVar = rn();
   const chunkLines = [`local ${tableVar}={}`];
   shuffled.forEach((expr, i) => chunkLines.push(`${tableVar}[${i+1}]=${expr}`));
 
-
   const permVar = rn();
   const permDecl = `local ${permVar}={${permutation.join(",")}}`;
-
 
   const reassembleVar = rn();
   const loopVar = rn();
   const reassembleBlock = `local ${reassembleVar}='' for ${loopVar}=1,#${permVar} do ${reassembleVar}=${reassembleVar}..${tableVar}[${permVar}[${loopVar}]] end`;
 
-
   const xf = rn(), xt = rn();
   const xorFuncDef = `local function ${xf}(s,k) local ${xt}={} for i=1,#s do ${xt}[i]=string.char(bit32.bxor(string.byte(s,i),k)) end return table.concat(${xt}) end`;
 
+  const b64Var = rn(), b64tVar = rn(), b64iVar = rn(), b64nVar = rn(), b64cVar = rn(), b64rVar = rn(), b64pVar = rn(), b64qVar = rn();
+  const b64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  const b64CharsLiteral = bytesLiteral(b64Chars);
+  const b64DecodeFn = `local function ${b64Var}(s) local ${b64tVar}=${b64CharsLiteral} local ${b64rVar}={} local ${b64nVar}=0 local ${b64pVar}=0 for ${b64iVar}=1,#s do local ${b64cVar}=string.find(${b64tVar},string.sub(s,${b64iVar},${b64iVar}),1,true) if ${b64cVar} then ${b64cVar}=${b64cVar}-1 ${b64nVar}=${b64nVar}*64+${b64cVar} ${b64pVar}=${b64pVar}+6 if ${b64pVar}>=8 then ${b64pVar}=${b64pVar}-8 ${b64rVar}[#${b64rVar}+1]=string.char(math.floor(${b64nVar}/2^${b64pVar})%256) ${b64nVar}=${b64nVar}%2^${b64pVar} end end end return table.concat(${b64rVar}) end`;
 
   const decVar = rn();
   const dec2Var = rn();
   const key2Expr = obfNum(key2);
   const XORExpr = obfNum(XOR_KEY);
 
-
-  const bsfVar = rn(), kVar = rn(), eVar = rn(), dVar = rn();
-  const bsfBlock = `local ${bsfVar}=setmetatable({},{__index=function(_,${kVar}) local ${eVar}=${bytesLiteral("bENCO")} local ${dVar}=${bytesLiteral("bDECO")} if ${kVar}==${eVar} then return getgenv()[${bytesLiteral("base64encode")}] elseif ${kVar}==${dVar} then return getgenv()[${bytesLiteral("base64decode")}] end end})`;
-
   const junk = [junkStatement(rn), junkStatement(rn), junkStatement(rn), junkStatement(rn)];
 
   const parts = [
     "return(function()",
-      bsfBlock,
+      b64DecodeFn,
       junk[0],
       chunkLines.join(" "),
       permDecl,
@@ -213,7 +223,7 @@ function obfuscateLua(code) {
       reassembleBlock,
       junk[2],
       xorFuncDef,
-      `local ${decVar}=${bsfVar}.bDECO(${xf}(${reassembleVar},${key2Expr}))`,
+      `local ${decVar}=${b64Var}(${xf}(${reassembleVar},${key2Expr}))`,
       `local ${dec2Var}=${xf}(${decVar},${XORExpr})`,
       junk[3],
       `return(loadstring or load)(${dec2Var})()`,
@@ -223,6 +233,7 @@ function obfuscateLua(code) {
   let output = parts.join(" ").replace(/ {2,}/g, " ").trim();
   return WATERMARK + "\n" + output;
 }
+
 
 function getHTML() {
   return `<!DOCTYPE html>
