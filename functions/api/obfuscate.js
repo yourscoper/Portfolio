@@ -231,12 +231,12 @@ function getHTML() {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Scoper's Obfuscator - Unlimited Power</title>
-  <link rel="preconnect" href="https:
-  <link rel="preconnect" href="https:
-  <link href="https:
-  <link rel="stylesheet" href="https:
-  <script src="https:
-  <script disable-devtool-auto src="https:
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool" url="https://theajack.github.io/disable-devtool/404.html?h=yourscoper.pages.dev"></script>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     html, body { height:100%; font-family:'Coming Soon',cursive; background:#0d0d0d; color:#f0f0f0; overflow-x:hidden; }
@@ -246,7 +246,7 @@ function getHTML() {
     .version, .copyright { font-family:'Coming Soon',cursive; }
     .version { position:fixed; bottom:20px; left:20px; color:#fff; font-size:1rem; opacity:0.85; z-index:10; }
     .copyright { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); color:#fff; font-size:1rem; opacity:0.7; z-index:10; }
-    .editor-box { width:100%; max-width:1600px; height:50vh; background:#111; border:1px solid #333; border-radius:8px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.8); display:flex; flex-direction:column; position:relative; bottom:-90px; transition: border-color .15s; }
+    .editor-box { width:100%; max-width:1600px; height:60vh; background:#111; border:1px solid #333; border-radius:8px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.8); display:flex; flex-direction:column; position:relative; margin-top:1.5rem; transition: border-color .15s; }
     .editor-box.drag-over { border-color: #0066ff; box-shadow: 0 0 0 2px #0066ff55, 0 10px 40px rgba(0,0,0,.8); }
     .editor-label { padding:.8rem 1.2rem; background:#1a1a1a; border-bottom:1px solid #333; font-size:1.3rem; color:#aaa; display:flex; align-items:center; gap:.6rem; }
     .editor-area { position:relative; flex:1; display:flex; overflow:hidden; }
